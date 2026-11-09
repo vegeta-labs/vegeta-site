@@ -1,0 +1,25 @@
+{
+  "example": "d3c05a165bdf4480077256ba2bbcc5adf4299e66dfaca9c9e7dbe94e20c4dd9d",
+  "toolkitRef": "3f39ce66820f5147c0deac5c7272dbbbc899444a",
+  "inboxRef": "863ed67749ad05142df8c4f0c570c84ecb8fec89",
+  "files": {
+    "closing-start.webp": "d09d1a5153ab6e182a865c6ba05186d377f31c069020c6f9ff25c05abf801adb",
+    "closing.mp4": "439e35a64a5db72b34c41790653ab03f4843a101bfa8d4ac9e13e8b95279ee9a",
+    "closing.webp": "3a17d985ce775e86b3bf89841dcab714792d522294ffcb4a3be193d427d41298",
+    "evidence.webp": "6b78ee31cf3209222ac1d474fb64556e67f77f6302014a0c07490fd53f1a9b06",
+    "exit-start.webp": "cce4c7a99b999584361c2a126be39a86865219e18fb06ed033df77e7ff7a7679",
+    "exit.mp4": "9538ac9607d48ff321cbfb572f472413f9b1d5b6e68bc21a2a43d63933fba292",
+    "exit.webp": "819a2b1e405938dfe6b38e99e66cccd96c5d04b33e6a3bc581ea494aad9bcd57",
+    "gets.webp": "152036563010e0e588d06cfbb839d9bc3f86ff2103c4b97dffb7cf568f616ca4",
+    "inbox.mp4": "a826918d8753936163bc3073c8f40f156e71089feedb6fa27143e6c1668bd74b",
+    "inbox.webp": "16ff631d8408fc35da014385db77d708061b292a69789b7a24e468e9413f8d3b",
+    "person.webp": "af4997a71b4506ce6e0abaa95695b104480b326cb53be2b3ae9a33e2b54e2500",
+    "reconciliation-start.webp": "d7ffceb8ad41c2e5caad5243db9f3ce621f932eb2cd048307b4eedc7c967bd5d",
+    "reconciliation.mp4": "e119d6952c9144b79d62aac8ee7548cbd2b7c59cd882b75c7b3db845c97a96c2",
+    "reconciliation.webp": "999c809fb2dd13d57a2bd9af7e365e57bc2d28fecf15f04a1bff88a66071e8bb",
+    "reply.webp": "0740e44e24a390eaceb74a2c634de836774e96ef563e3ad101abbc1e8536a3fc",
+    "verification.mp4": "b1a99925dfab5a52e05874a7f46bb323d68ee2f7d5bfa716f7457575007aa300",
+    "verification.webp": "d1fd3b4453a5fb4c3d3f1f528c4da69c989e92bd86e99bbfeed1eaa0a87563c9",
+    "wrong.webp": "1ab613fe4d98dbeefaae68014c8c8b49d0c3734d45928f47d82ed4c49c8ae3c6"
+  }
+}

@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
+    "marked": "15.0.12",
     "oxlint": "1.88.0",
     "rolldown": "1.2.14"
   }

@@ -1,0 +1,2224 @@
+{
+  "categories": [
+    {
+      "id": "1-operations",
+      "anchor": "operations",
+      "name": "Operations",
+      "line": "What happens to the money and the records in an SPV."
+    },
+    {
+      "id": "2-investors",
+      "anchor": "investors",
+      "name": "For investors",
+      "line": "What you are buying and what it really costs."
+    },
+    {
+      "id": "3-leads",
+      "anchor": "leads",
+      "name": "Leads and GPs",
+      "line": "Running a syndicate or a first fund."
+    },
+    {
+      "id": "4-uk-rules",
+      "anchor": "uk-rules",
+      "name": "UK rules",
+      "line": "The UK rules that shape a deal."
+    }
+  ],
+  "articles": [
+    {
+      "slug": "what-an-spv-is",
+      "category": "1-operations",
+      "hero": {
+        "art": "E5_one_crate_cart",
+        "top": 130,
+        "card": 180,
+        "scene": "The blue four-armed lead hauls a small handcart carrying one large crate, with dozens of small empty pouches tied to it on strings, while the paper-stack clerk walks behind.",
+        "panel": {
+          "title": "One vehicle, one asset, forty investors",
+          "lift": 110
+        },
+        "film": "Film: what £470,000 turns into in one SPV"
+      },
+      "figures": [
+        {
+          "before": "Pooling is not diversifying",
+          "alt": "The money in one deal.",
+          "panel": {
+            "title": "What £470,000 turns into",
+            "stack": [
+              ["Buys shares in the company", "£450,000", 0.957],
+              ["Setting up and running", "£20,000", 0.043]
+            ]
+          },
+          "art": "F1_sacks_through_funnel_v2",
+          "full": true
+        },
+        {
+          "before": "Whether the form affects your tax relief",
+          "alt": "New shares compared with existing shares.",
+          "panel": {
+            "title": "Same vehicle, two different deals",
+            "split": [
+              {
+                "head": "New shares",
+                "lines": ["The money reaches the company", "EIS relief possible"]
+              },
+              {
+                "head": "Existing UK shares",
+                "lines": ["The money reaches the seller", "Stamp duty, usually 0.5%", "No EIS relief"]
+              }
+            ]
+          },
+          "art": "F2_workshop_or_coat",
+          "x": 110
+        }
+      ],
+      "next": ["spv-or-fund-for-investors", "tracing-spv-cash"]
+    },
+    {
+      "slug": "bare-trust-nominee",
+      "category": "1-operations",
+      "hero": {
+        "art": "E6_one_barrel_three_taps",
+        "top": 130,
+        "card": 180,
+        "scene": "In a lamplit cellar one huge barrel shows a single small plate at its front and three taps of different sizes along its side, and the green checker looks at the plate with one eye and the taps with the other.",
+        "panel": {
+          "title": "The nominee holds the name. Investors hold the value."
+        }
+      },
+      "figures": [
+        {
+          "alt": "One line on the register, split among three sets of owners.",
+          "panel": {
+            "title": "One line on the register, three behind it",
+            "stack": [
+              ["Goku", "120,000", 0.4],
+              ["Piccolo", "90,000", 0.3],
+              ["Other investors", "90,000", 0.3]
+            ]
+          },
+          "art": "F19_one_line_many_strings",
+          "before": "Tax follows the beneficiary",
+          "full": true
+        },
+        {
+          "alt": "The four records a lead should be able to produce.",
+          "panel": {
+            "title": "In the file before closing",
+            "steps": [
+              "Signed trust terms for each investor",
+              "A schedule that matches the register",
+              "The decision process for a sale",
+              "The registration position"
+            ],
+            "paper": true
+          },
+          "art": "F20_four_folders",
+          "para": "Before closing, a lead",
+          "full": true
+        }
+      ],
+      "next": ["uk-nominee-or-delaware-lp", "nsi-act-and-spvs"]
+    },
+    {
+      "slug": "uk-nominee-or-delaware-lp",
+      "category": "1-operations",
+      "hero": {
+        "art": "E7_points_lever",
+        "top": 130,
+        "card": 180,
+        "scene": "At dusk the blue four-armed lead stands at a railway points lever where one track forks in two, reading a very long list, while the clerk waits on a handcar and the checker looks down both tracks at once.",
+        "panel": {
+          "title": "The investor list usually narrows the choice"
+        }
+      },
+      "figures": [
+        {
+          "before": "US offering and investor-count rules",
+          "alt": "What each form means for an investor.",
+          "panel": {
+            "title": "What each form gives an investor",
+            "split": [
+              {
+                "head": "UK nominee",
+                "lines": ["A nominee holds the shares", "EIS look-through: yes", "No Schedule K-1"]
+              },
+              {
+                "head": "Delaware LP",
+                "lines": ["The partnership holds them", "EIS look-through: no", "A Schedule K-1"]
+              }
+            ]
+          },
+          "art": "F3_one_key_or_round_table_v2",
+          "full": true
+        },
+        {
+          "before": "Where the sponsor sits",
+          "alt": "Rule 506(b) compared with Rule 506(c).",
+          "panel": {
+            "title": "Two US routes for the offer",
+            "split": [
+              {
+                "head": "Rule 506(b)",
+                "lines": ["No general solicitation", "Up to 35 sophisticated non-accredited"]
+              },
+              {
+                "head": "Rule 506(c)",
+                "lines": ["Public marketing allowed", "All buyers accredited and verified"]
+              }
+            ]
+          },
+          "art": "F4_megaphone_or_peephole"
+        }
+      ],
+      "next": ["bare-trust-nominee", "syndicate-lead-fca-permission"]
+    },
+    {
+      "slug": "tracing-spv-cash",
+      "category": "1-operations",
+      "hero": {
+        "art": "E1_tracing_cash",
+        "top": 130,
+        "card": 260,
+        "scene": "The blue four-armed lead follows a long strip of bank-statement paper across a table with a pen while the green checker leans in, an open safe behind them.",
+        "panel": {
+          "title": "Balance, ledger and entitlement are three separate things",
+          "lift": 110
+        },
+        "film": "Film: a shortfall of £20,025 that was three separate problems"
+      },
+      "figures": [
+        {
+          "before": "The account and the ledger",
+          "alt": "What the account holds once the refund has gone back, and what is still outstanding.",
+          "panel": {
+            "title": "After the refund goes back",
+            "stack": [
+              ["Held in the account", "£269,975", 0.9],
+              ["Still outstanding", "£30,025", 0.1]
+            ]
+          },
+          "art": "F5_refund_hatch_v2",
+          "full": true
+        },
+        {
+          "before": "What deposit protection covers",
+          "alt": "The four stages at which the same questions apply.",
+          "panel": {
+            "title": "The same questions at each stage",
+            "timeline": ["Investors pay in", "The money waits for closing", "It goes out to the company", "Proceeds come back"]
+          },
+          "art": "F6_four_desks_one_checklist"
+        },
+        {
+          "before": "After closing",
+          "alt": "An eligible beneficiary's bare-trust share and savings at one bank licence, and the part unprotected if that bank fails.",
+          "panel": {
+            "title": "One limit per person, per licence",
+            "stack": [
+              ["Protected", "£120,000", 0.706],
+              ["Unprotected if that bank fails", "£49,975", 0.294]
+            ]
+          },
+          "art": "F7_one_umbrella_rain"
+        }
+      ],
+      "next": ["closing-book", "following-one-cheque"],
+      "module": {
+        "name": "goten",
+        "line": "Reconciles a bank statement in the browser and moves no money."
+      }
+    },
+    {
+      "slug": "closing-book",
+      "category": "1-operations",
+      "hero": {
+        "art": "E8_three_jars_v2",
+        "top": 205,
+        "card": 180,
+        "scene": "At night three huge glass jars stand on a table, one packed with coins, one half full of sealed envelopes and one holding a single crumpled scrap, under a wall board showing the same three amounts.",
+        "panel": {
+          "title": "A single total hides what will actually arrive"
+        },
+        "screen": {
+          "heading": "Against the target",
+          "list": [
+            ["Target", "£512,500"],
+            ["If all signed arrives", "£107,500 short"],
+            ["With promises too", "£47,500 short"]
+          ],
+          "inset": 150
+        },
+        "screenBox": [40, 40, 1040, 800],
+        "cardY": 460
+      },
+      "figures": [
+        {
+          "before": "When there is too little",
+          "alt": "Adding a percentage cost to the raise compared with dividing by it.",
+          "panel": {
+            "title": "If costs are a percentage",
+            "compare": {
+              "heads": ["Add 2.5%", "Divide"],
+              "rows": [
+                ["Raised", "£512,500", "£512,820.51"],
+                ["Costs at 2.5%", "£12,812.50", "£12,820.51"],
+                ["Company short by", "£312.50", "Nothing"]
+              ]
+            }
+          },
+          "art": "F8_jug_at_the_mark"
+        },
+        {
+          "before": "When there is too much",
+          "alt": "The same fixed cost as a share of a larger and a smaller raise.",
+          "panel": {
+            "title": "£12,500 weighs more on a small raise",
+            "split": [
+              {
+                "head": "On a £500,000 raise",
+                "big": "2.5%"
+              },
+              {
+                "head": "On a £250,000 raise",
+                "big": "5%"
+              }
+            ]
+          },
+          "art": "F9_one_weight_two_scales"
+        },
+        {
+          "before": "Set your dates backwards",
+          "alt": "Two requests scaled by the same ratio, which is one allocation policy among several.",
+          "panel": {
+            "title": "Scaling every ticket by 0.8",
+            "compare": {
+              "heads": ["Asked", "Scaled"],
+              "rows": [
+                ["Larger request", "£50,000", "£40,000"],
+                ["Smaller request", "£25,000", "£20,000"]
+              ]
+            }
+          },
+          "art": "F10_trimming_tickets"
+        }
+      ],
+      "next": ["tracing-spv-cash", "five-questions-spv-investors-ask"],
+      "module": {
+        "name": "goten",
+        "line": "Reconciles a bank statement and works out a closing allocation in the browser. It moves no money."
+      }
+    },
+    {
+      "slug": "following-one-cheque",
+      "category": "1-operations",
+      "hero": {
+        "art": "E9_stairwell_buckets",
+        "top": 40,
+        "card": 180,
+        "scene": "Down a concrete stairwell the boulder pours a huge tub into the lead's bucket, the lead pours into the clerk's pail and the clerk into the checker's small cup, with water slopping on every step.",
+        "panel": {
+          "title": "One sale gives each level a different multiple"
+        }
+      },
+      "figures": [
+        {
+          "before": "From sale price to equity",
+          "alt": "The investor's look-through interest, which is a useful number for shares the SPV actually owns.",
+          "panel": {
+            "title": "A percentage of a percentage",
+            "big": [
+              ["40%", "SPV's holding"],
+              ["10%", "Investor in SPV"],
+              ["4%", "Look-through"]
+            ]
+          },
+          "art": "F11_slice_of_a_slice"
+        }
+      ],
+      "next": ["carry-on-an-spv-exit", "dpi-rvpi-tvpi"],
+      "module": {
+        "name": "goten",
+        "line": "Works out a closing allocation and an exit waterfall in the browser. It moves no money."
+      }
+    },
+    {
+      "slug": "carry-on-an-spv-exit",
+      "category": "1-operations",
+      "hero": {
+        "art": "E10_weir_and_bucket",
+        "top": 130,
+        "card": 180,
+        "scene": "On a valley stream water builds up behind a wooden weir and barely trickles over, while the boulder sits at the sluice and the blue lead holds out one dry tin bucket below the lip.",
+        "panel": {
+          "title": "Carry is a share of profit, not of the sale",
+          "lift": 110
+        },
+        "film": "Film: how carry comes out of the profit on one exit"
+      },
+      "figures": [
+        {
+          "before": "Hurdles and catch-up",
+          "alt": "Carry when profit is measured against paid-in capital, and against the money that bought shares.",
+          "panel": {
+            "title": "Same deal, a different definition",
+            "split": [
+              {
+                "head": "Against paid-in capital",
+                "big": "£88,500",
+                "lines": ["£400,000 comes back first", "Profit £590,000"]
+              },
+              {
+                "head": "Against money in shares",
+                "big": "£91,500",
+                "lines": ["£380,000 comes back first", "Profit £610,000"]
+              }
+            ]
+          },
+          "art": "F18_two_tapes_one_pile",
+          "x": 110
+        }
+      ],
+      "next": ["uk-carried-interest-tax", "following-one-cheque"],
+      "module": {
+        "name": "goten",
+        "line": "Runs an exit waterfall in the browser and moves no money."
+      }
+    },
+    {
+      "slug": "five-questions-spv-investors-ask",
+      "category": "1-operations",
+      "hero": {
+        "art": "E11_five_bells",
+        "top": 130,
+        "card": 180,
+        "scene": "In a basement corridor five service bells ring on a wall board, and the blue lead silences four of them with his four hands while staring wearily at the fifth.",
+        "panel": {
+          "title": "Answer the same five questions before they ask"
+        }
+      },
+      "figures": [
+        {
+          "before": "&quot;What&#39;s it worth?&quot;",
+          "alt": "What one closing note says.",
+          "panel": {
+            "title": "Closing note",
+            "paper": true,
+            "rows": [
+              ["Accepted", "£40,000"],
+              ["Invested after costs", "£39,024"],
+              ["Ordinary shares", "12,195"],
+              ["Price per share", "£3.20"]
+            ]
+          },
+          "art": "F12_stamped_card"
+        },
+        {
+          "before": "&quot;Do I need to do anything?&quot;",
+          "alt": "The first ratio is cash in hand and the second is mostly an estimate.",
+          "panel": {
+            "title": "Cash in hand against an estimate",
+            "split": [
+              {
+                "head": "DPI: cash in hand",
+                "big": "0.2"
+              },
+              {
+                "head": "TVPI: mostly estimate",
+                "big": "1.8"
+              }
+            ]
+          },
+          "art": "F13_coin_and_balloon"
+        },
+        {
+          "before": "&quot;When do I get my money, and what do I tell my accountant?&quot;",
+          "alt": "A runway worked out on the page.",
+          "panel": {
+            "title": "A runway with its sum shown",
+            "bigSize": 56,
+            "big": [
+              ["£640,000", "Cash"],
+              ["£80,000", "Spent a month"],
+              ["About 8", "Months at this rate"]
+            ]
+          },
+          "art": "F14_candle_with_rings_v2",
+          "full": true
+        }
+      ],
+      "next": ["closing-book", "what-an-spv-is"],
+      "module": {
+        "name": "trunks",
+        "line": "Reads investor email read-only, looks up imported records and prepares replies that a person sends."
+      }
+    },
+    {
+      "slug": "dpi-rvpi-tvpi",
+      "category": "1-operations",
+      "hero": {
+        "art": "E12_painted_stack",
+        "top": 130,
+        "card": 180,
+        "scene": "In a warehouse a small pile of real metal bars stands beside a much bigger stack that is only a painted cut-out on a wooden prop, and the green checker peers round behind it.",
+        "panel": {
+          "title": "Cash received is real; the rest is an estimate"
+        },
+        "screen": {
+          "blocks": [
+            ["Distributed", 90000],
+            ["Still valued", 360000]
+          ]
+        },
+        "screenBox": [40, 40, 1040, 800],
+        "cardY": 460
+      },
+      "figures": [
+        {
+          "before": "What counts as a distribution",
+          "alt": "A markup and a write-down change the residual value and the total, not the money already back.",
+          "panel": {
+            "title": "What a new mark moves",
+            "compare": {
+              "heads": ["Marked up", "Written down"],
+              "rows": [
+                ["RVPI", "1.70x", "0.50x"],
+                ["TVPI", "2.00x", "0.80x"],
+                ["DPI", "Unchanged", "Unchanged"]
+              ]
+            }
+          },
+          "art": "F15_pump_and_brick"
+        },
+        {
+          "before": "Same words, different basis",
+          "alt": "Questions to put to the valuation notes.",
+          "panel": {
+            "title": "Questions for the valuation notes",
+            "paper": true,
+            "steps": ["What is each major holding marked at?", "On what basis?", "When was the last priced round?"]
+          },
+          "art": "F16_magnifier_on_price_tag"
+        },
+        {
+          "before": "The same ratios on a single-deal SPV",
+          "alt": "The same multiple over a shorter and a longer time.",
+          "panel": {
+            "title": "Same multiple, different years",
+            "split": [
+              {
+                "head": "2x over four years",
+                "big": "18.9%",
+                "lines": ["About this a year"]
+              },
+              {
+                "head": "2x over nine years",
+                "big": "8.0%",
+                "lines": ["About this a year"]
+              }
+            ]
+          },
+          "art": "F17_two_stacks_two_calendars_v2",
+          "full": true
+        }
+      ],
+      "next": ["public-market-equivalent", "portfolio-headlines"]
+    },
+    {
+      "slug": "seis-eis-through-a-syndicate",
+      "category": "1-operations",
+      "hero": {
+        "art": "E13_net_with_hole",
+        "top": 130,
+        "card": 180,
+        "scene": "At dawn the paper-stack clerk walks a low tightrope above a safety net with a large hole in it, while the blue lead holds a corner of the net and the green checker inspects the hole.",
+        "panel": {
+          "title": "Relief softens the worst case but can be undone"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Relief larger than the tax bill it can be set against.",
+          "panel": {
+            "title": "Relief only comes off tax you owe",
+            "bars": [
+              ["Relief under SEIS", "£10,000", 1],
+              ["Tax bill this year", "£7,000", 0.7]
+            ]
+          },
+          "art": "F21_coupon_over_small_bill",
+          "before": "The company&#39;s situation decides the scheme",
+          "full": true
+        },
+        {
+          "alt": "What is actually lost on a failed £20,000 investment under each scheme, if the relief is kept and the loss relieved at 40%.",
+          "panel": {
+            "title": "If a £20,000 investment fails",
+            "compare": {
+              "heads": ["SEIS", "EIS"],
+              "rows": [
+                ["Income Tax relief", "£10,000", "£6,000"],
+                ["Loss relief at 40%", "£4,000", "£5,600"],
+                ["Money actually lost", "£6,000", "£8,400"]
+              ]
+            }
+          },
+          "art": "F22_two_cushions",
+          "before": "Why the certificate takes months",
+          "full": true
+        },
+        {
+          "alt": "The stages before a SEIS certificate can be used.",
+          "panel": {
+            "title": "The wait for a SEIS certificate",
+            "timeline": ["Shares issued", "Four months trading, or 70% spent", "Statement filed", "Certificate issued", "Investor claims"]
+          },
+          "art": "F23_counter_waiting",
+          "before": "What the SPV changes",
+          "full": true
+        }
+      ],
+      "next": ["bare-trust-nominee", "before-your-first-angel-cheque"]
+    },
+    {
+      "slug": "spv-or-fund-for-investors",
+      "category": "2-investors",
+      "hero": {
+        "art": "E14_one_boat_many_boats",
+        "top": 130,
+        "card": 180,
+        "scene": "On a misty jetty the blue lead holds two mooring lines, one to a single sturdy rowing boat with one heavy sack and one to a fleet of tiny paper boats, as the clerk folds another.",
+        "panel": {
+          "title": "Same money: one company now, many companies later"
+        }
+      },
+      "figures": [
+        {
+          "alt": "An SPV takes the money at once and a fund calls it over years.",
+          "panel": {
+            "title": "When £100,000 leaves",
+            "split": [
+              {
+                "head": "SPV",
+                "big": "£100,000",
+                "lines": ["Taken at closing"]
+              },
+              {
+                "head": "Fund, first year",
+                "big": "£20,000",
+                "lines": ["£80,000 still owed on call"]
+              }
+            ]
+          },
+          "art": "F24_bucket_or_drip",
+          "before": "How much gets invested",
+          "full": true
+        },
+        {
+          "alt": "How much is invested, and in how many companies, on each route.",
+          "panel": {
+            "title": "What reaches companies",
+            "compare": {
+              "heads": ["SPV", "Fund"],
+              "rows": [
+                ["Invested", "£97,000", "£80,000"],
+                ["Companies", "1", "25"],
+                ["In each", "£97,000", "£3,200"]
+              ]
+            }
+          },
+          "art": "F25_one_heap_many_cups",
+          "before": "What can go wrong",
+          "full": true
+        }
+      ],
+      "next": ["what-an-spv-is", "what-fund-fees-really-cost"]
+    },
+    {
+      "slug": "what-fund-fees-really-cost",
+      "category": "2-investors",
+      "hero": {
+        "art": "E2_fee_ribbon",
+        "top": 130,
+        "card": 200,
+        "scene": "The green checker walks along a very long strip of paper unrolled across the office floor, holding a large wooden ruler against it, one eye looking back along it and one forward.",
+        "panel": {
+          "title": "Two and twenty says little about what you pay"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The annual fee falling over the life of the fund.",
+          "panel": {
+            "title": "2%, then 1.75% on what is left",
+            "bars": [
+              ["Years 1 to 4, each", "£600,000", 1],
+              ["Year 7", "£262,500", 0.4375],
+              ["Year 10", "£52,500", 0.0875]
+            ]
+          },
+          "art": "F26_sandbag_stairs",
+          "before": "Costs outside the fee",
+          "full": true
+        },
+        {
+          "alt": "The multiple on the investments and the multiple investors got.",
+          "panel": {
+            "title": "Two correct multiples",
+            "split": [
+              {
+                "head": "What the picks did",
+                "big": "3.0x",
+                "lines": ["£75m on £25m invested"]
+              },
+              {
+                "head": "What investors got",
+                "big": "2.2x",
+                "lines": ["£66m on £30m paid in"]
+              }
+            ]
+          },
+          "art": "F27_two_dipsticks_v2",
+          "before": "The same questions, smaller",
+          "full": true
+        }
+      ],
+      "next": ["committing-to-a-venture-fund", "how-a-fund-of-funds-works"]
+    },
+    {
+      "slug": "committing-to-a-venture-fund",
+      "category": "2-investors",
+      "hero": {
+        "art": "E15_chest_on_a_chain",
+        "top": 130,
+        "card": 180,
+        "scene": "On a rainy night a heavy iron chest is being dragged across the office floor by a taut chain running out of the window into the dark, with the blue lead and the clerk trying to hold it back.",
+        "panel": {
+          "title": "A commitment is a promise to pay for years"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Capital calls arriving unevenly over the years.",
+          "panel": {
+            "title": "£250,000 promised, called unevenly",
+            "timeline": ["Year 1 £50,000", "Year 2 £62,500", "Year 3 £37,500", "Year 5 £60,000"]
+          },
+          "art": "F28_letterbox_flood",
+          "para": "Two things stand out",
+          "full": true
+        },
+        {
+          "alt": "A distribution that can be called again raises the undrawn commitment.",
+          "panel": {
+            "title": "Is that £20,000 really yours?",
+            "big": [
+              ["£100,000", "Undrawn after year 4"],
+              ["£120,000", "If it is recallable"]
+            ]
+          },
+          "art": "F29_coin_on_elastic",
+          "before": "What reaches companies",
+          "full": true
+        }
+      ],
+      "next": ["what-fund-fees-really-cost", "reading-a-track-record"]
+    },
+    {
+      "slug": "ways-to-own-a-private-company",
+      "category": "2-investors",
+      "hero": {
+        "art": "E16_seven_ways_up",
+        "top": 130,
+        "card": 180,
+        "scene": "One squat stone tower has seven different ways up, and the lead on a ladder, the clerk in a hoisted basket and the checker on a stair eye each other while the boulder works the rope.",
+        "panel": {
+          "title": "The route decides what you own and who votes"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The same sale held directly and through an SPV.",
+          "panel": {
+            "title": "One £40m sale, two routes",
+            "compare": {
+              "heads": ["Direct", "SPV"],
+              "rows": [
+                ["Stake", "0.5%", "0.475%"],
+                ["Share of sale", "£200,000", "£190,000"],
+                ["Goku receives", "£200,000", "£156,000"]
+              ]
+            }
+          },
+          "art": "F30_pipe_with_side_tank",
+          "before": "Being allowed in",
+          "full": true
+        },
+        {
+          "alt": "A listed vehicle priced below its net assets.",
+          "panel": {
+            "title": "Two separate figures",
+            "big": [
+              ["100p", "Net assets"],
+              ["90p", "Share price"],
+              ["10%", "Discount"]
+            ]
+          },
+          "art": "F31_price_tag_and_scale",
+          "before": "Private equity is not one strategy",
+          "full": true
+        }
+      ],
+      "next": ["spv-or-fund-for-investors", "buying-a-stake-second-hand"]
+    },
+    {
+      "slug": "before-your-first-angel-cheque",
+      "category": "2-investors",
+      "hero": {
+        "art": "E17_cheese_wheel",
+        "top": 60,
+        "card": 180,
+        "scene": "In an office kitchenette the blue lead has cut a big round cheese into a row of small equal wedges, with a third of it set aside under a glass dome that the boulder is eyeing.",
+        "panel": {
+          "title": "Size the portfolio, not the deal"
+        }
+      },
+      "figures": [
+        {
+          "alt": "If each independent investment has a 7% chance of a tenfold exit, more investments lower the chance of missing one.",
+          "panel": {
+            "title": "No tenfold-plus exit, at 7% each",
+            "bars": [
+              ["5 investments", "70%", 0.7],
+              ["10 investments", "48%", 0.48],
+              ["20 investments", "23%", 0.23]
+            ]
+          },
+          "art": "F32_ticket_drum",
+          "before": "Working out a cheque",
+          "full": true
+        },
+        {
+          "alt": "A budget split into first cheques and a reserve.",
+          "panel": {
+            "title": "£60,000 over three years",
+            "stack": [
+              ["Ten cheques of £4,000", "£40,000", 0.667],
+              ["Kept for later rounds", "£20,000", 0.333]
+            ]
+          },
+          "art": "F33_ten_cups_and_jar",
+          "before": "Are you allowed in?",
+          "full": true
+        }
+      ],
+      "next": ["what-an-early-stage-cheque-buys", "angel-investing-with-a-day-job"]
+    },
+    {
+      "slug": "angel-investing-with-a-day-job",
+      "category": "2-investors",
+      "hero": {
+        "art": "E18_tape_down_the_desk",
+        "top": 130,
+        "card": 180,
+        "scene": "A strip of tape divides a desk in two, and the blue lead keeps his upper two hands on the padlocked work files on one side and his lower two on a small private folder on the other, watched by the green checker.",
+        "panel": {
+          "title": "Your job is also where your conflicts come from"
+        }
+      },
+      "figures": [
+        {
+          "alt": "What to do when a holding touches a decision at work.",
+          "panel": {
+            "title": "Before you commit",
+            "steps": ["Disclose it to your employer", "Step out of that decision", "Tell anyone you introduce"]
+          },
+          "art": "F34_empty_chair_at_tender",
+          "before": "What have I promised?",
+          "full": true
+        },
+        {
+          "alt": "A dated one-page record of a holding.",
+          "panel": {
+            "title": "One page, with dates",
+            "rows": [
+              ["Company", "Senzu Labs"],
+              ["Holding", "£10,000 via SPV, March"],
+              ["Told", "Compliance, February"],
+              ["Approval", "Yes, recused from tender"]
+            ],
+            "paper": true
+          },
+          "art": "F35_one_dated_page",
+          "para": "This protects you more",
+          "full": true
+        }
+      ],
+      "next": ["before-your-first-angel-cheque", "assessing-founders"]
+    },
+    {
+      "slug": "what-an-early-stage-cheque-buys",
+      "category": "2-investors",
+      "hero": {
+        "art": "E19_short_grass_runway",
+        "top": 130,
+        "card": 180,
+        "scene": "A mown grass airstrip runs straight into the lake, with a small old propeller plane at one end, while the clerk plants blank flags along it and the blue lead watches the water.",
+        "panel": {
+          "title": "Judge the stake, the runway and what it proves"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The stake shrinking over two more rounds.",
+          "panel": {
+            "title": "The 4%, after two more rounds",
+            "bars": [
+              ["Seed", "4.00%", 1],
+              ["Series A", "3.20%", 0.8],
+              ["Series B", "2.72%", 0.68]
+            ]
+          },
+          "art": "F36_plane_on_plank",
+          "before": "If the instrument is not a share",
+          "full": true
+        },
+        {
+          "alt": "Twenty months of money with results due by month 14.",
+          "panel": {
+            "title": "20 months of money, 14 to show results",
+            "timeline": ["Today: £1.4 million to spend", "Month 14: results due", "Month 20: cash ends"]
+          },
+          "art": "F37_torn_calendar",
+          "before": "Third: the question that money will answer",
+          "full": true
+        }
+      ],
+      "next": ["follow-on-reserves", "how-big-must-a-winner-be"]
+    },
+    {
+      "slug": "late-stage-price-to-proceeds",
+      "category": "2-investors",
+      "hero": {
+        "art": "E20_coin_chute",
+        "top": 130,
+        "card": 180,
+        "scene": "In an archive coins run down a wooden chute past deep upper trays that catch nearly all of them, and the paper-stack clerk holds a tiny tray at the bottom with a few coins while the blue lead admires a blank price tag.",
+        "panel": {
+          "title": "Work out what your own shares would receive"
+        }
+      },
+      "figures": [
+        {
+          "alt": "What an ordinary share receives at different sale prices.",
+          "panel": {
+            "title": "What each ordinary share receives",
+            "bars": [
+              ["Sale at £100m", "£0", 0],
+              ["Sale at £300m", "£12.86", 0.514],
+              ["Sale at £500m", "£25.00", 1]
+            ]
+          },
+          "art": "F38_shovel_first_v2",
+          "before": "Time changes the answer",
+          "full": true
+        },
+        {
+          "alt": "A smaller multiple sooner against a bigger multiple later.",
+          "panel": {
+            "title": "The bigger multiple, the worse rate",
+            "split": [
+              {
+                "head": "2x in 3 years",
+                "big": "26%",
+                "lines": ["About this a year"]
+              },
+              {
+                "head": "3x in 8 years",
+                "big": "14.7%",
+                "lines": ["About this a year"]
+              }
+            ]
+          },
+          "art": "F39_ladder_or_ramp",
+          "before": "Is the reference price any good?",
+          "full": true
+        }
+      ],
+      "next": ["from-ipo-to-distribution", "buying-a-stake-second-hand"]
+    },
+    {
+      "slug": "buying-a-stake-second-hand",
+      "category": "2-investors",
+      "hero": {
+        "art": "E21_used_van_trailer",
+        "top": 130,
+        "card": 180,
+        "scene": "In a gravel yard the blue lead dangles the keys of a freshly polished second-hand van, while the green checker looks back at the rusty, overloaded trailer hitched behind it.",
+        "panel": {
+          "title": "Budget for what comes with the stake"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The price adjusted, and the undrawn commitment added.",
+          "panel": {
+            "title": "The budget is not the headline",
+            "rows": [
+              ["90% of £400,000", "£360,000"],
+              ["Paid at closing", "£378,000"],
+              ["Undrawn, still to fund", "£50,000"],
+              ["Total to fund", "£428,000", "total"]
+            ]
+          },
+          "art": "F40_invoice_down_stairs",
+          "before": "What a discount does not tell you",
+          "full": true
+        },
+        {
+          "alt": "Who can stop or take over a secondary sale.",
+          "panel": {
+            "title": "Who has to say yes",
+            "steps": ["Transfer limits in the articles", "Holders with first refusal", "The GP, on a fund interest"]
+          },
+          "art": "F41_queue_jump_at_door",
+          "before": "Tax at closing",
+          "full": true
+        }
+      ],
+      "next": ["late-stage-price-to-proceeds", "ways-to-own-a-private-company"]
+    },
+    {
+      "slug": "from-ipo-to-distribution",
+      "category": "2-investors",
+      "hero": {
+        "art": "E22_fireworks_padlock",
+        "top": 130,
+        "card": 180,
+        "scene": "Fireworks burst over the lake at night while the blue lead sits on a padlocked strongbox on the roof with his back to them, and the clerk tears a blank page off a calendar.",
+        "panel": {
+          "title": "A listing day is not a payout"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The listing-day sum against what members receive.",
+          "panel": {
+            "title": "From the headline to the cash",
+            "bars": [
+              ["200,000 shares at £30", "£6,000,000", 1],
+              ["Sold in the market", "£4,200,000", 0.7],
+              ["Members receive", "£3,620,000", 0.603]
+            ]
+          },
+          "art": "F42_board_and_purse",
+          "before": "Tell members this at the listing",
+          "full": true
+        },
+        {
+          "alt": "Four numbers to keep apart in every update.",
+          "panel": {
+            "title": "Keep these apart in every update",
+            "steps": ["Shares held", "Value at the current price", "Cash realised from sales", "Cash paid to members"],
+            "paper": true
+          },
+          "art": "F43_four_pigeonholes",
+          "before": "The dates you cannot sell before",
+          "full": true
+        }
+      ],
+      "next": ["following-one-cheque", "portfolio-headlines"],
+      "module": {
+        "name": "goten",
+        "line": "Runs an exit waterfall in the browser and moves no money."
+      }
+    },
+    {
+      "slug": "public-market-equivalent",
+      "category": "2-investors",
+      "hero": {
+        "art": "E23_two_wind_up_cars",
+        "top": 130,
+        "card": 180,
+        "scene": "Two identical wind-up toy cars race side by side along a table under a wall board of figures, and the green checker rests his chin on the table with one eye on each.",
+        "panel": {
+          "title": "A good multiple can still lag the index"
+        },
+        "screen": {
+          "heading": "One deal, seven years",
+          "list": [
+            ["Paid in", "£80,000"],
+            ["Received", "£200,000"],
+            ["Paid in, index doubles", "£160,000"],
+            ["PME", "1.25"]
+          ]
+        },
+        "screenBox": [40, 40, 1040, 800],
+        "cardY": 540
+      },
+      "figures": [
+        {
+          "alt": "The same cash flows grown by the index.",
+          "panel": {
+            "title": "PME: £218,000 ÷ £226,667 = 0.96",
+            "compare": {
+              "heads": ["Actual", "Year 6 value"],
+              "rows": [
+                ["Paid in", "£150,000", "£226,667"],
+                ["Out and remaining", "£210,000", "£218,000"]
+              ]
+            }
+          },
+          "art": "F44_two_plants_one_ruler",
+          "before": "The method works for one deal",
+          "full": true
+        },
+        {
+          "alt": "One venture index against two public indices.",
+          "panel": {
+            "title": "Ten years to 31 March 2026",
+            "bars": [
+              ["Nasdaq Composite mPME", "17.22%", 1],
+              ["US venture index", "15.99%", 0.929],
+              ["Russell 2000 mPME", "9.85%", 0.572]
+            ]
+          },
+          "art": "F45_two_high_bars",
+          "before": "Read the benchmark&#39;s construction too",
+          "full": true
+        }
+      ],
+      "next": ["dpi-rvpi-tvpi", "reading-a-track-record"]
+    },
+    {
+      "slug": "reading-a-track-record",
+      "category": "2-investors",
+      "hero": {
+        "art": "E24_fog_ahead",
+        "top": 130,
+        "card": 180,
+        "scene": "At dawn on a ridge the path behind is clear and sunlit and the path ahead vanishes into thick fog, and the green checker stands at the join with one eye looking each way while the boulder aims a telescope at the fog.",
+        "panel": {
+          "title": "Judge a record by what was known then"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Average results of post-2000 venture funds, grouped by the previous fund's ranking at fundraising.",
+          "panel": {
+            "title": "Next fund's PME, post-2000 average",
+            "bars": [
+              ["Top quartile at fundraising", "1.20", 0.976],
+              ["First-time fund", "1.23", 1],
+              ["Bottom quartile at fundraising", "0.91", 0.74]
+            ]
+          },
+          "art": "F46_rear_view_mirror",
+          "before": "Why the timing changes the picture",
+          "full": true
+        },
+        {
+          "alt": "Questions to put to any track record.",
+          "panel": {
+            "title": "Ask of any record",
+            "steps": ["Who did the work?", "Is the list complete?", "Is the record realised?", "Is the next vehicle comparable?"],
+            "paper": true
+          },
+          "art": "F47_portrait_gap",
+          "before": "Applying this to a syndicate lead",
+          "full": true
+        }
+      ],
+      "next": ["public-market-equivalent", "portfolio-headlines"]
+    },
+    {
+      "slug": "portfolio-headlines",
+      "category": "2-investors",
+      "hero": {
+        "art": "E25_huge_balloon_thin_string",
+        "top": 130,
+        "card": 180,
+        "scene": "An enormous blank hot-air balloon fills the sky over a field, held down by thick ropes to far-off pegs, while the blue lead holds the one thin thread that reaches him.",
+        "panel": {
+          "title": "A true headline can say little about your money"
+        }
+      },
+      "figures": [
+        {
+          "alt": "From a company valuation to one fund's estimated stake.",
+          "panel": {
+            "title": "From the headline to your fund",
+            "bars": [
+              ["Company valuation", "£500m", 1],
+              ["Across all the firm's funds", "£30m", 0.06],
+              ["Fund II, at 2%", "£10m", 0.02]
+            ]
+          },
+          "art": "F48_cake_slice_crumb",
+          "before": "Growth in an aggregate is not a return",
+          "full": true
+        },
+        {
+          "alt": "A share distribution credited at one price and sold at a lower one.",
+          "panel": {
+            "title": "Distributed in shares, sold later",
+            "compare": {
+              "heads": ["Reported", "Banked"],
+              "rows": [
+                ["Piccolo", "£600,000", "£420,000"],
+                ["DPI on £2m", "0.30x", "0.21x"]
+              ]
+            }
+          },
+          "art": "F49_melting_block",
+          "before": "Where the rules step in",
+          "full": true
+        }
+      ],
+      "next": ["dpi-rvpi-tvpi", "reading-a-track-record"]
+    },
+    {
+      "slug": "how-a-fund-of-funds-works",
+      "category": "2-investors",
+      "hero": {
+        "art": "E26_parcels_in_parcels",
+        "top": 130,
+        "card": 180,
+        "scene": "In a mailroom the clerk unwraps a big parcel to find six smaller parcels, one of them already holding many tiny boxes, among heaps of torn brown paper, while the lead cuts string and the checker peers in.",
+        "panel": {
+          "title": "An extra layer of cost buys selection and access"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The multiple held directly and through the extra layer.",
+          "panel": {
+            "title": "What the layer costs",
+            "split": [
+              {
+                "head": "The funds directly",
+                "big": "2.5x"
+              },
+              {
+                "head": "Through the layer",
+                "big": "2.19x",
+                "lines": ["£62,500 less on these terms"]
+              }
+            ]
+          },
+          "art": "F50_two_stacked_sieves",
+          "before": "What the extra cost can buy",
+          "full": true
+        },
+        {
+          "alt": "Questions about overlap in the portfolio.",
+          "panel": {
+            "title": "Look at what is really in it",
+            "steps": ["How many underlying companies?", "How much do they overlap?", "How much rests on the top few?"]
+          },
+          "art": "F51_duplicate_tags",
+          "before": "What a manager should expect",
+          "full": true
+        }
+      ],
+      "next": ["what-fund-fees-really-cost", "rolling-funds"]
+    },
+    {
+      "slug": "rolling-funds",
+      "category": "2-investors",
+      "hero": {
+        "art": "E27_milk_crates",
+        "top": 130,
+        "card": 180,
+        "scene": "At dawn in a back alley the blue lead leaves an empty bottle with a rolled note on a step, while the clerk tugs in vain at one of four stacks of milk crates strapped to the ground.",
+        "panel": {
+          "title": "Stopping a rolling fund is not leaving it"
+        }
+      },
+      "figures": [
+        {
+          "alt": "An investor holds only the quarters they joined.",
+          "panel": {
+            "title": "Piccolo joins in the third quarter",
+            "timeline": ["Quarter 1: not his", "Quarter 2: not his", "Quarter 3: his", "Quarter 4: his"]
+          },
+          "art": "F52_two_lamps_lit",
+          "before": "Stopping is not leaving",
+          "full": true
+        },
+        {
+          "alt": "The same four quarters with carry netted or taken quarter by quarter.",
+          "panel": {
+            "title": "Same quarters, two calculations",
+            "compare": {
+              "heads": ["Netted", "Alone"],
+              "rows": [
+                ["Paid in", "$100,000", "$100,000"],
+                ["Carry", "None", "$13,000"],
+                ["He receives", "$100,000", "$87,000"]
+              ]
+            }
+          },
+          "art": "F53_stapled_or_loose",
+          "before": "Marketing is allowed, but not to everyone",
+          "full": true
+        }
+      ],
+      "next": ["fund-or-deal-by-deal-economics", "committing-to-a-venture-fund"]
+    },
+    {
+      "slug": "independent-sponsor-deals",
+      "category": "2-investors",
+      "hero": {
+        "art": "E28_three_toll_booths",
+        "top": 130,
+        "card": 180,
+        "scene": "A single mountain road passes three small toll booths, with the lead in the first, the boulder squeezed into the second and the clerk in the third, as the green checker walks between them with a thinning purse.",
+        "panel": {
+          "title": "One deal can pay the sponsor three ways"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Where the extra equity goes on day one.",
+          "panel": {
+            "title": "The $2m beyond price less debt",
+            "stack": [
+              ["Paid away on day one", "$1.20m", 0.6],
+              ["Stays in the business", "$0.80m", 0.4]
+            ]
+          },
+          "art": "F54_bucket_two_holes",
+          "before": "The fee that continues every year",
+          "full": true
+        },
+        {
+          "alt": "A fee that keeps accruing while lenders block it.",
+          "panel": {
+            "title": "A fee that builds up while blocked",
+            "big": [["86%", "Of surveyed deals with credit agreements let it keep accruing"]]
+          },
+          "art": "F55_meter_behind_gate",
+          "before": "Who gets what at exit",
+          "full": true
+        },
+        {
+          "alt": "The sponsor's share at three outcomes under two structures.",
+          "panel": {
+            "title": "Sponsor's share, two structures",
+            "compare": {
+              "heads": ["Option A", "Option B"],
+              "rows": [
+                ["Exit at 1.5x", "$1.2m", "$0.6m"],
+                ["Exit at 2.5x", "$3.6m", "$2.4m"],
+                ["Exit at 4.0x", "$7.2m", "$7.2m"]
+              ]
+            }
+          },
+          "art": "F56_stepped_weir",
+          "before": "Things to settle before you wire",
+          "full": true
+        }
+      ],
+      "next": ["fund-or-deal-by-deal-economics", "carry-on-an-spv-exit"]
+    },
+    {
+      "slug": "fund-or-deal-by-deal-economics",
+      "category": "3-leads",
+      "hero": {
+        "art": "E29_treadwheel_or_cistern",
+        "top": 130,
+        "card": 180,
+        "scene": "In a back yard the blue lead walks inside a big wooden treadwheel that fills a small cup, while the boulder sits beside a tall rain cistern whose tap drips slowly into a mug.",
+        "panel": {
+          "title": "Fees from deals and funds work very differently"
+        }
+      },
+      "figures": [
+        {
+          "alt": "A poor year of SPVs against a fund that closes small.",
+          "panel": {
+            "title": "A poor year, or a poor close",
+            "compare": {
+              "heads": ["SPVs", "Fund"],
+              "rows": [
+                ["Earns", "£112,500", "£120,000"],
+                ["Short by", "£67,500", "£60,000"],
+                ["For how long", "That year", "Every year"]
+              ]
+            }
+          },
+          "art": "F57_good_year_bad_year",
+          "before": "What the fee does to the fund",
+          "full": true
+        },
+        {
+          "alt": "Carry on five separate vehicles and on one fund.",
+          "panel": {
+            "title": "Same five companies, her carry",
+            "split": [
+              {
+                "head": "Five SPVs",
+                "big": "£1m",
+                "lines": ["Losers do not reduce it"]
+              },
+              {
+                "head": "One fund",
+                "big": "£200,000",
+                "lines": ["Gains and losses netted"]
+              }
+            ]
+          },
+          "art": "F58_five_boxes_one_box",
+          "before": "The vehicles that do not go away",
+          "full": true
+        },
+        {
+          "alt": "Live vehicles that keep needing work.",
+          "panel": {
+            "title": "Deals that stopped paying her",
+            "big": [
+              ["40", "Vehicles after five years"],
+              ["£80,000", "A year of work"]
+            ]
+          },
+          "art": "F59_forty_mailboxes",
+          "before": "What else changes",
+          "full": true
+        }
+      ],
+      "next": ["first-fund-first-close", "independent-sponsor-deals"]
+    },
+    {
+      "slug": "one-person-investment-firm",
+      "category": "3-leads",
+      "hero": {
+        "art": "E30_one_man_band",
+        "top": 130,
+        "card": 180,
+        "scene": "Late at night in an empty office the blue lead is a one-man band, with a drum on his back and cymbals at his knees, as his four hands stamp, type, phone and sign.",
+        "panel": {
+          "title": "Solo describes who decides, not who does the work"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Contribution from completed deals against the cost of the firm.",
+          "panel": {
+            "title": "Against £90,000 a year to run",
+            "bars": [
+              ["8 closes", "£120,000", 1],
+              ["6 closes", "£90,000", 0.75],
+              ["4 closes", "£60,000", 0.5]
+            ]
+          },
+          "art": "F60_month_end_jars",
+          "before": "What permission does the work need?",
+          "full": true
+        },
+        {
+          "alt": "A payment needs a second person.",
+          "panel": {
+            "title": "A payment needs a second person",
+            "steps": ["Someone else prepares it", "Someone else verifies the recipient", "You approve it"]
+          },
+          "art": "F61_letter_stopped",
+          "before": "What happens if you disappear for a month?",
+          "full": true
+        }
+      ],
+      "next": ["fund-or-deal-by-deal-economics", "testing-a-fund-administrator"]
+    },
+    {
+      "slug": "first-fund-first-close",
+      "category": "3-leads",
+      "hero": {
+        "art": "E31_big_pool_little_water",
+        "top": 0,
+        "card": 180,
+        "scene": "The blue lead stands on a high diving board above a huge outdoor pool with a shallow puddle at the deep end, the boulder in a deck chair at the edge and the clerk pouring in one small jug.",
+        "panel": {
+          "title": "A first fund runs on the money that has closed"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Fee income against the cost of running the firm.",
+          "panel": {
+            "title": "The same firm, two fund sizes",
+            "compare": {
+              "heads": ["Target", "First close"],
+              "rows": [
+                ["Fee income", "$1,000,000", "$375,000"],
+                ["Annual costs", "$480,000", "$480,000"],
+                ["Over or short", "+$520,000", "−$105,000"]
+              ]
+            }
+          },
+          "art": "F62_short_tablecloth",
+          "before": "The portfolio",
+          "full": true
+        },
+        {
+          "alt": "Three ways to spend a smaller amount on first cheques.",
+          "panel": {
+            "title": "With $6,750,000 for first cheques",
+            "rows": [
+              ["Keep 30 companies", "$225,000 each"],
+              ["Keep the $600,000 cheque", "11 companies"],
+              ["Or cut reserves", "Fewer follow-ons"]
+            ]
+          },
+          "art": "F63_three_cut_loaves_v2",
+          "before": "Plan for the closes in between",
+          "full": true
+        }
+      ],
+      "next": ["how-big-must-a-winner-be", "fund-or-deal-by-deal-economics"]
+    },
+    {
+      "slug": "how-big-must-a-winner-be",
+      "category": "3-leads",
+      "hero": {
+        "art": "E3_one_big_tree",
+        "top": 130,
+        "card": 480,
+        "scene": "In a valley plot of thin saplings one tree has grown enormous, and the clerk with a watering can, the blue lead with a mug and the mossy boulder all stand looking up at it.",
+        "panel": {
+          "title": "Catch a winner, and own enough of it"
+        }
+      },
+      "figures": [
+        {
+          "alt": "More companies raise the odds and shrink what each is worth.",
+          "panel": {
+            "title": "Twenty companies or forty",
+            "compare": {
+              "heads": ["20", "40"],
+              "rows": [
+                ["Cheque", "£350,000", "£175,000"],
+                ["At least one 5x+", "71%", "92%"],
+                ["One 5x returns", "£1.75m", "£875,000"]
+              ]
+            }
+          },
+          "art": "F64_nets_wide_narrow",
+          "before": "Work back from ownership",
+          "full": true
+        },
+        {
+          "alt": "The exit each plan needs to return the fund.",
+          "panel": {
+            "title": "Exit needed to return £12m",
+            "bars": [
+              ["20 companies, 3.5% at exit", "about £343m", 0.5],
+              ["40 companies, 1.75% at exit", "about £686m", 1]
+            ]
+          },
+          "art": "F65_very_tall_post",
+          "before": "Independence is the weak assumption",
+          "full": true
+        }
+      ],
+      "next": ["follow-on-reserves", "first-fund-first-close"]
+    },
+    {
+      "slug": "follow-on-reserves",
+      "category": "3-leads",
+      "hero": {
+        "art": "E32_trophy_off_the_scale_v2",
+        "top": 130,
+        "card": 180,
+        "scene": "In an archive the blue lead lifts a big gleaming trophy off one pan of a brass balance, leaving a small bag of coins to be weighed against another, under a wall board of figures.",
+        "panel": {
+          "title": "Judge the new money, not the first cheque"
+        },
+        "screen": {
+          "heading": "The new round",
+          "list": [
+            ["Raises", "£4m"],
+            ["Pre-money", "£16m"],
+            ["Post-money", "£20m"],
+            ["If the fund sits out", "10% to 8%"]
+          ]
+        },
+        "screenBox": [40, 40, 1040, 800],
+        "cardY": 370
+      },
+      "figures": [
+        {
+          "alt": "The blended multiple hides what the new money earned.",
+          "panel": {
+            "title": "Only the 5x is this decision",
+            "rows": [
+              ["Original cheque", "16x"],
+              ["Follow-on", "5x"],
+              ["Reported together", "11.1x", "total"]
+            ]
+          },
+          "art": "F66_two_jars_blended",
+          "before": "Compare it with the alternative",
+          "full": true
+        },
+        {
+          "alt": "A reserve built up from the expected decisions.",
+          "panel": {
+            "title": "A reserve, from the bottom up",
+            "rows": [
+              ["First investments", "20"],
+              ["Expected to raise again", "10"],
+              ["The fund would back", "5"],
+              ["At £400,000 each", "£2m", "total"]
+            ]
+          },
+          "art": "F67_sorting_steps",
+          "before": "When there is no reserve",
+          "full": true
+        }
+      ],
+      "next": ["how-big-must-a-winner-be", "bridge-round-spv"]
+    },
+    {
+      "slug": "investment-thesis",
+      "category": "3-leads",
+      "hero": {
+        "art": "E33_gauge_and_bin",
+        "top": 130,
+        "card": 180,
+        "scene": "A thick upright wooden board has one oddly shaped slot, and the clerk tries to push a fat folder through it as the boulder drops another refused folder into an overflowing bin.",
+        "panel": {
+          "title": "A good thesis rejects companies you would like"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The deciding evidence arrives just before the cash ends.",
+          "panel": {
+            "title": "Will the evidence arrive in time?",
+            "timeline": ["Round funds 14 months", "Month 12: first renewals", "Month 14: must raise again"]
+          },
+          "art": "F68_candle_and_letter",
+          "before": "Price the follow-on as a stranger",
+          "full": true
+        },
+        {
+          "alt": "Dated versions of a thesis, the old ones kept.",
+          "panel": {
+            "title": "Keep it dated",
+            "steps": ["Set a review date", "Log every company you see", "Save a new version", "Leave the old one intact"],
+            "paper": true
+          },
+          "art": "F69_pages_over_pages",
+          "before": "Before you publish it",
+          "full": true
+        }
+      ],
+      "next": ["deal-sourcing-log", "assessing-founders"]
+    },
+    {
+      "slug": "deal-sourcing-log",
+      "category": "3-leads",
+      "hero": {
+        "art": "E34_panning_for_deals",
+        "top": 130,
+        "card": 180,
+        "scene": "The paper-stack clerk crouches in a valley stream swirling a wide pan of gravel with a tiny bright speck in it, beside a huge heap of sifted stones, while the blue lead writes in a ledger on the bank.",
+        "panel": {
+          "title": "Log which relationships produce investable deals"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Companies closed out of those seen, by source.",
+          "panel": {
+            "title": "Closed, out of those seen",
+            "bars": [
+              ["Founders she has backed", "2 of 30", 1],
+              ["Other leads", "1 of 45", 0.33],
+              ["Inbound", "0 of 60", 0]
+            ]
+          },
+          "art": "F70_three_chutes",
+          "para": "Resist the verdict",
+          "full": true
+        },
+        {
+          "alt": "Most inbound companies were out of scope.",
+          "panel": {
+            "title": "Inbound has a targeting problem",
+            "big": [["55 of 60", "Should never have written to her"]]
+          },
+          "art": "F71_mailbag_tipped",
+          "para": "Other leads produced nine",
+          "full": true
+        }
+      ],
+      "next": ["investment-thesis", "scout-agreement"]
+    },
+    {
+      "slug": "scout-agreement",
+      "category": "3-leads",
+      "hero": {
+        "art": "E35_flag_already_planted",
+        "top": 130,
+        "card": 180,
+        "scene": "The breathless paper-stack clerk reaches a hilltop to plant a small blank flag and finds a weathered flag already there, while the blue lead follows, reading a long contract through a magnifying glass.",
+        "panel": {
+          "title": "The agreement decides what a scout earns"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Three meanings of the same phrase.",
+          "panel": {
+            "title": "Each could be called “5% carry”",
+            "rows": [
+              ["5% of the deal's profit", "£37,500"],
+              ["5% of the firm's carry", "£7,500"],
+              ["5% of whole-fund carry, fund loses money", "£0"]
+            ]
+          },
+          "art": "F72_three_envelopes",
+          "before": "Decide who found the company",
+          "full": true
+        },
+        {
+          "alt": "Three parties who each have a say.",
+          "panel": {
+            "title": "Three separate parties have a say",
+            "steps": ["The firm, under its agreement", "The founder, over the round", "The law, on what you do next"]
+          },
+          "art": "F73_three_keys",
+          "before": "Scouting doesn&#39;t entitle you to raise money",
+          "full": true
+        }
+      ],
+      "next": ["deal-sourcing-log", "carry-on-an-spv-exit"]
+    },
+    {
+      "slug": "assessing-founders",
+      "category": "3-leads",
+      "hero": {
+        "art": "E36_empty_stage_old_files",
+        "top": 130,
+        "card": 180,
+        "scene": "A bright spotlit stage stands empty with one microphone while the team has its back to it, the green checker comparing two blank sheets side by side at a row of old filing cabinets.",
+        "panel": {
+          "title": "Judge founders by records, not charm"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Budget lines that imply people.",
+          "panel": {
+            "title": "Read the budget as people",
+            "steps": ["Who has managed salespeople?", "Who handles implementations?", "Who has done the regulatory route?"]
+          },
+          "art": "F75_four_hats",
+          "before": "Compare old predictions with what happened",
+          "full": true
+        },
+        {
+          "alt": "A forecast laid next to what happened.",
+          "panel": {
+            "title": "A forecast beside what happened",
+            "split": [
+              {
+                "head": "Predicted",
+                "big": "40",
+                "lines": ["Customers"]
+              },
+              {
+                "head": "Reached",
+                "big": "22",
+                "lines": ["And can say exactly why"]
+              }
+            ]
+          },
+          "art": "F74_old_chart_new_chart",
+          "before": "Check what the co-founders have actually agreed",
+          "full": true
+        }
+      ],
+      "next": ["network-effects-test", "investment-thesis"]
+    },
+    {
+      "slug": "network-effects-test",
+      "category": "3-leads",
+      "hero": {
+        "art": "E37_switchboard_half_unplugged",
+        "top": 130,
+        "card": 180,
+        "scene": "At night the green checker has pulled out half the cords on an old telephone switchboard, and the blue lead listens on a headset to find out whether the remaining lines noticed.",
+        "panel": {
+          "title": "Remove half the users: are the rest worse off?"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Regions with few and many sellers, and the discounts behind them.",
+          "panel": {
+            "title": "Look at the last row too",
+            "compare": {
+              "heads": ["Few sellers", "Many sellers"],
+              "rows": [
+                ["Median days to fill", "9", "3"],
+                ["Repeat in six months", "30%", "52%"],
+                ["Discount per order", "£2", "£7"]
+              ]
+            }
+          },
+          "art": "F76_two_stalls",
+          "para": "So ask for older and newer",
+          "full": true
+        },
+        {
+          "alt": "What can drain a network of value.",
+          "panel": {
+            "title": "What can quietly drain it",
+            "steps": ["Concentration in a few sellers", "Multi-homing across rivals", "Spam, poor listings, congestion"]
+          },
+          "art": "F77_tent_three_poles",
+          "before": "What to write down",
+          "full": true
+        }
+      ],
+      "next": ["assessing-founders", "science-claim-diligence"]
+    },
+    {
+      "slug": "accelerator-backed-rounds",
+      "category": "3-leads",
+      "hero": {
+        "art": "E38_prize_marrow",
+        "top": 130,
+        "card": 180,
+        "scene": "In a summer marquee a huge marrow sits on a trestle table with a large prize rosette pinned to it, and the green checker lifts the rosette to look underneath while the boulder holds a clipboard.",
+        "panel": {
+          "title": "An accelerator's stake may exceed the headline"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The accelerator's two stakes before the new money, with the MFN SAFE following a $10m cap.",
+          "panel": {
+            "title": "At a $10m cap, before new money",
+            "stack": [
+              ["Fixed SAFE", "7.00%", 0.651],
+              ["MFN SAFE", "3.75%", 0.349]
+            ]
+          },
+          "art": "F78_label_on_a_slab",
+          "before": "Rights that reach your allocation",
+          "full": true
+        },
+        {
+          "alt": "Part of the round is spoken for before anyone else gets a figure.",
+          "panel": {
+            "title": "Spoken for before anyone else",
+            "big": [["$430,000", "Of the $4m, to keep 10.75%"]]
+          },
+          "art": "F79_reserved_cards",
+          "before": "Selection or effect?",
+          "full": true
+        }
+      ],
+      "next": ["venture-studio-spinouts", "what-an-early-stage-cheque-buys"]
+    },
+    {
+      "slug": "venture-studio-spinouts",
+      "category": "3-leads",
+      "hero": {
+        "art": "E39_shed_on_borrowed_cables",
+        "top": 130,
+        "card": 180,
+        "scene": "At dusk a tiny freshly painted shed stands in a yard with thick cables and pipes running from its back into a big old building, and the clerk follows one with a torch.",
+        "panel": {
+          "title": "Check who owns what, who pays, who runs it"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Founder and studio stakes over two rounds.",
+          "panel": {
+            "title": "Two rounds forward",
+            "compare": {
+              "heads": ["Founders", "Studio"],
+              "rows": [
+                ["Today", "55%", "35%"],
+                ["After seed", "44%", "28%"],
+                ["After Series A", "35.2%", "22.4%"]
+              ]
+            }
+          },
+          "art": "F81_boulder_on_the_bench",
+          "before": "Check that the company owns what it sells",
+          "full": true
+        },
+        {
+          "alt": "The chain of assignments behind the company's rights.",
+          "panel": {
+            "title": "Trace the chain",
+            "timeline": ["Each creator", "Assigns to the studio or company", "The studio assigns to the company"]
+          },
+          "art": "F80_broken_key_chain_v2",
+          "before": "Price the shared services",
+          "full": true
+        }
+      ],
+      "next": ["accelerator-backed-rounds", "assessing-founders"]
+    },
+    {
+      "slug": "science-claim-diligence",
+      "category": "3-leads",
+      "hero": {
+        "art": "E40_flask_and_tank",
+        "top": 130,
+        "card": 180,
+        "scene": "In a dim brewhouse the blue lead holds a small glass flask up beside a towering steel tank, while the green checker on a ladder keeps one eye on a blank dial and the other on the flask.",
+        "panel": {
+          "title": "Find the one claim the price rests on"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Yield against the cost and margin per kilogram.",
+          "panel": {
+            "title": "Per kg at £50, before fixed costs",
+            "compare": {
+              "heads": ["Running cost", "Margin"],
+              "rows": [
+                ["80% yield", "£40.00", "£10.00"],
+                ["64% yield", "£50.00", "£0.00"],
+                ["60% yield", "£53.33", "(£3.33)"]
+              ]
+            }
+          },
+          "art": "F82_tank_waterline",
+          "before": "Buy a narrow answer",
+          "full": true
+        },
+        {
+          "alt": "What the written brief should say.",
+          "panel": {
+            "title": "Attack one sentence, in writing",
+            "steps": ["The exact claim, with a number", "What the reviewer has not seen", "What else could explain it", "The cheapest test to settle it"],
+            "paper": true
+          },
+          "art": "F83_chisel_one_line",
+          "before": "Treat readiness levels as vocabulary",
+          "full": true
+        }
+      ],
+      "next": ["assessing-founders", "network-effects-test"]
+    },
+    {
+      "slug": "bridge-round-spv",
+      "category": "3-leads",
+      "hero": {
+        "art": "E41_half_built_bridge",
+        "top": 130,
+        "card": 180,
+        "scene": "In grey rain a wooden footbridge stops halfway across a gorge, with the blue lead at its end holding out one plank and the clerk bringing two more along the walkway.",
+        "panel": {
+          "title": "A bridge request is a new investment decision"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Runway with cuts and different bridge sizes.",
+          "panel": {
+            "title": "Runway after the cuts",
+            "bars": [
+              ["No bridge", "about 2.9 months", 0.225],
+              ["Half the bridge", "about 7.9 months", 0.612],
+              ["Full bridge", "about 12.9 months", 1]
+            ]
+          },
+          "art": "F84_shorter_rope",
+          "before": "Find out what actually changed",
+          "full": true
+        },
+        {
+          "alt": "Three questions before an SPV can follow on.",
+          "panel": {
+            "title": "Before the SPV can say yes",
+            "steps": ["Does it have the right?", "Can its documents take new money?", "Who decides?"]
+          },
+          "art": "F85_empty_till",
+          "before": "Keep the valuation question separate",
+          "full": true
+        }
+      ],
+      "next": ["follow-on-reserves", "what-an-spv-is"]
+    },
+    {
+      "slug": "testing-a-fund-administrator",
+      "category": "3-leads",
+      "hero": {
+        "art": "E42_worst_deal_on_the_counter",
+        "top": 20,
+        "card": 180,
+        "scene": "At a polished showroom counter the blue lead presents a gleaming spotlit box, as the green checker sets down a battered string-tied bundle beside it, under a wall board of figures.",
+        "panel": {
+          "title": "Bring the deal that went wrong"
+        },
+        "screen": {
+          "heading": "The test case",
+          "list": [
+            ["Paid in", "£100,000"],
+            ["Exit returns", "£180,000"],
+            ["Costs off first", "£4,000"]
+          ]
+        },
+        "screenBox": [40, 40, 1040, 800],
+        "cardY": 450
+      },
+      "figures": [
+        {
+          "alt": "The answer to compare the supplier against.",
+          "panel": {
+            "title": "Your own answer, worked out first",
+            "rows": [
+              ["Proceeds after costs", "£176,000"],
+              ["Carry at 20%", "£15,200"],
+              ["Left for investors", "£160,800"],
+              ["Goku's 40% share", "£64,320", "total"]
+            ],
+            "paper": true
+          },
+          "art": "F86_sealed_answer",
+          "before": "Questions that sort people from slides",
+          "full": true
+        },
+        {
+          "alt": "What a successor needs in the handover pack.",
+          "panel": {
+            "title": "What the pack must hold",
+            "steps": ["Transaction history, bank evidence", "Investor records, signed documents", "The calculation method", "Reconciliations"]
+          },
+          "art": "F87_box_missing_v2",
+          "before": "Put the exit in the contract",
+          "full": true
+        }
+      ],
+      "next": ["tracing-spv-cash", "one-person-investment-firm"]
+    },
+    {
+      "slug": "syndicate-lead-fca-permission",
+      "category": "4-uk-rules",
+      "hero": {
+        "art": "E4_three_doors",
+        "top": 130,
+        "card": 380,
+        "scene": "In an office corridor the blue lead stands in front of three identical closed doors with blank signs, scratching his head, while the boulder sits beside them holding a clipboard.",
+        "panel": {
+          "title": "Clearing one question says nothing about the others"
+        }
+      },
+      "figures": [
+        {
+          "alt": "How a lead's activity grew over two years.",
+          "panel": {
+            "title": "Nothing changed on any single day",
+            "compare": {
+              "heads": ["First SPV", "Now"],
+              "rows": [
+                ["People", "3", "60"],
+                ["Paid", "No fee", "Fee, carry"]
+              ]
+            }
+          },
+          "art": "F88_note_to_mailsack",
+          "before": "Question one: are you arranging deals as a business?",
+          "full": true
+        },
+        {
+          "alt": "The order of steps before sending a memo.",
+          "panel": {
+            "title": "Statements first, memo second",
+            "steps": ["Hold the signed statement", "Record it in a dated register", "Check before each send", "Send, with the risk warning"]
+          },
+          "art": "F89_list_before_post",
+          "before": "If the answer to question one is yes",
+          "full": true
+        }
+      ],
+      "next": ["professional-client-explained", "one-person-investment-firm"]
+    },
+    {
+      "slug": "professional-client-explained",
+      "category": "4-uk-rules",
+      "hero": {
+        "art": "E43_railing_removed",
+        "top": 130,
+        "card": 180,
+        "scene": "At dusk on a flat roof the boulder lifts a section of safety railing away from the edge while the blue lead signs a blank form, and the green checker keeps one eye on the signature and one over the drop.",
+        "panel": {
+          "title": "Signing up as professional gives up protections"
+        }
+      },
+      "figures": [
+        {
+          "alt": "The two sets of labels answer different questions.",
+          "panel": {
+            "title": "Two questions, two sets of rules",
+            "split": [
+              {
+                "head": "Who can be sent it",
+                "lines": ["High net worth, sophisticated", "The investor signs"]
+              },
+              {
+                "head": "How a firm treats you",
+                "lines": ["Retail, professional", "The firm decides"]
+              }
+            ]
+          },
+          "art": "F90_badge_and_gate",
+          "before": "Two ways to be professional",
+          "full": true
+        },
+        {
+          "alt": "The steps by which an individual opts up.",
+          "panel": {
+            "title": "How an individual opts up",
+            "steps": ["The firm assesses them", "The client asks in writing", "The firm warns what is lost", "The client confirms, separately"]
+          },
+          "art": "F91_long_warning",
+          "before": "What changes after opting up",
+          "full": true
+        }
+      ],
+      "next": ["syndicate-lead-fca-permission", "seis-eis-through-a-syndicate"]
+    },
+    {
+      "slug": "uk-carried-interest-tax",
+      "category": "4-uk-rules",
+      "hero": {
+        "art": "E44_offer_and_hourglass",
+        "top": 20,
+        "card": 180,
+        "scene": "In a lamplit archive the blue lead holds a sealed envelope and looks across at a large hourglass with much of its sand still to run, beside the seated boulder, under a wall board of figures.",
+        "panel": {
+          "title": "Longer holding periods can reduce UK carry tax"
+        },
+        "screen": {
+          "heading": "A fund's weighted average",
+          "list": [
+            ["£60,000 held", "60 months"],
+            ["£40,000 held", "24 months"],
+            ["Average", "45.6 months"]
+          ]
+        },
+        "screenBox": [40, 40, 1040, 800],
+        "cardY": 430
+      },
+      "figures": [
+        {
+          "alt": "How much carry qualifies at different value-weighted average holding periods.",
+          "panel": {
+            "title": "Qualifying carry, by average holding",
+            "bars": [
+              ["Under 36 months", "0%", 0],
+              ["38 months, under 39", "60%", 0.6],
+              ["40 months or more", "100%", 1]
+            ]
+          },
+          "art": "F92_month_stairs",
+          "before": "Why a single-company SPV is exposed",
+          "full": true
+        },
+        {
+          "alt": "A fund averages its holding periods and one company cannot.",
+          "panel": {
+            "title": "Average, or nothing to average",
+            "split": [
+              {
+                "head": "Fund",
+                "big": "45.6",
+                "lines": ["Months, despite a 24-month exit"]
+              },
+              {
+                "head": "One-company SPV",
+                "big": "24",
+                "lines": ["Months, nothing to average"]
+              }
+            ]
+          },
+          "art": "F93_seesaw",
+          "before": "Does it apply to your vehicle?",
+          "full": true
+        }
+      ],
+      "next": ["carry-on-an-spv-exit", "seis-eis-through-a-syndicate"]
+    },
+    {
+      "slug": "nsi-act-and-spvs",
+      "category": "4-uk-rules",
+      "hero": {
+        "art": "E45_height_gauge_checkpoint",
+        "top": 130,
+        "card": 180,
+        "scene": "At a rainy night checkpoint the paper-stack clerk stands on the green checker's shoulders to reach a painted band on a tall gauge post, while the boulder looks out of a sentry hut and the lead holds an umbrella.",
+        "panel": {
+          "title": "An SPV can trigger a mandatory filing"
+        }
+      },
+      "figures": [
+        {
+          "alt": "Who is treated as holding the shares under four structures.",
+          "panel": {
+            "title": "Who is treated as holding it",
+            "rows": [
+              ["Company SPV takes 30%", "The SPV"],
+              ["Nominee, twenty investors", "Each about 1.5%"],
+              ["Nominee, lead directs votes", "Maybe the lead"],
+              ["18% and 10%, voting jointly", "Each 28%"]
+            ]
+          },
+          "art": "F94_strings_on_wall",
+          "para": "Two further points",
+          "full": true
+        },
+        {
+          "alt": "How long a review can take.",
+          "panel": {
+            "title": "How long a review can run",
+            "timeline": ["Notice accepted", "Up to 30 working days", "If called in, 30 more", "May extend 45 more, then by agreement"]
+          },
+          "art": "F95_signal_line",
+          "para": "Check the list on the day",
+          "full": true
+        }
+      ],
+      "next": ["bare-trust-nominee", "uk-nominee-or-delaware-lp"]
+    }
+  ],
+  "alsoFeatured": {
+    "href": "/blog/every-investor-email/",
+    "card": "/media/blog/inbox.webp",
+    "title": "Every investor email, ready for a person",
+    "summary": "Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.",
+    "tag": "Trunks"
+  },
+  "featured": {
+    "href": "/blog/from-bank-statement-to-exit/",
+    "card": "/media/blog/reconciliation.webp",
+    "title": "The money work on an SPV, ready for a person to check",
+    "summary": "Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides.",
+    "tag": "Goten"
+  },
+  "updated": "7 November 2026",
+  "start": ["what-an-spv-is", "tracing-spv-cash", "carry-on-an-spv-exit"],
+  "modules": {
+    "goten": {
+      "name": "Goten",
+      "href": "/blog/from-bank-statement-to-exit/"
+    },
+    "trunks": {
+      "name": "Trunks",
+      "href": "/blog/every-investor-email/"
+    }
+  }
+}

@@ -21,6 +21,12 @@
   font-weight: 500;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Doto';
+  src: url('fonts/doto-latin-900.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
 
 :root {
   --bg: #f6f8f3;
@@ -49,6 +55,7 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --label-dot: 'Doto', 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; /* short labels only, 14px or larger, full colour */
   --gutter: clamp(16px, 4vw, 48px);
   --band: #151619;
   color-scheme: light dark;
@@ -146,7 +153,7 @@ a {
 }
 .eyebrow {
   margin: 0 0 18px;
-  font: 500 13px/1 var(--mono);
+  font: 900 clamp(14px, 1.25vw, 18px)/1.1 var(--label-dot);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -842,7 +849,8 @@ a:hover > .arrow {
   }
 }
 .card .eyebrow {
-  color: var(--ink-muted);
+  color: var(--ink-text);
+  font-size: clamp(14px, 1.1vw, 16px);
 }
 .card__title {
   margin: 0;
@@ -995,8 +1003,8 @@ a:hover > .arrow {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: rgba(246, 248, 243, 0.55);
-    font: 500 12px/1 var(--mono);
+    color: rgba(246, 248, 243, 0.6);
+    font: 900 14px/1 var(--label-dot);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
@@ -1058,10 +1066,10 @@ a:hover > .arrow {
 }
 .section-label {
   margin: 0;
-  color: var(--muted);
+  color: var(--text);
 }
 .trust .section-label {
-  color: rgba(246, 248, 243, 0.6);
+  color: var(--ink-text);
 }
 .facts {
   margin: 24px 0 0;
@@ -2919,8 +2927,8 @@ html:not(.js) .subnav {
 }
 .module__runs {
   margin: 18px 0 0;
-  color: rgba(246, 248, 243, 0.6);
-  font: 500 12px/1 var(--mono);
+  color: var(--ink-text);
+  font: 900 14px/1 var(--label-dot);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -3232,6 +3240,132 @@ html:not(.js) .subnav {
   }
 }
 
+/* The blog (plan 21): one column of running text */
+.article {
+  max-width: calc(548px + 2 * var(--gutter)); /* about 68 characters of Inter at 18px; lines up with the film */
+  margin: 0 auto;
+  padding: clamp(112px, 16vh, 152px) var(--gutter) clamp(64px, 10vh, 112px);
+  font-size: 18px;
+  line-height: 1.65;
+}
+.article__title {
+  margin: 0;
+  font-size: clamp(34px, 5.4vw, 56px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.article__lede {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: clamp(19px, 2.2vw, 22px);
+  line-height: 1.45;
+}
+.article h2 {
+  margin: 56px 0 0;
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.article h3 {
+  margin: 40px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.article p,
+.article ol,
+.article ul,
+.article blockquote {
+  margin: 16px 0 0;
+}
+.article ol,
+.article ul {
+  padding-left: 1.4em;
+}
+.article li + li {
+  margin-top: 6px;
+}
+.article a {
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.article a:hover {
+  text-decoration-color: currentColor;
+}
+.article blockquote {
+  padding-left: 18px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+}
+.article blockquote p {
+  margin: 0;
+}
+.article__table {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.article th,
+.article td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.article th {
+  color: var(--muted);
+  font-weight: 500;
+}
+.article__num th:not(:first-child),
+.article__num td:not(:first-child) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.article .bloglist {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.bloglist li + li {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.article .bloglist a {
+  display: block;
+  text-decoration: none;
+}
+.bloglist h2 {
+  margin: 0;
+}
+.bloglist p {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+.article__media {
+  max-width: 540px;
+  margin: 40px auto 0;
+}
+.article__media video,
+.article__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: var(--card);
+}
+
 /* ---- reduced motion: nothing moves; illustrations use their static end state ---- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -3244,5 +3378,824 @@ html:not(.js) .subnav {
     opacity: 1;
     transform: none;
     filter: none;
+  }
+}
+
+/* The education articles (plan 26) */
+.article__kicker {
+  margin: 0 0 14px;
+  font-size: 15px;
+}
+.article .article__kicker a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.article__next {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.article .article__next a {
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 500;
+  text-decoration: none;
+}
+.article__next img,
+.blogcards img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  object-position: 50% 35%;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: var(--card);
+}
+.blogindex {
+  max-width: calc(1128px + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(112px, 16vh, 152px) var(--gutter) clamp(64px, 10vh, 112px);
+}
+.blogindex__jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 24px;
+  font-size: 16px;
+}
+.blogindex__jump a {
+  color: var(--muted);
+}
+.blogindex__group {
+  margin-top: 64px;
+  scroll-margin-top: 96px;
+}
+.blogcards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 28px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.blogcards a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.blogcards h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+.blogcards p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+@media (max-width: 860px) {
+  .blogcards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .blogcards,
+  .article__next {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Plan 27: the blog list and the figures inside articles */
+.article__date {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.article__media--wide {
+  max-width: none;
+  margin: 44px 0 0;
+}
+.article__media--wide + h2 {
+  margin-top: 48px;
+}
+.blogfeature {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 40px;
+  color: inherit;
+  text-decoration: none;
+}
+.blogfeature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 16px;
+  background: var(--card);
+}
+.blogfeature span {
+  display: block;
+}
+.blogfeature small {
+  display: block;
+  color: var(--muted);
+  font-size: 15px;
+}
+.blogfeature strong {
+  display: block;
+  margin-top: 10px;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+.blogfeature em {
+  display: block;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 17px;
+  font-style: normal;
+  line-height: 1.45;
+}
+.blogchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 56px;
+  padding: 8px 0;
+  background: var(--bg);
+}
+.blogchips a {
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: inherit;
+  font-size: 15px;
+  text-decoration: none;
+}
+.blogchips a span {
+  color: var(--muted);
+}
+.blogchips a[aria-current] {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+.blogchips a[aria-current] span {
+  color: inherit;
+}
+.blogindex__group {
+  margin-top: 48px;
+  scroll-margin-top: 140px;
+}
+.blogindex__all {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 16px;
+}
+@media (max-width: 760px) {
+  .blogfeature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .blogchips {
+    position: sticky;
+    top: 56px;
+    z-index: 5;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Plan 29: the article's opening, the module link and the shorter phone lists */
+.article__head .article__media {
+  margin-top: 40px;
+}
+@media (min-width: 1000px) {
+  .article__head {
+    --head: min(1040px, calc(100vw - 2 * var(--gutter)));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 56px;
+    align-items: center;
+    width: var(--head);
+    margin-left: calc(50% - var(--head) / 2);
+  }
+  .article__head .article__title {
+    font-size: clamp(40px, 4.2vw, 50px);
+  }
+  .article__head .article__media {
+    max-width: none;
+    margin: 0;
+  }
+  .article__head + p {
+    margin-top: 48px;
+  }
+}
+.article .article__module {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  align-items: baseline;
+  margin-top: 48px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.article__module strong {
+  font-weight: 500;
+}
+.article__module span {
+  color: var(--muted);
+}
+.article__module + .article__next {
+  margin-top: 40px;
+}
+.blogcards__film {
+  position: relative;
+  display: block;
+}
+.blogcards__film::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--text);
+  clip-path: circle(50%);
+}
+.blogcards__film::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  right: 23px;
+  bottom: 22px;
+  border-style: solid;
+  border-width: 7px 0 7px 12px;
+  border-color: transparent transparent transparent var(--bg);
+}
+@media (max-width: 560px) {
+  .blogcards {
+    gap: 18px;
+  }
+  .blogcards li:not(:first-child) a {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+  }
+  .blogcards li:not(:first-child) img {
+    aspect-ratio: 4 / 3;
+    margin: 0;
+  }
+  .blogcards li:not(:first-child) h3 {
+    font-size: 17px;
+  }
+  .blogcards li:not(:first-child) p {
+    display: none;
+  }
+  .blogcards li:not(:first-child) .blogcards__film::after {
+    right: 6px;
+    bottom: 6px;
+    width: 24px;
+    height: 24px;
+  }
+  .blogcards li:not(:first-child) .blogcards__film::before {
+    right: 14px;
+    bottom: 12px;
+    border-width: 6px 0 6px 9px;
+  }
+}
+@media (max-width: 760px) {
+  .blogchips--wrap {
+    position: static;
+    flex-wrap: wrap;
+  }
+}
+
+/* The blog in the main site's own language: section labels, hairlines, the Modules band, white panels, the closing valley */
+:root {
+  --paper: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #222326;
+  }
+}
+.blogindex__intro {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(120px, 18vh, 168px) var(--gutter) clamp(56px, 9vh, 88px);
+  text-align: center;
+}
+.blogindex__title {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 92px);
+  font-weight: 500;
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+}
+.blogindex__lede {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.4vw, 19px);
+}
+.blogband .trust__inner {
+  padding-top: clamp(72px, 11vh, 112px);
+  padding-bottom: clamp(72px, 11vh, 112px);
+}
+.blogband .module,
+.blogband .module + .module {
+  padding-bottom: 0;
+}
+.blogband .blogfeature {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+.blogband .blogfeature img {
+  order: 2;
+  margin-top: 28px;
+}
+.blogband .blogfeature small {
+  color: #f6f8f3;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.blogband .blogfeature strong {
+  margin-top: 18px;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.blogband .blogfeature em {
+  margin-top: 10px;
+  color: rgba(246, 248, 243, 0.72);
+  font-size: 16px;
+}
+.blogindex {
+  max-width: 1180px;
+  padding: clamp(72px, 11vh, 112px) var(--gutter) clamp(96px, 14vh, 140px);
+}
+.blogindex__intro + .blogindex {
+  padding-top: 0;
+}
+.blogindex .blogindex__group:first-child {
+  margin-top: 0;
+}
+.blogindex .blogindex__group {
+  margin-top: clamp(56px, 8vh, 88px);
+}
+.blogcards {
+  gap: 24px;
+  margin-top: 18px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.blogindex__group:has(> .sr-only) .blogcards {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+.blogcards li {
+  display: flex;
+}
+.blogcards a {
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 22px;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.06),
+    0 1px 2px rgba(20, 22, 32, 0.06);
+  transition:
+    translate 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+}
+.blogcards li:hover a {
+  translate: 0 -2px;
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.06),
+    0 14px 34px -10px rgba(20, 22, 32, 0.16);
+}
+.blogcards img {
+  margin: 0;
+  border-radius: 0;
+}
+.blogcards h3 {
+  margin: 18px 20px 0;
+  font-size: 20px;
+}
+.blogcards p {
+  margin: 8px 20px 0;
+  line-height: 1.55;
+}
+.blogchips {
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: clamp(48px, 7vh, 72px);
+  padding: 0;
+}
+.blogchips a {
+  font-size: 14px;
+}
+.blogindex__group + .blogchips {
+  margin-top: clamp(56px, 8vh, 88px);
+  margin-bottom: 0;
+}
+.blogindex__all {
+  margin-top: 22px;
+}
+.blogindex__intro .article__kicker a,
+.article .article__kicker a {
+  color: var(--text);
+  font: 900 clamp(14px, 1.1vw, 16px)/1 var(--label-dot);
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.article__date {
+  font: 400 12px/1.4 var(--mono);
+}
+.article .article__module {
+  gap: 2px 14px;
+  padding: 18px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+.article__module strong::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--peach);
+  vertical-align: 1px;
+}
+.article__module--trunks strong::before {
+  background: var(--sage);
+}
+.article .article__next {
+  padding-top: 0;
+  border-top: 0;
+}
+.article .article__next h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font: 900 clamp(14px, 1.1vw, 16px)/1 var(--label-dot);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+@media (max-width: 760px) {
+  .blogchips {
+    justify-content: flex-start;
+  }
+  .blogband .module + .module {
+    padding-left: 0;
+  }
+}
+@media (max-width: 560px) {
+  .blogcards {
+    gap: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .blogcards li:first-child {
+    margin-bottom: 8px;
+  }
+  .blogcards li:not(:first-child) {
+    border-top: 1px solid var(--line);
+  }
+  .blogcards li:not(:first-child) a {
+    padding: 14px 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    translate: none;
+  }
+  .blogcards li:not(:first-child) img {
+    border-radius: 10px;
+  }
+  .blogcards li:not(:first-child) h3 {
+    margin: 0;
+  }
+}
+
+/* Texture from the site's own means: the nav's frosted glass, the illustrations' fine grid and the panels' soft shadow */
+.blogband {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.blogband .modules__grid {
+  gap: 20px;
+  margin-top: 20px;
+  border-top: 0;
+}
+.blogband .blogfeature img {
+  border-radius: 12px;
+  box-shadow: 0 18px 36px -18px rgba(0, 0, 0, 0.7);
+}
+.blogcards a {
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.06),
+    0 1px 2px rgba(20, 22, 32, 0.06),
+    0 14px 34px -14px rgba(20, 22, 32, 0.16);
+}
+.blogcards li:hover a {
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.06),
+    0 1px 2px rgba(20, 22, 32, 0.06),
+    0 24px 46px -14px rgba(20, 22, 32, 0.26);
+}
+.blogchips a {
+  border: 0;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+}
+.blogchips a[aria-current] {
+  background: var(--text);
+}
+.article__media video,
+.article__media img,
+.article__next img {
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.06),
+    0 18px 38px -18px rgba(20, 22, 32, 0.28);
+}
+@media (max-width: 760px) {
+  .blogchips:not(.blogchips--wrap) {
+    margin-right: calc(-1 * var(--gutter));
+    margin-left: calc(-1 * var(--gutter));
+    padding: 8px var(--gutter);
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    backdrop-filter: blur(14px) saturate(1.4);
+  }
+  .blogband .module + .module {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+}
+@media (max-width: 560px) {
+  .blogcards li:not(:first-child) a,
+  .blogcards li:not(:first-child):hover a {
+    box-shadow: none;
+  }
+  .blogcards li:not(:first-child) img {
+    box-shadow: 0 8px 18px -10px rgba(20, 22, 32, 0.3);
+  }
+}
+
+/* The list pages' opening, and the grain the pictures dissolve through (scripts/render-blog-masks.py) */
+.blogindex__intro {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(108px, 14vh, 128px) var(--gutter) 0;
+  text-align: left;
+}
+.blogindex__intro .eyebrow {
+  margin: 0 0 14px;
+}
+.blogindex__intro .article__kicker {
+  margin: 0 0 14px;
+}
+.blogindex__title {
+  max-width: 24em;
+  font-size: clamp(30px, 3.2vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.blogindex__lede {
+  margin-top: 10px;
+}
+.blogpage > .blogchips {
+  justify-content: flex-start;
+  max-width: 1180px;
+  margin: 24px auto 32px;
+  padding: 0 var(--gutter);
+}
+.blogband .trust__inner {
+  padding-top: clamp(36px, 5vh, 56px);
+  padding-bottom: clamp(56px, 8vh, 88px);
+}
+.blogband .modules__grid {
+  margin-top: 0;
+}
+.blogband .blogfeature img {
+  order: 0;
+  margin: 0 0 22px;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-mask: url('img/dissolve-edges.webp') center / 100% 100% no-repeat;
+  mask: url('img/dissolve-edges.webp') center / 100% 100% no-repeat;
+}
+.blogband .blogfeature small {
+  font-size: clamp(32px, 3.4vw, 48px);
+}
+.blogband .blogfeature strong {
+  margin-top: 12px;
+}
+/* The mask is a strip of 8 frames: the chosen card's broken edge fills in, and breaks again when it is left. --mask-step is a registered integer,
+   so an interrupted hover still lands on whole frames and the join between two frames never shows. Without @property the picture simply changes at once. */
+@property --mask-step {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+.blogcards img {
+  --mask-step: 0;
+  -webkit-mask: url('img/dissolve-bottom.webp') 0 calc(var(--mask-step) * 100% / 7) / 100% 800% no-repeat;
+  mask: url('img/dissolve-bottom.webp') 0 calc(var(--mask-step) * 100% / 7) / 100% 800% no-repeat;
+  transition: --mask-step 0.35s linear;
+}
+.blogcards li:hover img,
+.blogcards a:focus-visible img {
+  --mask-step: 7;
+}
+.blogcards h3 {
+  margin-top: 10px;
+}
+.blogcards__film::after {
+  bottom: 22px;
+}
+.blogcards__film::before {
+  bottom: 32px;
+}
+.blogindex__intro + .blogchips + .blogindex {
+  padding-top: 0;
+}
+@media (max-width: 760px) {
+  .blogpage > .blogchips:not(.blogchips--wrap) {
+    position: sticky;
+    top: 56px;
+    z-index: 5;
+    margin: 20px 0 24px;
+    padding: 8px var(--gutter);
+  }
+  .blogpage > .blogchips--wrap {
+    margin: 20px 0 24px;
+  }
+}
+@media (max-width: 560px) {
+  .blogcards li:not(:first-child) img {
+    -webkit-mask: none;
+    mask: none;
+  }
+  .blogcards li:not(:first-child) .blogcards__film::after {
+    bottom: 6px;
+  }
+  .blogcards li:not(:first-child) .blogcards__film::before {
+    bottom: 12px;
+  }
+}
+
+/* The two product cards are the site's own dark cards, with its coloured glow behind the picture (peach for Goten, sage for Trunks) */
+.blogband .module,
+.blogband .module + .module {
+  overflow: hidden;
+  padding: clamp(22px, 2.6vw, 32px);
+  border: 0;
+  border-radius: 24px;
+  background: #1d1e22;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+@media (prefers-color-scheme: dark) {
+  .blogband .module,
+  .blogband .module + .module {
+    background: #1c1c1c;
+  }
+}
+.blogband .blogfeature {
+  position: relative;
+  isolation: isolate;
+}
+.blogband .blogfeature::before,
+.blogband .blogfeature::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -24px;
+  left: -7%;
+  width: 114%;
+  aspect-ratio: 1.55;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  -webkit-mask-composite: source-in;
+  mask:
+    linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent) intersect,
+    linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  pointer-events: none;
+}
+.blogband .blogfeature::before {
+  background:
+    radial-gradient(60% 70% at 25% 30%, var(--peach), transparent 70%), radial-gradient(55% 60% at 80% 35%, var(--sand), transparent 70%),
+    radial-gradient(60% 60% at 60% 95%, var(--clay), transparent 70%), #3a2c25;
+  opacity: 0.7;
+}
+.blogband .module:nth-child(2) .blogfeature::before {
+  background:
+    radial-gradient(60% 70% at 25% 30%, var(--sage), transparent 70%), radial-gradient(55% 60% at 80% 40%, var(--sand), transparent 70%),
+    radial-gradient(60% 60% at 50% 100%, #7fa27a, transparent 70%), #27332a;
+}
+.blogband .blogfeature::after {
+  background: url('img/grain.svg');
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+}
+.blogband .blogfeature small {
+  color: var(--ink-text);
+  font: 900 clamp(14px, 1.1vw, 16px)/1 var(--label-dot);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.blogband .blogfeature strong {
+  margin-top: 12px;
+  font-size: clamp(24px, 2.4vw, 30px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+.blogband .blogfeature em {
+  color: var(--ink-muted);
+}
+
+/* More room at the top of the list pages: title on two lines, a hairline, then calm outlined topics */
+.blogindex__intro {
+  padding-top: clamp(132px, 19vh, 168px);
+}
+.blogindex__intro .eyebrow,
+.blogindex__intro .article__kicker {
+  margin-bottom: 20px;
+}
+.blogindex__title {
+  max-width: 20em;
+  font-size: clamp(34px, 3.9vw, 52px);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.blogindex__lede {
+  margin-top: 14px;
+}
+.blogindex__intro::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-top: clamp(40px, 6vh, 56px);
+  background: var(--line);
+}
+.blogpage > .blogchips {
+  margin: 32px auto 48px;
+}
+.blogchips a {
+  border: 1px solid var(--line);
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.blogchips a[aria-current] {
+  border-color: var(--text);
+  background: var(--text);
+}
+@media (max-width: 760px) {
+  .blogpage > .blogchips:not(.blogchips--wrap) {
+    margin: 12px 0 28px;
+  }
+  .blogpage > .blogchips--wrap {
+    margin: 24px 0 32px;
   }
 }

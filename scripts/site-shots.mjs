@@ -91,6 +91,16 @@ await run('demo-phone', '/inbox/demo/', PHONE, [['list', async () => {}]])
 // an old link to the Toolkit's FAQ lands on /toolkit/
 await run('oldlink', '/#faq-import', DESK, [['lands', async () => {}]])
 
+// the blog (plan 22)
+for (const [name, path] of [['goten', '/blog/from-bank-statement-to-exit/'], ['trunks', '/blog/every-investor-email/']]) {
+  const steps = [hero, ['film', at('.article__media')], ['figure', at('figure:nth-of-type(2)')], ['footer', bottom]]
+  await run(`blog-${name}-light`, path, DESK, steps)
+  await run(`blog-${name}-dark`, path, DARK, steps.slice(0, 3))
+  await run(`blog-${name}-phone`, path, PHONE, steps)
+}
+await run('blog-list', '/blog/', DESK, [hero])
+await run('blog-list-phone', '/blog/', PHONE, [hero])
+
 // module pages: once the global nav has scrolled away the page nav shows, and each of its links lands the section's
 // heading below it (plan 14 R10)
 for (const [path, vp] of [

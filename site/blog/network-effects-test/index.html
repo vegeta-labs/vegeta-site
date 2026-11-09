@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>How to test a network-effects claim in a pitch deck | Vegeta</title>
+    <meta
+      name="description"
+      content="If half the users vanished tomorrow, would the rest be worse off? That question separates a network effect from ordinary growth."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to test a network-effects claim in a pitch deck | Vegeta" />
+    <meta
+      property="og:description"
+      content="If half the users vanished tomorrow, would the rest be worse off? That question separates a network effect from ordinary growth."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/network-effects-test/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/network-effects-test-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="How to test a network-effects claim in a pitch deck" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to test a network-effects claim in a pitch deck | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="If half the users vanished tomorrow, would the rest be worse off? That question separates a network effect from ordinary growth."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/blog/edu/network-effects-test-share.jpg" />
+    <meta name="twitter:image:alt" content="How to test a network-effects claim in a pitch deck" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/network-effects-test/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/leads/">Leads and GPs</a></p>
+            <h1 class="article__title">How to test a network-effects claim in a pitch deck</h1>
+            <p class="article__lede">
+              If half the users vanished tomorrow, would the rest be worse off? That question separates a network effect from ordinary growth.
+            </p>
+            <p class="article__date">Updated 7 November 2026</p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-ambient
+              muted
+              loop
+              playsinline
+              preload="none"
+              width="904"
+              height="946"
+              tabindex="-1"
+              poster="/media/blog/edu/network-effects-test.webp"
+              aria-label="At night the green checker has pulled out half the cords on an old telephone switchboard, and the blue lead listens on a headset to find out whether the remaining lines noticed. Remove half the users: are the rest worse off?."
+            >
+              <source src="/media/blog/edu/network-effects-test.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </header>
+        <p>
+          Most decks that claim a network effect are showing a growth chart. Growth can be bought. A network effect is narrower.
+          <a href="https://www.jstor.org/stable/1814809">Katz and Shapiro&#39;s 1985 article</a>, an early treatment of the idea, studied goods whose value to
+          one user rises with the number of other users. That is a claim about value, and it can be tested.
+        </p>
+        <h2>The removal test</h2>
+        <p>Imagine half of the company&#39;s users disappear overnight, chosen at random. Would the remaining users notice?</p>
+        <p>
+          For a messaging tool used by a team, they notice immediately. For a marketplace, buyers find fewer sellers and wait longer. For a good accounting
+          product that has 10,000 customers, nothing changes: the software works just as well, even though the company&#39;s revenue halves. That company may be
+          excellent. It just doesn&#39;t have a network effect, and its growth doesn&#39;t make it harder to compete with for that reason.
+        </p>
+        <p>Three things are commonly passed off as network effects, and all fail the removal test:</p>
+        <ul>
+          <li>Virality is how users arrive. A product can spread by referral without being any more useful once they have.</li>
+          <li>Economies of scale lower the supplier&#39;s unit cost. Users may benefit through price, but not because other users are present.</li>
+          <li>
+            Switching costs keep customers in place because leaving is painful. They can be valuable, and they have nothing to do with how many other customers
+            there are.
+          </li>
+        </ul>
+        <h2>Which kind is being claimed</h2>
+        <p>Pin down the mechanism, because each has a different weak point.</p>
+        <p>
+          With a same-side effect, users benefit from more users like themselves, as with colleagues on a shared tool. The weak point is relevance: usually only
+          the people you deal with count. A tool adopted by a million strangers does little for a single team, which limits how much the effect helps the
+          company win its next customer.
+        </p>
+        <p>
+          With a cross-side effect, one group benefits from another: buyers and sellers, riders and drivers. Each direction has its own strength, and they can
+          pull apart, since extra sellers help buyers but compete with the sellers already there.
+          <a href="https://academic.oup.com/jeea/article/1/4/990/2280902">Rochet and Tirole&#39;s work on two-sided markets</a> showed how much depends on how a
+          platform divides its charges between the two sides. So when a marketplace charges one side very little, that is a decision to examine, and may be more
+          than a temporary promotion.
+        </p>
+        <p>
+          With complements, outside developers build things that attract users, whose presence attracts more developers. The weak point is padding. A directory
+          of 300 integrations proves little if five are used. Ask which ones customers actually rely on, and who maintains them.
+        </p>
+        <p>
+          Data improvement is the fourth common claim: each customer&#39;s data makes the product better for the others. It is easy to oversell: the benefit can
+          flatten, the extra data may be repetitive and the improvement may have come from engineering. Ask whether the company is even permitted to reuse
+          customer data across accounts, and ask for performance measured by the amount of data.
+        </p>
+        <p>A business can have several of these at once. Test each on its own, so that proof of one doesn&#39;t get counted for all.</p>
+        <h2>Find the network that actually matters</h2>
+        <p>
+          The company&#39;s total user count is usually the wrong number. The effect works inside a boundary: a city, a trade, a team. A spare-parts marketplace
+          for boatyards doesn&#39;t get better for a yard in Cornwall because sellers joined on the Clyde, unless parts ship between them cheaply. Find the
+          smallest unit in which people actually transact, and look at results there.
+        </p>
+        <p>
+          A company that spreads across 40 thin markets can post a splendid total without being strong in a single one. Investors should want the opposite
+          pattern: a few markets where the effect is plainly visible, and a reason to think the next ones will follow.
+        </p>
+        <h2>What to ask for</h2>
+        <p>Suppose that marketplace gives you this comparison:</p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th>Measure, per region</th>
+                <th>Few sellers</th>
+                <th>Many sellers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Active sellers of the relevant part</td>
+                <td>15</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Median days to fill an order</td>
+                <td>9</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Buyers ordering again within six months</td>
+                <td>30%</td>
+                <td>52%</td>
+              </tr>
+              <tr>
+                <td>Discounts paid per order</td>
+                <td>£2</td>
+                <td>£7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The first three rows look like the real thing. The fourth is why you should keep going. The busier regions receive over three times as much discount
+          per order, which could explain some of the repeat buying on its own. Those regions might also have larger yards, or have been open longer.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/network-effects-test-1.webp"
+            aria-label="Regions with few and many sellers, and the discounts behind them. Look at the last row too. Median days to fill: Few sellers 9, Many sellers 3. Repeat in six months: Few sellers 30%, Many sellers 52%. Discount per order: Few sellers £2, Many sellers £7."
+          >
+            <source src="/media/blog/edu/network-effects-test-1.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <p>
+          So ask for older and newer regions compared at the same age, and for what happens to speed and repeat orders when a discount ends. If the company has
+          ever launched region by region, or switched a discount off in some places, that may be as near as you get to a controlled test. Subsidy isn&#39;t a
+          flaw in itself: it may be the only way to start a thin market. The issue is whether the network still works once the payments stop.
+        </p>
+        <p>Then check for three things that can quietly drain the value.</p>
+        <p>
+          Concentration: if three sellers fill most orders, the network is three relationships. Losing one matters more than gaining a hundred inactive
+          accounts.
+        </p>
+        <p>
+          Multi-homing: a seller listed on four competing marketplaces gains from each without being tied to any. The network may be real and still give this
+          company no pricing power.
+        </p>
+        <p>
+          Negative effects: spam, poor listings, congestion and sellers undercutting each other can all grow with the network. Network effects also work in
+          reverse, as departures make the service less useful and prompt others to leave.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/network-effects-test-2.webp"
+            aria-label="What can drain a network of value. What can quietly drain it. Concentration in a few sellers. Multi-homing across rivals. Spam, poor listings, congestion."
+          >
+            <source src="/media/blog/edu/network-effects-test-2.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>What to write down</h2>
+        <p>
+          If Bulma were leading an <a href="/blog/what-an-spv-is/">SPV</a> into this business, a line in her memo reading &quot;strong network effects&quot;
+          would tell Goku and Piccolo nothing. This would tell them something:
+        </p>
+        <blockquote>
+          <p>
+            Cross-side effect on the buyer side, within a region, once it passes about 40 active sellers. Order speed holds where discounts have ended, in two
+            regions. Seller side unclear: most sellers also list elsewhere. Not yet shown in the three newest regions.
+          </p>
+        </blockquote>
+        <p>
+          That states where the effect operates, how good the evidence is and what would prove it wrong. It also gives her something specific to check at the
+          next round.
+        </p>
+
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/assessing-founders/"
+            ><img src="/media/blog/edu/assessing-founders-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Assessing founders with evidence instead of charm</span
+            ></a
+          >
+          <a href="/blog/science-claim-diligence/"
+            ><img src="/media/blog/edu/science-claim-diligence-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Checking a science claim you cannot judge yourself</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

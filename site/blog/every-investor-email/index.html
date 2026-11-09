@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Every investor email, ready for a person | Vegeta</title>
+    <meta
+      name="description"
+      content="Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Every investor email, ready for a person | Vegeta" />
+    <meta
+      property="og:description"
+      content="Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/every-investor-email/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/trunks-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Every investor email, ready for a person" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Every investor email, ready for a person | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/trunks-share.jpg" />
+    <meta name="twitter:image:alt" content="Every investor email, ready for a person" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/every-investor-email/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/">Trunks</a></p>
+            <h1 class="article__title">Every investor email, ready for a person</h1>
+            <p class="article__lede">
+              Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what
+              a person still decides.
+            </p>
+            <p class="article__date">Updated 9 November 2026</p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-film
+              aria-label="Film: every investor email, ready for a person"
+              controls
+              playsinline
+              preload="none"
+              width="1080"
+              height="1350"
+              poster="/media/trunks-film-poster.jpg"
+            >
+              <source src="/media/trunks-film.mp4" type="video/mp4" />
+              <track kind="captions" src="/media/trunks-film.vtt" srclang="en" label="English" />
+            </video>
+          </figure>
+        </header>
+        <h2>One mailbox, every kind of request</h2>
+        <p>
+          Investors ask whether their payment has arrived. They send passports, bank confirmations and signed documents. They want a tax certificate or a letter
+          for their bank. They want to withdraw, or they cannot log in. Companies and lawyers write in too, and so does anyone pretending to be them.
+        </p>
+        <p>
+          All of it lands in one or two shared mailboxes. Every email needs the same work before anyone can answer it: read it, work out what it is, find the
+          investor and the deal, check the ledger, decide who should handle it and write back. None of that is hard. It is repeated for every email, and when
+          the team is busy, questions wait.
+        </p>
+        <p>The emails that can do the most damage look like all the others.</p>
+        <h2>What Trunks does with every email</h2>
+        <p>
+          Trunks connects to the mailbox read-only. A model classifies the request and extracts fields. Code reads the amounts, references and UETRs itself.
+          Trunks looks for the contact, the commitment and the deal, and says when there is none. Fixed rules set the risk, and the model can never lower it.
+          Code, not the model, chooses the reply template. The case goes into the queue for that kind of email, with a due time.
+        </p>
+        <p>
+          So a person opens a case with the sender, the commitment, the deal, the ledger state and a draft reply already on it. They check it, approve it, copy
+          the text and send it from their own mail client. Trunks never sends email.
+        </p>
+        <figure class="article__media">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="1130"
+            tabindex="-1"
+            poster="/media/blog/inbox.webp"
+            aria-label="Trunks inbox with four investor emails. The first, Did my payment arrive? from Son Goku, is selected."
+          >
+            <source src="/media/blog/inbox.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>What it prepares</h2>
+        <p>This is the usual result. When the risk is high, the only reply available is a fixed acknowledgement.</p>
+        <div class="article__table">
+          <table>
+            <thead>
+              <tr>
+                <th>The email</th>
+                <th>What Trunks prepares</th>
+                <th>What a person still does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0001">Has my payment arrived?</a></td>
+                <td>Finds the commitment, checks the ledger, and drafts the reply that fits what has arrived</td>
+                <td>Checks it against the ledger and sends it</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0024">A payment confirmation is attached</a></td>
+                <td>
+                  Reads the UETR, amount and value date from an MT103 or pacs.008 file, and shows it as the sender&rsquo;s confirmation, not proof of receipt
+                </td>
+                <td>Checks the bank statement</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0035">Paid from someone else&rsquo;s account</a></td>
+                <td>Finds the investor and the commitment, and asks you to check the payment in the ledger</td>
+                <td>Checks the payment</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0045">KYC documents</a></td>
+                <td>Code spots likely ID documents, keeps them from any model and transfers them to your KYC folder or webhook</td>
+                <td>Does the KYC check; Trunks never does</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0053">A withdrawal</a> or <a href="/inbox/demo/#case=E0063">a change of commitment</a></td>
+                <td>An acknowledgement that commits to nothing. For a withdrawal, a check for the investor&rsquo;s consent</td>
+                <td>Decides, and makes the change</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0082">Closing numbers</a> or <a href="/inbox/demo/#case=E0090">documents to sign</a></td>
+                <td>An acknowledgement, in the deal team&rsquo;s or the legal team&rsquo;s queue</td>
+                <td>Reviews them and runs the closing</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="/inbox/demo/#case=E0112">Tax certificates</a>, <a href="/inbox/demo/#case=E0201">bank letters</a>,
+                  <a href="/inbox/demo/#case=E0120">exit timing</a>, <a href="/inbox/demo/#case=E0209">portal access</a>
+                </td>
+                <td>A reply saying what happens next</td>
+                <td>Issues the certificate or letter, or makes the change</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0144">A complaint</a></td>
+                <td>An apology saying a senior colleague will reply, in the ops lead&rsquo;s queue</td>
+                <td>Replies</td>
+              </tr>
+              <tr>
+                <td><a href="/inbox/demo/#case=E0225">New bank details</a> or <a href="/inbox/demo/#case=E0105">a new email address</a></td>
+                <td>A fixed acknowledgement, high risk, and a verification task. Nothing from the email is applied to any record</td>
+                <td>Calls the number on file; a second person approves</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A newsletter stays unclassified, with no reply prepared. Every category is on <a href="/inbox/">the Trunks page</a>.</p>
+        <p>Three emails show it in more detail, from routine to dangerous.</p>
+        <h2>&ldquo;Did my payment arrive?&rdquo;</h2>
+        <p>
+          Goku asks whether the payment for Senzu Labs has arrived. The question is short. By hand, someone works out who is asking, finds the commitment, opens
+          the ledger and writes back, then does it again for the next investor.
+        </p>
+        <p>Trunks does the lookup and code picks the reply from your records:</p>
+        <ul>
+          <li>
+            <strong>Paid in full:</strong> &ldquo;We have received GBP 10,000.00 for Senzu Labs (reference SEN-001). Your commitment of GBP 10,000.00 is paid in
+            full.&rdquo;
+          </li>
+          <li>
+            <strong>Not in full, and a payment date under five working days old:</strong> a reply saying bank transfers can take a few working days to arrive.
+          </li>
+          <li>
+            <strong>Not in full, with an older date or none:</strong> a reply asking for the payment confirmation, unless a valid one is already attached.
+          </li>
+          <li><strong>No commitment found:</strong> a reply asking for the deal name and the payment reference.</li>
+        </ul>
+        <p>The person gets the answer and the ledger beside each other, and checks one against the other instead of looking it up.</p>
+        <figure class="article__media">
+          <img
+            src="/media/blog/reply.webp"
+            width="904"
+            height="1130"
+            loading="lazy"
+            decoding="async"
+            alt="Trunks reply to Son Goku, from the ledger: We have received GBP 10,000.00 for Senzu Labs (reference SEN-001). Your commitment of GBP 10,000.00 is paid in full. Approved, with a button to copy the text."
+          />
+        </figure>
+        <h2>An MT103 for a payment you cannot see</h2>
+        <p>
+          Yamcha paid from a bank abroad. The money is not in your ledger, so Yamcha sends the bank&rsquo;s MT103. By hand, someone opens the file, finds the
+          investor and the deal, compares the amount and works out what to say. An MT103 shows what the bank was told to send, not what arrived, so replying
+          &ldquo;received&rdquo; on the strength of it would be wrong.
+        </p>
+        <p>
+          From a text MT103 or a pacs.008 file, Trunks reads the UETR, the amount and the value date, and links the commitment. If the email states one amount
+          and the file shows another, the case goes to high risk. Only your imported ledger can show a payment as received, so nothing in the email can make the
+          reply say the money has arrived.
+        </p>
+        <p>
+          The account numbers in the file normally count as a change of bank details. Trunks sets that aside only when it can check them: a valid MT103 text
+          file or pacs.008 file whose beneficiary account is on your list for that deal, and
+          <a href="https://github.com/vegeta-labs/trunks/blob/v0.3.0/docs/en/payment-messages.md">the other conditions here</a>. Anything else takes the
+          cautious route below, including a bank&rsquo;s printed PDF, so some genuine confirmations do too. A valid message whose beneficiary account is not on
+          the list goes to high risk.
+        </p>
+        <p>
+          The person gets a case showing who paid, for which deal and how much, with the UETR ready if the bank needs to trace it. They check the bank
+          statement. Once the payment is in the ledger and imported, &ldquo;Relink with the latest directory&rdquo; updates the case and the reply.
+        </p>
+        <figure class="article__media">
+          <img
+            src="/media/blog/evidence.webp"
+            width="904"
+            height="1130"
+            loading="lazy"
+            decoding="async"
+            alt="Trunks payment confirmation from Yamcha: GBP 20,000.00, reference SEN-005, with its value date and UETR. Not in your ledger yet: the sender's confirmation, not proof of receipt."
+          />
+        </figure>
+        <h2>A new bank account</h2>
+        <p>
+          An email asks you to pay a new bank account, from an address that only looks right. It reads like any other email, and by hand the only defence is
+          someone noticing.
+        </p>
+        <p>
+          Once Trunks recognises a change of bank details, by code or by the model, fixed rules take over. The risk is set from the category and from signals
+          such as &ldquo;Look-alike domain&rdquo;. The only reply available is a fixed acknowledgement, and Trunks creates a verification task:
+        </p>
+        <ol>
+          <li>A person calls the contact on the number already on file, notifies the old contact with a notice Trunks prepares, and completes a checklist.</li>
+          <li>A cooling-off period runs, 24 hours by default.</li>
+          <li>A different person, with the approver role, approves.</li>
+        </ol>
+        <p>The steps are on the case, and what was done is recorded.</p>
+        <figure class="article__media">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="1130"
+            tabindex="-1"
+            poster="/media/blog/verification.webp"
+            aria-label="Trunks verification for a change of bank account, rated high risk with a look-alike domain: call the number on file, cooling-off of 24 hours by default, then approval by a second person, still waiting."
+          >
+            <source src="/media/blog/verification.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>What your team gets</h2>
+        <ul>
+          <li>Each email it processes becomes a case in a queue with a due time, before anyone has opened it.</li>
+          <li>The lookup is done first: sender, deal, commitment and ledger state are on the case.</li>
+          <li>
+            Replies start from your own fixed text and your records. A reply that shows record data goes only to a sender who is authenticated and entitled to
+            see that commitment.
+          </li>
+          <li>Likely ID documents go to your KYC folder or webhook, with a daily reminder while a transfer has failed.</li>
+          <li>Risky emails follow a fixed path, with a record of who did what.</li>
+        </ul>
+        <h2>What a person still does</h2>
+        <p>
+          Someone imports the deals, commitments, bank lines, ledger and contacts as CSV files. Commitments and the ledger exported by Goten import directly;
+          bank lines and contacts are your own files. Someone checks every reply, approves it, sends it and marks it as sent.
+        </p>
+        <p>
+          Trunks does not replace judgement. It has no connection to your bank and cannot stop a payment. Nothing stops someone closing a case with its task
+          open. It does not read images or scans, so a request that appears only in one is not recognised. Authenticated means the message passed DMARC and the
+          sender is in your directory; a taken-over mailbox would pass, which is one reason a person checks every reply.
+        </p>
+        <h2>Where it runs</h2>
+        <p>
+          Trunks runs on your own server. Before text goes to a model, it masks recognised sensitive values; amounts, references and unrecognised personal
+          information can remain. If you run a local model through Ollama inside your network, the model requests stay there.
+        </p>
+        <h2>How it was tested</h2>
+        <p>
+          One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read, measured on v0.3.0. An earlier set of the same kind
+          failed and led to two fixes in this release. Malicious bank changes and look-alike senders were rated high in 18 of 18. The contact, commitment and
+          deal were linked correctly in 123 of 125. The test emails that passed the payment message checks were all pacs.008; MT103 was covered only by
+          development tests. <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">The release notes</a> have the full table, and a scoring error
+          that was fixed and re-scored.
+        </p>
+        <h2>Try it</h2>
+        <p>
+          Every row in the table above opens in <a href="/inbox/demo/">the Trunks demo</a>.
+          <a href="/inbox/demo/#case=E1012">An MT103 with an account number on your list</a> is there too. Trunks v0.3.0 runs on your own server with Docker.
+        </p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Send feedback</a>.</p>
+
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/from-bank-statement-to-exit/"
+            ><img src="/media/blog/reconciliation.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >From bank statement to exit: one SPV, worked through</span
+            ></a
+          ><a href="/blog/tracing-spv-cash/"
+            ><img src="/media/blog/edu/tracing-spv-cash-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Where an SPV's money actually is</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

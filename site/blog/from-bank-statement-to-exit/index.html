@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>The money work on an SPV, ready for a person to check | Vegeta</title>
+    <meta
+      name="description"
+      content="Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="The money work on an SPV, ready for a person to check | Vegeta" />
+    <meta
+      property="og:description"
+      content="Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/from-bank-statement-to-exit/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/goten-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The money work on an SPV, ready for a person to check" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The money work on an SPV, ready for a person to check | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/goten-share.jpg" />
+    <meta name="twitter:image:alt" content="The money work on an SPV, ready for a person to check" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/from-bank-statement-to-exit/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/">Goten</a></p>
+            <h1 class="article__title">The money work on an SPV, ready for a person to check</h1>
+            <p class="article__lede">
+              Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still
+              decides.
+            </p>
+            <p class="article__date">Updated 7 November 2026</p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-film
+              aria-label="Film: the money work on an SPV, from the bank statement to the exit"
+              controls
+              playsinline
+              preload="none"
+              width="1080"
+              height="1350"
+              poster="/media/goten-film-poster.jpg"
+            >
+              <source src="/media/goten-film.mp4" type="video/mp4" />
+              <track kind="captions" src="/media/goten-film.vtt" srclang="en" label="English" />
+            </video>
+          </figure>
+        </header>
+        <h2>The same work on every deal</h2>
+        <p>
+          Much of the money work on an SPV or syndicate still happens by hand, in spreadsheets and email. Someone reads the bank statement line by line and
+          matches each payment to an investor. They chase whoever is short. At the close they work out each investor&rsquo;s investment, fees and refund, and
+          the amount to wire to the company. At the exit they work out who gets what.
+        </p>
+        <p>None of that is hard. It comes back on every deal, and the reconciliation grows with the number of investors.</p>
+        <h2>Where it goes wrong</h2>
+        <p>
+          A payment arrives with its reference missing or mistyped, from a company account, short, or twice. An investor withdraws before the close. A fee is
+          charged on the wrong base or to the wrong payer. Scale-back amounts do not add up to the round cap. At the exit, carry is taken before capital comes
+          back, or a tier rate is applied to all the profit instead of its band.
+        </p>
+        <p>
+          Each step feeds the next. Book a payment to the wrong investor and two balances are wrong, and the error carries through the close to the exit. Once
+          money has moved, a mistake is hard to undo.
+        </p>
+        <figure class="article__media">
+          <img
+            src="/media/blog/wrong.webp"
+            width="904"
+            height="1130"
+            loading="lazy"
+            decoding="async"
+            alt="By hand: a missing reference, a payment made twice, a fee on the wrong base, carry taken before capital."
+          />
+        </figure>
+        <h2>What Goten prepares</h2>
+        <p>
+          You import the investor list and the bank statement, or type them in. Every result is worked out in exact whole pence and checks itself on the screen:
+          for every investor, cash received must equal the amount invested plus fees plus refunds. If a blocking check fails, copying, exporting and the
+          hand-off to the next step all stop.
+        </p>
+        <div class="article__table">
+          <table>
+            <thead>
+              <tr>
+                <th>The situation</th>
+                <th>What Goten prepares</th>
+                <th>What a person still does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A payment carries one investor&rsquo;s reference</td>
+                <td>Books it to that investor, unless it looks like a duplicate</td>
+                <td>Checks the ledger</td>
+              </tr>
+              <tr>
+                <td>A payment has no usable reference</td>
+                <td>
+                  Up to three suggested investors, each with a score and reasons, and a query to send them. It counts for nothing until a person decides. With
+                  no plausible candidate it stays unmatched, and is flagged after the number of days you set
+                </td>
+                <td>Confirms it, assigns another investor or marks it as not part of this deal</td>
+              </tr>
+              <tr>
+                <td>An investor is short or has not paid</td>
+                <td>Their status and the difference, a chase email with the amount and their payment reference, and a chase list to export</td>
+                <td>Sends the email</td>
+              </tr>
+              <tr>
+                <td>An investor has paid too much</td>
+                <td>Lists the excess as a refund, outside the allocation</td>
+                <td>Makes the refund</td>
+              </tr>
+              <tr>
+                <td>An investor withdraws before the close</td>
+                <td>Stops chasing them, leaves them out of the allocation and lists everything they paid as a refund</td>
+                <td>Gets their written consent and makes the refund</td>
+              </tr>
+              <tr>
+                <td>A percentage fee moves to another payer before the close</td>
+                <td>Each investor&rsquo;s new amount due, the top-ups and refunds it causes and the consent it needs. It can be reversed in one step</td>
+                <td>Gets the consent, collects the top-ups and makes the refunds</td>
+              </tr>
+              <tr>
+                <td>The close</td>
+                <td>
+                  Each investor&rsquo;s investment, fees, shares and refund, with investor, company and lead fees, a round cap with scale-back and a minimum.
+                  The investors holding up the close are named
+                </td>
+                <td>Reviews the numbers and wires the money</td>
+              </tr>
+              <tr>
+                <td>The lead needs to confirm the close</td>
+                <td>A closing confirmation to copy, and a file to export</td>
+                <td>Sends it to the lead</td>
+              </tr>
+              <tr>
+                <td>Some investors claim SEIS or EIS</td>
+                <td>An estimate of the whole shares they can claim, with any remainder flagged</td>
+                <td>Decides eligibility: the scheme is only a label you enter</td>
+              </tr>
+              <tr>
+                <td>The exit</td>
+                <td>
+                  Fixed carry with a hurdle and catch-up, or tiered carry. Each step with its reason, each investor&rsquo;s distribution, profit and multiple,
+                  and a shortfall if costs exceed proceeds
+                </td>
+                <td>Checks the terms against the deal documents and pays out</td>
+              </tr>
+              <tr>
+                <td>Something changes after a decision</td>
+                <td>Decisions on a changed line or investor are voided, and later steps are marked out of date</td>
+                <td>Decides again and hands off again</td>
+              </tr>
+              <tr>
+                <td>Someone asks who did what</td>
+                <td>An activity log of imports, decisions, hand-offs, copied messages, withdrawals and fee changes, with your initials if you set them</td>
+                <td>Exports it and keeps it</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2>One deal, worked through</h2>
+        <p>
+          Bulma is leading an SPV into Senzu Labs. Six investors owe £25,000 between them, and the bank statement is in. Goten has no connection to your bank:
+          it works on the lines you give it.
+        </p>
+        <h3>Five payments match themselves</h3>
+        <p>
+          The statement says S GOKU. The commitment says Son Goku. The name does not decide anything here: the line carries SEN-001, the payment reference of
+          exactly one investor, so Goten books it to that commitment. Four more lines do the same. A suspected duplicate would still wait for a person.
+        </p>
+        <figure class="article__media">
+          <video
+            data-ambient
+            data-once
+            data-start="/media/blog/reconciliation-start.webp"
+            muted
+            playsinline
+            preload="none"
+            width="904"
+            height="1130"
+            tabindex="-1"
+            poster="/media/blog/reconciliation.webp"
+            aria-label="Goten reconciliation. S GOKU is matched to Son Goku by the reference SEN-001. PICCOLO has no reference, is suggested as Piccolo with a score of 0.55 because the payer name and amount match, and is confirmed by a person."
+          >
+            <source src="/media/blog/reconciliation.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h3>One does not</h3>
+        <p>
+          The remaining line says PICCOLO, £2,000, with no reference. Goten suggests Piccolo with a score of 0.55 and gives its reasons: the payer name matches
+          and the amount matches.
+        </p>
+        <p>
+          A suggestion changes nothing. £23,000 is booked, £2,000 is unbooked, and the reconciliation cannot be carried to the close until someone decides. A
+          line with no plausible candidate gets no suggestion: it stays unmatched and does not hold up the close, so someone has to look at it.
+        </p>
+        <p>
+          A person confirms it. Now £25,000 is booked and nothing is left over. That settles which commitment the money belongs to. Whether a payment from that
+          account is acceptable is a separate check for your KYC and AML process, which Goten does not run.
+        </p>
+        <p>
+          Goten also writes the texts for this stage: a query asking a likely sender whether an unmatched payment is theirs, and a chase for an investor who is
+          short. You copy them and send them yourself.
+        </p>
+        <h3>The close</h3>
+        <p>
+          A person carries the result to the closing allocation. With a 3% investor fee deducted from each payment, Goku&rsquo;s £10,000 becomes £300 in fees
+          and £9,700 invested. Piccolo&rsquo;s confirmed £2,000 becomes £60 and £1,940. Across the deal, that is £750 in fees and £24,250 invested, and £24,250
+          is the amount to wire to the company. A person makes that wire: Goten moves no money.
+        </p>
+        <figure class="article__media">
+          <video
+            data-ambient
+            data-once
+            data-start="/media/blog/closing-start.webp"
+            muted
+            playsinline
+            preload="none"
+            width="904"
+            height="1130"
+            tabindex="-1"
+            poster="/media/blog/closing.webp"
+            aria-label="Goten closing allocation for six investors: £25,000 cash received, £750 investor fees, £24,250 to wire to the company."
+          >
+            <source src="/media/blog/closing.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h3>The exit</h3>
+        <p>
+          A person carries the invested amounts to the exit. Say Senzu Labs is sold and this holding brings in £90,000, five years on, with £1,500 of costs, 20%
+          carry, an 8% a year compounding hurdle and full catch-up.
+        </p>
+        <p>Goten shows where each pound goes. Costs of £1,500.00 are paid first:</p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>To investors</th>
+                <th>To the lead</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Return of capital</td>
+                <td>£24,250.00</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Preferred return (hurdle)</td>
+                <td>£11,381.21</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Lead catch-up</td>
+                <td></td>
+                <td>£2,845.30</td>
+              </tr>
+              <tr>
+                <td>Carried interest split, 80 / 20</td>
+                <td>£40,018.79</td>
+                <td>£10,004.70</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>£75,650.00</td>
+                <td>£12,850.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Piccolo&rsquo;s £1,940 comes back as £6,052, carried from the payment a person confirmed at the start.</p>
+        <figure class="article__media">
+          <video
+            data-ambient
+            data-once
+            data-start="/media/blog/exit-start.webp"
+            muted
+            playsinline
+            preload="none"
+            width="904"
+            height="1130"
+            tabindex="-1"
+            poster="/media/blog/exit.webp"
+            aria-label="Goten exit distribution: return of capital, preferred return, lead catch-up and carry split, totalling £75,650.00 to investors and £12,850.00 to the lead."
+          >
+            <source src="/media/blog/exit.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>What your team gets</h2>
+        <ul>
+          <li>A ledger from the bank statement: every payment booked, suggested or unmatched, and every investor&rsquo;s status.</li>
+          <li>Chase and query emails already written with the right amount, ready to copy.</li>
+          <li>Closing numbers that add up, the amount to wire and a confirmation for the lead.</li>
+          <li>An exit split that shows each step and its reason, down to each investor.</li>
+          <li>A record of the decisions behind those numbers, and files to export at each step.</li>
+        </ul>
+        <figure class="article__media">
+          <img
+            src="/media/blog/gets.webp"
+            width="904"
+            height="1130"
+            loading="lazy"
+            decoding="async"
+            alt="Goten, ready to check: ledger, chase emails, closing confirmation, exit split and activity log."
+          />
+        </figure>
+        <h2>What a person still does</h2>
+        <p>
+          Someone imports the investor list and the bank statement. Someone decides every uncertain payment, sends every message, gets every consent and makes
+          every wire and refund. Goten calculates and explains. People act.
+        </p>
+        <p>
+          It has no connection to your bank and sends no email. It does not run KYC or AML, draft legal documents or make tax filings. It handles a nominee SPV
+          with one currency, one investment and one exit, with the same terms for every investor. Staged contributions, earlier distributions, investor-specific
+          carry, management fees and VAT are not covered. Withdrawals and fee payer changes work only before the close, and a fee payer change only for
+          percentage fees. The activity log is a working record in this browser, not a regulatory ledger, and it is not tamper-proof.
+        </p>
+        <figure class="article__media">
+          <img
+            src="/media/blog/person.webp"
+            width="904"
+            height="1130"
+            loading="lazy"
+            decoding="async"
+            alt="A person still decides uncertain payments, sends every message, gets every consent and makes every wire and refund."
+          />
+        </figure>
+        <h2>Where the data is</h2>
+        <p>
+          Your deal data is processed in your browser and never sent by this app. There is no sign-up and no shared workspace: the deal stays in the browser
+          where you entered it, so export what you need.
+        </p>
+        <h2>How it is checked</h2>
+        <p>
+          A separate implementation, written only from the rules, agrees with the app on hand-calculated cases and generated ones. The code and the release
+          notes are public.
+        </p>
+        <h2>Try it</h2>
+        <p>
+          <a href="https://deal-ops-toolkit.vercel.app">Take the 3-minute Goten tour</a>. The sample deal has a payment like Piccolo&rsquo;s: find Chloe
+          Martin&rsquo;s line, with no reference, and confirm it.
+        </p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Send feedback</a>.</p>
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/tracing-spv-cash/"
+            ><img src="/media/blog/edu/tracing-spv-cash-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Where an SPV's money actually is</span
+            ></a
+          ><a href="/blog/carry-on-an-spv-exit/"
+            ><img src="/media/blog/edu/carry-on-an-spv-exit-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >How carry is worked out when an SPV exits</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

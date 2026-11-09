@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>How carry is worked out when an SPV exits | Vegeta</title>
+    <meta
+      name="description"
+      content="Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted together."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How carry is worked out when an SPV exits | Vegeta" />
+    <meta
+      property="og:description"
+      content="Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted together."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/carry-on-an-spv-exit/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/carry-on-an-spv-exit-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="How carry is worked out when an SPV exits" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How carry is worked out when an SPV exits | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted together."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/blog/edu/carry-on-an-spv-exit-share.jpg" />
+    <meta name="twitter:image:alt" content="How carry is worked out when an SPV exits" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/carry-on-an-spv-exit/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/operations/">Operations</a></p>
+            <h1 class="article__title">How carry is worked out when an SPV exits</h1>
+            <p class="article__lede">
+              Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted together.
+            </p>
+            <p class="article__date">Updated 7 November 2026</p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-film
+              controls
+              playsinline
+              preload="none"
+              width="864"
+              height="1080"
+              poster="/media/blog/edu/carry-on-an-spv-exit.webp"
+              aria-label="Film: how carry comes out of the profit on one exit"
+            >
+              <source src="/media/blog/edu/carry-on-an-spv-exit-film.mp4" type="video/mp4" />
+              <track kind="captions" src="/media/blog/edu/carry-on-an-spv-exit-film.vtt" srclang="en" label="English" />
+            </video>
+          </figure>
+        </header>
+        <p>
+          A deal sheet usually gives carry a single line: &quot;15% carry&quot;. That line settles the rate and leaves open almost everything that decides the
+          amount. Three questions fill the gap. What has to come back to investors before there is any profit? Must investors earn a minimum return first? And
+          do losses on other deals count? Running one exit through each question shows how far the answer can move.
+        </p>
+        <h2>The basic calculation</h2>
+        <p>
+          Bulma leads an SPV into Senzu Labs. Investors pay in £400,000, including £50,000 from Goku and £100,000 from Piccolo. Of that, £20,000 goes on setting
+          up and running the vehicle, so £380,000 buys shares. Carry is 15%.
+        </p>
+        <p>Five years later Senzu Labs is sold. The SPV receives £1,000,000 and pays £10,000 in exit costs, leaving £990,000 to distribute.</p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Available to distribute</td>
+                <td>£990,000</td>
+              </tr>
+              <tr>
+                <td>Paid-in capital returned to investors</td>
+                <td>£400,000</td>
+              </tr>
+              <tr>
+                <td>Profit</td>
+                <td>£590,000</td>
+              </tr>
+              <tr>
+                <td>Carry to Bulma (15%)</td>
+                <td>£88,500</td>
+              </tr>
+              <tr>
+                <td>Profit to investors (85%)</td>
+                <td>£501,500</td>
+              </tr>
+              <tr>
+                <td>Total to investors</td>
+                <td>£901,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Goku holds one-eighth of the investor money and receives £112,687.50. Piccolo holds a quarter and receives £225,375.</p>
+        <p>If the shares had fetched only £350,000 after costs, there would be no profit and no carry. Goku would get £43,750 back on his £50,000.</p>
+        <h2>What comes back first</h2>
+        <p>
+          The example returns all £400,000 of paid-in capital before counting profit. Some documents could instead define profit against the £380,000 that
+          actually bought shares. Profit would then be £610,000 and carry £91,500. That £3,000 difference is 15% of the £20,000 in costs, and it falls on
+          investors.
+        </p>
+        <p>
+          Neither version is built into the word &quot;carry&quot;. Look for the definition, and check three related points: whether costs paid out of proceeds
+          come off before the split, whether later top-ups for vehicle costs count as capital, and whether the lead&#39;s own money bears carry at all.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/carry-on-an-spv-exit-1.webp"
+            aria-label="Carry when profit is measured against paid-in capital, and against the money that bought shares. Same deal, a different definition. Against paid-in capital: £88,500: £400,000 comes back first: Profit £590,000. Against money in shares: £91,500: £380,000 comes back first: Profit £610,000."
+          >
+            <source src="/media/blog/edu/carry-on-an-spv-exit-1.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>Hurdles and catch-up</h2>
+        <p>
+          A hurdle, or preferred return, means investors must reach a set return before the lead takes anything. Say Bulma&#39;s deal has an 8% hurdle,
+          compounding annually for the five years. Investors must first receive £587,731: their £400,000 plus £187,731.
+        </p>
+        <p>
+          What happens next depends on the catch-up. With a full catch-up, every pound above the hurdle goes to the lead until she holds 15% of all profit paid
+          so far. Here that takes £33,129. The remaining £369,140 is then split 85/15, giving her another £55,371. Her total is £88,500, exactly the figure with
+          no hurdle at all.
+        </p>
+        <p>
+          So on a good exit, a full catch-up changes the order of payment and not the amount. Hurdles bite on modest exits, or where there is no catch-up and
+          the lead takes 15% only of what exceeds the hurdle:
+        </p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th>Available to distribute</th>
+                <th>No hurdle</th>
+                <th>8% hurdle, full catch-up</th>
+                <th>8% hurdle, no catch-up</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>£450,000</td>
+                <td>£7,500</td>
+                <td>£0</td>
+                <td>£0</td>
+              </tr>
+              <tr>
+                <td>£600,000</td>
+                <td>£30,000</td>
+                <td>£12,269</td>
+                <td>£1,840</td>
+              </tr>
+              <tr>
+                <td>£990,000</td>
+                <td>£88,500</td>
+                <td>£88,500</td>
+                <td>£60,340</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>On the £450,000 line the deal made a profit, but not enough to clear the hurdle, so the lead receives nothing.</p>
+        <p>
+          Practice varies by type of fund. In
+          <a href="https://rodneywhitecenter.wharton.upenn.edu/wp-content/uploads/2014/04/0717.pdf"
+            >one study of 238 private equity funds raised between 1992 and 2006</a
+          >, 93.1% of buyout funds had a hurdle against 47.6% of venture funds, and 8% was the most common rate. Those are older institutional fund terms, and
+          they say nothing about what a given SPV will offer.
+        </p>
+        <h2>Whether losses elsewhere count</h2>
+        <p>
+          An SPV stands alone, so a loss on another deal does not touch its carry. A fund can be different, because it can net all its investments together.
+        </p>
+        <p>Suppose the same investors put £100,000 into each of three companies, with 15% carry.</p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Invested</th>
+                <th>Returned</th>
+                <th>Gain or loss</th>
+                <th>Carry if each deal stands alone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>First</td>
+                <td>£100,000</td>
+                <td>£400,000</td>
+                <td>£300,000</td>
+                <td>£45,000</td>
+              </tr>
+              <tr>
+                <td>Second</td>
+                <td>£100,000</td>
+                <td>£150,000</td>
+                <td>£50,000</td>
+                <td>£7,500</td>
+              </tr>
+              <tr>
+                <td>Third</td>
+                <td>£100,000</td>
+                <td>£0</td>
+                <td>−£100,000</td>
+                <td>£0</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>£300,000</td>
+                <td>£550,000</td>
+                <td>£250,000</td>
+                <td>£52,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Across three separate SPVs, the lead earns £52,500. In a single fund that nets everything, carry is 15% of £250,000, which is £37,500. The £15,000 gap
+          is 15% of the £100,000 lost on the third company.
+        </p>
+        <p>
+          Funds also differ on timing. Under a whole-fund model, investors get back all contributions before carry is paid. Under a
+          <a href="/blog/fund-or-deal-by-deal-economics/">deal-by-deal model</a>, a manager can be paid on an early winner before later losses are known, which
+          is why such funds rely on a clawback: a promise to repay any excess at the end. A clawback is only as good as the manager&#39;s ability to pay it.
+          <a href="https://ilpa.org/wp-content/uploads/2019/06/ILPA-Principles-3.0_2019.pdf">ILPA, the institutional investors&#39; association, recommends</a>
+          the whole-fund model as best practice. That is a recommendation and binds nobody until it is written into a fund&#39;s agreement.
+        </p>
+        <h2>What to pin down before closing</h2>
+        <p>
+          Whoever will run the numbers at exit needs each of these in writing before anyone invests: the rate; whether capital means paid-in or invested; how
+          costs are treated; any hurdle rate, its compounding and start date; the catch-up percentage; and what happens to the lead&#39;s own stake. If the
+          document is silent on one of them, the argument happens at exit, when real money depends on the answer.
+        </p>
+        <p>
+          Tax is a separate question from the calculation and depends on where the people involved are based. It can also turn on how long the investment was
+          held.
+        </p>
+
+        <a class="article__module article__module--goten" href="/blog/from-bank-statement-to-exit/"
+          ><strong>Goten</strong><span>Runs an exit waterfall in the browser and moves no money.</span></a
+        >
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/uk-carried-interest-tax/"
+            ><img src="/media/blog/edu/uk-carried-interest-tax-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >How the UK taxes carried interest since April 2026</span
+            ></a
+          >
+          <a href="/blog/following-one-cheque/"
+            ><img src="/media/blog/edu/following-one-cheque-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Following one cheque from closing to exit</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

@@ -51,6 +51,7 @@
         <a href="/inbox/" aria-current="page">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
       </nav>
       <details class="nav__menu" data-menu>
         <summary>Menu</summary>
@@ -60,6 +61,7 @@
           <li><a href="/inbox/" aria-current="page">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
         </ul>
       </details>
       <span class="nav__end">
@@ -414,11 +416,11 @@
           <h2 class="eyebrow section-label" id="trust-h">Why trust the results</h2>
           <dl class="facts">
             <div class="fact" data-reveal>
-              <dt>79 / 79</dt>
+              <dt>80 / 80</dt>
               <dd>High-risk emails rated high, on emails development never read.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>25 / 25</dt>
+              <dt>18 / 18</dt>
               <dd>Malicious bank-detail changes and look-alike senders rated high.</dd>
             </div>
             <div class="fact" data-reveal>
@@ -426,7 +428,7 @@
               <dd>Prompt-injection emails judged the same as their clean twins.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>0.965</dt>
+              <dt>0.960</dt>
               <dd>
                 Classification score (macro F1), over the categories whose risk floor is not high, without unclassified and categories with no example in the
                 set.
@@ -434,8 +436,8 @@
             </div>
           </dl>
           <p class="trust__note">
-            v0.2.2 release checks: 121 held-out fictional emails, one run with a real model (Claude Opus 5.5) by an independent runner.<br />
-            Measured on v0.2.0; carried forward for this presentation update. A person still reviews every Case and reply.
+            v0.3.0 release checks: 126 held-out fictional emails, one run with a real model (Claude Opus 5.5) by an independent runner.<br />
+            A person still reviews every Case and reply.
           </p>
         </div>
       </section>
@@ -631,16 +633,14 @@
           <div>
             <dt>Stored data and the audit trail</dt>
             <dd>
-              All text in the database is encrypted; only ids, types, hashes, times and amounts are kept in the clear. The audit log is hash-chained, the
-              app&rsquo;s own database roles cannot change or delete it, and a daily export of its latest hash, kept off the server, shows if recent records go
-              missing.
+              All text in the database is encrypted; only ids, types, hashes, times, amounts and the last four characters of each deal&rsquo;s receiving
+              accounts are kept in the clear. The audit log is hash-chained, the app&rsquo;s own database roles cannot change or delete it, and a daily export
+              of its latest hash, kept off the server, shows if recent records go missing.
             </dd>
           </div>
         </dl>
         <p class="built__links">
-          <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/security-model.md"
-            >Security model <span class="arrow" aria-hidden="true">→</span></a
-          >
+          <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/security-model.md">Security model <span class="arrow" aria-hidden="true">→</span></a>
         </p>
       </section>
 
@@ -679,11 +679,11 @@
         </p>
         <p class="built__links">
           <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/quickstart.md">Quick start <span class="arrow" aria-hidden="true">→</span></a>
-          <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.2.2">Release notes <span class="arrow" aria-hidden="true">→</span></a>
-          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.2.2/deal-ops-inbox-demo-v0.2.2.tar.gz"
+          <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Release notes <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.3.0/deal-ops-inbox-demo-v0.3.0.tar.gz"
             >Demo package <span class="arrow" aria-hidden="true">→</span></a
           >
-          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.2.2/deal-ops-inbox-demo-v0.2.2.tar.gz.sha256"
+          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.3.0/deal-ops-inbox-demo-v0.3.0.tar.gz.sha256"
             >Package checksum <span class="arrow" aria-hidden="true">→</span></a
           >
         </p>
@@ -717,8 +717,8 @@
               <summary>How do I install it?</summary>
               <p>
                 With Docker Compose on your own server: separate containers for the app, maintenance, the database, the virus scanner and a sandboxed attachment
-                parser. The <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/quickstart.md">quick start</a> walks through it, and the demo
-                runs on your own machine with fictional data and no outbound connections.
+                parser. The <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/quickstart.md">quick start</a> walks through it, and the demo runs
+                on your own machine with fictional data and no outbound connections.
               </p>
             </details>
             <details class="faq__item" id="ifaq-mailbox">
@@ -789,8 +789,9 @@
               <summary>What does it store, and for how long?</summary>
               <p>
                 The original email, its attachments and the Case; possible KYC documents are transferred to you and then removed. All text in the database is
-                encrypted. Emails and old directory versions are deleted after the retention period you set, by a daily job; audit rows, which hold no personal
-                data, are kept. Your backups keep data for as long as your backup policy keeps them.
+                encrypted, except the last four characters of each deal&rsquo;s receiving accounts. Emails and old directory versions are deleted after the
+                retention period you set, by a daily job; audit rows, which hold no personal data, are kept. Your backups keep data for as long as your backup
+                policy keeps them.
               </p>
             </details>
           </div>
@@ -810,15 +811,15 @@
               <p>
                 The rules are compared with an independent Python implementation, and mutation checks test the tests. Fictional test emails were written by
                 independent agents that saw only the requirements: a development set, run in CI on recorded model replies, and a separate held-out set that
-                development never read, newly written for v0.2.0 and run once with a real model. The results are
+                development never read, newly written for v0.3.0 and run once with a real model. The results are
                 <a href="#trust">on this page</a> and in the release notes.
               </p>
             </details>
             <details class="faq__item" id="ifaq-ready">
               <summary>Is it ready for real mailboxes?</summary>
               <p>
-                It is version 0.2.2: only what is built and tested is described here, and the
-                <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.2.2">release notes</a> list its limits; for example, it has not been tested with
+                It is version 0.3.0: only what is built and tested is described here, and the
+                <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">release notes</a> list its limits; for example, it has not been tested with
                 real production mail volumes. Read the security model and fill in the DPIA and LIA templates before connecting a real mailbox. Report problems
                 through the <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">feedback form</a>,
                 without real investor details.
@@ -830,13 +831,16 @@
 
       <section class="cta" aria-labelledby="cta-h">
         <div class="cta__art" aria-hidden="true">
-          <video class="cta__video" data-ambient muted loop playsinline preload="none" tabindex="-1"><source src="/img/valley-loop.mp4" type="video/mp4" /></video>
+          <video class="cta__video" data-ambient muted loop playsinline preload="none" tabindex="-1">
+            <source src="/img/valley-loop.mp4" type="video/mp4" />
+          </video>
         </div>
         <h2 class="cta__title" id="cta-h" data-reveal>See it work on sample emails</h2>
         <p class="cta__body" data-reveal>Fictional deals, people and emails. Nothing to install.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="/inbox/demo/">See the demo</a>
           <a class="btn btn--quiet" href="https://github.com/vegeta-labs/trunks">View the code <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--quiet" href="/blog/every-investor-email/">Read the walkthrough <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </section>
     </main>
@@ -858,7 +862,7 @@
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.2.2">Trunks release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
           </ul>
         </div>
         <div>
@@ -866,6 +870,7 @@
           <ul>
             <li><a href="/#build">Why trust it</a></li>
             <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
           </ul>
         </div>

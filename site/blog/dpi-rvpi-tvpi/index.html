@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>DPI, RVPI and TVPI: reading the numbers on a fund statement | Vegeta</title>
+    <meta name="description" content="Three ratios split a fund's reported return into money already received and value that is still only an estimate." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="DPI, RVPI and TVPI: reading the numbers on a fund statement | Vegeta" />
+    <meta
+      property="og:description"
+      content="Three ratios split a fund's reported return into money already received and value that is still only an estimate."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/dpi-rvpi-tvpi/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/dpi-rvpi-tvpi-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DPI, RVPI and TVPI: reading the numbers on a fund statement" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DPI, RVPI and TVPI: reading the numbers on a fund statement | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Three ratios split a fund's reported return into money already received and value that is still only an estimate."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/blog/edu/dpi-rvpi-tvpi-share.jpg" />
+    <meta name="twitter:image:alt" content="DPI, RVPI and TVPI: reading the numbers on a fund statement" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/dpi-rvpi-tvpi/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/operations/">Operations</a></p>
+            <h1 class="article__title">DPI, RVPI and TVPI: reading the numbers on a fund statement</h1>
+            <p class="article__lede">Three ratios split a fund's reported return into money already received and value that is still only an estimate.</p>
+            <p class="article__date">Updated 7 November 2026</p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-ambient
+              muted
+              loop
+              playsinline
+              preload="none"
+              width="904"
+              height="946"
+              tabindex="-1"
+              poster="/media/blog/edu/dpi-rvpi-tvpi.webp"
+              aria-label="In a warehouse a small pile of real metal bars stands beside a much bigger stack that is only a painted cut-out on a wooden prop, and the green checker peers round behind it. Cash received is real; the rest is an estimate."
+            >
+              <source src="/media/blog/edu/dpi-rvpi-tvpi.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </header>
+        <p>
+          Piccolo commits £500,000 to a venture fund. Six years later his statement shows £300,000 paid in, £90,000 distributed, and a £360,000 share of the
+          fund&#39;s net asset value. Is he doing well? The statement can give him three ratios, and each answers a different question.
+        </p>
+        <h2>The three ratios</h2>
+        <p>
+          All three use the same denominator: what the investor has actually paid in.
+          <a href="https://ilpa.org/wp-content/uploads/2016/09/ILPA-Best-Practices-Quarterly-Reporting-Standards_Version-1.1.pdf"
+            >ILPA&#39;s reporting standards</a
+          >
+          report each against paid-in capital, and its
+          <a href="https://ilpa.org/wp-content/uploads/2025/04/ILPA-Performance-Template-Definitions-Granular-Methodology-v1.1.pdf">performance template</a>
+          divides net TVPI by capital contributed, so the £200,000 Piccolo has committed but not yet paid does not count.
+        </p>
+        <div class="article__table">
+          <table>
+            <thead>
+              <tr>
+                <th>Ratio</th>
+                <th>Question it answers</th>
+                <th>Piccolo&#39;s figures</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DPI (distributions to paid-in)</td>
+                <td>How much has come back?</td>
+                <td>£90,000 ÷ £300,000</td>
+                <td>0.30x</td>
+              </tr>
+              <tr>
+                <td>RVPI (residual value to paid-in)</td>
+                <td>How much is still in there, on paper?</td>
+                <td>£360,000 ÷ £300,000</td>
+                <td>1.20x</td>
+              </tr>
+              <tr>
+                <td>TVPI (total value to paid-in)</td>
+                <td>What is the total?</td>
+                <td>£450,000 ÷ £300,000</td>
+                <td>1.50x</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>DPI plus RVPI equals TVPI, as long as they share a date and a basis. If they do not add up on a statement, ask why.</p>
+        <p>
+          So Piccolo&#39;s 1.50x is mostly opinion for now: 0.30x is history and 1.20x is a valuation. That does not make the valuation wrong, but the two parts
+          deserve different levels of trust.
+        </p>
+        <h2>What moves each number</h2>
+        <p>
+          Suppose a portfolio company raises a round at a higher price and the fund marks up its holding, adding £150,000 to Piccolo&#39;s share. RVPI rises to
+          1.70x and TVPI to 2.00x. DPI stays at 0.30x, and no money has moved.
+        </p>
+        <p>
+          If the markets turn and his share is written down to £150,000 instead, RVPI falls to 0.50x and TVPI to 0.80x. Again DPI is untouched. Once money has
+          been distributed and cannot be called back, it stays counted.
+        </p>
+        <p>
+          That is why TVPI can fall and DPI cannot, unless more capital is paid in. A further <a href="/blog/committing-to-a-venture-fund/">capital call</a> of
+          £100,000 that goes straight into new investments at cost lowers DPI to 0.225x, and pulls RVPI and TVPI towards 1.0x, even though nothing good or bad
+          has happened. Young funds calling capital show this effect all the time.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/dpi-rvpi-tvpi-1.webp"
+            aria-label="A markup and a write-down change the residual value and the total, not the money already back. What a new mark moves. RVPI: Marked up 1.70x, Written down 0.50x. TVPI: Marked up 2.00x, Written down 0.80x. DPI: Marked up Unchanged, Written down Unchanged."
+          >
+            <source src="/media/blog/edu/dpi-rvpi-tvpi-1.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>What counts as a distribution</h2>
+        <p>A distribution is not always cash in the bank, and DPI does not always measure profit.</p>
+        <p>
+          <a href="https://ilpa.org/wp-content/uploads/2025/04/ILPA-Performance-Template-Definitions-Granular-Methodology-v1.1.pdf"
+            >ILPA&#39;s performance template</a
+          >
+          counts in-kind transactions, including stock distributions and withheld taxes, within permanent distributions. An investor who receives listed shares
+          has a DPI number and also market risk until those shares are sold.
+        </p>
+        <p>
+          The same template separates recallable distributions, which return capital that can be called again, from permanent ones. If £30,000 of Piccolo&#39;s
+          £90,000 were recallable, that money may need to go back in, so it pays to know how the fund treats it.
+        </p>
+        <p>
+          A DPI below 1.0x also means investors have not yet recovered what they paid, and even a DPI above it reflects capital returned as well as gain. It
+          tells you nothing about how the money was raised. Proceeds of a sale and proceeds of borrowing against the portfolio look the same in the ratio.
+        </p>
+        <h2>Reading the residual value</h2>
+        <p>
+          Everything in RVPI rests on the valuation, so read the valuation notes. What is each major holding marked at, and on what basis? When was the last
+          priced round? A headline company valuation is not necessarily what one class of shares is worth, because later investors may rank ahead on a sale.
+        </p>
+        <p>
+          Concentration matters as much as level. If one company makes up most of the residual value, the fund&#39;s outcome hangs on that one exit. Ask to see
+          the largest holdings as a share of net asset value.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/dpi-rvpi-tvpi-2.webp"
+            aria-label="Questions to put to the valuation notes. Questions for the valuation notes. What is each major holding marked at?. On what basis?. When was the last priced round?."
+          >
+            <source src="/media/blog/edu/dpi-rvpi-tvpi-2.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>Same words, different basis</h2>
+        <p>
+          Before comparing two funds, check the basis. Net figures are after fees, expenses and carry, which is how ILPA defines net IRR, and its net TVPI is
+          worked out for fee-paying investors. Gross figures are before them, and a gross deal multiple is a different measure again. Carry that would be due if
+          the portfolio were sold at its marks may or may not have been accrued against the residual value.
+        </p>
+        <p>
+          Age matters too. A three-year-old fund with a 0.1x DPI and a twelve-year-old fund with the same DPI are in very different positions. Compare funds of
+          similar vintage and strategy, and treat DPI in the early years as a weak signal.
+        </p>
+        <p>
+          Subscription credit lines add another wrinkle. A fund that borrows before calling capital changes the timing of its cash flows, so
+          <a href="https://ilpa.org/wp-content/uploads/2019/06/ILPA-Principles-3.0_2019.pdf">ILPA asks</a> for IRR and multiple figures both with and without
+          the facility.
+        </p>
+        <h2>Multiples ignore time</h2>
+        <p>
+          A 2x return over four years is about 18.9% a year. Over nine years it is about 8.0%. All three ratios above would look the same in both cases. IRR
+          captures timing, and it needs reading together with the multiples because a high early IRR can sit on very little money returned.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/dpi-rvpi-tvpi-3.webp"
+            aria-label="The same multiple over a shorter and a longer time. Same multiple, different years. 2x over four years: 18.9%: About this a year. 2x over nine years: 8.0%: About this a year."
+          >
+            <source src="/media/blog/edu/dpi-rvpi-tvpi-3.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2>The same ratios on a single-deal SPV</h2>
+        <p>
+          The arithmetic works for one company. Goku pays £50,000 into an SPV holding Senzu Labs. A partial
+          <a href="/blog/buying-a-stake-second-hand/">secondary sale</a> returns £20,000 to him after costs, and his remaining interest is valued at £90,000.
+          His DPI is 0.40x, his RVPI 1.80x, and his TVPI 2.20x.
+        </p>
+        <p>
+          The questions are simpler, and the risk of relying on the residual is sharper. There is one company and one valuation, with no other holdings to
+          balance it, so his TVPI depends on the current estimated value of one holding. His 0.40x, though, is already in his account.
+        </p>
+        <p>
+          An investor reading any statement should come away able to say how much has come back, how much is an estimate, who made that estimate, and how long
+          it has taken to get there.
+        </p>
+
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/public-market-equivalent/"
+            ><img src="/media/blog/edu/public-market-equivalent-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Did it beat the market? How a public market equivalent works</span
+            ></a
+          >
+          <a href="/blog/portfolio-headlines/"
+            ><img src="/media/blog/edu/portfolio-headlines-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >What a portfolio headline does not tell you</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

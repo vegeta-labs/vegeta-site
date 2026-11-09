@@ -1,0 +1,184 @@
+{
+  "goten": {
+    "before": {
+      "booked": 2300000,
+      "unbooked": 200000,
+      "pending": 1,
+      "handoffBlocked": true
+    },
+    "uncertainBefore": {
+      "status": "suggested",
+      "candidates": [
+        {
+          "name": "Piccolo",
+          "score": 0.55,
+          "reasons": [
+            "payer name matches",
+            "amount matches"
+          ]
+        }
+      ]
+    },
+    "exactMatch": {
+      "status": "auto",
+      "candidates": []
+    },
+    "duplicate": [
+      "suggested",
+      "suggested"
+    ],
+    "uncertainAfter": {
+      "status": "confirmed",
+      "candidates": []
+    },
+    "after": {
+      "booked": 2500000,
+      "unbooked": 0,
+      "pending": 0
+    },
+    "close": {
+      "rows": [
+        {
+          "name": "Son Goku",
+          "received": 1000000,
+          "fees": 30000,
+          "invested": 970000,
+          "refund": 0
+        },
+        {
+          "name": "Krillin",
+          "received": 500000,
+          "fees": 15000,
+          "invested": 485000,
+          "refund": 0
+        },
+        {
+          "name": "Piccolo",
+          "received": 200000,
+          "fees": 6000,
+          "invested": 194000,
+          "refund": 0
+        },
+        {
+          "name": "Android 18",
+          "received": 300000,
+          "fees": 9000,
+          "invested": 291000,
+          "refund": 0
+        },
+        {
+          "name": "Yamcha",
+          "received": 100000,
+          "fees": 3000,
+          "invested": 97000,
+          "refund": 0
+        },
+        {
+          "name": "Tien",
+          "received": 400000,
+          "fees": 12000,
+          "invested": 388000,
+          "refund": 0
+        }
+      ],
+      "totals": {
+        "received": 2500000,
+        "invested": 2425000,
+        "investorFees": 75000,
+        "refunds": 0,
+        "companyFees": 0,
+        "leadInvoice": 0,
+        "wire": 2425000
+      }
+    },
+    "exit": {
+      "steps": [
+        {
+          "label": "Return of capital",
+          "toInvestors": 2425000,
+          "toLead": 0
+        },
+        {
+          "label": "Preferred return (hurdle)",
+          "toInvestors": 1138121,
+          "toLead": 0
+        },
+        {
+          "label": "Lead catch-up",
+          "toInvestors": 0,
+          "toLead": 284530
+        },
+        {
+          "label": "Carried interest split",
+          "toInvestors": 4001879,
+          "toLead": 1000470
+        }
+      ],
+      "capital": 2425000,
+      "costsPaid": 150000,
+      "carry": 1285000,
+      "investorsTotal": 7565000,
+      "rows": [
+        {
+          "name": "Son Goku",
+          "capital": 970000,
+          "distribution": 3026000
+        },
+        {
+          "name": "Krillin",
+          "capital": 485000,
+          "distribution": 1513000
+        },
+        {
+          "name": "Piccolo",
+          "capital": 194000,
+          "distribution": 605200
+        },
+        {
+          "name": "Android 18",
+          "capital": 291000,
+          "distribution": 907800
+        },
+        {
+          "name": "Yamcha",
+          "capital": 97000,
+          "distribution": 302600
+        },
+        {
+          "name": "Tien",
+          "capital": 388000,
+          "distribution": 1210400
+        }
+      ]
+    }
+  },
+  "trunks": {
+    "paidInFull": "payment_received",
+    "recentPayment": "payment_wait",
+    "oldPayment": "payment_need_evidence",
+    "noPaymentDate": "payment_need_evidence",
+    "ledgerUnknown": "payment_need_evidence",
+    "noCommitment": "payment_need_reference",
+    "notEntitled": "safe_ack",
+    "riskRaised": "safe_ack",
+    "unclassified": null,
+    "risk": {
+      "plain": "medium",
+      "today": "high",
+      "urgent": "high",
+      "closeIn3": "high",
+      "closeIn4": "medium"
+    },
+    "words": [
+      "urgent",
+      "today"
+    ],
+    "bodies": {
+      "payment_received": "Dear {contact_name},\n\nWe have received {received_amount} for {deal_name} (reference {reference}). Your commitment of {cash_due} is paid in full.\n\n{deployment_name}",
+      "payment_wait": "Dear {contact_name},\n\nThank you for letting us know about your payment for {deal_name} (your payment reference {reference}). Bank transfers can take a few working days to arrive. We will check again and contact you if it has not reached us.\n\n{deployment_name}",
+      "payment_need_evidence": "Dear {contact_name},\n\nThank you for your email about your payment for {deal_name} (your payment reference {reference}). We have not been able to match it yet. Please send us the payment confirmation from your bank (MT103 or pacs.008), including the UETR, so that we can trace it.\n\n{deployment_name}",
+      "payment_need_reference": "Thank you for your email about a payment. So that we can find it, please reply with the name of the deal and the payment reference you used.\n\n{deployment_name}",
+      "safe_ack": "Thank you for your email. We have received it and will confirm next steps with you through the contact details we already hold for you.\n\n{deployment_name}"
+    }
+  }
+}

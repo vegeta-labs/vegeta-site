@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vegeta-ops.vercel.app/sitemap.xml

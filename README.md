@@ -15,4 +15,4 @@ npm run site:check      # CSP markup, links, app sentences, figures backed by re
 npm run site:preview    # http://localhost:4181 with the production headers and redirects
 ```
 
-Licence: Apache-2.0 (code). Fonts: SIL OFL 1.1 (`site/licenses/`). Artwork (`site/img/valley.webp`, `site/img/valley-loop.mp4`, `site/img/vegeta-share.jpg`) is not licensed under Apache-2.0.
+Licence: Apache-2.0 (code). Fonts: SIL OFL 1.1 (`site/licenses/`). Artwork (`site/img/valley.webp`, `site/img/valley-loop.mp4`, `site/img/vegeta-share.jpg`) and the film with its stills and captions (`site/media/`) are not licensed under Apache-2.0.

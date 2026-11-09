@@ -14,6 +14,266 @@
       "source": "/inbox/demo",
       "destination": "/inbox/demo/",
       "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/from-bank-statement-to-exit",
+      "destination": "/blog/from-bank-statement-to-exit/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/every-investor-email",
+      "destination": "/blog/every-investor-email/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-an-spv-is",
+      "destination": "/blog/what-an-spv-is/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bare-trust-nominee",
+      "destination": "/blog/bare-trust-nominee/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uk-nominee-or-delaware-lp",
+      "destination": "/blog/uk-nominee-or-delaware-lp/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tracing-spv-cash",
+      "destination": "/blog/tracing-spv-cash/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/closing-book",
+      "destination": "/blog/closing-book/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/following-one-cheque",
+      "destination": "/blog/following-one-cheque/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/carry-on-an-spv-exit",
+      "destination": "/blog/carry-on-an-spv-exit/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/five-questions-spv-investors-ask",
+      "destination": "/blog/five-questions-spv-investors-ask/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dpi-rvpi-tvpi",
+      "destination": "/blog/dpi-rvpi-tvpi/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seis-eis-through-a-syndicate",
+      "destination": "/blog/seis-eis-through-a-syndicate/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/spv-or-fund-for-investors",
+      "destination": "/blog/spv-or-fund-for-investors/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-fund-fees-really-cost",
+      "destination": "/blog/what-fund-fees-really-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/committing-to-a-venture-fund",
+      "destination": "/blog/committing-to-a-venture-fund/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ways-to-own-a-private-company",
+      "destination": "/blog/ways-to-own-a-private-company/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/before-your-first-angel-cheque",
+      "destination": "/blog/before-your-first-angel-cheque/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/angel-investing-with-a-day-job",
+      "destination": "/blog/angel-investing-with-a-day-job/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-an-early-stage-cheque-buys",
+      "destination": "/blog/what-an-early-stage-cheque-buys/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/late-stage-price-to-proceeds",
+      "destination": "/blog/late-stage-price-to-proceeds/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/buying-a-stake-second-hand",
+      "destination": "/blog/buying-a-stake-second-hand/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/from-ipo-to-distribution",
+      "destination": "/blog/from-ipo-to-distribution/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/public-market-equivalent",
+      "destination": "/blog/public-market-equivalent/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reading-a-track-record",
+      "destination": "/blog/reading-a-track-record/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/portfolio-headlines",
+      "destination": "/blog/portfolio-headlines/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-a-fund-of-funds-works",
+      "destination": "/blog/how-a-fund-of-funds-works/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rolling-funds",
+      "destination": "/blog/rolling-funds/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/independent-sponsor-deals",
+      "destination": "/blog/independent-sponsor-deals/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fund-or-deal-by-deal-economics",
+      "destination": "/blog/fund-or-deal-by-deal-economics/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/one-person-investment-firm",
+      "destination": "/blog/one-person-investment-firm/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/first-fund-first-close",
+      "destination": "/blog/first-fund-first-close/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-big-must-a-winner-be",
+      "destination": "/blog/how-big-must-a-winner-be/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/follow-on-reserves",
+      "destination": "/blog/follow-on-reserves/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/investment-thesis",
+      "destination": "/blog/investment-thesis/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/deal-sourcing-log",
+      "destination": "/blog/deal-sourcing-log/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/scout-agreement",
+      "destination": "/blog/scout-agreement/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/assessing-founders",
+      "destination": "/blog/assessing-founders/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/network-effects-test",
+      "destination": "/blog/network-effects-test/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/accelerator-backed-rounds",
+      "destination": "/blog/accelerator-backed-rounds/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/venture-studio-spinouts",
+      "destination": "/blog/venture-studio-spinouts/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/science-claim-diligence",
+      "destination": "/blog/science-claim-diligence/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bridge-round-spv",
+      "destination": "/blog/bridge-round-spv/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/testing-a-fund-administrator",
+      "destination": "/blog/testing-a-fund-administrator/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/syndicate-lead-fca-permission",
+      "destination": "/blog/syndicate-lead-fca-permission/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/professional-client-explained",
+      "destination": "/blog/professional-client-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uk-carried-interest-tax",
+      "destination": "/blog/uk-carried-interest-tax/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nsi-act-and-spvs",
+      "destination": "/blog/nsi-act-and-spvs/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/operations",
+      "destination": "/blog/operations/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/investors",
+      "destination": "/blog/investors/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/leads",
+      "destination": "/blog/leads/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uk-rules",
+      "destination": "/blog/uk-rules/",
+      "permanent": true
     }
   ],
   "headers": [

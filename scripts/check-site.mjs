@@ -1,5 +1,5 @@
 // Project website checks (docs/en/SITE_HANDBOOK.md §6, §8; plan 13 §8.1 K1–K11). Exits 1 on any failure.
-// Pages: / (the Deal Ops overview), /toolkit/ and /inbox/; /inbox/demo/ is the Inbox's own demo package, checked against its lock.
+// Pages: / (the Deal Ops overview), /toolkit/, /inbox/ and the blog (plan 22); /inbox/demo/ is the Inbox's own demo package, checked against its lock.
 // - CSP rules in every page: one external script (/site.js), no inline script, no style attribute, no <style>, no inline events
 // - every local file a page or the stylesheet refers to exists; every anchor, on the page or on another page, has a target;
 //   links go only to the site's own pages, the Toolkit app, the two public repos, the GitHub organisation and the feedback form
@@ -16,9 +16,11 @@
 // - seven step illustrations match their pinned sample data; obsolete clips are rejected
 // - the headers file carries the expected CSP
 import { checkIllustrations, illustrationPattern } from './check-illustrations.mjs'
+import { computeExample, INPUT as EXAMPLE_INPUT } from './blog-example.mjs'
+import { digest, labelsIn } from './education-digest.mjs'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, relative } from 'node:path'
 import { gzipSync } from 'node:zlib'
@@ -62,7 +64,22 @@ const problems = []
 const fail = (msg) => problems.push(msg)
 const read = (f) => readFileSync(f, 'utf8')
 const css = read(join(SITE, 'styles.css'))
-const PAGES = { '/': 'index.html', '/toolkit/': 'toolkit/index.html', '/inbox/': 'inbox/index.html' }
+const BLOG_LIST = '/blog/'
+const BLOG_GOTEN = '/blog/from-bank-statement-to-exit/'
+const EDUCATION = JSON.parse(read('site-src/education.json'))
+const EDU_URLS = EDUCATION.articles.map((a) => `/blog/${a.slug}/`)
+// the education articles cite primary and authoritative sources: only these hosts, over https
+const EDU_SOURCES =
+  /^https:\/\/(www\.legislation\.gov\.uk|www\.gov\.uk|handbook\.fca\.org\.uk|api-handbook\.fca\.org\.uk|www\.fca\.org\.uk|ilpa\.org|www\.investor\.gov|www\.sec\.gov|www\.nber\.org|conference\.nber\.org|www\.ycombinator\.com|www\.law\.cornell\.edu|delcode\.delaware\.gov|rodneywhitecenter\.wharton\.upenn\.edu|nvca\.org|www\.prarulebook\.co\.uk|www\.irs\.gov|www\.fscs\.org\.uk|www\.cambridgeassociates\.com|econpapers\.repec\.org|ideas\.repec\.org|www\.theaic\.co\.uk|www\.privateequityvaluation\.com|www\.nasa\.gov|www\.jstor\.org|www\.bakerdonelson\.com|www\.angelcapitalassociation\.org|media\.mcguirewoods\.com|eprints\.lse\.ac\.uk|academic\.oup\.com)\//
+const BLOG_TOPICS = EDUCATION.categories.map((c) => `/blog/${c.anchor}/`)
+const BLOG_TRUNKS = '/blog/every-investor-email/'
+const BLOGS = [BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS]
+const PAGES = {
+  '/': 'index.html',
+  '/toolkit/': 'toolkit/index.html',
+  '/inbox/': 'inbox/index.html',
+  ...Object.fromEntries(BLOGS.map((url) => [url, url.slice(1) + 'index.html'])),
+}
 const html = Object.fromEntries(Object.entries(PAGES).map(([url, f]) => [url, read(join(SITE, f))]))
 const plain = (h) =>
   h
@@ -106,9 +123,9 @@ const fractionFigure = (label) => {
 }
 const inboxTrust = {
   high: fractionFigure('High-risk emails rated high'),
-  malicious: fractionFigure('Emails annotated as malicious bank-detail changes or look-alike senders rated high'),
+  malicious: fractionFigure('Malicious bank-detail changes or look-alike senders rated high'),
   injection: fractionFigure('Prompt injection does not change the judgement (vs. a clean twin)'),
-  classification: metricCell('Classification, macro F1 (¹)'),
+  classification: metricCell('Classification, macro F1'),
 }
 if (!/^0\.\d{3}$|^1\.000$/.test(inboxTrust.classification)) fail(`Inbox v${inboxVersion}: invalid classification figure`)
 const stripComments = (t) => t.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[\s;{}(),])\/\/.*$/gm, '$1')
@@ -133,6 +150,15 @@ try {
   fail(`cannot validate illustration sources: ${error.message}`)
 }
 
+// K6, K11: what no page may say
+const NO_CLAIMS = [
+  ...PRIVATE_TERMS,
+  [/\bcompliant\b|\bcompliance-ready\b/i, '"compliant"'],
+  [/saves? (you )?time/i, 'a time-saving claim'],
+  [/\bAI replies\b|\bAI-written\b/i, '"AI replies"'],
+  [/\bin design\b/i, '"in design"'],
+  [/\b(100% )?accurate\b/i, '"accurate"'],
+]
 // ---- K1, K2: every page ----
 const EXTERNAL =
   /^https:\/\/(vegeta-ops\.vercel\.app(\/|$)|deal-ops-toolkit\.vercel\.app(\/|$)|github\.com\/vegeta-labs\/(goten|trunks)(\/|$)|github\.com\/vegeta-labs$)/
@@ -159,9 +185,9 @@ for (const [url, h] of Object.entries(html)) {
     if (/=\s*(?!")/.test(tag.replace(/"[^"]*"/g, '""'))) fail(at(`an attribute value is not double-quoted: ${tag.slice(0, 60)}`))
   const ids = idsOf(h)
   for (const d of new Set(ids.filter((v, i) => ids.indexOf(v) !== i))) fail(at(`duplicate id: ${d}`))
-  for (const [, ref] of h.matchAll(/\b(?:src|href|srcset)\s*=\s*"([^"]+)"/gi)) {
+  for (const [, ref] of h.matchAll(/\b(?:src|href|srcset|poster)\s*=\s*"([^"]+)"/gi)) {
     if (/^(https?:|mailto:)/.test(ref)) {
-      if (ref !== FEEDBACK_FORM && !EXTERNAL.test(ref)) fail(at(`unexpected external link: ${ref}`))
+      if (ref !== FEEDBACK_FORM && !EXTERNAL.test(ref) && !(EDU_URLS.includes(url) && EDU_SOURCES.test(ref))) fail(at(`unexpected external link: ${ref}`))
       continue
     }
     const [path, hash] = ref.split('#')
@@ -171,7 +197,7 @@ for (const [url, h] of Object.entries(html)) {
     }
     if (!path.startsWith('/')) fail(at(`local reference ${ref} must start with / (pages live at different depths)`))
     if (path.endsWith('/')) {
-      if (!['/', '/toolkit/', '/inbox/', '/inbox/demo/'].includes(path)) fail(at(`link to an unknown page ${path}`))
+      if (!['/', '/toolkit/', '/inbox/', '/inbox/demo/', ...BLOGS].includes(path)) fail(at(`link to an unknown page ${path}`))
       if (!hash) continue
       if (path === '/inbox/demo/') {
         const id = /^case=(.+)$/.exec(hash)?.[1]
@@ -186,16 +212,7 @@ for (const [url, h] of Object.entries(html)) {
   const decoded = decodeForScan(h)
   if (/mailto:/i.test(decoded)) fail(at('page has a mailto link'))
   for (const [email] of decoded.matchAll(/[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g)) if (!email.endsWith('.example')) fail(at(`e-mail address on the page: ${email}`))
-  // K6, K11: what no page may say
-  for (const [re, what] of [
-    ...PRIVATE_TERMS,
-    [/\bcompliant\b|\bcompliance-ready\b/i, '"compliant"'],
-    [/saves? (you )?time/i, 'a time-saving claim'],
-    [/\bAI replies\b|\bAI-written\b/i, '"AI replies"'],
-    [/\bin design\b/i, '"in design"'],
-    [/\b(100% )?accurate\b/i, '"accurate"'],
-  ])
-    if (re.test(text)) fail(at(`page mentions ${what}`))
+  for (const [re, what] of NO_CLAIMS) if (re.test(text)) fail(at(`page mentions ${what}`))
 }
 if (footers.size !== 1) fail('the footer differs between pages')
 if (![...footers][0]?.includes(`<a href="${FEEDBACK_FORM}">Feedback</a>`)) fail('the footer has no Feedback link to the form')
@@ -203,12 +220,14 @@ if (![...footers][0]?.includes(`<a href="${FEEDBACK_FORM}">Feedback</a>`)) fail(
   const headers = Object.entries(html).map(([url, h]) => [url, /<header class="nav"[\s\S]*?<\/header>/.exec(h)?.[0] ?? ''])
   if (new Set(headers.map(([, h]) => h.replace(/\s+aria-current="page"/g, ''))).size !== 1) fail('the global nav differs between pages (plan 14 R1)')
   for (const [url, h] of headers) {
+    // every page of the blog marks Blog (plan 29), the other pages themselves
+    const current = BLOGS.includes(url) ? BLOG_LIST : url
     const marked = [...h.matchAll(/<a\b[^>]*>/g)].filter((m) => /\saria-current=/.test(m[0])).map((m) => /\shref="([^"]+)"/.exec(m[0])?.[1] ?? '?')
-    if (!marked.length || marked.some((m) => m !== url)) fail(`${url}: the global nav marks ${marked.join(', ') || 'nothing'} as the current page`)
+    if (!marked.length || marked.some((m) => m !== current)) fail(`${url}: the global nav marks ${marked.join(', ') || 'nothing'} as the current page`)
     // every link to this page in the nav (the bar and the phone menu) carries the mark
     // (the brand links home on every page and is not a current-page link)
     for (const [tag] of h.matchAll(/<a\b[^>]*>/g))
-      if (!/nav__brand/.test(tag) && /\shref="([^"]+)"/.exec(tag)?.[1] === url && !/\saria-current="page"/.test(tag))
+      if (!/nav__brand/.test(tag) && /\shref="([^"]+)"/.exec(tag)?.[1] === current && !/\saria-current="page"/.test(tag))
         fail(`${url}: a nav link to this page lacks aria-current`)
   }
   for (const url of ['/toolkit/', '/inbox/']) {
@@ -336,7 +355,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
         ? /measured on/
         : n === inboxVersion
           ? new RegExp(`^## v${esc(inboxVersion)}\\b`, 'm')
-          : { 121: /held-out set of 121 emails/, 5.5: /Claude Opus 5\.5/ }[n]
+          : { 126: /held-out set of 126 emails/, 5.5: /Claude Opus 5\.5/ }[n]
     if (!proof?.test(currentInboxNotes)) fail(`/inbox/ trust note: ${n} is not backed by the current Inbox release`)
   }
   // N15: the problem section quotes figures from an external report; they were checked against the report itself
@@ -456,7 +475,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   }
   // Each trust value is already parsed and validated against its current release metric above.
   const releaseFigureNumbers = new Set(Object.values(inboxTrust).flatMap((value) => value.split(' / ')))
-  const INBOX_FIGURES = { 121: /held-out set of 121 emails/, 5.5: /Claude Opus 5\.5/ }
+  const INBOX_FIGURES = { 126: /held-out set of 126 emails/, 5.5: /Claude Opus 5\.5/ }
   for (const [n] of figures(html['/inbox/'])) {
     if (numbering.includes(n) || names[n]) continue
     if (['£41.3m', '68%', '2025', '2026'].includes(n)) continue // the problem section's report figures, checked above
@@ -553,16 +572,405 @@ try {
 const gz = gzipSync(readFileSync(join(SITE, 'site.js'))).length
 if (gz > 6144) fail(`site/site.js is ${gz} bytes gzip, over 6 KB`)
 
-// R14: step cards are set in type; obsolete video assets must not return.
-const clips = walk(SITE).filter((f) => f.endsWith('.mp4') && relative(SITE, f) !== join('img', 'valley-loop.mp4')) // the closing section's loop
+// R14: step cards are set in type; obsolete video assets must not return. Allowed: the closing section's loop, the film, the blog's figure loops.
+const BLOG_LOOPS = ['reconciliation', 'closing', 'exit', 'inbox', 'verification']
+const ALLOWED_CLIPS = [
+  join('img', 'valley-loop.mp4'),
+  join('media', 'goten-film.mp4'),
+  join('media', 'trunks-film.mp4'),
+  ...BLOG_LOOPS.map((n) => join('media', 'blog', n + '.mp4')),
+  ...EDUCATION.articles
+    .flatMap((a) => [a.hero.film ? `${a.slug}-film` : a.slug, ...(a.figures ?? []).map((_, i) => `${a.slug}-${i + 1}`)])
+    .map((n) => join('media', 'blog', 'edu', n + '.mp4')),
+]
+const clips = walk(SITE).filter((f) => f.endsWith('.mp4') && !ALLOWED_CLIPS.includes(relative(SITE, f)))
 if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relative(SITE, f)).join(', '))
+
+// ---- Plan 26: the education articles. Each has its own figure; the media match their reviewed manifest; the pages stay plain pages. ----
+{
+  const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
+  const dir = join(SITE, 'media', 'blog', 'edu')
+  const { files: manifest, specs } = JSON.parse(read('site-src/education-figures.json'))
+  const pages = JSON.parse(read('site-src/education-pages.json'))
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const topicPage = (a) => html[`/blog/${EDUCATION.categories.find((c) => c.id === a.category).anchor}/`].replace(/\s+/g, ' ')
+  const figuresOf = (a) => (a.figures ?? []).map((_, i) => `${a.slug}-${i + 1}`)
+  const want = EDUCATION.articles
+    .flatMap((a) => [
+      `${a.slug}.webp`,
+      `${a.slug}-card.webp`,
+      `${a.slug}-share.jpg`,
+      ...(a.hero.film ? [`${a.slug}-film.mp4`, `${a.slug}-film.vtt`] : [`${a.slug}.mp4`]),
+      ...figuresOf(a).flatMap((n) => [`${n}.webp`, `${n}.mp4`]),
+    ])
+    .sort()
+  const have = existsSync(dir) ? readdirSync(dir).sort() : []
+  if (JSON.stringify(have) !== JSON.stringify(want)) fail('education: site/media/blog/edu does not match the articles')
+  if (JSON.stringify(Object.keys(manifest).sort()) !== JSON.stringify(want)) fail('education: the figure manifest does not match the articles')
+  for (const f of have) {
+    if (manifest[f] !== sha(join(dir, f))) fail(`education: ${f} changed after its review`)
+    if (f.endsWith('.mp4') && statSync(join(dir, f)).size > (f.endsWith('-film.mp4') ? 7.5e6 : 1.5e6)) fail(`education: ${f} is too large`)
+    if (f.endsWith('.vtt') && (!read(join(dir, f)).startsWith('WEBVTT\n') || (read(join(dir, f)).match(/ --> /g) ?? []).length < 3))
+      fail(`education: ${f} is not a WebVTT file with captions`)
+    if (f.endsWith('-film.mp4')) {
+      const start = readFileSync(join(dir, f)).subarray(0, 200000).toString('latin1')
+      if (start.slice(4, 8) !== 'ftyp' || !start.includes('moov') || !start.includes('soun') || !start.includes('vide'))
+        fail(`education: ${f} is not a film with picture and sound`)
+    }
+  }
+  if (new Set(EDUCATION.articles.map((a) => a.hero.art)).size !== EDUCATION.articles.length) fail('education: two articles share a scene')
+  for (const a of EDUCATION.articles) {
+    const url = `/blog/${a.slug}/`
+    const page = html[url].replace(/<!--[\s\S]*?-->/g, '').replace(/\s+/g, ' ')
+    const want = pages[a.slug]
+    if (!want) {
+      fail(`${url}: not in site-src/education-pages.json`)
+      continue
+    }
+    const body = /<article class="article">([\s\S]*)<\/article>/.exec(page)?.[1] ?? ''
+    if (/mailto:|@/.test(body)) fail(`${url}: no email address in the article`)
+    if (digest(html[url]) !== want.digest) fail(`${url}: the article text changed after its review`)
+    if (JSON.stringify(labelsIn(html[url])) !== JSON.stringify(want.labels)) fail(`${url}: a figure's description changed after its review`)
+    if (
+      specs[a.slug] !==
+      createHash('sha256')
+        .update(JSON.stringify({ hero: a.hero, figures: a.figures ?? [] }))
+        .digest('hex')
+    )
+      fail(`${url}: the figures were not rendered from the current specification`)
+    const figure = `<figure class="article__media"> ?<video data-ambient muted loop playsinline preload="none" width="904" height="946" tabindex="-1" poster="/media/blog/edu/${a.slug}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${a.slug}\\.mp4" type="video/mp4" ?/> ?</video> ?</figure>`
+    const film = `<figure class="article__media"> ?<video data-film controls playsinline preload="none" width="864" height="1080" poster="/media/blog/edu/${a.slug}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${a.slug}-film\\.mp4" type="video/mp4" ?/> ?<track kind="captions" src="/media/blog/edu/${a.slug}-film\\.vtt" srclang="en" label="English" ?/> ?</video> ?</figure>`
+    if (!new RegExp(a.hero.film ? film : figure).test(body)) fail(`${url}: its figure is missing or broken`)
+    for (const n of figuresOf(a)) {
+      const inner = `<figure class="article__media article__media--wide"> ?<video data-ambient muted loop playsinline preload="none" width="904" height="702" tabindex="-1" poster="/media/blog/edu/${n}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${n}\\.mp4" type="video/mp4" ?/> ?</video> ?</figure>`
+      if (!new RegExp(inner).test(body)) fail(`${url}: figure ${n} is missing or broken`)
+    }
+    if (
+      !body.includes(`<p class="article__date"> Updated ${EDUCATION.updated} </p>`) &&
+      !body.includes(`<p class="article__date">Updated ${EDUCATION.updated}</p>`)
+    )
+      fail(`${url}: no update date`)
+    if (!new RegExp(`<h1 class="article__title"> ?${escapeRe(want.title)} ?</h1>`).test(body)) fail(`${url}: the heading changed`)
+    if (!new RegExp(`<p class="article__lede"> ?${escapeRe(want.summary)} ?</p>`).test(body)) fail(`${url}: the summary changed`)
+    if (!page.includes(`<title>${want.title} | Vegeta</title>`)) fail(`${url}: the title differs from the heading`)
+    if (!page.includes(`<meta name="description" content="${want.summary}" />`)) fail(`${url}: the description differs from the summary`)
+    const card = `<a href="${url}" ?> ?<img src="/media/blog/edu/${a.slug}-card\\.webp"[^>]*> ?<h3> ?${escapeRe(want.title)} ?</h3> ?<p> ?${escapeRe(want.summary)} ?</p> ?</a ?>`
+    if (!new RegExp(card).test(topicPage(a))) fail(`${a.slug}: its card on the topic page is wrong`)
+    const blogCards = html[BLOG_LIST].replace(/\s+/g, ' ')
+    const onBlog =
+      EDUCATION.start.includes(a.slug) ||
+      EDUCATION.articles
+        .filter((o) => o.category === a.category)
+        .slice(0, 6)
+        .includes(a)
+    if (
+      onBlog &&
+      !new RegExp(card.replace('<img src=', '(?:<span class="blogcards__film" ?> ?)?<img src=').replace('> ?<h3>', '> ?(?:</span ?> ?)?<h3>')).test(blogCards)
+    )
+      fail(`/blog/: the card for ${a.slug} is wrong`)
+    if (!page.includes(`<meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/${a.slug}-share.jpg" />`))
+      fail(`${url}: not its own share picture`)
+    const next = [...(/<nav class="article__next"[\s\S]*?<\/nav>/.exec(body)?.[0] ?? '').matchAll(/href="([^"]+)"/g)].map((m) => m[1])
+    if (
+      JSON.stringify(next) !== JSON.stringify((a.next ?? []).map((s) => `/blog/${s}/`)) ||
+      new Set(next).size !== 2 ||
+      next.includes(url) ||
+      next.some((u) => !EDU_URLS.includes(u))
+    )
+      fail(`${url}: keep-reading links are not the two chosen articles`)
+    if (!page.includes(`<link rel="canonical" href="https://vegeta-ops.vercel.app${url}" />`)) fail(`${url}: canonical URL`)
+  }
+}
+
+// ---- Plan 22: the blog. The worked examples are recomputed with the pinned code; every number readers see is listed. ----
+{
+  const gbp = (pence) => '£' + (pence / 100).toLocaleString('en-GB')
+  const gbp2 = (pence) => '£' + (pence / 100).toLocaleString('en-GB', { minimumFractionDigits: 2 })
+  const stored = JSON.parse(read('site-src/blog-example.json'))
+  const example = computeExample(TOOLKIT, INBOX)
+  if (JSON.stringify(stored) !== JSON.stringify(example))
+    fail('blog: site-src/blog-example.json is not what the pinned code computes (node scripts/blog-example.mjs --write)')
+  const { goten: g } = example
+
+  // every figure file is bound to this example and these releases
+  const manifest = JSON.parse(read('site-src/blog-figures.json'))
+  const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
+  if (manifest.example !== sha('site-src/blog-example.json')) fail('blog: the figures were rendered from a different example (scripts/render-blog-figures.py)')
+  if (manifest.toolkitRef !== read('toolkit.ref').trim() || manifest.inboxRef !== read('inbox.ref').trim())
+    fail('blog: the figures were rendered at other releases')
+  const figureDir = join(SITE, 'media', 'blog')
+  const figureFiles = readdirSync(figureDir)
+    .filter((f) => f !== 'edu')
+    .sort()
+  if (JSON.stringify(figureFiles) !== JSON.stringify(Object.keys(manifest.files).sort())) fail('blog: site/media/blog does not match the figure manifest')
+  for (const f of figureFiles) {
+    if (manifest.files[f] !== sha(join(figureDir, f))) fail(`blog: ${f} changed after its review`)
+    if (f.endsWith('.mp4') && statSync(join(figureDir, f)).size > 1.5e6) fail(`blog: ${f} is over 1.5 MB`)
+  }
+
+  const article = (url, { title, summary, film, numbers, figures, phrases }) => {
+    const page = html[url]
+    const body = /<article class="article">([\s\S]*)<\/article>/.exec(page)?.[1] ?? ''
+    if (!body) fail(`${url}: no article`)
+    const text = plain(body).replace(/\s+/g, ' ')
+    const metaOf = (key) => new RegExp(`<meta\\s+(?:name|property)="${key}"\\s+content="([^"]*)"`).exec(page)?.[1]
+    const unquote = (v) => plain(v ?? '')
+    if (unquote(/<title>([^<]*)<\/title>/.exec(page)?.[1]) !== `${title} | Vegeta`) fail(`${url}: <title> changed`)
+    for (const key of ['og:title', 'twitter:title']) if (unquote(metaOf(key)) !== `${title} | Vegeta`) fail(`${url}: ${key} differs from the title`)
+    for (const key of ['description', 'og:description', 'twitter:description'])
+      if (unquote(metaOf(key)) !== summary) fail(`${url}: ${key} differs from the summary`)
+    for (const key of ['og:image:alt', 'twitter:image:alt']) if (metaOf(key) !== title) fail(`${url}: ${key} is not the article's title`)
+    for (const phrase of phrases) if (!text.includes(phrase)) fail(`${url}: "${phrase}" missing`)
+    if (/mailto:|@/.test(body)) fail(`${url}: no email address in the article`)
+    // figures: exact descriptions, built from the example where they carry its figures
+    const seenFigures = [...body.matchAll(/\/media\/blog\/([a-z]+)\.(?:webp|mp4)/g)].map((m) => m[1])
+    for (const [name, description] of Object.entries(figures)) {
+      if (!seenFigures.includes(name)) fail(`${url}: figure ${name} missing`)
+      const tag = new RegExp(`<(?:img|video)\\b[^>]*/media/blog/${name}\\.webp[^>]*>`).exec(body)?.[0] ?? ''
+      const said = /\b(?:alt|aria-label)="([^"]*)"/.exec(tag)?.[1]
+      if (plain(said ?? '') !== description) fail(`${url}: the description of ${name} does not match its figures`)
+      const loop = BLOG_LOOPS.includes(name)
+      if (loop !== /<video\b/.test(tag)) fail(`${url}: ${name} is the wrong kind of figure`)
+      if (loop && !new RegExp(`<video\\b[^>]*/media/blog/${name}\\.webp[^>]*>\\s*<source src="/media/blog/${name}\\.mp4"`).test(body))
+        fail(`${url}: ${name} plays another figure's loop`)
+      if (
+        loop &&
+        (!/\bdata-ambient\b/.test(tag) || !/\bmuted\b/.test(tag) || !/preload="none"/.test(tag) || /\bautoplay\b/.test(tag) || /\bcontrols\b/.test(tag))
+      )
+        fail(`${url}: ${name} must be a muted figure loop that loads when visible`)
+    }
+    // the film: plays when asked, from its own part, with captions
+    const video = /<video\b[^>]*\bdata-film\b[^>]*>/.exec(body)?.[0] ?? ''
+    if (!/\bcontrols\b/.test(video) || !/preload="none"/.test(video) || /\bautoplay\b/.test(video))
+      fail(`${url}: the film must have controls, preload none, no autoplay`)
+    if (!/\baria-label="[^"]+"/.test(video)) fail(`${url}: the film has no accessible name`)
+    if (!video.includes(`poster="/media/${film}-film-poster.jpg"`)) fail(`${url}: the film has the wrong poster`)
+    if (!body.includes(`<source src="/media/${film}-film.mp4" type="video/mp4"`)) fail(`${url}: the article plays the wrong film`)
+    if (!body.includes(`<track kind="captions" src="/media/${film}-film.vtt"`)) fail(`${url}: the film has no captions`)
+    // what readers see is held to the same lists
+    const seen = [
+      text,
+      /<title>([^<]*)<\/title>/.exec(page)?.[1] ?? '',
+      ...[...body.matchAll(/\b(?:alt|aria-label)="([^"]*)"/g)].map((m) => m[1]),
+      ...['description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'].map((key) => metaOf(key) ?? ''),
+    ].join(' \n ')
+    const allowed = new Set([...numbers, '7', '2026']) // the update date
+    for (const [n] of seen.matchAll(/\d[\d,.]*\d|\d/g)) if (!allowed.has(n)) fail(`${url}: number ${n} is not on the checked list`)
+    for (const re of [
+      /you.re invited/i,
+      /\bscreenshots?\b/i,
+      /will you join/i,
+      /more modules/i,
+      /calls that matter/i,
+      /money is gone/i,
+      /\bcustomers?\b/i,
+      /\bfaster\b/i,
+      /\d+\s?x\b/i,
+      /saves? hours/i,
+      /time saved/i,
+      /\bdesigned\b/i,
+      /\bAI\b/,
+    ])
+      if (re.test(seen)) fail(`${url}: says ${re}`)
+    for (const [re, what] of NO_CLAIMS) if (re.test(seen)) fail(`${url}: mentions ${what} in its text, metadata or figure descriptions`)
+    return text
+  }
+
+  // Goten: one uncertain receipt, carried through
+  const candidate = g.uncertainBefore.candidates[0]
+  if (g.uncertainBefore.candidates.length !== 1 || candidate.name !== 'Piccolo')
+    fail(`blog: Goten no longer suggests only Piccolo: ${JSON.stringify(g.uncertainBefore.candidates)}`)
+  if (g.exactMatch.status !== 'auto' || g.uncertainBefore.status !== 'suggested' || g.uncertainAfter.status !== 'confirmed' || !g.before.handoffBlocked)
+    fail('blog: the Goten example no longer shows an exact match, a suggestion and a confirmation')
+  const row = (name) => g.close.rows.find((r) => r.name === name)
+  const x = EXAMPLE_INPUT.exit
+  const stepNames = ['Return of capital', 'Preferred return (hurdle)', 'Lead catch-up', 'Carried interest split, 80 / 20']
+  if (g.duplicate.includes('auto')) fail('blog: Goten now books a suspected duplicate automatically')
+  if (g.exit.capital !== g.close.totals.invested) fail('blog: exit capital is not the amount invested')
+  if (x.proceeds !== x.exitCosts + g.exit.investorsTotal + g.exit.carry) fail('blog: the exit does not add up')
+  const gotenText = article(BLOG_GOTEN, {
+    title: 'The money work on an SPV, ready for a person to check',
+    summary:
+      'Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides.',
+    film: 'goten',
+    numbers:
+      '001 0.55 2,000 23,000 25,000 3 10,000 300 9,700 60 1,940 750 24,250 90,000 1,500 1,500.00 20 8 24,250.00 11,381.21 2,845.30 40,018.79 10,004.70 75,650.00 12,850.00 80 6,052'.split(
+        ' ',
+      ),
+    figures: {
+      reconciliation: `Goten reconciliation. S GOKU is matched to Son Goku by the reference SEN-001. PICCOLO has no reference, is suggested as Piccolo with a score of ${candidate.score.toFixed(2)} because the payer name and amount match, and is confirmed by a person.`,
+      closing: `Goten closing allocation for six investors: ${gbp(g.close.totals.received)} cash received, ${gbp(g.close.totals.investorFees)} investor fees, ${gbp(g.close.totals.wire)} to wire to the company.`,
+      wrong: 'By hand: a missing reference, a payment made twice, a fee on the wrong base, carry taken before capital.',
+      gets: 'Goten, ready to check: ledger, chase emails, closing confirmation, exit split and activity log.',
+      person: 'A person still decides uncertain payments, sends every message, gets every consent and makes every wire and refund.',
+      exit: `Goten exit distribution: return of capital, preferred return, lead catch-up and carry split, totalling ${gbp2(g.exit.investorsTotal)} to investors and ${gbp2(g.exit.carry)} to the lead.`,
+    },
+    phrases: [
+      `Six investors owe ${gbp(g.after.booked)} between them`,
+      'Goten has no connection to your bank',
+      'the payment reference of exactly one investor',
+      'A suspected duplicate would still wait for a person',
+      `PICCOLO, ${gbp(row('Piccolo').received)}, with no reference`,
+      `Goten suggests Piccolo with a score of ${candidate.score.toFixed(2)}`,
+      'the payer name matches and the amount matches',
+      `${gbp(g.before.booked)} is booked, ${gbp(g.before.unbooked)} is unbooked, and the reconciliation cannot be carried to the close until someone decides`,
+      `Now ${gbp(g.after.booked)} is booked and nothing is left over`,
+      'which Goten does not run',
+      `With a ${EXAMPLE_INPUT.feeBps / 100}% investor fee deducted from each payment`,
+      `Goku's ${gbp(row('Son Goku').received)} becomes ${gbp(row('Son Goku').fees)} in fees and ${gbp(row('Son Goku').invested)} invested`,
+      `Piccolo's confirmed ${gbp(row('Piccolo').received)} becomes ${gbp(row('Piccolo').fees)} and ${gbp(row('Piccolo').invested)}`,
+      `${gbp(g.close.totals.investorFees)} in fees and ${gbp(g.close.totals.invested)} invested, and ${gbp(g.close.totals.wire)} is the amount to wire`,
+      'Goten moves no money',
+      'If a blocking check fails',
+      `brings in ${gbp(x.proceeds)}, five years on, with ${gbp(x.exitCosts)} of costs, ${x.carry.k / 100}% carry, an ${x.carry.h / 100}% a year compounding hurdle and full catch-up`,
+      `Costs of ${gbp2(x.exitCosts)} are paid first`,
+      'a query asking a likely sender whether an unmatched payment is theirs, and a chase for an investor who is short',
+      ...g.exit.steps.map((st, i) => [stepNames[i], st.toInvestors ? gbp2(st.toInvestors) : '', st.toLead ? gbp2(st.toLead) : ''].filter(Boolean).join(' ')),
+      `Total ${gbp2(g.exit.investorsTotal)} ${gbp2(g.exit.carry)}`,
+      `Piccolo's ${gbp(row('Piccolo').invested)} comes back as ${gbp(g.exit.rows.find((r) => r.name === 'Piccolo').distribution)}`,
+      'one investment and one exit, with the same terms for every investor',
+      'Your deal data is processed in your browser and never sent by this app',
+    ],
+  })
+  if (/fictional/i.test(gotenText)) fail(`${BLOG_GOTEN}: says fictional`)
+
+  // Trunks: every figure and quoted reply is held to the release notes and the default templates at inbox.ref
+  const templates = read(join(INBOX, 'config/default/templates.yaml'))
+  for (const words of [
+    'is paid in full',
+    'Bank transfers can take a few working days to arrive',
+    'please reply with the name of the deal and the payment reference',
+  ])
+    if (!templates.includes(words)) fail(`blog: the Trunks templates no longer say: ${words}`)
+  if (!/^\s*\| Malicious bank-detail changes or look-alike senders rated high \|[^|]*\|\s*100% \(18\/18\)\s*\|/m.test(currentInboxNotes))
+    fail('blog: 18 of 18 is not in the Trunks release notes')
+  if (!/^\s*\| Contact, commitment and deal linked correctly \|[^|]*\|\s*[\d.]+% \(123\/125\)\s*\|/m.test(currentInboxNotes))
+    fail('blog: 123 of 125 is not in the Trunks release notes')
+  if (!/held-out set of 126 emails/.test(currentInboxNotes)) fail('blog: 126 is not in the Trunks release notes')
+  if (!/in both blind sets the qualifying samples were pacs\.008/.test(currentInboxNotes))
+    fail('blog: the pacs.008 coverage note is not in the Trunks release notes')
+  if (!read(join(INBOX, 'docs/en/security-model.md')).includes('default 24 hours')) fail('blog: 24 hours is not the Trunks default')
+  article(BLOG_TRUNKS, {
+    title: 'Every investor email, ready for a person',
+    summary:
+      'Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.',
+    film: 'trunks',
+    numbers: `10,000.00 001 20,000.00 005 24 126 5.5 18 123 125 103 008 9 ${inboxVersion}`.split(' '),
+    figures: {
+      inbox: 'Trunks inbox with four investor emails. The first, Did my payment arrive? from Son Goku, is selected.',
+      reply:
+        'Trunks reply to Son Goku, from the ledger: We have received GBP 10,000.00 for Senzu Labs (reference SEN-001). Your commitment of GBP 10,000.00 is paid in full. Approved, with a button to copy the text.',
+      verification:
+        'Trunks verification for a change of bank account, rated high risk with a look-alike domain: call the number on file, cooling-off of 24 hours by default, then approval by a second person, still waiting.',
+      evidence:
+        "Trunks payment confirmation from Yamcha: GBP 20,000.00, reference SEN-005, with its value date and UETR. Not in your ledger yet: the sender's confirmation, not proof of receipt.",
+    },
+    phrases: [
+      'Trunks connects to the mailbox read-only',
+      'the model can never lower it',
+      'Trunks never sends email',
+      'Only your imported ledger can show a payment as received',
+      'printed PDF',
+      'A valid message whose beneficiary account is not on the list goes to high risk',
+      '24 hours by default',
+      'It has no connection to your bank and cannot stop a payment',
+      'Nothing stops someone closing a case with its task open',
+      'a taken-over mailbox would pass',
+      'One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read',
+      `measured on v${inboxMeasuredVersion}`,
+      'rated high in 18 of 18',
+      'linked correctly in 123 of 125',
+      'were all pacs.008',
+      `Trunks v${inboxVersion} runs on your own server with Docker`,
+    ],
+  })
+
+  // the list page links to exactly the published articles
+  const listBody = /<main\b[\s\S]*<\/main>/.exec(html[BLOG_LIST])?.[0] ?? ''
+  const listed = [...listBody.matchAll(/<li[^>]*>\s*<a href="([^"]+)"/g)].map((m) => m[1]).join(' ')
+  const hrefOf = (a) => `/blog/${a.slug}/`
+  const bySlug = (s) => EDUCATION.articles.find((a) => a.slug === s)
+  const wanted = [
+    ...EDUCATION.start.map(bySlug),
+    ...EDUCATION.categories.flatMap((c) => EDUCATION.articles.filter((a) => a.category === c.id).slice(0, 6)),
+  ].map(hrefOf)
+  if (listed !== wanted.join(' ')) fail(`${BLOG_LIST}: links to ${listed}`)
+  for (const c of EDUCATION.categories) {
+    const url = `/blog/${c.anchor}/`
+    const links = [...(/<main\b[\s\S]*<\/main>/.exec(html[url])?.[0] ?? '').matchAll(/<li[^>]*>\s*<a href="([^"]+)"/g)].map((m) => m[1]).join(' ')
+    if (
+      links !==
+      EDUCATION.articles
+        .filter((a) => a.category === c.id)
+        .map(hrefOf)
+        .join(' ')
+    )
+      fail(`${url}: links to ${links}`)
+    if (!new RegExp(`<a href="${url}" aria-current="page"`).test(html[url])) fail(`${url}: its topic is not marked current`)
+  }
+  // both files are generated, so they must be exactly this text: a page missing, a foreign address or a Disallow all fail
+  const SITE_URL = 'https://vegeta-ops.vercel.app'
+  const sitemapPages = ['/', '/toolkit/', '/inbox/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS]
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>\n`
+  if (!existsSync(join(SITE, 'sitemap.xml')) || read(join(SITE, 'sitemap.xml')) !== sitemap) fail('sitemap.xml is not exactly the list of pages')
+  if (!existsSync(join(SITE, 'robots.txt')) || read(join(SITE, 'robots.txt')) !== `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`)
+    fail('robots.txt is not the expected file')
+  if (JSON.stringify([...sitemapPages].sort()) !== JSON.stringify(Object.keys(html).sort())) fail('the sitemap list and the checked pages differ')
+  const feat = EDUCATION.featured
+  const flatList = listBody.replace(/\s+/g, ' ')
+  const featured = `<a class="blogfeature" href="${feat.href}" ?> ?<img src="${feat.card}"[^>]*> ?<span ?> ?<small ?>${feat.tag}</small ?> ?<strong ?>${feat.title} ?</strong ?> ?<em ?> ?${feat.summary} ?</em ?> ?</span ?> ?</a ?>`
+  if (feat.href !== BLOG_GOTEN || !new RegExp(featured).test(flatList)) fail(`${BLOG_LIST}: the featured article is wrong`)
+  if (!html[BLOG_GOTEN].replace(/\s+/g, ' ').includes(`<p class="article__date">Updated ${EDUCATION.updated}</p>`)) fail(`${BLOG_GOTEN}: no update date`)
+  for (const [url, picture] of [
+    [BLOG_GOTEN, 'goten-share.jpg'],
+    [BLOG_TRUNKS, 'trunks-share.jpg'],
+  ])
+    if (
+      !html[url].includes(`<meta property="og:image" content="https://vegeta-ops.vercel.app/media/${picture}" />`) ||
+      !existsSync(join(SITE, 'media', picture))
+    )
+      fail(`${url}: not its own share picture`)
+  if (!(html['/'].match(/<a href="\/blog\/">Blog<\/a>/g) ?? []).length) fail('/: the footer has no Blog link')
+
+  // the films and their captions: real files, in order, inside the film, placed clear of the film's own text, and scanned like a page.
+  // Every block is read, so a malformed one fails instead of dropping out of the count. line:3% is the top of the picture: the film's text sits low
+  if (existsSync(join(SITE, 'media', 'vegeta-film.mp4'))) fail('blog: the whole film is not on the site (plan 22)')
+  for (const [film, seconds, count] of [
+    ['goten', 36, 9],
+    ['trunks', 40, 15],
+  ]) {
+    if (statSync(join(SITE, 'media', `${film}-film.mp4`)).size > 8e6) fail(`blog: the ${film} film is over 8 MB`)
+    const vtt = read(join(SITE, 'media', `${film}-film.vtt`))
+    if (!vtt.startsWith('WEBVTT\n')) fail(`blog: the ${film} captions are not a WebVTT file`)
+    const blocks = vtt
+      .trim()
+      .split(/\n\s*\n/)
+      .slice(1)
+    if (blocks.length !== count) fail(`blog: ${blocks.length} ${film} captions, expected ${count}`)
+    let last = 0
+    blocks.forEach((block, i) => {
+      const [number, timing, ...words] = block.split('\n')
+      const m = /^(\d\d):([0-5]\d):([0-5]\d)\.(\d{3}) --> (\d\d):([0-5]\d):([0-5]\d)\.(\d{3}) line:3%$/.exec(timing ?? '')
+      if (number !== String(i + 1) || !m || !words.join('').trim()) {
+        fail(`blog: ${film} caption ${i + 1} is malformed: ${timing}`)
+        return
+      }
+      const from = +m[1] * 3600 + +m[2] * 60 + +m[3] + +m[4] / 1000
+      const to = +m[5] * 3600 + +m[6] * 60 + +m[7] + +m[8] / 1000
+      if (from < last || to <= from || to > seconds) fail(`blog: ${film} caption times out of order at ${timing}`)
+      last = to
+    })
+    for (const [re, what] of PRIVATE_TERMS) if (re.test(vtt)) fail(`blog: ${film} captions mention ${what}`)
+    if (/invited|calls that matter/i.test(vtt)) fail(`blog: ${film} captions carry the film's ending`)
+  }
+}
 
 // headers (K9: one rule for the whole site, unchanged)
 const vercel = JSON.parse(read(join(SITE, 'vercel.json')))
 if (vercel.headers.length !== 1 || vercel.headers[0].source !== '/(.*)') fail('vercel.json: expected one header rule for the whole site')
 const csp = vercel.headers[0].headers.find((h) => h.key === 'Content-Security-Policy')?.value ?? ''
 // the demo uses relative paths: /inbox/demo without the slash must redirect, or its files would resolve one level up
-for (const r of ['/toolkit', '/inbox', '/inbox/demo'])
+for (const r of ['/toolkit', '/inbox', '/inbox/demo', ...BLOGS.map((url) => url.slice(0, -1))])
   if (!(vercel.redirects ?? []).some((x) => x.source === r && x.destination === r + '/')) fail(`vercel.json: no redirect from ${r} to ${r}/`)
 const CSP =
   "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"

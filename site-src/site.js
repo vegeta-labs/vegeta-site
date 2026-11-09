@@ -26,28 +26,104 @@ document.addEventListener('DOMContentLoaded', () => {
   menuClose()
   subnavShow()
   ambientVideo()
+  onceVideo()
+  film()
 })
 
-/** The closing section's water and trees: plays only while on screen and not under reduced motion; the still underneath is the same picture. */
+/** The blog's film: Chromium ignores a click on the picture while nothing is loaded (preload="none"), so start it here. Its own controls do the rest. */
+function film() {
+  const video = document.querySelector('[data-film]')
+  if (!video) return
+  video.addEventListener('click', () => {
+    if (video.readyState !== 0 || !video.paused) return
+    const started = video.play()
+    if (started) started.catch(() => {})
+  })
+}
+
+/** Looping scenery and the blog's figures: each plays only while on screen and not under reduced motion; the still underneath is the same picture. */
+/** Blog figures that tell one short story: they wait on their first frame until the part that changes is in view, play once and stop on
+    the result. With reduced motion, no script or a failed video the poster stays: the complete result. */
+function onceVideo() {
+  if (!('IntersectionObserver' in window)) return
+  document.querySelectorAll('[data-once]').forEach((video) => {
+    const complete = video.getAttribute('poster')
+    let failed = false
+    let inView = false
+    let started = false
+    const showPoster = (src) => {
+      video.setAttribute('poster', src)
+      video.load()
+      started = false
+    }
+    const setUp = () => {
+      if (failed) return
+      showPoster(moving() ? video.dataset.start : complete)
+    }
+    const giveUp = () => {
+      failed = true
+      showPoster(complete)
+    }
+    const update = () => {
+      if (failed || !moving() || !started || video.ended) return
+      if (inView && !document.hidden) {
+        const playing = video.play()
+        if (playing) playing.catch((e) => e.name === 'AbortError' || giveUp())
+      } else video.pause()
+    }
+    video.addEventListener('error', giveUp)
+    video.querySelector('source')?.addEventListener('error', giveUp)
+    new IntersectionObserver(
+      ([e]) => {
+        inView = e.isIntersecting
+        // the story is in the window at the bottom, so most of the figure has to be on screen; a short screen cannot show that much
+        const needed = Math.min(0.8, (0.8 * innerHeight) / e.boundingClientRect.height)
+        if (inView && !started && moving() && e.intersectionRatio >= needed) started = true
+        if (!inView && started) setUp()
+        update()
+      },
+      { threshold: Array.from({ length: 21 }, (_, i) => i / 20) },
+    ).observe(video)
+    document.addEventListener('visibilitychange', update)
+    onMotionChange(setUp)
+    setUp()
+  })
+}
+
 function ambientVideo() {
-  const video = document.querySelector('[data-ambient]')
-  if (!video || !('IntersectionObserver' in window)) return
-  let seen = false
-  const update = () => {
-    if (seen && moving() && !document.hidden) {
-      const started = video.play()
-      if (started) started.catch(() => {})
-    } else video.pause()
-  }
-  video.addEventListener('playing', () => video.classList.add('is-on'))
-  new IntersectionObserver(([e]) => {
-    seen = e.isIntersecting
-    update()
-  }).observe(video)
-  document.addEventListener('visibilitychange', update)
-  onMotionChange(() => {
-    if (!moving()) video.classList.remove('is-on')
-    update()
+  if (!('IntersectionObserver' in window)) return
+  document.querySelectorAll('[data-ambient]:not([data-once])').forEach((video) => {
+    let seen = false
+    let failed = false
+    // if it cannot play, the complete still stays and nothing tries again
+    const giveUp = () => {
+      failed = true
+      video.classList.remove('is-on')
+      if (video.hasAttribute('poster')) video.load()
+    }
+    const update = () => {
+      if (failed) return
+      if (seen && moving() && !document.hidden) {
+        const started = video.play()
+        if (started) started.catch((e) => e.name === 'AbortError' || giveUp())
+      } else video.pause()
+    }
+    video.addEventListener('playing', () => video.classList.add('is-on'))
+    video.addEventListener('error', giveUp)
+    video.querySelector('source')?.addEventListener('error', giveUp)
+    new IntersectionObserver(([e]) => {
+      seen = e.isIntersecting
+      update()
+    }).observe(video)
+    document.addEventListener('visibilitychange', update)
+    onMotionChange(() => {
+      if (!moving()) {
+        video.classList.remove('is-on')
+        // a figure goes back to its complete still rather than stopping on a partial frame
+        if (video.hasAttribute('poster')) video.load()
+      }
+      update()
+    })
   })
 }
 
