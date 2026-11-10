@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Prepare and import your CSV files | Vegeta</title>
+    <meta
+      name="description"
+      content="Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prepare and import your CSV files | Vegeta" />
+    <meta
+      property="og:description"
+      content="Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/import-csv/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prepare and import your CSV files | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/import-csv/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/" aria-current="page">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/" aria-current="page">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Prepare and import your CSV files</h1>
+          <div class="docs__body">
+            <p>Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Where you import it</th>
+                    <th>Use it when</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Investor list</td>
+                    <td><strong>1. Reconciliation</strong>, section Investors</td>
+                    <td>You start a deal. This is who should pay, and how much.</td>
+                  </tr>
+                  <tr>
+                    <td>Bank statement</td>
+                    <td><strong>1. Reconciliation</strong>, section Bank statement</td>
+                    <td>You have receipts to match. Import again as more arrive.</td>
+                  </tr>
+                  <tr>
+                    <td>Allocation investors</td>
+                    <td><strong>2. Allocation</strong>, section Investors</td>
+                    <td>You skip reconciliation and already know what each investor paid.</td>
+                  </tr>
+                  <tr>
+                    <td>Holdings</td>
+                    <td><strong>3. Exit distribution</strong>, section Holdings</td>
+                    <td>You skip the allocation and already know what each investor invested.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Column names are not case-sensitive. Each column also accepts other common names; the full list is in the
+              <a href="/docs/goten/build/csv-reference/">CSV reference</a>.
+            </p>
+            <h2 id="before-you-import">Before you import<a class="docs__anchor" href="#before-you-import" aria-label="Link to this section">#</a></h2>
+            <p>Open <strong>Deal settings</strong> and fill in the deal first:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Field</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Deal name</strong></td>
+                    <td>Goes into messages and the closing confirmation.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Currency</strong></td>
+                    <td>GBP, EUR or USD. Every amount in the deal is in this currency, and imports are checked against it.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>As-of date (YYYY-MM-DD or DD/MM/YYYY)</strong></td>
+                    <td>Bank lines dated after this are not counted. Today, unless you change it.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Minimum commitment</strong> (blank = none)</td>
+                    <td>Anyone below it is refunded in full.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Flag unmatched receipts after (days)</strong></td>
+                    <td>Receipts unmatched for longer than this get a reminder. 1 to 365; blank means 10.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Your initials</strong> (optional)</td>
+                    <td>Added to each activity log entry. Up to 10 letters, digits, spaces, dots or hyphens.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Investor percentage fees</strong></td>
+                    <td>
+                      <strong>Deducted from the money wired (default)</strong> or <strong>Added on top of the investment</strong>. See
+                      <a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              If you change <strong>Currency</strong> when the deal already has amounts, Goten asks first. Nothing is converted: the same numbers are recorded
+              in the new currency.
+            </p>
+            <h2 id="prepare-the-files">Prepare the files<a class="docs__anchor" href="#prepare-the-files" aria-label="Link to this section">#</a></h2>
+            <p>Save from your spreadsheet as CSV, UTF-8. The first line must be the column names.</p>
+            <p>
+              <strong>Amounts</strong> can be 1234.56 or 1,234.56, with up to two decimals and optionally the deal&#39;s currency symbol. Commas must group in
+              threes.
+            </p>
+            <p>
+              <strong>Dates</strong> must be YYYY-MM-DD or DD/MM/YYYY. Goten reads 06/10/2026 as 6 October. A date in month-first order that happens to be valid
+              will be read wrongly, so check your bank&#39;s export.
+            </p>
+            <p><strong>Tax scheme</strong> is none, SEIS or EIS, in any case. Blank means none.</p>
+            <p>Blank rows are skipped. Columns Goten does not know are ignored and named in the import message.</p>
+            <h3 id="investor-list">Investor list<a class="docs__anchor" href="#investor-list" aria-label="Link to this section">#</a></h3>
+            <p>Required columns are in bold.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>investor_id</td>
+                    <td>
+                      Your ID for the investor. Filled in for you if blank, with a new ID at every import. Keep your own IDs if you may import the list again.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>name</strong></td>
+                    <td>The investor&#39;s name.</td>
+                  </tr>
+                  <tr>
+                    <td>email</td>
+                    <td>Used in the chase list. Must be a valid address if given.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>reference</strong></td>
+                    <td>
+                      The payment reference you give the investor. 1 to 3 parts of English letters and digits, separated by a space or one of - / _ . and 3 to
+                      20 letters and digits in total. Must be different for each investor.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>cash_due</strong></td>
+                    <td>Everything the investor should wire, <strong>including any fees charged to them</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td>scheme</td>
+                    <td>none, SEIS or EIS.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Example, shown as a sheet:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>investor_id</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>reference</th>
+                    <th>cash_due</th>
+                    <th>scheme</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>c01</td>
+                    <td>Amelia Hart</td>
+                    <td>amelia@hart.example</td>
+                    <td>NW-001</td>
+                    <td>10,000.00</td>
+                    <td>SEIS</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>Ben Okafor</td>
+                    <td>ben@okafor.example</td>
+                    <td>NW-002</td>
+                    <td>5000</td>
+                    <td>EIS</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Do not use a column called committed or commitment for cash due: it could mean with or without fees, so Goten refuses it unless a cash_due column
+              is also present.
+            </p>
+            <h3 id="bank-statement">Bank statement<a class="docs__anchor" href="#bank-statement" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>transaction_id</td>
+                    <td>The bank&#39;s ID for the line. Include it if you can: it is what stops duplicates on append.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>date</strong></td>
+                    <td>The date of the line.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>amount</strong></td>
+                    <td>Money in is positive. Payments out and zero amounts are kept, skipped and listed.</td>
+                  </tr>
+                  <tr>
+                    <td>payer</td>
+                    <td>Who sent it.</td>
+                  </tr>
+                  <tr>
+                    <td>reference</td>
+                    <td>The bank reference. This is what automatic matching reads.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="allocation-investors">Allocation investors<a class="docs__anchor" href="#allocation-investors" aria-label="Link to this section">#</a></h3>
+            <p>For when you are not coming from reconciliation.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>investor_id</td>
+                    <td>Filled in for you if blank.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>name</strong></td>
+                    <td>The investor&#39;s name.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>received</strong></td>
+                    <td>The cash actually received from this investor.</td>
+                  </tr>
+                  <tr>
+                    <td>scheme</td>
+                    <td>none, SEIS or EIS.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="holdings">Holdings<a class="docs__anchor" href="#holdings" aria-label="Link to this section">#</a></h3>
+            <p>For when you are not coming from the allocation.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>investor_id</td>
+                    <td>Filled in for you if blank.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>name</strong></td>
+                    <td>The investor&#39;s name.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>capital</strong></td>
+                    <td>The amount invested, <strong>excluding fees</strong>. The split between investors follows this figure.</td>
+                  </tr>
+                  <tr>
+                    <td>share_price</td>
+                    <td>Optional, the same on every row. Only used to show shares.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A column called cost, paid or wired is refused unless a capital column is also present, because those can include fees. A holdings file exported
+              from Goten can be imported back unchanged.
+            </p>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>Open the page and section from the first table. A section folds once it has a list; click its heading to open it.</li>
+              <li>Click the import heading, such as <strong>Import investors (replaces the list)</strong>, to open it.</li>
+              <li>
+                For <strong>Import bank statement</strong>, choose under <strong>When importing</strong>:
+                <ul>
+                  <li><strong>Replace the statement (clears your decisions)</strong>, or</li>
+                  <li><strong>Append (same transaction ID and details are ignored)</strong>, for later statements.</li>
+                </ul>
+              </li>
+              <li>Either click <strong>Or choose a CSV file</strong>, or paste the text into the box and click <strong>Import pasted text</strong>.</li>
+            </ol>
+            <p>You can also type rows directly with <strong>Add investor</strong>, <strong>Add bank line</strong> and <strong>Add holding</strong>.</p>
+            <h2 id="what-you-should-see">What you should see<a class="docs__anchor" href="#what-you-should-see" aria-label="Link to this section">#</a></h2>
+            <p>
+              A green message such as <strong>Imported 4 investors. Amounts read as GBP.</strong> or
+              <strong>Replaced the statement with 5 lines. Amounts read as GBP.</strong> It also lists <strong>Ignored columns</strong> if there were any, and
+              on an append how many lines were <strong>already imported (ignored)</strong>.
+            </p>
+            <p>
+              An investor list import replaces the whole list. Decisions you made about receipts are checked against the new list; any whose investor changed
+              are set aside for review.
+            </p>
+            <p>
+              Import the list again only with the same <code>investor_id</code> values. A different or blank ID counts as a new investor, even with the same
+              name. Their confirmed decisions are set aside, and any withdrawal mark is removed, so a withdrawn investor returns to the next hand-off with their
+              money. If an import would do any of this, Goten first says how many items it would void and offers <strong>Import anyway</strong> or
+              <strong>Cancel</strong>. <strong>Cancel</strong> changes nothing.
+            </p>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <p>
+              Any error in any row means <strong>Nothing was imported</strong>. Each error gives the row number (the column headings are row 1). Fix the file
+              and import it again.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Message</th>
+                    <th>Cause and fix</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>header: missing required column &quot;reference&quot;</strong></td>
+                    <td>Rename the column, or add it. The required columns are in bold above.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>column &quot;committed&quot; is not accepted.</strong></td>
+                    <td>Use cash_due, the full cash the investor should wire.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 2, cash_due: &quot;1,23&quot; is not an amount</strong></td>
+                    <td>Commas must group in threes.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 2: has 4 cells but the header has 3 — check for unquoted commas</strong></td>
+                    <td>An amount like 1,000 needs quotes in a CSV, or no comma.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 2, reference: must be 3–20 letters and digits</strong></td>
+                    <td>The reference is too short or too long.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 3, reference: same reference as row 2</strong></td>
+                    <td>References must differ. NW-1 and nw 1 count as the same.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>column &quot;Amount Due (€)&quot; is in EUR but this deal is in GBP</strong></td>
+                    <td>A currency in a heading must match the deal. Check <strong>Currency</strong> in <strong>Deal settings</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 2, currency: &quot;EUR&quot; but this deal is in GBP</strong></td>
+                    <td>A currency column must match the deal, or be blank.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 2, cash_due: &quot;€100&quot; uses € but this deal is in GBP</strong></td>
+                    <td>Remove the symbol or change the deal&#39;s currency.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 3, date: &quot;32/10/2026&quot; is not a real date</strong></td>
+                    <td>Correct the date.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>&quot;A1&quot; already exists with different details — import conflict</strong></td>
+                    <td>The same transaction ID came through twice with different data. Check which one is right.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>row 3, share_price: must be the same on every row</strong></td>
+                    <td>One deal has one share price.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>If the deal is too big, Goten says so: up to 500 investors, 2,000 bank lines and 500 holdings per deal.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

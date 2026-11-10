@@ -1,5 +1,6 @@
 // Project website checks (docs/en/SITE_HANDBOOK.md §6, §8; plan 13 §8.1 K1–K11). Exits 1 on any failure.
-// Pages: / (the Deal Ops overview), /toolkit/, /inbox/ and the blog (plan 22); /inbox/demo/ is the Inbox's own demo package, checked against its lock.
+// Pages: / (the Deal Ops overview), /toolkit/, /inbox/, the blog (plan 22) and /docs/ (plan 30); /inbox/demo/ is the Inbox's own demo
+// package, checked against its lock.
 // - CSP rules in every page: one external script (/site.js), no inline script, no style attribute, no <style>, no inline events
 // - every local file a page or the stylesheet refers to exists; every anchor, on the page or on another page, has a target;
 //   links go only to the site's own pages, the Toolkit app, the two public repos, the GitHub organisation and the feedback form
@@ -18,6 +19,7 @@
 import { checkIllustrations, illustrationPattern } from './check-illustrations.mjs'
 import { computeExample, INPUT as EXAMPLE_INPUT } from './blog-example.mjs'
 import { digest, labelsIn } from './education-digest.mjs'
+import { renderDocs } from './build-docs.mjs'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs'
@@ -74,11 +76,21 @@ const EDU_SOURCES =
 const BLOG_TOPICS = EDUCATION.categories.map((c) => `/blog/${c.anchor}/`)
 const BLOG_TRUNKS = '/blog/every-investor-email/'
 const BLOGS = [BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS]
+// /docs/ (plan 30): the index and every sidebar item with a route in site-src/docs.json
+const DOCS_SPEC = JSON.parse(read('site-src/docs.json'))
+const DOCS_ITEMS = DOCS_SPEC.products.flatMap((p) => p.groups.flatMap((g) => g.items.filter((i) => i.route).map((i) => ({ ...i, product: p }))))
+const DOCS = ['/docs/', ...DOCS_ITEMS.map((i) => i.route)]
+for (const url of DOCS)
+  if (!/^\/docs\/([a-z0-9-]+\/)*$/.test(url) || !existsSync(join(SITE, url, 'index.html'))) {
+    console.error(`site check: docs page ${url} is not built (npm run docs:fetch && node scripts/build-docs.mjs)`)
+    process.exit(1)
+  }
+if (new Set(DOCS).size !== DOCS.length) fail('docs.json: two items share a route')
 const PAGES = {
   '/': 'index.html',
   '/toolkit/': 'toolkit/index.html',
   '/inbox/': 'inbox/index.html',
-  ...Object.fromEntries(BLOGS.map((url) => [url, url.slice(1) + 'index.html'])),
+  ...Object.fromEntries([...BLOGS, ...DOCS].map((url) => [url, url.slice(1) + 'index.html'])),
 }
 const html = Object.fromEntries(Object.entries(PAGES).map(([url, f]) => [url, read(join(SITE, f))]))
 const plain = (h) =>
@@ -197,7 +209,7 @@ for (const [url, h] of Object.entries(html)) {
     }
     if (!path.startsWith('/')) fail(at(`local reference ${ref} must start with / (pages live at different depths)`))
     if (path.endsWith('/')) {
-      if (!['/', '/toolkit/', '/inbox/', '/inbox/demo/', ...BLOGS].includes(path)) fail(at(`link to an unknown page ${path}`))
+      if (!['/', '/toolkit/', '/inbox/', '/inbox/demo/', ...BLOGS, ...DOCS].includes(path)) fail(at(`link to an unknown page ${path}`))
       if (!hash) continue
       if (path === '/inbox/demo/') {
         const id = /^case=(.+)$/.exec(hash)?.[1]
@@ -220,8 +232,8 @@ if (![...footers][0]?.includes(`<a href="${FEEDBACK_FORM}">Feedback</a>`)) fail(
   const headers = Object.entries(html).map(([url, h]) => [url, /<header class="nav"[\s\S]*?<\/header>/.exec(h)?.[0] ?? ''])
   if (new Set(headers.map(([, h]) => h.replace(/\s+aria-current="page"/g, ''))).size !== 1) fail('the global nav differs between pages (plan 14 R1)')
   for (const [url, h] of headers) {
-    // every page of the blog marks Blog (plan 29), the other pages themselves
-    const current = BLOGS.includes(url) ? BLOG_LIST : url
+    // every page of the blog marks Blog (plan 29), every docs page Docs (plan 30), the other pages themselves
+    const current = BLOGS.includes(url) ? BLOG_LIST : DOCS.includes(url) ? '/docs/' : url
     const marked = [...h.matchAll(/<a\b[^>]*>/g)].filter((m) => /\saria-current=/.test(m[0])).map((m) => /\shref="([^"]+)"/.exec(m[0])?.[1] ?? '?')
     if (!marked.length || marked.some((m) => m !== current)) fail(`${url}: the global nav marks ${marked.join(', ') || 'nothing'} as the current page`)
     // every link to this page in the nav (the bar and the phone menu) carries the mark
@@ -237,8 +249,73 @@ if (![...footers][0]?.includes(`<a href="${FEEDBACK_FORM}">Feedback</a>`)) fail(
   }
   if (/data-subnav/.test(html['/'])) fail('/: the overview has no sub-nav')
 }
-const fromCss = [...css.matchAll(/url\(['"]?([^'")]+)['"]?\)/g)].map((m) => m[1]).filter((u) => !/^(data:|#)/.test(u))
-for (const f of fromCss) if (!existsSync(join(SITE, f))) fail(`styles.css: missing file ${f}`)
+for (const sheet of ['styles.css', 'docs.css']) {
+  const fromCss = [...read(join(SITE, sheet)).matchAll(/url\(['"]?([^'")]+)['"]?\)/g)].map((m) => m[1]).filter((u) => !/^(data:|#)/.test(u))
+  for (const f of fromCss) if (!existsSync(join(SITE, f))) fail(`${sheet}: missing file ${f}`)
+}
+
+// ---- Plan 30: /docs/. Every page in docs.json is built from its product's public repo at the docs pin, says that version, and
+// lists the same sidebar; only docs pages load docs.css; source links on GitHub point at the pinned commit. ----
+{
+  const sheet = '<link rel="stylesheet" href="/docs.css" />'
+  for (const [url, h] of Object.entries(html)) if (h.includes(sheet) !== DOCS.includes(url)) fail(`${url}: docs.css on the wrong pages`)
+  for (const p of DOCS_SPEC.products) {
+    const items = p.groups.flatMap((g) => g.items)
+    if (!items.some((i) => i.route)) continue
+    if (!/^https:\/\/github\.com\/vegeta-labs\/[a-z-]+$/.test(p.source?.repo ?? '') || !/^[0-9a-f]{40}$/.test(p.source?.ref ?? ''))
+      fail(`docs.json: ${p.name} needs a public repo and a full commit id`)
+    const sidebar = items.map((i) => (i.route ? `<a href="${i.route}"` : `<span>${esc(i.title)}</span>`))
+    for (const i of items.filter((x) => x.route)) {
+      const h = html[i.route]
+      if (!h.includes(`<p class="docs__version">${p.name} ${p.version}</p>`)) fail(`${i.route}: does not say ${p.name} ${p.version}`)
+      const side = /<nav class="docs__side"[\s\S]*?<\/nav>/.exec(h)?.[0] ?? ''
+      if (sidebar.some((s) => !side.includes(s)) || (side.match(/<li>/g) ?? []).length !== items.length)
+        fail(`${i.route}: the sidebar is not the docs.json list`)
+      if (!new RegExp(`<a href="${esc(i.route)}" aria-current="page">`).test(side)) fail(`${i.route}: the sidebar does not mark this page`)
+      for (const [, ref] of h.matchAll(/href="(https:\/\/github\.com\/vegeta-labs\/[a-z-]+\/blob\/[^"/]+)\//g))
+        if (/<main\b[\s\S]*<\/main>/.exec(h)[0].includes(ref) && ref !== `${p.source.repo}/blob/${p.source.ref}`)
+          fail(`${i.route}: a source link not at the docs pin: ${ref}`)
+    }
+  }
+  // the committed pages are what the shared renderer makes from the public repo at the pin (npm run docs:fetch). Prettier
+  // only re-indents, so both sides are compared with whitespace normalised: runs collapse, none next to a tag edge.
+  let docsBuilt = true
+  for (const p of DOCS_SPEC.products) {
+    if (!p.groups.some((g) => g.items.some((i) => i.route))) continue
+    const dir = join('vendor/docs', p.id)
+    if (!existsSync(join(dir, '.git')) || git(dir, 'rev-parse', 'HEAD') !== p.source?.ref || git(dir, 'status', '--porcelain')) {
+      fail(`${dir} is not a clean checkout of the docs pin ${String(p.source?.ref).slice(0, 7)} (run npm run docs:fetch)`)
+      docsBuilt = false
+      continue
+    }
+    const notes = existsSync(join(dir, 'docs/RELEASE_NOTES.md')) ? read(join(dir, 'docs/RELEASE_NOTES.md')) : ''
+    if (!new RegExp(`^## ${esc(p.version)} `, 'm').test(notes)) {
+      fail(`docs: ${p.name} ${p.version} is not in docs/RELEASE_NOTES.md at the docs pin`)
+      docsBuilt = false
+    }
+  }
+  if (docsBuilt) {
+    const flat = (h) =>
+      h
+        .replace(/\s+/g, ' ')
+        .replace(/ ?(<|>) ?/g, '$1')
+        .replace(/ ?\/>/g, '>')
+    try {
+      const { pages } = renderDocs()
+      if (JSON.stringify(pages.map(([r]) => r).sort()) !== JSON.stringify([...DOCS].sort())) fail('docs: the built pages are not the docs.json list')
+      for (const [route, built] of pages)
+        if (html[route] && flat(html[route]) !== flat(built)) fail(`${route}: not what scripts/build-docs.mjs makes from the docs pin`)
+    } catch (e) {
+      fail(`docs: cannot render the pages from the docs pin: ${e.message}`)
+    }
+  }
+  const index = html['/docs/']
+  for (const p of DOCS_SPEC.products) {
+    const home = p.groups.flatMap((g) => g.items).find((i) => i.route)
+    if (home ? !index.includes(`<a class="docs-card" href="${home.route}">`) : !index.includes(`<div class="docs-card docs-card--off">`))
+      fail(`/docs/: no card for ${p.name}`)
+  }
+}
 
 // app sentences, word for word (Toolkit src/config.ts, R-X-02 / R-X-03)
 const config = read(join(TOOLKIT, 'src/config.ts'))
@@ -910,7 +987,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   }
   // both files are generated, so they must be exactly this text: a page missing, a foreign address or a Disallow all fail
   const SITE_URL = 'https://vegeta-ops.vercel.app'
-  const sitemapPages = ['/', '/toolkit/', '/inbox/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS]
+  const sitemapPages = ['/', '/toolkit/', '/inbox/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS, ...DOCS]
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>\n`
   if (!existsSync(join(SITE, 'sitemap.xml')) || read(join(SITE, 'sitemap.xml')) !== sitemap) fail('sitemap.xml is not exactly the list of pages')
   if (!existsSync(join(SITE, 'robots.txt')) || read(join(SITE, 'robots.txt')) !== `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`)
@@ -970,7 +1047,7 @@ const vercel = JSON.parse(read(join(SITE, 'vercel.json')))
 if (vercel.headers.length !== 1 || vercel.headers[0].source !== '/(.*)') fail('vercel.json: expected one header rule for the whole site')
 const csp = vercel.headers[0].headers.find((h) => h.key === 'Content-Security-Policy')?.value ?? ''
 // the demo uses relative paths: /inbox/demo without the slash must redirect, or its files would resolve one level up
-for (const r of ['/toolkit', '/inbox', '/inbox/demo', ...BLOGS.map((url) => url.slice(0, -1))])
+for (const r of ['/toolkit', '/inbox', '/inbox/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])
   if (!(vercel.redirects ?? []).some((x) => x.source === r && x.destination === r + '/')) fail(`vercel.json: no redirect from ${r} to ${r}/`)
 const CSP =
   "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"

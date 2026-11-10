@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Exports, the activity log and where your data is stored | Vegeta</title>
+    <meta
+      name="description"
+      content="Each button saves a CSV file to your computer. Nothing is uploaded. File names end with the deal's currency, for example ledgerGBP.csv."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Exports, the activity log and where your data is stored | Vegeta" />
+    <meta
+      property="og:description"
+      content="Each button saves a CSV file to your computer. Nothing is uploaded. File names end with the deal's currency, for example ledgerGBP.csv."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/exports-and-records/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Exports, the activity log and where your data is stored | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Each button saves a CSV file to your computer. Nothing is uploaded. File names end with the deal's currency, for example ledgerGBP.csv."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/exports-and-records/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/" aria-current="page">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/" aria-current="page">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Exports, the activity log and where your data is stored</h1>
+          <div class="docs__body">
+            <h2 id="exports">Exports<a class="docs__anchor" href="#exports" aria-label="Link to this section">#</a></h2>
+            <p>Each button saves a CSV file to your computer. Nothing is uploaded. File names end with the deal&#39;s currency, for example ledger_GBP.csv.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Button</th>
+                    <th>Page</th>
+                    <th>File</th>
+                    <th>Contents</th>
+                    <th>Waits while</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Export ledger CSV</strong></td>
+                    <td>1. Reconciliation</td>
+                    <td>ledger</td>
+                    <td>One row per bank line, its status, who it is booked to, who decided.</td>
+                    <td>There are input errors.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Export chase list CSV</strong></td>
+                    <td>1. Reconciliation</td>
+                    <td>chase_list</td>
+                    <td>Each investor who is short or unpaid, with the chase text.</td>
+                    <td>There are input errors.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Export allocation CSV</strong></td>
+                    <td>2. Allocation</td>
+                    <td>allocation</td>
+                    <td>One row per investor: invested, shares, each fee, refund, status.</td>
+                    <td>There are input errors or blockers, or a refund is flagged.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Export holdings CSV</strong></td>
+                    <td>3. Exit distribution</td>
+                    <td>holdings</td>
+                    <td>Each holding. It can be imported again unchanged.</td>
+                    <td>The holdings table itself has an error.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Export distribution CSV</strong></td>
+                    <td>3. Exit distribution</td>
+                    <td>distribution</td>
+                    <td>One row per investor: distribution, profit, multiple.</td>
+                    <td>There are input errors or a shortfall.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Export activity log CSV</strong></td>
+                    <td>Activity log</td>
+                    <td>activity_log</td>
+                    <td>Every log entry, oldest first.</td>
+                    <td>The log is empty.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>Copy closing confirmation</strong> copies the summary for the lead, and waits for the same things as the allocation export.</p>
+            <p>
+              <strong>Out of date</strong> does not hold back any of these. A page marked out of date still copies and exports its old figures, so hand off
+              again first.
+            </p>
+            <p>
+              Every export has a currency column as its last column. In text columns, a cell starting with = + - or @ is saved with a leading apostrophe, so
+              that a spreadsheet does not treat it as a formula. Goten removes the apostrophe if you import the file again.
+            </p>
+            <p>
+              Only the investor list, bank statement, allocation investors and holdings can be imported. There is no export that restores a whole deal, and
+              decisions, withdrawals, fee payer changes and the activity log cannot be imported.
+            </p>
+            <h2 id="the-activity-log">The activity log<a class="docs__anchor" href="#the-activity-log" aria-label="Link to this section">#</a></h2>
+            <p>
+              <strong>Activity log</strong> lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a
+              receipt, voided decisions, hand-offs, copied chase messages, withdrawals, fee payer changes, loading the sample, and exports of the log itself.
+              Not logged: importing allocation investors or holdings, the other five exports, <strong>Copy closing confirmation</strong>, and editing a table
+              cell, unless the edit voids a decision.
+            </p>
+            <p>Set <strong>Your initials</strong> in <strong>Deal settings</strong> to have them added to each entry.</p>
+            <p>
+              The log is read-only. It is a working record kept in this browser, not a regulatory ledger: anyone using this browser can clear it. Goten shows a
+              warning once it holds 4,000 entries. Past 5,000 entries the oldest are removed, and a truncated line shows how many went and whether they had been
+              exported. Export it regularly if you need to keep a full copy.
+            </p>
+            <p><strong>Load sample deal</strong> replaces the log with one entry for loading the sample. <strong>Clear all data</strong> empties it.</p>
+            <h2 id="where-your-data-is-stored">
+              Where your data is stored<a class="docs__anchor" href="#where-your-data-is-stored" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Your deal stays in your browser. Goten processes it there and saves it in the browser&#39;s local storage for this site, and the app sends none of
+              it anywhere. There is no account and no server holding your deals. Nothing is put in a page address. The site that hosts Goten still receives
+              normal page requests, the same as for any website.
+            </p>
+            <p>That has practical effects:</p>
+            <ul>
+              <li>The deal is only in this browser on this computer. It does not follow you to another device or browser.</li>
+              <li>Clearing your browser&#39;s site data deletes it. So does <strong>Clear all data</strong>, and that cannot be undone.</li>
+              <li>Anyone who can use this browser profile can see it. On a shared computer, clear the data when you finish.</li>
+              <li>Goten holds one deal at a time. <strong>Load sample deal</strong> replaces it, after asking if there is anything to lose.</li>
+              <li>A private window can lose the data when it closes.</li>
+            </ul>
+            <p>If the browser cannot save, Goten tells you at the top of the page:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Message</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>This browser is not saving your data (storage is blocked), so it will be gone when you close the page.</strong></td>
+                    <td>Allow site data for this site, or export what you need before closing.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>This browser&#39;s storage for this page is full, so your latest changes are not being saved.</strong></td>
+                    <td>Export what you need before you close the page. Goten removes the oldest log entries first to keep the deal data.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="real-investor-data-and-ai-tools">
+              Real investor data and AI tools<a class="docs__anchor" href="#real-investor-data-and-ai-tools" aria-label="Link to this section">#</a>
+            </h2>
+            <p>Goten keeps deal data in the browser, but that protection ends when you copy the data out.</p>
+            <p>
+              If you paste real investor names, emails, amounts or bank details into an AI chat or coding tool, or attach an export or a screenshot, that data
+              leaves your browser and goes to that provider under their terms. Goten cannot see or stop it. Check that your firm allows it first. To ask for
+              help, use the sample deal instead, or remove anything that identifies a person.
+            </p>
+            <p>The same goes for the <strong>Send feedback</strong> link in the footer: please do not send real investor information.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

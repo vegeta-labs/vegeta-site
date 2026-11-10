@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Exit distribution | Vegeta</title>
+    <meta
+      name="description"
+      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Exit distribution | Vegeta" />
+    <meta
+      property="og:description"
+      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Exit distribution | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/" aria-current="page">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/" aria-current="page">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Exit distribution</h1>
+          <div class="docs__body">
+            <p>
+              The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with
+              the same terms for every investor.
+            </p>
+            <h2 id="the-terms-in-plain-words">
+              The terms, in plain words<a class="docs__anchor" href="#the-terms-in-plain-words" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li><strong>Exit proceeds</strong> are the money received for the sale.</li>
+              <li><strong>Exit costs</strong> are paid first, before anyone else.</li>
+              <li><strong>Carry</strong> is the lead&#39;s share of the profit, after investors have their money back.</li>
+              <li>A <strong>hurdle</strong> is a minimum yearly return investors must receive, compounding, before the lead earns any carry.</li>
+              <li>
+                <strong>Catch-up</strong> is a band of profit after the hurdle of which the lead receives the catch-up percentage you set, until the lead has
+                its full carry share.
+              </li>
+              <li><strong>Tiered carry</strong> rises in steps with the return multiple. Each rate applies only to the profit inside its band.</li>
+            </ul>
+            <p>There is a <strong>?</strong> next to these terms on the page, and a <strong>Glossary</strong> in the footer.</p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                Holdings: hand them off from <a href="/docs/goten/use/closing-allocation/">Closing allocation</a>, or import them (see
+                <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>). Each holding is the amount invested, excluding fees.
+              </li>
+              <li>The proceeds, costs and years held.</li>
+              <li>Your carry terms.</li>
+            </ul>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>Open <strong>3. Exit distribution</strong>.</li>
+              <li>Check <strong>Holdings</strong>. It folds once it has a list; click the heading to open it.</li>
+              <li>
+                Under <strong>Exit</strong>, enter <strong>Exit proceeds</strong>, <strong>Exit costs</strong> (blank means none) and
+                <strong>Years held</strong> (0 to 50, up to two decimals).
+              </li>
+              <li>
+                Under <strong>Carry</strong>, choose one of:
+                <ul>
+                  <li>
+                    <strong>Fixed rate, with an optional hurdle and catch-up</strong>: enter <strong>Carry %</strong> (required),
+                    <strong>Hurdle % a year, compounding</strong> and <strong>Catch-up %</strong>. A blank hurdle or catch-up means none. Catch-up needs a
+                    hurdle and must be above the carry rate.
+                  </li>
+                  <li>
+                    <strong>Tiered by return multiple (no hurdle or catch-up)</strong>: enter a rate for the last tier, then click <strong>Add tier</strong> for
+                    each extra band. A new band is added above the last one, so the last tier always has no ceiling. <strong>Up to multiple</strong> is measured
+                    before carry and after exit costs.
+                  </li>
+                </ul>
+              </li>
+              <li>Read <strong>Result</strong> and <strong>Checks</strong>, then click <strong>Export distribution CSV</strong>.</li>
+            </ol>
+            <p>Switching between the two carry types clears the carry fields, so enter them again.</p>
+            <h2 id="what-you-should-see">What you should see<a class="docs__anchor" href="#what-you-should-see" aria-label="Link to this section">#</a></h2>
+            <p>
+              For the sample deal, with £390,000 proceeds, £4,500 costs, 6 years, 20% carry, an 8% hurdle and 100% catch-up,
+              <strong>Step by step</strong> shows:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Step</th>
+                    <th>To investors</th>
+                    <th>To the lead</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Exit costs</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>Return of capital</td>
+                    <td>£100,395.00</td>
+                    <td>£0.00</td>
+                  </tr>
+                  <tr>
+                    <td>Preferred return (hurdle)</td>
+                    <td>£58,919.25</td>
+                    <td>£0.00</td>
+                  </tr>
+                  <tr>
+                    <td>Lead catch-up</td>
+                    <td>£0.00</td>
+                    <td>£14,729.81</td>
+                  </tr>
+                  <tr>
+                    <td>Carried interest split</td>
+                    <td>£169,164.75</td>
+                    <td>£42,291.19</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>£328,479.00</td>
+                    <td>£57,021.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Carry comes to exactly 20% of the £285,105.00 profit. Each step shows why under <strong>Why</strong>.</p>
+            <p>
+              Investors share their total in proportion to the amount each invested. <strong>Per investor</strong> shows the amount invested, shares,
+              <strong>Distribution</strong>, <strong>Profit or loss</strong> and <strong>Multiple</strong>. The multiple is distribution divided by amount
+              invested and does not count entry fees.
+            </p>
+            <p>
+              If proceeds after costs are less than the amount invested, investors take a loss and there is no carry. A loss is not an error. With £80,000 of
+              proceeds in the sample, investors get £75,500.00 between them, 0.75x.
+            </p>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What it means and what to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Cannot distribute. Exit costs are more than the proceeds by …</strong></td>
+                    <td>Nothing goes to anyone, and <strong>Export distribution CSV</strong> is disabled until you resolve it. Check the two amounts.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Exit, catch-up: catch-up must be higher than the carry rate</strong></td>
+                    <td>Raise the catch-up, or leave it blank.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Exit, proceeds: required</strong> and similar</td>
+                    <td>Fill in the named fields. No result appears until they are valid.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tier 1, up to multiple: must be greater than 1</strong></td>
+                    <td>Multiples are written like 3 or 3.00x and each must be above the one before.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Out of date: the allocation has changed since these holdings were handed off.</strong></td>
+                    <td>Click <strong>Hand off again (replaces the holdings)</strong>. If the allocation has a blocker, resolve that first.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

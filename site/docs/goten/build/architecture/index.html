@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Architecture | Vegeta</title>
+    <meta
+      name="description"
+      content="Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the technical design."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Architecture | Vegeta" />
+    <meta
+      property="og:description"
+      content="Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the technical design."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/build/architecture/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Architecture | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the technical design."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/build/architecture/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/" aria-current="page">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/" aria-current="page">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Architecture</h1>
+          <div class="docs__body">
+            <p>
+              Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the
+              <a href="https://github.com/vegeta-labs/goten/blob/880409301c163efb03091920267cd9af56eba95f/docs/en/02_TECH_DESIGN.md">technical design</a>.
+            </p>
+            <h2 id="layout">Layout<a class="docs__anchor" href="#layout" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>src/
+  lib/          calculation engines: pure functions, no React
+  state.ts      app state and reducer, hand-offs, activity logging, saving
+  derive.ts     typed text → engine inputs, with error locations
+  components/   the screens and shared UI
+  tour/         the guided tour script
+  config.ts     disclaimer and privacy text, feedback link
+  glossary.ts   explanations behind the &quot;?&quot; terms
+fixtures/       sample CSV files for the importers
+scripts/
+  oracle/       independent Python implementation
+  mutation-check.mjs, check-coverage.mjs, check-e2e.mjs, check-tokens.mjs
+e2e/            Playwright tests</code></pre>
+            <h2 id="calculation-modules">Calculation modules<a class="docs__anchor" href="#calculation-modules" aria-label="Link to this section">#</a></h2>
+            <p>Everything in <code>src/lib</code> is a pure function. Components never do money maths.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Responsibility</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>money.ts</code></td>
+                    <td>
+                      Parsing of amounts, percentages, prices, dates, multiples and years. Exact arithmetic: <code>mulDiv</code>, <code>splitProRata</code>,
+                      <code>hurdleAmount</code>. Formatting.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>validate.ts</code></td>
+                    <td>Field limits and the <code>Errors</code> collector shared by engines and importers.</td>
+                  </tr>
+                  <tr>
+                    <td><code>outcome.ts</code></td>
+                    <td>The <code>Outcome</code> result type and check kinds.</td>
+                  </tr>
+                  <tr>
+                    <td><code>reconcile.ts</code></td>
+                    <td>
+                      Reference normalisation, exact and near matches, name similarity, scoring, decisions, investor status, refunds, the hand-off to
+                      allocation.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>allocation.ts</code></td>
+                    <td>Investable amounts, the minimum, scale-back, fees, the refund retry, shares, S/EIS estimates, deal-level fees and the wire.</td>
+                  </tr>
+                  <tr>
+                    <td><code>waterfall.ts</code></td>
+                    <td>Exit costs, return of capital, fixed carry with hurdle and catch-up, tiered carry, the split between investors.</td>
+                  </tr>
+                  <tr>
+                    <td><code>adjust.ts</code></td>
+                    <td>Withdrawal marks, effective cash due and fee payer change records, beside the investor list.</td>
+                  </tr>
+                  <tr>
+                    <td><code>feePayer.ts</code></td>
+                    <td>The fee payer change preview. It reuses <code>allocate</code> and searches for the minimal new cash due.</td>
+                  </tr>
+                  <tr>
+                    <td><code>csv.ts</code></td>
+                    <td>Imports with header matching and atomic validation; CSV output with formula escaping.</td>
+                  </tr>
+                  <tr>
+                    <td><code>exports.ts</code></td>
+                    <td>Every export format and the closing confirmation text.</td>
+                  </tr>
+                  <tr>
+                    <td><code>activity.ts</code></td>
+                    <td>Appending, numbering and truncating the activity log; its CSV.</td>
+                  </tr>
+                  <tr>
+                    <td><code>messages.ts</code></td>
+                    <td>The chase and payment query templates.</td>
+                  </tr>
+                  <tr>
+                    <td><code>snapshot.ts</code></td>
+                    <td>The allocation-to-holdings snapshot.</td>
+                  </tr>
+                  <tr>
+                    <td><code>deal.ts</code>, <code>sample.ts</code></td>
+                    <td>Deal settings and the built-in sample deal.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="exact-arithmetic">Exact arithmetic<a class="docs__anchor" href="#exact-arithmetic" aria-label="Link to this section">#</a></h2>
+            <p>
+              Money is integer minor units, rates are basis points, share prices are millionths of a currency unit, and multiples and years are hundredths.
+              Every multiplication and division goes through <code>mulDiv</code> on <code>BigInt</code>, and rounding happens only where a rule calls for it.
+              The compounding hurdle is exact too: whole years are rational and fractional years use a high-precision integer root. There is no floating-point
+              money anywhere.
+            </p>
+            <h2 id="data-flow">Data flow<a class="docs__anchor" href="#data-flow" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>
+                The user types or imports. <code>AppState</code> (<code>src/state.ts</code>) stores every field as text, so a bad value is reported where it was
+                typed and never becomes zero.
+              </li>
+              <li><code>derive.ts</code> parses text into engine inputs and collects errors with locations. If anything is wrong, the engine does not run.</li>
+              <li>
+                Each engine validates its own input and returns <code>{ ok: true, result, checks }</code> or <code>{ ok: false, errors, internal? }</code>.
+              </li>
+              <li>Components render the result and checks. They contain no calculations.</li>
+            </ol>
+            <p>Check kinds, defined in <code>outcome.ts</code>:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kind</th>
+                    <th>Effect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>invariant</code></td>
+                    <td>A failed check means a bug: <code>finish()</code> turns the outcome into an internal error with no figures.</td>
+                  </tr>
+                  <tr>
+                    <td><code>blocker</code></td>
+                    <td>The result is shown; export and hand-off are disabled.</td>
+                  </tr>
+                  <tr>
+                    <td><code>review</code></td>
+                    <td>The result is shown; hand-off is disabled.</td>
+                  </tr>
+                  <tr>
+                    <td><code>warning</code></td>
+                    <td>The result is shown; nothing is disabled.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="hand-offs-and-decisions">
+              Hand-offs and decisions<a class="docs__anchor" href="#hand-offs-and-decisions" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Hand-offs between modules are snapshots, not live links. Each carries the version of the data it was taken from (<code>recVersion</code>,
+              <code>allocVersion</code>). A later upstream change makes the downstream page show <strong>out of date</strong> until the user hands off again.
+            </p>
+            <p>
+              A reconciliation decision is pinned to fingerprints of the bank line and the investor (<code>lineFingerprint</code>,
+              <code>commitmentFingerprint</code>). If either changes, the decision is voided for good and the line returns to a person.
+            </p>
+            <p>
+              The investor list is never rewritten by a withdrawal or a fee payer change. Each is recorded beside it, keyed by investor ID, and decides the
+              effective cash due in <code>adjust.ts</code>.
+            </p>
+            <h2 id="persistence">Persistence<a class="docs__anchor" href="#persistence" aria-label="Link to this section">#</a></h2>
+            <p>
+              <code>saveState</code> in <code>state.ts</code> writes the whole state as JSON to <code>localStorage</code> under
+              <code>deal-ops-toolkit:v1</code>, with a schema version; the current schema is 2, and <code>parseSaved</code> shape-checks everything it reads.
+              When storage is full, the oldest activity log entries are dropped first so the deal data is kept, and the page says so. If storage is blocked or
+              full, the page says that too.
+            </p>
+            <h2 id="guided-tour">Guided tour<a class="docs__anchor" href="#guided-tour" aria-label="Link to this section">#</a></h2>
+            <p>
+              <code>src/tour/script.ts</code> is a pure script: each step reads figures from the engines and acts only through the reducer, so the tour can
+              never show or book money differently from the rest of the app. Its progress is stored separately from the deal.
+            </p>
+            <h2 id="security-and-privacy">Security and privacy<a class="docs__anchor" href="#security-and-privacy" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                The content security policy in <code>vercel.json</code> allows only the site&#39;s own scripts, styles and fonts, and sets
+                <code>connect-src &#39;none&#39;</code>. No inline scripts or styles are used.
+              </li>
+              <li>There are no analytics and no third-party requests. Fonts are self-hosted, with their licences in <code>public/licenses/</code>.</li>
+              <li>Deal data is never put in a URL.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>How the numbers work | Vegeta</title>
+    <meta name="description" content="These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How the numbers work | Vegeta" />
+    <meta property="og:description" content="These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/how-the-numbers-work/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How the numbers work | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/how-the-numbers-work/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/" aria-current="page">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/" aria-current="page">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">How the numbers work</h1>
+          <div class="docs__body">
+            <p>These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.</p>
+            <h2 id="general-rules">General rules<a class="docs__anchor" href="#general-rules" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                <strong>Money is exact.</strong> Goten holds money as whole pence and does the maths exactly, without the small errors spreadsheets can build
+                up.
+              </li>
+              <li><strong>Rounding is half-up</strong>: an exact half-penny rounds up. The exceptions below say so.</li>
+              <li>
+                <strong>Pro-rata splits add up exactly.</strong> The pennies left after rounding down go to the largest remainders; if two are equal, to the
+                person earlier in the list.
+              </li>
+            </ul>
+            <h2 id="how-receipts-are-matched">
+              How receipts are matched<a class="docs__anchor" href="#how-receipts-are-matched" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Goten removes ordinary keyboard spaces and punctuation and ignores letter case, then checks whether the bank reference contains an investor&#39;s
+              payment reference, across up to three neighbouring parts of it. Special characters, such as a long dash (–), count as part of the reference, so a
+              line using one may need matching by hand.
+            </p>
+            <p>A receipt is booked automatically only when exactly one investor matches and the line is not a possible duplicate.</p>
+            <p>For everything else, each investor gets a score between 0 and 1, built from:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Reason</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Reference matches exactly</td>
+                    <td>0.60</td>
+                  </tr>
+                  <tr>
+                    <td>Reference nearly matches</td>
+                    <td>0.25: one character different, or the same number</td>
+                  </tr>
+                  <tr>
+                    <td>Payer name matches</td>
+                    <td>Up to 0.30, by the share of name words that match</td>
+                  </tr>
+                  <tr>
+                    <td>Amount matches</td>
+                    <td>0.25: the amount equals their cash due, or what they still owe</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Only investors with a score of 0.30 or more are shown, and at most three. In the sample, Kavya Iyer&#39;s receipt with the reference NW 11 scores
+              0.80: 0.25 for a near reference, 0.30 for the payer name and 0.25 for the amount.
+            </p>
+            <p><strong>Received</strong> is the sum of the receipts booked to an investor. <strong>Difference</strong> is received minus cash due.</p>
+            <h2 id="closing-allocation">Closing allocation<a class="docs__anchor" href="#closing-allocation" aria-label="Link to this section">#</a></h2>
+            <p>
+              <strong>What an investor can invest</strong> is rounded down to the penny, from the cash they sent, any percentage fee rate and any fixed fee per
+              investor.
+            </p>
+            <ul>
+              <li><strong>Deducted from the money wired</strong>: (received − fixed fees) × (100% − fee rate).</li>
+              <li><strong>Added on top of the investment</strong>: (received − fixed fees) ÷ (100% + fee rate).</li>
+            </ul>
+            <p>In the sample, Amelia received £10,000.00 with a 3% fee deducted, so she invests £9,700.00. With the fee added on top, she invests £9,708.73.</p>
+            <p>
+              <strong>The minimum commitment</strong> is checked against cash received when fees are deducted, and against the amount invested when fees are
+              added on top. Anyone below it is out.
+            </p>
+            <p>
+              <strong>If the total is over the round cap</strong>, the cap is split between investors in proportion to what each could invest. If that puts
+              anyone below the minimum, the deal cannot close.
+            </p>
+            <p><strong>Each percentage fee</strong> is worked out on its own and rounded half-up.</p>
+            <ul>
+              <li>Deducted: amount invested × fee rate ÷ (100% − total fee rate).</li>
+              <li>On top: amount invested × fee rate.</li>
+            </ul>
+            <p>
+              <strong>The refund</strong> is received − invested − fees. If separate rounding of several fees would make it negative, the investment drops by a
+              penny at a time until it is not. An investor who ends up investing nothing is out.
+            </p>
+            <p>Anyone out pays no fees and gets everything back.</p>
+            <p>
+              <strong>Shares</strong> are the amount invested ÷ share price, cut off at 6 decimal places. This is for display only. Amelia&#39;s £9,700.00 at
+              £2.4137 is 4018.726436 shares.
+            </p>
+            <p>
+              <strong>SEIS and EIS claimable</strong> rounds down to whole shares. The claimable amount is those shares × the share price, rounded down to the
+              penny, and whatever remains is <strong>not claimable</strong>. For Amelia that is 4,018 shares and £9,698.24, leaving £1.76.
+            </p>
+            <p>
+              <strong>Company-paid and lead-paid percentage fees</strong> are total invested × rate, rounded half-up. <strong>Wire to company</strong> is total
+              invested − company-paid fees. Lead-paid fees are invoiced to the lead and do not affect the wire.
+            </p>
+            <h2 id="exit-distribution">Exit distribution<a class="docs__anchor" href="#exit-distribution" aria-label="Link to this section">#</a></h2>
+            <p>The money is paid out in this order:</p>
+            <ol>
+              <li><strong>Exit costs</strong> come off the proceeds. If they are more than the proceeds, nothing can be distributed.</li>
+              <li>
+                <strong>Return of capital</strong>: investors get back what they invested, or everything that is left if it is less. If it is not enough, there
+                is no carry.
+              </li>
+              <li>
+                <strong>Hurdle</strong>, with fixed carry: amount invested × ((1 + hurdle rate) to the power of years − 1). It is worked out exactly and rounded
+                once, half-up. If less is left, investors get what remains.
+              </li>
+              <li>
+                <strong>Catch-up</strong>, if set: a band of (carry rate × hurdle paid ÷ (catch-up rate − carry rate)), rounded half-up, or whatever is left if
+                that is less. The lead takes the catch-up rate of it and investors take the rest.
+              </li>
+              <li><strong>Carried interest split</strong>: the lead gets the carry rate of what remains, rounded half-up, and investors get the rest.</li>
+            </ol>
+            <p>
+              In the sample, the hurdle is £100,395.00 × (1.08⁶ − 1) = £58,919.25. The catch-up band is 20% × £58,919.25 ÷ 80% = £14,729.81, all to the lead at
+              100%. That leaves £211,455.94, of which the lead takes 20%. Carry comes to £57,021.00, which is 20% of the £285,105.00 profit.
+            </p>
+            <p>
+              <strong>Tiered carry</strong> has no hurdle or catch-up. Each band&#39;s rate applies only to the profit inside it. Band edges are (multiple − 1)
+              × amount invested, rounded half-up to the penny, and each band&#39;s carry is rounded half-up.
+            </p>
+            <p>
+              <strong>Between investors</strong>, the total to investors is split in proportion to the amount each invested, not what they wired, so entry fees
+              do not skew it. The pro-rata rule above applies. <strong>Multiple</strong> is distribution ÷ amount invested, rounded half-up to two decimals, and
+              does not count entry fees.
+            </p>
+            <h2 id="changing-who-pays-a-fee">
+              Changing who pays a fee<a class="docs__anchor" href="#changing-who-pays-a-fee" aria-label="Link to this section">#</a>
+            </h2>
+            <p>Each investor keeps the investment their commitment buys under today&#39;s fees.</p>
+            <p>
+              Goten works out what each investor would invest if they paid exactly their cash due under today&#39;s fees. It then finds the smallest amount, to
+              the penny, that buys the same investment once the fee has moved. The difference is the top-up or refund.
+            </p>
+            <p>
+              For example, with one 3% fee deducted, cash due £1,000.00 invests £970.00. When the fee moves from investors to the company, their new cash due is
+              £970.00, a £30.00 refund. Moving a 3% fee the other way, a £1,000.00 investment needs £1,030.93.
+            </p>
+            <h2 id="when-a-check-fails">When a check fails<a class="docs__anchor" href="#when-a-check-fails" aria-label="Link to this section">#</a></h2>
+            <p>Every result carries <strong>Checks</strong>, of four kinds:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kind</th>
+                    <th>What happens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Self-check</strong></td>
+                    <td>
+                      Arithmetic that must hold. If one fails, no figures are shown and you see an internal error. Please report it, without real investor data.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blocker</strong></td>
+                    <td>The result is shown so you can see why, but export and hand-off wait.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Needs review</strong></td>
+                    <td>The result is shown, but the hand-off waits for a person.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Reminder</strong></td>
+                    <td>The result is shown and nothing is stopped.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Input errors are separate: if a required field is blank or badly formatted, no result appears at all. A blank is never treated as zero.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

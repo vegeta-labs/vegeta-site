@@ -92,7 +92,10 @@ await run('demo-phone', '/inbox/demo/', PHONE, [['list', async () => {}]])
 await run('oldlink', '/#faq-import', DESK, [['lands', async () => {}]])
 
 // the blog (plan 22)
-for (const [name, path] of [['goten', '/blog/from-bank-statement-to-exit/'], ['trunks', '/blog/every-investor-email/']]) {
+for (const [name, path] of [
+  ['goten', '/blog/from-bank-statement-to-exit/'],
+  ['trunks', '/blog/every-investor-email/'],
+]) {
   const steps = [hero, ['film', at('.article__media')], ['figure', at('figure:nth-of-type(2)')], ['footer', bottom]]
   await run(`blog-${name}-light`, path, DESK, steps)
   await run(`blog-${name}-dark`, path, DARK, steps.slice(0, 3))
@@ -100,6 +103,24 @@ for (const [name, path] of [['goten', '/blog/from-bank-statement-to-exit/'], ['t
 }
 await run('blog-list', '/blog/', DESK, [hero])
 await run('blog-list-phone', '/blog/', PHONE, [hero])
+
+// the docs (plan 30): the index, a page with tables, the CSV reference (wide tables) and a build page; on phones also the page menu open
+const DOCS = [
+  ['docs-index', '/docs/'],
+  ['docs-reconciliation', '/docs/goten/use/reconciliation/'],
+  ['docs-csv', '/docs/goten/build/csv-reference/'],
+  ['docs-verification', '/docs/goten/build/verification/'],
+]
+for (const [name, path] of DOCS) {
+  await run(`${name}-light`, path, DESK, [hero, ['footer', bottom]])
+  await run(`${name}-dark`, path, DARK, [hero])
+  await run(
+    `${name}-phone`,
+    path,
+    PHONE,
+    name === 'docs-index' ? [hero] : [hero, ['menu', async (p) => p.click('.docs__menu > summary')], ['section', at('.docs__body h2')]],
+  )
+}
 
 // module pages: once the global nav has scrolled away the page nav shows, and each of its links lands the section's
 // heading below it (plan 14 R10)
@@ -131,7 +152,7 @@ for (const [path, vp] of [
 
 // page width at phone sizes, and the nav never wraps from 761 to 1200 px
 const p = await b.newPage()
-for (const path of ['/', '/toolkit/', '/inbox/', '/inbox/demo/']) {
+for (const path of ['/', '/toolkit/', '/inbox/', '/inbox/demo/', '/docs/', '/docs/goten/build/csv-reference/']) {
   for (const w of [320, 375, 390, 768]) {
     await p.setViewportSize({ width: w, height: 800 })
     await p.goto(BASE + path)

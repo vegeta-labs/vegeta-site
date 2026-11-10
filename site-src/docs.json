@@ -1,0 +1,105 @@
+{
+  "title": "Documentation",
+  "line": "Choose a module.",
+  "products": [
+    {
+      "id": "goten",
+      "name": "Goten",
+      "role": "Deal Calculations",
+      "version": "v1.2.5",
+      "source": {
+        "repo": "https://github.com/vegeta-labs/goten",
+        "ref": "880409301c163efb03091920267cd9af56eba95f"
+      },
+      "groups": [
+        {
+          "label": "Use it",
+          "items": [
+            {
+              "title": "Overview",
+              "source": "docs/en/use/README.md",
+              "route": "/docs/goten/"
+            },
+            {
+              "title": "Walk the sample deal",
+              "source": "docs/en/use/getting-started.md",
+              "route": "/docs/goten/use/getting-started/"
+            },
+            {
+              "title": "Prepare and import CSV files",
+              "source": "docs/en/use/import-csv.md",
+              "route": "/docs/goten/use/import-csv/"
+            },
+            {
+              "title": "Reconciliation",
+              "source": "docs/en/use/reconciliation.md",
+              "route": "/docs/goten/use/reconciliation/"
+            },
+            {
+              "title": "Closing allocation",
+              "source": "docs/en/use/closing-allocation.md",
+              "route": "/docs/goten/use/closing-allocation/"
+            },
+            {
+              "title": "Exit distribution",
+              "source": "docs/en/use/exit-distribution.md",
+              "route": "/docs/goten/use/exit-distribution/"
+            },
+            {
+              "title": "Withdrawals and fee payers",
+              "source": "docs/en/use/withdrawal-and-fee-payer.md",
+              "route": "/docs/goten/use/withdrawal-and-fee-payer/"
+            },
+            {
+              "title": "Exports and records",
+              "source": "docs/en/use/exports-and-records.md",
+              "route": "/docs/goten/use/exports-and-records/"
+            },
+            {
+              "title": "How the numbers work",
+              "source": "docs/en/use/how-the-numbers-work.md",
+              "route": "/docs/goten/use/how-the-numbers-work/"
+            }
+          ]
+        },
+        {
+          "label": "Run and build",
+          "items": [
+            {
+              "title": "Overview",
+              "source": "docs/en/build/README.md",
+              "route": "/docs/goten/build/"
+            },
+            {
+              "title": "Run locally and deploy",
+              "source": "docs/en/build/run-and-deploy.md",
+              "route": "/docs/goten/build/run-and-deploy/"
+            },
+            {
+              "title": "CSV reference",
+              "source": "docs/en/build/csv-reference.md",
+              "route": "/docs/goten/build/csv-reference/"
+            },
+            {
+              "title": "Architecture",
+              "source": "docs/en/build/architecture.md",
+              "route": "/docs/goten/build/architecture/"
+            },
+            {
+              "title": "Verification",
+              "source": "docs/en/build/verification.md",
+              "route": "/docs/goten/build/verification/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trunks",
+      "name": "Trunks",
+      "role": "Operations Inbox",
+      "version": "v0.3.0",
+      "groups": []
+    }
+  ]
+}

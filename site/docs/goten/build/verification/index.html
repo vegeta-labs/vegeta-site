@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Verification | Vegeta</title>
+    <meta
+      name="description"
+      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the mutation tests and benchmarks."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Verification | Vegeta" />
+    <meta
+      property="og:description"
+      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the mutation tests and benchmarks."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/build/verification/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Verification | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the mutation tests and benchmarks."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/build/verification/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/" aria-current="page">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/" aria-current="page">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Verification</h1>
+          <div class="docs__body">
+            <p>
+              Goten&#39;s calculations are checked in several independent ways. All the commands below run from the repository root after
+              <code>npm install</code>. CI on the public repository runs everything except the mutation tests and benchmarks.
+            </p>
+            <p>
+              The <a href="https://github.com/vegeta-labs/goten/blob/880409301c163efb03091920267cd9af56eba95f/docs/en/04_TEST_PLAN.md">test plan</a> lists every
+              case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
+            </p>
+            <h2 id="quick-checks">Quick checks<a class="docs__anchor" href="#quick-checks" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run typecheck
+npm run lint
+npm run check:tokens</code></pre>
+            <h2 id="unit-tests">Unit tests<a class="docs__anchor" href="#unit-tests" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm test</code></pre>
+            <p>
+              Runs the Vitest suite in <code>src/</code>, including the comparison with the Python oracle, so it needs <code>python3</code>. Expect 445 tests to
+              pass and 1 to be skipped: the benchmark, which runs only on request.
+            </p>
+            <p>Test names start with their case ID, such as <code>TC-REC-12</code>.</p>
+            <h2 id="test-plan-coverage">Test-plan coverage<a class="docs__anchor" href="#test-plan-coverage" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run coverage:check</code></pre>
+            <p>
+              Runs the unit tests and then <code>scripts/check-coverage.mjs</code>, which reads the JSON report and fails unless every case due at the current
+              milestone actually ran and passed. It does not search the source text. The current milestone is in <code>docs/milestone.txt</code>. Expect
+              <code>milestone M6: 205 cases due, 205 passed</code>.
+            </p>
+            <h2 id="the-independent-oracle">
+              The independent oracle<a class="docs__anchor" href="#the-independent-oracle" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              <code>scripts/oracle/</code> is a separate Python implementation written from the written rules alone, using only the standard library. It does
+              not share code with the TypeScript. Its case format is in
+              <a href="https://github.com/vegeta-labs/goten/blob/880409301c163efb03091920267cd9af56eba95f/scripts/oracle/SCHEMA.md">SCHEMA</a>.
+            </p>
+            <pre tabindex="0"><code>npm run oracle:selfcheck</code></pre>
+            <p>Checks the oracle against the hand calculations in the test plan. Expect <code>selfcheck: 178 passed, 0 failed</code>.</p>
+            <p>
+              <code>npm test</code> then runs the TypeScript engines and the oracle on the hand-calculated cases and on 1,800 generated cases, and compares them
+              field by field.
+            </p>
+            <p>To stay useful, the oracle must be changed only from the rules, never by reading the TypeScript.</p>
+            <h2 id="end-to-end-tests">End-to-end tests<a class="docs__anchor" href="#end-to-end-tests" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npx playwright install chromium   # once
+npm run e2e:check</code></pre>
+            <p>
+              Runs Playwright in Chromium, at default and phone sizes, against a production build served with the production headers, so a content security
+              policy problem fails a test. It then fails unless every due end-to-end case ran and passed. Expect 33 tests covering 12 of 12 cases.
+            </p>
+            <p>These tests also record every network request, to confirm that only the site&#39;s own static files are loaded.</p>
+            <p><code>npm run e2e</code> runs the tests without the coverage check.</p>
+            <h2 id="mutation-tests">Mutation tests<a class="docs__anchor" href="#mutation-tests" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run mutation</code></pre>
+            <p>
+              <code>scripts/mutation-check.mjs</code> deliberately breaks the code in 276 places, one at a time, and runs the whole unit suite after each. A
+              test must fail each time.
+            </p>
+            <ul>
+              <li>
+                <strong>It takes a long time.</strong> Each mutant runs the full unit suite, about 10 seconds here, so allow 45 minutes or more for the full
+                run.
+              </li>
+              <li>
+                <strong>It edits source files.</strong> Run it on a clean working tree, and do not run anything else against that tree at the same time. If you
+                interrupt it, the file it was working on is left broken: run <code>git status</code> and restore that file.
+              </li>
+              <li>
+                <strong><code>MISSING</code> means the pattern is gone</strong>, because the code changed. It counts as a failure: update or retire that mutant.
+              </li>
+              <li>To run only the mutants for some files:</li>
+            </ul>
+            <pre tabindex="0"><code>npm run mutation -- --files=src/lib/money.ts</code></pre>
+            <h2 id="benchmarks">Benchmarks<a class="docs__anchor" href="#benchmarks" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run bench</code></pre>
+            <p>
+              Times the engines at the size limits and writes the results to <code>docs/perf.md</code>, so restore that file if you did not mean to record a new
+              run. It fails if a time exceeds its target; the reconciliation target is close enough to the current timing that it can fail on a busy machine.
+            </p>
+            <h2 id="checking-a-change">Checking a change<a class="docs__anchor" href="#checking-a-change" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li><code>npm run typecheck</code>, <code>npm run lint</code>, <code>npm run coverage:check</code> and <code>npm run oracle:selfcheck</code>.</li>
+              <li><code>npm run e2e:check</code> if a screen changed.</li>
+              <li>
+                Walk the <a href="/docs/goten/use/getting-started/">sample deal</a> by hand if a figure could have changed: £114,840.00 of receipts, £100,395.00
+                invested, £57,021.00 of carry and £328,479.00 to investors.
+              </li>
+              <li><code>npm run mutation -- --files=&lt;changed files&gt;</code> for a calculation change, and the full run before you rely on it.</li>
+            </ol>
+            <p>If a rule changes, update the requirements first, then the code, the tests and, separately, the oracle.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

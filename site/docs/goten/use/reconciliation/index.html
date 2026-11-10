@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Reconciliation: match receipts and chase the rest | Vegeta</title>
+    <meta
+      name="description"
+      content="Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the deal."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Reconciliation: match receipts and chase the rest | Vegeta" />
+    <meta
+      property="og:description"
+      content="Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the deal."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/reconciliation/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reconciliation: match receipts and chase the rest | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the deal."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/reconciliation/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/" aria-current="page">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/" aria-current="page">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Reconciliation: match receipts and chase the rest</h1>
+          <div class="docs__body">
+            <p>
+              Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the
+              deal.
+            </p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>The deal set up in <strong>Deal settings</strong>, especially <strong>Currency</strong> and <strong>As-of date</strong>.</li>
+              <li>An investor list and a bank statement. See <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>.</li>
+            </ul>
+            <h2 id="how-receipts-get-booked">
+              How receipts get booked<a class="docs__anchor" href="#how-receipts-get-booked" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Goten books a receipt on its own in one case only: the bank reference contains exactly one investor&#39;s payment reference, once ordinary
+              keyboard spaces, punctuation and letter case are ignored, and the line is not a possible duplicate. Special characters such as a long dash (–) are
+              not ignored, so a line using one may need matching by hand.
+            </p>
+            <ul>
+              <li>NW002 NORTHWIND matches NW-002.</li>
+              <li>NW-0019 does not match NW-001. It is a different reference, so it is never booked to that investor.</li>
+            </ul>
+            <p>
+              Everything else stays unbooked until you decide. Suggestions are scored from 0 to 1 and show their reasons. A score is a prompt to look, not a
+              reason to accept: see <a href="/docs/goten/use/how-the-numbers-work/#how-receipts-are-matched">How the numbers work</a>.
+            </p>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>Open <strong>1. Reconciliation</strong> and read the <strong>Summary</strong>.</li>
+              <li>
+                Work through <strong>Needs your review</strong>. For each receipt, either:
+                <ul>
+                  <li>click <strong>Confirm</strong> and the investor&#39;s name to accept a suggestion,</li>
+                  <li>choose someone from <strong>Assign to…</strong> if the suggestion is wrong, or</li>
+                  <li>click <strong>Not part of this deal</strong>.</li>
+                </ul>
+              </li>
+              <li>Check <strong>Bank lines</strong> for anything marked <strong>Not matched</strong>, and assign it or mark it the same way.</li>
+              <li>Read the <strong>Investors</strong> table and chase anyone short or unpaid.</li>
+              <li>Click <strong>Hand off to allocation</strong> when you are ready.</li>
+            </ol>
+            <p>
+              To change your mind, click <strong>Undo</strong> next to the line under <strong>Bank lines</strong>. A line booked automatically has no
+              <strong>Undo</strong>: to change it, edit or delete the bank line.
+            </p>
+            <h2 id="asking-who-sent-a-payment">
+              Asking who sent a payment<a class="docs__anchor" href="#asking-who-sent-a-payment" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Under a suggestion, <strong>Copy query</strong> copies a question for that investor. It contains only the date, the amount and the currency, never
+              the payer&#39;s name, the bank reference or the transaction ID, because the payment may not be theirs. Send it from your own email.
+            </p>
+            <h2 id="chasing-investors">Chasing investors<a class="docs__anchor" href="#chasing-investors" aria-label="Link to this section">#</a></h2>
+            <p>
+              Each investor who is short or has not paid has <strong>Copy message</strong> in the <strong>Chase</strong> column. It copies a chase email with
+              what is outstanding and their payment reference, and asks anyone who has already paid to send the bank&#39;s MT103 and its UETR: an MT103 is the
+              bank&#39;s record of an international transfer, and the UETR is the number that tracks it between banks.
+            </p>
+            <ul>
+              <li>You should see <strong>Copied. Send it yourself from your usual email.</strong></li>
+              <li>
+                If your browser blocks the clipboard, you see <strong>Could not copy. Select the text and copy it yourself.</strong> and the text is shown
+                selected.
+              </li>
+            </ul>
+            <p>
+              <strong>Export chase list CSV</strong> gives everyone on the chase list in one file, with the same text in a message column. Goten sends nothing
+              itself.
+            </p>
+            <h2 id="what-you-should-see">What you should see<a class="docs__anchor" href="#what-you-should-see" aria-label="Link to this section">#</a></h2>
+            <p>Bank line statuses:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Matched automatically</strong></td>
+                    <td>Booked by the reference rule.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Confirmed by you</strong></td>
+                    <td>Booked by a person.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Needs review</strong></td>
+                    <td>There is at least one candidate, or an earlier decision was set aside, and it waits for a decision.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Not matched</strong></td>
+                    <td>No candidate. Does not block the hand-off, but the money is counted for nobody.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Not part of this deal</strong></td>
+                    <td>You decided it does not belong.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Skipped: not a receipt</strong></td>
+                    <td>A payment out or a zero amount.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>After the as-of date: not counted</strong></td>
+                    <td>Dated after the as-of date. Change the as-of date when you want it counted.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Investor statuses: <strong>Paid in full</strong>, <strong>Underpaid</strong>, <strong>Overpaid</strong>, <strong>Not paid</strong> and
+              <strong>Withdrawn</strong>.
+            </p>
+            <p>Summary figures:</p>
+            <ul>
+              <li><strong>Receipts in scope</strong> counts money in up to the as-of date.</li>
+              <li><strong>Booked to investors</strong> plus <strong>Not booked</strong> always equals <strong>Receipts in scope</strong>.</li>
+              <li><strong>To refund</strong> lists over-payments and everything paid by withdrawn investors.</li>
+            </ul>
+            <h2 id="the-hand-off">The hand-off<a class="docs__anchor" href="#the-hand-off" aria-label="Link to this section">#</a></h2>
+            <p>
+              <strong>Hand off to allocation</strong> copies each investor&#39;s received amount, up to their cash due, into <strong>2. Allocation</strong>.
+              Anything above the cash due is listed as a refund. Bank lines marked <strong>Not matched</strong> do not stop it, but their money is not carried
+              for anyone.
+            </p>
+            <p>
+              The hand-off is a snapshot. If you change reconciliation afterwards, <strong>2. Allocation</strong> says <strong>out of date</strong> instead of
+              changing by itself. Open it and click <strong>Hand off again (replaces the investor list)</strong>. Any change to reconciliation does this, even
+              one that ends up putting things back as they were.
+            </p>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What it means and what to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Your earlier decision no longer matches the data, so it was set aside.</strong></td>
+                    <td>
+                      You edited the bank line or the investor after deciding. Decide again, or click <strong>Clear old decision</strong>. Changing the value
+                      back does not restore the decision.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Possible duplicate import</strong> on a line</td>
+                    <td>
+                      Two lines with no transaction ID have the same date, amount, payer and reference. Neither is booked automatically. If only one is real,
+                      delete the other or mark it <strong>Not part of this deal</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Needs review: unmatched for N days</strong></td>
+                    <td>
+                      A reminder that the receipt has been unmatched longer than your setting. It is not a regulatory deadline and not an instruction to move
+                      money. It stays on a line you have marked <strong>Not part of this deal</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Input errors — no results until these are fixed</strong></td>
+                    <td>A value in a table cannot be read. The message names the row and field. No figures appear and the exports wait until it is fixed.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hand-off disabled: Review the 3 suggested matches first.</strong></td>
+                    <td>Decide everything under <strong>Needs your review</strong> first.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Updating after your edit — the figures below are from before it.</strong></td>
+                    <td>Goten waits until you stop typing. Press Enter or leave the field to update now.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Where a withdrawn investor or a fee payer change is involved, see
+              <a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawing an investor and changing who pays a fee</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Run locally and deploy your own copy | Vegeta</title>
+    <meta name="description" content="There are no environment variables and no services to set up." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Run locally and deploy your own copy | Vegeta" />
+    <meta property="og:description" content="There are no environment variables and no services to set up." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/build/run-and-deploy/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Run locally and deploy your own copy | Vegeta" />
+    <meta name="twitter:description" content="There are no environment variables and no services to set up." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/build/run-and-deploy/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/" aria-current="page">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/" aria-current="page">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Run locally and deploy your own copy</h1>
+          <div class="docs__body">
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>Node.js 22, the version CI uses.</li>
+              <li>Python 3, only for the oracle checks.</li>
+            </ul>
+            <p>There are no environment variables and no services to set up.</p>
+            <h2 id="run-locally">Run locally<a class="docs__anchor" href="#run-locally" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm install
+npm run dev</code></pre>
+            <p>Vite prints the local address. Open it, click <strong>I understand</strong>, then <strong>Load sample deal</strong>.</p>
+            <p>
+              You should see <strong>Receipts in scope</strong> £114,840.00 on <strong>1. Reconciliation</strong>. If you do, the app and its calculations are
+              working.
+            </p>
+            <h2 id="build-and-preview">Build and preview<a class="docs__anchor" href="#build-and-preview" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run build
+npm run preview</code></pre>
+            <p>
+              <code>npm run build</code> type-checks and writes a static site to <code>dist/</code>. <code>npm run preview</code> serves that build with the
+              same security headers as production, because <code>vite.config.ts</code> reads them from <code>vercel.json</code>. Use it to check that nothing
+              breaks under the content security policy.
+            </p>
+            <h2 id="deploy">Deploy<a class="docs__anchor" href="#deploy" aria-label="Link to this section">#</a></h2>
+            <p><code>dist/</code> is static files only. There is no server-side rendering and no routing, so any static host works.</p>
+            <ol>
+              <li>Run <code>npm run build</code> and upload <code>dist/</code>.</li>
+              <li>
+                Set these response headers on every path, copied from <code>vercel.json</code>: <code>Content-Security-Policy</code>,
+                <code>X-Content-Type-Options</code>, <code>Referrer-Policy</code> and <code>Permissions-Policy</code>.
+              </li>
+            </ol>
+            <p>
+              Keep <code>connect-src &#39;none&#39;</code> in the policy. It blocks script connections such as fetch, XHR, WebSocket and beacons. It does not
+              stop a page navigating away, so the app also relies on having no code that sends data. Check any code you add for this.
+            </p>
+            <h2 id="check-your-copy">Check your copy<a class="docs__anchor" href="#check-your-copy" aria-label="Link to this section">#</a></h2>
+            <p>Open it and walk the <a href="/docs/goten/use/getting-started/">sample deal</a>. The figures should match that page. Then check the headers:</p>
+            <pre tabindex="0"><code>curl -sI https://your-domain/ | grep -i -E 'content-security|nosniff|referrer|permissions'</code></pre>
+            <p>Your copy has its own saved data, separate from any other copy, because browser storage is per origin.</p>
+            <h2 id="before-you-use-it-for-real-deals">
+              Before you use it for real deals<a class="docs__anchor" href="#before-you-use-it-for-real-deals" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>
+                The footer&#39;s <strong>Send feedback</strong> link goes to the form set in <code>FEEDBACK_FORM_URL</code> in <code>src/config.ts</code>. Point
+                it at your own form.
+              </li>
+              <li>
+                The storage keys, <code>deal-ops-toolkit:v1</code> and its siblings, keep their names so existing saved data remains readable. Leave them unless
+                you are also migrating the data.
+              </li>
+              <li>Check that the disclaimer and privacy text in <code>src/config.ts</code> still hold for your deployment.</li>
+              <li>Consider who hosts it. The host receives normal page requests but no deal data.</li>
+            </ul>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Problem</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>npm install</code> warns about install scripts for fsevents</td>
+                    <td>Safe to ignore; the optional package is not needed to run the app.</td>
+                  </tr>
+                  <tr>
+                    <td>The page loads but is blank on your host</td>
+                    <td>Check the browser console. A stricter or missing policy, or an asset path issue, shows up as a CSP or 404 error.</td>
+                  </tr>
+                  <tr>
+                    <td>Figures differ from the sample on the page</td>
+                    <td>
+                      Something was edited on the page, or the code changed. <strong>Load sample deal</strong>, or run the checks in
+                      <a href="/docs/goten/build/verification/">Verification</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>A port is in use</td>
+                    <td>Run <code>npm run dev -- --port 5180</code>, or any free port.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

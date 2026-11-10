@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>CSV reference | Vegeta</title>
+    <meta
+      name="description"
+      content="Everything here comes from src/lib/csv.ts, src/lib/money.ts, src/lib/validate.ts, src/lib/reconcile.ts and src/lib/exports.ts. Sample files for each import are in fixtures/. For operations staff, see Prepare and import your CSV files."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CSV reference | Vegeta" />
+    <meta
+      property="og:description"
+      content="Everything here comes from src/lib/csv.ts, src/lib/money.ts, src/lib/validate.ts, src/lib/reconcile.ts and src/lib/exports.ts. Sample files for each import are in fixtures/. For operations staff, see Prepare and import your CSV files."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/build/csv-reference/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSV reference | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Everything here comes from src/lib/csv.ts, src/lib/money.ts, src/lib/validate.ts, src/lib/reconcile.ts and src/lib/exports.ts. Sample files for each import are in fixtures/. For operations staff, see Prepare and import your CSV files."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/build/csv-reference/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/" aria-current="page">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/" aria-current="page">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">CSV reference</h1>
+          <div class="docs__body">
+            <p>
+              Everything here comes from <code>src/lib/csv.ts</code>, <code>src/lib/money.ts</code>, <code>src/lib/validate.ts</code>,
+              <code>src/lib/reconcile.ts</code> and <code>src/lib/exports.ts</code>. Sample files for each import are in <code>fixtures/</code>. For operations
+              staff, see <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>.
+            </p>
+            <h2 id="file-rules">File rules<a class="docs__anchor" href="#file-rules" aria-label="Link to this section">#</a></h2>
+            <p>These apply to every import.</p>
+            <ul>
+              <li>UTF-8 with commas. A byte-order mark is removed. Fields can be quoted; a quoted field can contain commas and line breaks.</li>
+              <li>LF, CRLF and CR line endings are all accepted, mixed if necessary.</li>
+              <li>The first non-blank line is the header. Blank lines and rows of empty cells are skipped.</li>
+              <li>
+                Imports are atomic: any error means nothing is imported, and every error is listed with its row number. Row numbers are real file lines; the
+                header is usually row 1.
+              </li>
+              <li>Every row must have exactly as many cells as the header.</li>
+              <li>Unknown columns are ignored and named in the success message.</li>
+              <li>Two columns that map to the same field are an error: <code>two columns map to &quot;cash_due&quot;</code>.</li>
+              <li>
+                Identifier and parsed fields lose leading and trailing ASCII whitespace; a cell of only whitespace counts as blank. Free text (names, payers,
+                bank references) is kept as written.
+              </li>
+            </ul>
+            <h2 id="column-matching">Column matching<a class="docs__anchor" href="#column-matching" aria-label="Link to this section">#</a></h2>
+            <p>
+              Header names are compared after lower-casing and trimming, with any currency label removed first. Each file accepts the column name or any alias.
+            </p>
+            <h3 id="investor-list">Investor list<a class="docs__anchor" href="#investor-list" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Required</th>
+                    <th>Aliases</th>
+                    <th>Format</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>investor_id</code></td>
+                    <td>No</td>
+                    <td><code>id</code>, <code>investor id</code></td>
+                    <td>Up to 40 characters, unique when not blank. Generated if blank.</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>Yes</td>
+                    <td><code>investor name</code>, <code>investor</code>, <code>full name</code></td>
+                    <td>Up to 120 characters.</td>
+                  </tr>
+                  <tr>
+                    <td><code>email</code></td>
+                    <td>No</td>
+                    <td>none</td>
+                    <td>One <code>@</code> with text either side and no spaces, up to 200 characters.</td>
+                  </tr>
+                  <tr>
+                    <td><code>reference</code></td>
+                    <td>Yes</td>
+                    <td><code>payment reference</code>, <code>ref</code></td>
+                    <td>
+                      1 to 3 segments of <code>A–Z a–z 0–9</code>, joined by exactly one of space <code>-</code> <code>/</code> <code>_</code> <code>.</code>, 3
+                      to 20 characters once normalised. Unique once normalised.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>cash_due</code></td>
+                    <td>Yes</td>
+                    <td><code>cash due</code>, <code>amount due</code>, <code>expected</code>, <code>expected amount</code></td>
+                    <td>Amount, greater than 0.</td>
+                  </tr>
+                  <tr>
+                    <td><code>scheme</code></td>
+                    <td>No</td>
+                    <td><code>tax scheme</code>, <code>seis/eis</code></td>
+                    <td><code>none</code>, <code>SEIS</code> or <code>EIS</code>, any case. Blank means <code>none</code>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Normalising a reference removes separators and upper-cases <code>a–z</code>, so <code>nw 001</code> and <code>NW-001</code> are the same
+              reference.
+            </p>
+            <h3 id="bank-statement">Bank statement<a class="docs__anchor" href="#bank-statement" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Required</th>
+                    <th>Aliases</th>
+                    <th>Format</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>transaction_id</code></td>
+                    <td>No</td>
+                    <td><code>id</code>, <code>transaction id</code>, <code>txn id</code></td>
+                    <td>Up to 80 characters.</td>
+                  </tr>
+                  <tr>
+                    <td><code>date</code></td>
+                    <td>Yes</td>
+                    <td><code>value date</code>, <code>booking date</code></td>
+                    <td>Date.</td>
+                  </tr>
+                  <tr>
+                    <td><code>amount</code></td>
+                    <td>Yes</td>
+                    <td><code>credit</code>, <code>paid in</code></td>
+                    <td>Amount. Negative and zero are accepted, then skipped and listed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>payer</code></td>
+                    <td>No</td>
+                    <td><code>payer name</code>, <code>counterparty</code>, <code>from</code>, <code>name</code></td>
+                    <td>Up to 200 characters.</td>
+                  </tr>
+                  <tr>
+                    <td><code>reference</code></td>
+                    <td>No</td>
+                    <td><code>description</code>, <code>payment reference</code>, <code>narrative</code></td>
+                    <td>Up to 200 characters.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Importing with <strong>Replace</strong> clears decisions. <strong>Append</strong> ignores a row whose transaction ID is already present with the
+              same date, amount, payer and reference; the same ID with different details is an error. Lines with no transaction ID are never de-duplicated, but
+              two identical ones are flagged <strong>Possible duplicate import</strong>.
+            </p>
+            <h3 id="allocation-investors">Allocation investors<a class="docs__anchor" href="#allocation-investors" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Required</th>
+                    <th>Aliases</th>
+                    <th>Format</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>investor_id</code></td>
+                    <td>No</td>
+                    <td><code>id</code>, <code>investor id</code></td>
+                    <td>As above.</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>Yes</td>
+                    <td><code>investor name</code>, <code>investor</code>, <code>full name</code></td>
+                    <td>Up to 120 characters.</td>
+                  </tr>
+                  <tr>
+                    <td><code>received</code></td>
+                    <td>Yes</td>
+                    <td><code>cash received</code>, <code>amount received</code></td>
+                    <td>Amount, 0 or more.</td>
+                  </tr>
+                  <tr>
+                    <td><code>scheme</code></td>
+                    <td>No</td>
+                    <td><code>tax scheme</code>, <code>seis/eis</code></td>
+                    <td>As above.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="holdings">Holdings<a class="docs__anchor" href="#holdings" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Column</th>
+                    <th>Required</th>
+                    <th>Aliases</th>
+                    <th>Format</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>investor_id</code></td>
+                    <td>No</td>
+                    <td><code>id</code>, <code>investor id</code></td>
+                    <td>As above.</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>Yes</td>
+                    <td><code>investor name</code>, <code>investor</code>, <code>full name</code></td>
+                    <td>Up to 120 characters.</td>
+                  </tr>
+                  <tr>
+                    <td><code>capital</code></td>
+                    <td>Yes</td>
+                    <td><code>invested</code>, <code>amount invested</code></td>
+                    <td>Amount, greater than 0. The amount invested, excluding fees.</td>
+                  </tr>
+                  <tr>
+                    <td><code>share_price</code></td>
+                    <td>No</td>
+                    <td><code>price per share</code>, <code>price</code></td>
+                    <td>Share price, the same on every row. A blank on one row while others have a value is an error. Display only.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p><code>shares_display</code>, which the holdings export adds, is ignored on import.</p>
+            <h3 id="columns-refused">Columns refused<a class="docs__anchor" href="#columns-refused" aria-label="Link to this section">#</a></h3>
+            <p>
+              These names could include or exclude fees. If the required column is missing, they get a specific error; if the required column is present, they
+              are ignored like any other extra column.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Header</th>
+                    <th>Field</th>
+                    <th>Error says</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>committed</code>, <code>commitment</code></td>
+                    <td><code>cash_due</code></td>
+                    <td><code>column &quot;committed&quot; is not accepted. Use a &quot;cash_due&quot; column: …</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>cost</code>, <code>paid</code>, <code>wired</code></td>
+                    <td><code>capital</code></td>
+                    <td><code>column &quot;cost&quot; is not accepted. Use a &quot;capital&quot; column: …</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="value-formats">Value formats<a class="docs__anchor" href="#value-formats" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Rule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Amount</td>
+                    <td>
+                      Digits with up to 2 decimals. Thousands commas must group in threes. One optional symbol that matches the deal. A minus sign only on bank
+                      amounts. Up to 1,000,000,000.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Date</td>
+                    <td><code>YYYY-MM-DD</code> or <code>D/M/YYYY</code> (day first; one or two digits). Dates that do not exist are errors.</td>
+                  </tr>
+                  <tr>
+                    <td>Share price</td>
+                    <td>Up to 6 decimals, greater than 0, up to 1,000,000. Thousands commas and a deal-currency symbol are allowed.</td>
+                  </tr>
+                  <tr>
+                    <td>Percent, in table cells</td>
+                    <td>0 to 100, up to 2 decimals, optional <code>%</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>Multiple, in table cells</td>
+                    <td>Greater than 1, up to 2 decimals, optional <code>x</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>Years, in table cells</td>
+                    <td>0 to 50, up to 2 decimals.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>A blank or malformed required value is always an error, never zero.</p>
+            <p>Limits per deal: 500 investors, 2,000 bank lines, 500 holdings, 20 fees.</p>
+            <h2 id="currency-rules">Currency rules<a class="docs__anchor" href="#currency-rules" aria-label="Link to this section">#</a></h2>
+            <p>A deal has one currency: GBP, EUR or USD. Display symbols are <code>£</code>, <code>€</code> and <code>US$</code>.</p>
+            <p>
+              <strong>In an amount or share price cell.</strong> The symbol must match the deal. For a USD deal both <code>$</code> and <code>US$</code> are
+              accepted. Otherwise: <code>&quot;€100&quot; uses € but this deal is in GBP</code>.
+            </p>
+            <p><strong>In a header.</strong> A label is read in two forms, case-insensitively: a bracket at the end, or a trailing word.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Form</th>
+                    <th>Accepted labels</th>
+                    <th>Example, GBP deal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bracket</td>
+                    <td>
+                      <code>(£)</code>, <code>(gbp)</code>, <code>(€)</code>, <code>(eur)</code>, <code>($)</code>, <code>(us$)</code>, <code>(usd)</code>
+                    </td>
+                    <td><code>Amount Due (£)</code></td>
+                  </tr>
+                  <tr>
+                    <td>Trailing word</td>
+                    <td><code> gbp</code>, <code> eur</code>, <code> usd</code></td>
+                    <td><code>amount due gbp</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The label is checked first. If it names a currency other than the deal&#39;s, the import fails:
+              <code>column &quot;Amount Due (€)&quot; is in EUR but this deal is in GBP</code>. If it matches, it is removed and the rest of the header is
+              matched as usual. A bracket that is not a currency, such as <code>amount (net)</code>, stays part of the name, which then does not match and is
+              ignored.
+            </p>
+            <p>
+              <strong>In a currency column.</strong> Any import can carry a column named <code>currency</code> or <code>ccy</code>. A non-blank cell must equal
+              the deal&#39;s ISO code in any case, or the row fails: <code>row 2, currency: &quot;EUR&quot; but this deal is in GBP</code>. Blank means the
+              deal&#39;s currency. Two currency columns are an error.
+            </p>
+            <p>Changing a deal&#39;s currency in <strong>Deal settings</strong> never converts amounts.</p>
+            <h2 id="exports">Exports<a class="docs__anchor" href="#exports" aria-label="Link to this section">#</a></h2>
+            <p>
+              Every export ends with a <code>currency</code> column. It holds the deal&#39;s current ISO code, except in the activity log, where each row keeps
+              the currency at the time of that event. Amounts are plain decimals without separators, except in the activity log.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Columns</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>ledger_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>transaction_id</code>, <code>date</code>, <code>amount</code>, <code>payer</code>, <code>reference</code>, <code>status</code>,
+                      <code>investor_id</code>, <code>investor_name</code>, <code>decided_by</code>, <code>withdrawn_on</code>, <code>currency</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>chase_list_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>investor_id</code>, <code>name</code>, <code>email</code>, <code>committed</code>, <code>received</code>, <code>difference</code>,
+                      <code>status</code>, <code>committed_original</code>, <code>committed_adjustment</code>, <code>message</code>, <code>currency</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>allocation_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>investor_id</code>, <code>name</code>, <code>scheme</code>, <code>received</code>, <code>invested</code>, <code>units</code>, one
+                      <code>fee_&lt;fee name&gt;</code> per investor-paid fee, <code>fees_total</code>, <code>refund</code>,
+                      <code>seis_eis_claimable_shares</code>, <code>seis_eis_claimable_amount</code>, <code>status</code>, <code>currency</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>distribution_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>investor_id</code>, <code>name</code>, <code>capital</code>, <code>shares_display</code>, <code>distribution</code>,
+                      <code>profit</code>, <code>multiple_excl_entry_fees</code>, <code>currency</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>holdings_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>investor_id</code>, <code>name</code>, <code>capital</code>, <code>shares_display</code>, <code>share_price</code>,
+                      <code>currency</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>activity_log_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>seq</code>, <code>time</code>, <code>initials</code>, <code>event</code>, <code>investor_id</code>, <code>investor_name</code>,
+                      <code>transaction_id</code>, <code>amount</code>, <code>detail</code>, <code>currency</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Status values:</p>
+            <ul>
+              <li>
+                Ledger: <code>auto</code>, <code>confirmed</code>, <code>suggested</code>, <code>unmatched</code>, <code>rejected</code>, <code>skipped</code>,
+                <code>future</code>. <code>decided_by</code> is <code>auto</code>, <code>person</code> or blank.
+              </li>
+              <li>
+                Chase list: <code>partial</code>, <code>outstanding</code>. <code>committed</code> is the cash due after any fee payer change;
+                <code>committed_original</code> and <code>committed_adjustment</code> are filled only when it differs from the list.
+              </li>
+              <li>
+                Allocation: <code>allocated</code>, <code>scaled-back</code>, or for investors out of the close <code>no-funds</code>,
+                <code>fees-exceed-receipt</code>, <code>below-minimum</code>, <code>zero-investment</code>.
+              </li>
+            </ul>
+            <p>
+              Activity log events: <code>import</code>, <code>confirm</code>, <code>assign</code>, <code>not_in_deal</code>, <code>undo</code>,
+              <code>decision_voided</code>, <code>withdrawn</code>, <code>withdrawal_undone</code>, <code>withdrawal_voided</code>,
+              <code>handoff_allocation</code>, <code>handoff_exit</code>, <code>fee_payer_changed</code>, <code>fee_payer_change_reversed</code>,
+              <code>fee_payer_change_voided</code>, <code>adjustment_voided</code>, <code>log_exported</code>, <code>message_copied</code>,
+              <code>sample_loaded</code>. The <code>amount</code> column uses thousands separators and no symbol. A <code>truncated</code> row with an empty
+              <code>seq</code> appears first if entries were removed.
+            </p>
+            <p>
+              Formula safety: text cells beginning with <code>=</code>, <code>+</code>, <code>-</code>, <code>@</code>, a tab, a carriage return or an
+              apostrophe get a leading <code>&#39;</code>. Numeric columns the app generates are written as they are. Import removes exactly one such
+              apostrophe, so exported text comes back unchanged. Only the four formats at the top of this page can be imported.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

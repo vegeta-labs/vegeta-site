@@ -20,7 +20,9 @@ jobs:
         run: npm run toolkit:fetch
       - name: Public Inbox at the commit in inbox.ref (release notes, UI text, default categories)
         run: npm run inbox:fetch
-      - name: Website checks (CSP markup, links, app sentences, P9 figures, demo package hashes, script build and size, source-backed illustrations)
+      - name: Public product docs at the docs pin in site-src/docs.json (the docs pages are re-rendered and compared)
+        run: npm run docs:fetch
+      - name: Website checks (CSP markup, links, docs pages against the docs pin, app sentences, P9 figures, demo package hashes, script build and size, source-backed illustrations)
         run: npm run site:check
       - name: Illustration source guard hostile copies
         if: hashFiles('scripts/check-illustrations.test.mjs') != ''

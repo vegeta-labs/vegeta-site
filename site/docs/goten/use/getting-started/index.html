@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Walk the sample deal | Vegeta</title>
+    <meta
+      name="description"
+      content="Go through all three steps with the built-in Northwind Robotics seed round. It has 12 investors and 16 bank lines, in pounds."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Walk the sample deal | Vegeta" />
+    <meta
+      property="og:description"
+      content="Go through all three steps with the built-in Northwind Robotics seed round. It has 12 investors and 16 bank lines, in pounds."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/getting-started/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Walk the sample deal | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Go through all three steps with the built-in Northwind Robotics seed round. It has 12 investors and 16 bank lines, in pounds."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/getting-started/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/" aria-current="page">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/" aria-current="page">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Walk the sample deal</h1>
+          <div class="docs__body">
+            <p>Go through all three steps with the built-in Northwind Robotics seed round. It has 12 investors and 16 bank lines, in pounds.</p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>A modern browser. The hosted copy is at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a>.</li>
+              <li>Nothing else. The sample needs no files.</li>
+            </ul>
+            <p>
+              Loading the sample replaces whatever is on the page and clears the activity log. If there is anything to lose, Goten asks first: click
+              <strong>Replace with sample</strong> to go ahead or <strong>Cancel</strong> to stop. This cannot be undone, so
+              <a href="/docs/goten/use/exports-and-records/">export what you need</a> first.
+            </p>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <h3 id="1-open-goten-and-load-the-sample">
+              1. Open Goten and load the sample<a class="docs__anchor" href="#1-open-goten-and-load-the-sample" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>Open the page. A card headed <strong>Before you start</strong> appears.</li>
+              <li>
+                Click <strong>I understand</strong>. (<strong>I understand — take the 3-minute tour</strong> starts a guided version of this page instead; see
+                <a href="#the-guided-tour">The guided tour</a>.)
+              </li>
+              <li>Click <strong>Load sample deal</strong> at the top of the page.</li>
+            </ol>
+            <p>You land on <strong>1. Reconciliation</strong>. The <strong>Summary</strong> shows:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Receipts in scope</td>
+                    <td>£114,840.00</td>
+                  </tr>
+                  <tr>
+                    <td>Booked to investors</td>
+                    <td>£66,000.00</td>
+                  </tr>
+                  <tr>
+                    <td>Not booked</td>
+                    <td>£48,840.00</td>
+                  </tr>
+                  <tr>
+                    <td>Waiting for review</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Cash due</td>
+                    <td>£124,000.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Nine receipts were booked automatically, because their bank reference contains exactly one investor&#39;s payment reference. Everything else waits
+              for you.
+            </p>
+            <h3 id="2-review-the-three-suggestions">
+              2. Review the three suggestions<a class="docs__anchor" href="#2-review-the-three-suggestions" aria-label="Link to this section">#</a>
+            </h3>
+            <p>Under <strong>Needs your review · 3</strong>, each receipt lists its suggested investor with a score and the reasons for it. Click:</p>
+            <ul>
+              <li><strong>Confirm Chloe Martin</strong> for £20,000.00 with no reference (score 0.55).</li>
+              <li><strong>Confirm Elena Rossi</strong> for £15,000.00 from a family office (score 0.35).</li>
+              <li><strong>Confirm Kavya Iyer</strong> for £7,500.00 with the reference NW 11 (score 0.80).</li>
+            </ul>
+            <p><strong>Booked to investors</strong> rises to £108,500.00 and <strong>Waiting for review</strong> falls to 0.</p>
+            <h3 id="3-mark-the-two-payments-that-are-not-part-of-the-deal">
+              3. Mark the two payments that are not part of the deal<a
+                class="docs__anchor"
+                href="#3-mark-the-two-payments-that-are-not-part-of-the-deal"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>
+              Under <strong>Bank lines</strong>, find WESTBRIDGE SUPPLIES (£2,340.00) and SAM PATEL (£4,000.00, reference NW-0019). Click
+              <strong>Not part of this deal</strong> on each.
+            </p>
+            <p><strong>Not booked</strong> is now £6,340.00. Those two lines count for nobody.</p>
+            <h3 id="4-read-the-investor-status-and-hand-off">
+              4. Read the investor status and hand off<a class="docs__anchor" href="#4-read-the-investor-status-and-hand-off" aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>The <strong>Investors</strong> table shows who has paid:</p>
+            <ul>
+              <li>David Kim is <strong>Underpaid</strong> by £500.00.</li>
+              <li>Hugo Bernard is <strong>Overpaid</strong> by £5,000.00, listed under <strong>To refund · 1</strong>.</li>
+              <li>
+                James Whitfield is <strong>Not paid</strong>: his £3,000.00 is dated 18 October, after the deal&#39;s as-of date of 16 October, so it is shown
+                as <strong>After the as-of date: not counted</strong>.
+              </li>
+            </ul>
+            <p>Click <strong>Hand off to allocation</strong>. Goten opens <strong>2. Allocation</strong>.</p>
+            <h3 id="5-check-the-allocation">
+              5. Check the allocation<a class="docs__anchor" href="#5-check-the-allocation" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              The share price (£2.4137), round cap (£150,000), platform fee (3%, paid by investors) and legal fee (£1,500, paid by the company) are already
+              filled in. The <strong>Result</strong> shows:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Cash received</td>
+                    <td>£103,500.00</td>
+                  </tr>
+                  <tr>
+                    <td>Total invested</td>
+                    <td>£100,395.00</td>
+                  </tr>
+                  <tr>
+                    <td>Investor fees</td>
+                    <td>£3,105.00</td>
+                  </tr>
+                  <tr>
+                    <td>Refunds</td>
+                    <td>£0.00</td>
+                  </tr>
+                  <tr>
+                    <td>Company-paid fees</td>
+                    <td>£1,500.00</td>
+                  </tr>
+                  <tr>
+                    <td>Wire to company</td>
+                    <td>£98,895.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The £5,000.00 Hugo overpaid is not in these figures: it is listed under <strong>Refunds outside the allocation</strong>. James is shown as
+              <strong>Out: No money received</strong>.
+            </p>
+            <p>Click <strong>Hand off to exit distribution</strong>. Goten opens <strong>3. Exit distribution</strong>.</p>
+            <h3 id="6-read-the-exit">6. Read the exit<a class="docs__anchor" href="#6-read-the-exit" aria-label="Link to this section">#</a></h3>
+            <p>
+              The sample exit is already filled in: £390,000 of proceeds, £4,500 of costs, 6 years held, 20% carry, an 8% hurdle and 100% catch-up. The
+              <strong>Result</strong> shows:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Exit costs paid</td>
+                    <td>£4,500.00</td>
+                  </tr>
+                  <tr>
+                    <td>Amount invested</td>
+                    <td>£100,395.00</td>
+                  </tr>
+                  <tr>
+                    <td>Carry to the lead</td>
+                    <td>£57,021.00</td>
+                  </tr>
+                  <tr>
+                    <td>To investors</td>
+                    <td>£328,479.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <strong>Step by step</strong> shows each layer of the split and why. Every result page ends with <strong>Checks</strong>; all of them should show
+              a tick, apart from reminders.
+            </p>
+            <h3 id="7-see-the-record">7. See the record<a class="docs__anchor" href="#7-see-the-record" aria-label="Link to this section">#</a></h3>
+            <p>Open <strong>Activity log</strong> to see every decision you just made, newest first.</p>
+            <h2 id="the-guided-tour">The guided tour<a class="docs__anchor" href="#the-guided-tour" aria-label="Link to this section">#</a></h2>
+            <p>
+              <strong>Take the tour</strong> in the sidebar walks the same deal in 12 steps. Follow the card in the corner: press <strong>Next</strong> or
+              Enter, click <strong>Do this for me</strong> when a step asks you to act, or leave at any time with <strong>Exit tour</strong> or Esc.
+              <strong>Resume tour</strong> picks up where you left it.
+            </p>
+            <h2 id="when-you-are-finished">
+              When you are finished<a class="docs__anchor" href="#when-you-are-finished" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>
+                To try your own deal, click <strong>Clear all data</strong> and then <strong>Clear everything</strong>, and go to
+                <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>. Clearing cannot be undone.
+              </li>
+              <li><strong>Load sample deal</strong> brings the sample back at any time.</li>
+            </ul>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Hand-off disabled: Review the 3 suggested matches first.</strong></td>
+                    <td>A suggestion is still waiting. Decide it under <strong>Needs your review</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hand off to allocation</strong> stays greyed out</td>
+                    <td>
+                      Read the line under the buttons. If it says <strong>Finish your edit first.</strong>, press Enter or click out of the field you were
+                      editing.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Different figures from this page</td>
+                    <td>You changed something, or some suggestions were decided differently. <strong>Load sample deal</strong> starts again.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>out of date</strong> next to <strong>2. Allocation</strong> or <strong>3. Exit distribution</strong></td>
+                    <td>Something upstream changed after the hand-off. Open the page and click <strong>Hand off again</strong>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

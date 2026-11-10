@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Closing allocation | Vegeta</title>
+    <meta
+      name="description"
+      content="The allocation works out what each investor invests, pays in fees and gets back, what is wired to the company, and whether the deal can close."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Closing allocation | Vegeta" />
+    <meta
+      property="og:description"
+      content="The allocation works out what each investor invests, pays in fees and gets back, what is wired to the company, and whether the deal can close."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/closing-allocation/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Closing allocation | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="The allocation works out what each investor invests, pays in fees and gets back, what is wired to the company, and whether the deal can close."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/use/closing-allocation/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/" aria-current="page">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/" aria-current="page">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Goten v1.2.5</p>
+          <h1 class="docs__title">Closing allocation</h1>
+          <div class="docs__body">
+            <p>
+              The allocation works out what each investor invests, pays in fees and gets back, what is wired to the company, and whether the deal can close.
+            </p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                Investors with the cash received from each. Hand them off from <a href="/docs/goten/use/reconciliation/">Reconciliation</a>, or import them in
+                the section <strong>Investors</strong> (see <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>).
+              </li>
+              <li>The <strong>Share price (£ per share)</strong> for the round.</li>
+              <li>Your fees, and who pays each one.</li>
+              <li><strong>Minimum commitment</strong> and <strong>Investor percentage fees</strong> set in <strong>Deal settings</strong>.</li>
+            </ul>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>Open <strong>2. Allocation</strong>.</li>
+              <li>Under <strong>Round</strong>, enter the share price. Enter the round cap if there is one; blank means no cap.</li>
+              <li>
+                Under <strong>Fees</strong>, click <strong>Add fee</strong> for each fee and fill in its row: name, <strong>Paid by</strong>,
+                <strong>Type</strong>, and the rate or amount.
+              </li>
+              <li>Read <strong>Result</strong> and <strong>Checks</strong>.</li>
+              <li>
+                Under <strong>Closing confirmation</strong>, read the summary and click <strong>Copy closing confirmation</strong> to send it to the lead. Click
+                <strong>Export allocation CSV</strong> for the investor-level figures.
+              </li>
+              <li>Click <strong>Hand off to exit distribution</strong> when the deal has closed.</li>
+            </ol>
+            <h2 id="fees">Fees<a class="docs__anchor" href="#fees" aria-label="Link to this section">#</a></h2>
+            <p>Every fee has a payer, and the payer decides what types it can have:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Paid by</th>
+                    <th>Types</th>
+                    <th>How it is taken</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Investors</strong></td>
+                    <td><strong>Percentage</strong>, <strong>Fixed amount per investor</strong></td>
+                    <td>
+                      Out of what they wired or on top of their investment, according to <strong>Investor percentage fees</strong> in
+                      <strong>Deal settings</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Company</strong></td>
+                    <td><strong>Percentage of amount raised</strong>, <strong>Fixed total</strong></td>
+                    <td>Out of the wire to the company.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lead</strong></td>
+                    <td><strong>Percentage of amount raised</strong>, <strong>Fixed total</strong></td>
+                    <td>Invoiced to the lead. Shown as <strong>Invoice to lead</strong>; it does not reduce the wire.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>A deal can have up to 20 fees. Each needs a name, and no two can share one.</p>
+            <p>
+              To move a percentage fee to a different payer before closing, use <strong>Change who pays a fee</strong>: see
+              <a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawing an investor and changing who pays a fee</a>.
+            </p>
+            <h2 id="what-you-should-see">What you should see<a class="docs__anchor" href="#what-you-should-see" aria-label="Link to this section">#</a></h2>
+            <p>
+              Using the sample deal, <strong>Result</strong> shows <strong>Cash received</strong> £103,500.00, <strong>Total invested</strong> £100,395.00,
+              <strong>Investor fees</strong> £3,105.00, <strong>Refunds</strong> £0.00, <strong>Company-paid fees</strong> £1,500.00 and
+              <strong>Wire to company</strong> £98,895.00. Amelia Hart received £10,000.00, invests £9,700.00 and pays £300.00 in fees, for 4018.726436 shares.
+            </p>
+            <p><strong>Status</strong> in the <strong>Per investor</strong> table is one of:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Allocated</strong></td>
+                    <td>In the close, in full.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Scaled back</strong></td>
+                    <td>In the close, cut back because the round was over the cap.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Out: No money received</strong></td>
+                    <td>Not in the close.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Out: Below the minimum commitment</strong></td>
+                    <td>Refunded in full, pays no fees.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Out: Fees take everything received</strong></td>
+                    <td>Refunded in full, pays no fees.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Out: Nothing left to invest after fees</strong></td>
+                    <td>Refunded in full, pays no fees.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The <strong>Refunds</strong> figure covers refunds within the allocation. Over-payments and withdrawn investors&#39; money are listed separately
+              under <strong>Refunds outside the allocation (not carried into it)</strong>, and appear at the end of the closing confirmation.
+            </p>
+            <h2 id="the-cap-and-scale-back">
+              The cap and scale-back<a class="docs__anchor" href="#the-cap-and-scale-back" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              If the amounts investors can invest add up to more than the round cap, everyone is cut back in proportion and you see
+              <strong>Demand was over the round cap, so every investor was scaled back pro rata.</strong> Scaling back can take someone below the minimum: then
+              the deal cannot close, and they are named.
+            </p>
+            <p>In the sample, a cap of £80,000 scales everyone back and stops the close, because Isla Campbell falls below the £1,000 minimum.</p>
+            <h2 id="seis-and-eis">SEIS and EIS<a class="docs__anchor" href="#seis-and-eis" aria-label="Link to this section">#</a></h2>
+            <p>
+              For investors with a scheme, <strong>S/EIS claimable (est.)</strong> shows the whole shares and their value. Part of an investment can fall
+              outside whole shares, shown as <strong>not claimable</strong>: tax relief is per whole share, while the nominee holds fractions. These are
+              estimates and do not decide eligibility, so check the final allocated share count.
+            </p>
+            <p>
+              <strong>By tax scheme</strong> totals investors, amounts and shares for each scheme. SEIS shares must be issued on an earlier day than EIS shares;
+              the same day is not enough.
+            </p>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What it means and what to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Can&#39;t close yet</strong></td>
+                    <td>
+                      A blocker: no investor can be allocated, company-paid fees exceed the amount raised, or scale-back left someone below the minimum. The
+                      reasons are listed. Copy and export wait.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Copy and export are disabled until the blockers above are resolved.</strong></td>
+                    <td>Fix the blocker, for example by raising the cap or lowering the minimum.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Copy and export are disabled until you keep or remove the flagged refund.</strong></td>
+                    <td>
+                      You edited an investor after the hand-off, so Goten asks whether their refund still applies. Click <strong>Keep refund</strong> or
+                      <strong>Remove refund</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Out of date: reconciliation has changed since this hand-off.</strong></td>
+                    <td>
+                      Click <strong>Hand off again (replaces the investor list)</strong>. Your own edits to the investor list here are replaced. Until you do,
+                      copy, export and hand-off to exit still work, on the old figures.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Input errors — no results until these are fixed</strong></td>
+                    <td>Fix the named field. For example <strong>Allocation, share price: required</strong> until you enter a share price.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

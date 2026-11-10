@@ -1,0 +1,346 @@
+/* Documentation pages (plan 30). Kept apart from styles.css; uses its tokens and fonts. Long reading: one text column, a sidebar on desktop, a menu on small screens. */
+.docs,
+.docs-index {
+  box-sizing: border-box;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 128px var(--gutter) 96px;
+}
+.docs {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  column-gap: 72px;
+  align-items: start;
+}
+.docs__main {
+  max-width: 720px;
+  min-width: 0;
+}
+
+/* sidebar */
+.docs__side {
+  position: sticky;
+  top: 112px;
+  max-height: calc(100vh - 136px);
+  overflow-y: auto;
+}
+.docs__group {
+  margin: 0 0 10px;
+  font-family: var(--label-dot);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.docs__side ul,
+.docs__menu ul {
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+.docs__side li > *,
+.docs__menu li > * {
+  display: block;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+.docs__side li > span,
+.docs__menu li > span {
+  color: var(--muted);
+}
+.docs__side a:hover,
+.docs__menu a:hover {
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+}
+.docs__side a[aria-current='page'],
+.docs__menu a[aria-current='page'] {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  font-weight: 550;
+}
+
+/* the same links on a small screen */
+.docs__menu {
+  display: none;
+  margin: 0 0 32px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.docs__menu summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  font-size: 15px;
+  font-weight: 550;
+  list-style: none;
+  cursor: pointer;
+}
+.docs__menu summary::-webkit-details-marker {
+  display: none;
+}
+.docs__menu summary::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+.docs__menu[open] summary::after {
+  transform: translateY(2px) rotate(225deg);
+}
+.docs__menu nav {
+  padding: 8px 0 0;
+}
+.docs__menu li > * {
+  padding: 10px 12px;
+}
+
+/* page head */
+.docs__version {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+.docs__title {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* text */
+.docs__body {
+  margin-top: 24px;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.docs__body > * {
+  max-width: 68ch;
+}
+.docs__body > .docs__table,
+.docs__body > pre {
+  max-width: none;
+}
+.docs__body h2,
+.docs__body h3,
+.docs__body h4 {
+  font-weight: 500;
+  scroll-margin-top: 112px;
+}
+.docs__body h2 {
+  margin: 56px 0 0;
+  font-size: clamp(24px, 3vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.docs__body h3 {
+  margin: 40px 0 0;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.docs__body h4 {
+  margin: 32px 0 0;
+  font-size: 17px;
+}
+.docs__body p,
+.docs__body ol,
+.docs__body ul,
+.docs__body blockquote {
+  margin: 16px 0 0;
+}
+.docs__body ol,
+.docs__body ul {
+  padding-left: 1.4em;
+}
+.docs__body li + li {
+  margin-top: 8px;
+}
+.docs__body strong {
+  font-weight: 600;
+}
+.docs__body a {
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.docs__body a:hover {
+  text-decoration-color: currentColor;
+}
+.docs__body blockquote {
+  padding-left: 18px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+}
+.docs__body blockquote p {
+  margin: 0;
+}
+.docs__body .docs__anchor {
+  margin-left: 0.4em;
+  color: var(--muted);
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0;
+}
+.docs__body :is(h2, h3, h4):hover .docs__anchor,
+.docs__body .docs__anchor:focus-visible {
+  opacity: 1;
+}
+
+/* code */
+.docs__body code {
+  padding: 0.12em 0.32em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+  font-family: var(--mono);
+  font-size: 0.88em;
+  overflow-wrap: anywhere;
+}
+.docs__body pre {
+  margin: 20px 0 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.docs__body pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+  overflow-wrap: normal;
+}
+
+/* tables */
+.docs__table {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+.docs__table:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+/* field names stay whole; a table too wide for the screen scrolls sideways in its wrapper */
+.docs__body :is(th, td) code {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.docs__body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.docs__body th,
+.docs__body td {
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.docs__body th:last-child,
+.docs__body td:last-child {
+  padding-right: 0;
+}
+.docs__body th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* choose a module */
+.docs-index__line {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.4;
+}
+.docs-index__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+.docs-card {
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+  min-height: 200px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.2s var(--ease);
+}
+a.docs-card:hover {
+  border-color: var(--text);
+}
+.docs-card strong {
+  font-size: clamp(28px, 3.1vw, 36px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.docs-card span {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.docs-card small {
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+.docs-card--off strong {
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .docs {
+    display: block;
+    padding-top: 112px;
+  }
+  .docs__side {
+    display: none;
+  }
+  .docs__menu {
+    display: block;
+  }
+  .docs__main {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 760px) {
+  .docs,
+  .docs-index {
+    padding-top: 88px;
+    padding-bottom: 72px;
+  }
+  .docs__body h2,
+  .docs__body h3,
+  .docs__body h4 {
+    scroll-margin-top: 80px;
+  }
+  .docs__body table {
+    font-size: 14px;
+  }
+  .docs-index__cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .docs-card {
+    min-height: 0;
+  }
+}

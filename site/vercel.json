@@ -274,6 +274,81 @@
       "source": "/blog/uk-rules",
       "destination": "/blog/uk-rules/",
       "permanent": true
+    },
+    {
+      "source": "/docs/goten",
+      "destination": "/docs/goten/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/getting-started",
+      "destination": "/docs/goten/use/getting-started/",
+      "permanent": true
+    },
+    {
+      "source": "/docs",
+      "destination": "/docs/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/import-csv",
+      "destination": "/docs/goten/use/import-csv/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/reconciliation",
+      "destination": "/docs/goten/use/reconciliation/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/closing-allocation",
+      "destination": "/docs/goten/use/closing-allocation/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/exit-distribution",
+      "destination": "/docs/goten/use/exit-distribution/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/withdrawal-and-fee-payer",
+      "destination": "/docs/goten/use/withdrawal-and-fee-payer/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/exports-and-records",
+      "destination": "/docs/goten/use/exports-and-records/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/use/how-the-numbers-work",
+      "destination": "/docs/goten/use/how-the-numbers-work/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/build",
+      "destination": "/docs/goten/build/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/build/run-and-deploy",
+      "destination": "/docs/goten/build/run-and-deploy/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/build/csv-reference",
+      "destination": "/docs/goten/build/csv-reference/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/build/architecture",
+      "destination": "/docs/goten/build/architecture/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/build/verification",
+      "destination": "/docs/goten/build/verification/",
+      "permanent": true
     }
   ],
   "headers": [
