@@ -349,6 +349,101 @@
       "source": "/docs/goten/build/verification",
       "destination": "/docs/goten/build/verification/",
       "permanent": true
+    },
+    {
+      "source": "/docs/trunks",
+      "destination": "/docs/trunks/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/use/getting-started",
+      "destination": "/docs/trunks/use/getting-started/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/use/reading-a-case",
+      "destination": "/docs/trunks/use/reading-a-case/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/use/checking-a-reply",
+      "destination": "/docs/trunks/use/checking-a-reply/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/use/risk-and-verification",
+      "destination": "/docs/trunks/use/risk-and-verification/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/use/roles",
+      "destination": "/docs/trunks/use/roles/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/use/limits-and-help",
+      "destination": "/docs/trunks/use/limits-and-help/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build",
+      "destination": "/docs/trunks/build/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/quickstart",
+      "destination": "/docs/trunks/build/quickstart/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/users-and-directory",
+      "destination": "/docs/trunks/build/users-and-directory/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/mailboxes",
+      "destination": "/docs/trunks/build/mailboxes/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/models-and-data-protection",
+      "destination": "/docs/trunks/build/models-and-data-protection/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/payment-messages",
+      "destination": "/docs/trunks/build/payment-messages/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/configuration",
+      "destination": "/docs/trunks/build/configuration/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/security-model",
+      "destination": "/docs/trunks/build/security-model/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/dpia-template",
+      "destination": "/docs/trunks/build/dpia-template/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/lia-template",
+      "destination": "/docs/trunks/build/lia-template/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/retention",
+      "destination": "/docs/trunks/build/retention/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/backup-and-upgrade",
+      "destination": "/docs/trunks/build/backup-and-upgrade/",
+      "permanent": true
     }
   ],
   "headers": [

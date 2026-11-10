@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Users and directory | Vegeta</title>
+    <meta
+      name="description"
+      content="This version has no screen for users or for the directory. An admin manages both through the app's HTTP API
+with curl, from a terminal on any machine that can reach the app. The commands on this page are run by the
+Compose test exactly as written here (test plan TC-OPS-08)."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Users and directory | Vegeta" />
+    <meta
+      property="og:description"
+      content="This version has no screen for users or for the directory. An admin manages both through the app's HTTP API
+with curl, from a terminal on any machine that can reach the app. The commands on this page are run by the
+Compose test exactly as written here (test plan TC-OPS-08)."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/users-and-directory/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Users and directory | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="This version has no screen for users or for the directory. An admin manages both through the app's HTTP API
+with curl, from a terminal on any machine that can reach the app. The commands on this page are run by the
+Compose test exactly as written here (test plan TC-OPS-08)."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/users-and-directory/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/" aria-current="page">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/" aria-current="page">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Users and directory</h1>
+          <div class="docs__body">
+            <p>
+              <strong>This version has no screen for users or for the directory.</strong> An admin manages both through the app&#39;s HTTP API with
+              <code>curl</code>, from a terminal on any machine that can reach the app. The commands on this page are run by the Compose test exactly as written
+              here (test plan TC-OPS-08).
+            </p>
+            <p>You need:</p>
+            <ul>
+              <li><code>curl</code> 7.87 or later (for <code>--url-query</code>). Ubuntu 24.04 and current macOS have it.</li>
+              <li>
+                An admin account whose first password has already been changed (see
+                <a href="/docs/trunks/build/quickstart/#25-first-sign-in">Quick start §2.5</a>). Until then every request except the password change is refused.
+                The change is made in a browser. On a server without one and without HTTPS yet, forward the port first (<code
+                  >ssh -L 8080:127.0.0.1:8080 &lt;server&gt;</code
+                >) and open <code>http://127.0.0.1:8080</code> on your own machine.
+              </li>
+            </ul>
+            <p>
+              If you sign in with OIDC (<code>auth.oidc</code>), users are created at their first sign-in with the role your identity provider gives them, and
+              you do not need section 2. You still import the directory (section 3).
+            </p>
+            <h2 id="1-sign-in-from-the-terminal">
+              1. Sign in from the terminal<a class="docs__anchor" href="#1-sign-in-from-the-terminal" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Run these in an empty working directory. The cookie file holds your session, so it is created readable only by you and deleted at the end (section
+              4).
+            </p>
+            &lt;!-- tested: run --&gt;
+            <pre tabindex="0"><code>DOI_URL=https://inbox.capital.example
+umask 077
+printf 'admin user name: '; IFS= read -r DOI_USER
+printf 'password: '; IFS= read -rs DOI_PASS; echo
+printf '{&quot;username&quot;:&quot;%s&quot;,&quot;password&quot;:&quot;%s&quot;}' &quot;$DOI_USER&quot; &quot;$DOI_PASS&quot; |
+  curl -sS --fail-with-body -c doi-cookies.txt -o /dev/null -H 'content-type: application/json' --data-binary @- &quot;$DOI_URL/api/login&quot;
+unset DOI_PASS
+CSRF=$(curl -sS --fail-with-body -b doi-cookies.txt &quot;$DOI_URL/api/csrf&quot; | sed -E 's/.*&quot;csrf&quot;:&quot;([^&quot;]*)&quot;.*/\1/')</code></pre>
+            <ul>
+              <li>
+                Set <code>DOI_URL</code> to your app&#39;s address. On the host itself without the proxy it is <code>http://127.0.0.1:8080</code> (or your
+                <code>DOI_PORT</code>).
+              </li>
+              <li>
+                Passwords are typed at a prompt and sent on curl&#39;s standard input, so they never appear in the shell history or in the process list
+                (<code>ps</code>), where other users of the same machine could read them. The <code>x-csrf-token</code> header does show in the process list; it
+                is useless without the session cookie, which only you can read.
+              </li>
+              <li>A password that contains <code>&quot;</code> or <code>\</code> breaks the JSON body. Choose passwords without them.</li>
+              <li>
+                <code>curl: (22) … 401</code> means a wrong user name or password; <code>403</code> with <code>change your password first</code> means the first
+                password has not been changed yet.
+              </li>
+              <li>
+                Every request that changes something needs the <code>x-csrf-token</code> header with <code>$CSRF</code>. Without it the app answers
+                <code>403</code>.
+              </li>
+            </ul>
+            <h2 id="2-users">2. Users<a class="docs__anchor" href="#2-users" aria-label="Link to this section">#</a></h2>
+            <p>There are three roles. Each one can do everything the role before it can:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Can</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>reviewer</code></td>
+                    <td>work Cases, edit and approve replies, tick verification checklists</td>
+                  </tr>
+                  <tr>
+                    <td><code>approver</code></td>
+                    <td>also approve verification tasks, lower risk, set the hold flag</td>
+                  </tr>
+                  <tr>
+                    <td><code>admin</code></td>
+                    <td>also manage users, import the directory, retry KYC transfers</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Define a small helper once in your terminal. It asks for the new user&#39;s name, role and first password:</p>
+            &lt;!-- tested: run --&gt;
+            <pre tabindex="0"><code>new_user() {
+  printf 'new user name: '; read -r U
+  printf 'role (reviewer, approver or admin): '; read -r R
+  printf 'first password (12 characters or more): '; IFS= read -rs P; echo
+  printf '{&quot;username&quot;:&quot;%s&quot;,&quot;role&quot;:&quot;%s&quot;,&quot;password&quot;:&quot;%s&quot;}' &quot;$U&quot; &quot;$R&quot; &quot;$P&quot; |
+    curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: application/json' \
+      --data-binary @- &quot;$DOI_URL/api/users&quot;
+  echo; unset P
+}</code></pre>
+            <p>Then run it once per person, for example a reviewer and an approver:</p>
+            &lt;!-- tested: run --&gt;
+            <pre tabindex="0"><code>new_user
+new_user</code></pre>
+            <ul>
+              <li>
+                <strong>Choose a new random first password for each person</strong>, for example with <code>openssl rand -base64 18</code>. Never reuse a
+                password from an example, a ticket or an email: anyone who knows it can sign in first and choose their own new password.
+              </li>
+              <li>
+                The answer is <code>{&quot;id&quot;:&quot;…&quot;}</code>. <strong>Write the id down</strong>: there is no list of users in this version, and
+                the role change and password reset below need it.
+              </li>
+              <li>
+                The password must be at least 12 characters. Give it to the person by a channel other than email. They must change it at their first sign-in.
+              </li>
+              <li>A user name that already exists is refused (<code>username taken</code>).</li>
+            </ul>
+            <p>Change a user&#39;s role, or reset a user&#39;s password (the user must change it again at the next sign-in, and all their sessions end):</p>
+            <pre tabindex="0"><code>curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: application/json' \
+  -X PUT --data '{&quot;role&quot;:&quot;approver&quot;}' &quot;$DOI_URL/api/users/&lt;id&gt;/role&quot;
+printf 'new first password: '; IFS= read -rs P; echo
+printf '{&quot;password&quot;:&quot;%s&quot;}' &quot;$P&quot; | curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; \
+  -H 'content-type: application/json' --data-binary @- &quot;$DOI_URL/api/users/&lt;id&gt;/reset&quot;; unset P</code></pre>
+            <h3 id="users-and-two-person-control">
+              Users and two-person control<a class="docs__anchor" href="#users-and-two-person-control" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              Account history decides who may approve a verification task (bank-detail and identity changes; see
+              <a href="/docs/trunks/build/security-model/#verification-tasks-and-two-person-control">Security model §7</a>). Plan your users with these rules in
+              mind:
+            </p>
+            <ul>
+              <li>The person who ticks the checklist and the person who approves must be two different users.</li>
+              <li>
+                Neither of the two may have created the other&#39;s account, granted the other a role or reset the other&#39;s password. So the admin who
+                created a reviewer&#39;s account cannot approve that reviewer&#39;s tasks. Let the first <code>admin</code> create the accounts, and give the
+                approver role to people whose accounts that admin created.
+              </li>
+              <li>
+                Both accounts, and their current roles, must be older than one cooling-off period (default 24 hours) at the moment the checklist is done.
+                <strong>On a new deployment the first approval is therefore possible only after about two cooling-off periods</strong> (default about 48 hours):
+                one for the accounts to age, and one for the task&#39;s own cooling-off. A role change or password reset starts the waiting time again for that
+                user.
+              </li>
+            </ul>
+            <h2 id="3-directory">3. Directory<a class="docs__anchor" href="#3-directory" aria-label="Link to this section">#</a></h2>
+            <p>
+              The directory is what the app links emails to: your deals, the commitments of each deal, the bank lines and ledger of each deal, and your
+              contacts. You import it as CSV files. Files exported by Goten — Deal Calculations, the companion browser tool in Vegeta, import unchanged, except
+              a file without data rows, which is refused (see below).
+            </p>
+            <ul>
+              <li>
+                Each import is a <strong>new version</strong> of that list. It replaces the current version of the same kind (for commitments, bank lines and
+                ledger: of the same deal). Nothing is merged, so always import the complete list.
+              </li>
+              <li>
+                A file with any error is refused as a whole, and the answer lists every error with its row number, for example
+                <code
+                  >{&quot;ok&quot;:false,&quot;errors&quot;:[{&quot;where&quot;:&quot;row 3, currency&quot;,&quot;message&quot;:&quot;\&quot;CHF\&quot; is not
+                  one of GBP, EUR, USD&quot;}]}</code
+                >.
+              </li>
+              <li>A successful import answers <code>{&quot;ok&quot;:true,&quot;versionId&quot;:&quot;…&quot;,&quot;rows&quot;:2}</code>.</li>
+              <li>
+                A file with a header and no data rows is refused (<code>no data rows</code>), and the current list stays as it was. The usual cause is
+                <code>--data</code> instead of <code>--data-binary</code> (see below). To empty a list on purpose, see
+                <a href="#emptying-a-list">Emptying a list</a>.
+              </li>
+              <li>
+                Each Case keeps the directory version it was linked with. An email that arrived before your import is linked to the new version only when a
+                person clicks &quot;Relink with the latest directory&quot; on its Case page.
+              </li>
+              <li>Import the deals first. Commitments, bank lines and ledger name their deal, and the deal must exist.</li>
+            </ul>
+            <h3 id="file-formats">File formats<a class="docs__anchor" href="#file-formats" aria-label="Link to this section">#</a></h3>
+            <p>
+              Comma-separated, with a header row. Column names are matched without regard to case, and the alternatives in brackets are accepted too. Other
+              columns are ignored. Dates are <code>YYYY-MM-DD</code> or <code>DD/MM/YYYY</code>. Amounts are in the deal&#39;s currency, for example
+              <code>10000.00</code>, <code>10,000</code> or <code>£10,000.00</code>.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Columns (<strong>required</strong> in bold)</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Deals</td>
+                    <td>
+                      <strong><code>name</code></strong> (<code>deal</code>, <code>deal name</code>), <strong><code>currency</code></strong> (<code>ccy</code>),
+                      <code>close_date</code> (<code>planned_close_date</code>, <code>planned close</code>), <code>reference_prefix</code>,
+                      <code>receiving_accounts</code>
+                    </td>
+                    <td><code>currency</code> must be one of <code>deployment.currencies</code>. A name cannot contain <code>::</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>Contacts</td>
+                    <td>
+                      <code>contact_id</code> (<code>id</code>), <strong><code>name</code></strong
+                      >, <strong><code>email</code></strong
+                      >, <code>phone</code>, <strong><code>role</code></strong
+                      >, <code>deal</code>, <code>investor_id</code>, <code>authorised_for</code>
+                    </td>
+                    <td>
+                      <code>role</code> is one of <code>investor</code>, <code>lead</code>, <code>company</code>, <code>seller</code>, <code>adviser</code>,
+                      <code>other</code>. <code>email</code> and <code>deal</code> may hold several values separated by <code>;</code>.
+                      <code>investor_id</code> and <code>authorised_for</code> hold commitment keys <code>&lt;deal name&gt;::&lt;investor_id&gt;</code>, several
+                      separated by <code>;</code>; a bare id without the deal name is an error. <code>phone</code> is the number on file that verification tasks
+                      tell you to call. A <code>deal</code> name is not checked against the deals list.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Commitments (per deal)</td>
+                    <td>
+                      <code>investor_id</code> (<code>id</code>), <strong><code>name</code></strong> (<code>investor name</code>, <code>investor</code>),
+                      <code>email</code>, <strong><code>reference</code></strong> (<code>payment reference</code>, <code>ref</code>),
+                      <strong><code>cash_due</code></strong> (<code>cash due</code>, <code>amount due</code>, <code>expected</code>), <code>scheme</code>
+                    </td>
+                    <td>The Goten commitments file.</td>
+                  </tr>
+                  <tr>
+                    <td>Bank lines (per deal)</td>
+                    <td>
+                      <code>transaction_id</code> (<code>id</code>, <code>transaction id</code>), <strong><code>date</code></strong> (<code>value date</code>,
+                      <code>booking date</code>), <strong><code>amount</code></strong> (<code>credit</code>, <code>paid in</code>),
+                      <code>payer</code> (<code>counterparty</code>, <code>from</code>), <code>reference</code> (<code>description</code>,
+                      <code>narrative</code>)
+                    </td>
+                    <td>Your bank statement export for the deal&#39;s account. Shown on Cases only; nothing is changed.</td>
+                  </tr>
+                  <tr>
+                    <td>Ledger (per deal)</td>
+                    <td>
+                      <code>transaction_id</code>, <strong><code>date</code></strong
+                      >, <strong><code>amount</code></strong
+                      >, <code>payer</code>, <code>reference</code>, <strong><code>status</code></strong
+                      >, <code>investor_id</code>, <code>investor_name</code>, <code>decided_by</code>, <code>withdrawn_on</code>, <code>currency</code>
+                    </td>
+                    <td>
+                      The Goten reconciliation export, exact column names. Rows with status <code>auto</code> or <code>confirmed</code> count as received. An
+                      empty <code>currency</code> means the deal&#39;s currency. A negative amount, or two different rows with the same
+                      <code>transaction_id</code>, is an error.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <code>receiving_accounts</code> lists the accounts a deal collects into, separated by semicolons. Values need not be IBANs; an IBAN-shaped value
+              with a bad check digit is an error. Only an admin can import it, and only a keyed hash and the last four characters are stored. Email content
+              never reaches this list. Without it, an account in an MT103 or pacs.008 attachment counts as a possible change of bank details. See
+              <code>docs/en/payment-messages.md</code>.
+            </p>
+            <p>
+              Without an id column, contacts, commitments and bank lines get a stable id from the file version and the row number. A repeated id is an error.
+            </p>
+            <p>
+              The access rule for replies comes from the contacts file: a reply that shows record data (amounts, ledger status) is used only when the sender is
+              authenticated and the commitment is in that contact&#39;s <code>investor_id</code> or <code>authorised_for</code> list. Otherwise the app uses
+              generic replies only.
+            </p>
+            <h3 id="example-files">Example files<a class="docs__anchor" href="#example-files" aria-label="Link to this section">#</a></h3>
+            <p>These fictional files are the ones the test imports.</p>
+            &lt;!-- tested: file deals.csv --&gt;
+            <pre tabindex="0"><code>name,currency,planned_close_date,reference_prefix
+Northwind Robotics,GBP,2026-11-20,NW</code></pre>
+            &lt;!-- tested: file contacts.csv --&gt;
+            <pre tabindex="0"><code>contact_id,name,email,phone,role,deal,investor_id,authorised_for
+C001,Amelia Hart,amelia@hartfamily.example,+44 7700 900101,investor,Northwind Robotics,Northwind Robotics::001,
+C002,Grace Whitfield,grace@whitfield-advisers.example,+44 20 7946 0150,adviser,Northwind Robotics,,Northwind Robotics::001</code></pre>
+            &lt;!-- tested: file commitments.csv --&gt;
+            <pre tabindex="0"><code>investor_id,name,email,reference,cash_due,scheme
+001,Amelia Hart,amelia@hartfamily.example,NW-001,10000.00,SEIS
+002,Oliver Bennett,oliver.bennett@bennettmail.example,NW-002,25000.00,EIS</code></pre>
+            &lt;!-- tested: file bank.csv --&gt;
+            <pre tabindex="0"><code>transaction_id,date,amount,payer,reference
+T-NW-0001,2026-10-20,10000.00,A HART,NW-001 Hart</code></pre>
+            &lt;!-- tested: file ledger.csv --&gt;
+            <pre tabindex="0"><code>transaction_id,date,amount,payer,reference,status,investor_id,investor_name,decided_by,withdrawn_on,currency
+T-NW-0001,2026-10-20,10000.00,A HART,NW-001 Hart,auto,001,Amelia Hart,system,,GBP</code></pre>
+            <h3 id="import">Import<a class="docs__anchor" href="#import" aria-label="Link to this section">#</a></h3>
+            &lt;!-- tested: run --&gt;
+            <pre
+              tabindex="0"
+            ><code>imp() { curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: text/csv' &quot;$@&quot;; echo; }
+imp --data-binary @deals.csv &quot;$DOI_URL/api/directory/deals&quot;
+imp --data-binary @contacts.csv &quot;$DOI_URL/api/directory/contacts&quot;
+DEAL='Northwind Robotics'
+imp --url-query &quot;deal=$DEAL&quot; --data-binary @commitments.csv &quot;$DOI_URL/api/directory/commitments&quot;
+imp --url-query &quot;deal=$DEAL&quot; --data-binary @bank.csv &quot;$DOI_URL/api/directory/bank&quot;
+imp --url-query &quot;deal=$DEAL&quot; --data-binary @ledger.csv &quot;$DOI_URL/api/directory/ledger&quot;</code></pre>
+            <h3 id="emptying-a-list">Emptying a list<a class="docs__anchor" href="#emptying-a-list" aria-label="Link to this section">#</a></h3>
+            <p>
+              An import never empties a list by accident. To empty one on purpose, for example after importing a ledger into the wrong deal when the right deal
+              has no ledger yet, send a file with the header only <strong>and</strong> <code>clear=yes</code>:
+            </p>
+            &lt;!-- tested: run --&gt;
+            <pre
+              tabindex="0"
+            ><code>printf 'transaction_id,date,amount,payer,reference,status,investor_id,investor_name,decided_by,withdrawn_on,currency\n' &gt; empty-ledger.csv
+imp --url-query &quot;deal=$DEAL&quot; --url-query clear=yes --data-binary @empty-ledger.csv &quot;$DOI_URL/api/directory/ledger&quot;</code></pre>
+            <p>
+              The answer is <code>{&quot;ok&quot;:true,…,&quot;rows&quot;:0}</code>; the audit chain records the import as a clear. A cleared ledger counts as
+              no ledger: Cases show &quot;No ledger imported for this deal&quot;, as before the mistaken import. <code>clear=yes</code> with a file that has
+              data rows is refused, so it can never import anything by mistake. Cases that arrived before keep the version they were linked with (use
+              &quot;Relink with the latest directory&quot; on a Case to move it to the emptied list).
+            </p>
+            <p>
+              Use <code>--data-binary</code>, not <code>--data</code>: <code>--data</code> removes the line breaks and the file arrives as one line. For each
+              further deal, set <code>DEAL</code> to its name exactly as in the deals file and import its three files.
+            </p>
+            <h2 id="4-sign-out">4. Sign out<a class="docs__anchor" href="#4-sign-out" aria-label="Link to this section">#</a></h2>
+            &lt;!-- tested: run --&gt;
+            <pre
+              tabindex="0"
+            ><code>curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -X POST -o /dev/null &quot;$DOI_URL/api/logout&quot;
+rm doi-cookies.txt</code></pre>
+            <p>Every step is recorded in the audit chain with the admin who made it (<code>user.created</code>, <code>directory.imported</code>, …).</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

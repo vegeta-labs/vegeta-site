@@ -113,10 +113,12 @@ const inboxMeasuredVersion = /were \*\*measured on v([0-9.]+)\*\*/.exec(currentI
 const measuredInboxNotes = releaseSection(inboxNotesRaw, inboxMeasuredVersion)
 if (!measuredInboxNotes) fail(`Inbox measurement release v${inboxMeasuredVersion} is missing`)
 if (inboxMeasuredVersion !== inboxVersion) {
+  // every row's threshold and result, in order; a row's label may be reworded (v0.4.0 names "the v0.3.0 scoring fix")
   const table = (s) =>
     s
       .split('\n')
       .filter((line) => /^\s*\|/.test(line))
+      .map((line) => line.split('|').slice(2).join('|').trim())
       .join('\n')
   if (table(currentInboxNotes) !== table(measuredInboxNotes)) fail('Inbox carried-forward metric table differs from its measured release')
 }
@@ -288,9 +290,11 @@ for (const sheet of ['styles.css', 'docs.css']) {
       docsBuilt = false
       continue
     }
-    const notes = existsSync(join(dir, 'docs/RELEASE_NOTES.md')) ? read(join(dir, 'docs/RELEASE_NOTES.md')) : ''
+    // each product names its release notes file (Goten docs/RELEASE_NOTES.md, Trunks CHANGELOG.md)
+    const notesFile = /^[A-Za-z0-9_/-]+\.md$/.test(p.source?.notes ?? '') ? p.source.notes : ''
+    const notes = notesFile && existsSync(join(dir, notesFile)) ? read(join(dir, notesFile)) : ''
     if (!new RegExp(`^## ${esc(p.version)} `, 'm').test(notes)) {
-      fail(`docs: ${p.name} ${p.version} is not in docs/RELEASE_NOTES.md at the docs pin`)
+      fail(`docs: ${p.name} ${p.version} is not in ${notesFile || 'its release notes file'} at the docs pin`)
       docsBuilt = false
     }
   }
@@ -433,7 +437,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
         : n === inboxVersion
           ? new RegExp(`^## v${esc(inboxVersion)}\\b`, 'm')
           : { 126: /held-out set of 126 emails/, 5.5: /Claude Opus 5\.5/ }[n]
-    if (!proof?.test(currentInboxNotes)) fail(`/inbox/ trust note: ${n} is not backed by the current Inbox release`)
+    // the held-out set belongs to the measured release (the same as the current one unless the figures are carried forward)
+    if (!proof?.test(n === '126' ? measuredInboxNotes : currentInboxNotes)) fail(`/inbox/ trust note: ${n} is not backed by the current Inbox release`)
   }
   // N15: the problem section quotes figures from an external report; they were checked against the report itself
   // (UK Finance, Annual Fraud Report 2026, p. 42: invoice & mandate scam, value £41.3m, 68 per cent on non-personal
@@ -558,7 +563,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     if (['£41.3m', '68%', '2025', '2026'].includes(n)) continue // the problem section's report figures, checked above
     if (releaseFigureNumbers.has(n)) continue
     if (INBOX_FIGURES[n]) {
-      if (!INBOX_FIGURES[n].test(currentInboxNotes)) fail(`/inbox/: figure ${n} is no longer in the Inbox CHANGELOG.md`)
+      if (!INBOX_FIGURES[n].test(measuredInboxNotes)) fail(`/inbox/: figure ${n} is no longer in the Inbox CHANGELOG.md`)
       continue
     }
     if (n === '4893' && shownText.includes('"ending 4893"')) continue // demo sample E0225, as shown
@@ -923,16 +928,18 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     fail('blog: 18 of 18 is not in the Trunks release notes')
   if (!/^\s*\| Contact, commitment and deal linked correctly \|[^|]*\|\s*[\d.]+% \(123\/125\)\s*\|/m.test(currentInboxNotes))
     fail('blog: 123 of 125 is not in the Trunks release notes')
-  if (!/held-out set of 126 emails/.test(currentInboxNotes)) fail('blog: 126 is not in the Trunks release notes')
-  if (!/in both blind sets the qualifying samples were pacs\.008/.test(currentInboxNotes))
+  // the article labels these as measured on the measured release, so they are held to that release's notes
+  if (!/held-out set of 126 emails/.test(measuredInboxNotes)) fail('blog: 126 is not in the Trunks release notes')
+  if (!/in both blind sets the qualifying samples were pacs\.008/.test(measuredInboxNotes))
     fail('blog: the pacs.008 coverage note is not in the Trunks release notes')
   if (!read(join(INBOX, 'docs/en/security-model.md')).includes('default 24 hours')) fail('blog: 24 hours is not the Trunks default')
+  if (!/Otherwise only an approver or admin can close, with a reason/.test(currentInboxNotes)) fail('blog: closing with a task open is not the Trunks rule')
   article(BLOG_TRUNKS, {
     title: 'Every investor email, ready for a person',
     summary:
       'Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.',
     film: 'trunks',
-    numbers: `10,000.00 001 20,000.00 005 24 126 5.5 18 123 125 103 008 9 ${inboxVersion}`.split(' '),
+    numbers: `10,000.00 001 20,000.00 005 24 126 5.5 18 123 125 103 008 9 ${inboxVersion} ${inboxMeasuredVersion}`.split(' '),
     figures: {
       inbox: 'Trunks inbox with four investor emails. The first, Did my payment arrive? from Son Goku, is selected.',
       reply:
@@ -951,7 +958,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       'A valid message whose beneficiary account is not on the list goes to high risk',
       '24 hours by default',
       'It has no connection to your bank and cannot stop a payment',
-      'Nothing stops someone closing a case with its task open',
+      'An approver or admin can still close a case with its task open, giving a reason',
       'a taken-over mailbox would pass',
       'One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read',
       `measured on v${inboxMeasuredVersion}`,

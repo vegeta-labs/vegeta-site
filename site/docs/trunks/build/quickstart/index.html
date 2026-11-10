@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Quick start | Vegeta</title>
+    <meta name="description" content="This page covers:" />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Quick start | Vegeta" />
+    <meta property="og:description" content="This page covers:" />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/quickstart/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quick start | Vegeta" />
+    <meta name="twitter:description" content="This page covers:" />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/quickstart/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/" aria-current="page">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/" aria-current="page">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Quick start</h1>
+          <div class="docs__body">
+            <p>This page covers:</p>
+            <ol>
+              <li>The local demo. It uses fictional data and no mailbox, model or outbound connection.</li>
+              <li>A real deployment with Docker Compose.</li>
+            </ol>
+            <p>There is no published image yet, so you build the images from this repository first.</p>
+            <h2 id="before-you-start">Before you start<a class="docs__anchor" href="#before-you-start" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Need</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Docker with Compose v2</td>
+                    <td>Docker Engine on Linux, or Docker Desktop on macOS</td>
+                  </tr>
+                  <tr>
+                    <td>Memory</td>
+                    <td>
+                      Give Docker about <strong>4 GB</strong> of memory. The virus scanner (ClamAV) needs about 1.5–2 GB while it loads its virus database. If
+                      Docker has less, ClamAV can be killed while it starts. Measured with the demo&#39;s 30 emails processed (2026-11-02, Docker Desktop on
+                      macOS): ClamAV 965 MiB, app 156 MiB, maintenance 104 MiB, database 73 MiB, parser 27 MiB; about 1.3 GiB in all. Real mailboxes and larger
+                      attachments need more.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>AppArmor (Ubuntu / Debian hosts only)</td>
+                    <td>
+                      The parser container runs under its own AppArmor profile. Load it once (see <a href="#apparmor-profile-linux-hosts">AppArmor profile</a>).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Build the images from the repository root:</p>
+            <pre tabindex="0"><code>docker compose build</code></pre>
+            <p>
+              This builds <code>deal-ops-inbox:local</code>, which is used by the <code>app</code>, <code>maintenance</code>, <code>migrate</code> and tool
+              services. It also builds <code>deal-ops-inbox-parser:local</code>, which is used by the <code>parser</code> service.
+            </p>
+            <h2 id="apparmor-profile-linux-hosts">
+              AppArmor profile (Linux hosts)<a class="docs__anchor" href="#apparmor-profile-linux-hosts" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              On hosts with AppArmor (Ubuntu, Debian), install the parser profile before the first start. Profiles in <code>/etc/apparmor.d/</code> are loaded
+              again at every boot; loading it only from the checkout would last until the next reboot.
+            </p>
+            <pre tabindex="0"><code>sudo cp deploy/apparmor/doi-parser /etc/apparmor.d/doi-parser
+sudo apparmor_parser -r -W /etc/apparmor.d/doi-parser</code></pre>
+            <p>After an upgrade that changes <code>deploy/apparmor/doi-parser</code>, run both commands again.</p>
+            <ul>
+              <li>The profile needs <strong>AppArmor 4</strong>, for example Ubuntu 24.04, because it uses the <code>userns</code> rule.</li>
+              <li>If the profile is not loaded, the <code>parser</code> container does not start. It is never run unconfined.</li>
+              <li>Docker Desktop on macOS has no AppArmor and ignores the option.</li>
+              <li>
+                With the profile loaded, Ubuntu 24.04 needs <strong>no</strong> change to <code>kernel.apparmor_restrict_unprivileged_userns</code> (measured on
+                Ubuntu 24.04: the parser tests pass with the profile in enforce mode and the setting left as it is).
+              </li>
+            </ul>
+            <h2 id="1-the-demo">1. The demo<a class="docs__anchor" href="#1-the-demo" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>mkdir -m 700 demo-secrets
+docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/demo-secrets:/out&quot; deal-ops-inbox:local init-secrets /out
+DOI_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/compose.demo.yml up -d</code></pre>
+            <p>Create the secret directory yourself first. If it does not exist, Docker creates it as root and <code>init-secrets</code> fails.</p>
+            <p>Open http://127.0.0.1:8080. The sign-in page lists the three demo accounts:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>User name</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>demo-reviewer</code></td>
+                    <td><code>demo-reviewer-password</code></td>
+                    <td>reviewer</td>
+                  </tr>
+                  <tr>
+                    <td><code>demo-approver</code></td>
+                    <td><code>demo-approver-password</code></td>
+                    <td>approver</td>
+                  </tr>
+                  <tr>
+                    <td><code>demo-admin</code></td>
+                    <td><code>demo-admin-password</code></td>
+                    <td>admin</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>What the demo does:</p>
+            <ul>
+              <li>
+                It runs as its own Compose project (<code>deal-ops-inbox-demo</code>) with its own volumes. It never touches the volumes of a real deployment.
+              </li>
+              <li>It loads a fictional directory: three deals with their investors and contacts.</li>
+              <li>It receives about 30 fictional emails from built-in <code>.eml</code> files.</li>
+              <li>It uses recorded model replies (&quot;replay&quot;), so no model is called.</li>
+              <li>ClamAV uses the virus database that comes with its image and does not download updates. The demo makes no outbound connection.</li>
+              <li>
+                It listens on <code>127.0.0.1</code> only. In demo mode the session cookie does not carry <code>Secure</code>, so that Safari can sign in over
+                <code>http://</code>.
+              </li>
+              <li>
+                KYC attachments are transferred to a folder on the demo volume. In the demo the stored email is <strong>not</strong> replaced afterwards (a real
+                deployment replaces it; see <a href="/docs/trunks/build/retention/">Retention</a>).
+              </li>
+              <li>
+                <strong>Every <code>up</code> resets the demo database.</strong> Changes you make in the demo do not survive.
+              </li>
+              <li>
+                The emails keep their original receive times, so some deadlines show as overdue. Some demo emails are dated a few days after today&#39;s date in
+                the fictional data; the example dates are fictional and may be later than today.
+              </li>
+              <li>
+                <strong>A successful verification approval takes two days in the demo.</strong> The demo accounts are created again at every <code>up</code>,
+                and an approval needs accounts and roles older than one cooling-off period (24 hours) when the checklist is done, and then the task&#39;s own 24
+                hours. A checklist ticked within a day of <code>up</code> can therefore never be approved; you see the refusal instead. Use
+                <strong>Restart verification</strong> with a reason to replace that checklist, then complete it after the accounts are old enough. To see an
+                approval, leave the demo running without another <code>up</code>, tick a checklist more than 24 hours after the start, and approve as
+                <code>demo-approver</code> 24 hours later. See
+                <a href="/docs/trunks/build/users-and-directory/#users-and-two-person-control">Users and two-person control</a>.
+              </li>
+            </ul>
+            <p>
+              The demo refuses to start if its configuration has a mailbox other than <code>.eml</code>, a model other than replay, an event webhook, a KYC
+              webhook or OIDC sign-in. A demo database can never become a real deployment, and a real database is never reset by the demo.
+            </p>
+            <p>Stop it with:</p>
+            <pre tabindex="0"><code>DOI_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/compose.demo.yml down</code></pre>
+            <h2 id="2-a-real-deployment">2. A real deployment<a class="docs__anchor" href="#2-a-real-deployment" aria-label="Link to this section">#</a></h2>
+            <h3 id="21-secrets">2.1 Secrets<a class="docs__anchor" href="#21-secrets" aria-label="Link to this section">#</a></h3>
+            <pre tabindex="0"><code>mkdir -m 700 secrets
+docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&quot; deal-ops-inbox:local init-secrets /out</code></pre>
+            <p><code>init-secrets</code> writes random passwords and keys, one file each:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Used by</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>postgres_password</code>, <code>owner_database_url</code></td>
+                    <td>the database and <code>migrate</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>doi_app_db_password</code>, <code>doi_maintenance_db_password</code>, <code>doi_rotation_db_password</code></td>
+                    <td><code>migrate</code>, which sets the three role passwords</td>
+                  </tr>
+                  <tr>
+                    <td><code>app_database_url</code></td>
+                    <td><code>app</code>, <code>gmail-auth</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>maintenance_database_url</code></td>
+                    <td><code>maintenance</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>rotation_database_url</code></td>
+                    <td><code>rotate</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>doi_master_keys</code></td>
+                    <td>the encryption master keys (<code>k1:&lt;base64&gt;</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><code>doi_hmac_key</code></td>
+                    <td>the deployment HMAC key</td>
+                  </tr>
+                  <tr>
+                    <td><code>initial_admin_password</code></td>
+                    <td>the first admin&#39;s password</td>
+                  </tr>
+                  <tr>
+                    <td><code>anthropic_api_key</code></td>
+                    <td>empty; fill it in if you use the hosted model provider</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul>
+              <li>
+                The directory is mode 700 and the files are 0644 inside it. Containers that run as other users can read them, and other users on the host
+                cannot.
+              </li>
+              <li>Running <code>init-secrets</code> again only adds missing files. It never overwrites a file.</li>
+              <li>Compose reads the secrets from <code>./secrets</code>. Set <code>DOI_SECRETS_DIR</code> to use another directory.</li>
+              <li>
+                <strong>Keep a copy of <code>doi_master_keys</code> and <code>doi_hmac_key</code> somewhere safe.</strong> Without them the stored data cannot
+                be read. See <a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a>.
+              </li>
+            </ul>
+            <h3 id="22-configuration-directory">
+              2.2 Configuration directory<a class="docs__anchor" href="#22-configuration-directory" aria-label="Link to this section">#</a>
+            </h3>
+            <p>Copy the default configuration and point Compose at the copy:</p>
+            <pre tabindex="0"><code>cp -r config/default config/local
+echo 'DOI_CONFIG_DIR=./config/local' &gt;&gt; .env</code></pre>
+            <p>Edit the three files: <code>deployment.yaml</code>, <code>cases.yaml</code> and <code>templates.yaml</code>.</p>
+            <ul>
+              <li>The configuration is checked at every start. An invalid file stops the start, and the error names the file and the line.</li>
+              <li>Secrets never go into these files, only the <strong>names</strong> of environment variables.</li>
+              <li>Every key is described in the <a href="/docs/trunks/build/configuration/">Configuration reference</a>.</li>
+            </ul>
+            <p>You must decide at least these:</p>
+            <ul>
+              <li><code>deployment.name</code>, <code>deployment.timezone</code> and <code>deployment.currencies</code>.</li>
+              <li><code>mailboxes</code>: see <a href="/docs/trunks/build/mailboxes/">Mailboxes</a>.</li>
+              <li>
+                <code>model</code>: the default file names the hosted provider with <code>dpa: false</code>, so <strong>the app refuses to start</strong> until
+                you record a data processing agreement (<code>dpa: true</code>) or choose a local model. See
+                <a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a>.
+              </li>
+              <li>
+                <code>kyc.target</code>: where possible-KYC attachments go. Without one, every transfer fails and is reminded daily. The default
+                <code>deployment.yaml</code> has a commented example.
+              </li>
+            </ul>
+            <p>
+              Mailbox, webhook and OIDC credentials are read from environment variables, or from a file named by <code>&lt;NAME&gt;_FILE</code>. The base
+              <code>docker-compose.yml</code> mounts only the secrets listed above. Add your own through a <code>docker-compose.override.yml</code>;
+              <a href="/docs/trunks/build/mailboxes/">Mailboxes</a> has an example.
+            </p>
+            <h3 id="23-start">2.3 Start<a class="docs__anchor" href="#23-start" aria-label="Link to this section">#</a></h3>
+            <pre tabindex="0"><code>docker compose up -d</code></pre>
+            <p>The services start in this order:</p>
+            <ol>
+              <li><code>db</code> (Postgres 16) and <code>clamav</code>.</li>
+              <li><code>migrate</code>, which creates the tables and the three database roles and then exits.</li>
+              <li><code>app</code> and <code>maintenance</code>, which start only after <code>migrate</code> has finished successfully.</li>
+            </ol>
+            <p>ClamAV can take several minutes on the first start while it loads its database.</p>
+            <p>The app listens on <code>127.0.0.1:8080</code> on the host. Set <code>DOI_PORT</code> to change the port.</p>
+            <h3 id="24-https">2.4 HTTPS<a class="docs__anchor" href="#24-https" aria-label="Link to this section">#</a></h3>
+            <p>The session cookie always carries <code>Secure</code>, so use HTTPS. You have two options.</p>
+            <p>
+              <strong>Option A: the bundled proxy.</strong> The override file <code>deploy/compose.proxy.yml</code> adds Caddy in front of the app. Caddy
+              obtains a certificate for your domain automatically. Your domain&#39;s DNS must point at the host, and ports 80 and 443 must be reachable.
+            </p>
+            <pre tabindex="0"><code>echo 'DOI_DOMAIN=inbox.capital.example' &gt;&gt; .env
+echo 'TRUST_PROXY=172.30.99.10' &gt;&gt; .env
+# every compose file of this deployment, kept in .env so that every later command uses all of them;
+# leave out docker-compose.override.yml if you have none
+echo 'COMPOSE_FILE=docker-compose.yml:docker-compose.override.yml:deploy/compose.proxy.yml' &gt;&gt; .env
+docker compose up -d</code></pre>
+            <p>
+              <strong>Keep the full file list in <code>COMPOSE_FILE</code>.</strong> Naming files with <code>-f</code> on the command line makes Compose skip
+              <code>docker-compose.override.yml</code>, so a command such as
+              <code>docker compose -f docker-compose.yml -f deploy/compose.proxy.yml up -d</code> would recreate the app <strong>without</strong> the mailbox
+              credentials of your override file, and the app would not start. With <code>COMPOSE_FILE</code> in <code>.env</code>, plain
+              <code>docker compose …</code> commands (up, stop, run, backup, upgrade) always use the same set.
+            </p>
+            <p>
+              The proxy has a fixed address, <code>172.30.99.10</code>, on a fixed network <code>172.30.99.0/24</code> (only this override file takes that
+              range, so the demo or a restored copy can run next to it), and <code>TRUST_PROXY</code> must name that address (the app trusts addresses, not
+              service names). If that range is already used on your host, set <code>DOI_EDGE_SUBNET</code> and <code>DOI_PROXY_IP</code> to another range and
+              address, and <code>TRUST_PROXY</code> to the same address. Caddy fetches its certificate from Let&#39;s Encrypt: an outbound connection that
+              carries no email content.
+            </p>
+            <p>
+              <strong>Option B: your own reverse proxy.</strong> Leave <code>deploy/compose.proxy.yml</code> out and forward HTTPS to
+              <code>127.0.0.1:8080</code>.
+            </p>
+            <p>
+              <code>TRUST_PROXY</code> controls which forwarding headers the app trusts. It is unset by default, so no forwarding headers are trusted. If you
+              need the client address from your proxy, set <code>TRUST_PROXY</code> to the proxy&#39;s IP address or CIDR range (a comma-separated list is
+              allowed). Never trust every address.
+            </p>
+            <h3 id="25-first-sign-in">2.5 First sign-in<a class="docs__anchor" href="#25-first-sign-in" aria-label="Link to this section">#</a></h3>
+            <ol>
+              <li>
+                <p>
+                  Sign in as <code>admin</code> with the password from <code>secrets/initial_admin_password</code>. Before HTTPS is set up, sign in at
+                  <code>http://127.0.0.1:8080</code> with Chrome, which accepts the <code>Secure</code> cookie on <code>127.0.0.1</code> (measured). Safari does
+                  not (measured), so use it only over HTTPS. Other browsers were not measured.
+                </p>
+              </li>
+              <li><p>You must change the password before you can do anything else.</p></li>
+              <li>
+                <p>Then remove the initial password from the host:</p>
+                <pre tabindex="0"><code>: &gt; secrets/initial_admin_password</code></pre>
+                <p>The file is read only while the database has no users. Keep the empty file, because Compose still mounts it.</p>
+              </li>
+              <li>
+                <p>
+                  Create the other users (reviewer, approver, admin), or set up OIDC sign-in (<code>auth.oidc</code>). This version has no screen for this: use
+                  the <code>curl</code> commands in <a href="/docs/trunks/build/users-and-directory/">Users and directory</a>. Read its section on two-person
+                  control first: on a new deployment the first verification task can be approved only after about 48 hours.
+                </p>
+              </li>
+            </ol>
+            <h3 id="26-what-to-do-next">2.6 What to do next<a class="docs__anchor" href="#26-what-to-do-next" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>Connect a mailbox: <a href="/docs/trunks/build/mailboxes/">Mailboxes</a>.</li>
+              <li>
+                Import your directory (deals, commitments, bank lines, ledger, contacts) as an admin, with the <code>curl</code> commands in
+                <a href="/docs/trunks/build/users-and-directory/">Users and directory</a>. Until you do, no email is linked to a deal or a contact, and replies
+                never show record data.
+              </li>
+              <li>
+                Read the <a href="/docs/trunks/build/security-model/">Security model</a> and fill in the
+                <a href="/docs/trunks/build/dpia-template/">DPIA</a> and <a href="/docs/trunks/build/lia-template/">LIA</a> templates.
+              </li>
+              <li>Plan backups: <a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a>.</li>
+              <li>Know what to do when a Case fails: <a href="#27-cases-that-fail">2.7</a>.</li>
+            </ul>
+            <h3 id="27-cases-that-fail">2.7 Cases that fail<a class="docs__anchor" href="#27-cases-that-fail" aria-label="Link to this section">#</a></h3>
+            <p>
+              Each email goes through a fixed series of steps (receive, virus scan, attachment parsing, rules, redaction, model classification and fields,
+              linking, risk, reply, routing, events). A step that fails is retried three times within about a minute. If it still fails, the Case shows the
+              status <code>failed</code> and the step where it stopped, for example <code>classify</code>. A failure deletes nothing: the stored email stays as
+              it was (for an email whose KYC attachments were already transferred, that is the copy without them; see
+              <a href="/docs/trunks/build/retention/">Retention</a>).
+            </p>
+            <p>Common causes:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Step</th>
+                    <th>Usual cause</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>scan</code></td>
+                    <td>ClamAV is not running, or is still loading its database (only emails with attachments are scanned)</td>
+                  </tr>
+                  <tr>
+                    <td><code>parse</code></td>
+                    <td>the <code>parser</code> container is not running (on Linux: its AppArmor profile is not loaded)</td>
+                  </tr>
+                  <tr>
+                    <td><code>classify</code>, <code>fields</code></td>
+                    <td>the model provider rejects the API key, or cannot be reached at all (connection refused, unknown host)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Find the cause from the step and the table: for <code>scan</code> and <code>parse</code>, <code>docker compose ps</code> and
+              <code>docker compose logs clamav</code> or <code>docker compose logs parser</code> show it; for <code>classify</code> and <code>fields</code>,
+              check the model settings and the API key, and that the app can reach the provider. Every failed attempt writes a log line with a fixed reason
+              code. The Case and API show its fixed sentence; the exception text stays in encrypted audit detail.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>model_setup</code></td>
+                    <td>Check the model configuration, credentials and connection.</td>
+                  </tr>
+                  <tr>
+                    <td><code>replay_missing</code></td>
+                    <td>A required replay recording is missing.</td>
+                  </tr>
+                  <tr>
+                    <td><code>parser_unavailable</code></td>
+                    <td>The attachment parser could not be used.</td>
+                  </tr>
+                  <tr>
+                    <td><code>scanner_unavailable</code></td>
+                    <td>The virus scanner could not be used.</td>
+                  </tr>
+                  <tr>
+                    <td><code>storage_error</code></td>
+                    <td>The file store could not be used.</td>
+                  </tr>
+                  <tr>
+                    <td><code>database_error</code></td>
+                    <td>A database operation failed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>internal</code></td>
+                    <td>An unexpected internal error occurred.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The job queue stores the fixed code too. A successful restart or KYC continuation clears the previous failure code. PostgreSQL&#39;s own server
+              logs may contain constraint-error details; manage those under the database log policy.
+              <strong>If the fix changed a secret or the configuration</strong> (for example a new model API key in <code>secrets/anthropic_api_key</code>),
+              recreate the app first, because it reads them only when it starts:
+            </p>
+            <pre tabindex="0"><code>docker compose up -d --no-deps --force-recreate app</code></pre>
+            <p>Then run the failed Cases again from the step where they stopped:</p>
+            <pre tabindex="0"><code>docker compose run --rm app rerun-failed</code></pre>
+            <p>
+              Without arguments it runs every failed Case again; you can also name Case ids (<code
+                >docker compose run --rm app rerun-failed &lt;case id&gt; …</code
+              >; the id is in the Case&#39;s address, <code>#case=&lt;id&gt;</code>). The steps before the failed one are not repeated; a Case that failed after
+              its reply was drafted gets a new draft. Each re-run is recorded in the audit chain (<code>case.rerun_failed</code>, with the actor
+              <code>system</code>: the command does not know who ran it). A Case that fails again shows <code>failed</code> again.
+            </p>
+            <p>
+              A model provider that answers with an error (for example &quot;overloaded&quot;), or does not answer in time, does <strong>not</strong> make the
+              Case fail. The model is tried twice, then the Case goes on without that model answer and is routed as usual:
+            </p>
+            <ul>
+              <li>
+                if the classification failed, the Case keeps the classes the rules found (for example <code>bank_details</code>); only when the rules found none
+                either is it <code>unclassified</code>;
+              </li>
+              <li>
+                if a field extraction request failed, the classes stay, and the fields that request asked for come from the rules only; fields from the
+                model&#39;s other requests for the same email (some classes need two) are kept.
+              </li>
+            </ul>
+            <p>
+              <code>rerun-failed</code> does not touch such Cases, and the model is not asked again for them. A person checks the classes and fields on the Case
+              page and corrects them by hand; the later steps then run again.
+            </p>
+            <h2 id="compose-variables">Compose variables<a class="docs__anchor" href="#compose-variables" aria-label="Link to this section">#</a></h2>
+            <p>Put these in a <code>.env</code> file next to <code>docker-compose.yml</code>, or set them in the shell.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variable</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>DOI_CONFIG_DIR</code></td>
+                    <td><code>./config/default</code></td>
+                    <td>The configuration directory, mounted read-only at <code>/config</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_SECRETS_DIR</code></td>
+                    <td><code>./secrets</code></td>
+                    <td>The secret directory</td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_PORT</code></td>
+                    <td><code>8080</code></td>
+                    <td>The host port on <code>127.0.0.1</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_VERSION</code></td>
+                    <td><code>local</code></td>
+                    <td>The image tag</td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_DOMAIN</code></td>
+                    <td><code>localhost</code></td>
+                    <td>The domain for the bundled proxy</td>
+                  </tr>
+                  <tr>
+                    <td><code>TRUST_PROXY</code></td>
+                    <td>unset</td>
+                    <td>The proxy addresses whose forwarding headers the app trusts</td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_ACTIVE_KEY</code></td>
+                    <td>unset</td>
+                    <td>Only for key rotation (see <a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a>)</td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_EDGE_SUBNET</code></td>
+                    <td><code>172.30.99.0/24</code></td>
+                    <td>The network of the app and the bundled proxy</td>
+                  </tr>
+                  <tr>
+                    <td><code>DOI_PROXY_IP</code></td>
+                    <td><code>172.30.99.10</code></td>
+                    <td>The bundled proxy&#39;s fixed address (what <code>TRUST_PROXY</code> names)</td>
+                  </tr>
+                  <tr>
+                    <td><code>DEMO</code></td>
+                    <td>unset</td>
+                    <td>Set by <code>deploy/compose.demo.yml</code>; never set it for a real deployment</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

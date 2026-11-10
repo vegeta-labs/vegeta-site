@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Limits and help | Vegeta</title>
+    <meta name="description" content="Trunks reads email and helps you prepare a response. People decide and act." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Limits and help | Vegeta" />
+    <meta property="og:description" content="Trunks reads email and helps you prepare a response. People decide and act." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/use/limits-and-help/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Limits and help | Vegeta" />
+    <meta name="twitter:description" content="Trunks reads email and helps you prepare a response. People decide and act." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/use/limits-and-help/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/" aria-current="page">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/" aria-current="page">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Limits and help</h1>
+          <div class="docs__body">
+            <p>Trunks reads email and helps you prepare a response. People decide and act.</p>
+            <h2 id="what-trunks-does-not-do">
+              What Trunks does not do<a class="docs__anchor" href="#what-trunks-does-not-do" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>
+                It does not send email or create drafts in your mail client. Trunks keeps reply drafts itself, and you send every reply from your own mail
+                client.
+              </li>
+              <li>It does not move money or connect to a bank.</li>
+              <li>
+                It does not change your records. It never updates Goten or your ledger, and nothing in an email changes your directory or applies new bank
+                details or contact details.
+              </li>
+              <li>It does not verify anyone. It only tells you what to check.</li>
+              <li>
+                It does not confirm that money has arrived. Only your imported ledger can show that. A case uses the ledger as it stood when the email arrived
+                or when the case was last relinked, so an older case can show an out-of-date position. Use
+                <strong>Relink with the latest directory</strong> first.
+              </li>
+              <li>It does not track what you sent. <strong>Mark as sent</strong> is a person&#39;s statement.</li>
+              <li>
+                It does not reopen a closed case. If a case was closed by mistake, handle the email outside Trunks, or wait for the sender&#39;s next email.
+              </li>
+              <li>It does not give legal, tax, compliance or investment advice. It is software, not a regulated service.</li>
+            </ul>
+            <p>
+              Trunks can be wrong. A language model helps pick the email type and pull out key details, and fixed rules do the rest. Either can miss something.
+              A person remains responsible for every reply and every risk decision, and a low risk rating is not a clearance.
+            </p>
+            <h2 id="when-trunks-is-wrong-or-unavailable">
+              When Trunks is wrong or unavailable<a class="docs__anchor" href="#when-trunks-is-wrong-or-unavailable" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What happened</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Wrong email type</td>
+                    <td>
+                      Correct it under <strong>Email type</strong>. See <a href="/docs/trunks/use/reading-a-case/#2-check-the-email-type">Read a case</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Wrong amount, date or reference</td>
+                    <td>
+                      Use <strong>Edit</strong> under <strong>Key details</strong>. Once a value is confirmed or saved, <strong>Edit</strong> is no longer
+                      offered: ask your admin to correct it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Linked to the wrong deal or person, or not linked</td>
+                    <td>
+                      Pick from the menu next to the link if there is one. If not, your directory may be out of date: ask your admin to import a new one, then
+                      click <strong>Relink with the latest directory</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Wrong risk</td>
+                    <td>Raise it under <strong>Set risk</strong>. To lower it, ask an approver.</td>
+                  </tr>
+                  <tr>
+                    <td>The reply is wrong for this email</td>
+                    <td>Edit it or choose another template. If nothing fits, click <strong>Reject</strong> and write your own reply from your mail client.</td>
+                  </tr>
+                  <tr>
+                    <td>A case shows <strong>Processing failed</strong></td>
+                    <td>
+                      The page says <strong>Processing failed. Results may be incomplete. Ask an administrator to retry.</strong> Nothing is lost. Work from the
+                      original email in your mailbox if it cannot wait.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cases could not be loaded. Try again.</strong> or <strong>This case could not be loaded.</strong></td>
+                    <td>Reload the page. If it keeps happening, tell your admin.</td>
+                  </tr>
+                  <tr>
+                    <td>A warning banner at the top of the page, for example <strong>KYC attachment transfer has failed</strong> or a mailbox warning</td>
+                    <td>Tell your admin.</td>
+                  </tr>
+                  <tr>
+                    <td>An email you expected is not in the list</td>
+                    <td>
+                      The list shows 50 cases to a page, including closed ones, with the highest risk first. Use <strong>Next</strong> to see later pages, or
+                      filter by <strong>Status</strong> and <strong>Queue</strong>. If it is still missing, your admin can check the mailbox connection.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Trunks is down</td>
+                    <td>
+                      Handle urgent email directly in your mailbox. Trunks only reads your mail, so nothing is held up inside it. Be extra careful with bank
+                      details and identity changes, and use the same call-back on the number on file.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="after-an-upgrade-to-v040">
+              After an upgrade to v0.4.0<a class="docs__anchor" href="#after-an-upgrade-to-v040" aria-label="Link to this section">#</a>
+            </h2>
+            <p>Version 0.4.0 adds the closing rules and the other checks described in these pages. The first time it starts:</p>
+            <ul>
+              <li>
+                Every reply that was approved but not marked as sent goes back to <strong>Draft</strong>. Its case goes back to <strong>Open</strong>, unless
+                the case is closed. Read the reply and approve it again.
+              </li>
+              <li>
+                For a reply from before the upgrade, everyone who created any reply on that case counts as having changed its text, even someone who only
+                switched templates. Such a reply needs an approver or admin who is none of them.
+              </li>
+              <li>
+                Every verification task from before the upgrade is cancelled, including approved ones. On a closed case, the task is not replaced and the case
+                stays closed. An open case that had finished processing is processed again and gets a new task. Do the checklist, the cooling-off period and the
+                second-person approval again.
+              </li>
+              <li>
+                A <strong>Bank details</strong> or <strong>Identity change</strong> type removed before the upgrade counts again, and the case gets a new task,
+                unless all of these hold: it was removed with a reason, the person who removed it is still an approver or admin, and their role has not changed
+                since.
+              </li>
+            </ul>
+            <h2 id="your-data">Your data<a class="docs__anchor" href="#your-data" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li><strong>Cases CSV</strong> and <strong>Actions CSV</strong> on the list page download the cases and suggested actions.</li>
+              <li>
+                By default, an email and its case are kept for 5 years from when it arrived. An approver can keep a case longer with a
+                <strong>Retention hold</strong>. See <a href="/docs/trunks/build/retention/">Retention</a>.
+              </li>
+              <li>
+                A language model may see the redacted subject, text and sender display name of an email, the redacted text of its attachments, and each
+                attachment&#39;s name and type, to classify it and extract details, depending on how your team set it up. It does not see the contents of a
+                <strong>Possible KYC document</strong>, though it does see that file&#39;s name and type. See
+                <a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a>.
+              </li>
+            </ul>
+            <h2 id="who-to-ask">Who to ask<a class="docs__anchor" href="#who-to-ask" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Ask</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Is this reply right? Is this email genuine?</td>
+                    <td>Your team lead or compliance contact</td>
+                  </tr>
+                  <tr>
+                    <td>Can we go ahead with this bank details or identity change?</td>
+                    <td>An approver, after the verification task is done</td>
+                  </tr>
+                  <tr>
+                    <td>Please lower this risk, or put this case on hold</td>
+                    <td>An approver</td>
+                  </tr>
+                  <tr>
+                    <td>I cannot sign in, or I need a different role</td>
+                    <td>Your admin. See <a href="/docs/trunks/build/users-and-directory/">Users and directory</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>A KYC transfer failed</td>
+                    <td>Your admin</td>
+                  </tr>
+                  <tr>
+                    <td>A case failed, a deal or contact is missing, or a mailbox has stopped</td>
+                    <td>
+                      Your admin. See <a href="/docs/trunks/build/quickstart/#27-cases-that-fail">Quick start</a> and
+                      <a href="/docs/trunks/build/mailboxes/">Mailboxes</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>How is our data protected?</td>
+                    <td>Your admin. See the <a href="/docs/trunks/build/security-model/">Security model</a>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

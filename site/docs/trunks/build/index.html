@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Trunks — Operations Inbox: user documentation | Vegeta</title>
+    <meta
+      name="description"
+      content="Trunks is the Operations Inbox product in Vegeta, software for SPV and syndicate operations teams. It is an open-source, self-hosted, read-only email agent for investment-operations inboxes. For each
+inbound email it:"
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Trunks — Operations Inbox: user documentation | Vegeta" />
+    <meta
+      property="og:description"
+      content="Trunks is the Operations Inbox product in Vegeta, software for SPV and syndicate operations teams. It is an open-source, self-hosted, read-only email agent for investment-operations inboxes. For each
+inbound email it:"
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Trunks — Operations Inbox: user documentation | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Trunks is the Operations Inbox product in Vegeta, software for SPV and syndicate operations teams. It is an open-source, self-hosted, read-only email agent for investment-operations inboxes. For each
+inbound email it:"
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/" aria-current="page">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/" aria-current="page">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Trunks — Operations Inbox: user documentation</h1>
+          <div class="docs__body">
+            <p>
+              Trunks is the Operations Inbox product in Vegeta, software for SPV and syndicate operations teams. It is an open-source, self-hosted,
+              <strong>read-only</strong> email agent for investment-operations inboxes. For each inbound email it:
+            </p>
+            <ul>
+              <li>picks a category</li>
+              <li>extracts the key facts</li>
+              <li>links the email to deals and people in your directory</li>
+              <li>flags risk</li>
+              <li>prepares a reply from a fixed template for a person to check, copy and send from their own mail client.</li>
+            </ul>
+            <p>It never sends email. It never moves money. It never changes your business records.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Document</th>
+                    <th>What it covers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="/docs/trunks/build/quickstart/">Quick start</a></td>
+                    <td>The demo, then a real deployment with Docker Compose</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></td>
+                    <td>Creating users and importing deals, commitments, bank lines, ledger and contacts (API with <code>curl</code>; no screen yet)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></td>
+                    <td>IMAP, <code>.eml</code> import, Gmail, Microsoft 365: permissions and set-up</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></td>
+                    <td>Model providers, the start-up checks, what a model sees and what it never does</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></td>
+                    <td>When the accounts in an MT103 or pacs.008 do not count as a bank details change, and the limits</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/configuration/">Configuration reference</a></td>
+                    <td>Every key of <code>deployment.yaml</code>, <code>cases.yaml</code> and <code>templates.yaml</code></td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/security-model/">Security model</a></td>
+                    <td>Read-only guarantees, containers, database roles, audit chain, encryption, fraud rules, known limits</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/dpia-template/">DPIA template</a></td>
+                    <td>A data protection impact assessment template for the deploying organisation (UK GDPR)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/lia-template/">LIA template</a></td>
+                    <td>A legitimate interests assessment template for the deploying organisation (UK GDPR)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/retention/">Retention</a></td>
+                    <td>Default retention periods, how deletion works, the hold flag, KYC transfer and replacement</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></td>
+                    <td>What to back up, restoring, upgrades, key rotation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>All examples use fictional data and <code>.example</code> domains.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

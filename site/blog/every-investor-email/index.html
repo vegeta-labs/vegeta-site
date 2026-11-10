@@ -312,9 +312,9 @@
           bank lines and contacts are your own files. Someone checks every reply, approves it, sends it and marks it as sent.
         </p>
         <p>
-          Trunks does not replace judgement. It has no connection to your bank and cannot stop a payment. Nothing stops someone closing a case with its task
-          open. It does not read images or scans, so a request that appears only in one is not recognised. Authenticated means the message passed DMARC and the
-          sender is in your directory; a taken-over mailbox would pass, which is one reason a person checks every reply.
+          Trunks does not replace judgement. It has no connection to your bank and cannot stop a payment. An approver or admin can still close a case with its
+          task open, giving a reason. It does not read images or scans, so a request that appears only in one is not recognised. Authenticated means the message
+          passed DMARC and the sender is in your directory; a taken-over mailbox would pass, which is one reason a person checks every reply.
         </p>
         <h2>Where it runs</h2>
         <p>
@@ -324,7 +324,7 @@
         <h2>How it was tested</h2>
         <p>
           One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read, measured on v0.3.0. An earlier set of the same kind
-          failed and led to two fixes in this release. Malicious bank changes and look-alike senders were rated high in 18 of 18. The contact, commitment and
+          failed and led to two fixes in that release. Malicious bank changes and look-alike senders were rated high in 18 of 18. The contact, commitment and
           deal were linked correctly in 123 of 125. The test emails that passed the payment message checks were all pacs.008; MT103 was covered only by
           development tests. <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">The release notes</a> have the full table, and a scoring error
           that was fixed and re-scored.
@@ -332,7 +332,7 @@
         <h2>Try it</h2>
         <p>
           Every row in the table above opens in <a href="/inbox/demo/">the Trunks demo</a>.
-          <a href="/inbox/demo/#case=E1012">An MT103 with an account number on your list</a> is there too. Trunks v0.3.0 runs on your own server with Docker.
+          <a href="/inbox/demo/#case=E1012">An MT103 with an account number on your list</a> is there too. Trunks v0.4.0 runs on your own server with Docker.
         </p>
         <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Send feedback</a>.</p>
 
@@ -368,7 +368,7 @@
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">Trunks release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
           </ul>
         </div>
         <div>

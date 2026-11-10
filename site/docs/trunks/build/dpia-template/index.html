@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Data protection impact assessment (DPIA): template | Vegeta</title>
+    <meta
+      name="description"
+      content="For the organisation that deploys Trunks (the controller). The structure follows the usual UK GDPR
+DPIA steps."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Data protection impact assessment (DPIA): template | Vegeta" />
+    <meta
+      property="og:description"
+      content="For the organisation that deploys Trunks (the controller). The structure follows the usual UK GDPR
+DPIA steps."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/dpia-template/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Data protection impact assessment (DPIA): template | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="For the organisation that deploys Trunks (the controller). The structure follows the usual UK GDPR
+DPIA steps."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/dpia-template/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/" aria-current="page">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/" aria-current="page">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Data protection impact assessment (DPIA): template</h1>
+          <div class="docs__body">
+            <p><strong>For the organisation that deploys Trunks</strong> (the controller). The structure follows the usual UK GDPR DPIA steps.</p>
+            <ul>
+              <li>Facts about the <strong>software</strong> are filled in. They describe what the software does, as built.</li>
+              <li>Everything only you know is marked <strong>[to complete]</strong>: your purposes, your mailboxes, your providers, your risk decisions.</li>
+              <li>
+                This template gives no view on whether your processing meets any law. That assessment is yours, and your data protection officer&#39;s or
+                adviser&#39;s.
+              </li>
+            </ul>
+            <p>
+              Keep the completed DPIA under review. Revisit it whenever you add a mailbox, change the model provider, change retention or connect a new outbound
+              target.
+            </p>
+            <hr />
+            <h2 id="1-identifying-the-need-for-a-dpia">
+              1. Identifying the need for a DPIA<a class="docs__anchor" href="#1-identifying-the-need-for-a-dpia" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Organisation (controller)</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Data protection officer / adviser</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Owner of this assessment</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Date and version</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Why a DPIA is being done</td>
+                    <td>
+                      [to complete]. Points you may weigh: the processing is systematic and covers every inbound email to the configured mailboxes; it may
+                      include identity documents and financial details; it uses a language model; it flags possible fraud.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="2-description-of-the-processing">
+              2. Description of the processing<a class="docs__anchor" href="#2-description-of-the-processing" aria-label="Link to this section">#</a>
+            </h2>
+            <h3 id="21-nature-what-the-software-does">
+              2.1 Nature: what the software does<a class="docs__anchor" href="#21-nature-what-the-software-does" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              Trunks is self-hosted. It runs on infrastructure you control. The project&#39;s authors receive no data, and the software contains no analytics or
+              telemetry.
+            </p>
+            <p>For each inbound email in the configured mailboxes, the software:</p>
+            <ol>
+              <li>Reads the email (read-only) and stores the raw message, encrypted. It never sends email, writes drafts, or moves, flags or deletes mail.</li>
+              <li>Scans attachments for viruses, then parses those that passed in a sandbox with no network.</li>
+              <li>Extracts facts with fixed rules: references, amounts, dates, UETRs, payment messages.</li>
+              <li>Decides with fixed code which attachments may be KYC documents. Their content is never sent to any model.</li>
+              <li>
+                Redacts sensitive values (account numbers, sort codes, ID numbers, dates of birth, addresses, phone numbers, email local parts, names in the
+                directory) and sends the <strong>redacted</strong> text to the configured language model. The model classifies the email and extracts fields. It
+                writes no outbound text and takes no action.
+              </li>
+              <li>Links the email to deals, commitments and contacts in a directory you import.</li>
+              <li>
+                Computes a risk level with fixed rules, for example a changed bank account request, a look-alike domain, a hidden text or a prompt-injection
+                marker.
+              </li>
+              <li>
+                Proposes a reply from a fixed template, and a person reviews it. A person copies the approved reply and sends it from their own mail client.
+              </li>
+              <li>Creates verification tasks for bank-detail and identity changes. These need two different people and a cooling-off period.</li>
+              <li>Transfers possible-KYC attachments to your KYC target, then removes them from its own store.</li>
+              <li>Keeps an append-only, hash-chained audit log with no personal data in the audit rows.</li>
+              <li>Deletes data at the end of the retention periods.</li>
+            </ol>
+            <p>What the software does <strong>not</strong> do:</p>
+            <ul>
+              <li>it does not send email</li>
+              <li>it does not move money or connect to banks</li>
+              <li>it does not verify KYC or score AML risk</li>
+              <li>it does not profile individuals</li>
+              <li>it does not write to business systems</li>
+              <li>it does not take decisions about investors (for example refusing a withdrawal); people decide</li>
+              <li>it does no OCR.</li>
+            </ul>
+            <h3 id="22-scope">2.2 Scope<a class="docs__anchor" href="#22-scope" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Software facts</th>
+                    <th>Your deployment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mailboxes</td>
+                    <td>Any number of IMAP, Gmail, Microsoft 365 or <code>.eml</code> mailboxes, each configured by name</td>
+                    <td>[to complete: which mailboxes, whose mail]</td>
+                  </tr>
+                  <tr>
+                    <td>Data subjects</td>
+                    <td>
+                      Senders and recipients of emails; people named in emails and attachments; investors and contacts in your directory; your staff who use the
+                      app
+                    </td>
+                    <td>[to complete: e.g. investors, their representatives, advisers, counterparties, staff; any children or vulnerable people?]</td>
+                  </tr>
+                  <tr>
+                    <td>Personal data</td>
+                    <td>
+                      Names, email addresses, phone numbers, postal addresses; email contents and attachments; bank account details and payment information in
+                      emails; identity documents in attachments (possible-KYC); commitment and ledger amounts from your directory; user accounts and actions of
+                      your staff
+                    </td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Special category / criminal offence data</td>
+                    <td>The software does not look for these. It may receive them if senders include them.</td>
+                    <td>[to complete: your assessment]</td>
+                  </tr>
+                  <tr>
+                    <td>Volume</td>
+                    <td>[to complete: emails per month, number of directory entries]</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Geography</td>
+                    <td>Where your hosts and providers process data</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="23-context">2.3 Context<a class="docs__anchor" href="#23-context" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Relationship with data subjects; would they expect this processing?</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>How much control do data subjects have?</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Prior concerns or incidents</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Relevant codes, sector guidance, contracts with investors</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="24-purposes">2.4 Purposes<a class="docs__anchor" href="#24-purposes" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Purposes</td>
+                    <td>
+                      [to complete: e.g. handling operational emails about investments faster and more consistently; detecting payment-redirection fraud;
+                      keeping an audit trail]
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Lawful basis for each purpose</td>
+                    <td>[to complete; see the <a href="/docs/trunks/build/lia-template/">LIA template</a> if you rely on legitimate interests]</td>
+                  </tr>
+                  <tr>
+                    <td>Condition for any special category data</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="3-processors-and-outbound-connections">
+              3. Processors and outbound connections<a class="docs__anchor" href="#3-processors-and-outbound-connections" aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The software connects only to the targets you configure. It has no inbound address of its own: Microsoft 365 uses polling, and Gmail Pub/Sub uses
+              pull. The parser container has no network at all. The demo mode makes no outbound connection.
+            </p>
+            <p>Complete one row per target you enable. Rows you do not enable: write &quot;not used&quot;.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Connection (as built)</th>
+                    <th>Personal data that crosses it</th>
+                    <th>Enabled?</th>
+                    <th>Provider and role (processor / controller)</th>
+                    <th>Contract / agreement</th>
+                    <th>Location and transfer basis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>IMAP server</strong> (your mail host)</td>
+                    <td>full emails (read)</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gmail API</strong> (<code>gmail.googleapis.com</code>)</td>
+                    <td>full emails (read), label ids, the mailbox profile</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google Pub/Sub</strong> (<code>pubsub.googleapis.com</code>), optional</td>
+                    <td>notification messages (mailbox address and history id)</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google token endpoint</strong> (<code>oauth2.googleapis.com</code>)</td>
+                    <td>OAuth client id and secret, refresh token</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Microsoft Graph</strong> (<code>graph.microsoft.com</code>)</td>
+                    <td>full emails (read), folder names, the app&#39;s own permission records</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Microsoft token endpoint</strong> (<code>login.microsoftonline.com</code>)</td>
+                    <td>client credentials</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Language model provider</strong> (hosted, or a local Ollama)</td>
+                    <td><strong>redacted</strong> email text and file names; never possible-KYC attachment content</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete: the <code>model.dpa</code> setting records only your declaration]</td>
+                    <td>[to complete: <code>model.region</code>, <code>model.transfer_basis</code>]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>S3-compatible storage</strong></td>
+                    <td>encrypted raw emails and attachments</td>
+                    <td>[to complete]. This release stores files on the local <code>files</code> volume; S3 is listed in the design for later use.</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>OIDC identity provider</strong>, optional</td>
+                    <td>staff sign-in (subject id, email or user name, role claim)</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Event webhook</strong>, optional</td>
+                    <td>events with a closed list of fields (Case ids, categories, risk, actions, amounts; bank account numbers as the last 4 digits only)</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>KYC webhook or KYC folder</strong></td>
+                    <td>possible-KYC attachment files, with Case id and SHA-256</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Other connections of the standard Compose set-up that carry no email content:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Connection</th>
+                    <th>What crosses it</th>
+                    <th>Enabled?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ClamAV virus database updates (the <code>clamav</code> container&#39;s update service; off in the demo)</td>
+                    <td>no personal data</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>The optional <code>proxy</code> (Caddy) obtaining HTTPS certificates</td>
+                    <td>your domain name</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>The Gmail consent page, opened in an operator&#39;s browser during <code>gmail-auth</code> (not by the server)</td>
+                    <td>the mailbox user&#39;s sign-in at Google</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Hosting:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Who hosts the server, and where</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Who can access the host, the secrets and the backups</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="4-retention">4. Retention<a class="docs__anchor" href="#4-retention" aria-label="Link to this section">#</a></h2>
+            <p>These are the software defaults. You may change the two configurable values.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category (as built)</th>
+                    <th>Default</th>
+                    <th>Your period and reason</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      All data of one email: message, raw email and attachment files with all stored versions, parse results, the Case with its labels, fields,
+                      links, signals, replies and verification tasks, the redaction table, the audit detail, and the Case&#39;s event outbox rows
+                    </td>
+                    <td>5 years from the receive time (<code>retention.messages_days: 1826</code>)</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Directory versions no longer referenced by any Case</td>
+                    <td>5 years from the day they stop being referenced (<code>retention.directory_days: 1826</code>)</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>The current directory version of each kind</td>
+                    <td>kept while current</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Audit rows (no personal data)</td>
+                    <td>kept forever</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Possible-KYC attachments in the app</td>
+                    <td>deleted once every possible-KYC attachment of the email has been transferred; kept with a daily reminder while a transfer fails</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Small inline signature images (within <code>kyc.inline_image</code>)</td>
+                    <td>
+                      not transferred; kept in the stored email under the email&#39;s retention. An ID image scaled down to fit the limits, or encoded data
+                      hidden in an allowed image, would be kept the same way
+                    </td>
+                    <td>[to complete: confirm the limits suit your mailbox]</td>
+                  </tr>
+                  <tr>
+                    <td>Files at your KYC target</td>
+                    <td>outside the software</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Cases on hold (and earlier Cases in the same thread)</td>
+                    <td>kept until the hold is cleared</td>
+                    <td>[to complete: who may set a hold, and when]</td>
+                  </tr>
+                  <tr>
+                    <td>Demo data</td>
+                    <td>reset at every demo start</td>
+                    <td>not applicable to production</td>
+                  </tr>
+                  <tr>
+                    <td>Backups</td>
+                    <td>your backup policy</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Data at your processors (mail host, model provider, webhook receivers)</td>
+                    <td>their terms</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Details: <a href="/docs/trunks/build/retention/">Retention</a>.</p>
+            <h2 id="5-consultation">5. Consultation<a class="docs__anchor" href="#5-consultation" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Who</th>
+                    <th>When</th>
+                    <th>Outcome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Data protection officer / adviser</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Information security</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Operations staff who will use it</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Processors</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Data subjects or their representatives (if appropriate)</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="6-necessity-and-proportionality">
+              6. Necessity and proportionality<a class="docs__anchor" href="#6-necessity-and-proportionality" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Software facts</th>
+                    <th>Your answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Does the processing achieve the purpose? Is there a less intrusive way?</td>
+                    <td>—</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Data minimisation</td>
+                    <td>
+                      Only configured mailboxes and labels or folders are read. Sent, drafts, spam and trash are never received from Gmail. The model receives
+                      redacted text only, and no possible-KYC content. Events and CSV exports have a fixed list of fields.
+                    </td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Accuracy</td>
+                    <td>
+                      People review every Case. Model fields need provenance quotes, and invalid values are discarded. Emailed payment confirmations never count
+                      as received. Emailed bank details are never applied.
+                    </td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Transparency to data subjects</td>
+                    <td>—</td>
+                    <td>[to complete: privacy notice wording]</td>
+                  </tr>
+                  <tr>
+                    <td>Data subject rights (access, erasure, objection)</td>
+                    <td>
+                      The software has no dedicated rights-request feature. Data is encrypted per value. The review UI has no search: it lists Cases with
+                      filters by status, queue and risk only. To find a person&#39;s Cases, search the Case CSV export (it lists each Case&#39;s sender address)
+                      and the action CSV export (it lists investor names), then open each Case at <code>https://&lt;your app&gt;/#case=&lt;case_id&gt;</code>.
+                      This finds only Cases where the person is the sender or the linked investor; Cases where they are only mentioned (in the text, in Cc or in
+                      an attachment) cannot be found with this version&#39;s tools, so cover them in your own procedure.
+                    </td>
+                    <td>[to complete: your procedure]</td>
+                  </tr>
+                  <tr>
+                    <td>Automated decision-making</td>
+                    <td>
+                      The software makes no decision with legal or similarly significant effects. Categories, risk and draft replies are proposals for a person.
+                    </td>
+                    <td>[to complete: your assessment]</td>
+                  </tr>
+                  <tr>
+                    <td>International transfers</td>
+                    <td>The model provider settings record region and transfer basis, and warn when the region is outside the UK / EEA without a basis.</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>Processor terms</td>
+                    <td>The software refuses to start an external model provider without <code>dpa: true</code>, unless it is overridden (with a warning).</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="7-risks">7. Risks<a class="docs__anchor" href="#7-risks" aria-label="Link to this section">#</a></h2>
+            <p>
+              Assess likelihood and severity for <strong>your</strong> deployment. The software measures listed are what the software does; they do not decide
+              the residual risk.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Risk to individuals</th>
+                    <th>Software measures</th>
+                    <th>Likelihood</th>
+                    <th>Severity</th>
+                    <th>Residual risk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>R1</td>
+                    <td>Unauthorised access to emails and identity documents</td>
+                    <td>
+                      Encryption at rest of all text and files; roles; read-only root file systems; parser with no network and no secrets; HTTPS-only cookies;
+                      CSRF protection; no secrets in logs
+                    </td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R2</td>
+                    <td>Disclosure to the model provider</td>
+                    <td>Redaction before every call; possible-KYC content never sent; start-up refusal without an agreement; option of a local model</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R3</td>
+                    <td>A wrong reply sent to a fraudster, or record data disclosed to the wrong person</td>
+                    <td>
+                      Fixed templates; record data only for authenticated senders linked to the commitment; bank-detail Cases get <code>safe_ack</code> only; a
+                      person approves and sends every reply
+                    </td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R4</td>
+                    <td>Payment-redirection fraud succeeds</td>
+                    <td>Emailed bank details never applied; verification task with a call to the number on file, two people and a cooling-off period</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R5</td>
+                    <td>A risk flag leaks to the sender (&quot;tipping off&quot;)</td>
+                    <td>Risk flags never in outbound text; internal-term checks on templates and final replies</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R6</td>
+                    <td>The mailbox is changed or mail is sent by the software</td>
+                    <td>No send capability; request allow-list; CI no-send check; least-permission scopes; Microsoft 365 permission check at every start</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R7</td>
+                    <td>Data kept too long</td>
+                    <td>Daily retention deletion with audit; KYC deletion after transfer</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R8</td>
+                    <td>Inaccurate classification or fields</td>
+                    <td>Human review; evaluation set; model output cannot lower risk</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R9</td>
+                    <td>IMAP credentials could also send mail</td>
+                    <td>Read-only commands; documented request to disable SMTP</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R10</td>
+                    <td>One person controls all admin accounts or the identity provider and bypasses two-person checks</td>
+                    <td>Account-history checks on verification tasks (software checks cannot stop a single controller of every account)</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                  <tr>
+                    <td>R11</td>
+                    <td>[to complete: other risks]</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="8-measures-to-reduce-risk">
+              8. Measures to reduce risk<a class="docs__anchor" href="#8-measures-to-reduce-risk" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Risk</th>
+                    <th>Your additional measures</th>
+                    <th>Effect</th>
+                    <th>Approved by</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[to complete]</td>
+                    <td>
+                      [to complete: e.g. disable SMTP on the IMAP account; signed processor terms; host hardening; backup encryption; staff training; privacy
+                      notice]
+                    </td>
+                    <td>[to complete]</td>
+                    <td>[to complete]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="9-sign-off">9. Sign-off<a class="docs__anchor" href="#9-sign-off" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Name / date</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Measures approved by</td>
+                    <td>[to complete]</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Residual risks approved by</td>
+                    <td>[to complete]</td>
+                    <td>If a high risk remains, consider prior consultation with the regulator.</td>
+                  </tr>
+                  <tr>
+                    <td>DPO / adviser advice</td>
+                    <td>[to complete]</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Advice accepted or overruled (with reasons)</td>
+                    <td>[to complete]</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Next review date</td>
+                    <td>[to complete]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

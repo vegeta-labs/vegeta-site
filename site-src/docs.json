@@ -6,10 +6,11 @@
       "id": "goten",
       "name": "Goten",
       "role": "Deal Calculations",
-      "version": "v1.3.0",
+      "version": "v1.3.1",
       "source": {
         "repo": "https://github.com/vegeta-labs/goten",
-        "ref": "bef8482d0afbbb28ed8b7261a0d3574442d48361"
+        "ref": "e9cab3e02360001967b9fc471cb40ec75fd6962b",
+        "notes": "docs/RELEASE_NOTES.md"
       },
       "groups": [
         {
@@ -98,8 +99,119 @@
       "id": "trunks",
       "name": "Trunks",
       "role": "Operations Inbox",
-      "version": "v0.3.0",
-      "groups": []
+      "version": "v0.4.0",
+      "source": {
+        "repo": "https://github.com/vegeta-labs/trunks",
+        "ref": "80540a137b076046e215ce0844f713f5e50f09c1",
+        "notes": "CHANGELOG.md"
+      },
+      "groups": [
+        {
+          "label": "Use it",
+          "items": [
+            {
+              "title": "Overview",
+              "source": "docs/en/use/README.md",
+              "route": "/docs/trunks/"
+            },
+            {
+              "title": "Walk the demo",
+              "source": "docs/en/use/getting-started.md",
+              "route": "/docs/trunks/use/getting-started/"
+            },
+            {
+              "title": "Read a case",
+              "source": "docs/en/use/reading-a-case.md",
+              "route": "/docs/trunks/use/reading-a-case/"
+            },
+            {
+              "title": "Check and send a reply",
+              "source": "docs/en/use/checking-a-reply.md",
+              "route": "/docs/trunks/use/checking-a-reply/"
+            },
+            {
+              "title": "Risk and verification",
+              "source": "docs/en/use/risk-and-verification.md",
+              "route": "/docs/trunks/use/risk-and-verification/"
+            },
+            {
+              "title": "Roles",
+              "source": "docs/en/use/roles.md",
+              "route": "/docs/trunks/use/roles/"
+            },
+            {
+              "title": "Limits and help",
+              "source": "docs/en/use/limits-and-help.md",
+              "route": "/docs/trunks/use/limits-and-help/"
+            }
+          ]
+        },
+        {
+          "label": "Run and build",
+          "items": [
+            {
+              "title": "Overview",
+              "source": "docs/en/README.md",
+              "route": "/docs/trunks/build/"
+            },
+            {
+              "title": "Quick start",
+              "source": "docs/en/quickstart.md",
+              "route": "/docs/trunks/build/quickstart/"
+            },
+            {
+              "title": "Users and directory",
+              "source": "docs/en/users-and-directory.md",
+              "route": "/docs/trunks/build/users-and-directory/"
+            },
+            {
+              "title": "Mailboxes",
+              "source": "docs/en/mailboxes.md",
+              "route": "/docs/trunks/build/mailboxes/"
+            },
+            {
+              "title": "Models and data protection",
+              "source": "docs/en/models-and-data-protection.md",
+              "route": "/docs/trunks/build/models-and-data-protection/"
+            },
+            {
+              "title": "Accounts in payment messages",
+              "source": "docs/en/payment-messages.md",
+              "route": "/docs/trunks/build/payment-messages/"
+            },
+            {
+              "title": "Configuration reference",
+              "source": "docs/en/configuration.md",
+              "route": "/docs/trunks/build/configuration/"
+            },
+            {
+              "title": "Security model",
+              "source": "docs/en/security-model.md",
+              "route": "/docs/trunks/build/security-model/"
+            },
+            {
+              "title": "DPIA template",
+              "source": "docs/en/dpia-template.md",
+              "route": "/docs/trunks/build/dpia-template/"
+            },
+            {
+              "title": "LIA template",
+              "source": "docs/en/lia-template.md",
+              "route": "/docs/trunks/build/lia-template/"
+            },
+            {
+              "title": "Retention",
+              "source": "docs/en/retention.md",
+              "route": "/docs/trunks/build/retention/"
+            },
+            {
+              "title": "Backup and upgrade",
+              "source": "docs/en/backup-and-upgrade.md",
+              "route": "/docs/trunks/build/backup-and-upgrade/"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

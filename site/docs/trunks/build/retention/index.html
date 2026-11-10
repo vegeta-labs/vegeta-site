@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Retention | Vegeta</title>
+    <meta name="description" content="Change them in deployment.yaml under retention. Each value is a whole number of days or forever." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Retention | Vegeta" />
+    <meta property="og:description" content="Change them in deployment.yaml under retention. Each value is a whole number of days or forever." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/retention/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Retention | Vegeta" />
+    <meta name="twitter:description" content="Change them in deployment.yaml under retention. Each value is a whole number of days or forever." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/retention/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/" aria-current="page">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/" aria-current="page">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Retention</h1>
+          <div class="docs__body">
+            <h2 id="default-periods">Default periods<a class="docs__anchor" href="#default-periods" aria-label="Link to this section">#</a></h2>
+            <p>Change them in <code>deployment.yaml</code> under <code>retention</code>. Each value is a whole number of days or <code>forever</code>.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Default</th>
+                    <th>Counted from</th>
+                    <th>Key</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>All data of one email</strong>: the message row, the raw email and attachment files (with all stored versions), parse results, the
+                      Case and its labels, fields, links, signals, replies, verification tasks, the redaction table, the audit detail, and the Case&#39;s event
+                      outbox rows
+                    </td>
+                    <td>5 years (1826 days)</td>
+                    <td>the email&#39;s receive time</td>
+                    <td><code>retention.messages_days</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Directory versions</strong> (deals, commitments, bank lines, ledger, contacts)</td>
+                    <td>5 years (1826 days)</td>
+                    <td>the day the daily job finds that no Case snapshot refers to the version any more</td>
+                    <td><code>retention.directory_days</code></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      The <strong>current</strong> directory version of each kind (per deal for commitments, bank lines and ledger; global for deals and
+                      contacts)
+                    </td>
+                    <td>never deleted</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Audit rows</strong></td>
+                    <td>kept forever</td>
+                    <td>—</td>
+                    <td>(fixed; they hold no personal data)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Possible-KYC attachments</strong></td>
+                    <td>
+                      deleted from the app as soon as <strong>every</strong> possible-KYC attachment of the email has been transferred successfully; kept, with
+                      a daily reminder, while a transfer fails
+                    </td>
+                    <td>—</td>
+                    <td>(fixed)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Demo data</strong></td>
+                    <td>reset at every <code>docker compose up</code> of the demo (not when Docker restarts a container on its own)</td>
+                    <td>—</td>
+                    <td>(fixed)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mailbox credentials</strong> (Gmail refresh tokens)</td>
+                    <td>
+                      kept until you remove them, <strong>also after the mailbox is removed from the configuration</strong> (nothing deletes them on its own); a
+                      token replaced by a new <code>gmail-auth</code> is deleted by the daily clean-up
+                    </td>
+                    <td>—</td>
+                    <td>see below</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Backups</strong></td>
+                    <td>your own backup policy</td>
+                    <td>—</td>
+                    <td>outside the app</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              In one email thread, each email expires on its own receive time. When an earlier email is deleted, the later Case&#39;s link to it is cleared, and
+              the clearing is audited.
+            </p>
+            <h2 id="how-deletion-works">How deletion works<a class="docs__anchor" href="#how-deletion-works" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                <strong>The daily job.</strong> The <code>maintenance</code> container runs retention when it starts and then every 24 hours. It is the only
+                running service with the database role that may delete.
+              </li>
+              <li>
+                <strong>One email at a time.</strong> Each email is deleted in one transaction, in a fixed order. First a file-deletion job is recorded, then
+                the database rows are deleted, including the encrypted text they refer to. After the commit, a background job deletes the files and every stored
+                version of them. If the files cannot be deleted, the job stays and is retried every ten minutes, and the review UI shows a reminder. The deleted
+                rows are not brought back.
+              </li>
+              <li>
+                <strong>Audited.</strong> Each deletion writes an audit record (<code>retention.deleted</code>) with references and hashes only, never content.
+                One email that cannot be deleted is audited as <code>retention.failed</code> and tried again the next day. It does not stop the others.
+              </li>
+              <li>
+                <strong>Other daily clean-ups.</strong> The daily job also:
+                <ul>
+                  <li>deletes directory versions whose period has ended (<code>retention.directory_days</code>), and snapshots no Case refers to</li>
+                  <li>deletes encrypted text that nothing refers to any more (for example a replaced token)</li>
+                  <li>writes KYC transfer reminders.</li>
+                </ul>
+              </li>
+              <li><strong>Hourly orphan clean-up.</strong> Files written by an interrupted receive and never recorded are removed.</li>
+            </ul>
+            <h3 id="the-hold-flag">The hold flag<a class="docs__anchor" href="#the-hold-flag" aria-label="Link to this section">#</a></h3>
+            <p>
+              An approver or admin can put a Case <strong>on hold</strong>, for example during a complaint or a dispute, and must give a reason. A reviewer
+              cannot. Setting and clearing the hold are audited, with the reason stored as encrypted detail.
+            </p>
+            <ul>
+              <li>A Case on hold is not deleted until the hold is cleared.</li>
+              <li><strong>Earlier Cases in the same thread are kept too:</strong> every Case before it, following the links back.</li>
+              <li>The hold does <strong>not</strong> stop the KYC transfer and replacement below.</li>
+              <li>The hold is shown in the Case list and on the Case page.</li>
+            </ul>
+            <h2 id="kyc-transfer-and-replacement">
+              KYC transfer and replacement<a class="docs__anchor" href="#kyc-transfer-and-replacement" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Code decides whether an attachment may be a KYC document (see
+              <a href="/docs/trunks/build/models-and-data-protection/#possible-kyc-attachments-go-to-no-model">Models and data protection</a>). Each such
+              attachment is transferred to your target in <code>kyc.target</code>:
+            </p>
+            <ul>
+              <li>
+                <strong>Folder target.</strong> The file is written to a temporary file, flushed to disk, renamed, then read back. The transfer succeeds only if
+                the SHA-256 matches. File names are generated as <code>&lt;case id&gt;-&lt;n&gt;.&lt;ext&gt;</code>.
+              </li>
+              <li>
+                <strong>Webhook target.</strong> The file goes to an HTTPS endpoint, signed, with an idempotency key. The transfer succeeds only if the endpoint
+                answers 2xx with the same transfer id and SHA-256.
+              </li>
+            </ul>
+            <p>How transfers run:</p>
+            <ul>
+              <li>
+                A transfer starts as soon as the KYC decision is saved at the redaction step, before classification. A later model failure does not delay it.
+                Each attachment is transferred once.
+              </li>
+              <li>
+                A failed transfer is tried again a few times, then once a day until it succeeds. An admin can retry it from the Case page. Every retry is
+                audited.
+              </li>
+              <li>While a transfer has failed, the review UI shows a reminder and a reminder is audited daily.</li>
+              <li>
+                <strong>An attachment blocked by the virus scanner is not transferred,</strong> so a malicious file never reaches your KYC target. The original
+                is kept and reminded daily. After handling it by hand, an admin marks it &quot;handled manually&quot; on the Case page, with a reason. From then
+                on it counts as dealt with.
+              </li>
+            </ul>
+            <p>
+              <strong>Replacement.</strong> When <strong>all</strong> possible-KYC attachments of an email are dealt with, the
+              <code>maintenance</code> container replaces the stored email in five steps:
+            </p>
+            <ol>
+              <li><p>Write a copy of the raw email in which each such attachment is replaced by a small placeholder part.</p></li>
+              <li><p>Read the copy back and check its SHA-256.</p></li>
+              <li><p>Record the copy and both hashes.</p></li>
+              <li>
+                <p>Delete:</p>
+                <ul>
+                  <li>the original raw email with all stored versions</li>
+                  <li>the attachment files</li>
+                  <li>the text parsed from them, quotes and intermediate results</li>
+                  <li>redaction entries and audit detail that came from them</li>
+                  <li>unsent replies, automatic links, undelivered events and a person&#39;s field edits from before the replacement.</li>
+                </ul>
+                <p>Sent replies, delivered events and audit rows are kept.</p>
+              </li>
+              <li><p>Audit the replacement.</p></li>
+            </ol>
+            <p>
+              Each step is recorded. After an interruption, the job continues from the recorded step, and nothing is deleted before step 3. The Case is then
+              processed again without the deleted content, and a person confirms its fields again. Only a hash and the transfer record of each KYC attachment
+              remain.
+            </p>
+            <p>If any transfer of the email has failed, nothing is replaced and the originals are kept.</p>
+            <p>
+              If a later run newly identifies another attachment as possible KYC after replacement has finished, that attachment is transferred too. Once all
+              transfers succeed, another recorded replacement round removes it from the current archive copy. A judgement change during a replacement is
+              recorded as pending. The app checks pending decisions at startup and every minute, and reprocesses them after the round finishes and the lock is
+              available; a restart does not lose the retry. Previously withheld or removed attachments are never reclassified as safe by reprocessing the
+              stripped copy.
+            </p>
+            <p>
+              <strong>In the demo,</strong> KYC attachments are transferred to a folder on the demo volume but the stored email is
+              <strong>not</strong> replaced. Replacing it would change what the recorded model replies were made from. A real deployment always replaces.
+            </p>
+            <h2 id="what-you-still-need-to-decide">
+              What you still need to decide<a class="docs__anchor" href="#what-you-still-need-to-decide" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>Whether five years suits your obligations. Change <code>retention.messages_days</code> and <code>retention.directory_days</code> if not.</li>
+              <li>
+                How long your <strong>backups</strong> keep data. Retention deletion does not reach backups. A restored backup brings back data that has since
+                been deleted, and the next daily run deletes it again if it has expired.
+              </li>
+              <li>Retention at your KYC target. Once a file is transferred, it is outside this app.</li>
+            </ul>
+            <h2 id="removing-a-gmail-mailboxs-credential">
+              Removing a Gmail mailbox&#39;s credential<a class="docs__anchor" href="#removing-a-gmail-mailboxs-credential" aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>Removing a mailbox from the configuration stops collection but keeps its stored refresh token. To end the access as well:</p>
+            <ol>
+              <li>
+                <p>
+                  Revoke the app&#39;s access in the Google account of that mailbox (the account&#39;s security settings, third-party access). The stored token
+                  then no longer works.
+                </p>
+              </li>
+              <li>
+                <p>Delete the stored row as the database owner (the app&#39;s own role cannot delete it):</p>
+                <pre
+                  tabindex="0"
+                ><code>docker compose exec db psql -U postgres -d doi -c &quot;DELETE FROM mailbox_credential WHERE mailbox_id = '&lt;mailbox id&gt;'&quot;</code></pre>
+                <p>The encrypted token it referred to is removed by the next daily clean-up.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

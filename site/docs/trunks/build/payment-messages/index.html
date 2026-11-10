@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Accounts in payment messages | Vegeta</title>
+    <meta
+      name="description"
+      content="An IBAN or UK account in an attachment normally adds the bankdetails label: the reply is limited to safeack, and
+a verification task opens. A structurally valid MT103 or pacs.008 is the exception, when every condition below holds.
+The account fields then do not count as a change of bank details."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Accounts in payment messages | Vegeta" />
+    <meta
+      property="og:description"
+      content="An IBAN or UK account in an attachment normally adds the bankdetails label: the reply is limited to safeack, and
+a verification task opens. A structurally valid MT103 or pacs.008 is the exception, when every condition below holds.
+The account fields then do not count as a change of bank details."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/payment-messages/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Accounts in payment messages | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="An IBAN or UK account in an attachment normally adds the bankdetails label: the reply is limited to safeack, and
+a verification task opens. A structurally valid MT103 or pacs.008 is the exception, when every condition below holds.
+The account fields then do not count as a change of bank details."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/payment-messages/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/" aria-current="page">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/" aria-current="page">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Accounts in payment messages</h1>
+          <div class="docs__body">
+            <p>
+              An IBAN or UK account in an attachment normally adds the <code>bank_details</code> label: the reply is limited to <code>safe_ack</code>, and a
+              verification task opens. A structurally valid MT103 or pacs.008 is the exception, when every condition below holds. The account fields then do not
+              count as a change of bank details.
+            </p>
+            <p>The attachment:</p>
+            <ul>
+              <li>is a top-level plain text MT103 or XML pacs.008, with no other attachment except an inline signature image;</li>
+              <li>passes the strict structure check, and every account sits in the payer or beneficiary account position;</li>
+              <li>has no change-of-account wording elsewhere, and no long numbers in its free text;</li>
+              <li>names only beneficiary accounts listed in <code>receiving_accounts</code> for the deal.</li>
+            </ul>
+            <p>The mail:</p>
+            <ul>
+              <li>comes from an authenticated sender with all signals clear, who is involved in one deal only;</li>
+              <li>has no account or redirect wording in the subject, body or file names;</li>
+              <li>has model labels limited to payment query and payment evidence;</li>
+              <li>belongs to a Case that has never had the <code>bank_details</code> rule label.</li>
+            </ul>
+            <p>
+              If a condition fails, the account counts as it did before. That includes a bank&#39;s printed PDF, an MT103 pasted into the body, a deal with no
+              <code>receiving_accounts</code>, an unauthenticated sender and an investor in several deals.
+            </p>
+            <h2 id="rules-that-only-raise-the-risk">
+              Rules that only raise the risk<a class="docs__anchor" href="#rules-that-only-raise-the-risk" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>
+                A structurally valid message whose beneficiary account position is not on the linked deal&#39;s list raises the risk to high, adds
+                <code>bank_details</code> and opens a verification task. The same happens when the exception applied and the Case is then linked to another
+                deal, or to none.
+              </li>
+              <li>
+                A mail with an MT103 or pacs.008 amount also gets <code>bank_details</code> for change wording in the subject, or for an explicit redirect such
+                as &quot;from now on&quot; or &quot;going forward&quot;, even with no account in the attachment. Ordinary mail that uses these words alongside a
+                confirmation gets the label too.
+              </li>
+              <li>Once a Case has the <code>bank_details</code> rule label, it keeps it through re-runs, relinks and directory changes.</li>
+            </ul>
+            <h2 id="known-limits">Known limits<a class="docs__anchor" href="#known-limits" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>Images are not read, so an account drawn in an image is not seen.</li>
+              <li>Payer accounts cannot be checked against a list.</li>
+              <li>
+                Wording can avoid the word list in any language, including letters that only look Latin and words written wholly in another script. If the model
+                does not recognise it either, a request to redirect a payment or refund is not caught.
+              </li>
+              <li>
+                Numbers kept short or split enough to pass the structure check, or written in a reference field, a message header or a fixed format field such
+                as an amount or exchange rate (<code>:33B:</code>, <code>:36:</code>, <code>:71F:</code>, <code>XchgRate</code>, <code>CtrlSum</code>), are not
+                caught.
+              </li>
+              <li>A beneficiary with no account line, only a name, has nothing to compare.</li>
+            </ul>
+            <p>
+              Account values with an IBAN or UK shape are replaced by a placeholder before any model call, and so are values in an account position with six or
+              more digits, whether or not this exception applies. A confirmation is the sender&#39;s document and never counts as receipt.
+            </p>
+            <p>The account position rule applies to mail parsed after the upgrade. Older Cases keep the masking they were processed with.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

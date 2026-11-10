@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Mailboxes | Vegeta</title>
+    <meta name="description" content="Every mailbox is read-only." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mailboxes | Vegeta" />
+    <meta property="og:description" content="Every mailbox is read-only." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/mailboxes/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mailboxes | Vegeta" />
+    <meta name="twitter:description" content="Every mailbox is read-only." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/mailboxes/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/" aria-current="page">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/" aria-current="page">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Mailboxes</h1>
+          <div class="docs__body">
+            <p>Every mailbox is <strong>read-only</strong>.</p>
+            <ul>
+              <li>The code has no way to send email, write drafts, move, flag or delete messages.</li>
+              <li>
+                Every request to Gmail and Microsoft Graph goes through one module. That module allows only a fixed list of read-only requests (host, method and
+                path) and never follows redirects.
+              </li>
+              <li>
+                A CI check fails the build if the code gains a write or send call, an SMTP client package, or a direct request that bypasses the allow-list.
+              </li>
+            </ul>
+            <p>
+              One deployment can read several mailboxes, for example one for operations and one for legal. Cases are routed by category, not by the mailbox that
+              received the email.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kind</th>
+                    <th><code>kind</code></th>
+                    <th>New mail</th>
+                    <th>Permission</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IMAP</td>
+                    <td><code>imap</code></td>
+                    <td>IDLE plus a catch-up every <code>catch_up_minutes</code></td>
+                    <td>the account you configure; opened read-only</td>
+                  </tr>
+                  <tr>
+                    <td><code>.eml</code> import</td>
+                    <td><code>eml</code></td>
+                    <td>a command you run</td>
+                    <td>none</td>
+                  </tr>
+                  <tr>
+                    <td>Gmail</td>
+                    <td><code>gmail</code></td>
+                    <td>history polling every <code>catch_up_minutes</code>, plus optional Pub/Sub pull notifications</td>
+                    <td><code>gmail.readonly</code>, one consent per mailbox</td>
+                  </tr>
+                  <tr>
+                    <td>Microsoft 365</td>
+                    <td><code>graph</code></td>
+                    <td>delta polling every <code>catch_up_minutes</code></td>
+                    <td>application <code>Mail.Read</code>, limited to the designated mailboxes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <strong>How these were tested.</strong> IMAP was tested against a test IMAP server. Gmail read-only collection was tested on one personal Gmail
+              account (catch-up polling only). <strong>Microsoft 365 and Gmail Pub/Sub were tested only against simulated services</strong>, not against a real
+              tenant or a real Pub/Sub subscription.
+            </p>
+            <h2 id="passing-mailbox-credentials-to-the-containers">
+              Passing mailbox credentials to the containers<a
+                class="docs__anchor"
+                href="#passing-mailbox-credentials-to-the-containers"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The configuration names environment variables (<code>user_env</code>, <code>password_env</code>, <code>client_secret_env</code>, and so on). The
+              app reads <code>&lt;NAME&gt;</code> or, if it is set, the file named by <code>&lt;NAME&gt;_FILE</code>. Use Compose secrets for these, in a
+              <code>docker-compose.override.yml</code> next to <code>docker-compose.yml</code>. Compose reads that file automatically on
+              <code>docker compose up</code>.
+            </p>
+            <p>Example for one IMAP mailbox:</p>
+            <pre tabindex="0"><code># docker-compose.override.yml
+services:
+  app:
+    environment:
+      IMAP_OPS_USER_FILE: /run/secrets/imap_ops_user
+      IMAP_OPS_PASSWORD_FILE: /run/secrets/imap_ops_password
+    secrets: [imap_ops_user, imap_ops_password]
+secrets:
+  imap_ops_user: { file: ./secrets/imap_ops_user }
+  imap_ops_password: { file: ./secrets/imap_ops_password }</code></pre>
+            <p>Only the <code>app</code> service collects mail. Do not give mailbox credentials to <code>maintenance</code>.</p>
+            <h2 id="authentication-results-all-kinds-except-eml">
+              Authentication results (all kinds except <code>.eml</code>)<a
+                class="docs__anchor"
+                href="#authentication-results-all-kinds-except-eml"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The app trusts <code>Authentication-Results</code> headers only from a mailbox that you have declared with
+              <code>strips_external_auth_results: true</code>. That setting also needs <code>trusted_authserv_id</code>, the authserv-id your own mail gateway
+              writes.
+            </p>
+            <p>
+              Declare it only when your gateway removes <code>Authentication-Results</code> headers that arrive from outside. Otherwise a sender could forge a
+              &quot;pass&quot; result. Without the declaration, every email gets the signal &quot;authentication header from an unknown server&quot;, which
+              raises its risk one level, and authentication is shown as &quot;unknown&quot;. <code>.eml</code> imports never use authentication results, so for
+              them see <a href="#eml-import"><code>.eml</code> import</a>.
+            </p>
+            <h2 id="imap">IMAP<a class="docs__anchor" href="#imap" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>mailboxes:
+  - id: ops
+    name: Operations
+    kind: imap
+    imap:
+      host: imap.capital.example
+      port: 993
+      tls: true
+      user_env: IMAP_OPS_USER
+      password_env: IMAP_OPS_PASSWORD
+      folder: INBOX
+    catch_up_minutes: 5</code></pre>
+            <ul>
+              <li>
+                The folder is opened with <code>EXAMINE</code> (read-only). The app uses only search and fetch commands, so it does not even set the
+                <code>\Seen</code> flag.
+              </li>
+              <li>One folder per IMAP mailbox.</li>
+              <li>
+                <strong>Ask your mail administrator to disable SMTP sending for this account.</strong> IMAP has no read-only permission: an account that can
+                read can usually also send through SMTP. The app never sends, but anyone who obtains the password could. If SMTP cannot be disabled, record this
+                as a remaining risk in your DPIA.
+              </li>
+            </ul>
+            <h2 id="eml-import"><code>.eml</code> import<a class="docs__anchor" href="#eml-import" aria-label="Link to this section">#</a></h2>
+            <p>An <code>eml</code> mailbox needs no credentials:</p>
+            <pre tabindex="0"><code>mailboxes:
+  - id: archive
+    name: Imported mail
+    kind: eml</code></pre>
+            <p>Import files with the <code>import-eml</code> command, run inside the app image:</p>
+            <pre
+              tabindex="0"
+            ><code>docker compose run --rm -v &quot;$PWD/mail:/import:ro&quot; app import-eml archive /import/one.eml /import/two.eml</code></pre>
+            <ul>
+              <li>The receive time is the import time.</li>
+              <li>
+                Authentication results are never adopted from imported files: authentication is always &quot;unknown&quot; and the sender is never an
+                authenticated sender. Most saved emails carry the <code>Authentication-Results</code> header of the server that received them, and that server
+                is not your trusted one, so such a file also gets the signal &quot;authentication header from an unknown server&quot; and its risk goes up one
+                level.
+              </li>
+              <li>The same email imported twice creates only one Case.</li>
+            </ul>
+            <h2 id="gmail">Gmail<a class="docs__anchor" href="#gmail" aria-label="Link to this section">#</a></h2>
+            <p>
+              You need a Google Cloud project with the Gmail API enabled and an OAuth client of type <strong>Desktop app</strong>. For Google Workspace, an
+              internal app is enough. The app never uses domain-wide delegation: each mailbox is authorised by its own user, once.
+            </p>
+            <h3 id="configuration">Configuration<a class="docs__anchor" href="#configuration" aria-label="Link to this section">#</a></h3>
+            <pre tabindex="0"><code>gmail:
+  client_id_env: GMAIL_CLIENT_ID
+  client_secret_env: GMAIL_CLIENT_SECRET
+mailboxes:
+  - id: deals
+    name: Deals
+    kind: gmail
+    gmail:
+      address: deals@capital.example
+      labels: [INBOX]
+    strips_external_auth_results: true   # only after the check below has passed
+    trusted_authserv_id: mx.google.com
+    catch_up_minutes: 5</code></pre>
+            <ul>
+              <li><code>labels</code> are label names. They are resolved to ids at start-up, and a missing label stops the start.</li>
+              <li><code>SENT</code>, <code>DRAFT</code>, <code>SPAM</code> and <code>TRASH</code> are never received, even if you configure them.</li>
+              <li>An email that gets a configured label later (for example, moved from spam back to the inbox) counts as new.</li>
+            </ul>
+            <p>Give the client id and secret to both <code>app</code> and <code>gmail-auth</code>:</p>
+            <pre tabindex="0"><code># docker-compose.override.yml
+services:
+  app:
+    environment:
+      GMAIL_CLIENT_ID_FILE: /run/secrets/gmail_client_id
+      GMAIL_CLIENT_SECRET_FILE: /run/secrets/gmail_client_secret
+    secrets: [gmail_client_id, gmail_client_secret]
+  gmail-auth:
+    environment:
+      GMAIL_CLIENT_ID_FILE: /run/secrets/gmail_client_id
+      GMAIL_CLIENT_SECRET_FILE: /run/secrets/gmail_client_secret
+    secrets: [gmail_client_id, gmail_client_secret]
+secrets:
+  gmail_client_id: { file: ./secrets/gmail_client_id }
+  gmail_client_secret: { file: ./secrets/gmail_client_secret }</code></pre>
+            <h3 id="one-consent-per-mailbox">
+              One consent per mailbox<a class="docs__anchor" href="#one-consent-per-mailbox" aria-label="Link to this section">#</a>
+            </h3>
+            <p>Run this once for each Gmail mailbox, with the stack&#39;s database running:</p>
+            <pre tabindex="0"><code>docker compose run --rm --service-ports gmail-auth deals</code></pre>
+            <ol>
+              <li>The command prints an address. Open it in a browser and sign in as the mailbox&#39;s own user (<code>deals@capital.example</code>).</li>
+              <li>Google asks for one permission only: read your email (<code>gmail.readonly</code>).</li>
+              <li>Google redirects to <code>http://127.0.0.1:8765</code>. That port is published on the host&#39;s <code>127.0.0.1</code> only.</li>
+              <li>The command prints <code>Saved: deals reads deals@capital.example with gmail.readonly.</code></li>
+            </ol>
+            <p>The token is refused and not saved if:</p>
+            <ul>
+              <li>the granted scope is anything other than exactly <code>gmail.readonly</code>, or</li>
+              <li>the signed-in account is not the configured address.</li>
+            </ul>
+            <p>The refresh token is stored encrypted in the database.</p>
+            <p>On a server without a browser, forward the port from your own machine first:</p>
+            <pre tabindex="0"><code>ssh -L 8765:127.0.0.1:8765 admin@inbox-host.capital.example</code></pre>
+            <p>
+              Re-running the command replaces the token. The old token is not revoked, because revoking it at Google would also end the new authorisation. To
+              remove access completely, revoke the app in the Google account&#39;s security settings.
+            </p>
+            <p>If a token is revoked, only that mailbox stops collecting. The failure is audited and shown at the top of the review UI.</p>
+            <h3 id="pubsub-notifications-optional">
+              Pub/Sub notifications (optional)<a class="docs__anchor" href="#pubsub-notifications-optional" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              Without Pub/Sub, the app polls the mailbox history every <code>catch_up_minutes</code>. With Pub/Sub, Gmail&#39;s watch notifications are fetched
+              by <strong>pull</strong>, so no public inbound address is needed:
+            </p>
+            <pre tabindex="0"><code>gmail:
+  client_id_env: GMAIL_CLIENT_ID
+  client_secret_env: GMAIL_CLIENT_SECRET
+  pubsub:
+    topic: projects/capital-ops/topics/doi-gmail
+    subscription: projects/capital-ops/subscriptions/doi-gmail-pull
+    service_account_env: GMAIL_PUBSUB_SA</code></pre>
+            <ul>
+              <li>
+                <code>GMAIL_PUBSUB_SA</code> (or <code>GMAIL_PUBSUB_SA_FILE</code>) holds the JSON key of a separate service account. Give that service account
+                permission to pull from this subscription only.
+              </li>
+              <li>Gmail itself must be allowed to publish to the topic. Follow Google&#39;s Gmail push notification guide for this.</li>
+              <li>The watch is renewed daily. A failed renewal is audited and shown at the top of the review UI.</li>
+              <li>The catch-up polling keeps running, so a lost notification is still picked up.</li>
+            </ul>
+            <p>Pub/Sub was tested only against a simulated service.</p>
+            <h3 id="before-going-live-gmail-authentication-headers">
+              Before going live: Gmail authentication headers<a
+                class="docs__anchor"
+                href="#before-going-live-gmail-authentication-headers"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>
+              Gmail writes <code>Authentication-Results</code> from <code>mx.google.com</code>. So set <code>trusted_authserv_id: mx.google.com</code>. Set
+              <code>strips_external_auth_results: true</code> <strong>only after you have checked</strong> that Gmail removes forged headers with the same
+              authserv-id:
+            </p>
+            <ol>
+              <li>
+                From an outside account, send the mailbox an email that carries a forged header, for example
+                <code>Authentication-Results: mx.google.com; dkim=pass header.d=capital.example; spf=pass; dmarc=pass</code>.
+              </li>
+              <li>Fetch the raw message through the Gmail API (or &quot;Show original&quot;).</li>
+              <li>
+                Confirm that the forged header is <strong>gone</strong> and that only Gmail&#39;s own header remains. Looking at the top header is not enough:
+                Gmail might add its own header above the forged one and keep the forged one.
+              </li>
+            </ol>
+            <p>If the forged header is still there, keep <code>strips_external_auth_results: false</code>.</p>
+            <h2 id="microsoft-365">Microsoft 365<a class="docs__anchor" href="#microsoft-365" aria-label="Link to this section">#</a></h2>
+            <p>
+              The app uses the client-credentials flow, with a certificate (recommended) or a client secret. Access is limited to the designated mailboxes
+              through <strong>Exchange RBAC for Applications</strong>, with the role <code>Application Mail.Read</code>.
+            </p>
+            <ul>
+              <li>
+                Do <strong>not</strong> grant any tenant-wide <code>Mail.*</code> permission in Entra. Tenant-wide grants add to the Exchange scope and would
+                open every mailbox.
+              </li>
+              <li>Grant no write or send permission.</li>
+              <li>Only delta polling is used. There are no change-notification subscriptions and no inbound address.</li>
+            </ul>
+            <h3 id="configuration-1">Configuration<a class="docs__anchor" href="#configuration-1" aria-label="Link to this section">#</a></h3>
+            <pre tabindex="0"><code>m365:
+  tenant_id: 00000000-0000-0000-0000-000000000000
+  client_id: 11111111-1111-1111-1111-111111111111
+  certificate_key_env: M365_CERT_KEY        # PEM private key; or client_secret_env instead
+  certificate_thumbprint: 0123456789ABCDEF0123456789ABCDEF01234567
+  permission_review: { date: 2026-11-01, reviewer: IT Operations }
+  negative_probe_mailbox: not-designated@capital.example
+mailboxes:
+  - id: legal
+    name: Legal
+    kind: graph
+    graph:
+      user: legal@capital.example
+      folders: [Inbox]</code></pre>
+            <ul>
+              <li>
+                Give exactly one of <code>certificate_key_env</code> and <code>client_secret_env</code>, through the override file as in the IMAP example.
+              </li>
+              <li>
+                <code>folders</code> are names, and paths such as <code>Inbox/Deals</code> are allowed. They are resolved at start-up, and a missing one stops
+                the start.
+              </li>
+              <li>Each folder has its own cursor. An email moved between two configured folders does not create a second Case.</li>
+            </ul>
+            <h3 id="the-start-up-check">The start-up check<a class="docs__anchor" href="#the-start-up-check" aria-label="Link to this section">#</a></h3>
+            <p>The check runs at every start. <strong>Any failure or any uncertain answer stops the start.</strong></p>
+            <ol>
+              <li>
+                <strong>Review record.</strong> <code>m365.permission_review</code> must be present and at most <strong>180 days</strong> old. Repeat the review
+                below and update the date before it expires.
+              </li>
+              <li>
+                <strong>Entra permissions.</strong> If the app can read its own Entra permissions (only when you have also granted
+                <code>Application.Read.All</code>), any tenant-wide <code>Mail.*</code> application permission on Microsoft Graph refuses the start. If the
+                directory answers with a clear &quot;request denied&quot;, this step relies on the review record alone.
+              </li>
+              <li><strong>Positive probe.</strong> Every designated mailbox must be readable.</li>
+              <li>
+                <strong>Negative probe.</strong> <code>negative_probe_mailbox</code> must be a real mailbox that the app is <strong>not</strong> allowed to
+                read. It must answer &quot;access denied&quot;. A readable mailbox, a missing mailbox, a network error or an authentication error all stop the
+                start.
+              </li>
+            </ol>
+            <p>The app cannot prove by itself that Exchange gives it no send role. Step 1, the human review, covers that.</p>
+            <h3 id="permission-review-checklist">
+              Permission review checklist<a class="docs__anchor" href="#permission-review-checklist" aria-label="Link to this section">#</a>
+            </h3>
+            <p>Do this before the first start and at least every 180 days. Then record the date and reviewer in <code>m365.permission_review</code>.</p>
+            <ul>
+              <li>
+                <input disabled="" type="checkbox" /> The app registration has no Microsoft Graph application permissions named <code>Mail.*</code> (no
+                <code>Mail.Read</code>, <code>Mail.ReadBasic</code>, <code>Mail.ReadWrite</code> or <code>Mail.Send</code> granted tenant-wide), and no
+                delegated grants.
+              </li>
+              <li>
+                <input disabled="" type="checkbox" /> In Exchange, the app&#39;s service principal has exactly one management role assignment:
+                <code>Application Mail.Read</code>.
+              </li>
+              <li><input disabled="" type="checkbox" /> That assignment has a custom resource scope that matches only the designated mailboxes.</li>
+              <li>
+                <input disabled="" type="checkbox" /> There is no <code>Application Mail.ReadWrite</code>, <code>Application Mail.Send</code>,
+                <code>Application Mail Full Access</code> or other application role assignment.
+              </li>
+              <li><input disabled="" type="checkbox" /> Each designated mailbox tests as in scope, and the negative probe mailbox tests as out of scope.</li>
+              <li>
+                <input disabled="" type="checkbox" /> Only the certificate or secret configured here exists on the app registration. Expired or unused
+                credentials are removed.
+              </li>
+            </ul>
+            <h3 id="example-powershell-commands">
+              Example PowerShell commands<a class="docs__anchor" href="#example-powershell-commands" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              These are <strong>examples</strong>. Check the cmdlets and parameters against Microsoft&#39;s current documentation and try them in your own
+              tenant before you rely on them. <code>&lt;app-id&gt;</code> is the application (client) id.
+            </p>
+            <p>Exchange Online (module <code>ExchangeOnlineManagement</code>):</p>
+            <pre tabindex="0"><code>Connect-ExchangeOnline
+
+# the app's service principal in Exchange
+Get-ServicePrincipal | Where-Object { $_.AppId -eq '&lt;app-id&gt;' } | Format-List DisplayName, AppId, ObjectId, Identity
+
+# its management role assignments and their scopes
+Get-ManagementRoleAssignment -RoleAssignee '&lt;service principal identity&gt;' |
+  Format-Table Role, CustomResourceScope, RecipientWriteScope, Enabled
+
+# the scope's filter: it must match only the designated mailboxes
+Get-ManagementScope -Identity '&lt;scope name&gt;' | Format-List Name, RecipientFilter
+
+# effective access to one mailbox: designated → in scope; negative probe → not in scope
+Test-ServicePrincipalAuthorization -Identity '&lt;app-id&gt;' -Resource 'legal@capital.example'
+Test-ServicePrincipalAuthorization -Identity '&lt;app-id&gt;' -Resource 'not-designated@capital.example'</code></pre>
+            <p>Setting up the scope and the role assignment (example):</p>
+            <pre
+              tabindex="0"
+            ><code>New-ServicePrincipal -AppId '&lt;app-id&gt;' -ObjectId '&lt;enterprise application object id&gt;' -DisplayName 'Trunks — Operations Inbox'
+New-ManagementScope -Name 'Deal Ops Inbox mailboxes' -RecipientRestrictionFilter &quot;PrimarySmtpAddress -eq 'legal@capital.example'&quot;
+New-ManagementRoleAssignment -App '&lt;app-id&gt;' -Role 'Application Mail.Read' -CustomResourceScope 'Deal Ops Inbox mailboxes'</code></pre>
+            <p>Entra (module <code>Microsoft.Graph</code>):</p>
+            <pre tabindex="0"><code>Connect-MgGraph -Scopes 'Application.Read.All'
+
+$sp    = Get-MgServicePrincipal -Filter &quot;appId eq '&lt;app-id&gt;'&quot;
+$graph = Get-MgServicePrincipal -Filter &quot;appId eq '00000003-0000-0000-c000-000000000000'&quot;
+
+# application permissions granted to the app, by name: there must be no Mail.*
+Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $sp.Id | ForEach-Object {
+  $id = $_.AppRoleId
+  [pscustomobject]@{ Resource = $_.ResourceDisplayName; Permission = ($graph.AppRoles | Where-Object Id -eq $id).Value }
+}
+
+# delegated grants: there should be none
+Get-MgServicePrincipalOauth2PermissionGrant -ServicePrincipalId $sp.Id | Format-List Scope, ConsentType
+
+# the app's credentials
+Get-MgApplication -Filter &quot;appId eq '&lt;app-id&gt;'&quot; | Select-Object -ExpandProperty KeyCredentials
+Get-MgApplication -Filter &quot;appId eq '&lt;app-id&gt;'&quot; | Select-Object -ExpandProperty PasswordCredentials</code></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

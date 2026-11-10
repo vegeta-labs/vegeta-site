@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Risk and verification | Vegeta</title>
+    <meta
+      name="description"
+      content="Trunks rates every email and, for bank details and identity changes, sets you a checklist that two people must complete. The rating and the checklist help you. They do not make the decision."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Risk and verification | Vegeta" />
+    <meta
+      property="og:description"
+      content="Trunks rates every email and, for bank details and identity changes, sets you a checklist that two people must complete. The rating and the checklist help you. They do not make the decision."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/use/risk-and-verification/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Risk and verification | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Trunks rates every email and, for bank details and identity changes, sets you a checklist that two people must complete. The rating and the checklist help you. They do not make the decision."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/use/risk-and-verification/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/" aria-current="page">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/" aria-current="page">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Risk and verification</h1>
+          <div class="docs__body">
+            <p>
+              Trunks rates every email and, for bank details and identity changes, sets you a checklist that two people must complete. The rating and the
+              checklist help you. They do not make the decision.
+            </p>
+            <p>A person remains responsible for every risk decision. A low risk rating is not a clearance.</p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                A Trunks account. Ticking a checklist needs any role. Lowering a risk, being the second person and removing a <strong>Bank details</strong> or
+                <strong>Identity change</strong> type need the approver or admin role. See <a href="/docs/trunks/use/roles/">Roles</a>.
+              </li>
+              <li>The phone number on file, which Trunks shows on the task.</li>
+            </ul>
+            <h2 id="how-the-risk-level-is-set">
+              How the risk level is set<a class="docs__anchor" href="#how-the-risk-level-is-set" aria-label="Link to this section">#</a>
+            </h2>
+            <p>Fixed rules set the risk, in this order:</p>
+            <ol>
+              <li>
+                Each email type has a starting level, its <strong>Class floor</strong>. See the table in
+                <a href="/docs/trunks/use/reading-a-case/#2-check-the-email-type">Read a case</a>.
+              </li>
+              <li>Some findings make the case <strong>High</strong> straight away.</li>
+              <li>Others, marked <strong>(+1)</strong> on the page, raise it one level.</li>
+            </ol>
+            <p>High does not mean fraud. A KYC document from a known investor is High because of how it must be handled.</p>
+            <h2 id="warning-signals">Warning signals<a class="docs__anchor" href="#warning-signals" aria-label="Link to this section">#</a></h2>
+            <p>The <strong>Signals</strong> panel lists the checks that fired. <strong>All signals (9)</strong> shows every check and its result.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Signal</th>
+                    <th>What it means</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Authentication failed (SPF, DKIM or DMARC)</strong></td>
+                    <td>The email failed the mail system&#39;s checks that it came from who it says.</td>
+                    <td>Treat the sender as unconfirmed.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>An authentication header from an unknown server</strong></td>
+                    <td>A sender check result came from a server your setup does not trust.</td>
+                    <td>Treat the sender as unconfirmed.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Display name matches a contact, address does not</strong></td>
+                    <td>The name is someone you know; the address is not theirs.</td>
+                    <td>Contact the person through the details on file.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Domain looks like a known contact domain</strong></td>
+                    <td>The domain differs by a character or two from a real one.</td>
+                    <td>Compare it letter by letter.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Reply-To differs from From</strong></td>
+                    <td>Answers would go to a different address.</td>
+                    <td>Check who you would be writing to.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>First mail from this address</strong></td>
+                    <td>Trunks has not seen this address before.</td>
+                    <td>Be more careful with any request to change something.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hidden text in the HTML</strong></td>
+                    <td>The email contains text a reader would not normally see.</td>
+                    <td>Read it on the case page. Do not follow it.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Instruction-like phrases in the mail</strong></td>
+                    <td>The email tries to give orders to software, such as &quot;Ignore previous instructions&quot;.</td>
+                    <td>Do not follow it.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Message-ID seen before with other content</strong></td>
+                    <td>An email with the same identifier arrived earlier with different contents.</td>
+                    <td>Compare the two.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>A check that could not run shows <strong>could not be checked</strong>. That is not the same as passing.</p>
+            <p>
+              Other findings shown under <strong>Risk</strong> include <strong>Attachment amounts differ from the mail</strong>,
+              <strong>First mail from this address, with an account number</strong>, <strong>Pressure words in a payment or account mail (+1)</strong> and
+              <strong>Planned close within 3 working days (+1)</strong>.
+            </p>
+            <h2 id="change-the-risk">Change the risk<a class="docs__anchor" href="#change-the-risk" aria-label="Link to this section">#</a></h2>
+            <p>Under <strong>Risk</strong>, choose a level in <strong>Set risk</strong> and click <strong>Apply</strong>.</p>
+            <ul>
+              <li><strong>Anyone can raise it.</strong> The panel then shows, for example, <strong>a person&#39;s adjustment to high is active</strong>.</li>
+              <li>
+                <strong>Only an approver or admin can lower it</strong>, and they must give a reason. A reviewer who tries sees
+                <strong>lowering the risk needs the approver role and a reason</strong>.
+              </li>
+            </ul>
+            <p>
+              If a person&#39;s correction would lower the risk, the risk stays where it is <strong>until an approver confirms the lower risk</strong>. An
+              approver enters a reason and clicks <strong>Accept the lower risk</strong>.
+            </p>
+            <p>Never lower a risk only because the email looks fine. Lower it because you checked something, and say what in the reason.</p>
+            <h2 id="verification-tasks">Verification tasks<a class="docs__anchor" href="#verification-tasks" aria-label="Link to this section">#</a></h2>
+            <p>
+              An email adopted as <strong>Bank details</strong> or <strong>Identity change</strong> gets a task on the case page, headed
+              <strong>Check the bank details request</strong> or <strong>Check the change of identity details</strong>. It is a callback check and a
+              second-person check. Trunks never applies new bank details or contact details from an email.
+            </p>
+            <p>
+              A label marked <strong>low confidence — needs confirmation</strong> has no task. If the email really is a bank details or identity change request,
+              click <strong>Add</strong> to add that class, and the task appears.
+            </p>
+            <h3 id="steps-for-the-person-who-makes-the-check">
+              Steps for the person who makes the check<a class="docs__anchor" href="#steps-for-the-person-who-makes-the-check" aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <ol>
+              <li>
+                Read <strong>Phone on file</strong>. If the case impersonates someone, <strong>Contact</strong> names them. If there is no number, the panel
+                says <strong>No phone number on file: find another known channel</strong>.
+              </li>
+              <li>
+                Open <strong>Message to the old contact details</strong> to see the message you must send and where to send it. Send it from your own mail
+                client. Trunks has no copy button for this message, so select it by hand.
+              </li>
+              <li>
+                Do each item, and tick it only when it is done:
+                <ul>
+                  <li><strong>Call the phone number on file</strong></li>
+                  <li><strong>Do not use any phone number or link from the email</strong></li>
+                  <li><strong>Check what the request asks for</strong></li>
+                  <li><strong>Notify the old contact details</strong></li>
+                </ul>
+              </li>
+              <li>Click <strong>Checklist done</strong>. It is greyed out until every item is ticked.</li>
+            </ol>
+            <p>
+              The tag changes to <strong>Checklist done — cooling-off period</strong>. Default cooling-off is 24 hours, and your admin can change it, to no less
+              than 1 hour.
+            </p>
+            <h3 id="steps-for-the-second-person">
+              Steps for the second person<a class="docs__anchor" href="#steps-for-the-second-person" aria-label="Link to this section">#</a>
+            </h3>
+            <p>The second person needs the approver or admin role and must not be the person who ticked the checklist.</p>
+            <ol>
+              <li>After the cooling-off time shown as <strong>second approval from</strong>, open the case.</li>
+              <li>Read the panel. It lists anything that blocks approval.</li>
+              <li>Satisfy yourself that the check was really done. Ask the first person what the caller said if you need to.</li>
+              <li>Click <strong>Approve as the second person</strong>.</li>
+            </ol>
+            <p>The tag changes to <strong>Approved by a second person</strong>.</p>
+            <p>This approval does not change any bank details. Your team applies the change, in your own systems, once it is approved.</p>
+            <h3 id="when-approval-is-refused">
+              When approval is refused<a class="docs__anchor" href="#when-approval-is-refused" aria-label="Link to this section">#</a>
+            </h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Message</th>
+                    <th>Meaning</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>the cooling-off period has not ended</strong></td>
+                    <td>The waiting time is still running.</td>
+                    <td>Come back after the time shown.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>You ticked the checklist, so a different person must approve.</strong></td>
+                    <td>You cannot approve your own check.</td>
+                    <td>Ask another approver.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>an account is newer than one cooling-off period before the checklist was done</strong> or
+                      <strong>a role is newer than one cooling-off period before the checklist was done</strong>
+                    </td>
+                    <td>One of the two accounts or roles was too new at the time. Waiting does not fix this task.</td>
+                    <td>An approver uses <strong>Restart verification</strong>, then repeats the checklist once the accounts are old enough.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>one of the two users created the other</strong>, <strong>one of the two users granted a role to the other</strong> or
+                      <strong>one of the two users reset the credentials of the other</strong>
+                    </td>
+                    <td>The two people are linked through account administration.</td>
+                    <td>Ask a different approver.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>credentials were reset within the cooling-off period</strong></td>
+                    <td>A password was reset too close to this task.</td>
+                    <td>
+                      If it was the second person&#39;s password, ask a different approver. If it was the first person&#39;s, an approver uses
+                      <strong>Restart verification</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>this task no longer applies; a new task replaces it</strong></td>
+                    <td>Something the task rests on changed. See <a href="#when-a-task-starts-again">When a task starts again</a>.</td>
+                    <td>Reload the page and work on the new task.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>An admin can see the user rules in <a href="/docs/trunks/build/users-and-directory/#users-and-two-person-control">Users and directory</a>.</p>
+            <h3 id="restart-a-task">Restart a task<a class="docs__anchor" href="#restart-a-task" aria-label="Link to this section">#</a></h3>
+            <p>
+              An approver or admin enters a reason under <strong>Reason for restarting</strong> and clicks <strong>Restart verification</strong>. The checklist
+              starts again, and so does the cooling-off period when it is next completed. An approved task cannot be restarted.
+            </p>
+            <h3 id="when-a-task-starts-again">
+              When a task starts again<a class="docs__anchor" href="#when-a-task-starts-again" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              A task rests on the case as it was when the task was made. Trunks cancels it and puts a new open task in its place, even if it was already
+              approved, when:
+            </p>
+            <ul>
+              <li>a person changes a class, edits a key detail, changes a link or the risk, or relinks the case;</li>
+              <li>the details the task rests on change, for example when the email is processed again or a KYC file is replaced;</li>
+              <li>the contact the task is about changes.</li>
+            </ul>
+            <p>
+              Clicking <strong>Confirm</strong> on a key detail without changing it does not start the task again, as long as the case has finished processing.
+              Even so, finish your corrections before you start the checklist.
+            </p>
+            <h3 id="when-a-task-disappears">
+              When a task disappears<a class="docs__anchor" href="#when-a-task-disappears" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              Once an email has been treated as <strong>Bank details</strong> or <strong>Identity change</strong>, that type stays on the case. Processing the
+              email again does not remove it, and neither does a lower-confidence result from the model.
+            </p>
+            <p>
+              Only an approver or admin can remove the type, and only with a reason, whatever it does to the risk. A reviewer who tries sees
+              <strong>Removing the bank details or identity change type needs an approver or admin and a reason</strong>. A type found by a fixed rule, shown
+              with <strong>(rule)</strong>, cannot be removed at all.
+            </p>
+            <p>
+              When an approver or admin removes it, the task is cancelled and its panel leaves the page. The class list shows the type struck through, for
+              example <strong>Bank details</strong>, with who removed it and their reason. Processing the case again does not bring it back, unless a fixed rule
+              marks the email as <strong>Bank details</strong> again. A type found by a fixed rule cannot be removed.
+            </p>
+            <h2 id="closing-a-case">Closing a case<a class="docs__anchor" href="#closing-a-case" aria-label="Link to this section">#</a></h2>
+            <p>A reviewer can close a case only when all of these hold:</p>
+            <ul>
+              <li>the email has finished processing;</li>
+              <li>every verification task on it is <strong>Approved by a second person</strong>, and still applies to the case as it is now;</li>
+              <li>no reply is approved and waiting to be marked as sent.</li>
+            </ul>
+            <p>
+              If any of them does not hold, a reviewer sees <strong>Only an approver or admin can close this case now, with a reason:</strong> with the list of
+              what is missing, and no <strong>Close</strong> button. The list can include:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Reason</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>its email has not finished processing</strong></td>
+                    <td>Wait and reload.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>it is marked as a bank details or identity change, but its check has not been created yet</strong></td>
+                    <td>Wait and reload. If it stays, ask your admin.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>a bank details or identity check has not been approved</strong></td>
+                    <td>Finish the check and the second-person approval.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>an approved check no longer matches this case because the contact or details changed</strong></td>
+                    <td>Do the new task. See <a href="#when-a-task-starts-again">When a task starts again</a>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>an approved reply has not been marked as sent</strong></td>
+                    <td>Send it and click <strong>Mark as sent</strong>, or click <strong>Reject</strong>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              An approver or admin sees <strong>This case is not ready to close. Closing it anyway needs a reason:</strong>, the same list, and a
+              <strong>Reason</strong> box. They can close it with a reason, for example because the request was fraudulent or the task can never be approved.
+              Trunks keeps the reason in its records.
+            </p>
+            <p>
+              When a case is closed, any reply that was approved but not marked as sent is withdrawn, and any verification task that was not yet approved is
+              cancelled. After that the case cannot be changed. An approver or admin can still put it on hold or remove the hold, and an admin can still use
+              <strong>Retry the transfer</strong> or <strong>Mark as handled</strong> on a KYC attachment. There is no way to reopen a case in this version. If
+              one was closed by mistake, handle the email outside Trunks, or wait for the sender&#39;s next email, which becomes a new case.
+            </p>
+            <h2 id="what-you-should-never-do">
+              What you should never do<a class="docs__anchor" href="#what-you-should-never-do" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>Call a number or follow a link from the email to verify the email.</li>
+              <li>Change bank details, or tell investors new bank details, because an email asked you to.</li>
+              <li>Treat an MT103 or pacs.008 attached to an email as proof the money arrived. Only your imported ledger can show that.</li>
+              <li>Take <strong>Low</strong> or <strong>No warning signals detected.</strong> as proof that an email is genuine.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

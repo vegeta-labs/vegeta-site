@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Configuration reference | Vegeta</title>
+    <meta name="description" content="A configuration directory holds three YAML files:" />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Configuration reference | Vegeta" />
+    <meta property="og:description" content="A configuration directory holds three YAML files:" />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/configuration/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Configuration reference | Vegeta" />
+    <meta name="twitter:description" content="A configuration directory holds three YAML files:" />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/configuration/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/" aria-current="page">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/" aria-current="page">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Configuration reference</h1>
+          <div class="docs__body">
+            <p>A configuration directory holds three YAML files:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Contents</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>deployment.yaml</td>
+                    <td>the deployment, mailboxes, model, limits, routing, retention, KYC target, sign-in</td>
+                  </tr>
+                  <tr>
+                    <td>cases.yaml</td>
+                    <td>the case categories (classes)</td>
+                  </tr>
+                  <tr>
+                    <td>templates.yaml</td>
+                    <td>the reply templates</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Compose mounts the directory read-only at <code>/config</code>. It comes from <code>DOI_CONFIG_DIR</code>, which defaults to
+              <code>./config/default</code>.
+            </p>
+            <p>General rules:</p>
+            <ul>
+              <li>
+                <strong>Checked at every start.</strong> An invalid file stops the start, and the message names the file, the line and the key. Unknown keys are
+                errors.
+              </li>
+              <li>
+                <strong>Changes are audited.</strong> The hash of the directory is recorded at start. When it changes, a <code>config.changed</code> audit
+                record is written, and every Case that is not closed is processed again with the new configuration.
+              </li>
+              <li>
+                <strong>No secrets in these files.</strong> Keys ending in <code>_env</code> hold the <em>name</em> of an environment variable. The app reads
+                that variable, or the file named by <code>&lt;NAME&gt;_FILE</code>. Names are upper-case letters, digits and <code>_</code>.
+              </li>
+              <li>
+                <strong>Fixed rules cannot be configured.</strong> These include the fraud rules and the built-in word lists. A key that tries to switch them
+                off or replace a list fails with its own message. Word lists only accept additions, through <code>*_extra</code> keys.
+              </li>
+              <li><strong>Ids</strong> (mailbox, class, queue and template ids) are lower-case letters, digits and <code>_</code>, starting with a letter.</li>
+            </ul>
+            <p>Key paths below are dotted; <code>[]</code> marks an item of a list. &quot;required&quot; means there is no default.</p>
+            <h2 id="deploymentyaml"><code>deployment.yaml</code><a class="docs__anchor" href="#deploymentyaml" aria-label="Link to this section">#</a></h2>
+            <h3 id="deployment"><code>deployment</code><a class="docs__anchor" href="#deployment" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>deployment.name</code></td>
+                    <td>string</td>
+                    <td>required</td>
+                    <td>Name of the deployment. Templates show it as <code>{deployment_name}</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>deployment.timezone</code></td>
+                    <td>IANA time zone</td>
+                    <td>required</td>
+                    <td>Used for working days, deadlines and dates, for example <code>Europe/London</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>deployment.currencies</code></td>
+                    <td>list of ISO 4217 codes</td>
+                    <td>required</td>
+                    <td>The currencies the deployment accepts, for example <code>[GBP, EUR, USD]</code>. At least one.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="mailboxes"><code>mailboxes</code><a class="docs__anchor" href="#mailboxes" aria-label="Link to this section">#</a></h3>
+            <p>At least one mailbox is needed. Ids must be unique. See <a href="/docs/trunks/build/mailboxes/">Mailboxes</a>.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>mailboxes[].id</code></td>
+                    <td>id</td>
+                    <td>required</td>
+                    <td>Internal id. Keep it stable: cursors, duplicate detection and Cases refer to it.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].name</code></td>
+                    <td>string</td>
+                    <td>required</td>
+                    <td>Name shown in the review UI.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].kind</code></td>
+                    <td><code>imap</code> | <code>eml</code> | <code>gmail</code> | <code>graph</code></td>
+                    <td>required</td>
+                    <td>
+                      The adapter. <code>imap</code> needs the <code>imap</code> block, <code>gmail</code> needs the <code>gmail</code> block here and the
+                      top-level <code>gmail</code> block, <code>graph</code> needs the <code>graph</code> block and the top-level <code>m365</code> block.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].imap.host</code></td>
+                    <td>string</td>
+                    <td>required for <code>imap</code></td>
+                    <td>IMAP server host name.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].imap.port</code></td>
+                    <td>integer 1–65535</td>
+                    <td>required for <code>imap</code></td>
+                    <td>IMAP port, for example <code>993</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].imap.tls</code></td>
+                    <td>boolean</td>
+                    <td>required for <code>imap</code></td>
+                    <td>Use TLS.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].imap.user_env</code></td>
+                    <td>env name</td>
+                    <td>required for <code>imap</code></td>
+                    <td>Variable that holds the user name.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].imap.password_env</code></td>
+                    <td>env name</td>
+                    <td>required for <code>imap</code></td>
+                    <td>Variable that holds the password.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].imap.folder</code></td>
+                    <td>string</td>
+                    <td><code>INBOX</code></td>
+                    <td>The single folder to read, opened read-only.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].gmail.address</code></td>
+                    <td>email address</td>
+                    <td>required for <code>gmail</code></td>
+                    <td>The mailbox address. The OAuth consent must be given by this account.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].gmail.labels</code></td>
+                    <td>list of label names</td>
+                    <td><code>[INBOX]</code></td>
+                    <td>
+                      Labels to receive, resolved at start-up. <code>SENT</code>, <code>DRAFT</code>, <code>SPAM</code> and <code>TRASH</code> are rejected.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].graph.user</code></td>
+                    <td>email address</td>
+                    <td>required for <code>graph</code></td>
+                    <td>The Microsoft 365 mailbox.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].graph.folders</code></td>
+                    <td>list of folder names or paths</td>
+                    <td><code>[Inbox]</code></td>
+                    <td>Folders to receive, each with its own cursor. Paths such as <code>Inbox/Deals</code> are allowed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].strips_external_auth_results</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>
+                      Declare <code>true</code> only when your gateway removes <code>Authentication-Results</code> headers that arrive from outside. Only then
+                      are those headers trusted. Not allowed for <code>eml</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].trusted_authserv_id</code></td>
+                    <td>string</td>
+                    <td>none</td>
+                    <td>
+                      The authserv-id your gateway writes, for example <code>mx.google.com</code> for Gmail. Required when
+                      <code>strips_external_auth_results</code> is <code>true</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>mailboxes[].catch_up_minutes</code></td>
+                    <td>integer 1–1440</td>
+                    <td><code>5</code></td>
+                    <td>Interval of the catch-up poll.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="gmail"><code>gmail</code><a class="docs__anchor" href="#gmail" aria-label="Link to this section">#</a></h3>
+            <p>Optional. Required if any mailbox has <code>kind: gmail</code>.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>gmail.client_id_env</code></td>
+                    <td>env name</td>
+                    <td>required</td>
+                    <td>Variable with the OAuth client id (Desktop app client).</td>
+                  </tr>
+                  <tr>
+                    <td><code>gmail.client_secret_env</code></td>
+                    <td>env name</td>
+                    <td>required</td>
+                    <td>Variable with the OAuth client secret.</td>
+                  </tr>
+                  <tr>
+                    <td><code>gmail.pubsub.topic</code></td>
+                    <td><code>projects/&lt;p&gt;/topics/&lt;t&gt;</code></td>
+                    <td>none</td>
+                    <td>Optional. The topic Gmail&#39;s watch publishes to. Without the <code>pubsub</code> block, the app only polls.</td>
+                  </tr>
+                  <tr>
+                    <td><code>gmail.pubsub.subscription</code></td>
+                    <td><code>projects/&lt;p&gt;/subscriptions/&lt;s&gt;</code></td>
+                    <td>required with <code>pubsub</code></td>
+                    <td>The pull subscription the app reads.</td>
+                  </tr>
+                  <tr>
+                    <td><code>gmail.pubsub.service_account_env</code></td>
+                    <td>env name</td>
+                    <td>required with <code>pubsub</code></td>
+                    <td>Variable with the JSON key of the service account that pulls from the subscription.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="m365"><code>m365</code><a class="docs__anchor" href="#m365" aria-label="Link to this section">#</a></h3>
+            <p>Optional. Required if any mailbox has <code>kind: graph</code>. See <a href="/docs/trunks/build/mailboxes/#microsoft-365">Mailboxes</a>.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>m365.tenant_id</code></td>
+                    <td>GUID</td>
+                    <td>required</td>
+                    <td>The Entra tenant id.</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.client_id</code></td>
+                    <td>GUID</td>
+                    <td>required</td>
+                    <td>The application (client) id.</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.client_secret_env</code></td>
+                    <td>env name</td>
+                    <td>none</td>
+                    <td>Variable with a client secret. Give exactly one of this and <code>certificate_key_env</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.certificate_key_env</code></td>
+                    <td>env name</td>
+                    <td>none</td>
+                    <td>Variable with the certificate&#39;s PEM private key (recommended).</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.certificate_thumbprint</code></td>
+                    <td>40 hex characters</td>
+                    <td>none</td>
+                    <td>SHA-1 thumbprint of the certificate. Required with <code>certificate_key_env</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.permission_review.date</code></td>
+                    <td><code>YYYY-MM-DD</code></td>
+                    <td>none</td>
+                    <td>Date of your last permission review. If it is missing or older than 180 days, the start is refused.</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.permission_review.reviewer</code></td>
+                    <td>string</td>
+                    <td>none</td>
+                    <td>Who did the review.</td>
+                  </tr>
+                  <tr>
+                    <td><code>m365.negative_probe_mailbox</code></td>
+                    <td>email address</td>
+                    <td>required</td>
+                    <td>A real mailbox the app must <strong>not</strong> be able to read. It is probed at every start.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="esignplatforms"><code>esign_platforms</code><a class="docs__anchor" href="#esignplatforms" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>esign_platforms</code></td>
+                    <td>map: platform name → list of domains</td>
+                    <td>required</td>
+                    <td>
+                      E-signature services. A sender domain or link domain in the list marks the email as an e-signature invitation and records the platform
+                      name. Links are never opened. The default file lists four common services.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="attachments"><code>attachments</code><a class="docs__anchor" href="#attachments" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>attachments.max_attachment_bytes</code></td>
+                    <td>positive integer</td>
+                    <td>required (default file: 20971520, 20 MB)</td>
+                    <td>Largest single attachment that is parsed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>attachments.max_total_bytes</code></td>
+                    <td>positive integer</td>
+                    <td>required (default file: 52428800, 50 MB)</td>
+                    <td>Largest total per email. Attachments past the total, in order, are marked over the limit.</td>
+                  </tr>
+                  <tr>
+                    <td><code>attachments.max_pdf_pages</code></td>
+                    <td>positive integer</td>
+                    <td>required (default file: 50)</td>
+                    <td>Most PDF pages parsed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>attachments.parse_timeout_seconds</code></td>
+                    <td>integer 1–300</td>
+                    <td>required (default file: 30)</td>
+                    <td>Time limit for parsing one attachment.</td>
+                  </tr>
+                  <tr>
+                    <td><code>attachments.max_nesting</code></td>
+                    <td>integer 0–3</td>
+                    <td>required (default file: 3)</td>
+                    <td>Deepest nesting of attached emails that is parsed.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              An attachment over a limit is not parsed. Its Case is raised to high risk, and the attachment counts as possible-KYC (see
+              <a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a>).
+            </p>
+            <h3 id="signals-and-replies">
+              <code>signals</code> and <code>replies</code><a class="docs__anchor" href="#signals-and-replies" aria-label="Link to this section">#</a>
+            </h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>signals.injection_markers_extra</code></td>
+                    <td>list of strings</td>
+                    <td><code>[]</code></td>
+                    <td>Phrases added to the built-in prompt-injection list. The <code>signals</code> section itself must be present.</td>
+                  </tr>
+                  <tr>
+                    <td><code>signals.pressure_words_extra</code></td>
+                    <td>list of strings</td>
+                    <td><code>[]</code></td>
+                    <td>Words added to the built-in pressure-language list (urgent, today, confidential, …).</td>
+                  </tr>
+                  <tr>
+                    <td><code>replies.internal_terms_extra</code></td>
+                    <td>list of strings</td>
+                    <td><code>[]</code></td>
+                    <td>
+                      Terms added to the built-in internal-terms list (fraud, suspicious, flagged, …). Templates and final reply texts must not contain them.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>All lists are matched as whole words, case-insensitive. The built-in lists cannot be shortened.</p>
+            <h3 id="routing"><code>routing</code><a class="docs__anchor" href="#routing" aria-label="Link to this section">#</a></h3>
+            <p>
+              Deadlines are counted in working hours from the receive time, in <code>deployment.timezone</code>. Working days are Monday to Friday, minus
+              <code>routing.holidays</code>.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>routing.working_hours.start</code></td>
+                    <td><code>HH:MM</code></td>
+                    <td><code>09:00</code></td>
+                    <td>Start of the working day.</td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.working_hours.end</code></td>
+                    <td><code>HH:MM</code></td>
+                    <td><code>18:00</code></td>
+                    <td>End of the working day. Must be after the start.</td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.targets_working_hours</code></td>
+                    <td>map: queue id → hours</td>
+                    <td><code>{ ops: 2 }</code></td>
+                    <td>Deadline per queue, in working hours.</td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.default_target_working_hours</code></td>
+                    <td>positive number</td>
+                    <td><code>9</code></td>
+                    <td>Deadline for queues not in the map (one working day with the default hours).</td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.remind_share</code></td>
+                    <td>number between 0 and 1</td>
+                    <td><code>0.25</code></td>
+                    <td>A Case shows &quot;due soon&quot; when this share of its time is left.</td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.holidays</code></td>
+                    <td>list of <code>YYYY-MM-DD</code></td>
+                    <td>England and Wales bank holidays 2025–2028</td>
+                    <td>Non-working days. <strong>Replace or extend the list before 2029</strong>, and for other jurisdictions.</td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.follow_up.enabled</code></td>
+                    <td>boolean</td>
+                    <td><code>true</code></td>
+                    <td>
+                      Show a follow-up reminder on open payment Cases (<code>payment_query</code>, <code>payment_evidence</code>,
+                      <code>unreferenced_payment</code>).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>routing.follow_up.working_days</code></td>
+                    <td>positive integer</td>
+                    <td><code>10</code></td>
+                    <td>Working days after receipt before the follow-up reminder. It is a mail follow-up only, not a regulatory deadline.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="verification"><code>verification</code><a class="docs__anchor" href="#verification" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>verification.cooling_off_hours</code></td>
+                    <td>number ≥ 1</td>
+                    <td><code>24</code></td>
+                    <td>
+                      Cooling-off period of a verification task, from the moment the checklist is done until an approver may approve. It can never be zero.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="events"><code>events</code><a class="docs__anchor" href="#events" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>events.webhook.url</code></td>
+                    <td><code>https://</code> URL</td>
+                    <td>none</td>
+                    <td>Optional. Where JSON events are posted. HTTPS only; redirects are not followed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>events.webhook.secret_env</code></td>
+                    <td>env name</td>
+                    <td>required with <code>webhook</code></td>
+                    <td>Variable with the signing secret. Each request carries an HMAC-SHA256 signature in <code>X-DealOps-Signature</code>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Failed deliveries are retried after 1, 5 and 30 minutes and after 2 hours, then marked failed. Events of one Case are delivered in order.</p>
+            <h3 id="audit"><code>audit</code><a class="docs__anchor" href="#audit" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>audit.head_export_path</code></td>
+                    <td>path</td>
+                    <td>required</td>
+                    <td>
+                      File the audit chain head (latest sequence number and hash) is appended to daily. In Compose, use the <code>state</code> volume:
+                      <code>/var/lib/deal-ops-inbox/state/audit-head.jsonl</code>. Copy it to storage outside the deployment.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="retention"><code>retention</code><a class="docs__anchor" href="#retention" aria-label="Link to this section">#</a></h3>
+            <p>See <a href="/docs/trunks/build/retention/">Retention</a>.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>retention.messages_days</code></td>
+                    <td>positive integer or <code>forever</code></td>
+                    <td><code>1826</code> (5 years)</td>
+                    <td>Whole days, counted from the receive time, after which an email and everything derived from it is deleted.</td>
+                  </tr>
+                  <tr>
+                    <td><code>retention.directory_days</code></td>
+                    <td>positive integer or <code>forever</code></td>
+                    <td><code>1826</code></td>
+                    <td>Days after a directory version stops being referenced by any Case before it is deleted. The current version is never deleted.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="kyc"><code>kyc</code><a class="docs__anchor" href="#kyc" aria-label="Link to this section">#</a></h3>
+            <p>Where possible-KYC attachments are transferred. Without a target, transfers fail and are reminded daily.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>kyc.inline_image.max_long_side</code></td>
+                    <td>positive integer, at most <code>1280</code></td>
+                    <td><code>400</code></td>
+                    <td>Maximum longer dimension in pixels for the inline signature image exception.</td>
+                  </tr>
+                  <tr>
+                    <td><code>kyc.inline_image.max_short_side</code></td>
+                    <td>positive integer, at most <code>300</code></td>
+                    <td><code>150</code></td>
+                    <td>Maximum shorter dimension in pixels for the exception.</td>
+                  </tr>
+                  <tr>
+                    <td><code>kyc.inline_image.max_bytes</code></td>
+                    <td>positive integer, at most <code>102400</code></td>
+                    <td><code>51200</code></td>
+                    <td>Maximum transfer-decoded file size in bytes for the exception.</td>
+                  </tr>
+                  <tr>
+                    <td><code>kyc.target.kind</code></td>
+                    <td><code>folder</code> | <code>webhook</code></td>
+                    <td>none</td>
+                    <td>The kind of target.</td>
+                  </tr>
+                  <tr>
+                    <td><code>kyc.target.path</code></td>
+                    <td>path</td>
+                    <td>required for <code>folder</code></td>
+                    <td>
+                      Folder for the files. In Compose, the <code>kyc</code> volume is mounted at <code>/var/lib/deal-ops-inbox/kyc</code>. File names are
+                      generated (<code>&lt;case id&gt;-&lt;n&gt;.&lt;ext&gt;</code>), never the attachment&#39;s own name.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>kyc.target.url</code></td>
+                    <td><code>https://</code> URL</td>
+                    <td>required for <code>webhook</code></td>
+                    <td>Endpoint for the files. HTTPS only.</td>
+                  </tr>
+                  <tr>
+                    <td><code>kyc.target.secret_env</code></td>
+                    <td>env name</td>
+                    <td>required for <code>webhook</code></td>
+                    <td>Variable with the HMAC signing secret (<code>X-DealOps-Signature: sha256=…</code>).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Increasing these limits leaves larger eligible images in the archive under the normal retention period instead of transferring them to the KYC
+              target. Image contents never go to a model. The other MIME, HTML reference, scan and structural conditions still apply. Use
+              <code>scripts/measure-inline-images.ts</code> to measure a read-only Gmail inbox locally; it prints counts, dimensions, byte sizes and fixed
+              judgement codes, without saving mail or printing identifiers.
+            </p>
+            <p>
+              A webhook transfer succeeds only if the endpoint answers 2xx with a JSON body <code>{delivery_id, sha256}</code> and both values match what was
+              sent. Each request carries <code>Idempotency-Key: &lt;delivery_id&gt;</code>, so the receiver can drop duplicates.
+            </p>
+            <h3 id="model"><code>model</code><a class="docs__anchor" href="#model" aria-label="Link to this section">#</a></h3>
+            <p>
+              Optional in the file, but <code>serve</code> refuses to start without it. See
+              <a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a>.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>model.provider</code></td>
+                    <td><code>anthropic</code> | <code>ollama</code> | <code>replay</code></td>
+                    <td>required</td>
+                    <td>The model adapter.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.model_id</code></td>
+                    <td>string</td>
+                    <td>required</td>
+                    <td>The exact model id.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.location</code></td>
+                    <td><code>local</code> | <code>external</code></td>
+                    <td>required</td>
+                    <td>Your declaration. <code>anthropic</code> must be <code>external</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.region</code></td>
+                    <td>string</td>
+                    <td>none</td>
+                    <td>
+                      The provider&#39;s processing region, for example <code>eu</code> or <code>uk</code>. Outside UK / EEA without
+                      <code>transfer_basis</code> gives a warning.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>model.dpa</code></td>
+                    <td>boolean</td>
+                    <td>required</td>
+                    <td>
+                      A data processing agreement is in place. For an external provider, <code>false</code> refuses the start unless
+                      <code>allow_without_dpa</code> is set.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>model.no_training</code></td>
+                    <td>boolean</td>
+                    <td>required</td>
+                    <td>The provider does not train on your data. <code>false</code> gives a warning.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.transfer_basis</code></td>
+                    <td>string</td>
+                    <td>none</td>
+                    <td>Your legal basis for an international transfer, for example the name of the transfer mechanism.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.allow_without_dpa</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Start an external provider without an agreement anyway. Warns in the log and at the top of the review UI.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.api_key_env</code></td>
+                    <td>env name</td>
+                    <td><code>ANTHROPIC_API_KEY</code></td>
+                    <td>Variable with the hosted provider&#39;s API key.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.ollama_host</code></td>
+                    <td>URL</td>
+                    <td>none</td>
+                    <td>Ollama address. Required for <code>ollama</code>. No user name or password in it.</td>
+                  </tr>
+                  <tr>
+                    <td><code>model.replay_dir</code></td>
+                    <td>path</td>
+                    <td>none</td>
+                    <td>Directory of recorded replies. Required for <code>replay</code>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="auth"><code>auth</code><a class="docs__anchor" href="#auth" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>auth.session_hours</code></td>
+                    <td>integer 1–336</td>
+                    <td><code>12</code></td>
+                    <td>Session lifetime.</td>
+                  </tr>
+                  <tr>
+                    <td><code>auth.oidc.issuer</code></td>
+                    <td>URL</td>
+                    <td>none</td>
+                    <td>Optional OIDC sign-in: your identity provider&#39;s issuer URL.</td>
+                  </tr>
+                  <tr>
+                    <td><code>auth.oidc.client_id</code></td>
+                    <td>string</td>
+                    <td>required with <code>oidc</code></td>
+                    <td>OIDC client id.</td>
+                  </tr>
+                  <tr>
+                    <td><code>auth.oidc.client_secret_env</code></td>
+                    <td>env name</td>
+                    <td>required with <code>oidc</code></td>
+                    <td>Variable with the OIDC client secret.</td>
+                  </tr>
+                  <tr>
+                    <td><code>auth.oidc.redirect_uri</code></td>
+                    <td>URL</td>
+                    <td>required with <code>oidc</code></td>
+                    <td>The callback address registered at the provider: <code>https://&lt;your host&gt;/auth/oidc/callback</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>auth.oidc.role_claim</code></td>
+                    <td>string</td>
+                    <td>required with <code>oidc</code></td>
+                    <td>The ID-token claim that carries the user&#39;s groups or roles (a string or a list).</td>
+                  </tr>
+                  <tr>
+                    <td><code>auth.oidc.role_map</code></td>
+                    <td>map: claim value → <code>reviewer</code> | <code>approver</code> | <code>admin</code></td>
+                    <td>required with <code>oidc</code></td>
+                    <td>Maps claim values to roles. The highest mapped role wins. A user with no mapped value cannot sign in.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="casesyaml"><code>cases.yaml</code><a class="docs__anchor" href="#casesyaml" aria-label="Link to this section">#</a></h2>
+            <p>
+              The case categories. Order matters: on a tie, the class listed first wins. The class <code>unclassified</code> is required. Ids must be unique.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>classes[].id</code></td>
+                    <td>id</td>
+                    <td>required</td>
+                    <td>Class id, for example <code>payment_query</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>classes[].risk_floor</code></td>
+                    <td><code>low</code> | <code>medium</code> | <code>high</code></td>
+                    <td>required</td>
+                    <td>The lowest risk a Case with this class can have.</td>
+                  </tr>
+                  <tr>
+                    <td><code>classes[].queue</code></td>
+                    <td>id</td>
+                    <td>required</td>
+                    <td>The queue Cases of this class go to, for example <code>ops</code>, <code>compliance</code>, <code>legal</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>classes[].fields</code></td>
+                    <td>list of field names</td>
+                    <td>none</td>
+                    <td>
+                      Fields to extract for this class. Only known field names are accepted (amount, currency, payment_date, value_date, reference, uetr, deal,
+                      investor, consent_evidence, change_type, and so on).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="templatesyaml"><code>templates.yaml</code><a class="docs__anchor" href="#templatesyaml" aria-label="Link to this section">#</a></h2>
+            <p>
+              The reply templates. Each one is fixed text with <code>{placeholders}</code>. <strong>Code chooses the template, never a model.</strong> The
+              values come from code:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Source</th>
+                    <th>Placeholders</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>directory</td>
+                    <td>
+                      <code>{contact_name}</code> <code>{investor_name}</code> <code>{deal_name}</code> <code>{reference}</code> <code>{cash_due}</code>
+                      <code>{currency}</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ledger</td>
+                    <td><code>{received_amount}</code> <code>{outstanding_amount}</code></td>
+                  </tr>
+                  <tr>
+                    <td>fields confirmed by a person</td>
+                    <td><code>{amount}</code> <code>{payment_date}</code> <code>{value_date}</code> <code>{uetr}</code></td>
+                  </tr>
+                  <tr>
+                    <td>system</td>
+                    <td><code>{deployment_name}</code> <code>{case_number}</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>If a placeholder has no value, the sentence that contains it is left out. Write each paragraph on one line.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>templates[].id</code></td>
+                    <td>id</td>
+                    <td>required</td>
+                    <td>
+                      Template id. Every template the code can choose is required: <code>safe_ack</code>, <code>notify_old_contact</code>, the payment templates
+                      and the per-class defaults. A missing one stops the start. Ids must be unique.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>templates[].subject</code></td>
+                    <td>string</td>
+                    <td>required</td>
+                    <td>Subject line, with placeholders.</td>
+                  </tr>
+                  <tr>
+                    <td><code>templates[].body</code></td>
+                    <td>string</td>
+                    <td>required</td>
+                    <td>Body text, with placeholders. Braces must balance, and only known placeholders are allowed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>templates[].discloses_record</code></td>
+                    <td>boolean</td>
+                    <td>none</td>
+                    <td>
+                      Mark the template as disclosing record data. It is also set automatically when the template uses a directory or ledger placeholder, or
+                      asserts receipt. Such a template is used only when the sender is authenticated and the directory says the contact may see that commitment;
+                      otherwise code falls back to <code>safe_ack</code>. <code>safe_ack</code> cannot disclose.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>templates[].asserts_receipt</code></td>
+                    <td>boolean</td>
+                    <td>none</td>
+                    <td>
+                      Mark the template as saying a payment was received. It may then only use directory and ledger values. <code>safe_ack</code> and
+                      <code>notify_old_contact</code> cannot assert receipt.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Template checks at load time:</p>
+            <ul>
+              <li><code>safe_ack</code> may use system placeholders only.</li>
+              <li><code>notify_old_contact</code> may use system placeholders and <code>{contact_name}</code> only.</li>
+              <li>No template may contain an internal term (built-in list plus <code>replies.internal_terms_extra</code>).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

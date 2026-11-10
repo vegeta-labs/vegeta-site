@@ -104,12 +104,14 @@ for (const [name, path] of [
 await run('blog-list', '/blog/', DESK, [hero])
 await run('blog-list-phone', '/blog/', PHONE, [hero])
 
-// the docs (plan 30): the index, a page with tables, the CSV reference (wide tables) and a build page; on phones also the page menu open
+// the docs (plan 30): the index, a page with tables, the CSV reference (wide tables), a build page and two Trunks pages; on phones also the page menu open
 const DOCS = [
   ['docs-index', '/docs/'],
   ['docs-reconciliation', '/docs/goten/use/reconciliation/'],
   ['docs-csv', '/docs/goten/build/csv-reference/'],
   ['docs-verification', '/docs/goten/build/verification/'],
+  ['docs-trunks-risk', '/docs/trunks/use/risk-and-verification/'],
+  ['docs-trunks-config', '/docs/trunks/build/configuration/'],
 ]
 for (const [name, path] of DOCS) {
   await run(`${name}-light`, path, DESK, [hero, ['footer', bottom]])

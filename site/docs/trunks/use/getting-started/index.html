@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Walk the demo | Vegeta</title>
+    <meta
+      name="description"
+      content="Sign in to the Trunks demo, read the inbox, deal with one case from start to finish and see how a bank details request is checked. The demo holds 31 emails, most of them about the Northwind Robotics deal."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Walk the demo | Vegeta" />
+    <meta
+      property="og:description"
+      content="Sign in to the Trunks demo, read the inbox, deal with one case from start to finish and see how a bank details request is checked. The demo holds 31 emails, most of them about the Northwind Robotics deal."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/use/getting-started/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Walk the demo | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Sign in to the Trunks demo, read the inbox, deal with one case from start to finish and see how a bank details request is checked. The demo holds 31 emails, most of them about the Northwind Robotics deal."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/use/getting-started/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/" aria-current="page">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/" aria-current="page">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Walk the demo</h1>
+          <div class="docs__body">
+            <p>
+              Sign in to the Trunks demo, read the inbox, deal with one case from start to finish and see how a bank details request is checked. The demo holds
+              31 emails, most of them about the Northwind Robotics deal.
+            </p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>A modern browser.</li>
+              <li>
+                A running demo. An admin starts it by following <a href="/docs/trunks/build/quickstart/#1-the-demo">Quick start</a>. On the computer that runs
+                it, the address is http://127.0.0.1:8080.
+              </li>
+            </ul>
+            <p>
+              When your admin resets the demo, by starting it again from the beginning as in
+              <a href="/docs/trunks/build/quickstart/#1-the-demo">Quick start</a>, everything you did is removed. If only the app restarts, your work stays. The
+              figures on this page are for a freshly reset demo. Times are shown in your browser&#39;s time zone, so yours may differ.
+            </p>
+            <p>The emails keep their original dates, so many deadlines show as overdue.</p>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <h3 id="1-sign-in">1. Sign in<a class="docs__anchor" href="#1-sign-in" aria-label="Link to this section">#</a></h3>
+            <ol>
+              <li>Open the demo. The page is headed <strong>Trunks — Operations Inbox</strong>.</li>
+              <li>Under <strong>Demo accounts</strong>, click <strong>reviewer</strong>. The username and password fill in.</li>
+              <li>Click <strong>Sign in</strong>.</li>
+            </ol>
+            <p>The top of the page now shows <strong>demo-reviewer (reviewer)</strong>, with <strong>Sign out</strong> beside it.</p>
+            <h3 id="2-read-the-inbox">2. Read the inbox<a class="docs__anchor" href="#2-read-the-inbox" aria-label="Link to this section">#</a></h3>
+            <p>
+              The page is headed <strong>Cases</strong> and shows <strong>Showing 1–31 of 31 cases</strong>. Cases are
+              <strong>Sorted by risk, then due time</strong>, 50 to a page. When there are more than 50, use <strong>Previous</strong> and
+              <strong>Next</strong> at the bottom of the list. Each row has the subject, the sender, the mailbox, when the email arrived and a row of tags:
+              risk, status, queue, due time and any warning signals.
+            </p>
+            <p>Use the filters at the top:</p>
+            <ol>
+              <li>Set <strong>Risk</strong> to <strong>High</strong>. The count changes to <strong>Showing 1–16 of 16 cases</strong>.</li>
+              <li>Set <strong>Queue</strong> to <strong>Compliance</strong>. The count changes to <strong>Showing 1–6 of 6 cases</strong>.</li>
+              <li>Click <strong>Clear filters</strong>.</li>
+            </ol>
+            <h3 id="3-open-a-simple-case">3. Open a simple case<a class="docs__anchor" href="#3-open-a-simple-case" aria-label="Link to this section">#</a></h3>
+            <p>Click <strong>Northwind Robotics payment - has it arrived?</strong>, from Amelia Hart.</p>
+            <p>The email is on the left and the panels you work with are on the right. At the top you see:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Status</td>
+                    <td>Open</td>
+                  </tr>
+                  <tr>
+                    <td>Risk</td>
+                    <td>Medium risk</td>
+                  </tr>
+                  <tr>
+                    <td>Due</td>
+                    <td>26 Oct 2026, 11:14</td>
+                  </tr>
+                  <tr>
+                    <td>Next step</td>
+                    <td>Check Amelia Hart&#39;s payment in the ledger (NW-001)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Under <strong>Related records</strong>, Trunks has matched the email to your records:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sender</td>
+                    <td>Amelia Hart (C001), <strong>authenticated sender</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Commitment</td>
+                    <td>Amelia Hart · NW-001</td>
+                  </tr>
+                  <tr>
+                    <td>Deal</td>
+                    <td>Northwind Robotics</td>
+                  </tr>
+                  <tr>
+                    <td>Ledger</td>
+                    <td>Paid in full · Imported Goten ledger</td>
+                  </tr>
+                  <tr>
+                    <td>Possible bank lines</td>
+                    <td>T-NW-0001 (auto)</td>
+                  </tr>
+                  <tr>
+                    <td>Record data in replies</td>
+                    <td>allowed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>The ledger comes from your imported records, not from the email. That is why the reply below may say the money has arrived.</p>
+            <h3 id="4-check-and-approve-the-reply">
+              4. Check and approve the reply<a class="docs__anchor" href="#4-check-and-approve-the-reply" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              Scroll to <strong>Reply</strong>. The draft is tagged <strong>Payment received</strong> and <strong>Draft</strong>. It goes to
+              amelia@hartfamily.example with the subject <strong>Your payment for Northwind Robotics</strong>, and it says:
+            </p>
+            <blockquote>
+              <p>Dear Amelia Hart,</p>
+              <p>We have received GBP 10,000.00 for Northwind Robotics (reference NW-001). Your commitment of GBP 10,000.00 is paid in full.</p>
+              <p>Kestrel Syndicate Operations</p>
+            </blockquote>
+            <p>The amounts match the email and the ledger. Click <strong>Approve</strong>.</p>
+            <p>
+              The reply is now tagged <strong>Approved, waiting to be sent by a person</strong>, and the status at the top of the case changes to
+              <strong>Approved — awaiting manual send</strong>. Three new buttons appear.
+            </p>
+            <h3 id="5-copy-it-and-mark-it-as-sent">
+              5. Copy it and mark it as sent<a class="docs__anchor" href="#5-copy-it-and-mark-it-as-sent" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>Click <strong>Copy recipient</strong>. <strong>Copied the recipient.</strong> appears under the buttons.</li>
+              <li>
+                Click <strong>Copy subject</strong>, then <strong>Copy text</strong>. In real use you paste each one into a new message in your own mail client
+                and send it from there. In the demo, do not send anything.
+              </li>
+              <li>Click <strong>Mark as sent</strong>.</li>
+            </ol>
+            <p>
+              The status changes to <strong>Marked as sent</strong>. Trunks cannot send email. <strong>Mark as sent</strong> only records that a person says
+              they sent it.
+            </p>
+            <h3 id="6-close-the-case">6. Close the case<a class="docs__anchor" href="#6-close-the-case" aria-label="Link to this section">#</a></h3>
+            <p>Under <strong>Queue and owner</strong>:</p>
+            <ol>
+              <li>Open <strong>Close with outcome…</strong> and choose <strong>replied</strong>.</li>
+              <li>Click <strong>Close</strong>.</li>
+            </ol>
+            <p>The panel shows <strong>Closed: replied</strong>, and the status at the top is <strong>Closed</strong>.</p>
+            <h3 id="7-see-a-bank-details-request">
+              7. See a bank details request<a class="docs__anchor" href="#7-see-a-bank-details-request" aria-label="Link to this section">#</a>
+            </h3>
+            <p>Click <strong>← All cases</strong>, then open <strong>Northwind Robotics - change of bank account</strong>, from Ethan Clarke.</p>
+            <p>
+              Look at the sender address, ethan.clarke@northwind-robotlcs.example, and the letter after &quot;robot&quot;. It is a lower-case L, where the real
+              address, ethan.clarke@northwind-robotics.example, has an &quot;i&quot;. The name is right and the domain is not.
+            </p>
+            <p>Trunks shows <strong>High risk</strong>. Under <strong>Risk</strong> it lists why:</p>
+            <ul>
+              <li>Display name matches a contact, address does not</li>
+              <li>Look-alike domain</li>
+              <li>First mail from this address, with an account number</li>
+              <li>Pressure words in a payment or account mail (+1)</li>
+            </ul>
+            <p>
+              A panel headed <strong>Check the bank details request</strong> tells you to call the number on file, +44 20 7946 0142, and not to use any number
+              or link from the email.
+            </p>
+            <p>
+              Under <strong>Reply</strong>, Trunks says
+              <strong>This sender&#39;s name or domain imitates a known contact, so this reply has no allowed recipient.</strong> The prepared reply is a fixed
+              acknowledgement with no address in <strong>To</strong>, and it cannot be approved.
+              <a href="/docs/trunks/use/checking-a-reply/#check-the-recipient">Check and send a reply</a> explains why.
+            </p>
+            <p>
+              Under <strong>Queue and owner</strong>, there is no <strong>Close</strong> button. Trunks says
+              <strong>Only an approver or admin can close this case now, with a reason:</strong> and lists
+              <strong>a bank details or identity check has not been approved</strong>.
+            </p>
+            <h3 id="8-try-the-two-person-check">
+              8. Try the two-person check<a class="docs__anchor" href="#8-try-the-two-person-check" aria-label="Link to this section">#</a>
+            </h3>
+            <p>In real use, you tick these boxes only after you have made the call and done each thing. In the demo, go ahead and tick them.</p>
+            <ol>
+              <li>Tick all four items in <strong>Check the bank details request</strong>.</li>
+              <li>Click <strong>Checklist done</strong>. The tag changes to <strong>Checklist done — cooling-off period</strong>.</li>
+              <li>Click <strong>Sign out</strong>.</li>
+              <li>Under <strong>Demo accounts</strong>, click <strong>approver</strong>, then <strong>Sign in</strong>.</li>
+              <li>Open the same case and click <strong>Approve as the second person</strong>.</li>
+            </ol>
+            <p>
+              Trunks refuses, with <strong>the cooling-off period has not ended</strong>. The panel also shows that the demo accounts are too new to approve
+              this task. Waiting does not fix this task, because account age is measured at the moment the checklist was done. A successful approval needs the
+              demo left running until the accounts are at least 24 hours old, then <strong>Restart verification</strong>, the checklist again, and another
+              24-hour cooling-off period. Resetting the demo creates the accounts again, so they are new once more. See
+              <a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a>.
+            </p>
+            <h2 id="when-you-are-finished">
+              When you are finished<a class="docs__anchor" href="#when-you-are-finished" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Click <strong>Sign out</strong>. Ask your admin to reset the demo if you want to walk it again from the start. To learn the daily work, go on to
+              <a href="/docs/trunks/use/reading-a-case/">Read a case</a>.
+            </p>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>wrong username or password</strong></td>
+                    <td>Click the role button under <strong>Demo accounts</strong> again, so that the details fill in for you.</td>
+                  </tr>
+                  <tr>
+                    <td>Every case shows <strong>Processing</strong></td>
+                    <td>The demo is still reading its emails. Wait a minute or two and reload.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>No cases match these filters.</strong></td>
+                    <td>Click <strong>Clear filters</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Approve</strong> stays greyed out</td>
+                    <td>
+                      The reply text has unsaved changes, or the case is being updated. See
+                      <a href="/docs/trunks/use/checking-a-reply/#when-it-goes-wrong">Check and send a reply</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Copy failed: select the text below and copy it by hand.</strong></td>
+                    <td>Your browser refused the copy. Select the text in the box that appears and copy it yourself.</td>
+                  </tr>
+                  <tr>
+                    <td>Different figures from this page</td>
+                    <td>Someone has already worked in this demo. Ask your admin to reset it.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

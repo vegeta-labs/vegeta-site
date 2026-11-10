@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Backup and upgrade | Vegeta</title>
+    <meta name="description" content="Keep the secrets apart from the data backups, with stricter access. Anyone who has both can read everything." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Backup and upgrade | Vegeta" />
+    <meta property="og:description" content="Keep the secrets apart from the data backups, with stricter access. Anyone who has both can read everything." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/backup-and-upgrade/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Backup and upgrade | Vegeta" />
+    <meta name="twitter:description" content="Keep the secrets apart from the data backups, with stricter access. Anyone who has both can read everything." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/backup-and-upgrade/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/" aria-current="page">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/" aria-current="page">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Backup and upgrade</h1>
+          <div class="docs__body">
+            <h2 id="what-to-back-up">What to back up<a class="docs__anchor" href="#what-to-back-up" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What</th>
+                    <th>Where</th>
+                    <th>Why</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Database</strong></td>
+                    <td>volume <code>deal-ops-inbox_db</code></td>
+                    <td>Cases, directory, users, audit chain, and all text (encrypted)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Files</strong></td>
+                    <td>volume <code>deal-ops-inbox_files</code></td>
+                    <td>raw emails and attachments (encrypted)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>State</strong></td>
+                    <td>volume <code>deal-ops-inbox_state</code></td>
+                    <td>the daily audit chain head export</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Secrets</strong></td>
+                    <td>your secret directory (<code>./secrets</code>)</td>
+                    <td>
+                      <code>doi_master_keys</code>, <code>doi_hmac_key</code> and the database passwords.
+                      <strong>Without the keys, a backup cannot be read.</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Configuration</strong></td>
+                    <td>your configuration directory (<code>DOI_CONFIG_DIR</code>) and <code>docker-compose.override.yml</code></td>
+                    <td>to start the same deployment again</td>
+                  </tr>
+                  <tr>
+                    <td>KYC folder (if you use a folder target)</td>
+                    <td>volume <code>deal-ops-inbox_kyc</code></td>
+                    <td>transferred KYC files; back it up under your KYC policy</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Keep the secrets <strong>apart from</strong> the data backups, with stricter access. Anyone who has both can read everything.</p>
+            <p>
+              <strong>Keep old master keys.</strong> After a key rotation, backups taken before it still need the old master key. Keep every master key for as
+              long as you keep any backup made while it was in use.
+            </p>
+            <p>
+              The audit chain head file (<code>audit.head_export_path</code>) should also be copied off the host, separately from the backups. It lets you
+              detect missing newest audit records after a restore.
+            </p>
+            <h2 id="making-a-backup">Making a backup<a class="docs__anchor" href="#making-a-backup" aria-label="Link to this section">#</a></h2>
+            <p>The simplest consistent backup copies the volumes while the stack is stopped:</p>
+            <pre tabindex="0"><code># a new directory for every backup: mkdir refuses one that exists, so a second backup never mixes its data with
+# the keys and configuration of an earlier one (after a key rotation the keys differ)
+B=&quot;$PWD/backup/$(date +%Y%m%dT%H%M%S)&quot;
+mkdir -p &quot;$PWD/backup&quot; &amp;&amp; mkdir &quot;$B&quot; || exit 1
+docker compose stop
+for v in db files state kyc; do
+  docker run --rm -v &quot;deal-ops-inbox_$v:/v:ro&quot; -v &quot;$B:/b&quot; postgres:16 \
+    tar --numeric-owner -czf &quot;/b/$v.tgz&quot; -C /v .
+done
+docker compose start
+cp -a secrets &quot;$B/secrets&quot;            # better: store the secrets in a separate, stricter place
+cp -a config/local &quot;$B/config&quot;</code></pre>
+            <p><code>postgres:16</code> is used only because it is already present and has <code>tar</code>. Any image with <code>tar</code> will do.</p>
+            <p>
+              How long you keep backups is your decision. The app&#39;s retention deletion does not reach backups (see
+              <a href="/docs/trunks/build/retention/">Retention</a>).
+            </p>
+            <h2 id="restoring-into-a-fresh-compose-project">
+              Restoring into a fresh Compose project<a class="docs__anchor" href="#restoring-into-a-fresh-compose-project" aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>Restore into a new project name, so that the running deployment is never touched.</p>
+            <p>
+              If you only want to test a backup while the live deployment keeps running, restore with a copy of the configuration that has
+              <strong>no live mailboxes, no event webhook and no KYC webhook</strong>. For example, change each mailbox to <code>kind: eml</code> with the same
+              <code>id</code>, and remove <code>events.webhook</code> and a webhook <code>kyc.target</code>. Otherwise the restored copy would collect the same
+              mail and send the same events as the live one. Note that any configuration change makes the restored copy process its open Cases again, which may
+              call your model provider.
+            </p>
+            <pre tabindex="0"><code>B=&quot;$PWD/backup/20261102T093000&quot;   # the backup to restore
+P=doi-restore
+export DOI_SECRETS_DIR=&quot;$B/secrets&quot; DOI_CONFIG_DIR=&quot;$B/config&quot; DOI_PORT=8081
+# the restored copy's own file list: never the bundled proxy of the live deployment (it would take the same network
+# range and ports 80/443). Keep your override for the credentials if the copy needs them; this overrides .env.
+export COMPOSE_FILE=docker-compose.yml
+
+docker compose -p &quot;$P&quot; create          # creates the empty volumes and the containers, starts nothing
+for v in db files state kyc; do
+  docker run --rm -v &quot;${P}_$v:/v&quot; -v &quot;$B:/b:ro&quot; postgres:16 \
+    sh -c &quot;cd /v &amp;&amp; tar --numeric-owner -xzf /b/$v.tgz&quot;
+done
+docker compose -p &quot;$P&quot; up -d</code></pre>
+            <p>Then check:</p>
+            <ol>
+              <li>
+                <p><code>migrate</code> exits successfully and <code>app</code> starts.</p>
+              </li>
+              <li>
+                <p>The audit chain is intact:</p>
+                <pre
+                  tabindex="0"
+                ><code>docker compose -p &quot;$P&quot; exec app node --experimental-strip-types --no-warnings src/main.ts audit verify</code></pre>
+                <p>It prints <code>ok: &lt;n&gt; records, head &lt;seq&gt; &lt;hash&gt;</code>, or <code>BROKEN at seq &lt;n&gt;</code>.</p>
+              </li>
+              <li>
+                <p>
+                  Compare the head with the last line of your off-host copy of the chain head export. The restored head must not be older than the backup time.
+                </p>
+              </li>
+              <li><p>Open a few Cases and their raw emails and attachments.</p></li>
+            </ol>
+            <p>
+              When you are satisfied, either keep the restored project as your deployment, or remove it with <code>docker compose -p doi-restore down -v</code>.
+            </p>
+            <h2 id="upgrades">Upgrades<a class="docs__anchor" href="#upgrades" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>
+                <p><strong>Read the release notes</strong> of every version between yours and the new one.</p>
+              </li>
+              <li>
+                <p><strong>Back up first</strong> (above).</p>
+              </li>
+              <li>
+                <p>Get the new version and build it:</p>
+                <pre tabindex="0"><code>git fetch --tags
+git checkout &lt;release tag&gt;
+docker compose build</code></pre>
+              </li>
+              <li>
+                <p>Start it:</p>
+                <pre tabindex="0"><code>docker compose up -d</code></pre>
+                <p>
+                  <code>migrate</code> runs first and applies new database migrations. <code>app</code> and <code>maintenance</code> start only after it has
+                  succeeded.
+                </p>
+              </li>
+            </ol>
+            <p>Things to know:</p>
+            <ul>
+              <li>
+                <strong>Migrations only go forward.</strong> There is no down-migration. To go back to an older version, restore the backup you made before the
+                upgrade, using the older version&#39;s images.
+              </li>
+              <li>A configuration change is audited at the next start, and every open Case is processed again.</li>
+              <li>
+                A release with new prompts does <strong>not</strong> process Cases that are already done again: the new prompts apply to emails processed after
+                the upgrade. Only a change to your own configuration files (including the <code>model</code> block) makes every open Case be processed again, as
+                above.
+              </li>
+            </ul>
+            <h2 id="key-rotation">Key rotation<a class="docs__anchor" href="#key-rotation" aria-label="Link to this section">#</a></h2>
+            <p>Master keys are listed in the secret file <code>doi_master_keys</code> as <code>id:base64</code>, separated by commas:</p>
+            <pre tabindex="0"><code>k1:&lt;base64 of 32 bytes&gt;,k2:&lt;base64 of 32 bytes&gt;</code></pre>
+            <p>
+              <code>app</code> and <code>maintenance</code> write with the <strong>last</strong> key in the list. The rotation tool writes with
+              <code>DOI_ACTIVE_KEY</code>.
+            </p>
+            <p>Steps:</p>
+            <ol>
+              <li>
+                <p><strong>Back up</strong>, including the current <code>doi_master_keys</code>.</p>
+              </li>
+              <li>
+                <p>Add a new key <strong>at the end</strong> of the list, on the same line:</p>
+                <pre tabindex="0"><code>NEW=$(openssl rand -base64 32)
+printf '%s,k2:%s\n' &quot;$(cat secrets/doi_master_keys)&quot; &quot;$NEW&quot; &gt; secrets/doi_master_keys.new
+mv secrets/doi_master_keys.new secrets/doi_master_keys
+chmod 644 secrets/doi_master_keys</code></pre>
+              </li>
+              <li>
+                <p><strong>Restart every instance with the new key first:</strong></p>
+                <pre tabindex="0"><code>docker compose up -d --force-recreate app maintenance</code></pre>
+                <p>
+                  Every running instance must have restarted before the rotation, on every host. Each start records which key it writes with. The rotation
+                  refuses to start while the services last started with the old key.
+                </p>
+              </li>
+              <li>
+                <p>Run the rotation:</p>
+                <pre tabindex="0"><code>DOI_ACTIVE_KEY=k2 docker compose run --rm rotate</code></pre>
+                <p>
+                  It rewraps the data key of every encrypted text value and every stored file with <code>k2</code>, and deletes the old stored versions of
+                  rewritten files. File contents are not re-encrypted; only the wrapped data key in the file header changes. You can stop it and run it again:
+                  it continues where it stopped.
+                </p>
+                <p>
+                  When it finishes, it checks a sample with the new key alone and prints
+                  <code>rotation &lt;id&gt; complete: &lt;n&gt; text values and &lt;n&gt; files rewrapped, &lt;n&gt; checked with k2 alone</code>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Only after the rotation is complete may you remove <code>k1</code> from <code>doi_master_keys</code> and restart <code>app</code> and
+                  <code>maintenance</code>.
+                </p>
+                <ul>
+                  <li>The app refuses to start if a key that data still needs is missing.</li>
+                  <li>An instance that still writes with a key the rotation has moved away from also refuses to start.</li>
+                </ul>
+              </li>
+              <li>
+                <p>
+                  <strong>Keep <code>k1</code></strong> in your key store for as long as you keep backups made before the rotation.
+                </p>
+              </li>
+            </ol>
+            <p>The HMAC key (<code>doi_hmac_key</code>) is not rotated by this tool. Keep it for the life of the deployment.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

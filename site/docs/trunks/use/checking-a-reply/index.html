@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Check and send a reply | Vegeta</title>
+    <meta
+      name="description"
+      content="Trunks prepares a reply from a fixed template. You check it, approve it, copy it and send it from your own mail client. Trunks never sends email."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Check and send a reply | Vegeta" />
+    <meta
+      property="og:description"
+      content="Trunks prepares a reply from a fixed template. You check it, approve it, copy it and send it from your own mail client. Trunks never sends email."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/use/checking-a-reply/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Check and send a reply | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Trunks prepares a reply from a fixed template. You check it, approve it, copy it and send it from your own mail client. Trunks never sends email."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/use/checking-a-reply/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/" aria-current="page">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/" aria-current="page">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Check and send a reply</h1>
+          <div class="docs__body">
+            <p>
+              Trunks prepares a reply from a fixed template. You check it, approve it, copy it and send it from your own mail client. Trunks never sends email.
+            </p>
+            <p>A person remains responsible for every reply. Approving one means you have checked it and you stand behind it.</p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                A Trunks account with any role. On a reply, <strong>Approve</strong> does not need the approver role, unless someone changed the text. See
+                <a href="/docs/trunks/use/roles/">Roles</a>.
+              </li>
+              <li>Your own mail client, signed in to the mailbox you normally reply from.</li>
+              <li>You have read the case. See <a href="/docs/trunks/use/reading-a-case/">Read a case</a>.</li>
+            </ul>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <h3 id="1-read-the-draft">1. Read the draft<a class="docs__anchor" href="#1-read-the-draft" aria-label="Link to this section">#</a></h3>
+            <p>
+              Go to <strong>Reply</strong> on the case page. Each draft shows the template, its status, <strong>To</strong>, <strong>Subject</strong> and the
+              text.
+            </p>
+            <p>Check four things:</p>
+            <ol>
+              <li><strong>The recipient.</strong> See <a href="#check-the-recipient">Check the recipient</a>.</li>
+              <li>
+                <strong>Every name, amount and reference.</strong> Compare them with the email and with <strong>Related records</strong>. Trunks fills them in
+                from your records and from details a person confirmed, never from the words of the email.
+              </li>
+              <li>
+                <strong>That it answers this email.</strong> Trunks chooses the template by fixed rules, and a rule can still pick the wrong one for what the
+                sender really asked.
+              </li>
+              <li><strong>That it says nothing it should not.</strong> A line telling someone their money has arrived must be backed by the ledger.</li>
+            </ol>
+            <p>
+              If the draft says that a sentence was <strong>left out because a value is missing</strong>, Trunks removed it. Decide whether the reply still
+              works without it.
+            </p>
+            <p>
+              Some cases have no reply. The panel then says <strong>No reply is drafted for this Case.</strong>, as on the newsletter in the demo. Close it when
+              you are done.
+            </p>
+            <h3 id="2-fix-it-if-needed">2. Fix it if needed<a class="docs__anchor" href="#2-fix-it-if-needed" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>You want to</th>
+                    <th>Do this</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Change the words</td>
+                    <td>
+                      Edit the text and click <strong>Save text</strong>. Trunks does not check what your wording discloses, so do not add amounts, names or
+                      deal details unless the sender is entitled to them. An edited reply needs a second person to approve it. See below.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Use a different template</td>
+                    <td>
+                      Choose from <strong>Use another template…</strong>, for example <strong>Request a payment reference</strong> or
+                      <strong>Acknowledge complaint</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Change the recipient</td>
+                    <td>If the case has another allowed address, choose it from <strong>To</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td>Drop the draft</td>
+                    <td>Click <strong>Reject</strong>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul>
+              <li>
+                <strong>This reply&#39;s text is fixed and cannot be edited.</strong> appears on the plain acknowledgement. Bank details, identity changes and
+                every <strong>High</strong> risk case always get this reply, and no other template is offered for them.
+              </li>
+              <li>
+                After you choose another template, two drafts can appear: yours, tagged <strong>chosen by a person</strong>, and the one the rules prepared.
+                Reject the one you do not want, so nobody approves it by mistake.
+              </li>
+              <li>
+                Once you change the text, the draft says
+                <strong>The text was changed from the template, so it needs approval from an approver or admin who did not change it.</strong> Ask an approver
+                or admin to approve it who did not change the text, and who has no account link with anyone who did: they must not have created that
+                person&#39;s account, given them a role or reset their password, and that person must not have done any of these for them. Each copy and
+                <strong>Mark as sent</strong> check this again against the person who approved. Choosing another template is not a change to the text. If you
+                change the text back to the template&#39;s words, any role can approve it again.
+              </li>
+              <li>
+                Trunks blocks words that would give away what it suspects, such as &quot;fraud&quot;, &quot;suspicious&quot;, &quot;flagged&quot; or
+                &quot;verification task&quot;. If you use one, you see <strong>Internal wording not allowed in a reply: suspicious</strong> and the reply cannot
+                be approved until you remove it.
+              </li>
+            </ul>
+            <h3 id="3-approve">3. Approve<a class="docs__anchor" href="#3-approve" aria-label="Link to this section">#</a></h3>
+            <p>
+              Click <strong>Approve</strong>. Trunks checks the reply again first, and refuses if it no longer fits the case. The reply is tagged
+              <strong>Approved, waiting to be sent by a person</strong>, and the case status changes to <strong>Approved — awaiting manual send</strong>.
+              <strong>Copy recipient</strong>, <strong>Copy subject</strong> and <strong>Copy text</strong> appear.
+            </p>
+            <h3 id="4-copy-it-and-send-it-from-your-own-mail-client">
+              4. Copy it and send it from your own mail client<a
+                class="docs__anchor"
+                href="#4-copy-it-and-send-it-from-your-own-mail-client"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <ol>
+              <li>Start a new message in your mail client, or reply in the original thread if your team does that.</li>
+              <li>
+                Click <strong>Copy recipient</strong> and paste it into the To field, replacing anything already there. A mail client&#39;s Reply can fill in a
+                Reply-To address that Trunks has deliberately not allowed. <strong>Copied the recipient.</strong> confirms it. If the sender is flagged as a
+                look-alike, the reply has a recipient only after an approver or admin allowed the original address. Even then, compare it with the contact on
+                file before you send.
+              </li>
+              <li>Click <strong>Copy subject</strong> and paste it.</li>
+              <li>Click <strong>Copy text</strong> and paste it into the body.</li>
+              <li>Read it once more and send it.</li>
+            </ol>
+            <p>
+              Each copy asks Trunks to check the reply again, with the same checks as <strong>Approve</strong>, so you cannot copy a reply that has become out
+              of date. Anything you change in your mail client after pasting is not checked by Trunks.
+            </p>
+            <h3 id="5-mark-it-as-sent">5. Mark it as sent<a class="docs__anchor" href="#5-mark-it-as-sent" aria-label="Link to this section">#</a></h3>
+            <p>
+              After you have sent it, click <strong>Mark as sent</strong>. Trunks checks the reply once more. If the approval still holds, the status changes to
+              <strong>Marked as sent</strong>. If not, the reply goes back to a draft. See
+              <a href="#when-a-reply-goes-out-of-date">When a reply goes out of date</a>.
+            </p>
+            <p>Trunks cannot see your outbox. <strong>Mark as sent</strong> only records that a person said they sent it, so click it only after you have.</p>
+            <h3 id="6-close-the-case">6. Close the case<a class="docs__anchor" href="#6-close-the-case" aria-label="Link to this section">#</a></h3>
+            <p>
+              Under <strong>Queue and owner</strong>, choose from <strong>Close with outcome…</strong> and click <strong>Close</strong>. Once closed, the case
+              cannot be changed.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Outcome</th>
+                    <th>Use it when</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>replied</strong></td>
+                    <td>You sent a reply.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>no_action</strong></td>
+                    <td>Nothing needs doing.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>forwarded</strong></td>
+                    <td>You passed it to someone else to handle.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>duplicate</strong></td>
+                    <td>Another case already covers this email.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>spam</strong></td>
+                    <td>It is junk.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A reviewer can close a case only when it has finished processing, any verification task is approved and still applies, and no approved reply is
+              waiting to be marked as sent. Otherwise only an approver or admin can close it, with a reason. See
+              <a href="/docs/trunks/use/risk-and-verification/#closing-a-case">Closing a case</a>.
+            </p>
+            <h2 id="check-the-recipient">Check the recipient<a class="docs__anchor" href="#check-the-recipient" aria-label="Link to this section">#</a></h2>
+            <p>Trunks normally addresses the reply to the sender of the email.</p>
+            <p>
+              When the sender&#39;s name matches a contact but the address does not, or the domain looks like a known contact&#39;s domain, the reply has no
+              recipient. The panel says <strong>This sender&#39;s name or domain imitates a known contact, so this reply has no allowed recipient.</strong> The
+              reply cannot be approved. On the look-alike case in the demo, <strong>Northwind Robotics - change of bank account</strong>, the sender is
+              ethan.clarke@northwind-robotlcs.example, which is not the real company address.
+            </p>
+            <p>Contact the person through the details you already hold, as the verification task tells you to.</p>
+            <p>
+              If the warning is wrong and the sender is genuine, an approver or admin can enter a reason and click
+              <strong>Allow reply to the original address</strong>. A reviewer sees
+              <strong>An approver or admin can allow replying to the original address, with a reason.</strong> Afterwards the panel says
+              <strong>An approver allowed replying to the original address:</strong> with the reason, and you choose that address from <strong>To</strong>. Only
+              the address the email came from is allowed, never a Reply-To address.
+            </p>
+            <h2 id="when-a-reply-goes-out-of-date">
+              When a reply goes out of date<a class="docs__anchor" href="#when-a-reply-goes-out-of-date" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              If someone changes the case after a reply was approved, that approval stops counting. Trunks checks again when you approve, copy and mark as sent.
+              You will see the old reply tagged <strong>Out of date — work on the current draft</strong> and a new <strong>Draft</strong> above it. The case
+              status goes back to <strong>Open</strong>.
+            </p>
+            <p>
+              Read the new draft and approve it again. This happens whenever someone changes a class, a key detail, a link or the risk, or relinks the case.
+            </p>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Approve</strong> is greyed out</td>
+                    <td>
+                      Click <strong>Save text</strong> if you changed the words. If the page says <strong>Reprocessing after a change…</strong>, wait for it to
+                      finish.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Internal wording not allowed in a reply:</strong></td>
+                    <td>Remove the listed word from the reply, click <strong>Save text</strong> and approve again.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>A value is missing</strong>, <strong>No recipient</strong> or <strong>This recipient is not allowed</strong></td>
+                    <td>
+                      The reply cannot be approved as it stands. Check <strong>Key details</strong> and <strong>Related records</strong>, or use a different
+                      template.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong
+                        >the sender&#39;s name or domain imitates a known contact, so this reply has no allowed recipient; an approver or admin can allow
+                        replying to the original address with a reason</strong
+                      >
+                    </td>
+                    <td>See <a href="#check-the-recipient">Check the recipient</a>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>the text was changed from the template, so an approver or admin must approve it</strong></td>
+                    <td>Ask an approver or admin who did not change the text.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>the text was changed by the person approving it, so a different approver or admin must approve it</strong></td>
+                    <td>Ask a different approver or admin.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong
+                        >the person approving it and a person who changed the text created, granted a role to or reset the password of one another, so a
+                        different approver or admin must approve it</strong
+                      >
+                    </td>
+                    <td>Ask a different approver or admin, one with no such link to anyone who changed the text.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>This case is closed, so it can no longer be changed</strong></td>
+                    <td>The case was closed and its approved replies were withdrawn. Nothing more can be done on its reply.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Copy failed: select the recipient below and copy it by hand.</strong></td>
+                    <td>Your browser refused the copy. Select the text in the box that appears and copy it yourself.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>the reply is not approved</strong> or <strong>the approval no longer holds:</strong></td>
+                    <td>The case has changed. Read the current draft and approve it again.</td>
+                  </tr>
+                  <tr>
+                    <td>You approved or sent the wrong thing</td>
+                    <td>Before sending, click <strong>Reject</strong>. After sending, Trunks cannot recall it: follow up from your own mail client.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

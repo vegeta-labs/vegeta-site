@@ -69,9 +69,9 @@ export function checkoutOf(product) {
       .trim()
   if (!existsSync(`${dir}/.git`) || git('rev-parse', 'HEAD') !== product.source.ref || git('status', '--porcelain'))
     throw new Error(`${dir} is not a clean checkout of ${product.source.ref.slice(0, 7)} (run npm run docs:fetch)`)
-  const notes = readFileSync(join(dir, 'docs/RELEASE_NOTES.md'), 'utf8')
+  const notes = readFileSync(join(dir, product.source.notes), 'utf8')
   if (!new RegExp(`^## ${product.version.replace(/\./g, '\\.')} `, 'm').test(notes))
-    throw new Error(`${product.name} ${product.version} is not in its release notes`)
+    throw new Error(`${product.name} ${product.version} is not in its release notes (${product.source.notes})`)
   return dir
 }
 const plainText = (s) => s.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, '')
@@ -96,6 +96,8 @@ function render(md, file, routes, product, dir, outside, pageAnchors) {
       // a link is kept only if it leads somewhere on the site or the web; a page not built yet stays as its text
       link({ href, tokens }) {
         const text = this.parser.parseInline(tokens)
+        // an address on the reader's own machine or a placeholder host (bare URLs in the text become links) stays as its text
+        if (/^https?:\/\/(127\.0\.0\.1|localhost|[^/:]*\.example)([/:]|$)|^https?:\/\/?$|^https?:\/\/</.test(href)) return text
         if (/^https?:/.test(href)) return `<a href="${esc(href)}">${text}</a>`
         // the site carries no mailto links (sample addresses in a CSV stay as text)
         if (href.startsWith('mailto:')) return text

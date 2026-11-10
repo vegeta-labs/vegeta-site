@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Models and data protection | Vegeta</title>
+    <meta name="description" content="A language model does two jobs only:" />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Models and data protection | Vegeta" />
+    <meta property="og:description" content="A language model does two jobs only:" />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/models-and-data-protection/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Models and data protection | Vegeta" />
+    <meta name="twitter:description" content="A language model does two jobs only:" />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/models-and-data-protection/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/" aria-current="page">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/" aria-current="page">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Models and data protection</h1>
+          <div class="docs__body">
+            <p>A language model does two jobs only:</p>
+            <ul>
+              <li>it <strong>classifies</strong> an email into the categories of <code>cases.yaml</code></li>
+              <li>it <strong>extracts fields</strong>, such as amount, payment date and reference.</li>
+            </ul>
+            <p>
+              Each job is one request: the input is redacted text and a JSON Schema, and the output is JSON that the app checks. There is no agent loop, and the
+              model is given no tools. Everything else is done by fixed code: risk, linking, deadlines, template choice and the reply text.
+            </p>
+            <h2 id="providers">Providers<a class="docs__anchor" href="#providers" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th><code>provider</code></th>
+                    <th><code>location</code></th>
+                    <th>What it is</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>anthropic</code></td>
+                    <td>always <code>external</code></td>
+                    <td>The hosted model API. Needs <code>dpa</code>, <code>no_training</code>, <code>region</code> and the API key.</td>
+                  </tr>
+                  <tr>
+                    <td><code>ollama</code></td>
+                    <td><code>local</code> (as you declare it)</td>
+                    <td>
+                      A model on your own machine or network, reached at <code>ollama_host</code>. You run Ollama yourself; it is not part of the Compose file.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>replay</code></td>
+                    <td><code>local</code></td>
+                    <td>
+                      Recorded model replies, read from <code>replay_dir</code>. Used for tests, the evaluation and the demo. A missing recording is an error;
+                      it never calls a real model.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <code>model_id</code> names the exact model, for example <code>claude-opus-5-5</code>. If you change the model, change the configuration. The
+              configuration change is audited, and every open Case is processed again.
+            </p>
+            <h3 id="example-hosted-provider-with-an-agreement">
+              Example: hosted provider with an agreement<a
+                class="docs__anchor"
+                href="#example-hosted-provider-with-an-agreement"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <pre tabindex="0"><code>model:
+  provider: anthropic
+  model_id: claude-opus-5-5
+  location: external
+  region: eu
+  dpa: true
+  no_training: true
+  api_key_env: ANTHROPIC_API_KEY</code></pre>
+            <p>Put the API key in <code>secrets/anthropic_api_key</code>.</p>
+            <h3 id="example-local-model">Example: local model<a class="docs__anchor" href="#example-local-model" aria-label="Link to this section">#</a></h3>
+            <pre tabindex="0"><code>model:
+  provider: ollama
+  model_id: &lt;the model name in your Ollama&gt;
+  location: local
+  dpa: false
+  no_training: true
+  ollama_host: http://ollama.internal.example:11434</code></pre>
+            <ul>
+              <li><code>ollama_host</code> must not contain a user name or password.</li>
+              <li>
+                If the host does not look local (loopback, a private network address, a single-label service name or <code>.local</code>), the app starts but
+                warns.
+              </li>
+            </ul>
+            <h2 id="start-up-checks-the-model-policy">
+              Start-up checks (the model policy)<a class="docs__anchor" href="#start-up-checks-the-model-policy" aria-label="Link to this section">#</a>
+            </h2>
+            <p><code>serve</code> checks the model block before anything else starts.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Situation</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No <code>model</code> block</td>
+                    <td><strong>refuses to start</strong></td>
+                  </tr>
+                  <tr>
+                    <td><code>provider: anthropic</code> with <code>location: local</code></td>
+                    <td><strong>configuration error</strong>: the hosted provider is always external</td>
+                  </tr>
+                  <tr>
+                    <td>External provider with <code>dpa: false</code> and <code>allow_without_dpa</code> not set</td>
+                    <td><strong>refuses to start</strong></td>
+                  </tr>
+                  <tr>
+                    <td>External provider with <code>dpa: false</code> and <code>allow_without_dpa: true</code></td>
+                    <td>starts; <strong>warning</strong> in the start-up log and at the top of the review UI</td>
+                  </tr>
+                  <tr>
+                    <td>External provider whose <code>region</code> is not UK / EEA, and no <code>transfer_basis</code></td>
+                    <td>starts; <strong>warning</strong></td>
+                  </tr>
+                  <tr>
+                    <td><code>no_training: false</code></td>
+                    <td>starts; <strong>warning</strong></td>
+                  </tr>
+                  <tr>
+                    <td><code>provider: anthropic</code> and the API key is empty</td>
+                    <td><strong>refuses to start</strong></td>
+                  </tr>
+                  <tr>
+                    <td><code>ollama</code> declared local, host does not look local</td>
+                    <td>starts; <strong>warning</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The UK / EEA test accepts region values such as <code>uk</code>, <code>gb</code>, <code>eu</code>, <code>eea</code>, <code>europe</code>, or an
+              EEA country code (<code>de</code>, <code>ie</code>, <code>fr</code> and so on).
+            </p>
+            <p>
+              These fields are your own <strong>declarations</strong>. The app cannot check a contract. Record the agreement itself, and the transfer basis, in
+              your <a href="/docs/trunks/build/dpia-template/">DPIA</a>.
+            </p>
+            <h2 id="what-is-sent-to-a-model">
+              What is sent to a model<a class="docs__anchor" href="#what-is-sent-to-a-model" aria-label="Link to this section">#</a>
+            </h2>
+            <p>Only <strong>redacted</strong> text. There is no setting that turns redaction off, and it applies to local models too.</p>
+            <p>The text sent is:</p>
+            <ul>
+              <li>the subject</li>
+              <li>display names</li>
+              <li>the body, including quoted earlier emails</li>
+              <li>attachment file names</li>
+              <li>the text of attachments that are <strong>not</strong> possible-KYC.</li>
+            </ul>
+            <p>Before any model call, code replaces sensitive values with placeholders:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Value</th>
+                    <th>Placeholder</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      IBAN-shaped strings (whatever the check digits), UK account numbers near &quot;account&quot;, &quot;acc&quot;, &quot;a/c&quot; or
+                      &quot;sort code&quot;
+                    </td>
+                    <td><code>[ACCOUNT_n]</code></td>
+                  </tr>
+                  <tr>
+                    <td>UK sort codes</td>
+                    <td><code>[SORTCODE_n]</code></td>
+                  </tr>
+                  <tr>
+                    <td>UK passport numbers near &quot;passport&quot;, UK driving licence numbers, National Insurance numbers</td>
+                    <td><code>[ID_n]</code></td>
+                  </tr>
+                  <tr>
+                    <td>Dates of birth near &quot;born&quot;, &quot;DOB&quot; or &quot;date of birth&quot;</td>
+                    <td><code>[DOB_n]</code></td>
+                  </tr>
+                  <tr>
+                    <td>UK postcodes, with their line and up to three address lines above</td>
+                    <td><code>[ADDRESS_n]</code></td>
+                  </tr>
+                  <tr>
+                    <td>Phone numbers</td>
+                    <td><code>[PHONE_n]</code></td>
+                  </tr>
+                  <tr>
+                    <td>The local part of email addresses (the domain is kept)</td>
+                    <td><code>[EMAIL_n]@domain</code></td>
+                  </tr>
+                  <tr>
+                    <td>Names of people in your directory</td>
+                    <td><code>[NAME_n]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>How the placeholders behave:</p>
+            <ul>
+              <li>Once a value is recognised anywhere in an email, every occurrence of it in that email gets the same placeholder.</li>
+              <li>The table of placeholders and real values stays in your database, encrypted.</li>
+              <li>
+                Account, sort code, ID and date-of-birth placeholders are <strong>never</strong> turned back into values. They are shown masked, for example
+                &quot;account ending 5432&quot;. A model output field that contains one of them is discarded.
+              </li>
+              <li>Name, email, phone and address placeholders are restored only for display in the review UI.</li>
+              <li>
+                Amounts, payment references and UETRs are not redacted, because classification needs them. A reference is matched on the original text before
+                redaction.
+              </li>
+            </ul>
+            <h3 id="possible-kyc-attachments-go-to-no-model">
+              Possible-KYC attachments go to no model<a class="docs__anchor" href="#possible-kyc-attachments-go-to-no-model" aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>
+              Before any model call, code (not a model) decides whether an attachment <strong>may be a KYC document</strong>. It is treated as possible-KYC if
+              any of these hold:
+            </p>
+            <ol>
+              <li>
+                Its file name contains a KYC word, for example passport, driving licence, utility, bank statement, proof of address, certificate of
+                incorporation, or the listed non-English equivalents.
+              </li>
+              <li>
+                Its text contains a passport machine-readable line, a KYC word, or two of &quot;date of birth&quot;, &quot;place of birth&quot; and
+                &quot;nationality&quot;.
+              </li>
+              <li>It is an image, unless it is a small inline signature image (see below).</li>
+              <li>It is a PDF with no text layer on some or all pages.</li>
+              <li>It cannot be checked: parsing failed, timed out, was over a limit, was encrypted, was nested too deep, or the type is unknown.</li>
+            </ol>
+            <p>
+              The content of a possible-KYC attachment is <strong>never sent to any model</strong>, local or external. The model sees only its redacted file
+              name and its type. The Case is marked &quot;possible KYC attachment&quot;, and the attachment is transferred to your KYC target (see
+              <a href="/docs/trunks/build/retention/">Retention</a>).
+            </p>
+            <p>
+              <strong>Small inline signature images</strong> are the one exception. An image is not caught by rule 3 or rule 5 (its file name is still checked
+              by rule 1) when all of these hold: it sits in the email itself (not in an attached email), it has a <code>Content-ID</code> that an
+              <code>&lt;img src=&quot;cid:…&quot;&gt;</code> in the HTML body points to (and no other part shares that <code>Content-ID</code>), it is not
+              marked as an attachment, the virus scan passed, it is a single-frame PNG, JPEG or GIF whose file structure passes a strict check (no unlisted
+              chunks or segments, no raw embedded image signature, nothing after the end), and its long side, short side and size are within
+              <code>kyc.inline_image</code> (defaults: 400 px, 150 px, 51,200 bytes). The Case shows it as &quot;small inline image (treated as a signature
+              image)&quot;.
+            </p>
+            <p>
+              What this changes: such an image is not transferred and stays in the stored email until normal retention deletes it. Its content still reaches no
+              model, because images are never read. The accepted cost: an ID document image scaled down to fit the limits (a whole ID card at 238 × 150 px fits
+              the defaults; a card or passport page at about 470 × 300 px fits the maximum limits and is readable), or data hidden in encoded form in an allowed
+              image&#39;s text or metadata (at most 16,384 bytes in total), would also stay in the stored email instead of being transferred. You can widen the
+              limits up to 1280 px, 300 px and 102,400 bytes, which widens this cost. Measure your own mailbox first with
+              <code>scripts/measure-inline-images.ts</code> (Gmail, read-only, prints numbers only).
+            </p>
+            <p>The app does no OCR. The content of images and scans is never read.</p>
+            <h3 id="what-is-recorded-about-each-model-call">
+              What is recorded about each model call<a class="docs__anchor" href="#what-is-recorded-about-each-model-call" aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>Each call is audited with:</p>
+            <ul>
+              <li>provider, model name and model version</li>
+              <li>prompt version and schema version</li>
+              <li>a hash of the input.</li>
+            </ul>
+            <p>
+              The full request and response are stored encrypted in the audit detail table. The audit row keeps only their hash. The detail is deleted with the
+              email at the end of its retention period.
+            </p>
+            <p>
+              A model call is tried at most twice per request. If both attempts fail, the email is classified <code>unclassified</code> and its model fields are
+              left empty. A person then reviews it as usual.
+            </p>
+            <h2 id="what-the-model-never-does">
+              What the model never does<a class="docs__anchor" href="#what-the-model-never-does" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>
+                <strong>It writes no outbound text.</strong> Every reply is a fixed template from <code>templates.yaml</code>, with values filled in by code
+                from your directory, your ledger and fields a person has confirmed.
+              </li>
+              <li>
+                <strong>It does not choose the template.</strong> Code chooses the template from the category and the rules. A person may pick another template
+                or edit the body of an ordinary template.
+              </li>
+              <li>
+                <strong>It cannot lower a risk level.</strong> Risk comes from category floors and fixed rules. Only an approver can lower risk, and must give a
+                reason.
+              </li>
+              <li><strong>It has no tools and no access</strong> to mailboxes, the database, the network or any action.</li>
+              <li>
+                The prompt marks the email content as untrusted data, not instructions. This is only a secondary defence. The real defence is that the output is
+                checked data with no power to act.
+              </li>
+              <li>
+                Its output never makes a payment count as received, and never applies bank details. See the
+                <a href="/docs/trunks/build/security-model/">Security model</a>.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

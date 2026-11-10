@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Security model | Vegeta</title>
+    <meta
+      name="description"
+      content="This page describes what the software does to limit harm, and where its limits are. It does not replace your own
+security assessment."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Security model | Vegeta" />
+    <meta
+      property="og:description"
+      content="This page describes what the software does to limit harm, and where its limits are. It does not replace your own
+security assessment."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/security-model/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Security model | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="This page describes what the software does to limit harm, and where its limits are. It does not replace your own
+security assessment."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/security-model/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/" aria-current="page">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/" aria-current="page">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Security model</h1>
+          <div class="docs__body">
+            <p>This page describes what the software does to limit harm, and where its limits are. It does not replace your own security assessment.</p>
+            <h2 id="1-read-only-by-design">
+              1. Read-only by design<a class="docs__anchor" href="#1-read-only-by-design" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Guarantee</th>
+                    <th>How</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>No send capability</td>
+                    <td>
+                      No code path sends email, writes drafts, moves, flags or deletes mail. The mailbox adapter interface has read methods only. There is no
+                      SMTP client among the dependencies.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Least permission per mailbox</td>
+                    <td>
+                      Gmail: <code>gmail.readonly</code> only, and the granted scope is checked when saving and on every token refresh. Microsoft 365:
+                      application <code>Mail.Read</code> limited to the designated mailboxes, checked at every start (see
+                      <a href="/docs/trunks/build/mailboxes/">Mailboxes</a>). IMAP: the folder is opened read-only (<code>EXAMINE</code>), and only search and
+                      fetch are used.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Request allow-list</td>
+                    <td>
+                      Every request to Google and Microsoft goes through one module. It allows only listed read requests (host + method + path) and fixed hosts,
+                      never follows redirects, and checks server-supplied paging links against the same list. Anything else throws before it is sent.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CI no-send check</td>
+                    <td>
+                      The build fails if the source calls a write or send API of Gmail, Graph or IMAP, if the allow-list gains an entry or a write path, if code
+                      calls Google or Microsoft hosts directly, or if an SMTP package is added.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Replies are copied by a person</td>
+                    <td>
+                      An approved reply is copied (recipient, subject, body) and sent by a person from their own mail client. The person then marks it as sent.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>No business-system writes</td>
+                    <td>The app imports your directory read-only. It only outputs events (an optional webhook) and CSV lists.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <strong>Remaining risk with IMAP:</strong> an IMAP password usually also allows SMTP sending. Ask for SMTP to be disabled on the account (see
+              <a href="/docs/trunks/build/mailboxes/#imap">Mailboxes</a>).
+            </p>
+            <h2 id="2-the-model-has-no-power">
+              2. The model has no power<a class="docs__anchor" href="#2-the-model-has-no-power" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>The model only classifies and extracts fields from redacted text.</li>
+              <li>It has no tools, writes no outbound text and chooses no template.</li>
+              <li>Its output is checked against a schema and can never lower risk.</li>
+              <li>Possible-KYC attachment content goes to no model.</li>
+            </ul>
+            <p>See <a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a>.</p>
+            <h2 id="3-containers">3. Containers<a class="docs__anchor" href="#3-containers" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Network</th>
+                    <th>Secrets it gets</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>db</code> (Postgres 16)</td>
+                    <td>internal <code>backend</code></td>
+                    <td>the Postgres owner password</td>
+                    <td>data in the <code>db</code> volume</td>
+                  </tr>
+                  <tr>
+                    <td><code>clamav</code></td>
+                    <td><code>backend</code> (downloads virus database updates)</td>
+                    <td>none</td>
+                    <td>scans every attachment before it is parsed</td>
+                  </tr>
+                  <tr>
+                    <td><code>parser</code></td>
+                    <td><strong>none</strong> (<code>network_mode: none</code>)</td>
+                    <td><strong>none</strong></td>
+                    <td>parses attachments that passed the scan; see below</td>
+                  </tr>
+                  <tr>
+                    <td><code>migrate</code></td>
+                    <td><code>backend</code></td>
+                    <td>owner database URL, the three role passwords</td>
+                    <td>runs once per start, creates tables and roles, then exits</td>
+                  </tr>
+                  <tr>
+                    <td><code>app</code></td>
+                    <td><code>backend</code>, <code>edge</code></td>
+                    <td>app database URL, master keys, HMAC key, initial admin password, model key, plus the mailbox / webhook / OIDC secrets you add</td>
+                    <td>API, review UI, pipeline, mail collection, KYC transfer; host port on <code>127.0.0.1</code> only</td>
+                  </tr>
+                  <tr>
+                    <td><code>maintenance</code></td>
+                    <td><code>backend</code></td>
+                    <td><strong>maintenance</strong> database URL, master keys, HMAC key</td>
+                    <td>retention, file deletions, orphan clean-up, KYC replacement</td>
+                  </tr>
+                  <tr>
+                    <td><code>proxy</code> (optional)</td>
+                    <td><code>edge</code>, host ports 80 and 443</td>
+                    <td>none</td>
+                    <td>Caddy, HTTPS</td>
+                  </tr>
+                  <tr>
+                    <td><code>rotate</code>, <code>gmail-auth</code> (tools)</td>
+                    <td>as needed</td>
+                    <td>rotation URL / app URL, keys</td>
+                    <td>one-off commands</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>All application containers:</p>
+            <ul>
+              <li>run as user 10001 with a read-only root file system (writable only on the data volumes and <code>/tmp</code>)</li>
+              <li>drop all Linux capabilities</li>
+              <li>set <code>no-new-privileges</code>.</li>
+            </ul>
+            <h3 id="the-parser-sandbox">The parser sandbox<a class="docs__anchor" href="#the-parser-sandbox" aria-label="Link to this section">#</a></h3>
+            <p>
+              Attachments are untrusted files, so the main process only decodes MIME, within limits. Real parsing (PDF, DOCX text, pacs.008 XML, nested emails)
+              happens in the <code>parser</code> container:
+            </p>
+            <ul>
+              <li><strong>No network</strong> and <strong>no application secrets.</strong></li>
+              <li>Read-only root, non-root user, limits of 1 GB memory, 2 CPUs and 256 processes.</li>
+              <li>
+                <strong>bubblewrap per task:</strong> each parsing task gets its own mount, process and network namespaces. It sees only its own input file
+                (read-only) and an empty output directory. It cannot see other tasks&#39; files. Input and output are deleted when the task ends. There is a
+                hard timeout.
+              </li>
+              <li>
+                Each task also runs under bubblewrap&#39;s own seccomp filter, which refuses new namespaces, mount, keyrings, BPF, io_uring, ptrace and similar
+                calls.
+              </li>
+              <li>
+                <strong>Dedicated seccomp profile</strong> (<code>deploy/parser-seccomp.json</code>): Docker&#39;s default profile plus only the calls
+                bubblewrap needs (<code>clone</code>, <code>unshare</code>, <code>mount</code>, <code>umount2</code>, <code>pivot_root</code>). CI checks that
+                the file matches its generator script.
+              </li>
+              <li>
+                <strong>Dedicated AppArmor profile</strong> (<code>deploy/apparmor/doi-parser</code>): Docker&#39;s default rules plus only what bubblewrap
+                needs (user namespaces, mounts below its staging root, <code>pivot_root</code>). If the profile is not loaded, the container does not start. The
+                Compose file never uses <code>unconfined</code>.
+              </li>
+              <li>Macros and scripts are never run. XML with a DTD or entity declarations is not parsed.</li>
+            </ul>
+            <h3 id="maintenance-has-its-own-container-and-role">
+              Maintenance has its own container and role<a
+                class="docs__anchor"
+                href="#maintenance-has-its-own-container-and-role"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>
+              <code>maintenance</code> is the only running service with the <code>maintenance</code> database credentials. Those credentials allow deletions.
+              The <code>app</code> container has no maintenance, rotation or owner credentials, so a compromise of the app alone cannot use the deletion rights.
+            </p>
+            <p>Both containers hold the master keys. The split protects against deletion and rewriting, not against reading.</p>
+            <h2 id="4-database-roles-and-the-audit-chain">
+              4. Database roles and the audit chain<a class="docs__anchor" href="#4-database-roles-and-the-audit-chain" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Can</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>doi_app</code></td>
+                    <td>
+                      read all tables; insert into the tables it needs; update a listed set of status columns; delete only its own write intents, sessions and
+                      model-call reservations that were certainly not sent
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>doi_maintenance</code></td>
+                    <td>
+                      read all tables; delete in the fixed retention order; clear the link to a deleted earlier Case (a trigger allows clearing only); queue the
+                      one KYC continuation job
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>doi_rotation</code></td>
+                    <td>rewrap encrypted values and file headers during key rotation</td>
+                  </tr>
+                  <tr>
+                    <td>owner (<code>postgres</code>)</td>
+                    <td>used only by <code>migrate</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul>
+              <li><strong>No role can update or delete audit records.</strong> Triggers refuse it too.</li>
+              <li>Role passwords are set as SCRAM verifiers, so the password itself never appears in SQL.</li>
+            </ul>
+            <p><strong>The audit chain.</strong> Every audit record has:</p>
+            <ul>
+              <li>a gap-free sequence number</li>
+              <li>a time and an actor</li>
+              <li>a type</li>
+              <li><code>prev_hash</code>, the hash of the previous record</li>
+              <li><code>hash</code>, a SHA-256 over the record&#39;s canonical JSON.</li>
+            </ul>
+            <p>
+              Audit rows contain no personal data, only types, references, hashes and non-personal values. Personal values are kept in an encrypted detail
+              table, with only their hash in the audit row. That detail is deleted with the email at the end of retention; the hash still proves the record
+              existed.
+            </p>
+            <ul>
+              <li><code>audit verify</code> recomputes the whole chain and names the first broken sequence number.</li>
+              <li>
+                The chain head (latest sequence number and hash) is written daily to <code>audit.head_export_path</code>. Copy that file to storage outside the
+                deployment, so that a deletion of the newest records can be detected.
+              </li>
+            </ul>
+            <pre tabindex="0"><code>docker compose exec app node --experimental-strip-types --no-warnings src/main.ts audit verify
+docker compose exec app node --experimental-strip-types --no-warnings src/main.ts audit head</code></pre>
+            <h2 id="5-encryption-at-rest">5. Encryption at rest<a class="docs__anchor" href="#5-encryption-at-rest" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                <strong>Files.</strong> Raw emails and attachment files use envelope encryption: one AES-256-GCM data key per object, wrapped by a master key
+                whose id is recorded.
+              </li>
+              <li>
+                <strong>Database text.</strong> All text in the database is stored encrypted the same way. That includes subjects, names, addresses, file names,
+                field values, quotes, drafts, directory contents, event contents, the redaction table, audit detail and OAuth tokens. Tables hold only ids,
+                enums, hashes, times, integer amounts and booleans.
+              </li>
+              <li><strong>Lookups</strong> that need to match text use an HMAC with the deployment key, not a plain hash.</li>
+              <li><strong>Parser files.</strong> Parser input and output live on tmpfs and are deleted after each task.</li>
+              <li>
+                <strong>Key rotation</strong> rewraps every data key and can resume after an interruption. See
+                <a href="/docs/trunks/build/backup-and-upgrade/#key-rotation">Backup and upgrade</a>.
+              </li>
+              <li><strong>Missing keys.</strong> The app refuses to start while a master key that data still needs is missing.</li>
+            </ul>
+            <h2 id="6-sign-in-sessions-and-csrf">
+              6. Sign-in, sessions and CSRF<a class="docs__anchor" href="#6-sign-in-sessions-and-csrf" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>Local accounts (argon2id password hashes) or OIDC with your own identity provider.</li>
+              <li>
+                Three roles:
+                <ul>
+                  <li><strong>reviewer</strong>: works Cases and edits replies</li>
+                  <li><strong>approver</strong>: also approves verification tasks, lowers risk and sets the hold flag</li>
+                  <li>
+                    <strong>admin</strong>: also manages users, imports the directory and retries KYC transfers. Users and directory imports have no screen in
+                    this version; the admin uses the HTTP API (see <a href="/docs/trunks/build/users-and-directory/">Users and directory</a>).
+                  </li>
+                </ul>
+              </li>
+              <li>The first admin&#39;s password comes from a secret file, and it must be changed at first sign-in.</li>
+              <li>Changing your password ends your other sessions. A credential reset ends all sessions of that user.</li>
+              <li>
+                Session cookie: <code>HttpOnly; Secure; SameSite=Strict</code>. <code>Secure</code> is always on, except in the local demo (which listens on
+                <code>127.0.0.1</code> only) and with an explicit development setting.
+              </li>
+              <li>
+                Every change request needs a CSRF token. The token is derived from the session with the deployment key, so any tab of the signed-in browser can
+                fetch it again from <code>GET /api/csrf</code>. It ends with the session.
+              </li>
+              <li>
+                Sign-in, CSRF and &quot;change your password first&quot; checks deny by default, based on the matched route. Only a few routes are public, such
+                as sign-in and the OIDC callback.
+              </li>
+              <li>
+                The review UI shows emails as <strong>plain text only</strong>. HTML is never rendered and remote content is never loaded. The
+                Content-Security-Policy allows only the app&#39;s own origin.
+              </li>
+              <li>Request logs record the path only, never query strings, bodies or cookies.</li>
+            </ul>
+            <h2 id="7-fraud-rules-fixed-in-code-not-configurable">
+              7. Fraud rules (fixed in code, not configurable)<a
+                class="docs__anchor"
+                href="#7-fraud-rules-fixed-in-code-not-configurable"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rule</th>
+                    <th>What it means</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Emailed bank details are never applied</strong></td>
+                    <td>
+                      No function writes bank details from an email into the directory or any record. A Case labelled <code>bank_details</code> can only get the
+                      <code>safe_ack</code> reply, even if its risk was lowered. Events carry the last four digits only. A verification task asks a person to
+                      call the phone number on file, not a number from the email.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Emailed payment confirmations never count as received</strong></td>
+                    <td>
+                      No email or attachment, including MT103 and pacs.008 messages, can make a payment &quot;received&quot;. The UI and events call it
+                      &quot;sender&#39;s confirmation, not proof of receipt&quot;. Receipt comes only from your imported bank lines and ledger.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Risk flags never appear in outbound text</strong></td>
+                    <td>
+                      Replies come only from fixed templates. Templates are checked at load time for internal terms (fraud, suspicious, flagged, verification
+                      task, …). The final text a person edits is checked again before it is saved.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="verification-tasks-and-two-person-control">
+              Verification tasks and two-person control<a
+                class="docs__anchor"
+                href="#verification-tasks-and-two-person-control"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>Bank-detail and identity changes create a verification task:</p>
+            <ol>
+              <li>A person calls the contact back on the phone number on file and completes a checklist.</li>
+              <li>A cooling-off period runs (default 24 hours, at least 1 hour).</li>
+              <li>A <strong>different</strong> person with the approver role approves.</li>
+            </ol>
+            <p>Further checks:</p>
+            <ul>
+              <li>The two people can never have created each other&#39;s accounts, granted each other roles or reset each other&#39;s credentials.</li>
+              <li>
+                Both accounts, and the roles they hold now, must be older than one cooling-off period at the moment the checklist was done, and neither may have
+                had a credential reset since one cooling-off period before that moment. A new account, a new role or a reset therefore waits one cooling-off
+                period before it counts. On a new deployment the first approval is possible only after about two cooling-off periods (default about 48 hours).
+              </li>
+            </ul>
+            <p>
+              The Case shows all conditions that block approval, separating the checklist completer&#39;s account history from your own eligibility and the
+              cooling-off period (C-FRD-5). If the completer&#39;s account or role was too new when the checklist was done, waiting longer cannot fix that task.
+              An approver or admin can choose <strong>Restart verification</strong> on an open or checklist-done task and must give a reason. This invalidates
+              the old task and regenerates an open checklist using the contact on file; completion of the new checklist starts a new cooling-off period.
+              Approved tasks cannot be restarted. The Case&#39;s manual revision does not change. A Case being reprocessed, or an obsolete task binding, is
+              refused. The reason is encrypted audit detail and is never put in an event. If the only approver has a forbidden account-history relationship with
+              every possible completer, restarting cannot solve it; close the Case instead.
+            </p>
+            <p>Completing a task only records that the process was followed. The app changes no record because of it.</p>
+            <h2 id="8-known-limits">8. Known limits<a class="docs__anchor" href="#8-known-limits" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Limit</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>The app cannot prove that Exchange gives it no send role.</td>
+                    <td>
+                      The start-up check needs your permission review record (at most 180 days old). See
+                      <a href="/docs/trunks/build/mailboxes/#permission-review-checklist">Mailboxes</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>IMAP credentials usually also allow SMTP.</td>
+                    <td>Disable SMTP for the account, or record the risk.</td>
+                  </tr>
+                  <tr>
+                    <td>Two-person control can be bypassed by one person who controls the identity provider or all admin accounts.</td>
+                    <td>Make sure two different people manage their own accounts.</td>
+                  </tr>
+                  <tr>
+                    <td>Model output varies between model versions.</td>
+                    <td>Changing the model means changing the configuration. Measure again with the evaluation set.</td>
+                  </tr>
+                  <tr>
+                    <td>Look-alike domain detection can give false positives.</td>
+                    <td>It only raises risk; it never blocks.</td>
+                  </tr>
+                  <tr>
+                    <td>Small inline signature images are not treated as possible-KYC (within <code>kyc.inline_image</code>).</td>
+                    <td>
+                      They stay in the stored email under normal retention and are not transferred; so would an ID document scaled down to fit the limits, or
+                      encoded data hidden in an allowed image&#39;s text or metadata (at most 16,384 bytes in total). Wider limits widen this. Their content
+                      never reaches a model. Other images still count as possible-KYC.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>No OCR.</td>
+                    <td>Image and scan content is never read.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      PostgreSQL&#39;s own server log can record the <code>DETAIL</code> of a constraint error, which may hold values from an email. The
+                      app&#39;s own error logs carry only fixed reason codes.
+                    </td>
+                    <td>Keep the database log under the same access control and retention as the database.</td>
+                  </tr>
+                  <tr>
+                    <td>Gmail&#39;s handling of forged <code>Authentication-Results</code> must be checked by you.</td>
+                    <td>See the pre-go-live check in <a href="/docs/trunks/build/mailboxes/#before-going-live-gmail-authentication-headers">Mailboxes</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>Microsoft 365 and Gmail Pub/Sub were tested only against simulated services.</td>
+                    <td>Test with your own tenant before going live.</td>
+                  </tr>
+                  <tr>
+                    <td>The AppArmor profile needs AppArmor 4 (for example Ubuntu 24.04). Docker Desktop on macOS ignores AppArmor.</td>
+                    <td>On macOS the parser runs with seccomp and bubblewrap but without AppArmor.</td>
+                  </tr>
+                  <tr>
+                    <td>Both <code>app</code> and <code>maintenance</code> hold the master keys.</td>
+                    <td>Splitting the roles limits deletion, not reading. Protect the host.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      A rare crash case: if two processes receive the same email at once, and one crashes after writing the file but before cleaning up, an
+                      original that the KYC replacement had already deleted can exist again until the hourly orphan clean-up.
+                    </td>
+                    <td>Recorded limitation. The orphan clean-up removes it.</td>
+                  </tr>
+                  <tr>
+                    <td>Backups keep data for as long as your backup policy keeps them.</td>
+                    <td>Retention deletion does not reach backups. See <a href="/docs/trunks/build/retention/">Retention</a>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>
