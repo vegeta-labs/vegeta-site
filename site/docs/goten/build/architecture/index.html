@@ -121,12 +121,12 @@
               </ul>
             </nav>
           </details>
-          <p class="docs__version">Goten v1.2.5</p>
+          <p class="docs__version">Goten v1.3.0</p>
           <h1 class="docs__title">Architecture</h1>
           <div class="docs__body">
             <p>
               Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the
-              <a href="https://github.com/vegeta-labs/goten/blob/880409301c163efb03091920267cd9af56eba95f/docs/en/02_TECH_DESIGN.md">technical design</a>.
+              <a href="https://github.com/vegeta-labs/goten/blob/bef8482d0afbbb28ed8b7261a0d3574442d48361/docs/en/02_TECH_DESIGN.md">technical design</a>.
             </p>
             <h2 id="layout">Layout<a class="docs__anchor" href="#layout" aria-label="Link to this section">#</a></h2>
             <pre tabindex="0"><code>src/
@@ -272,6 +272,9 @@ e2e/            Playwright tests</code></pre>
             <p>
               Hand-offs between modules are snapshots, not live links. Each carries the version of the data it was taken from (<code>recVersion</code>,
               <code>allocVersion</code>). A later upstream change makes the downstream page show <strong>out of date</strong> until the user hands off again.
+              While it does, that page cannot copy, export or hand on, and holdings carried from an allocation that is out of date count as out of date too. An
+              allocation that is out of date on a deal with any fee payer change record also shows no figures, because the fee table changes at once and the
+              investor amounts only at the next hand-off.
             </p>
             <p>
               A reconciliation decision is pinned to fingerprints of the bank line and the investor (<code>lineFingerprint</code>,

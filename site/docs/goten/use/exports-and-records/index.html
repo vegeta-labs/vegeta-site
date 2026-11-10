@@ -121,7 +121,7 @@
               </ul>
             </nav>
           </details>
-          <p class="docs__version">Goten v1.2.5</p>
+          <p class="docs__version">Goten v1.3.0</p>
           <h1 class="docs__title">Exports, the activity log and where your data is stored</h1>
           <div class="docs__body">
             <h2 id="exports">Exports<a class="docs__anchor" href="#exports" aria-label="Link to this section">#</a></h2>
@@ -157,21 +157,21 @@
                     <td>2. Allocation</td>
                     <td>allocation</td>
                     <td>One row per investor: invested, shares, each fee, refund, status.</td>
-                    <td>There are input errors or blockers, or a refund is flagged.</td>
+                    <td>There are input errors or blockers, a refund is flagged, or the page is out of date.</td>
                   </tr>
                   <tr>
                     <td><strong>Export holdings CSV</strong></td>
                     <td>3. Exit distribution</td>
                     <td>holdings</td>
                     <td>Each holding. It can be imported again unchanged.</td>
-                    <td>The holdings table itself has an error.</td>
+                    <td>The holdings table has an error, or the page is out of date.</td>
                   </tr>
                   <tr>
                     <td><strong>Export distribution CSV</strong></td>
                     <td>3. Exit distribution</td>
                     <td>distribution</td>
                     <td>One row per investor: distribution, profit, multiple.</td>
-                    <td>There are input errors or a shortfall.</td>
+                    <td>There are input errors or a shortfall, or the page is out of date.</td>
                   </tr>
                   <tr>
                     <td><strong>Export activity log CSV</strong></td>
@@ -185,8 +185,9 @@
             </div>
             <p><strong>Copy closing confirmation</strong> copies the summary for the lead, and waits for the same things as the allocation export.</p>
             <p>
-              <strong>Out of date</strong> does not hold back any of these. A page marked out of date still copies and exports its old figures, so hand off
-              again first.
+              A page marked <strong>out of date</strong> holds back its copy and exports until you hand off again:
+              <strong>Copy closing confirmation</strong> and <strong>Export allocation CSV</strong> on the allocation page,
+              <strong>Export holdings CSV</strong> and <strong>Export distribution CSV</strong> on the exit page.
             </p>
             <p>
               Every export has a currency column as its last column. In text columns, a cell starting with = + - or @ is saved with a leading apostrophe, so
