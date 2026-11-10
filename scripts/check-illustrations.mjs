@@ -1,5 +1,5 @@
 // Step illustrations are checked as complete text sequences against the pinned apps and locked demo.
-// The Toolkit's pure sample/engines are bundled in a temporary directory, leaving vendor/ clean.
+// The Toolkit's pure sample/engines and the Inbox's display names are bundled in a temporary directory, leaving vendor/ clean.
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -31,6 +31,7 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
       import * as sample from ${from('sample')};
       import {reconcile, decide} from ${from('reconcile')};
       import {distribute} from ${from('waterfall')};
+      import {displayName} from ${JSON.stringify(resolve(inbox, 'src/web/presentation.ts'))};
       const rec = (decisions) => reconcile({commitments: sample.SAMPLE_COMMITMENTS, lines: sample.SAMPLE_BANK,
         decisions, asOf: sample.SAMPLE_SETTINGS.asOf, thresholdDays: sample.SAMPLE_SETTINGS.agedThresholdDays}).result;
       const line = sample.SAMPLE_BANK.find(x => x.id === 't03');
@@ -38,7 +39,7 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
       const expected = ${readFileSync(join(toolkit, 'src/lib/sample.expected.json'), 'utf8')};
       const holdings = expected.allocation.filter(x=>x.invested>0).map(x=>({id:x.id,
         name:sample.SAMPLE_COMMITMENTS.find(c=>c.id===x.id).name,capital:x.invested}));
-      globalThis.illustrationSource = {sample, expected, before:rec({}), after:rec({t03:decide(line,commitment)}),
+      globalThis.illustrationSource = {displayName, sample, expected, before:rec({}), after:rec({t03:decide(line,commitment)}),
         exit:distribute({holdings,...sample.SAMPLE_EXIT}).result};
     `,
     )
@@ -51,6 +52,12 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
     rmSync(scratch, { recursive: true, force: true })
   }
   const { sample, expected, before, after, exit } = source
+  // Category, field and template names are shown as the released Inbox UI names them; an ID without a UI name fails.
+  const named = (id) => {
+    const name = source.displayName(id)
+    if (typeof id !== 'string' || !name || name === id) fail(`illustrations: the Inbox UI has no display name for ${id}`)
+    return name
+  }
   const commits = sample.SAMPLE_COMMITMENTS
   const receipt = (id) => sample.SAMPLE_BANK.find((l) => l.id === id)
   const person = commits.find((c) => c.id === 'c03')
@@ -167,21 +174,22 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
       'Incoming mail Read-only',
       ...['E0001', 'E0045', 'E0053', 'E0225'].flatMap((id) => {
         const d = details[id]
-        return [d?.fromName, id, d?.subject, d?.e3.adopted.join(' '), d?.e3.risk.final]
+        return [d?.fromName, id, d?.subject, ...(d?.e3.adopted.map(named) ?? [undefined]), d?.e3.risk.final]
       }),
     ],
     understand: [
       email?.fromName,
       email?.id,
       '…' + excerpt + '…',
-      'Read by code amount',
+      'Read by code',
+      named('amount'),
       fields.amount,
-      'payment_date',
+      named('payment_date'),
       fields.payment_date,
-      'reference',
+      named('reference'),
       fields.reference,
       'Model',
-      label?.classId,
+      named(label?.classId),
       '(' + label?.confidence + ')',
     ],
     check: [
@@ -205,7 +213,7 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
       'Reply prepared',
       email?.id,
       '·',
-      reply?.templateId,
+      named(reply?.templateId),
       'To',
       reply?.recipient,
       'Subject',
@@ -240,9 +248,9 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
     allocation: `Closing allocation with a ${pct(fee.value)} platform fee. ${money(capital)} is invested and ${money(capital - companyFees.reduce((sum, f) => sum + f.value, 0))} is wired to the company.`,
     exit: `A ${pounds(terms.proceeds)} exit less ${pounds(exit.costsPaid)} costs: capital, preferred return, lead catch-up and the carry split are distributed in order. Investors receive ${money(exit.investorsTotal)}; carry to the lead is ${money(exit.carry)}.`,
     read: 'Four sample emails arrive, then each receives a category and a risk level.',
-    understand: `${email.fromName.split(' ')[0]} transferred ${fields.amount} on ${dateText} with reference ${fields.reference}. Code reads the amount, date and reference. The model classifies it as ${label.classId} with ${label.confidence} confidence.`,
+    understand: `${email.fromName.split(' ')[0]} transferred ${fields.amount} on ${dateText} with reference ${fields.reference}. Code reads the amount, date and reference. The model classifies it as ${named(label.classId)} with ${label.confidence} confidence.`,
     check: `${links.contact.name} is an authenticated sender, linked to commitment ${links.commitment.reference} and ${links.deal}. Imported Goten ledger says not fully received. The rules compute ${checked.e3.risk.computed} risk.`,
-    prepare: `The ${reply.templateId} draft tells ${email.fromName.split(' ')[0]} her ${replyMoney} commitment is paid in full. A person approves the reply and copies the text to send from their own mail client.`,
+    prepare: `The ${named(reply.templateId)} draft tells ${email.fromName.split(' ')[0]} her ${replyMoney} commitment is paid in full. A person approves the reply and copies the text to send from their own mail client.`,
   }
   const keys = { '/toolkit/': ['reconciliation', 'allocation', 'exit'], '/inbox/': ['read', 'understand', 'check', 'prepare'] }
   for (const [url, names] of Object.entries(keys)) {
