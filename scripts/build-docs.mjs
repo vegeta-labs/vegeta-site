@@ -1,6 +1,8 @@
 // Plan 30: builds /docs/ from each product's Markdown in its public repo at the docs pin in site-src/docs.json (separate from
 // toolkit.ref and inbox.ref). Pages are committed; Vercel does not build.
-// Usage: npm run docs:fetch, node scripts/build-docs.mjs, then prettier on site/docs. A page exists only for a sidebar item with a route.
+// Usage: npm run docs:fetch, node scripts/build-docs.mjs, then prettier on site/docs/**/*.html (never on the .md files, which
+// check-site compares byte for byte). A page exists only for a sidebar item with a route.
+// Plan 31: every page also has its Markdown at the route without the trailing slash plus .md, and /llms.txt lists them.
 // check-site imports renderDocs() and compares its output with the committed pages, so both use this one renderer.
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -12,7 +14,7 @@ const SITE_URL = 'https://vegeta-ops.vercel.app'
 const SHARE_ALT = 'Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.'
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
-function page({ header, footer }, title, summary, path, body) {
+function page({ header, footer }, title, summary, path, body, markdown) {
   const full = esc(`${title} | Vegeta`)
   const d = esc(summary)
   const url = SITE_URL + path
@@ -38,7 +40,7 @@ function page({ header, footer }, title, summary, path, body) {
     <meta name="twitter:description" content="${d}" />
     <meta name="twitter:image" content="${SITE_URL}/img/vegeta-share.jpg" />
     <meta name="twitter:image:alt" content="${esc(SHARE_ALT)}" />
-    <link rel="canonical" href="${url}" />
+    <link rel="canonical" href="${url}" />${markdown ? `\n    <link rel="alternate" type="text/markdown" href="${markdown}" />` : ''}
     <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
@@ -74,6 +76,8 @@ export function checkoutOf(product) {
     throw new Error(`${product.name} ${product.version} is not in its release notes (${product.source.notes})`)
   return dir
 }
+// where a page's Markdown is served: /docs/trunks/build/quickstart/ -> /docs/trunks/build/quickstart.md
+export const markdownPath = (route) => route.slice(0, -1) + '.md'
 const plainText = (s) => s.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`]/g, '')
 const slug = (s) =>
   plainText(s)
@@ -82,7 +86,7 @@ const slug = (s) =>
     .replace(/[^\p{L}\p{N}\s_-]/gu, '')
     .replace(/\s/g, '-')
 
-function render(md, file, routes, product, dir, outside, pageAnchors) {
+function render(md, file, routes, product, dir, outside, pageAnchors, mdLinks = new Map()) {
   const ids = new Set()
   const anchors = []
   const marked = new Marked({
@@ -110,12 +114,17 @@ function render(md, file, routes, product, dir, outside, pageAnchors) {
         const route = routes.get(target)
         if (route) {
           if (hash) pageAnchors.push([file, route, hash])
+          mdLinks.set(href, SITE_URL + markdownPath(route) + (hash ? `#${hash}` : ''))
           return `<a href="${route}${hash ? `#${esc(hash)}` : ''}">${text}</a>`
         }
         // a repo file that is not a page opens on GitHub at the pinned commit; anything else stays as its text
         const published = !target.startsWith('..') && existsSync(join(dir, target))
         outside.push(`${file}: ${href} -> ${published ? 'GitHub' : 'text only'}`)
-        if (!published) return text
+        if (!published) {
+          mdLinks.set(href, null)
+          return text
+        }
+        mdLinks.set(href, `${product.source.repo}/blob/${product.source.ref}/${target}${hash ? `#${hash}` : ''}`)
         return `<a href="${product.source.repo}/blob/${product.source.ref}/${target}${hash ? `#${esc(hash)}` : ''}">${text}</a>`
       },
       code({ text }) {
@@ -143,6 +152,21 @@ function render(md, file, routes, product, dir, outside, pageAnchors) {
     .replace(/ align="(left|right|center)"/g, '')
   for (const a of anchors) if (!ids.has(a)) throw new Error(`${file}: no heading for #${a}`)
   return { title: plainText(title.text), summary: plainText(first.text), html }
+}
+
+// the page's Markdown as the product repo has it, with a source line under the title; a link to another docs page
+// points at that page's Markdown, a link to another repo file at GitHub (the pinned commit), a link to nothing published
+// becomes its text, so the raw files link to the same places as the pages (plan 31)
+function markdownOf(md, mdLinks, product, source) {
+  const body = md.replace(/(!?)\[([^\]]*)\]\(([^)\s]+)(\s+"[^"]*")?\)/g, (all, bang, text, href, title = '') => {
+    if (bang || !mdLinks.has(href)) return all
+    const to = mdLinks.get(href)
+    return to === null ? text : `[${text}](${to}${title})`
+  })
+  const line = `> ${product.name} ${product.version}. Source: ${product.source.repo}/blob/${product.source.ref}/${source}`
+  const at = body.search(/^# .*$/m)
+  const end = body.indexOf('\n', at)
+  return `${body.slice(0, end)}\n\n${line}${body.slice(end)}`
 }
 
 function sidebar(product, current) {
@@ -179,13 +203,19 @@ export function renderDocs() {
   // links to a section of another docs page, checked once every page is built
   const pageAnchors = []
   const idsByRoute = new Map()
+  // [path, text] of each page's Markdown, and the /llms.txt index of them
+  const markdown = []
+  const llms = []
   for (const product of spec.products) {
     const items = product.groups.flatMap((g) => g.items).filter((i) => i.route)
     if (!items.length) continue
     const dir = checkoutOf(product)
     const routes = new Map(items.map((i) => [i.source, i.route]))
     for (const item of items) {
-      const { title, summary, html } = render(readFileSync(join(dir, item.source), 'utf8'), item.source, routes, product, dir, outside, pageAnchors)
+      const source = readFileSync(join(dir, item.source), 'utf8')
+      const mdLinks = new Map()
+      const { title, summary, html } = render(source, item.source, routes, product, dir, outside, pageAnchors, mdLinks)
+      markdown.push([markdownPath(item.route), markdownOf(source, mdLinks, product, item.source)])
       idsByRoute.set(item.route, new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1])))
       const links = sidebar(product, item.route)
       const label = esc(`${product.name} docs`)
@@ -214,8 +244,15 @@ ${html}
           </div>
         </div>
       </div>`,
+          markdownPath(item.route),
         ),
       )
+    }
+    for (const group of product.groups) {
+      const listed = group.items.filter((i) => i.route)
+      if (!listed.length) continue
+      llms.push(`\n## ${product.name} ${product.version}: ${group.label}\n`)
+      for (const item of listed) llms.push(`- [${item.title}](${SITE_URL}${markdownPath(item.route)})`)
     }
   }
 
@@ -244,16 +281,19 @@ ${cards}
       </div>`,
     ),
   )
-  return { pages, outside }
+  const text = `# Vegeta\n\n> ${spec.llms}\n${llms.join('\n')}\n`
+  return { pages, outside, markdown, llms: text }
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const { pages, outside } = renderDocs()
+  const { pages, outside, markdown, llms } = renderDocs()
   for (const [route, html] of pages) {
     const file = join('site', route, 'index.html')
     mkdirSync(dirname(file), { recursive: true })
     writeFileSync(file, html)
   }
+  for (const [path, text] of markdown) writeFileSync(join('site', path), text)
+  writeFileSync('site/llms.txt', llms)
   const built = pages.map(([route]) => route)
 
   // the sitemap lists the docs pages last, the index first (scripts/build-education.mjs writes the same list)

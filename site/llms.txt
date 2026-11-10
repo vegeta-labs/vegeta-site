@@ -1,0 +1,49 @@
+# Vegeta
+
+> SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.
+
+## Goten v1.3.1: Use it
+
+- [Overview](https://vegeta-ops.vercel.app/docs/goten.md)
+- [Walk the sample deal](https://vegeta-ops.vercel.app/docs/goten/use/getting-started.md)
+- [Prepare and import CSV files](https://vegeta-ops.vercel.app/docs/goten/use/import-csv.md)
+- [Reconciliation](https://vegeta-ops.vercel.app/docs/goten/use/reconciliation.md)
+- [Closing allocation](https://vegeta-ops.vercel.app/docs/goten/use/closing-allocation.md)
+- [Exit distribution](https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution.md)
+- [Withdrawals and fee payers](https://vegeta-ops.vercel.app/docs/goten/use/withdrawal-and-fee-payer.md)
+- [Exports and records](https://vegeta-ops.vercel.app/docs/goten/use/exports-and-records.md)
+- [How the numbers work](https://vegeta-ops.vercel.app/docs/goten/use/how-the-numbers-work.md)
+
+## Goten v1.3.1: Run and build
+
+- [Overview](https://vegeta-ops.vercel.app/docs/goten/build.md)
+- [Run locally and deploy](https://vegeta-ops.vercel.app/docs/goten/build/run-and-deploy.md)
+- [CSV reference](https://vegeta-ops.vercel.app/docs/goten/build/csv-reference.md)
+- [Architecture](https://vegeta-ops.vercel.app/docs/goten/build/architecture.md)
+- [Verification](https://vegeta-ops.vercel.app/docs/goten/build/verification.md)
+
+## Trunks v0.4.0: Use it
+
+- [Overview](https://vegeta-ops.vercel.app/docs/trunks.md)
+- [Walk the demo](https://vegeta-ops.vercel.app/docs/trunks/use/getting-started.md)
+- [Read a case](https://vegeta-ops.vercel.app/docs/trunks/use/reading-a-case.md)
+- [Check and send a reply](https://vegeta-ops.vercel.app/docs/trunks/use/checking-a-reply.md)
+- [Risk and verification](https://vegeta-ops.vercel.app/docs/trunks/use/risk-and-verification.md)
+- [Roles](https://vegeta-ops.vercel.app/docs/trunks/use/roles.md)
+- [Limits and help](https://vegeta-ops.vercel.app/docs/trunks/use/limits-and-help.md)
+
+## Trunks v0.4.0: Run and build
+
+- [Overview](https://vegeta-ops.vercel.app/docs/trunks/build.md)
+- [Quick start](https://vegeta-ops.vercel.app/docs/trunks/build/quickstart.md)
+- [Deploy with an AI coding assistant](https://vegeta-ops.vercel.app/docs/trunks/build/deploy-with-ai.md)
+- [Users and directory](https://vegeta-ops.vercel.app/docs/trunks/build/users-and-directory.md)
+- [Mailboxes](https://vegeta-ops.vercel.app/docs/trunks/build/mailboxes.md)
+- [Models and data protection](https://vegeta-ops.vercel.app/docs/trunks/build/models-and-data-protection.md)
+- [Accounts in payment messages](https://vegeta-ops.vercel.app/docs/trunks/build/payment-messages.md)
+- [Configuration reference](https://vegeta-ops.vercel.app/docs/trunks/build/configuration.md)
+- [Security model](https://vegeta-ops.vercel.app/docs/trunks/build/security-model.md)
+- [DPIA template](https://vegeta-ops.vercel.app/docs/trunks/build/dpia-template.md)
+- [LIA template](https://vegeta-ops.vercel.app/docs/trunks/build/lia-template.md)
+- [Retention](https://vegeta-ops.vercel.app/docs/trunks/build/retention.md)
+- [Backup and upgrade](https://vegeta-ops.vercel.app/docs/trunks/build/backup-and-upgrade.md)

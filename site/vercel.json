@@ -444,6 +444,11 @@
       "source": "/docs/trunks/build/backup-and-upgrade",
       "destination": "/docs/trunks/build/backup-and-upgrade/",
       "permanent": true
+    },
+    {
+      "source": "/docs/trunks/build/deploy-with-ai",
+      "destination": "/docs/trunks/build/deploy-with-ai/",
+      "permanent": true
     }
   ],
   "headers": [
@@ -465,6 +470,15 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=(), hid=(), display-capture=()"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
         }
       ]
     }

@@ -305,10 +305,26 @@ for (const sheet of ['styles.css', 'docs.css']) {
         .replace(/ ?(<|>) ?/g, '$1')
         .replace(/ ?\/>/g, '>')
     try {
-      const { pages } = renderDocs()
+      const { pages, markdown, llms } = renderDocs()
       if (JSON.stringify(pages.map(([r]) => r).sort()) !== JSON.stringify([...DOCS].sort())) fail('docs: the built pages are not the docs.json list')
       for (const [route, built] of pages)
         if (html[route] && flat(html[route]) !== flat(built)) fail(`${route}: not what scripts/build-docs.mjs makes from the docs pin`)
+      // plan 31: each page's Markdown and /llms.txt, byte for byte, and no other Markdown under /docs/
+      const wanted = new Map(markdown)
+      const served = walk(SITE)
+        .filter((f) => f.endsWith('.md'))
+        .map((f) => '/' + relative(SITE, f))
+      for (const path of served) if (!wanted.has(path)) fail(`${path}: Markdown that is not a docs page`)
+      for (const [path, text] of wanted)
+        if (!existsSync(join(SITE, path)) || read(join(SITE, path)) !== text) fail(`${path}: not what scripts/build-docs.mjs makes from the docs pin`)
+      if (!existsSync(join(SITE, 'llms.txt')) || read(join(SITE, 'llms.txt')) !== llms) fail('/llms.txt: not what scripts/build-docs.mjs makes from docs.json')
+      for (const path of wanted.keys()) if (!llms.includes(`https://vegeta-ops.vercel.app${path})`)) fail(`/llms.txt: ${path} is not listed`)
+      for (const [path, text] of [...wanted, ['/llms.txt', llms]]) for (const [re, label] of PRIVATE_TERMS) if (re.test(text)) fail(`${path}: ${label}`)
+      // the raw files must lead only to the site or the web: a relative link or a reference definition was not rewritten
+      for (const [path, text] of [...wanted, ['/llms.txt', llms]]) {
+        for (const m of text.matchAll(/\]\(\s*<?([^)\s>]*)/g)) if (!/^(https?:\/\/|#|mailto:)/.test(m[1])) fail(`${path}: link not rewritten: ${m[1]}`)
+        if (/^ {0,3}\[[^\]]+\]:\s/m.test(text)) fail(`${path}: a reference-style link definition is not rewritten`)
+      }
     } catch (e) {
       fail(`docs: cannot render the pages from the docs pin: ${e.message}`)
     }
@@ -1051,7 +1067,11 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
 
 // headers (K9: one rule for the whole site, unchanged)
 const vercel = JSON.parse(read(join(SITE, 'vercel.json')))
-if (vercel.headers.length !== 1 || vercel.headers[0].source !== '/(.*)') fail('vercel.json: expected one header rule for the whole site')
+if (vercel.headers[0]?.source !== '/(.*)') fail('vercel.json: the first header rule must cover the whole site')
+// besides it, only the Markdown type (plan 31), so no rule can weaken the site-wide headers
+const MD_TYPE = { source: '/(.*)\\.md', headers: [{ key: 'Content-Type', value: 'text/markdown; charset=utf-8' }] }
+if (vercel.headers.length !== 2 || JSON.stringify(vercel.headers[1]) !== JSON.stringify(MD_TYPE))
+  fail('vercel.json: expected the site-wide header rule and the Markdown type rule only')
 const csp = vercel.headers[0].headers.find((h) => h.key === 'Content-Security-Policy')?.value ?? ''
 // the demo uses relative paths: /inbox/demo without the slash must redirect, or its files would resolve one level up
 for (const r of ['/toolkit', '/inbox', '/inbox/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])

@@ -1,6 +1,7 @@
 {
   "title": "Documentation",
   "line": "Choose a module.",
+  "llms": "SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.",
   "products": [
     {
       "id": "goten",
@@ -102,7 +103,7 @@
       "version": "v0.4.0",
       "source": {
         "repo": "https://github.com/vegeta-labs/trunks",
-        "ref": "80540a137b076046e215ce0844f713f5e50f09c1",
+        "ref": "d710459cd237c77459f388cbda226e2431260c1f",
         "notes": "CHANGELOG.md"
       },
       "groups": [
@@ -158,6 +159,11 @@
               "title": "Quick start",
               "source": "docs/en/quickstart.md",
               "route": "/docs/trunks/build/quickstart/"
+            },
+            {
+              "title": "Deploy with an AI coding assistant",
+              "source": "docs/en/deploy-with-ai.md",
+              "route": "/docs/trunks/build/deploy-with-ai/"
             },
             {
               "title": "Users and directory",

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Deploy with an AI coding assistant | Vegeta</title>
+    <meta
+      name="description"
+      content="An AI coding assistant (one that can run commands on your machine) can deploy the Trunks demo from these documents:
+a fresh assistant did so in a test, with the prompt below. For a real deployment it can run the commands while a person
+does the steps in the table below; that has not been tested with an assistant. A person still decides and approves
+everything that concerns access, keys, data and the network, and is responsible for the deployment."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Deploy with an AI coding assistant | Vegeta" />
+    <meta
+      property="og:description"
+      content="An AI coding assistant (one that can run commands on your machine) can deploy the Trunks demo from these documents:
+a fresh assistant did so in a test, with the prompt below. For a real deployment it can run the commands while a person
+does the steps in the table below; that has not been tested with an assistant. A person still decides and approves
+everything that concerns access, keys, data and the network, and is responsible for the deployment."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/build/deploy-with-ai/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Deploy with an AI coding assistant | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="An AI coding assistant (one that can run commands on your machine) can deploy the Trunks demo from these documents:
+a fresh assistant did so in a test, with the prompt below. For a real deployment it can run the commands while a person
+does the steps in the table below; that has not been tested with an assistant. A person still decides and approves
+everything that concerns access, keys, data and the network, and is responsible for the deployment."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/deploy-with-ai/" />
+    <link rel="alternate" type="text/markdown" href="/docs/trunks/build/deploy-with-ai.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/toolkit/">Goten</a>
+        <a href="/inbox/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/deploy-with-ai/" aria-current="page">Deploy with an AI coding assistant</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/deploy-with-ai/" aria-current="page">Deploy with an AI coding assistant</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__version">Trunks v0.4.0</p>
+          <h1 class="docs__title">Deploy with an AI coding assistant</h1>
+          <div class="docs__body">
+            <p>
+              An AI coding assistant (one that can run commands on your machine) can deploy the Trunks demo from these documents: a fresh assistant did so in a
+              test, with the prompt below. For a real deployment it can run the commands while a person does the steps in the table below; that has not been
+              tested with an assistant. A person still decides and approves everything that concerns access, keys, data and the network, and is responsible for
+              the deployment.
+            </p>
+            <h2 id="two-rules">Two rules<a class="docs__anchor" href="#two-rules" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>
+                <strong>Keys, real email and real directory data never go to the assistant.</strong> A person types secrets, passwords and tokens, and the
+                assistant never reads the secret files. The assistant works only with the demo&#39;s fictional data.
+              </li>
+              <li>
+                <strong>The assistant stops at access and network steps.</strong> It asks a person before mailbox or OAuth consent, before a model provider is
+                chosen or a data processing agreement is recorded, before <code>sudo</code>, and before anything is opened beyond <code>127.0.0.1</code>.
+              </li>
+            </ol>
+            <h2 id="the-demo">The demo<a class="docs__anchor" href="#the-demo" aria-label="Link to this section">#</a></h2>
+            <p>
+              Needs: Docker with Compose v2 and about 4 GB of memory for Docker (see <a href="/docs/trunks/build/quickstart/#before-you-start">Quick start</a>).
+              The demo uses fictional data, recorded model replies and no outbound connection.
+            </p>
+            <p>Paste this into the assistant:</p>
+            <pre tabindex="0"><code>Deploy the Trunks demo on this machine.
+
+Documentation: https://vegeta-ops.vercel.app/llms.txt lists the Trunks documents. Follow the Quick start,
+section 1 (the demo), and read other documents only when it points to them. The code is at
+https://github.com/vegeta-labs/trunks.
+
+Rules:
+- Use only the Docker Compose projects and volumes the documents name. Never stop, remove or prune any other
+  container, volume, image or network.
+- Never read, print or copy the files in demo-secrets/ or secrets/.
+- Ask me before any sudo command and before opening any port beyond 127.0.0.1.
+- If a step fails, find the cause in the documents and the logs. Do not change the configuration, the code or the
+  security settings to get past it; tell me what failed.
+
+When the demo is running, tell me the address and the demo account to sign in with, and stop.</code></pre>
+            <p>
+              When it is done, open http://127.0.0.1:8080 and sign in with a demo account from the sign-in page. Every <code>up</code> resets the demo; stop it
+              as the <a href="/docs/trunks/build/quickstart/#1-the-demo">Quick start</a> shows.
+            </p>
+            <h2 id="a-real-deployment">A real deployment<a class="docs__anchor" href="#a-real-deployment" aria-label="Link to this section">#</a></h2>
+            <p>
+              The <a href="/docs/trunks/build/quickstart/#2-a-real-deployment">Quick start, section 2</a> is the order of work. The assistant can run the
+              commands; these steps belong to a person:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Step</th>
+                    <th>Who</th>
+                    <th>Why</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="/docs/trunks/build/quickstart/#21-secrets">2.1 Secrets</a>: run <code>init-secrets</code>, keep a copy of the master and HMAC
+                      keys
+                    </td>
+                    <td>Assistant runs it; <strong>person</strong> keeps the copy</td>
+                    <td>The assistant never opens the files</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="/docs/trunks/build/quickstart/#22-configuration-directory">2.2 Configuration</a>: <code>deployment.yaml</code>,
+                      <code>cases.yaml</code>, <code>templates.yaml</code>
+                    </td>
+                    <td>Assistant drafts; <strong>person</strong> checks</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Mailbox access and OAuth consent (<a href="/docs/trunks/build/mailboxes/">Mailboxes</a>)</td>
+                    <td><strong>Person</strong></td>
+                    <td>Grants access to real email</td>
+                  </tr>
+                  <tr>
+                    <td>Model provider and <code>dpa: true</code> (<a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a>)</td>
+                    <td><strong>Person</strong></td>
+                    <td>Decides where investor data goes</td>
+                  </tr>
+                  <tr>
+                    <td>API keys, mailbox passwords, tokens</td>
+                    <td><strong>Person</strong></td>
+                    <td>Rule 1</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/quickstart/#24-https">2.4 HTTPS</a>: DNS, ports 80 and 443</td>
+                    <td><strong>Person</strong> approves</td>
+                    <td>Opens the host to the network</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/trunks/build/quickstart/#25-first-sign-in">2.5 First sign-in</a>: admin password</td>
+                    <td><strong>Person</strong></td>
+                    <td>Rule 1</td>
+                  </tr>
+                  <tr>
+                    <td>Users, roles and the directory (<a href="/docs/trunks/build/users-and-directory/">Users and directory</a>)</td>
+                    <td><strong>Person</strong></td>
+                    <td>
+                      The commands ask for passwords and keep an admin session; the directory holds real investor data. The assistant may draft CSV columns from
+                      the fictional examples
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      DPIA and LIA (<a href="/docs/trunks/build/dpia-template/">DPIA template</a>, <a href="/docs/trunks/build/lia-template/">LIA template</a>)
+                    </td>
+                    <td><strong>Person</strong></td>
+                    <td>The deploying organisation&#39;s assessment</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              For changing the code, the repository&#39;s <code>AGENTS.md</code> tells the assistant how to build and test, and which rules it must not change.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
+            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
+            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+            <li><a href="/inbox/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Contact</h2>
+          <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>
