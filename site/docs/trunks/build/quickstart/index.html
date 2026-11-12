@@ -39,8 +39,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -50,8 +50,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -92,6 +92,10 @@
             <li><a href="/docs/trunks/build/retention/">Retention</a></li>
             <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -123,11 +127,15 @@
                 <li><a href="/docs/trunks/build/retention/">Retention</a></li>
                 <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/trunks/">Trunks</a></p>
           <h1 class="docs__title">Quick start</h1>
-          <p class="docs__version">v0.4.0</p>
+          <p class="docs__version">v0.5.0</p>
           <div class="docs__body">
             <p>This page covers:</p>
             <ol>
@@ -170,8 +178,8 @@
             <p>Build the images from the repository root:</p>
             <pre tabindex="0"><code>docker compose build</code></pre>
             <p>
-              This builds <code>deal-ops-inbox:local</code>, which is used by the <code>app</code>, <code>maintenance</code>, <code>migrate</code> and tool
-              services. It also builds <code>deal-ops-inbox-parser:local</code>, which is used by the <code>parser</code> service.
+              This builds <code>trunks:local</code>, which is used by the <code>app</code>, <code>maintenance</code>, <code>migrate</code> and tool services. It
+              also builds <code>trunks-parser:local</code>, which is used by the <code>parser</code> service.
             </p>
             <h2 id="apparmor-profile-linux-hosts">
               AppArmor profile (Linux hosts)<a class="docs__anchor" href="#apparmor-profile-linux-hosts" aria-label="Link to this section">#</a>
@@ -180,9 +188,9 @@
               On hosts with AppArmor (Ubuntu, Debian), install the parser profile before the first start. Profiles in <code>/etc/apparmor.d/</code> are loaded
               again at every boot; loading it only from the checkout would last until the next reboot.
             </p>
-            <pre tabindex="0"><code>sudo cp deploy/apparmor/doi-parser /etc/apparmor.d/doi-parser
-sudo apparmor_parser -r -W /etc/apparmor.d/doi-parser</code></pre>
-            <p>After an upgrade that changes <code>deploy/apparmor/doi-parser</code>, run both commands again.</p>
+            <pre tabindex="0"><code>sudo cp deploy/apparmor/trunks-parser /etc/apparmor.d/trunks-parser
+sudo apparmor_parser -r -W /etc/apparmor.d/trunks-parser</code></pre>
+            <p>After an upgrade that changes <code>deploy/apparmor/trunks-parser</code>, run both commands again.</p>
             <ul>
               <li>The profile needs <strong>AppArmor 4</strong>, for example Ubuntu 24.04, because it uses the <code>userns</code> rule.</li>
               <li>If the profile is not loaded, the <code>parser</code> container does not start. It is never run unconfined.</li>
@@ -194,8 +202,8 @@ sudo apparmor_parser -r -W /etc/apparmor.d/doi-parser</code></pre>
             </ul>
             <h2 id="1-the-demo">1. The demo<a class="docs__anchor" href="#1-the-demo" aria-label="Link to this section">#</a></h2>
             <pre tabindex="0"><code>mkdir -m 700 demo-secrets
-docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/demo-secrets:/out&quot; deal-ops-inbox:local init-secrets /out
-DOI_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/compose.demo.yml up -d</code></pre>
+docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/demo-secrets:/out&quot; trunks:local init-secrets /out
+TRUNKS_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/compose.demo.yml up -d</code></pre>
             <p>Create the secret directory yourself first. If it does not exist, Docker creates it as root and <code>init-secrets</code> fails.</p>
             <p>Open http://127.0.0.1:8080. The sign-in page lists the three demo accounts:</p>
             <div class="docs__table" tabindex="0">
@@ -228,9 +236,7 @@ DOI_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/co
             </div>
             <p>What the demo does:</p>
             <ul>
-              <li>
-                It runs as its own Compose project (<code>deal-ops-inbox-demo</code>) with its own volumes. It never touches the volumes of a real deployment.
-              </li>
+              <li>It runs as its own Compose project (<code>trunks-demo</code>) with its own volumes. It never touches the volumes of a real deployment.</li>
               <li>It loads a fictional directory: three deals with their investors and contacts.</li>
               <li>It receives about 30 fictional emails from built-in <code>.eml</code> files.</li>
               <li>It uses recorded model replies (&quot;replay&quot;), so no model is called.</li>
@@ -265,11 +271,11 @@ DOI_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/co
               webhook or OIDC sign-in. A demo database can never become a real deployment, and a real database is never reset by the demo.
             </p>
             <p>Stop it with:</p>
-            <pre tabindex="0"><code>DOI_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/compose.demo.yml down</code></pre>
+            <pre tabindex="0"><code>TRUNKS_SECRETS_DIR=./demo-secrets docker compose -f docker-compose.yml -f deploy/compose.demo.yml down</code></pre>
             <h2 id="2-a-real-deployment">2. A real deployment<a class="docs__anchor" href="#2-a-real-deployment" aria-label="Link to this section">#</a></h2>
             <h3 id="21-secrets">2.1 Secrets<a class="docs__anchor" href="#21-secrets" aria-label="Link to this section">#</a></h3>
             <pre tabindex="0"><code>mkdir -m 700 secrets
-docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&quot; deal-ops-inbox:local init-secrets /out</code></pre>
+docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&quot; trunks:local init-secrets /out</code></pre>
             <p><code>init-secrets</code> writes random passwords and keys, one file each:</p>
             <div class="docs__table" tabindex="0">
               <table>
@@ -285,7 +291,7 @@ docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&
                     <td>the database and <code>migrate</code></td>
                   </tr>
                   <tr>
-                    <td><code>doi_app_db_password</code>, <code>doi_maintenance_db_password</code>, <code>doi_rotation_db_password</code></td>
+                    <td><code>trunks_app_db_password</code>, <code>trunks_maintenance_db_password</code>, <code>trunks_rotation_db_password</code></td>
                     <td><code>migrate</code>, which sets the three role passwords</td>
                   </tr>
                   <tr>
@@ -301,11 +307,11 @@ docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&
                     <td><code>rotate</code></td>
                   </tr>
                   <tr>
-                    <td><code>doi_master_keys</code></td>
+                    <td><code>trunks_master_keys</code></td>
                     <td>the encryption master keys (<code>k1:&lt;base64&gt;</code>)</td>
                   </tr>
                   <tr>
-                    <td><code>doi_hmac_key</code></td>
+                    <td><code>trunks_hmac_key</code></td>
                     <td>the deployment HMAC key</td>
                   </tr>
                   <tr>
@@ -325,10 +331,10 @@ docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&
                 cannot.
               </li>
               <li>Running <code>init-secrets</code> again only adds missing files. It never overwrites a file.</li>
-              <li>Compose reads the secrets from <code>./secrets</code>. Set <code>DOI_SECRETS_DIR</code> to use another directory.</li>
+              <li>Compose reads the secrets from <code>./secrets</code>. Set <code>TRUNKS_SECRETS_DIR</code> to use another directory.</li>
               <li>
-                <strong>Keep a copy of <code>doi_master_keys</code> and <code>doi_hmac_key</code> somewhere safe.</strong> Without them the stored data cannot
-                be read. See <a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a>.
+                <strong>Keep a copy of <code>trunks_master_keys</code> and <code>trunks_hmac_key</code> somewhere safe.</strong> Without them the stored data
+                cannot be read. See <a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a>.
               </li>
             </ul>
             <h3 id="22-configuration-directory">
@@ -336,7 +342,7 @@ docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&
             </h3>
             <p>Copy the default configuration and point Compose at the copy:</p>
             <pre tabindex="0"><code>cp -r config/default config/local
-echo 'DOI_CONFIG_DIR=./config/local' &gt;&gt; .env</code></pre>
+echo 'TRUNKS_CONFIG_DIR=./config/local' &gt;&gt; .env</code></pre>
             <p>Edit the three files: <code>deployment.yaml</code>, <code>cases.yaml</code> and <code>templates.yaml</code>.</p>
             <ul>
               <li>The configuration is checked at every start. An invalid file stops the start, and the error names the file and the line.</li>
@@ -371,14 +377,14 @@ echo 'DOI_CONFIG_DIR=./config/local' &gt;&gt; .env</code></pre>
               <li><code>app</code> and <code>maintenance</code>, which start only after <code>migrate</code> has finished successfully.</li>
             </ol>
             <p>ClamAV can take several minutes on the first start while it loads its database.</p>
-            <p>The app listens on <code>127.0.0.1:8080</code> on the host. Set <code>DOI_PORT</code> to change the port.</p>
+            <p>The app listens on <code>127.0.0.1:8080</code> on the host. Set <code>TRUNKS_PORT</code> to change the port.</p>
             <h3 id="24-https">2.4 HTTPS<a class="docs__anchor" href="#24-https" aria-label="Link to this section">#</a></h3>
             <p>The session cookie always carries <code>Secure</code>, so use HTTPS. You have two options.</p>
             <p>
               <strong>Option A: the bundled proxy.</strong> The override file <code>deploy/compose.proxy.yml</code> adds Caddy in front of the app. Caddy
               obtains a certificate for your domain automatically. Your domain&#39;s DNS must point at the host, and ports 80 and 443 must be reachable.
             </p>
-            <pre tabindex="0"><code>echo 'DOI_DOMAIN=inbox.capital.example' &gt;&gt; .env
+            <pre tabindex="0"><code>echo 'TRUNKS_DOMAIN=inbox.capital.example' &gt;&gt; .env
 echo 'TRUST_PROXY=172.30.99.10' &gt;&gt; .env
 # every compose file of this deployment, kept in .env so that every later command uses all of them;
 # leave out docker-compose.override.yml if you have none
@@ -394,8 +400,8 @@ docker compose up -d</code></pre>
             <p>
               The proxy has a fixed address, <code>172.30.99.10</code>, on a fixed network <code>172.30.99.0/24</code> (only this override file takes that
               range, so the demo or a restored copy can run next to it), and <code>TRUST_PROXY</code> must name that address (the app trusts addresses, not
-              service names). If that range is already used on your host, set <code>DOI_EDGE_SUBNET</code> and <code>DOI_PROXY_IP</code> to another range and
-              address, and <code>TRUST_PROXY</code> to the same address. Caddy fetches its certificate from Let&#39;s Encrypt: an outbound connection that
+              service names). If that range is already used on your host, set <code>TRUNKS_EDGE_SUBNET</code> and <code>TRUNKS_PROXY_IP</code> to another range
+              and address, and <code>TRUST_PROXY</code> to the same address. Caddy fetches its certificate from Let&#39;s Encrypt: an outbound connection that
               carries no email content.
             </p>
             <p>
@@ -571,27 +577,27 @@ docker compose up -d</code></pre>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>DOI_CONFIG_DIR</code></td>
+                    <td><code>TRUNKS_CONFIG_DIR</code></td>
                     <td><code>./config/default</code></td>
                     <td>The configuration directory, mounted read-only at <code>/config</code></td>
                   </tr>
                   <tr>
-                    <td><code>DOI_SECRETS_DIR</code></td>
+                    <td><code>TRUNKS_SECRETS_DIR</code></td>
                     <td><code>./secrets</code></td>
                     <td>The secret directory</td>
                   </tr>
                   <tr>
-                    <td><code>DOI_PORT</code></td>
+                    <td><code>TRUNKS_PORT</code></td>
                     <td><code>8080</code></td>
                     <td>The host port on <code>127.0.0.1</code></td>
                   </tr>
                   <tr>
-                    <td><code>DOI_VERSION</code></td>
+                    <td><code>TRUNKS_VERSION</code></td>
                     <td><code>local</code></td>
                     <td>The image tag</td>
                   </tr>
                   <tr>
-                    <td><code>DOI_DOMAIN</code></td>
+                    <td><code>TRUNKS_DOMAIN</code></td>
                     <td><code>localhost</code></td>
                     <td>The domain for the bundled proxy</td>
                   </tr>
@@ -601,17 +607,17 @@ docker compose up -d</code></pre>
                     <td>The proxy addresses whose forwarding headers the app trusts</td>
                   </tr>
                   <tr>
-                    <td><code>DOI_ACTIVE_KEY</code></td>
+                    <td><code>TRUNKS_ACTIVE_KEY</code></td>
                     <td>unset</td>
                     <td>Only for key rotation (see <a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a>)</td>
                   </tr>
                   <tr>
-                    <td><code>DOI_EDGE_SUBNET</code></td>
+                    <td><code>TRUNKS_EDGE_SUBNET</code></td>
                     <td><code>172.30.99.0/24</code></td>
                     <td>The network of the app and the bundled proxy</td>
                   </tr>
                   <tr>
-                    <td><code>DOI_PROXY_IP</code></td>
+                    <td><code>TRUNKS_PROXY_IP</code></td>
                     <td><code>172.30.99.10</code></td>
                     <td>The bundled proxy&#39;s fixed address (what <code>TRUST_PROXY</code> names)</td>
                   </tr>
@@ -633,10 +639,10 @@ docker compose up -d</code></pre>
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -644,8 +650,7 @@ docker compose up -d</code></pre>
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -653,7 +658,7 @@ docker compose up -d</code></pre>
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

@@ -1,12 +1,12 @@
 # Walk the sample deal
 
-> Goten v1.3.1. Source: https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/use/getting-started.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/getting-started.md
 
 Go through all three steps with the built-in Northwind Robotics seed round. It has 12 investors and 16 bank lines, in pounds.
 
 ## What you need
 
-- A modern browser. The hosted copy is at https://deal-ops-toolkit.vercel.app.
+- A modern browser. The hosted copy is at https://vegeta-goten.vercel.app.
 - Nothing else. The sample needs no files.
 
 Loading the sample replaces whatever is on the page and clears the activity log. If there is anything to lose, Goten asks first: click **Replace with sample** to go ahead or **Cancel** to stop. This cannot be undone, so [export what you need](https://vegeta-ops.vercel.app/docs/goten/use/exports-and-records.md) first.

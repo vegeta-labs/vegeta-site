@@ -1,6 +1,6 @@
 # Read a case
 
-> Trunks v0.4.0. Source: https://github.com/vegeta-labs/trunks/blob/d710459cd237c77459f388cbda226e2431260c1f/docs/en/use/reading-a-case.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/use/reading-a-case.md
 
 Each inbound email becomes one case. Read it in this order: what the email says, what kind of email Trunks thinks it is, the facts it pulled out, who and what it linked it to, and why it rated the risk as it did.
 
@@ -93,7 +93,7 @@ Each type has a starting risk and a usual queue. These are the defaults; your ad
 Compare each value with the email. Beside each one:
 
 - **Confirm** marks the value as checked by a person, and shows the tag **confirmed**.
-- **Edit** lets you enter the right value, then **Save**. Most values are typed. For a yes/no value such as **Change requested**, choose **Yes**, **No** or **No value**. For a list such as **Details to change** or **Document types**, tick the boxes that apply. Leave it empty, or tick nothing, and save to clear it.
+- **Edit** lets you enter the right value, then **Save**. Most values, such as amounts, dates and references, are typed. For a value with a fixed set of answers, such as **Sender role**, choose one from the drop-down. For a yes/no value such as **Change requested**, choose **Yes** or **No**. For a list such as **Details to change** or **Document types**, tick the boxes that apply. To clear a value, leave the box empty, choose **No value**, or tick nothing, and save.
 
 Some values come with a note in brackets:
 

@@ -80,13 +80,13 @@ await run('home-phone', '/', PHONE, [
   ['modules', at('#modules')],
   ['menu', async (p) => p.click('.nav__menu > summary')],
 ])
-// /toolkit/ (the accepted page, moved): the same frames as before the move
+// /goten/ (the accepted page, moved): the same frames as before the move
 const deck3 = [hero, ['show', at('[data-scene]')], ['deck0', deckAt(0)], ['deck50', deckAt(0.5)], ['deck100', deckAt(1)], ['footer', bottom]]
-await run('toolkit-light', '/toolkit/', DESK, deck3)
-await run('toolkit-dark', '/toolkit/', DARK, deck3.slice(0, 3))
-await run('toolkit-phone', '/toolkit/', PHONE, [hero, ['steps', at('#step-1')]])
-// /inbox/
-const inbox = [
+await run('goten-light', '/goten/', DESK, deck3)
+await run('goten-dark', '/goten/', DARK, deck3.slice(0, 3))
+await run('goten-phone', '/goten/', PHONE, [hero, ['steps', at('#step-1')]])
+// /trunks/
+const trunksSteps = [
   hero,
   ['show', at('[data-scene]')],
   ['problem', at('#problem')],
@@ -102,23 +102,23 @@ const inbox = [
   ['faq', at('#faq')],
   ['footer', bottom],
 ]
-await run('inbox-light', '/inbox/', DESK, inbox)
-await run('inbox-dark', '/inbox/', DARK, [hero, ['show', at('[data-scene]')], ['deck33', deckAt(0.33)], ['trust', at('#trust')], ['cases', at('#cases')]])
-await run('inbox-short', '/inbox/', SHORT, [hero, ['deck0', deckAt(0)], ['deck100', deckAt(1)]])
-await run('inbox-phone', '/inbox/', PHONE, [
+await run('trunks-light', '/trunks/', DESK, trunksSteps)
+await run('trunks-dark', '/trunks/', DARK, [hero, ['show', at('[data-scene]')], ['deck33', deckAt(0.33)], ['trust', at('#trust')], ['cases', at('#cases')]])
+await run('trunks-short', '/trunks/', SHORT, [hero, ['deck0', deckAt(0)], ['deck100', deckAt(1)]])
+await run('trunks-phone', '/trunks/', PHONE, [
   hero,
   ['scene', at('[data-scene]')],
   ['steps', at('#step-1')],
   ['cases', at('#case-bank')],
   ['menu', async (p) => p.click('.nav__menu > summary')],
 ])
-await run('inbox-reduced', '/inbox/', REDUCED, [['deck', at('#step-1')]])
-await run('inbox-faqlink', '/inbox/#ifaq-kyc', DESK, [['open', async () => {}]])
-// /inbox/demo/ (the Inbox's own package, under the site's headers)
-await run('demo-light', '/inbox/demo/#case=E0225', DESK, [['case', async () => {}]])
-await run('demo-dark', '/inbox/demo/', DARK, [['list', async () => {}]])
-await run('demo-phone', '/inbox/demo/', PHONE, [['list', async () => {}]])
-// an old link to the Toolkit's FAQ lands on /toolkit/
+await run('trunks-reduced', '/trunks/', REDUCED, [['deck', at('#step-1')]])
+await run('trunks-faqlink', '/trunks/#ifaq-kyc', DESK, [['open', async () => {}]])
+// /trunks/demo/ (Trunks's own package, under the site's headers)
+await run('demo-light', '/trunks/demo/#case=E0225', DESK, [['case', async () => {}]])
+await run('demo-dark', '/trunks/demo/', DARK, [['list', async () => {}]])
+await run('demo-phone', '/trunks/demo/', PHONE, [['list', async () => {}]])
+// an old link to Goten's FAQ lands on /goten/
 await run('oldlink', '/#faq-import', DESK, [['lands', async () => {}]])
 
 // the blog (plan 22)
@@ -157,9 +157,9 @@ for (const [name, path] of DOCS) {
 // module pages: once the global nav has scrolled away the page nav shows, and each of its links lands the section's
 // heading below it (plan 14 R10)
 for (const [path, vp] of [
-  ['/inbox/', DESK],
-  ['/toolkit/', DESK],
-  ['/inbox/', PHONE],
+  ['/trunks/', DESK],
+  ['/goten/', DESK],
+  ['/trunks/', PHONE],
 ]) {
   const p = await b.newPage(vp)
   await p.goto(BASE + path)
@@ -167,7 +167,7 @@ for (const [path, vp] of [
   await p.evaluate(() => scrollTo(0, 400))
   await p.waitForTimeout(500)
   if (!(await p.$eval('[data-subnav]', (n) => n.classList.contains('is-on')))) errs.push(`${path}: the page nav did not show after scrolling`)
-  for (const id of await p.$$eval('[data-subnav] [data-nav-links] a', (as) => as.map((a) => a.getAttribute('href').slice(1)))) {
+  for (const id of await p.$$eval('[data-subnav] [data-nav-links] a[href^="#"]', (as) => as.map((a) => a.getAttribute('href').slice(1)))) {
     await p.click(`[data-subnav] [data-nav-links] a[href="#${id}"]`)
     await p.waitForTimeout(1500)
     const m = await p.evaluate((id) => {
@@ -184,7 +184,7 @@ for (const [path, vp] of [
 
 // page width at phone sizes, and the nav never wraps from 761 to 1200 px
 const p = await b.newPage()
-for (const path of ['/', '/toolkit/', '/inbox/', '/inbox/demo/', '/docs/', '/docs/goten/build/csv-reference/']) {
+for (const path of ['/', '/goten/', '/trunks/', '/trunks/demo/', '/docs/', '/docs/goten/build/csv-reference/']) {
   for (const w of [320, 375, 390, 768]) {
     await p.setViewportSize({ width: w, height: 800 })
     await p.goto(BASE + path)
@@ -192,7 +192,7 @@ for (const path of ['/', '/toolkit/', '/inbox/', '/inbox/demo/', '/docs/', '/doc
     const docW = await p.evaluate(() => document.documentElement.scrollWidth)
     if (docW > w) errs.push(`${path} at ${w}px: page is ${docW}px wide`)
   }
-  if (path === '/inbox/demo/') continue
+  if (path === '/trunks/demo/') continue
   const wrapped = []
   for (let w = 761; w <= 1200; w++) {
     await p.setViewportSize({ width: w, height: 800 })

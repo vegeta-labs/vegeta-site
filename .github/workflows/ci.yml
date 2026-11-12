@@ -16,10 +16,10 @@ jobs:
       - run: npm ci
       - name: Lint (site-src, scripts)
         run: npm run lint
-      - name: Public Toolkit at the commit in toolkit.ref (app sentences, labels, release notes)
-        run: npm run toolkit:fetch
-      - name: Public Inbox at the commit in inbox.ref (release notes, UI text, default categories)
-        run: npm run inbox:fetch
+      - name: Public Goten at the commit in goten.ref (app sentences, labels, release notes)
+        run: npm run goten:fetch
+      - name: Public Trunks at the commit in trunks.ref (release notes, UI text, default categories)
+        run: npm run trunks:fetch
       - name: Public product docs at the docs pin in site-src/docs.json (the docs pages are re-rendered and compared)
         run: npm run docs:fetch
       - name: Website checks (CSP markup, links, docs pages against the docs pin, app sentences, P9 figures, demo package hashes, script build and size, source-backed illustrations)

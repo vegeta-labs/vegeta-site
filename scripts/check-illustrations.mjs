@@ -1,5 +1,5 @@
 // Step illustrations are checked as complete text sequences against the pinned apps and locked demo.
-// The Toolkit's pure sample/engines and the Inbox's display names are bundled in a temporary directory, leaving vendor/ clean.
+// The Goten's pure sample/engines and Trunks's display names are bundled in a temporary directory, leaving vendor/ clean.
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -19,11 +19,11 @@ const text = (s) =>
 const money = (v) => '£' + (v / 100).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 const pounds = (v) => '£' + (v / 100).toLocaleString('en-GB')
 
-export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }) {
+export function checkIllustrations({ html, css, goten, trunks, snapshot, fail }) {
   const scratch = mkdtempSync(join(tmpdir(), 'site-illustrations-'))
   let source
   try {
-    const from = (file) => JSON.stringify(resolve(toolkit, 'src/lib', file + '.ts'))
+    const from = (file) => JSON.stringify(resolve(goten, 'src/lib', file + '.ts'))
     const entry = join(scratch, 'entry.mjs')
     writeFileSync(
       entry,
@@ -31,12 +31,12 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
       import * as sample from ${from('sample')};
       import {reconcile, decide} from ${from('reconcile')};
       import {distribute} from ${from('waterfall')};
-      import {displayName} from ${JSON.stringify(resolve(inbox, 'src/web/presentation.ts'))};
+      import {displayName} from ${JSON.stringify(resolve(trunks, 'src/web/presentation.ts'))};
       const rec = (decisions) => reconcile({commitments: sample.SAMPLE_COMMITMENTS, lines: sample.SAMPLE_BANK,
         decisions, asOf: sample.SAMPLE_SETTINGS.asOf, thresholdDays: sample.SAMPLE_SETTINGS.agedThresholdDays}).result;
       const line = sample.SAMPLE_BANK.find(x => x.id === 't03');
       const commitment = sample.SAMPLE_COMMITMENTS.find(x => x.id === 'c03');
-      const expected = ${readFileSync(join(toolkit, 'src/lib/sample.expected.json'), 'utf8')};
+      const expected = ${readFileSync(join(goten, 'src/lib/sample.expected.json'), 'utf8')};
       const holdings = expected.allocation.filter(x=>x.invested>0).map(x=>({id:x.id,
         name:sample.SAMPLE_COMMITMENTS.find(c=>c.id===x.id).name,capital:x.invested}));
       globalThis.illustrationSource = {displayName, sample, expected, before:rec({}), after:rec({t03:decide(line,commitment)}),
@@ -52,10 +52,10 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
     rmSync(scratch, { recursive: true, force: true })
   }
   const { sample, expected, before, after, exit } = source
-  // Category, field and template names are shown as the released Inbox UI names them; an ID without a UI name fails.
+  // Category, field and template names are shown as the released Trunks UI names them; an ID without a UI name fails.
   const named = (id) => {
     const name = source.displayName(id)
-    if (typeof id !== 'string' || !name || name === id) fail(`illustrations: the Inbox UI has no display name for ${id}`)
+    if (typeof id !== 'string' || !name || name === id) fail(`illustrations: Trunks UI has no display name for ${id}`)
     return name
   }
   const commits = sample.SAMPLE_COMMITMENTS
@@ -89,12 +89,12 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
   if (!reply || reply.status !== 'draft' || !reply.checkOk) fail('illustrations: E0001 no longer has the checked payment_received draft')
   if (!links?.authenticatedSender || links?.ledger !== 'not_received') fail('illustrations: E0024 authentication or ledger changed')
   // States after human approval and ledger wording come from the released UI, not invented snapshot states.
-  const ui = readFileSync(join(inbox, 'src/web/CaseE3.tsx'), 'utf8')
+  const ui = readFileSync(join(trunks, 'src/web/CaseE3.tsx'), 'utf8')
   const approved = /approved: '([^']+)'/.exec(ui)?.[1]
   const draft = /draft: '([^']+)'/.exec(ui)?.[1]
   const ledger = /l\.ledger === 'not_received' \? '([^']+)'/.exec(ui)?.[1]
   for (const phrase of ['Copy text', 'authenticated sender', 'computed by the rules:'])
-    if (!ui.includes(phrase)) fail(`illustrations: Inbox UI no longer contains ${phrase}`)
+    if (!ui.includes(phrase)) fail(`illustrations: Trunks UI no longer contains ${phrase}`)
   const want = {
     reconciliation: [
       'Bank statement',
@@ -252,7 +252,7 @@ export function checkIllustrations({ html, css, toolkit, inbox, snapshot, fail }
     check: `${links.contact.name} is an authenticated sender, linked to commitment ${links.commitment.reference} and ${links.deal}. Imported Goten ledger says not fully received. The rules compute ${checked.e3.risk.computed} risk.`,
     prepare: `The ${named(reply.templateId)} draft tells ${email.fromName.split(' ')[0]} her ${replyMoney} commitment is paid in full. A person approves the reply and copies the text to send from their own mail client.`,
   }
-  const keys = { '/toolkit/': ['reconciliation', 'allocation', 'exit'], '/inbox/': ['read', 'understand', 'check', 'prepare'] }
+  const keys = { '/goten/': ['reconciliation', 'allocation', 'exit'], '/trunks/': ['read', 'understand', 'check', 'prepare'] }
   for (const [url, names] of Object.entries(keys)) {
     const cards = [...html[url].matchAll(/<article\b[^>]*\bdata-card\b[^>]*>[\s\S]*?<\/article>/g)]
     if (cards.length !== names.length) fail(`${url}: expected ${names.length} illustration cards`)

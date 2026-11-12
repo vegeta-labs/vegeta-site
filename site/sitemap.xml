@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://vegeta-ops.vercel.app/</loc></url>
-  <url><loc>https://vegeta-ops.vercel.app/toolkit/</loc></url>
-  <url><loc>https://vegeta-ops.vercel.app/inbox/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/goten/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/trunks/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/operations/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/investors/</loc></url>
@@ -70,6 +70,7 @@
   <url><loc>https://vegeta-ops.vercel.app/docs/goten/build/csv-reference/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/goten/build/architecture/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/goten/build/verification/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/goten/release-notes/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/trunks/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/trunks/use/getting-started/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/trunks/use/reading-a-case/</loc></url>
@@ -90,4 +91,6 @@
   <url><loc>https://vegeta-ops.vercel.app/docs/trunks/build/lia-template/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/trunks/build/retention/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/trunks/build/backup-and-upgrade/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/trunks/release-notes/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/changelog/</loc></url>
 </urlset>

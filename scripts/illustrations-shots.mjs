@@ -25,7 +25,7 @@ try {
     page.on('pageerror', (e) => errors.push(`${variant}: ${e.message}`))
     page.on('console', (m) => m.type() === 'error' && errors.push(`${variant}: ${m.text()}`))
     if (variant === 'noobserver') await page.addInitScript(() => delete window.IntersectionObserver)
-    for (const path of ['/toolkit/', '/inbox/']) {
+    for (const path of ['/goten/', '/trunks/']) {
       await page.goto(base + path)
       await page.evaluate(() => document.fonts.ready)
       const cards = page.locator('[data-card]')
@@ -118,7 +118,7 @@ try {
     const page = await browser.newPage(variants[variant])
     page.setDefaultTimeout(10000)
     page.on('pageerror', (e) => errors.push(`independent/${variant}: ${e.message}`))
-    for (const path of ['/toolkit/', '/inbox/']) {
+    for (const path of ['/goten/', '/trunks/']) {
       await page.goto(base + path)
       const count = await page.locator('[data-card]').count()
       for (let i = 1; i < count; i++) {
@@ -163,7 +163,7 @@ try {
   // Visibility and reduced-motion preference changes must also work during an active cycle.
   const page = await browser.newPage(variants.light)
   page.on('pageerror', (e) => errors.push(`lifecycle: ${e.message}`))
-  for (const path of ['/toolkit/', '/inbox/']) {
+  for (const path of ['/goten/', '/trunks/']) {
     await page.goto(base + path)
     const focus = () =>
       page.evaluate(() => {

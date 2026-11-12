@@ -1,6 +1,6 @@
 # Withdrawing an investor and changing who pays a fee
 
-> Goten v1.3.1. Source: https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/use/withdrawal-and-fee-payer.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/withdrawal-and-fee-payer.md
 
 Both of these are for before closing. Goten records each one beside your investor list, so your list is never rewritten and each can be undone.
 

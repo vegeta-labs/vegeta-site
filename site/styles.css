@@ -2949,7 +2949,7 @@ html:not(.js) .subnav {
   border-radius: 50%;
   background: var(--peach);
 }
-.module--inbox .module__runs::before {
+.module--trunks .module__runs::before {
   background: var(--sage);
 }
 .module__name {
@@ -3033,6 +3033,83 @@ html:not(.js) .subnav {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 }
+/* plan 36 B1: a module in development, under the released columns; its text sits on the second column's edge */
+.modnext {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 36px 0 0;
+  padding: 40px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.modnext > div + div {
+  padding-left: 48px;
+}
+.modnext__name {
+  font-size: clamp(36px, 4vw, 56px);
+}
+.modnext__for {
+  max-width: none;
+  margin-top: 0;
+  color: var(--ink-text);
+}
+.modnext__what {
+  max-width: 46ch;
+  margin: 12px 0 0;
+  color: rgba(246, 248, 243, 0.72);
+  font-size: 17px;
+  line-height: 1.5;
+}
+.modnext__state::before {
+  background: var(--lilac);
+}
+@media (max-width: 900px) {
+  .modnext {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
+    padding: 36px 0 20px;
+  }
+  .modnext > div + div {
+    margin-top: 22px;
+    padding-left: 0;
+  }
+}
+/* plan 36 C2: the module's current release under its name, leading to the changelog */
+.module__version {
+  margin: 10px 0 0;
+  font: 400 13px/1.4 var(--mono);
+}
+.module__version a {
+  color: rgba(246, 248, 243, 0.6);
+  text-decoration: none;
+}
+.module__version a:hover {
+  color: var(--ink-text);
+}
+/* plan 36 A2, A3: one quiet line to the feedback form, as the FAQ's last row and where an article's text ends */
+.faq__ask {
+  /* level with the row's heading, as the first question of every group is */
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.faq__ask a,
+.article p.article__ask a {
+  font-weight: 500;
+  text-decoration: none;
+}
+.article__ask {
+  /* plan 36 §11 F5: where the text ends, before Keep reading */
+  margin: 56px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 17px;
+}
+.article p.article__ask a {
+  color: var(--text);
+}
 /* where each module fits in a deal: stages across, one band per module (the module colours, plan 13 N23) */
 .fits {
   width: calc(100% + 16px);
@@ -3068,11 +3145,24 @@ html:not(.js) .subnav {
   font-size: 16px;
   line-height: 1.45;
 }
-.fits__toolkit {
+.fits__goten {
   background: color-mix(in srgb, #f3c7a3 45%, transparent);
 }
-.fits__inbox {
+.fits__trunks {
   background: color-mix(in srgb, #cfe0b8 55%, transparent);
+}
+.fits__next {
+  background: color-mix(in srgb, var(--lilac) 22%, transparent);
+  outline: 1px dashed color-mix(in srgb, var(--lilac) 80%, var(--text));
+  outline-offset: -1px;
+}
+.fits__state {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font: 500 11px/1.4 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 .fits td small {
   display: block;
@@ -3081,10 +3171,10 @@ html:not(.js) .subnav {
   font-size: 14px;
 }
 @media (prefers-color-scheme: dark) {
-  .fits__toolkit {
+  .fits__goten {
     background: color-mix(in srgb, #6b4630 70%, transparent);
   }
-  .fits__inbox {
+  .fits__trunks {
     background: color-mix(in srgb, #3e4d33 80%, transparent);
   }
 }
@@ -3110,6 +3200,9 @@ html:not(.js) .subnav {
   }
   .fits td {
     margin-top: 8px;
+  }
+  .fits .fits__gap {
+    display: none;
   }
   .fits td[data-stage]::before {
     content: attr(data-stage);

@@ -1,6 +1,6 @@
 # Mailboxes
 
-> Trunks v0.4.0. Source: https://github.com/vegeta-labs/trunks/blob/d710459cd237c77459f388cbda226e2431260c1f/docs/en/mailboxes.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/mailboxes.md
 
 Every mailbox is **read-only**.
 
@@ -196,8 +196,8 @@ gmail:
   client_id_env: GMAIL_CLIENT_ID
   client_secret_env: GMAIL_CLIENT_SECRET
   pubsub:
-    topic: projects/capital-ops/topics/doi-gmail
-    subscription: projects/capital-ops/subscriptions/doi-gmail-pull
+    topic: projects/capital-ops/topics/trunks-gmail
+    subscription: projects/capital-ops/subscriptions/trunks-gmail-pull
     service_account_env: GMAIL_PUBSUB_SA
 ```
 
@@ -318,8 +318,8 @@ Setting up the scope and the role assignment (example):
 
 ```powershell
 New-ServicePrincipal -AppId '<app-id>' -ObjectId '<enterprise application object id>' -DisplayName 'Trunks — Operations Inbox'
-New-ManagementScope -Name 'Deal Ops Inbox mailboxes' -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'legal@capital.example'"
-New-ManagementRoleAssignment -App '<app-id>' -Role 'Application Mail.Read' -CustomResourceScope 'Deal Ops Inbox mailboxes'
+New-ManagementScope -Name 'Trunks mailboxes' -RecipientRestrictionFilter "PrimarySmtpAddress -eq 'legal@capital.example'"
+New-ManagementRoleAssignment -App '<app-id>' -Role 'Application Mail.Read' -CustomResourceScope 'Trunks mailboxes'
 ```
 
 Entra (module `Microsoft.Graph`):

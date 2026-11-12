@@ -1,0 +1,20 @@
+{
+  "package": "trunks-demo-v0.5.0.tar.gz",
+  "sha256": "13f77aa9646a7a6472da158e44b80cf7d6bbda3bbf54c2512b320a2de076e3a2",
+  "version": "0.5.0",
+  "commit": "f8a0d5530947606ecf8fc1a99305490fe63fb85a",
+  "built_at": "2026-11-12T15:40:33.251Z",
+  "manifest_sha256": "6c15f05a455b85ae4af73dece81a55653e5743796d2a444e7c5680b91fe0e589",
+  "files": {
+    "assets/index-BZbPWPmw.js": "a6908104766a0fc273b20fea42ccbe4967186f7f77acf64d7bd80f1a3a69d46e",
+    "assets/index-DvKBuFmc.css": "ada416ef99fb0b39edf476e241681bc1cb941f534f7d1e4c6b4e21222393a0a8",
+    "assets/inter-latin-wght-Dx4kXJAl.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "assets/plex-mono-latin-400-DMJ8VG8y.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+    "assets/plex-mono-latin-500-DSY6xOcd.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+    "data/snapshot.js": "fbc7e6c88f383361fd4548221f476bfc4c8a676459126ec9ccc3e3ff8762fd53",
+    "index.html": "6ac278da34e8f6f649e5e3f942f3fafe21f4039461488b1cfbedffdb316155d5",
+    "licenses/ibm-plex-mono-OFL.txt": "23b0a9d0c6d3f140a0b77e483c5cfa6bba574325ef5cb189ed9f2fec4884533f",
+    "licenses/inter-OFL.txt": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345",
+    "snapshot-info.json": "51ae91c0c2977337d21a0ba17becc7353d5c0be713dfc87a2c2d2ec8069308c5"
+  }
+}

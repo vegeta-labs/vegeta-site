@@ -1,6 +1,6 @@
 # Run and build Goten
 
-> Goten v1.3.1. Source: https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/build/README.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/build/README.md
 
 Goten is a static single-page app with no server: React 19, TypeScript and Vite. Everything is calculated in the browser. These pages are for developers and for anyone working with an AI coding agent.
 
@@ -15,7 +15,7 @@ For how operations staff use the app, see [Use Goten](https://vegeta-ops.vercel.
 
 The app has no backend and no account. Confirmed in the code:
 
-- Deal state lives in a React reducer (`src/state.ts`) and is saved to the browser's `localStorage` under the key `deal-ops-toolkit:v1`, as JSON with a schema version. The theme and tour progress are kept apart under `deal-ops-toolkit:theme` and `deal-ops-toolkit:tour`.
+- Deal state lives in a React reducer (`src/state.ts`) and is saved to the browser's `localStorage` under the key `goten:v1`, as JSON with a schema version. The theme and tour progress are kept apart under `goten:theme` and `goten:tour`.
 - Nothing is sent over the network. The content security policy in `vercel.json` sets `connect-src 'none'`, and an end-to-end test records every request.
 - Files are read locally with the File API. Exports are downloaded through a `Blob`, and messages are copied through the clipboard.
 
@@ -32,4 +32,4 @@ When you work with an AI coding agent:
 - Have the agent run the checks in [Verification](https://vegeta-ops.vercel.app/docs/goten/build/verification.md) before you rely on a change.
 - Keep money calculations in `src/lib` and whole-number arithmetic throughout, as described in [Architecture](https://vegeta-ops.vercel.app/docs/goten/build/architecture.md). Keep the Python oracle independent: if a rule changes, rewrite it from the written rules rather than from the TypeScript.
 
-Limits that matter when you extend it: one currency per deal, one investment and one exit, the same terms for every investor. See the [README](https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/README.md) for scope and the [requirements](https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/01_PRD.md) for the full rule list. What each release contains is in the [release notes](https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/RELEASE_NOTES.md).
+Limits that matter when you extend it: one currency per deal, one investment and one exit, the same terms for every investor. See the [README](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/README.md) for scope and the [requirements](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/01_PRD.md) for the full rule list. What each release contains is in the [release notes](https://vegeta-ops.vercel.app/docs/goten/release-notes.md).

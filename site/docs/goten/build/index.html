@@ -48,8 +48,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -59,8 +59,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -95,6 +95,10 @@
             <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
             <li><a href="/docs/goten/build/verification/">Verification</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/goten/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -120,11 +124,15 @@
                 <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
                 <li><a href="/docs/goten/build/verification/">Verification</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/goten/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Run and build Goten</h1>
-          <p class="docs__version">v1.3.1</p>
+          <p class="docs__version">v1.4.0</p>
           <div class="docs__body">
             <p>
               Goten is a static single-page app with no server: React 19, TypeScript and Vite. Everything is calculated in the browser. These pages are for
@@ -144,8 +152,8 @@
             <ul>
               <li>
                 Deal state lives in a React reducer (<code>src/state.ts</code>) and is saved to the browser&#39;s <code>localStorage</code> under the key
-                <code>deal-ops-toolkit:v1</code>, as JSON with a schema version. The theme and tour progress are kept apart under
-                <code>deal-ops-toolkit:theme</code> and <code>deal-ops-toolkit:tour</code>.
+                <code>goten:v1</code>, as JSON with a schema version. The theme and tour progress are kept apart under <code>goten:theme</code> and
+                <code>goten:tour</code>.
               </li>
               <li>
                 Nothing is sent over the network. The content security policy in <code>vercel.json</code> sets <code>connect-src &#39;none&#39;</code>, and an
@@ -181,10 +189,9 @@
             </ul>
             <p>
               Limits that matter when you extend it: one currency per deal, one investment and one exit, the same terms for every investor. See the
-              <a href="https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/README.md">README</a> for scope and the
-              <a href="https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/01_PRD.md">requirements</a> for the full rule
-              list. What each release contains is in the
-              <a href="https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/RELEASE_NOTES.md">release notes</a>.
+              <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/README.md">README</a> for scope and the
+              <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/01_PRD.md">requirements</a> for the full rule
+              list. What each release contains is in the <a href="/docs/goten/release-notes/">release notes</a>.
             </p>
           </div>
         </div>
@@ -196,10 +203,10 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -207,8 +214,7 @@
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -216,7 +222,7 @@
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

@@ -1,18 +1,18 @@
 {
   "redirects": [
     {
-      "source": "/toolkit",
-      "destination": "/toolkit/",
+      "source": "/goten",
+      "destination": "/goten/",
       "permanent": true
     },
     {
-      "source": "/inbox",
-      "destination": "/inbox/",
+      "source": "/trunks",
+      "destination": "/trunks/",
       "permanent": true
     },
     {
-      "source": "/inbox/demo",
-      "destination": "/inbox/demo/",
+      "source": "/trunks/demo",
+      "destination": "/trunks/demo/",
       "permanent": true
     },
     {
@@ -448,6 +448,51 @@
     {
       "source": "/docs/trunks/build/deploy-with-ai",
       "destination": "/docs/trunks/build/deploy-with-ai/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/goten/release-notes",
+      "destination": "/docs/goten/release-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/trunks/release-notes",
+      "destination": "/docs/trunks/release-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/changelog",
+      "destination": "/changelog/",
+      "permanent": true
+    },
+    {
+      "source": "/toolkit",
+      "destination": "/goten/",
+      "permanent": true
+    },
+    {
+      "source": "/toolkit/",
+      "destination": "/goten/",
+      "permanent": true
+    },
+    {
+      "source": "/inbox",
+      "destination": "/trunks/",
+      "permanent": true
+    },
+    {
+      "source": "/inbox/",
+      "destination": "/trunks/",
+      "permanent": true
+    },
+    {
+      "source": "/inbox/demo",
+      "destination": "/trunks/demo/",
+      "permanent": true
+    },
+    {
+      "source": "/inbox/demo/",
+      "destination": "/trunks/demo/",
       "permanent": true
     }
   ],

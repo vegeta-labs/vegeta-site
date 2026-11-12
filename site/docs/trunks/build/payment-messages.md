@@ -1,6 +1,6 @@
 # Accounts in payment messages
 
-> Trunks v0.4.0. Source: https://github.com/vegeta-labs/trunks/blob/d710459cd237c77459f388cbda226e2431260c1f/docs/en/payment-messages.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/payment-messages.md
 
 An IBAN or UK account in an attachment normally adds the `bank_details` label: the reply is limited to `safe_ack`, and
 a verification task opens. A structurally valid MT103 or pacs.008 is the exception, when every condition below holds.

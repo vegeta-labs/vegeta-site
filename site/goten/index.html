@@ -16,7 +16,7 @@
       property="og:description"
       content="Goten by Vegeta: reconcile payments, calculate closing allocations and exit distributions for SPV and syndicate deals. Free, open-source software that runs in your browser."
     />
-    <meta property="og:url" content="https://vegeta-ops.vercel.app/toolkit/" />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/goten/" />
     <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -29,7 +29,7 @@
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
-    <link rel="canonical" href="https://vegeta-ops.vercel.app/toolkit/" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/goten/" />
     <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/plex-mono-latin-500.woff2" as="font" type="font/woff2" crossorigin />
@@ -48,8 +48,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/" aria-current="page">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/" aria-current="page">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -59,8 +59,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/" aria-current="page">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/" aria-current="page">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -83,8 +83,8 @@
         </h1>
         <p class="hero__lede">A free browser tool for SPV and syndicate deal operations.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://deal-ops-toolkit.vercel.app">Take the 3-minute tour</a>
-          <a class="btn btn--quiet" href="https://deal-ops-toolkit.vercel.app">Open the app <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--primary" href="https://vegeta-goten.vercel.app">Take the 3-minute tour</a>
+          <a class="btn btn--quiet" href="https://vegeta-goten.vercel.app">Open the app <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
         <!-- Hero illustration: three panels drawn in type from the sample deal's real figures (Test Plan §3); not a screenshot -->
@@ -178,9 +178,10 @@
           <a href="#trust">Why trust it</a>
           <a href="#built">How we check</a>
           <a href="#faq">Goten FAQ</a>
+          <a href="/docs/goten/">Docs</a>
         </span>
         <span class="nav__end">
-          <a class="nav__cta glass" href="https://deal-ops-toolkit.vercel.app">Open the app</a>
+          <a class="nav__cta glass" href="https://vegeta-goten.vercel.app">Open the app</a>
         </span>
       </nav>
 
@@ -373,15 +374,15 @@
               <dd>Generated cases where an independent Python implementation agrees field by field.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>267 / 267</dt>
+              <dt>301 / 301</dt>
               <dd>Deliberate code breakages caught by the tests.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>199 / 199</dt>
+              <dt>210 / 210</dt>
               <dd>Planned test cases due, all run and passing.</dd>
             </div>
           </dl>
-          <p class="trust__note">Figures from the v1.2.1 and v1.2.2 release checks.</p>
+          <p class="trust__note">Figures from the v1.4.0 release checks.</p>
         </div>
       </section>
 
@@ -431,7 +432,7 @@
               <summary>Who is it for?</summary>
               <p>
                 SPV and syndicate operations teams, including fund administrators supporting those teams. No data of your own yet?
-                <a href="https://deal-ops-toolkit.vercel.app">Load the sample deal</a> and take the 3-minute tour.
+                <a href="https://vegeta-goten.vercel.app">Load the sample deal</a> and take the 3-minute tour.
               </p>
             </details>
             <details class="faq__item" id="faq-not">
@@ -477,7 +478,8 @@
                 date and an amount, plus the payer and reference for matching. Common header names are accepted, such as &ldquo;paid in&rdquo; or
                 &ldquo;credit&rdquo; for the amount and &ldquo;narrative&rdquo; or &ldquo;description&rdquo; for the reference. Payments out are skipped and
                 listed. If any row has an error, nothing is imported and every error is listed with its row and column.
-                <a href="https://github.com/vegeta-labs/goten/tree/main/fixtures">Example files</a> are in the GitHub repository.
+                <a href="https://github.com/vegeta-labs/goten/tree/main/fixtures">Example files</a> are in the GitHub repository. In the docs:
+                <a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a>.
               </p>
             </details>
             <details class="faq__item" id="faq-currency">
@@ -491,7 +493,8 @@
               <summary>What can I take away?</summary>
               <p>
                 CSV exports of the reconciliation ledger, the chase list, the allocation, the holdings, the exit distribution and the activity log, each with a
-                currency column. The closing confirmation can be copied as text.
+                currency column. The closing confirmation can be copied as text. In the docs:
+                <a href="/docs/goten/use/exports-and-records/">Exports and records</a>.
               </p>
             </details>
           </div>
@@ -527,7 +530,8 @@
               <summary>An investor withdraws before closing.</summary>
               <p>
                 Mark them withdrawn with their written consent and a date; it can be undone. They are not chased and not carried into the allocation, everything
-                they paid is listed to refund, and the closing confirmation lists them separately.
+                they paid is listed to refund, and the closing confirmation lists them separately. In the docs:
+                <a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a>.
               </p>
             </details>
             <details class="faq__item" id="faq-fees">
@@ -536,7 +540,8 @@
                 Investors (a percentage, taken from the payment or added on top, or a fixed amount each), the company (taken from the wire) or the lead
                 (invoiced). Before closing you can move a percentage fee to a different payer: the app previews each investor&rsquo;s top-up or refund and the
                 consent needed, and the change can be reversed in one step. It needs the allocation carried in from reconciliation, up to date and not edited
-                since; the preview blocks a change while the round is over its cap, or one that would take an investor below the minimum.
+                since; the preview blocks a change while the round is over its cap, or one that would take an investor below the minimum. In the docs:
+                <a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a>.
               </p>
             </details>
             <details class="faq__item" id="faq-carry">
@@ -556,15 +561,18 @@
               <p>
                 Money is kept in whole pence or cents and the maths uses whole numbers only, with no floating point. A separate implementation, written in
                 Python from the rules alone, is checked against the app on generated cases, and the tests are checked by deliberately breaking the code. Every
-                calculation checks its own totals and shows no figures if a check fails. Still, check every result yourself before you rely on it.
+                calculation checks its own totals and shows no figures if a check fails. Still, check every result yourself before you rely on it. In the docs:
+                <a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a>.
               </p>
             </details>
             <details class="faq__item" id="faq-ready">
               <summary>Is it ready for real deals? How do I report a problem?</summary>
               <p>
                 It is a working prototype: only what is built, tested and released is described here. Report problems through the
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">feedback form</a>, but please
-                don&rsquo;t send real investor details.
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Goten"
+                  >feedback form</a
+                >, but please don&rsquo;t send real investor details.
               </p>
             </details>
           </div>
@@ -580,7 +588,7 @@
         <h2 class="cta__title" id="cta-h" data-reveal>Try it with the sample deal</h2>
         <p class="cta__body" data-reveal>No sign-up, nothing to install.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://deal-ops-toolkit.vercel.app">Take the 3-minute tour</a>
+          <a class="btn btn--primary" href="https://vegeta-goten.vercel.app">Take the 3-minute tour</a>
           <a class="btn btn--quiet" href="/blog/from-bank-statement-to-exit/">Read a worked example <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </section>
@@ -591,10 +599,10 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -602,8 +610,7 @@
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -611,7 +618,7 @@
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

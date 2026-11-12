@@ -1,4 +1,4 @@
-// Plan 22: the blogs' worked examples, computed with the pinned public code (vendor/toolkit, vendor/inbox).
+// Plan 22: the blogs' worked examples, computed with the pinned public code (vendor/goten, vendor/trunks).
 // `node scripts/blog-example.mjs` prints the results as JSON; `--write` saves them to site-src/blog-example.json, which
 // scripts/check-site.mjs recomputes and compares. Nothing here is written by hand except the inputs below.
 import { execFileSync } from 'node:child_process'
@@ -37,7 +37,7 @@ export const INPUT = {
 }
 
 /** Runs the pinned code on INPUT. toolkit and inbox are the source directories. */
-export function computeExample(toolkit = 'vendor/toolkit', inbox = 'vendor/inbox') {
+export function computeExample(toolkit = 'vendor/goten', inbox = 'vendor/trunks') {
   const scratch = mkdtempSync(join(tmpdir(), 'blog-example-'))
   try {
     const lib = (root, file) => JSON.stringify(resolve(root, 'src/lib', file))

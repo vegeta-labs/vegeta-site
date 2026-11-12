@@ -2,7 +2,7 @@
   "what-an-spv-is": {
     "title": "What an SPV is, and what it leaves you holding",
     "summary": "An SPV is defined by its purpose rather than by a legal form, so the useful question is what your money turns into at each step.",
-    "digest": "3cc9ad8071e7117d18d61cac3886abbfc51b536fc7ecf8ad68a4737f817b0537",
+    "digest": "3b951c37f54792773014dca1b0f30c776f677709716052c7333dab998a9efbe6",
     "labels": [
       "Film: what £470,000 turns into in one SPV",
       "The money in one deal. What £470,000 turns into. Buys shares in the company: £450,000. Setting up and running: £20,000.",
@@ -12,7 +12,7 @@
   "bare-trust-nominee": {
     "title": "Bare trusts: one name on the register, many owners behind it",
     "summary": "How a UK nominee holding works, what the law treats you as owning, and the parts that are decided by the documents instead of by the label.",
-    "digest": "080154930611fda89cfcdc9498d9a2c4596dbde8234782bbd875f716df651a8d",
+    "digest": "8b94ca5412d68d36487a5ce17b2816bdae4c35a7b6098128b51f556f6717cab3",
     "labels": [
       "In a lamplit cellar one huge barrel shows a single small plate at its front and three taps of different sizes along its side, and the green checker looks at the plate with one eye and the taps with the other. The nominee holds the name. Investors hold the value..",
       "One line on the register, split among three sets of owners. One line on the register, three behind it. Goku: 120,000. Piccolo: 90,000. Other investors: 90,000.",
@@ -22,7 +22,7 @@
   "uk-nominee-or-delaware-lp": {
     "title": "UK nominee or Delaware partnership: start with the investor list",
     "summary": "For a lead deciding where to set up a vehicle: the names on your investor list, more than the location of the company, usually narrow the choice.",
-    "digest": "e82c3f3db8619ccc55b469e16dfbd0d09420c04f5bbaaafe8158c72f444e3e6a",
+    "digest": "f4e4e8577a0bfb36161adbd17031e2b3f5d976a2e3dfe50b31f55cd7cf5cbdcb",
     "labels": [
       "At dusk the blue four-armed lead stands at a railway points lever where one track forks in two, reading a very long list, while the clerk waits on a handcar and the checker looks down both tracks at once. The investor list usually narrows the choice.",
       "What each form means for an investor. What each form gives an investor. UK nominee: A nominee holds the shares: EIS look-through: yes: No Schedule K-1. Delaware LP: The partnership holds them: EIS look-through: no: A Schedule K-1.",
@@ -32,7 +32,7 @@
   "tracing-spv-cash": {
     "title": "Where an SPV's money actually is",
     "summary": "A bank balance, a ledger and a legal entitlement are three separate things. Most cash problems in a closing come from treating them as one.",
-    "digest": "42d03275a9cc912fd06d2a89e1549cea1bd7095884751197eb61a60d8cc90c83",
+    "digest": "d6e7b1c0a31fdcbfd881c12e1072eee75b7e90c2ec24379b4195e8cf60070d2f",
     "labels": [
       "Film: a shortfall of £20,025 that was three separate problems",
       "What the account holds once the refund has gone back, and what is still outstanding. After the refund goes back. Held in the account: £269,975. Still outstanding: £30,025.",
@@ -43,7 +43,7 @@
   "closing-book": {
     "title": "The closing book: what to tell a founder when they ask how much you have",
     "summary": "A single total hides the only thing a founder needs to know, which is how much of the money will actually arrive and when.",
-    "digest": "e6dd9bf9b88340a3cd564a2e6addf386c1a05912b5a9841eb1d4f253ef009939",
+    "digest": "a744785a84db705ad894c2ed6e9b0ebb385ab2a3fcadf5d6f79097c0c3a6c7b3",
     "labels": [
       "At night three huge glass jars stand on a table, one packed with coins, one half full of sealed envelopes and one holding a single crumpled scrap, under a wall board showing the same three amounts. A single total hides what will actually arrive.",
       "Adding a percentage cost to the raise compared with dividing by it. If costs are a percentage. Raised: Add 2.5% £512,500, Divide £512,820.51. Costs at 2.5%: Add 2.5% £12,812.50, Divide £12,820.51. Company short by: Add 2.5% £312.50, Divide Nothing.",
@@ -54,7 +54,7 @@
   "following-one-cheque": {
     "title": "Following one cheque from closing to exit",
     "summary": "How a £12m purchase and a £22m sale turn into one investor's 1.79x, and which documents explain each step.",
-    "digest": "6f5bb58604d45ceae70b842b45188aa69f071df0f6f6a93cbb70039895b76ed7",
+    "digest": "d3937e24c36f636749bcf924f1a78f392b62f1c4b701022735635385faf1935c",
     "labels": [
       "Down a concrete stairwell the boulder pours a huge tub into the lead's bucket, the lead pours into the clerk's pail and the clerk into the checker's small cup, with water slopping on every step. One sale gives each level a different multiple.",
       "The investor's look-through interest, which is a useful number for shares the SPV actually owns. A percentage of a percentage. SPV's holding 40%. Investor in SPV 10%. Look-through 4%."
@@ -63,7 +63,7 @@
   "carry-on-an-spv-exit": {
     "title": "How carry is worked out when an SPV exits",
     "summary": "Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted together.",
-    "digest": "a2a8841442877255a8651e20e059efa8d92a94aa9dc201de4e9a3c6a5ad2aaa3",
+    "digest": "aa73b6e2e23a5f49f52773926cb8ffe66e35ea1042c6f5bdf1b7b83396e07a00",
     "labels": [
       "Film: how carry comes out of the profit on one exit",
       "Carry when profit is measured against paid-in capital, and against the money that bought shares. Same deal, a different definition. Against paid-in capital: £88,500: £400,000 comes back first: Profit £590,000. Against money in shares: £91,500: £380,000 comes back first: Profit £610,000."
@@ -72,7 +72,7 @@
   "five-questions-spv-investors-ask": {
     "title": "The five questions SPV investors keep asking, and how to answer them before they do",
     "summary": "Most investor email after closing comes down to the same five questions, so build your reporting around answering them.",
-    "digest": "eaa8cc30b3525dde6a4c7e9668f89247d0ae7e3705d3f84d51d3d442265b0eeb",
+    "digest": "44c0fa815315a8d670cf0159c73b0a89470ef37c55bb1e32490ae75fc5bba9b0",
     "labels": [
       "In a basement corridor five service bells ring on a wall board, and the blue lead silences four of them with his four hands while staring wearily at the fifth. Answer the same five questions before they ask.",
       "What one closing note says. Closing note. Accepted: £40,000. Invested after costs: £39,024. Ordinary shares: 12,195. Price per share: £3.20.",
@@ -83,7 +83,7 @@
   "dpi-rvpi-tvpi": {
     "title": "DPI, RVPI and TVPI: reading the numbers on a fund statement",
     "summary": "Three ratios split a fund's reported return into money already received and value that is still only an estimate.",
-    "digest": "e750f6c98082686c0f4d2d5fcd167f5eeef31f122ff1c349f002c7a1242e8ce5",
+    "digest": "5539835e25bbf8697394214b26a3cb53058ff6124ed83e8a2ef61ff88b35ae33",
     "labels": [
       "In a warehouse a small pile of real metal bars stands beside a much bigger stack that is only a painted cut-out on a wooden prop, and the green checker peers round behind it. Cash received is real; the rest is an estimate.",
       "A markup and a write-down change the residual value and the total, not the money already back. What a new mark moves. RVPI: Marked up 1.70x, Written down 0.50x. TVPI: Marked up 2.00x, Written down 0.80x. DPI: Marked up Unchanged, Written down Unchanged.",
@@ -94,7 +94,7 @@
   "seis-eis-through-a-syndicate": {
     "title": "SEIS and EIS through a syndicate: what the relief is worth and when it arrives",
     "summary": "UK tax relief can change the worst case on an early-stage investment, but it comes off a tax bill, it depends on paperwork the investor does not control, and it can be withdrawn for three years.",
-    "digest": "69a46f32e278b819e0a1f68ddb2366d97b247fc9993346ea675a0220864614d1",
+    "digest": "92aecfdf4f1809e17c116fd6aa1dfcbb665320c9082b112f18305001df0f7c0c",
     "labels": [
       "At dawn the paper-stack clerk walks a low tightrope above a safety net with a large hole in it, while the blue lead holds a corner of the net and the green checker inspects the hole. Relief softens the worst case but can be undone.",
       "Relief larger than the tax bill it can be set against. Relief only comes off tax you owe. Relief under SEIS: £10,000. Tax bill this year: £7,000.",
@@ -105,7 +105,7 @@
   "spv-or-fund-for-investors": {
     "title": "SPV or fund: what the same £100,000 does in each",
     "summary": "A side-by-side look at how one investor's money moves through a single-deal vehicle and through a fund, from signature to payout.",
-    "digest": "98898cc8d831ba2293e199eb4afb6f5bf8b19d25900b09a5383b09e1d38f8cca",
+    "digest": "e57a3af298084154906035deb52fa6a01dcb45a9e7a0ee3a6650b109ec8d6a9f",
     "labels": [
       "On a misty jetty the blue lead holds two mooring lines, one to a single sturdy rowing boat with one heavy sack and one to a fleet of tiny paper boats, as the clerk folds another. Same money: one company now, many companies later.",
       "An SPV takes the money at once and a fund calls it over years. When £100,000 leaves. SPV: £100,000: Taken at closing. Fund, first year: £20,000: £80,000 still owed on call.",
@@ -115,7 +115,7 @@
   "what-fund-fees-really-cost": {
     "title": "Two and twenty, followed through a fund's whole life",
     "summary": "A fund's headline terms tell you little about what investors pay or how the manager gets paid. The fee schedule and the waterfall tell you.",
-    "digest": "c0689f933b07d6e525c1b2a320620adc50af1e8e885b7a2ecd746f56503eb445",
+    "digest": "2ec671f1bf5f0bb5a79a125393b3d6ad46c911f12c5c9ddf87496039a6d3e7d0",
     "labels": [
       "The green checker walks along a very long strip of paper unrolled across the office floor, holding a large wooden ruler against it, one eye looking back along it and one forward. Two and twenty says little about what you pay.",
       "The annual fee falling over the life of the fund. 2%, then 1.75% on what is left. Years 1 to 4, each: £600,000. Year 7: £262,500. Year 10: £52,500.",
@@ -125,7 +125,7 @@
   "committing-to-a-venture-fund": {
     "title": "Committing to a venture fund: the promise behind the first payment",
     "summary": "A fund commitment is a promise to hand over money on demand for years, so plan for the whole figure rather than the first call.",
-    "digest": "6a7cc57ef606c178e296b33528796e46b2a7bfb7b30da51e2746c4f42fe1e0dc",
+    "digest": "21955932ff97893459dd506e5035f795cc2743309af99ece4f87944cc027b7c2",
     "labels": [
       "On a rainy night a heavy iron chest is being dragged across the office floor by a taut chain running out of the window into the dark, with the blue lead and the clerk trying to hold it back. A commitment is a promise to pay for years.",
       "Capital calls arriving unevenly over the years. £250,000 promised, called unevenly. Year 1 £50,000. Year 2 £62,500. Year 3 £37,500. Year 5 £60,000.",
@@ -135,7 +135,7 @@
   "ways-to-own-a-private-company": {
     "title": "Seven ways to hold a private company, and whose name is on the register",
     "summary": "The route you take decides what you own, who votes, who can sell and what it costs, even when the company underneath is the same.",
-    "digest": "9f2a830b1a506dcc2dd3d5726095c74c8596b50662fc26201a3d1af5a61dc088",
+    "digest": "9945b24fb6b803b6111162ddc49fda30bbf7ab0df899103e120d537e6ef5a386",
     "labels": [
       "One squat stone tower has seven different ways up, and the lead on a ladder, the clerk in a hoisted basket and the checker on a stair eye each other while the boulder works the rope. The route decides what you own and who votes.",
       "The same sale held directly and through an SPV. One £40m sale, two routes. Stake: Direct 0.5%, SPV 0.475%. Share of sale: Direct £200,000, SPV £190,000. Goku receives: Direct £200,000, SPV £156,000.",
@@ -145,7 +145,7 @@
   "before-your-first-angel-cheque": {
     "title": "Before your first angel cheque: size the portfolio, not the deal",
     "summary": "Angel returns are lopsided enough that the number of investments you can afford matters as much as your choice of the first one.",
-    "digest": "341afc5a3547c6b8156115a9d8a79c7c7bcfe62c9fd9b476a4710ec723124fb0",
+    "digest": "aed0a3f2480db496a20f1f81d386487a99edb95f425ce7f612d9bfbc9523c744",
     "labels": [
       "In an office kitchenette the blue lead has cut a big round cheese into a row of small equal wedges, with a third of it set aside under a glass dome that the boulder is eyeing. Size the portfolio, not the deal.",
       "If each independent investment has a 7% chance of a tenfold exit, more investments lower the chance of missing one. No tenfold-plus exit, at 7% each. 5 investments: 70%. 10 investments: 48%. 20 investments: 23%.",
@@ -155,7 +155,7 @@
   "angel-investing-with-a-day-job": {
     "title": "Angel investing with a day job: three questions to clear first",
     "summary": "Your job is why founders want you and also where your conflicts come from, so sort out what you know, what you control and what you have promised before you invest.",
-    "digest": "3e6bc3ecd99897a3933858d101e95910ff4ce93ab2d5e807df4f5131118cf1f2",
+    "digest": "f8858add602c7cf1765e5aa3b086e551be928b8c8253fcdf37639c3b330ad3a7",
     "labels": [
       "A strip of tape divides a desk in two, and the blue lead keeps his upper two hands on the padlocked work files on one side and his lower two on a small private folder on the other, watched by the green checker. Your job is also where your conflicts come from.",
       "What to do when a holding touches a decision at work. Before you commit. Disclose it to your employer. Step out of that decision. Tell anyone you introduce.",
@@ -165,7 +165,7 @@
   "what-an-early-stage-cheque-buys": {
     "title": "What an early-stage cheque buys: a percentage, some months and one question",
     "summary": "Pre-seed, seed and Series A are loose labels, so judge an early deal by your stake after dilution, the runway it pays for and what that runway will prove.",
-    "digest": "eec495246fecf152271f0e2d3708987af52eb765e440b1c9888f8c1fc82292a4",
+    "digest": "e125afe38b5536691e27a73a165cc05c2ca2ee44c66b136d6a1a664e3f5a5381",
     "labels": [
       "A mown grass airstrip runs straight into the lake, with a small old propeller plane at one end, while the clerk plants blank flags along it and the blue lead watches the water. Judge the stake, the runway and what it proves.",
       "The stake shrinking over two more rounds. The 4%, after two more rounds. Seed: 4.00%. Series A: 3.20%. Series B: 2.72%.",
@@ -175,7 +175,7 @@
   "late-stage-price-to-proceeds": {
     "title": "Late-stage deals: from headline valuation to the cash you receive",
     "summary": "A big valuation describes one class of share at one date, so work out what your own shares would receive at several sale prices before calling a price cheap.",
-    "digest": "2cd4a6f4dfcbf5b4b1b720222af64f1f5d14e6b39add1c01744ce33e2be446f1",
+    "digest": "a49bc86dcd0b94bc0b398d0367e900e140a5f3e5d1a51a50268b8ec8506a1f8e",
     "labels": [
       "In an archive coins run down a wooden chute past deep upper trays that catch nearly all of them, and the paper-stack clerk holds a tiny tray at the bottom with a few coins while the blue lead admires a blank price tag. Work out what your own shares would receive.",
       "What an ordinary share receives at different sale prices. What each ordinary share receives. Sale at £100m: £0. Sale at £300m: £12.86. Sale at £500m: £25.00.",
@@ -185,7 +185,7 @@
   "buying-a-stake-second-hand": {
     "title": "Buying a venture stake second-hand: the price is the easy part",
     "summary": "A secondary hands you someone else's position, so budget for what comes with it, and look past the discount to what you are really taking on.",
-    "digest": "a19d1d5fef9bd85af115dabb6dcaa493972a2be46cd327377ef4cfc4573244c5",
+    "digest": "2ad6ed797a68604e0a3975079edf0033b73e3c87fb50b9767e856a1856f4aa67",
     "labels": [
       "In a gravel yard the blue lead dangles the keys of a freshly polished second-hand van, while the green checker looks back at the rusty, overloaded trailer hitched behind it. Budget for what comes with the stake.",
       "The price adjusted, and the undrawn commitment added. The budget is not the headline. 90% of £400,000: £360,000. Paid at closing: £378,000. Undrawn, still to fund: £50,000. Total to fund: £428,000.",
@@ -195,7 +195,7 @@
   "from-ipo-to-distribution": {
     "title": "From IPO to distribution: why a listing day is not a payout",
     "summary": "Between a company listing and investors getting paid sit lock-ups, resale rules, sale decisions and the waterfall, and each can change the figure.",
-    "digest": "1c127013c5a73165b9ba8790f59aa61f3f3cdc1df6364eed2739e584cb5f7e80",
+    "digest": "2af54347f3b5b6f1e23ba603d4a066e6bf4dde200d2d9c85dcdefe2ed474f9e6",
     "labels": [
       "Fireworks burst over the lake at night while the blue lead sits on a padlocked strongbox on the roof with his back to them, and the clerk tears a blank page off a calendar. A listing day is not a payout.",
       "The listing-day sum against what members receive. From the headline to the cash. 200,000 shares at £30: £6,000,000. Sold in the market: £4,200,000. Members receive: £3,620,000.",
@@ -205,7 +205,7 @@
   "public-market-equivalent": {
     "title": "Did it beat the market? How a public market equivalent works",
     "summary": "A multiple shows that an investment made money. A public market equivalent shows whether the same cash, on the same dates, would have done better in an index.",
-    "digest": "fae8201c6da1a92f4e1a7a562e21562331cdd1d8bb95d574d58eaa45ba9e0c04",
+    "digest": "487834163cfc157a59c394d230c396a071d82e6bb8c781ee6eb1bb8b1284d877",
     "labels": [
       "Two identical wind-up toy cars race side by side along a table under a wall board of figures, and the green checker rests his chin on the table with one eye on each. A good multiple can still lag the index.",
       "The same cash flows grown by the index. PME: £218,000 ÷ £226,667 = 0.96. Paid in: Actual £150,000, Year 6 value £226,667. Out and remaining: Actual £210,000, Year 6 value £218,000.",
@@ -215,7 +215,7 @@
   "reading-a-track-record": {
     "title": "What a fund's track record can and cannot tell you",
     "summary": "Past returns in venture carry real information, but only if you look at what was known when the decision was made.",
-    "digest": "e449050254e1ae90cd77c2cec31b1047ff00bf4c7b408083e21bc88a31cc7d20",
+    "digest": "3a8e3b8bd6933bfa4fe48678f9dcd7c025ccc0eb319b9df6f8da75684fa46ec6",
     "labels": [
       "At dawn on a ridge the path behind is clear and sunlit and the path ahead vanishes into thick fog, and the green checker stands at the join with one eye looking each way while the boulder aims a telescope at the fog. Judge a record by what was known then.",
       "Average results of post-2000 venture funds, grouped by the previous fund's ranking at fundraising. Next fund's PME, post-2000 average. Top quartile at fundraising: 1.20. First-time fund: 1.23. Bottom quartile at fundraising: 0.91.",
@@ -225,7 +225,7 @@
   "portfolio-headlines": {
     "title": "What a portfolio headline does not tell you",
     "summary": "A large number in a press release can be true and still say little about what any investor in any fund has received.",
-    "digest": "e5ae1776838da472ea37f4167cc7c1723df5387a57f2da73bd019f37996f6ed2",
+    "digest": "05e20ce613ff515667b7a78c7647455d138f6a28d1b555a07a3f94c63fbc45eb",
     "labels": [
       "An enormous blank hot-air balloon fills the sky over a field, held down by thick ropes to far-off pegs, while the blue lead holds the one thin thread that reaches him. A true headline can say little about your money.",
       "From a company valuation to one fund's estimated stake. From the headline to your fund. Company valuation: £500m. Across all the firm's funds: £30m. Fund II, at 2%: £10m.",
@@ -235,7 +235,7 @@
   "how-a-fund-of-funds-works": {
     "title": "How a venture fund of funds works, from both sides of the table",
     "summary": "A fund of funds trades an extra layer of cost for selection and access, which changes the sums for its investors and the conversation for the managers it backs.",
-    "digest": "1174a2f8ef8b2f5001d5f4db03bcebc827c92ca88b2683b83f61e2a3a7e16b55",
+    "digest": "ac027033aa2fc523d462b90b99c82760d5c867df0cd204ce6cce4179ac80807d",
     "labels": [
       "In a mailroom the clerk unwraps a big parcel to find six smaller parcels, one of them already holding many tiny boxes, among heaps of torn brown paper, while the lead cuts string and the checker peers in. An extra layer of cost buys selection and access.",
       "The multiple held directly and through the extra layer. What the layer costs. The funds directly: 2.5x. Through the layer: 2.19x: £62,500 less on these terms.",
@@ -245,7 +245,7 @@
   "rolling-funds": {
     "title": "Rolling funds: a subscription that adds exposure, not liquidity",
     "summary": "A rolling fund takes money each quarter, but what you own and when you can leave work very differently from a monthly subscription.",
-    "digest": "a06034fc32bc0eaf99cc81a39831662fb3422d205052b889e2b8a420fd517621",
+    "digest": "1fbc1b2380210315e2b11d5504753a419368c7d61d0659a5b310376b53d2447c",
     "labels": [
       "At dawn in a back alley the blue lead leaves an empty bottle with a rolled note on a step, while the clerk tugs in vain at one of four stacks of milk crates strapped to the ground. Stopping a rolling fund is not leaving it.",
       "An investor holds only the quarters they joined. Piccolo joins in the third quarter. Quarter 1: not his. Quarter 2: not his. Quarter 3: his. Quarter 4: his.",
@@ -255,7 +255,7 @@
   "independent-sponsor-deals": {
     "title": "Investing with an independent sponsor: follow the fees and the carry",
     "summary": "Independent sponsors raise equity one acquisition at a time, and the same deal can pay the sponsor three different ways.",
-    "digest": "cd545a833df8558d1ab1e7f3f4b409201814b878a00a71b385d330d5b277f7f5",
+    "digest": "2b60970bae3252b259236d6e8025b447f1fe17fcec5b259a694780890f71ff62",
     "labels": [
       "A single mountain road passes three small toll booths, with the lead in the first, the boulder squeezed into the second and the clerk in the third, as the green checker walks between them with a thinning purse. One deal can pay the sponsor three ways.",
       "Where the extra equity goes on day one. The $2m beyond price less debt. Paid away on day one: $1.20m. Stays in the business: $0.80m.",
@@ -266,7 +266,7 @@
   "fund-or-deal-by-deal-economics": {
     "title": "Raising a fund or staying deal by deal: the sums for a lead",
     "summary": "Fee income, carry and the long tail of vehicles work very differently in the two models. A lead should run the numbers before picking one.",
-    "digest": "f5ffb84bc08e30ecb4ad085f55e5d22299dc166931678c1e87f0a05654f48cce",
+    "digest": "664338266aa48e91a5d9f2ccc63492270cf5dd51c2c672aa4d058b020d7149df",
     "labels": [
       "In a back yard the blue lead walks inside a big wooden treadwheel that fills a small cup, while the boulder sits beside a tall rain cistern whose tap drips slowly into a mug. Fees from deals and funds work very differently.",
       "A poor year of SPVs against a fund that closes small. A poor year, or a poor close. Earns: SPVs £112,500, Fund £120,000. Short by: SPVs £67,500, Fund £60,000. For how long: SPVs That year, Fund Every year.",
@@ -277,7 +277,7 @@
   "one-person-investment-firm": {
     "title": "Running a one-person investment firm: what to settle before the first close",
     "summary": "“Solo GP” describes who makes the decisions, not who does the work, and a one-person firm stands or falls on how the rest gets done.",
-    "digest": "2e1f23f236ded4b146d819a4b4c9e151c9df4f8f08d7a9d75adc01e91f432b13",
+    "digest": "2cba412934817fdb0ae6703e2896652a21dadaac1e89844b47e0cf17539c6cbf",
     "labels": [
       "Late at night in an empty office the blue lead is a one-man band, with a drum on his back and cymbals at his knees, as his four hands stamp, type, phone and sign. Solo describes who decides, not who does the work.",
       "Contribution from completed deals against the cost of the firm. Against £90,000 a year to run. 8 closes: £120,000. 6 closes: £90,000. 4 closes: £60,000.",
@@ -287,7 +287,7 @@
   "first-fund-first-close": {
     "title": "Budget a first fund at its first close, not its target",
     "summary": "A first-time fund runs on the money that has actually closed, and a smaller figure changes the budget, the portfolio and the strategy.",
-    "digest": "1ce00a0ccdad538ed4954d3f71a9329f28c9ad36da2bb18550f1b3a9f964a2be",
+    "digest": "f7bbec8bc62f0485ccd58a5956f99d0da5a2bff9fcf9e39ba05b7adb68a4676e",
     "labels": [
       "The blue lead stands on a high diving board above a huge outdoor pool with a shallow puddle at the deep end, the boulder in a deck chair at the edge and the clerk pouring in one small jug. A first fund runs on the money that has closed.",
       "Fee income against the cost of running the firm. The same firm, two fund sizes. Fee income: Target $1,000,000, First close $375,000. Annual costs: Target $480,000, First close $480,000. Over or short: Target +$520,000, First close −$105,000.",
@@ -297,7 +297,7 @@
   "how-big-must-a-winner-be": {
     "title": "How big must a winner be? Sizing a venture portfolio",
     "summary": "A few companies produce most venture returns, so a portfolio has to be built to catch one and to own enough of it to matter.",
-    "digest": "6d6e764b8ed89c46f34a2bd6fe346aacc6587bbd2fc9069e33832f01360caa2a",
+    "digest": "d069ba278efd58d09055ef6d0cb90804b4ea25f96cb9abc55f2c3bf5c93402fd",
     "labels": [
       "In a valley plot of thin saplings one tree has grown enormous, and the clerk with a watering can, the blue lead with a mug and the mossy boulder all stand looking up at it. Catch a winner, and own enough of it.",
       "More companies raise the odds and shrink what each is worth. Twenty companies or forty. Cheque: 20 £350,000, 40 £175,000. At least one 5x+: 20 71%, 40 92%. One 5x returns: 20 £1.75m, 40 £875,000.",
@@ -307,7 +307,7 @@
   "follow-on-reserves": {
     "title": "Follow-on reserves: what the next cheque has to earn",
     "summary": "A follow-on should be judged at today's price, on what the new money will return, and not on how well the first cheque has done.",
-    "digest": "346f759d2e952623aa0366701032d81b4f2009e33327bc1151a4ac2ea858eed1",
+    "digest": "55aec25957903dfca3259a11d09f587c93400bd4dc2637473a92a181141db0fa",
     "labels": [
       "In an archive the blue lead lifts a big gleaming trophy off one pan of a brass balance, leaving a small bag of coins to be weighed against another, under a wall board of figures. Judge the new money, not the first cheque.",
       "The blended multiple hides what the new money earned. Only the 5x is this decision. Original cheque: 16x. Follow-on: 5x. Reported together: 11.1x.",
@@ -317,7 +317,7 @@
   "investment-thesis": {
     "title": "Write an investment thesis you could lose an argument with",
     "summary": "A thesis earns its place when it rejects companies you would otherwise have liked, and when it can later be shown to be wrong.",
-    "digest": "43fe0870e9e2df6306e44f23d97d8bd002d8b2272a9a627cb25fbcc46939a63c",
+    "digest": "d1f9afa5d491a4efc08577e3d382300a411f83997e13dbd3b84f765e177b63d2",
     "labels": [
       "A thick upright wooden board has one oddly shaped slot, and the clerk tries to push a fat folder through it as the boulder drops another refused folder into an overflowing bin. A good thesis rejects companies you would like.",
       "The deciding evidence arrives just before the cash ends. Will the evidence arrive in time?. Round funds 14 months. Month 12: first renewals. Month 14: must raise again.",
@@ -327,7 +327,7 @@
   "deal-sourcing-log": {
     "title": "Where your deals really come from: a sourcing log for syndicate leads",
     "summary": "A short log tells a syndicate lead which relationships produce investable deals, and where the rest fall away.",
-    "digest": "c3a91a8aa45b2230b83455c8c035e325bb40fa1e87364f762cc5cc32d3256e62",
+    "digest": "d6591e1a873cf7370258491a706a7380519dbc0b00d596161d0101abca5f130b",
     "labels": [
       "The paper-stack clerk crouches in a valley stream swirling a wide pan of gravel with a tiny bright speck in it, beside a huge heap of sifted stones, while the blue lead writes in a ledger on the bank. Log which relationships produce investable deals.",
       "Companies closed out of those seen, by source. Closed, out of those seen. Founders she has backed: 2 of 30. Other leads: 1 of 45. Inbound: 0 of 60.",
@@ -337,7 +337,7 @@
   "scout-agreement": {
     "title": "Reading a venture scout agreement before your first introduction",
     "summary": "“Scout” has no fixed legal meaning, so the agreement decides what you earn, what you may say and what you may do when the firm says no.",
-    "digest": "b0a56b0a1abdf2968c9a7331d492c6f81b16ca93312dff8c3deaa4070babb7ab",
+    "digest": "b6129ce6089197cf03360a2de2a21cf4c05d9013caa8b73c7b93c9fa4e864d94",
     "labels": [
       "The breathless paper-stack clerk reaches a hilltop to plant a small blank flag and finds a weathered flag already there, while the blue lead follows, reading a long contract through a magnifying glass. The agreement decides what a scout earns.",
       "Three meanings of the same phrase. Each could be called “5% carry”. 5% of the deal's profit: £37,500. 5% of the firm's carry: £7,500. 5% of whole-fund carry, fund loses money: £0.",
@@ -347,7 +347,7 @@
   "assessing-founders": {
     "title": "Assessing founders with evidence instead of charm",
     "summary": "Investors say the team matters most, but the checks that actually reveal a team are records, predictions and specific references.",
-    "digest": "d7896a3ed836f291daf80ef4f2a25314283900d2d5f68e912db964ecf8cd586c",
+    "digest": "0cd13c996831d0fc9f3b0cc4aaebbfe21c3b78d9b23f9c7d90697ae6babf4f1a",
     "labels": [
       "A bright spotlit stage stands empty with one microphone while the team has its back to it, the green checker comparing two blank sheets side by side at a row of old filing cabinets. Judge founders by records, not charm.",
       "Budget lines that imply people. Read the budget as people. Who has managed salespeople?. Who handles implementations?. Who has done the regulatory route?.",
@@ -357,7 +357,7 @@
   "network-effects-test": {
     "title": "How to test a network-effects claim in a pitch deck",
     "summary": "If half the users vanished tomorrow, would the rest be worse off? That question separates a network effect from ordinary growth.",
-    "digest": "afd635c513b50aa96465f96440d9aa03bdc11028456293c350edd0fa62cc3af2",
+    "digest": "d7d0a1b68551084ca4511e7ad575a9d9f70a3eec217b6323df665d2016617c9f",
     "labels": [
       "At night the green checker has pulled out half the cords on an old telephone switchboard, and the blue lead listens on a headset to find out whether the remaining lines noticed. Remove half the users: are the rest worse off?.",
       "Regions with few and many sellers, and the discounts behind them. Look at the last row too. Median days to fill: Few sellers 9, Many sellers 3. Repeat in six months: Few sellers 30%, Many sellers 52%. Discount per order: Few sellers £2, Many sellers £7.",
@@ -367,7 +367,7 @@
   "accelerator-backed-rounds": {
     "title": "Investing alongside an accelerator: what the badge changes",
     "summary": "An accelerator's stake may be bigger than the headline, its effect on the company is hard to measure, and its rights may reach your allocation.",
-    "digest": "da6274802b4cf5574135b4a3b533e5e6afa26c240f19d7c789b9ea26efd4c0f5",
+    "digest": "1877f3e99afd216e10904258d7f6583d38890e262096115b1ff99b93690ea937",
     "labels": [
       "In a summer marquee a huge marrow sits on a trestle table with a large prize rosette pinned to it, and the green checker lifts the rosette to look underneath while the boulder holds a clipboard. An accelerator's stake may exceed the headline.",
       "The accelerator's two stakes before the new money, with the MFN SAFE following a $10m cap. At a $10m cap, before new money. Fixed SAFE: 7.00%. MFN SAFE: 3.75%.",
@@ -377,7 +377,7 @@
   "venture-studio-spinouts": {
     "title": "Backing a venture studio spinout: what to check that a normal startup doesn't need",
     "summary": "When a company is built by a studio, the questions are who owns what, who pays whom and who is really running the business.",
-    "digest": "c933b7c62cb78d3106c1409c21a2a60737f60d1d32a9f43b0e8f666f76b6de4c",
+    "digest": "30559bb4ea76d6ab6e29041f480f00809f3bcdc7ce9b46c5328b448d9898772c",
     "labels": [
       "At dusk a tiny freshly painted shed stands in a yard with thick cables and pipes running from its back into a big old building, and the clerk follows one with a torch. Check who owns what, who pays, who runs it.",
       "Founder and studio stakes over two rounds. Two rounds forward. Today: Founders 55%, Studio 35%. After seed: Founders 44%, Studio 28%. After Series A: Founders 35.2%, Studio 22.4%.",
@@ -387,7 +387,7 @@
   "science-claim-diligence": {
     "title": "Checking a science claim you cannot judge yourself",
     "summary": "A syndicate lead does not need to out-think the founder on the science. The job is to find the one claim the price rests on and pay someone to try to break it.",
-    "digest": "1db575b53e97aecda56b84c03f48dea29a3f40a081879bd7d060f4095e32f9ef",
+    "digest": "7da72d38b69e6b9205d1fe6ea303d63a7e945f67c6163b8c3a9e0e58c9ce3ee2",
     "labels": [
       "In a dim brewhouse the blue lead holds a small glass flask up beside a towering steel tank, while the green checker on a ladder keeps one eye on a blank dial and the other on the flask. Find the one claim the price rests on.",
       "Yield against the cost and margin per kilogram. Per kg at £50, before fixed costs. 80% yield: Running cost £40.00, Margin £10.00. 64% yield: Running cost £50.00, Margin £0.00. 60% yield: Running cost £53.33, Margin (£3.33).",
@@ -397,7 +397,7 @@
   "bridge-round-spv": {
     "title": "When a portfolio company asks the SPV for more money",
     "summary": "A bridge request is a new investment decision with its own arithmetic. An SPV that has already spent its money also has a practical problem to solve before it can say yes.",
-    "digest": "97c11526e3e3e5a53563aa0219dd54f0353151bd0bddd6ab3faec8508adc5cbc",
+    "digest": "e1c02310f73b5d47a9ec3764896856b1abaaa51fc20eedae21b4148944d5e20c",
     "labels": [
       "In grey rain a wooden footbridge stops halfway across a gorge, with the blue lead at its end holding out one plank and the clerk bringing two more along the walkway. A bridge request is a new investment decision.",
       "Runway with cuts and different bridge sizes. Runway after the cuts. No bridge: about 2.9 months. Half the bridge: about 7.9 months. Full bridge: about 12.9 months.",
@@ -407,7 +407,7 @@
   "testing-a-fund-administrator": {
     "title": "How to test a fund administrator or system before you sign",
     "summary": "Sales demos show the deal that goes right, so bring the one that went wrong, then ask what would happen if you had to leave.",
-    "digest": "2f11500fbac752da1274dbf795db5ae306193f02efb836061db2c3e44c61e5ce",
+    "digest": "de81b27e051f3a1f21fd5eea2691d2351798230298dc48a4fcabb41d93788c27",
     "labels": [
       "At a polished showroom counter the blue lead presents a gleaming spotlit box, as the green checker sets down a battered string-tied bundle beside it, under a wall board of figures. Bring the deal that went wrong.",
       "The answer to compare the supplier against. Your own answer, worked out first. Proceeds after costs: £176,000. Carry at 20%: £15,200. Left for investors: £160,800. Goku's 40% share: £64,320.",
@@ -417,7 +417,7 @@
   "syndicate-lead-fca-permission": {
     "title": "Does a UK syndicate lead need FCA permission? Three separate questions",
     "summary": "Arranging a deal, running a vehicle and sending out a deal memo each sit under different UK rules, and being clear on one tells you nothing about the others.",
-    "digest": "2c42aee29ee4abd5431337f8984f4ce4eb595a3fbcceb230462171d1f856b6b7",
+    "digest": "9b58b3f579bece8c5469f10371f63360b86e18032a7bb644240e68f051e769e4",
     "labels": [
       "In an office corridor the blue lead stands in front of three identical closed doors with blank signs, scratching his head, while the boulder sits beside them holding a clipboard. Clearing one question says nothing about the others.",
       "How a lead's activity grew over two years. Nothing changed on any single day. People: First SPV 3, Now 60. Paid: First SPV No fee, Now Fee, carry.",
@@ -427,7 +427,7 @@
   "professional-client-explained": {
     "title": "Professional, high net worth, sophisticated: three UK labels that do different jobs",
     "summary": "Being able to receive a private deal memo does not make someone a professional client, and signing to become one gives up protections worth reading about first.",
-    "digest": "4a7ad36a8af03f88c9626a929f9f57ccd50576cf6761bc1e229febb9b0c8eed6",
+    "digest": "3d8681ad18937fbc134780628fe56b1bddea44bb7d4a904b721642fa9ce3823f",
     "labels": [
       "At dusk on a flat roof the boulder lifts a section of safety railing away from the edge while the blue lead signs a blank form, and the green checker keeps one eye on the signature and one over the drop. Signing up as professional gives up protections.",
       "The two sets of labels answer different questions. Two questions, two sets of rules. Who can be sent it: High net worth, sophisticated: The investor signs. How a firm treats you: Retail, professional: The firm decides.",
@@ -437,7 +437,7 @@
   "uk-carried-interest-tax": {
     "title": "How the UK taxes carried interest since April 2026",
     "summary": "UK carry now falls within income tax, and how much of it gets the lower effective rate depends on how long the investments were held.",
-    "digest": "852af7831f5fa7e985a2269169793e64cd59a25c8de28f448240392be01dc209",
+    "digest": "3167fa238e7b74c4aeea5551306e4c5a24e17bb34c016eb30ded3cf90461f66c",
     "labels": [
       "In a lamplit archive the blue lead holds a sealed envelope and looks across at a large hourglass with much of its sand still to run, beside the seated boulder, under a wall board of figures. Longer holding periods can reduce UK carry tax.",
       "How much carry qualifies at different value-weighted average holding periods. Qualifying carry, by average holding. Under 36 months: 0%. 38 months, under 39: 60%. 40 months or more: 100%.",
@@ -447,7 +447,7 @@
   "nsi-act-and-spvs": {
     "title": "UK national security screening and the SPV",
     "summary": "An SPV can trigger a mandatory filing under the UK's National Security and Investment Act, and putting a nominee or a holding company in the middle does not settle the question.",
-    "digest": "17e3ab64d66b08823d82d94accc0c11a281ee03092bbc8b058995a98e8143a3d",
+    "digest": "218d029d8a7a0c62c6343a9da77b649a88e62b40c02a37529776c614a7e8878e",
     "labels": [
       "At a rainy night checkpoint the paper-stack clerk stands on the green checker's shoulders to reach a painted band on a tall gauge post, while the boulder looks out of a sentry hut and the lead holds an umbrella. An SPV can trigger a mandatory filing.",
       "Who is treated as holding the shares under four structures. Who is treated as holding it. Company SPV takes 30%: The SPV. Nominee, twenty investors: Each about 1.5%. Nominee, lead directs votes: Maybe the lead. 18% and 10%, voting jointly: Each 28%.",

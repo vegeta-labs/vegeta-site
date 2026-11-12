@@ -1,10 +1,10 @@
 # Verification
 
-> Goten v1.3.1. Source: https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/build/verification.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/build/verification.md
 
 Goten's calculations are checked in several independent ways. All the commands below run from the repository root after `npm install`. CI on the public repository runs everything except the mutation tests and benchmarks.
 
-The [test plan](https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/04_TEST_PLAN.md) lists every case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
+The [test plan](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/04_TEST_PLAN.md) lists every case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
 
 ## Quick checks
 
@@ -34,7 +34,7 @@ Runs the unit tests and then `scripts/check-coverage.mjs`, which reads the JSON 
 
 ## The independent oracle
 
-`scripts/oracle/` is a separate Python implementation written from the written rules alone, using only the standard library. It does not share code with the TypeScript. Its case format is in [SCHEMA](https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/scripts/oracle/SCHEMA.md).
+`scripts/oracle/` is a separate Python implementation written from the written rules alone, using only the standard library. It does not share code with the TypeScript. Its case format is in [SCHEMA](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/scripts/oracle/SCHEMA.md).
 
 ```bash
 npm run oracle:selfcheck

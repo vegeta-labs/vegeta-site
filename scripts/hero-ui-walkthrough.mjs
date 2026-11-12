@@ -43,7 +43,7 @@ async function check(name, fn, options = {}, init) {
   }
 }
 const jobs = []
-for (const path of ['/', '/toolkit/', '/inbox/'])
+for (const path of ['/', '/goten/', '/trunks/'])
   jobs.push(() =>
     check('loops-' + (path.split('/')[1] || 'home'), async (page) => {
       await page.goto(base + path)
@@ -140,7 +140,7 @@ for (const width of [320, 375, 390])
     check(
       'phone-' + width,
       async (page) => {
-        await page.goto(base + '/inbox/')
+        await page.goto(base + '/trunks/')
         const count = await watch(page)
         const phrases = []
         for (let i = 0; i < count; i++) {
@@ -169,7 +169,7 @@ jobs.push(() =>
   check(
     'static-no-observer',
     async (page) => {
-      await page.goto(base + '/inbox/')
+      await page.goto(base + '/trunks/')
       await watch(page)
       await page.waitForTimeout(2300)
       assert.equal(await active(page), 0)

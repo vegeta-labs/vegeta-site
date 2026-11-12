@@ -8,7 +8,7 @@ const ROOT = 'site'
 const PORT = Number(process.argv[2] ?? 4181)
 const vercel = JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8'))
 const headers = Object.fromEntries(vercel.headers[0].headers.map((h) => [h.key, h.value]))
-// the pages' own redirects (/inbox → /inbox/), so the demo's relative paths resolve as in production
+// the pages' own redirects (/inbox → /trunks/), so the demo's relative paths resolve as in production
 const redirects = new Map((vercel.redirects ?? []).map((r) => [r.source, r.destination]))
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -38,7 +38,14 @@ createServer((req, res) => {
   try {
     size = statSync(file).size
   } catch {
-    res.writeHead(404, headers).end('Not found')
+    // as on Vercel: an address that is not a file answers 404 with site/404.html
+    let notFound = 'Not found'
+    try {
+      notFound = readFileSync(join(ROOT, '404.html'))
+    } catch {
+      // no not-found page: plain text
+    }
+    res.writeHead(404, { ...headers, 'Content-Type': 'text/html; charset=utf-8' }).end(notFound)
     return
   }
   const type = TYPES[extname(file)] ?? 'application/octet-stream'

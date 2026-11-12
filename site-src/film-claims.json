@@ -1,47 +1,47 @@
 {
   "film": "Vegeta Cut 16 (wide web cut: same words)",
-  "toolkit": "e9cab3e02360001967b9fc471cb40ec75fd6962b",
-  "inbox": "80540a137b076046e215ce0844f713f5e50f09c1",
+  "goten": "c915491596deb01b3ce527c53e1ed3be738451be",
+  "trunks": "f8a0d5530947606ecf8fc1a99305490fe63fb85a",
   "claims": [
     {
       "says": "Books a payment only when its reference matches exactly one investor",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/lib/reconcile.ts:314"
+      "evidence": "vendor/goten/src/lib/reconcile.ts:314"
     },
     {
       "says": "Anything else is a suggestion that waits for a person to confirm, assign or reject",
       "module": "goten",
-      "evidence": "vendor/toolkit/docs/RELEASE_NOTES.md:121"
+      "evidence": "vendor/goten/docs/RELEASE_NOTES.md:131"
     },
     {
       "says": "Shows a suggested match with a score and reasons",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/components/Reconciliation.tsx:525"
+      "evidence": "vendor/goten/src/components/Reconciliation.tsx:525"
     },
     {
       "says": "Flags over-payments and withdrawals as refunds",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/lib/reconcile.ts:387"
+      "evidence": "vendor/goten/src/lib/reconcile.ts:387"
     },
     {
       "says": "Works out fees, refunds and the amount to wire at the close",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/components/Allocation.tsx:428"
+      "evidence": "vendor/goten/src/components/Allocation.tsx:428"
     },
     {
       "says": "If a self-check fails, it shows no figures at all",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/lib/outcome.ts:29"
+      "evidence": "vendor/goten/src/lib/outcome.ts:29"
     },
     {
       "says": "Exit waterfall with hurdle, catch-up and carry, step by step",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/lib/waterfall.ts:159"
+      "evidence": "vendor/goten/src/lib/waterfall.ts:159"
     },
     {
       "says": "Investors + carry + exit costs = proceeds, to the penny",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/lib/waterfall.ts:227"
+      "evidence": "vendor/goten/src/lib/waterfall.ts:227"
     },
     {
       "says": "Film figures computed by the pinned Goten engines",
@@ -51,67 +51,67 @@
     {
       "says": "Links each email to the deal, the investor and the ledger",
       "module": "trunks",
-      "evidence": "vendor/inbox/README.md:7"
+      "evidence": "vendor/trunks/README.md:7"
     },
     {
       "says": "Shows the ledger status from the imported Goten ledger",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/web/CaseE3.tsx:232"
+      "evidence": "vendor/trunks/src/web/CaseE3.tsx:232"
     },
     {
       "says": "Sorts emails into types such as payment query, KYC documents, withdrawal, tax certificates",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/web/presentation.ts:6"
+      "evidence": "vendor/trunks/src/web/presentation.ts:6"
     },
     {
       "says": "Prepares the reply from a fixed template",
       "module": "trunks",
-      "evidence": "vendor/inbox/README.md:8"
+      "evidence": "vendor/trunks/README.md:8"
     },
     {
       "says": "A person approves the reply, copies it and sends it; Trunks never sends email",
       "module": "trunks",
-      "evidence": "vendor/inbox/README.md:11"
+      "evidence": "vendor/trunks/README.md:11"
     },
     {
       "says": "A payment confirmation is the sender's confirmation, not proof of receipt",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/web/App.tsx:461"
+      "evidence": "vendor/trunks/src/web/App.tsx:461"
     },
     {
       "says": "Flags look-alike domains and first mail with an account number as high risk",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/web/presentation.ts:53"
+      "evidence": "vendor/trunks/src/web/presentation.ts:59"
     },
     {
       "says": "Never applies bank details from an email",
       "module": "trunks",
-      "evidence": "vendor/inbox/docs/en/security-model.md:146"
+      "evidence": "vendor/trunks/docs/en/security-model.md:146"
     },
     {
       "says": "Holds a bank details change for a call-back to the number on file and a second person",
       "module": "trunks",
-      "evidence": "vendor/inbox/docs/en/use/risk-and-verification.md:55"
+      "evidence": "vendor/trunks/docs/en/use/risk-and-verification.md:55"
     },
     {
       "says": "Cooling-off period of 24 hours by default",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/config/load.ts:119"
+      "evidence": "vendor/trunks/src/config/load.ts:119"
     },
     {
       "says": "Second-person approval button",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/web/CaseE3.tsx:551"
+      "evidence": "vendor/trunks/src/web/CaseE3.tsx:556"
     },
     {
       "says": "On screen, closing window: All checks pass",
       "module": "goten",
-      "evidence": "vendor/toolkit/src/components/common.tsx:203"
+      "evidence": "vendor/goten/src/components/common.tsx:203"
     },
     {
       "says": "On screen, Trunks window label: Bank details check",
       "module": "trunks",
-      "evidence": "vendor/inbox/src/web/CaseE3.tsx:512"
+      "evidence": "vendor/trunks/src/web/CaseE3.tsx:517"
     }
   ]
 }

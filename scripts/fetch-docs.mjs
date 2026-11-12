@@ -1,5 +1,5 @@
 // Checks out each product's public repo at the docs pin in site-src/docs.json into vendor/docs/<id> (not committed).
-// The docs pin is separate from toolkit.ref and inbox.ref (plan 30 §5): a docs-only update in a product repo moves only it.
+// The docs pin is separate from goten.ref and trunks.ref (plan 30 §5): a docs-only update in a product repo moves only it.
 // scripts/build-docs.mjs reads the Markdown from these checkouts.
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync } from 'node:fs'

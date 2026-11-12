@@ -48,8 +48,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -59,8 +59,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -95,6 +95,10 @@
             <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
             <li><a href="/docs/goten/build/verification/" aria-current="page">Verification</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/goten/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -120,18 +124,22 @@
                 <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
                 <li><a href="/docs/goten/build/verification/" aria-current="page">Verification</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/goten/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Verification</h1>
-          <p class="docs__version">v1.3.1</p>
+          <p class="docs__version">v1.4.0</p>
           <div class="docs__body">
             <p>
               Goten&#39;s calculations are checked in several independent ways. All the commands below run from the repository root after
               <code>npm install</code>. CI on the public repository runs everything except the mutation tests and benchmarks.
             </p>
             <p>
-              The <a href="https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/04_TEST_PLAN.md">test plan</a> lists every
+              The <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/04_TEST_PLAN.md">test plan</a> lists every
               case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
             </p>
             <h2 id="quick-checks">Quick checks<a class="docs__anchor" href="#quick-checks" aria-label="Link to this section">#</a></h2>
@@ -158,7 +166,7 @@ npm run check:tokens</code></pre>
             <p>
               <code>scripts/oracle/</code> is a separate Python implementation written from the written rules alone, using only the standard library. It does
               not share code with the TypeScript. Its case format is in
-              <a href="https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/scripts/oracle/SCHEMA.md">SCHEMA</a>.
+              <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/scripts/oracle/SCHEMA.md">SCHEMA</a>.
             </p>
             <pre tabindex="0"><code>npm run oracle:selfcheck</code></pre>
             <p>Checks the oracle against the hand calculations in the test plan. Expect <code>selfcheck: 178 passed, 0 failed</code>.</p>
@@ -224,10 +232,10 @@ npm run e2e:check</code></pre>
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -235,8 +243,7 @@ npm run e2e:check</code></pre>
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -244,7 +251,7 @@ npm run e2e:check</code></pre>
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

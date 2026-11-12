@@ -1,25 +1,26 @@
 // Project website checks (docs/en/SITE_HANDBOOK.md §6, §8; plan 13 §8.1 K1–K11). Exits 1 on any failure.
-// Pages: / (the Deal Ops overview), /toolkit/, /inbox/, the blog (plan 22) and /docs/ (plan 30); /inbox/demo/ is the Inbox's own demo
+// Pages: / (the Deal Ops overview), /goten/, /trunks/, the blog (plan 22) and /docs/ (plan 30); /trunks/demo/ is Trunks's own demo
 // package, checked against its lock.
 // - CSP rules in every page: one external script (/site.js), no inline script, no style attribute, no <style>, no inline events
 // - every local file a page or the stylesheet refers to exists; every anchor, on the page or on another page, has a target;
-//   links go only to the site's own pages, the Toolkit app, the two public repos, the GitHub organisation and the feedback form
+//   links go only to the site's own pages, Goten app, the two public repos, the GitHub organisation and the feedback form
 // - no page carries a mailto link or an e-mail address (the form replaces them; .example addresses are fine)
-// - the footer is the same on every page, links to the feedback form and carries the Toolkit's disclaimer word for word
-// - /toolkit/: the privacy and disclaimer sentences match the app word for word; FAQ rules; trust figures in the release notes
-// - /inbox/: every figure is in the Inbox release notes; quoted words are Inbox UI text, template text or demo data; the
+// - the footer is the same on every page, links to the feedback form and carries Goten's disclaimer word for word
+// - /goten/: the privacy and disclaimer sentences match the app word for word; FAQ rules; trust figures in the release notes
+// - /trunks/: every figure is in Trunks release notes; quoted words are Trunks UI text, template text or demo data; the
 //   release notes' mailbox test-scope sentences are on the page word for word; FAQ rules
-// - /inbox/demo/: the files are exactly the locked release package (hashes), built from inbox.ref; noindex; no inline script;
+// - /trunks/demo/: the files are exactly the locked release package (hashes), built from trunks.ref; noindex; no inline script;
 //   no secrets; only .example e-mail addresses in the snapshot
 // - no page says what it must not (unverifiable claims, "in design", and a private list of terms)
-// - old links to the Toolkit's sections (/#faq-…) have their target on /toolkit/ and none on /
+// - old links to Goten's sections (/#faq-…) have their target on /goten/ and none on /
 // - site/site.js is the current build of site-src/site.js and is ≤ 6 KB gzip (handbook §6)
 // - seven step illustrations match their pinned sample data; obsolete clips are rejected
 // - the headers file carries the expected CSP
 import { checkIllustrations, illustrationPattern } from './check-illustrations.mjs'
 import { computeExample, INPUT as EXAMPLE_INPUT } from './blog-example.mjs'
 import { digest, labelsIn } from './education-digest.mjs'
-import { renderDocs } from './build-docs.mjs'
+import { NOT_FOUND, releasesOf, renderDocs } from './build-docs.mjs'
+import { FEEDBACK_FORM, FORM_URLS, ROLE_OF_CATEGORY, formUrl } from './feedback-form.mjs'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs'
@@ -29,13 +30,13 @@ import { gzipSync } from 'node:zlib'
 import { runInNewContext } from 'node:vm'
 
 const SITE = 'site'
-// The apps' sentences, labels and release notes come from the public repos, checked out at the commits in toolkit.ref and
-// inbox.ref (CI does this; locally: npm run toolkit:fetch && npm run inbox:fetch). TOOLKIT_DIR / INBOX_DIR override the location.
-const TOOLKIT = process.env.TOOLKIT_DIR ?? 'vendor/toolkit'
-const INBOX = process.env.INBOX_DIR ?? 'vendor/inbox'
+// The apps' sentences, labels and release notes come from the public repos, checked out at the commits in goten.ref and
+// trunks.ref (CI does this; locally: npm run goten:fetch && npm run trunks:fetch). GOTEN_DIR / TRUNKS_DIR override the location.
+const GOTEN = process.env.GOTEN_DIR ?? 'vendor/goten'
+const TRUNKS = process.env.TRUNKS_DIR ?? 'vendor/trunks'
 for (const [dir, file, cmd] of [
-  [TOOLKIT, 'src/config.ts', 'toolkit:fetch'],
-  [INBOX, 'CHANGELOG.md', 'inbox:fetch'],
+  [GOTEN, 'src/config.ts', 'goten:fetch'],
+  [TRUNKS, 'CHANGELOG.md', 'trunks:fetch'],
 ])
   if (!existsSync(join(dir, file))) {
     console.error(`site check: no checkout in ${dir} (run npm run ${cmd})`)
@@ -47,8 +48,8 @@ const git = (dir, ...a) =>
     .toString()
     .trim()
 for (const [env, dir, ref, cmd] of [
-  ['TOOLKIT_DIR', TOOLKIT, 'toolkit.ref', 'toolkit:fetch'],
-  ['INBOX_DIR', INBOX, 'inbox.ref', 'inbox:fetch'],
+  ['GOTEN_DIR', GOTEN, 'goten.ref', 'goten:fetch'],
+  ['TRUNKS_DIR', TRUNKS, 'trunks.ref', 'trunks:fetch'],
 ]) {
   if (process.env[env]) continue
   const want = readFileSync(ref, 'utf8').trim()
@@ -79,18 +80,22 @@ const BLOGS = [BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS]
 // /docs/ (plan 30): the index and every sidebar item with a route in site-src/docs.json
 const DOCS_SPEC = JSON.parse(read('site-src/docs.json'))
 const DOCS_ITEMS = DOCS_SPEC.products.flatMap((p) => p.groups.flatMap((g) => g.items.filter((i) => i.route).map((i) => ({ ...i, product: p }))))
-const DOCS = ['/docs/', ...DOCS_ITEMS.map((i) => i.route)]
+// plan 36 C1: /changelog/ is built by the same script from the same pins, so it is checked with the docs pages
+const CHANGELOG = '/changelog/'
+const DOCS = ['/docs/', ...DOCS_ITEMS.map((i) => i.route), CHANGELOG]
 for (const url of DOCS)
-  if (!/^\/docs\/([a-z0-9-]+\/)*$/.test(url) || !existsSync(join(SITE, url, 'index.html'))) {
+  if (!(url === CHANGELOG || /^\/docs\/([a-z0-9-]+\/)*$/.test(url)) || !existsSync(join(SITE, url, 'index.html'))) {
     console.error(`site check: docs page ${url} is not built (npm run docs:fetch && node scripts/build-docs.mjs)`)
     process.exit(1)
   }
 if (new Set(DOCS).size !== DOCS.length) fail('docs.json: two items share a route')
 const PAGES = {
   '/': 'index.html',
-  '/toolkit/': 'toolkit/index.html',
-  '/inbox/': 'inbox/index.html',
+  '/goten/': 'goten/index.html',
+  '/trunks/': 'trunks/index.html',
   ...Object.fromEntries([...BLOGS, ...DOCS].map((url) => [url, url.slice(1) + 'index.html'])),
+  // what Vercel serves for an address that does not exist (plan 36 D7): held to the same markup, nav and footer rules
+  [NOT_FOUND]: NOT_FOUND.slice(1),
 }
 const html = Object.fromEntries(Object.entries(PAGES).map(([url, f]) => [url, read(join(SITE, f))]))
 const plain = (h) =>
@@ -103,55 +108,56 @@ const plain = (h) =>
 const idsOf = (h) => [...h.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1])
 const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 // Current trust figures must come from the pinned release, never an older CHANGELOG section.
-const inboxVersion = JSON.parse(read(join(INBOX, 'package.json'))).version
+const trunksVersion = JSON.parse(read(join(TRUNKS, 'package.json'))).version
 const releaseSection = (notes, v) => (new RegExp(`^## v${esc(v)}\\b[\\s\\S]*?(?=^## |(?![\\s\\S]))`, 'm').exec(notes) ?? [''])[0]
-const inboxNotesRaw = read(join(INBOX, 'CHANGELOG.md'))
-const currentInboxNotes = releaseSection(inboxNotesRaw, inboxVersion)
-if (!currentInboxNotes) fail(`Inbox release notes have no section for v${inboxVersion}`)
+const trunksNotesRaw = read(join(TRUNKS, 'CHANGELOG.md'))
+const currentInboxNotes = releaseSection(trunksNotesRaw, trunksVersion)
+if (!currentInboxNotes) fail(`Trunks release notes have no section for v${trunksVersion}`)
 // A presentation-only patch may quote unchanged results from its explicitly named measured release.
-const inboxMeasuredVersion = /were \*\*measured on v([0-9.]+)\*\*/.exec(currentInboxNotes)?.[1] ?? inboxVersion
-const measuredInboxNotes = releaseSection(inboxNotesRaw, inboxMeasuredVersion)
-if (!measuredInboxNotes) fail(`Inbox measurement release v${inboxMeasuredVersion} is missing`)
-if (inboxMeasuredVersion !== inboxVersion) {
+const trunksMeasuredVersion = /were \*\*measured on v([0-9.]+)\*\*/.exec(currentInboxNotes)?.[1] ?? trunksVersion
+const measuredInboxNotes = releaseSection(trunksNotesRaw, trunksMeasuredVersion)
+if (!measuredInboxNotes) fail(`Trunks measurement release v${trunksMeasuredVersion} is missing`)
+if (trunksMeasuredVersion !== trunksVersion) {
   // every row's threshold and result, in order; a row's label may be reworded (v0.4.0 names "the v0.3.0 scoring fix")
+  // the metric table only: v0.5.0's notes also hold a table of renamed names
   const table = (s) =>
-    s
+    (/^\| Metric \|[\s\S]*?(?=\n(?!\s*\|)|$)/m.exec(s)?.[0] ?? '')
       .split('\n')
       .filter((line) => /^\s*\|/.test(line))
       .map((line) => line.split('|').slice(2).join('|').trim())
       .join('\n')
-  if (table(currentInboxNotes) !== table(measuredInboxNotes)) fail('Inbox carried-forward metric table differs from its measured release')
+  if (table(currentInboxNotes) !== table(measuredInboxNotes)) fail('Trunks carried-forward metric table differs from its measured release')
 }
 const metricCell = (label) => {
   const cell = new RegExp(`^\\s*\\| ${esc(label)} \\|[^|]+\\|\\s*([^|]+)\\|`, 'm').exec(currentInboxNotes)?.[1]?.trim()
-  if (!cell) fail(`Inbox v${inboxVersion}: missing metric ${label}`)
+  if (!cell) fail(`Trunks v${trunksVersion}: missing metric ${label}`)
   return cell ?? ''
 }
 const fractionFigure = (label) => {
   const m = /^100% \((\d+)\/(\d+)\)$/.exec(metricCell(label))
   if (!m || m[1] !== m[2] || Number(m[2]) === 0) {
-    fail(`Inbox v${inboxVersion}: ${label} is not a measured perfect-recall fraction`)
+    fail(`Trunks v${trunksVersion}: ${label} is not a measured perfect-recall fraction`)
     return ''
   }
   return `${m[1]} / ${m[2]}`
 }
-const inboxTrust = {
+const trunksTrust = {
   high: fractionFigure('High-risk emails rated high'),
   malicious: fractionFigure('Malicious bank-detail changes or look-alike senders rated high'),
   injection: fractionFigure('Prompt injection does not change the judgement (vs. a clean twin)'),
   classification: metricCell('Classification, macro F1'),
 }
-if (!/^0\.\d{3}$|^1\.000$/.test(inboxTrust.classification)) fail(`Inbox v${inboxVersion}: invalid classification figure`)
+if (!/^0\.\d{3}$|^1\.000$/.test(trunksTrust.classification)) fail(`Trunks v${trunksVersion}: invalid classification figure`)
 const stripComments = (t) => t.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[\s;{}(),])\/\/.*$/gm, '$1')
 const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(d, e.name)) : [join(d, e.name)]))
 
-// the Inbox demo snapshot: its case ids are the targets of /inbox/demo/#case=… links
-const DEMO = join(SITE, 'inbox/demo')
+// Trunks demo snapshot: its case ids are the targets of /trunks/demo/#case=… links
+const DEMO = join(SITE, 'trunks/demo')
 let snapshot = null
 try {
   const box = {}
   runInNewContext(read(join(DEMO, 'data/snapshot.js')), { globalThis: box })
-  snapshot = box.DOI_DEMO
+  snapshot = box.TRUNKS_DEMO
 } catch (e) {
   fail(`cannot read the demo snapshot: ${e.message}`)
 }
@@ -159,7 +165,7 @@ const demoCases = new Set(Object.keys(snapshot?.details ?? {}))
 
 // Validate all illustration text before excluding it from the page-level release-figure inventory.
 try {
-  checkIllustrations({ html, css, toolkit: TOOLKIT, inbox: INBOX, snapshot, fail })
+  checkIllustrations({ html, css, goten: GOTEN, trunks: TRUNKS, snapshot, fail })
 } catch (error) {
   fail(`cannot validate illustration sources: ${error.message}`)
 }
@@ -175,7 +181,7 @@ const NO_CLAIMS = [
 ]
 // ---- K1, K2: every page ----
 const EXTERNAL =
-  /^https:\/\/(vegeta-ops\.vercel\.app(\/|$)|deal-ops-toolkit\.vercel\.app(\/|$)|github\.com\/vegeta-labs\/(goten|trunks)(\/|$)|github\.com\/vegeta-labs$)/
+  /^https:\/\/(vegeta-ops\.vercel\.app(\/|$)|vegeta-goten\.vercel\.app(\/|$)|deal-ops-toolkit\.vercel\.app(\/|$)|github\.com\/vegeta-labs\/(goten|trunks)(\/|$)|github\.com\/vegeta-labs$)/
 // encoded addresses display as real ones, so the address scan reads them decoded
 const decodeForScan = (t) =>
   t
@@ -184,7 +190,7 @@ const decodeForScan = (t) =>
     .replace(/&commat;/gi, '@')
     .replace(/&period;/gi, '.')
     .replace(/%40/g, '@')
-const FEEDBACK_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform'
+const flatTags = (h) => h.replace(/\s+/g, ' ').replace(/ ?(<|>) ?/g, '$1')
 const footers = new Set()
 for (const [url, h] of Object.entries(html)) {
   const at = (m) => `${url}: ${m}`
@@ -203,7 +209,7 @@ for (const [url, h] of Object.entries(html)) {
   for (const d of new Set(ids.filter((v, i) => ids.indexOf(v) !== i))) fail(at(`duplicate id: ${d}`))
   for (const [, ref] of h.matchAll(/\b(?:src|href|srcset|poster)\s*=\s*"([^"]+)"/gi)) {
     if (/^(https?:|mailto:)/.test(ref)) {
-      if (ref !== FEEDBACK_FORM && !EXTERNAL.test(ref) && !(EDU_URLS.includes(url) && EDU_SOURCES.test(ref))) fail(at(`unexpected external link: ${ref}`))
+      if (!FORM_URLS.includes(ref) && !EXTERNAL.test(ref) && !(EDU_URLS.includes(url) && EDU_SOURCES.test(ref))) fail(at(`unexpected external link: ${ref}`))
       continue
     }
     const [path, hash] = ref.split('#')
@@ -213,9 +219,9 @@ for (const [url, h] of Object.entries(html)) {
     }
     if (!path.startsWith('/')) fail(at(`local reference ${ref} must start with / (pages live at different depths)`))
     if (path.endsWith('/')) {
-      if (!['/', '/toolkit/', '/inbox/', '/inbox/demo/', ...BLOGS, ...DOCS].includes(path)) fail(at(`link to an unknown page ${path}`))
+      if (!['/', '/goten/', '/trunks/', '/trunks/demo/', ...BLOGS, ...DOCS].includes(path)) fail(at(`link to an unknown page ${path}`))
       if (!hash) continue
-      if (path === '/inbox/demo/') {
+      if (path === '/trunks/demo/') {
         const id = /^case=(.+)$/.exec(hash)?.[1]
         if (!id || !demoCases.has(id)) fail(at(`${ref}: no Case ${id} in the demo snapshot`))
       } else if (!idsOf(html[path]).includes(hash)) fail(at(`${ref}: #${hash} has no target on ${path}`))
@@ -225,7 +231,7 @@ for (const [url, h] of Object.entries(html)) {
   footers.add(/<footer[\s\S]*<\/footer>/.exec(h)?.[0] ?? '')
   // one page head (plan 33): outside the three product openings, the title follows a dot label
   if (
-    !['/', '/toolkit/', '/inbox/', '/inbox/demo/'].includes(url) &&
+    !['/', '/goten/', '/trunks/', '/trunks/demo/'].includes(url) &&
     ((h.match(/<h1\b/g) ?? []).length !== 1 || !/<p class="(?:eyebrow section-label|article__kicker|docs__kicker)">(?:(?!<\/p>)[\s\S])*<\/p>\s*<h1\b/.test(h))
   )
     fail(at('the page needs one h1, right after a dot label (eyebrow, article__kicker or docs__kicker)'))
@@ -237,13 +243,34 @@ for (const [url, h] of Object.entries(html)) {
   for (const [re, what] of NO_CLAIMS) if (re.test(text)) fail(at(`page mentions ${what}`))
 }
 if (footers.size !== 1) fail('the footer differs between pages')
+// plan 37 A: the pages' old addresses redirect for good: the locked demo package and both product READMEs link them
+{
+  const redirects = JSON.parse(read(join(SITE, 'vercel.json'))).redirects ?? []
+  for (const [source, destination] of [
+    ['/toolkit', '/goten/'],
+    ['/toolkit/', '/goten/'],
+    ['/inbox', '/trunks/'],
+    ['/inbox/', '/trunks/'],
+    ['/inbox/demo', '/trunks/demo/'],
+    ['/inbox/demo/', '/trunks/demo/'],
+  ])
+    if (!redirects.some((r) => r.source === source && r.destination === destination && r.permanent === true))
+      fail(`vercel.json: ${source} must redirect permanently to ${destination}`)
+}
+// the public snapshot refuses Chinese text; on the site it exists only in the demo package and in the Release notes pages,
+// which are the products' own public text (scripts/public-snapshot.mjs skips the rule for exactly those)
+for (const [url, h] of Object.entries(html))
+  if (/[\u4e00-\u9fff]/.test(h) && !/^\/docs\/[a-z]+\/release-notes\/$/.test(url)) fail(`${url}: Chinese text on the page`)
+// plan 37 C: the app's address is vegeta-goten.vercel.app. The old address redirects and survives only inside the docs
+// pages' text, which is the product repo's own at the docs pin (its release notes name the address that was live then)
+for (const [url, h] of Object.entries(html))
+  if ((DOCS.includes(url) ? ([...footers][0] ?? '') + (/<header class="nav"[\s\S]*?<\/header>/.exec(h)?.[0] ?? '') : h).includes('deal-ops-toolkit.vercel.app'))
+    fail(`${url}: links the app's old address`)
 if (![...footers][0]?.includes(`<a href="${FEEDBACK_FORM}">Feedback</a>`)) fail('the footer has no Feedback link to the form')
-// the footer's release notes always point at the latest notes on main, never at a tag (plan 34 C)
-for (const notes of [
-  '<a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a>',
-  '<a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a>',
-])
-  if (![...footers][0]?.includes(notes)) fail(`the footer must link the latest release notes on main: ${notes}`)
+// the footer leads to the site's own changelog, which is built from each module's release notes (plan 36 C3; it replaces
+// the two links to the notes on GitHub of plan 34 C), and no footer link points at a release tag
+if (![...footers][0]?.includes('<a href="/changelog/">Changelog</a>')) fail('the footer must link the changelog')
+if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not link a release tag')
 {
   const headers = Object.entries(html).map(([url, h]) => [url, /<header class="nav"[\s\S]*?<\/header>/.exec(h)?.[0] ?? ''])
   if (new Set(headers.map(([, h]) => h.replace(/\s+aria-current="page"/g, ''))).size !== 1) fail('the global nav differs between pages (plan 14 R1)')
@@ -251,6 +278,11 @@ for (const notes of [
     // every page of the blog marks Blog (plan 29), every docs page Docs (plan 30), the other pages themselves
     const current = BLOGS.includes(url) ? BLOG_LIST : DOCS.includes(url) ? '/docs/' : url
     const marked = [...h.matchAll(/<a\b[^>]*>/g)].filter((m) => /\saria-current=/.test(m[0])).map((m) => /\shref="([^"]+)"/.exec(m[0])?.[1] ?? '?')
+    // the not-found page is no page of the nav: it marks nothing
+    if (url === NOT_FOUND) {
+      if (marked.length) fail(`${url}: the not-found page marks ${marked.join(', ')} as the current page`)
+      continue
+    }
     if (!marked.length || marked.some((m) => m !== current)) fail(`${url}: the global nav marks ${marked.join(', ') || 'nothing'} as the current page`)
     // every link to this page in the nav (the bar and the phone menu) carries the mark
     // (the brand links home on every page and is not a current-page link)
@@ -258,12 +290,70 @@ for (const notes of [
       if (!/nav__brand/.test(tag) && /\shref="([^"]+)"/.exec(tag)?.[1] === current && !/\saria-current="page"/.test(tag))
         fail(`${url}: a nav link to this page lacks aria-current`)
   }
-  for (const url of ['/toolkit/', '/inbox/']) {
+  for (const url of ['/goten/', '/trunks/']) {
     const sub = /<nav class="nav subnav"[^>]*data-subnav>[\s\S]*?<\/nav>/.exec(html[url])?.[0] ?? ''
     if (!sub || !/<body class="has-subnav">/.test(html[url])) fail(`${url}: no sub-nav (plan 14 R1)`)
     for (const [, a] of sub.matchAll(/href="#([^"]+)"/g)) if (!idsOf(html[url]).includes(a)) fail(`${url}: sub-nav link #${a} has no target`)
+    // plan 36 N1: the module's own nav leads to that module's docs; N2, N3: the page's text links the site's docs pages,
+    // never the same document on GitHub
+    const docsHome = `/docs${url}`
+    if (!sub.includes(`<a href="${docsHome}">Docs</a>`)) fail(`${url}: the sub-nav has no Docs link to ${docsHome}`)
+    if (/github\.com\/vegeta-labs\/[a-z]+\/blob\/[^"]+\/docs\/en\/(use|build)?[^"]*\.md"/.test(html[url].replace(/REVIEW_SUMMARY\.md/g, '')))
+      fail(`${url}: links a docs page on GitHub; link the page under ${docsHome}`)
   }
   if (/data-subnav/.test(html['/'])) fail('/: the overview has no sub-nav')
+  // plan 36 N5: the module pages' own nav, in this order
+  const subLabels = (url) =>
+    [.../<nav class="nav subnav"[^>]*data-subnav>[\s\S]*?<\/nav>/.exec(html[url])[0].matchAll(/<a href="[^"]+">([^<]+)<\/a>/g)].map((m) => m[1]).join(' · ')
+  for (const [url, want] of [
+    ['/goten/', 'How it works · Why trust it · How we check · Goten FAQ · Docs'],
+    ['/trunks/', 'How it works · Why trust it · Use cases · Security · Trunks FAQ · Docs'],
+  ])
+    if (!subLabels(url).endsWith(want)) fail(`${url}: the sub-nav must read ${want}`)
+  // plan 36 N3: these answers lead to their docs page
+  for (const [id, page] of [
+    ['faq-import', '/docs/goten/use/import-csv/'],
+    ['faq-export', '/docs/goten/use/exports-and-records/'],
+    ['faq-withdraw', '/docs/goten/use/withdrawal-and-fee-payer/'],
+    ['faq-fees', '/docs/goten/use/withdrawal-and-fee-payer/'],
+    ['faq-right', '/docs/goten/use/how-the-numbers-work/'],
+  ])
+    if (!new RegExp(`id="${id}">[\\s\\S]*?</details>`).exec(html['/goten/'])?.[0].includes(`href="${page}"`)) fail(`/goten/: #${id} must link ${page}`)
+  // plan 36 A2, A3: the way to the feedback form is the last row of the overview's FAQ and a line under each education
+  // article; the closing section keeps its two ways to try the modules and nothing else
+  const formLink = `<a href="${FEEDBACK_FORM}">Tell us what you need`
+  // plan 36 §12.4: a page that is about one product preselects it in the form, an education article for investors or for
+  // leads preselects who the reader is; every other link to the form, the footer's among them, preselects nothing
+  const formOn = {
+    '/goten/': formUrl({ product: 'Goten' }),
+    '/trunks/': formUrl({ product: 'Trunks' }),
+    '/blog/from-bank-statement-to-exit/': formUrl({ product: 'Goten' }),
+    '/blog/every-investor-email/': formUrl({ product: 'Trunks' }),
+  }
+  for (const a of EDUCATION.articles) formOn[`/blog/${a.slug}/`] = formUrl({ role: ROLE_OF_CATEGORY[a.category] })
+  for (const [url, h] of Object.entries(html)) {
+    const footer = /<footer class="footer"[\s\S]*?<\/footer>/.exec(h)?.[0] ?? ''
+    const inDevBlock = url === '/' ? (/<aside class="modnext"[\s\S]*?<\/aside>/.exec(h)?.[0] ?? '') : ''
+    const want = formOn[url] ?? FEEDBACK_FORM
+    for (const [, ref] of h
+      .replace(footer, '')
+      .replace(inDevBlock, '')
+      .matchAll(/href\s*=\s*"(https:\/\/docs\.google\.com\/forms\/[^"]*)"/gi))
+      if (ref !== want) fail(`${url}: the link to the feedback form should be ${want}`)
+    for (const [, ref] of footer.matchAll(/href\s*=\s*"(https:\/\/docs\.google\.com\/forms\/[^"]*)"/gi))
+      if (ref !== FEEDBACK_FORM) fail(`${url}: the footer's link to the feedback form preselects nothing`)
+    if (inDevBlock && !inDevBlock.includes(`href="${formUrl({ product: 'Bulma' })}"`))
+      fail('/: the module in development links the form with Bulma preselected')
+  }
+  const faqEnd = /<h3 class="faq__h">Not answered here\?<\/h3>\s*<p class="faq__ask">([\s\S]*?)<\/p>\s*<\/div>\s*<\/section>/.exec(html['/'])?.[1] ?? ''
+  if (!flatTags(faqEnd).includes(formLink)) fail('/: the FAQ must end with "Not answered here?" and the link to the feedback form')
+  const closing = /<section class="cta"[\s\S]*?<\/section>/.exec(html['/'])?.[0] ?? ''
+  if ((closing.match(/<a\b/g) ?? []).length !== 2) fail('/: the closing section has exactly two links, the two ways to try the modules')
+  for (const url of EDU_URLS)
+    if (!flatTags(html[url]).includes(`<p class="article__ask">Not answered here?<a href="${formOn[url]}">Tell us what you need`))
+      fail(`${url}: no "Tell us what you need" line`)
+  // the overview links the changelog, never a release tag
+  if (/\/releases\/tag\//.test(html['/'])) fail('/: the overview must not link a release tag (link /changelog/)')
 }
 for (const sheet of ['styles.css', 'docs.css']) {
   const fromCss = [...read(join(SITE, sheet)).matchAll(/url\(['"]?([^'")]+)['"]?\)/g)].map((m) => m[1]).filter((u) => !/^(data:|#)/.test(u))
@@ -274,7 +364,7 @@ for (const sheet of ['styles.css', 'docs.css']) {
 // lists the same sidebar; only docs pages load docs.css; source links on GitHub point at the pinned commit. ----
 {
   const sheet = '<link rel="stylesheet" href="/docs.css" />'
-  for (const [url, h] of Object.entries(html)) if (h.includes(sheet) !== DOCS.includes(url)) fail(`${url}: docs.css on the wrong pages`)
+  for (const [url, h] of Object.entries(html)) if (h.includes(sheet) !== (DOCS.includes(url) || url === NOT_FOUND)) fail(`${url}: docs.css on the wrong pages`)
   for (const p of DOCS_SPEC.products) {
     const items = p.groups.flatMap((g) => g.items)
     if (!items.some((i) => i.route)) continue
@@ -290,9 +380,16 @@ for (const sheet of ['styles.css', 'docs.css']) {
         )
       )
         fail(`${i.route}: does not say ${p.name} ${p.version}`)
-      const side = /<nav class="docs__side"[\s\S]*?<\/nav>/.exec(h)?.[0] ?? ''
+      const whole = /<nav class="docs__side"[\s\S]*?<\/nav>/.exec(h)?.[0] ?? ''
+      // plan 36 §11 F3c: a release notes page lists each release under its item, in the order of the notes
+      const sub = /<ul class="docs__sub">[\s\S]*?<\/ul>/.exec(whole)?.[0] ?? ''
+      const side = whole.replace(sub, '')
       if (sidebar.some((s) => !side.includes(s)) || (side.match(/<li>/g) ?? []).length !== items.length)
         fail(`${i.route}: the sidebar is not the docs.json list`)
+      // counted from the notes and resolved against the page, not with releasesOf, which builds the list
+      const hrefs = [...sub.matchAll(/href="#([^"]+)"/g)].map((m) => m[1])
+      const count = i.source === p.source.notes ? (read(join('vendor/docs', p.id, p.source.notes)).match(/^## v\d/gm) ?? []).length : 0
+      if (hrefs.length !== count || hrefs.some((id) => !h.includes(`<h2 id="${id}">`))) fail(`${i.route}: the sidebar's releases are not the release notes`)
       if (!new RegExp(`<a href="${esc(i.route)}" aria-current="page">`).test(side)) fail(`${i.route}: the sidebar does not mark this page`)
       for (const [, ref] of h.matchAll(/href="(https:\/\/github\.com\/vegeta-labs\/[a-z-]+\/blob\/[^"/]+)\//g))
         if (/<main\b[\s\S]*<\/main>/.exec(h)[0].includes(ref) && ref !== `${p.source.repo}/blob/${p.source.ref}`)
@@ -325,7 +422,10 @@ for (const sheet of ['styles.css', 'docs.css']) {
         .replace(/ ?(<|>) ?/g, '$1')
         .replace(/ ?\/>/g, '>')
     try {
-      const { pages, markdown, llms } = renderDocs()
+      const { pages, markdown, llms, notFound } = renderDocs()
+      if (flat(html[NOT_FOUND]) !== flat(notFound)) fail(`${NOT_FOUND}: not what scripts/build-docs.mjs makes`)
+      if (!/<meta name="robots" content="noindex" \/>/.test(html[NOT_FOUND]) || /rel="canonical"/.test(html[NOT_FOUND]))
+        fail(`${NOT_FOUND}: must be noindex and carry no canonical address`)
       if (JSON.stringify(pages.map(([r]) => r).sort()) !== JSON.stringify([...DOCS].sort())) fail('docs: the built pages are not the docs.json list')
       for (const [route, built] of pages)
         if (html[route] && flat(html[route]) !== flat(built)) fail(`${route}: not what scripts/build-docs.mjs makes from the docs pin`)
@@ -352,23 +452,26 @@ for (const sheet of ['styles.css', 'docs.css']) {
   const index = html['/docs/']
   for (const p of DOCS_SPEC.products) {
     const home = p.groups.flatMap((g) => g.items).find((i) => i.route)
-    if (home ? !index.includes(`<a class="docs-card" href="${home.route}">`) : !index.includes(`<div class="docs-card docs-card--off">`))
+    if (home ? !flatTags(index).includes(`<a class="docs-card" href="${home.route}">`) : !index.includes(`<div class="docs-card docs-card--off">`))
       fail(`/docs/: no card for ${p.name}`)
+    // plan 36 D6: the card is the one way in; it names the sidebar groups, and nothing under it repeats them as links
+    const groups = p.groups.filter((g) => g.items.some((i) => i.route)).map((g) => esc(g.label))
+    if (!flatTags(index).includes(`<span class="docs-card__groups">${groups.join(' · ')}</span>`)) fail(`/docs/: the ${p.name} card must name its docs groups`)
   }
 }
 
-// app sentences, word for word (Toolkit src/config.ts, R-X-02 / R-X-03)
-const config = read(join(TOOLKIT, 'src/config.ts'))
+// app sentences, word for word (Goten src/config.ts, R-X-02 / R-X-03)
+const config = read(join(GOTEN, 'src/config.ts'))
 const sentence = (name) => new RegExp(`${name}\\s*=\\s*\\n?\\s*'([^']+)'`).exec(config)?.[1]
 const PRIVACY = sentence('PRIVACY_TEXT')
 const DISCLAIMER = sentence('DISCLAIMER_TEXT')
-if (!PRIVACY || !DISCLAIMER) fail("cannot read PRIVACY_TEXT / DISCLAIMER_TEXT from the Toolkit's src/config.ts")
+if (!PRIVACY || !DISCLAIMER) fail("cannot read PRIVACY_TEXT / DISCLAIMER_TEXT from Goten's src/config.ts")
 const footerText = plain([...footers][0] ?? '')
 if (!footerText.includes(DISCLAIMER ?? '\0')) fail('footer does not carry DISCLAIMER_TEXT word for word')
 if (!footerText.includes('Not affiliated with any platform')) fail('footer: "Not affiliated with any platform" missing')
 if (!footerText.includes('Vegeta is open-source software, not a regulated service.')) fail('footer: the software statement (N28) is missing')
-const privacyBody = plain(/<p class="privacy__body"[^>]*>([\s\S]*?)<\/p>/.exec(html['/toolkit/'])?.[1] ?? '').trim()
-if (privacyBody !== PRIVACY) fail('/toolkit/: the privacy section does not carry PRIVACY_TEXT word for word')
+const privacyBody = plain(/<p class="privacy__body"[^>]*>([\s\S]*?)<\/p>/.exec(html['/goten/'])?.[1] ?? '').trim()
+if (privacyBody !== PRIVACY) fail('/goten/: the privacy section does not carry PRIVACY_TEXT word for word')
 
 // FAQ structure (handbook §4.5): every question has its own id with the page's prefix, a summary and its answer; numbers
 // only from a short fixed list per page (counts and figures live in the trust sections, backed by release notes)
@@ -386,35 +489,40 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   return faq
 }
 
-// ---- /toolkit/ (the accepted Toolkit page, moved from /) ----
+// ---- /goten/ (the accepted Goten page, moved from /) ----
 {
-  const faq = faqOf('/toolkit/', 'faq', ['3', '10', '2.0', '103'], 16)
+  const faq = faqOf('/goten/', 'faq', ['3', '10', '2.0', '103'], 16)
   const dataAnswer = (/<details class="faq__item" id="faq-data">[\s\S]*?<p>([\s\S]*?)<\/p>/.exec(faq)?.[1] ?? '').replace(/\s+/g, ' ')
-  if (!dataAnswer.includes(PRIVACY ?? '\0')) fail('/toolkit/ FAQ: the data answer (#faq-data) does not carry PRIVACY_TEXT word for word')
+  if (!dataAnswer.includes(PRIVACY ?? '\0')) fail('/goten/ FAQ: the data answer (#faq-data) does not carry PRIVACY_TEXT word for word')
   // a quoted phrase must be, whole, an on-screen app label (a string literal or JSX text in the app's .tsx files, not tests,
   // comments removed) or a CSV header alias in src/lib/csv.ts
   const tsx = (d) => walk(d).filter((f) => f.endsWith('.tsx') && !f.includes('.test.'))
-  const appSrc = tsx(join(TOOLKIT, 'src'))
+  const appSrc = tsx(join(GOTEN, 'src'))
     .map((f) => stripComments(read(f)))
     .join('\n')
-  const csvSrc = stripComments(read(join(TOOLKIT, 'src/lib/csv.ts')))
+  const csvSrc = stripComments(read(join(GOTEN, 'src/lib/csv.ts')))
   for (const [, q] of faq.matchAll(/&ldquo;([^&]+)&rdquo;/g)) {
     const literal = new RegExp(`(['"\`])${esc(q)}\\1`)
     const jsxText = new RegExp(`>\\s*${esc(q)}\\s*<`)
     if (!literal.test(appSrc) && !jsxText.test(appSrc) && !literal.test(csvSrc))
-      fail(`/toolkit/ FAQ quotes "${q}", which is neither an app label nor a CSV header alias`)
+      fail(`/goten/ FAQ quotes "${q}", which is neither an app label nor a CSV header alias`)
   }
   // trust figures (P9): each must be backed by the release notes
-  const notes = read(join(TOOLKIT, 'docs/RELEASE_NOTES.md'))
+  const notes = read(join(GOTEN, 'docs/RELEASE_NOTES.md'))
+  // all three restated in the newest release's notes (v1.4.0, 2026-11-12), so the page names that release alone
+  const latestGoten = releasesOf(notes)[0].version
+  const latestNotes = releaseSection(notes, latestGoten.slice(1))
   const figures = [
     ['1,800', /agree with it on 1,800 generated cases/],
-    ['267 / 267', /267 of 267 deliberate code breakages caught/],
-    ['199 / 199', /all 199 test-plan cases due/],
+    ['301 / 301', /301 of 301 deliberate code breakages caught/],
+    ['210 / 210', /all 210 test-plan cases due\b[^.;]*\bran and passed/],
   ]
   for (const [shown, backed] of figures) {
-    if (!html['/toolkit/'].includes(`<dt>${shown}</dt>`)) fail(`/toolkit/ trust figure ${shown} not on the page as expected`)
-    if (!backed.test(notes)) fail(`/toolkit/ trust figure ${shown} is not backed by the Toolkit's docs/RELEASE_NOTES.md`)
+    if (!html['/goten/'].includes(`<dt>${shown}</dt>`)) fail(`/goten/ trust figure ${shown} not on the page as expected`)
+    if (!backed.test(latestNotes)) fail(`/goten/ trust figure ${shown} is not in the ${latestGoten} section of Goten's docs/RELEASE_NOTES.md`)
   }
+  if (!html['/goten/'].includes(`<p class="trust__note">Figures from the ${latestGoten} release checks.</p>`))
+    fail(`/goten/: the trust note must name the ${latestGoten} release checks`)
 }
 
 // ---- / (overview) ----
@@ -424,10 +532,10 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   if (!data.includes(PRIVACY ?? '\0')) fail('/ FAQ: the data answer (#dfaq-data) does not carry PRIVACY_TEXT word for word')
   if (/&ldquo;/.test(html['/'])) fail('/: no quoted UI text on the overview (quotes belong on the module pages, where they are checked)')
   if (/<dt>[^<]*\d/.test(html['/'])) fail('/: no figures on the overview (figures live on the module pages, backed by release notes)')
-  // N29: an old link (/#faq-import) is sent on to /toolkit/, so the overview must not have such ids, and /toolkit/ must
+  // N29: an old link (/#faq-import) is sent on to /goten/, so the overview must not have such ids, and /goten/ must
   const OLD = /^(faq-[a-z-]+|step-[1-3]|how|trust|built)$/
-  for (const id of idsOf(html['/'])) if (OLD.test(id)) fail(`/: id ${id} is an old Toolkit anchor that site.js forwards to /toolkit/`)
-  // the accepted Toolkit page's ids (main @ 90f035c): every old link must still find its target
+  for (const id of idsOf(html['/'])) if (OLD.test(id)) fail(`/: id ${id} is an old Goten anchor that site.js forwards to /goten/`)
+  // the accepted Goten page's ids (main @ 90f035c): every old link must still find its target
   const LEGACY = ['how', 'trust', 'built', 'faq', 'step-1', 'step-2', 'step-3']
   for (const q of [
     'who',
@@ -448,33 +556,33 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     'ready',
   ])
     LEGACY.push('faq-' + q)
-  for (const id of LEGACY) if (!idsOf(html['/toolkit/']).includes(id)) fail(`/toolkit/: old anchor #${id} missing`)
+  for (const id of LEGACY) if (!idsOf(html['/goten/']).includes(id)) fail(`/goten/: old anchor #${id} missing`)
   if (!read('site-src/site.js').includes(String.raw`/^#(faq-[a-z-]+|step-[1-3]|how|trust|built)$/`))
     fail('site-src/site.js: the old-anchor list differs from the check')
 }
 
-// ---- /inbox/ ----
+// ---- /trunks/ ----
 {
-  const page = html['/inbox/']
+  const page = html['/trunks/']
   const text = plain(page)
-  // K3 (P9): every figure on the page is backed by the Inbox release notes (CHANGELOG.md at inbox.ref)
-  const allNotes = plain(inboxNotesRaw.replace(/\*\*/g, ''))
-  const figures = Object.values(inboxTrust)
+  // K3 (P9): every figure on the page is backed by Trunks release notes (CHANGELOG.md at trunks.ref)
+  const allNotes = plain(trunksNotesRaw.replace(/\*\*/g, ''))
+  const figures = Object.values(trunksTrust)
   const dts = [...page.matchAll(/<dt>([^<]*\d[^<]*)<\/dt>/g)].map((m) => m[1])
-  if (dts.length !== figures.length || dts.some((d, i) => d !== figures[i])) fail(`/inbox/: trust figures differ from the measured v${inboxVersion} release`)
+  if (dts.length !== figures.length || dts.some((d, i) => d !== figures[i])) fail(`/trunks/: trust figures differ from the measured v${trunksVersion} release`)
   const note = plain(/<p class="trust__note">([\s\S]*?)<\/p>/.exec(/<section class="trust"[\s\S]*?<\/section>/.exec(page)?.[0] ?? '')?.[1] ?? '')
-  if (!note.includes(`v${inboxVersion} release checks`)) fail('/inbox/: trust note does not name the current release')
-  if (inboxMeasuredVersion !== inboxVersion && !note.includes(`Measured on v${inboxMeasuredVersion}`))
-    fail('/inbox/: trust note does not identify the measured release')
+  if (!note.includes(`v${trunksVersion} release checks`)) fail('/trunks/: trust note does not name the current release')
+  if (trunksMeasuredVersion !== trunksVersion && !note.includes(`Measured on v${trunksMeasuredVersion}`))
+    fail('/trunks/: trust note does not identify the measured release')
   for (const [n] of note.matchAll(/\d[\d,.]*\d|\d/g)) {
     const proof =
-      n === inboxMeasuredVersion && inboxMeasuredVersion !== inboxVersion
+      n === trunksMeasuredVersion && trunksMeasuredVersion !== trunksVersion
         ? /measured on/
-        : n === inboxVersion
-          ? new RegExp(`^## v${esc(inboxVersion)}\\b`, 'm')
+        : n === trunksVersion
+          ? new RegExp(`^## v${esc(trunksVersion)}\\b`, 'm')
           : { 126: /held-out set of 126 emails/, 5.5: /Claude Opus 5\.5/ }[n]
     // the held-out set belongs to the measured release (the same as the current one unless the figures are carried forward)
-    if (!proof?.test(n === '126' ? measuredInboxNotes : currentInboxNotes)) fail(`/inbox/ trust note: ${n} is not backed by the current Inbox release`)
+    if (!proof?.test(n === '126' ? measuredInboxNotes : currentInboxNotes)) fail(`/trunks/ trust note: ${n} is not backed by the current Trunks release`)
   }
   // N15: the problem section quotes figures from an external report; they were checked against the report itself
   // (UK Finance, Annual Fraud Report 2026, p. 42: invoice & mandate scam, value £41.3m, 68 per cent on non-personal
@@ -482,31 +590,31 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   const problem = plain(/<section class="built built--top" id="problem"[\s\S]*?<\/section>/.exec(page)?.[0] ?? '')
   for (const [n] of problem.matchAll(/£?\d+(?:[.,]\d+)*(?:m|bn|%)?/g))
     if (!['01', '02', '03', '04', '£41.3m', '68%', '2025', '2026'].includes(n))
-      fail(`/inbox/ problem section: figure ${n} is not one checked against the report`)
+      fail(`/trunks/ problem section: figure ${n} is not one checked against the report`)
   if (!problem.includes('Fraud figures: UK Finance, Annual Fraud Report 2026 (figures for 2025), invoice and mandate scams.'))
-    fail('/inbox/ problem section: the source line for the fraud figures is missing')
+    fail('/trunks/ problem section: the source line for the fraud figures is missing')
   // K5: the release notes' test-scope sentences for Microsoft 365 and Gmail, word for word, on the page
   for (const s of [
     'Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated services.',
     'Gmail polling was tested on one personal Gmail account.',
   ]) {
-    if (!allNotes.includes(s)) fail(`the Inbox CHANGELOG.md no longer says: ${s}`)
-    if (!text.includes(s)) fail(`/inbox/ does not carry the release notes' sentence: ${s}`)
+    if (!allNotes.includes(s)) fail(`Trunks CHANGELOG.md no longer says: ${s}`)
+    if (!text.includes(s)) fail(`/trunks/ does not carry the release notes' sentence: ${s}`)
   }
   // and every sentence on the page about how a mailbox kind was tested is one of them
   for (const t of text.split(/(?<=\.)\s+/))
     if (/\btested\b/.test(t) && /Gmail|Microsoft 365|Pub\/Sub|IMAP/.test(t) && !allNotes.includes(t.trim()))
-      fail(`/inbox/: "${t.trim()}" is not the release notes' wording`)
-  // K4: a quoted phrase is, whole, Inbox on-screen text: a string literal or a JSX text run in src/web (not tests, comments
+      fail(`/trunks/: "${t.trim()}" is not the release notes' wording`)
+  // K4: a quoted phrase is, whole, Trunks on-screen text: a string literal or a JSX text run in src/web (not tests, comments
   // removed), or a value shown in the demo snapshot. "Whole" means the entire literal or text run, or one or more complete
   // sentences or lines of a snapshot value (a reply's body is quoted sentence by sentence), never a fragment of code.
-  const inboxSrc = walk(join(INBOX, 'src/web'))
+  const trunksSrc = walk(join(TRUNKS, 'src/web'))
     .filter((f) => /\.(ts|tsx)$/.test(f) && !/\.test\./.test(f))
     .map((f) => stripComments(read(f)))
     .join('\n')
   const norm = (t) => t.replace(/\s+/g, ' ').trim()
-  const literals = new Set([...inboxSrc.matchAll(/(['"`])((?:(?!\1)[^\\\n]|\\.)+)\1/g)].map((m) => norm(m[2].replace(/\\(.)/g, '$1'))))
-  for (const [, run] of inboxSrc.matchAll(/[>}]([^<>{}]+)(?=[<{])/g)) literals.add(norm(run.replace(/^\s*[—–-]\s*/, '')))
+  const literals = new Set([...trunksSrc.matchAll(/(['"`])((?:(?!\1)[^\\\n]|\\.)+)\1/g)].map((m) => norm(m[2].replace(/\\(.)/g, '$1'))))
+  for (const [, run] of trunksSrc.matchAll(/[>}]([^<>{}]+)(?=[<{])/g)) literals.add(norm(run.replace(/^\s*[—–-]\s*/, '')))
   const values = []
   const collect = (v) => (typeof v === 'string' ? values.push(v) : v && typeof v === 'object' && Object.values(v).forEach(collect))
   collect(snapshot ?? {})
@@ -524,7 +632,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   for (const [, raw] of page.matchAll(/&ldquo;([\s\S]+?)&rdquo;/g)) {
     const q = norm(raw.replace(/&rsquo;/g, "'"))
     if (!literals.has(q) && !values.some((v) => wholeSentences(v.replace(/[ \t]+/g, ' '), q)))
-      fail(`/inbox/ quotes "${q}", which is not whole Inbox UI text or demo data`)
+      fail(`/trunks/ quotes "${q}", which is not whole Trunks UI text or demo data`)
   }
   // the hero panels repeat the review screen's words (the risk reasons, the checklist) and the demo's reply and email:
   // each must be whole on-screen text or a whole demo sentence; the email excerpt (ending in an ellipsis) a part of the
@@ -535,7 +643,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   const textOf = (frag) => norm(plain(frag).replace(/&hellip;|…/g, ''))
   const HERO = {
     '/': { reasons: 3, checks: 0, reply: 0, excerpt: 0 },
-    '/inbox/': { reasons: 3, checks: 2, reply: 1, excerpt: 1 },
+    '/trunks/': { reasons: 3, checks: 2, reply: 1, excerpt: 1 },
   }
   for (const [url, want] of Object.entries(HERO)) {
     const scene = /<figure\b[^>]*\bclass="[^"]*\bscene\b[^"]*"[^>]*>[\s\S]*?<\/figure>/.exec(html[url])?.[0] ?? ''
@@ -549,28 +657,28 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     for (const k of Object.keys(want)) if (got[k].length !== want[k]) fail(`${url} hero: ${got[k].length} ${k}, expected ${want[k]}`)
     for (const q of [...got.reasons, ...got.checks, ...got.reply])
       if (!literals.has(q) && !values.some((v) => wholeSentences(v.replace(/[ \t]+/g, ' '), q)))
-        fail(`${url} hero: "${q}" is not whole Inbox UI text or demo data`)
+        fail(`${url} hero: "${q}" is not whole Trunks UI text or demo data`)
     for (const q of got.excerpt) if (!norm(e0225.text ?? '').includes(q)) fail(`${url} hero: the email excerpt is not part of the demo email E0225`)
   }
   // every use case links to its sample in the demo
   // a use case is reached by a link, so it has no entrance animation (handbook §10 item 12)
-  if (/<li class="case"[^>]*data-reveal/.test(page)) fail('/inbox/: a use case has an entrance animation; links land on them')
+  if (/<li class="case"[^>]*data-reveal/.test(page)) fail('/trunks/: a use case has an entrance animation; links land on them')
   const caseItems = [...page.matchAll(/<li class="case" id="(case-[a-z]+)"[^>]*>([\s\S]*?)<\/li>/g)]
-  if (caseItems.length !== 6) fail(`/inbox/: expected six use cases, found ${caseItems.length}`)
-  for (const [, id, body] of caseItems) if (!/href="\/inbox\/demo\/#case=E\d{4}"/.test(body)) fail(`/inbox/ use case ${id} has no demo link`)
+  if (caseItems.length !== 6) fail(`/trunks/: expected six use cases, found ${caseItems.length}`)
+  for (const [, id, body] of caseItems) if (!/href="\/trunks\/demo\/#case=E\d{4}"/.test(body)) fail(`/trunks/ use case ${id} has no demo link`)
   // the category list matches the default configuration
-  const cfgClasses = [...read(join(INBOX, 'config/default/cases.yaml')).matchAll(/\{ id: ([a-z_]+), risk_floor: ([a-z]+), queue: ([a-z_]+) \}/g)].map((m) =>
+  const cfgClasses = [...read(join(TRUNKS, 'config/default/cases.yaml')).matchAll(/\{ id: ([a-z_]+), risk_floor: ([a-z]+), queue: ([a-z_]+) \}/g)].map((m) =>
     m.slice(1).join(' '),
   )
   const pageClasses = [...page.matchAll(/<tr>\s*<td><code>([a-z_]+)<\/code><\/td>\s*<td>([a-z]+)<\/td>\s*<td><code>([a-z_]+)<\/code><\/td>\s*<\/tr>/g)].map(
     (m) => m.slice(1).join(' '),
   )
-  if (cfgClasses.length < 1 || cfgClasses.join('|') !== pageClasses.join('|')) fail('/inbox/: the category table differs from config/default/cases.yaml')
+  if (cfgClasses.length < 1 || cfgClasses.join('|') !== pageClasses.join('|')) fail('/trunks/: the category table differs from config/default/cases.yaml')
   // FAQ: only the current release, Apache-2.0, MT103, pacs.008 and Microsoft 365 are numbers.
-  faqOf('/inbox/', 'ifaq', [inboxVersion, inboxMeasuredVersion, '2.0', '103', '008', '365'], 14)
+  faqOf('/trunks/', 'ifaq', [trunksVersion, trunksMeasuredVersion, '2.0', '103', '008', '365'], 14)
 }
 
-// ---- K3 for the whole text: every figure on / and /inbox/ is in an inventory with its source ----
+// ---- K3 for the whole text: every figure on / and /trunks/ is in an inventory with its source ----
 // (quoted UI text is checked by K4; spelled-out amounts of time or shares are not allowed at all)
 {
   const figures = (h) =>
@@ -581,95 +689,143 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
         .replace(/&#\d+;/g, ' '),
     ).matchAll(/£?\d+(?:[.,]\d+)*(?:m|bn|%)?/g)
   const shownText = JSON.stringify(snapshot ?? {})
-  const toolkitScene = /<figure class="scene"[\s\S]*?<\/figure>/.exec(html['/toolkit/'])?.[0] ?? ''
+  const gotenScene = /<figure class="scene"[\s\S]*?<\/figure>/.exec(html['/goten/'])?.[0] ?? ''
   const numbering = ['01', '02', '03', '04', '05', '06', '1', '2', '3', '4']
   const names = {
     365: 'Microsoft 365',
     103: 'MT103',
     '008': 'pacs.008',
     '2.0': 'Apache-2.0',
-    [inboxVersion]: 'the current release',
-    [inboxMeasuredVersion]: 'the measured release',
+    [trunksVersion]: 'the current release',
+    [trunksMeasuredVersion]: 'the measured release',
   }
   // Each trust value is already parsed and validated against its current release metric above.
-  const releaseFigureNumbers = new Set(Object.values(inboxTrust).flatMap((value) => value.split(' / ')))
+  const releaseFigureNumbers = new Set(Object.values(trunksTrust).flatMap((value) => value.split(' / ')))
   const INBOX_FIGURES = { 126: /held-out set of 126 emails/, 5.5: /Claude Opus 5\.5/ }
-  for (const [n] of figures(html['/inbox/'])) {
+  for (const [n] of figures(html['/trunks/'])) {
     if (numbering.includes(n) || names[n]) continue
     if (['£41.3m', '68%', '2025', '2026'].includes(n)) continue // the problem section's report figures, checked above
     if (releaseFigureNumbers.has(n)) continue
     if (INBOX_FIGURES[n]) {
-      if (!INBOX_FIGURES[n].test(measuredInboxNotes)) fail(`/inbox/: figure ${n} is no longer in the Inbox CHANGELOG.md`)
+      if (!INBOX_FIGURES[n].test(measuredInboxNotes)) fail(`/trunks/: figure ${n} is no longer in Trunks CHANGELOG.md`)
       continue
     }
     if (n === '4893' && shownText.includes('"ending 4893"')) continue // demo sample E0225, as shown
-    fail(`/inbox/: figure ${n} is not in the inventory of backed figures`)
+    fail(`/trunks/: figure ${n} is not in the inventory of backed figures`)
   }
-  const toolkitNotes = read(join(TOOLKIT, 'docs/RELEASE_NOTES.md'))
+  const gotenNotes = read(join(GOTEN, 'docs/RELEASE_NOTES.md'))
   const MODULE_PROOF = {
-    toolkit: { figure: '1,800', release: '1.2.1', backed: () => /agree with it on 1,800 generated cases/.test(releaseSection(toolkitNotes, '1.2.1')) },
-    inbox: {
-      figure: inboxTrust.high,
-      release: inboxVersion,
-      backed: () => Boolean(inboxTrust.high),
+    // Goten's figure is restated in its newest release (v1.4.0); if a later release does not restate it, set release to the
+    // one that did and the column will say "measured on" that release
+    goten: {
+      figure: '1,800',
+      release: '1.4.0',
+      backed: () => /agree with it on 1,800 generated cases/.test(releaseSection(gotenNotes, '1.4.0')),
+      latest: releasesOf(gotenNotes)[0],
+    },
+    trunks: {
+      figure: trunksTrust.high,
+      release: trunksMeasuredVersion,
+      backed: () => Boolean(trunksTrust.high),
+      latest: releasesOf(trunksNotesRaw)[0],
     },
   }
+  // "measured on" an older release holds only while every later release says its calculations are unchanged
+  for (const r of releasesOf(gotenNotes)) {
+    if (r.version === `v${MODULE_PROOF.goten.release}`) break
+    if (!/[Cc]alculations[^.]*\bunchanged\b/.test(releaseSection(gotenNotes, r.version.slice(1))))
+      fail(
+        `Goten ${r.version}: its notes do not say the calculations are unchanged, so the figure measured on v${MODULE_PROOF.goten.release} cannot be quoted for it`,
+      )
+  }
+  if (MODULE_PROOF.trunks.latest.version !== `v${trunksVersion}`) fail('Trunks: the newest release in CHANGELOG.md is not the package version')
   const modules = [...html['/'].matchAll(/<article class="module module--([a-z]+)"[^>]*>([\s\S]*?)<\/article>/g)]
-  if (modules.map((m) => m[1]).join(',') !== 'toolkit,inbox') fail('/: expected the Toolkit and Inbox module columns')
+  if (modules.map((m) => m[1]).join(',') !== 'goten,trunks') fail('/: expected Goten and Trunks module columns')
   for (const [, mod, body] of modules) {
     const want = MODULE_PROOF[mod]
     const shown = /<span class="module__figure">([^<]+)<\/span>/.exec(body)?.[1]
     if (!want || shown !== want.figure) fail(`/: the ${mod} column shows ${shown}, not its backed figure ${want?.figure}`)
     else if (!want.backed()) fail(`/: the ${mod} figure ${shown} is not in its release notes' v${want.release} section`)
-    if (want && !plain(body).includes(`v${want.release} release checks`)) fail(`/: the ${mod} column does not name release v${want?.release}`)
-    if (mod === 'inbox' && inboxMeasuredVersion !== inboxVersion && !plain(body).includes(`measured on v${inboxMeasuredVersion}`))
-      fail('/: Inbox module does not identify the measured release')
+    if (!want) continue
+    // the source line names the current release and, where the figure was measured on an earlier one, that release
+    const name = mod === 'goten' ? 'Goten' : 'Trunks'
+    const source = `${name} ${want.latest.version} release checks` + (want.latest.version === `v${want.release}` ? '' : `; measured on v${want.release}`)
+    if (!plain(body).replace(/\s+/g, ' ').includes(source)) fail(`/: the ${mod} column must say "${source}"`)
+    // plan 36 C2: the release under the module's name is the newest in its notes, with that release's date, and leads to the changelog
+    if (!body.includes(`<p class="module__version"><a href="/changelog/">${want.latest.version} · ${want.latest.date}</a></p>`))
+      fail(`/: the ${mod} column must show ${want.latest.version} · ${want.latest.date} linked to the changelog`)
+  }
+  // plan 36 B1: a module in development shows its name, its state, one sentence and the feedback form: no figures, no other link
+  const inDev = [...html['/'].matchAll(/<aside class="modnext"[^>]*>([\s\S]*?)<\/aside>/g)]
+  if (inDev.length !== 1 || (html['/'].match(/modnext/g) ?? []).length !== (inDev[0][0].match(/modnext/g) ?? []).length)
+    fail('/: expected exactly one module in development, in <aside class="modnext">')
+  // its name appears only there and in its row of the lifecycle table, which says it is in development (plan 36 §12: once, under the name)
+  const bulmaRow = /<tr role="row">\s*<th scope="row" role="rowheader">Bulma[\s\S]*?<\/tr>/.exec(html['/'])?.[0] ?? ''
+  if (!flatTags(bulmaRow).includes('<span class="fits__state">In development</span>')) fail('/: the lifecycle table must mark Bulma as in development')
+  if (/\d/.test(plain(bulmaRow))) fail('/: the lifecycle row of a module in development shows no figures')
+  if ([...bulmaRow.matchAll(/<td\b[^>]*>/g)].some(([td]) => !/class="fits__next"/.test(td)) || !/<td\b/.test(bulmaRow))
+    fail('/: every cell in the lifecycle row of a module in development is marked as planned (fits__next)')
+  if (/\b(available|ready|live now|real deals?)\b/i.test(plain(bulmaRow))) fail('/: the lifecycle row of a module in development makes no claim of readiness')
+  if (/Bulma/.test(inDev.reduce((h, m) => h.replace(m[0], ''), html['/']).replace(bulmaRow, '')))
+    fail('/: a module in development is named only in its block and its lifecycle row')
+  for (const [, body] of inDev) {
+    if (!plain(body).includes('In development') || !plain(body).includes('Not released yet')) fail('/: a module in development must say so')
+    if (/\d/.test(plain(body))) fail('/: a module in development shows no figures')
+    if (/<(ul|ol|li|dl|table)\b/.test(body)) fail('/: a module in development has no list of features')
+    if (/\b(available|released and|ready|live|launch|real deals?)\b/i.test(plain(body).replace('Not released yet', '')))
+      fail('/: a module in development makes no claim of readiness')
+    const links = [...body.matchAll(/href="([^"]+)"/g)].map((m) => m[1])
+    if (links.length !== 1 || !/^https:\/\/docs\.google\.com\/forms\//.test(links[0])) fail('/: a module in development links only to the feedback form')
   }
   // the reel button's running time is checked against the film itself (plan 32)
   const withoutModules = modules.reduce((h, m) => h.replace(m[0], ''), html['/']).replace(/<span class="reel__t">\d+:\d\d<\/span>/, '')
   for (const [n] of figures(withoutModules)) {
     if (numbering.includes(n) || names[n]) continue
-    // the Toolkit sample deal's figures in the hero panel: the same as the accepted /toolkit/ hero
-    if (plain(toolkitScene).includes(n)) continue
+    // Goten sample deal's figures in the hero panel: the same as the accepted /goten/ hero
+    if (plain(gotenScene).includes(n)) continue
     fail(`/: figure ${n} is not in the inventory of backed figures`)
   }
-  const OWN = { toolkit: ['1,800', '1.2.1'], inbox: [...inboxTrust.high.split(' / '), inboxVersion, inboxMeasuredVersion] }
+  const stamp = (r) => [r.version.slice(1), ...r.date.split('-')]
+  const OWN = {
+    goten: ['1,800', MODULE_PROOF.goten.release, ...stamp(MODULE_PROOF.goten.latest)],
+    trunks: [...trunksTrust.high.split(' / '), trunksVersion, trunksMeasuredVersion, ...stamp(MODULE_PROOF.trunks.latest)],
+  }
   for (const [, mod, body] of modules)
     for (const [n] of figures(body))
       if (!numbering.includes(n) && !(OWN[mod] ?? []).includes(n)) fail(`/: figure ${n} in the ${mod} column is not that module's figure`)
-  for (const url of ['/', '/inbox/'])
+  for (const url of ['/', '/trunks/'])
     for (const [m] of plain(html[url]).matchAll(
       /\b(one|two|three|four|five|six|seven|eight|nine|ten|twelve|twenty|thirty|fifty|hundred)\s+(years?|months?|weeks?|days?|hours?|minutes?|per ?cent|times)\b/gi,
     ))
       fail(`${url}: "${m}" is a figure written out; figures need a backed number`)
 }
 
-// ---- K7, K8: /inbox/demo/ is exactly the locked package ----
+// ---- K7, K8: /trunks/demo/ is exactly the locked package ----
 {
   const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
-  const lock = JSON.parse(read('inbox-demo.lock'))
-  const ref = read('inbox.ref').trim()
-  if (lock.commit !== ref) fail(`inbox-demo.lock is for ${lock.commit}, inbox.ref is ${ref}`)
+  const lock = JSON.parse(read('trunks-demo.lock'))
+  const ref = read('trunks.ref').trim()
+  if (lock.commit !== ref) fail(`trunks-demo.lock is for ${lock.commit}, trunks.ref is ${ref}`)
   const files = walk(DEMO)
     .map((f) => relative(DEMO, f))
     .sort()
   const want = [...Object.keys(lock.files), 'MANIFEST.sha256'].sort()
-  for (const e of readdirSync(join(SITE, 'inbox'))) if (e.startsWith('.')) fail(`site/inbox/${e}: a hidden file or directory would be published`)
-  if (files.join('|') !== want.join('|')) fail(`/inbox/demo/: files differ from inbox-demo.lock (${files.length} vs ${want.length})`)
+  for (const e of readdirSync(join(SITE, 'trunks'))) if (e.startsWith('.')) fail(`site/trunks/${e}: a hidden file or directory would be published`)
+  if (files.join('|') !== want.join('|')) fail(`/trunks/demo/: files differ from trunks-demo.lock (${files.length} vs ${want.length})`)
   for (const [f, h] of Object.entries(lock.files))
-    if (existsSync(join(DEMO, f)) && sha(join(DEMO, f)) !== h) fail(`/inbox/demo/${f} differs from inbox-demo.lock`)
+    if (existsSync(join(DEMO, f)) && sha(join(DEMO, f)) !== h) fail(`/trunks/demo/${f} differs from trunks-demo.lock`)
   if (existsSync(join(DEMO, 'MANIFEST.sha256')) && sha(join(DEMO, 'MANIFEST.sha256')) !== lock.manifest_sha256)
-    fail('/inbox/demo/MANIFEST.sha256 differs from inbox-demo.lock')
+    fail('/trunks/demo/MANIFEST.sha256 differs from trunks-demo.lock')
   const info = JSON.parse(read(join(DEMO, 'snapshot-info.json')))
-  if (info.commit !== ref || info.version !== lock.version) fail('/inbox/demo/snapshot-info.json does not match inbox.ref and the lock')
+  if (info.commit !== ref || info.version !== lock.version) fail('/trunks/demo/snapshot-info.json does not match trunks.ref and the lock')
   const index = read(join(DEMO, 'index.html'))
-  if (!/<meta name="robots" content="noindex"/.test(index)) fail('/inbox/demo/: index.html has no noindex')
+  if (!/<meta name="robots" content="noindex"/.test(index)) fail('/trunks/demo/: index.html has no noindex')
   for (const [, attrs, body] of index.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi))
-    if (body.trim() || !/\bsrc="\.\/[^"]+"/.test(attrs)) fail('/inbox/demo/: a script that is inline or not from the demo directory')
-  if (/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(index)) fail('/inbox/demo/: inline style or event handler in index.html')
+    if (body.trim() || !/\bsrc="\.\/[^"]+"/.test(attrs)) fail('/trunks/demo/: a script that is inline or not from the demo directory')
+  if (/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(index)) fail('/trunks/demo/: inline style or event handler in index.html')
   const snap = read(join(DEMO, 'data/snapshot.js'))
   for (const [email] of snap.matchAll(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g))
-    if (!/\.example$/.test(email)) fail(`/inbox/demo/ snapshot: e-mail address ${email} is not .example`)
+    if (!/\.example$/.test(email)) fail(`/trunks/demo/ snapshot: e-mail address ${email} is not .example`)
   for (const [re, what] of [
     [/Bearer\s+[\w-]/, 'a bearer token'],
     [/sk-ant-|-----BEGIN [A-Z ]*PRIVATE KEY/, 'a key'],
@@ -677,7 +833,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     [/"(password|passwordHash|secret|token)":"[^"]/i, 'a credential'],
     ...PRIVATE_TERMS,
   ])
-    if (re.test(snap)) fail(`/inbox/demo/ snapshot contains ${what}`)
+    if (re.test(snap)) fail(`/trunks/demo/ snapshot contains ${what}`)
 }
 
 // the served script is the current build, and small
@@ -809,7 +965,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   const gbp = (pence) => '£' + (pence / 100).toLocaleString('en-GB')
   const gbp2 = (pence) => '£' + (pence / 100).toLocaleString('en-GB', { minimumFractionDigits: 2 })
   const stored = JSON.parse(read('site-src/blog-example.json'))
-  const example = computeExample(TOOLKIT, INBOX)
+  const example = computeExample(GOTEN, TRUNKS)
   if (JSON.stringify(stored) !== JSON.stringify(example))
     fail('blog: site-src/blog-example.json is not what the pinned code computes (node scripts/blog-example.mjs --write)')
   const { goten: g } = example
@@ -818,7 +974,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   const manifest = JSON.parse(read('site-src/blog-figures.json'))
   const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
   if (manifest.example !== sha('site-src/blog-example.json')) fail('blog: the figures were rendered from a different example (scripts/render-blog-figures.py)')
-  if (manifest.toolkitRef !== read('toolkit.ref').trim() || manifest.inboxRef !== read('inbox.ref').trim())
+  if (manifest.gotenRef !== read('goten.ref').trim() || manifest.trunksRef !== read('trunks.ref').trim())
     fail('blog: the figures were rendered at other releases')
   const figureDir = join(SITE, 'media', 'blog')
   const figureFiles = readdirSync(figureDir)
@@ -956,8 +1112,8 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   })
   if (/fictional/i.test(gotenText)) fail(`${BLOG_GOTEN}: says fictional`)
 
-  // Trunks: every figure and quoted reply is held to the release notes and the default templates at inbox.ref
-  const templates = read(join(INBOX, 'config/default/templates.yaml'))
+  // Trunks: every figure and quoted reply is held to the release notes and the default templates at trunks.ref
+  const templates = read(join(TRUNKS, 'config/default/templates.yaml'))
   for (const words of [
     'is paid in full',
     'Bank transfers can take a few working days to arrive',
@@ -972,14 +1128,16 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   if (!/held-out set of 126 emails/.test(measuredInboxNotes)) fail('blog: 126 is not in the Trunks release notes')
   if (!/in both blind sets the qualifying samples were pacs\.008/.test(measuredInboxNotes))
     fail('blog: the pacs.008 coverage note is not in the Trunks release notes')
-  if (!read(join(INBOX, 'docs/en/security-model.md')).includes('default 24 hours')) fail('blog: 24 hours is not the Trunks default')
-  if (!/Otherwise only an approver or admin can close, with a reason/.test(currentInboxNotes)) fail('blog: closing with a task open is not the Trunks rule')
+  if (!read(join(TRUNKS, 'docs/en/security-model.md')).includes('default 24 hours')) fail('blog: 24 hours is not the Trunks default')
+  // the rule came with v0.4.0; the current role table must still give it to approvers and admins only
+  if (!read(join(TRUNKS, 'docs/en/use/roles.md')).includes('| Close a case that is not ready to close, with a reason | No | Yes | Yes |'))
+    fail('blog: closing with a task open is not the Trunks rule')
   article(BLOG_TRUNKS, {
     title: 'Every investor email, ready for a person',
     summary:
       'Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.',
     film: 'trunks',
-    numbers: `10,000.00 001 20,000.00 005 24 126 5.5 18 123 125 103 008 9 ${inboxVersion} ${inboxMeasuredVersion}`.split(' '),
+    numbers: `10,000.00 001 20,000.00 005 24 126 5.5 18 123 125 103 008 9 ${trunksVersion} ${trunksMeasuredVersion}`.split(' '),
     figures: {
       inbox: 'Trunks inbox with four investor emails. The first, Did my payment arrive? from Son Goku, is selected.',
       reply:
@@ -1001,11 +1159,11 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       'An approver or admin can still close a case with its task open, giving a reason',
       'a taken-over mailbox would pass',
       'One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read',
-      `measured on v${inboxMeasuredVersion}`,
+      `measured on v${trunksMeasuredVersion}`,
       'rated high in 18 of 18',
       'linked correctly in 123 of 125',
       'were all pacs.008',
-      `Trunks v${inboxVersion} runs on your own server with Docker`,
+      `Trunks v${trunksVersion} runs on your own server with Docker`,
     ],
   })
 
@@ -1034,12 +1192,13 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   }
   // both files are generated, so they must be exactly this text: a page missing, a foreign address or a Disallow all fail
   const SITE_URL = 'https://vegeta-ops.vercel.app'
-  const sitemapPages = ['/', '/toolkit/', '/inbox/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS, ...DOCS]
+  const sitemapPages = ['/', '/goten/', '/trunks/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS, ...DOCS]
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>\n`
   if (!existsSync(join(SITE, 'sitemap.xml')) || read(join(SITE, 'sitemap.xml')) !== sitemap) fail('sitemap.xml is not exactly the list of pages')
   if (!existsSync(join(SITE, 'robots.txt')) || read(join(SITE, 'robots.txt')) !== `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`)
     fail('robots.txt is not the expected file')
-  if (JSON.stringify([...sitemapPages].sort()) !== JSON.stringify(Object.keys(html).sort())) fail('the sitemap list and the checked pages differ')
+  if (JSON.stringify([...sitemapPages, NOT_FOUND].sort()) !== JSON.stringify(Object.keys(html).sort()))
+    fail('the sitemap list and the checked pages differ (the not-found page is checked and not listed)')
   const feat = EDUCATION.featured
   const flatList = listBody.replace(/\s+/g, ' ')
   const featured = `<a class="blogfeature" href="${feat.href}" ?> ?<img src="${feat.card}"[^>]*> ?<span ?> ?<small ?>${feat.tag}</small ?> ?<strong ?>${feat.title} ?</strong ?> ?<em ?> ?${feat.summary} ?</em ?> ?</span ?> ?</a ?>`
@@ -1171,7 +1330,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   for (const [re, what] of PRIVATE_TERMS) if (re.test(vtt)) fail(`reel: the captions mention ${what}`)
   // the film shows Goten and Trunks as released at these commits; a new release means watching the film again before moving the ref
   const claims = JSON.parse(read('site-src/film-claims.json'))
-  for (const ref of ['toolkit', 'inbox'])
+  for (const ref of ['goten', 'trunks'])
     if (claims[ref] !== read(`${ref}.ref`).trim())
       fail(
         `reel: ${ref}.ref moved from ${claims[ref]}, the release the film was checked against; re-check the film's claims and update site-src/film-claims.json`,
@@ -1188,8 +1347,8 @@ const MD_TYPE = { source: '/(.*)\\.md', headers: [{ key: 'Content-Type', value: 
 if (vercel.headers.length !== 2 || JSON.stringify(vercel.headers[1]) !== JSON.stringify(MD_TYPE))
   fail('vercel.json: expected the site-wide header rule and the Markdown type rule only')
 const csp = vercel.headers[0].headers.find((h) => h.key === 'Content-Security-Policy')?.value ?? ''
-// the demo uses relative paths: /inbox/demo without the slash must redirect, or its files would resolve one level up
-for (const r of ['/toolkit', '/inbox', '/inbox/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])
+// the demo uses relative paths: /trunks/demo without the slash must redirect, or its files would resolve one level up
+for (const r of ['/goten', '/trunks', '/trunks/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])
   if (!(vercel.redirects ?? []).some((x) => x.source === r && x.destination === r + '/')) fail(`vercel.json: no redirect from ${r} to ${r}/`)
 const CSP =
   "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"
@@ -1200,5 +1359,5 @@ if (problems.length) {
   process.exit(1)
 }
 console.log(
-  `site check: OK (${Object.keys(PAGES).length} pages, demo v${JSON.parse(read('inbox-demo.lock')).version} locked, 7 source-checked illustrations, script ${gz} bytes gzip)`,
+  `site check: OK (${Object.keys(PAGES).length} pages, demo v${JSON.parse(read('trunks-demo.lock')).version} locked, 7 source-checked illustrations, script ${gz} bytes gzip)`,
 )

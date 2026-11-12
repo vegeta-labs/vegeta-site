@@ -68,6 +68,34 @@
   font-weight: 550;
 }
 
+/* plan 36 §11 F3c: the releases on a release notes page, under its item; the one being read is marked (site.js) */
+.docs__side .docs__sub,
+.docs__menu .docs__sub {
+  margin: 4px 0 8px 12px;
+  padding: 0 0 0 8px;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+}
+.docs__side .docs__sub a,
+.docs__menu .docs__sub a {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 12px;
+  color: var(--muted);
+  font: 500 13px/1.5 var(--mono);
+}
+.docs__sub a span {
+  font-weight: 400;
+}
+.docs__side .docs__sub a:hover,
+.docs__side .docs__sub a[aria-current='location'] {
+  color: var(--text);
+}
+.docs__side .docs__sub a[aria-current='location'] {
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+}
+
 /* the same links on a small screen */
 .docs__menu {
   display: none;
@@ -311,6 +339,101 @@ a.docs-card:hover {
 .docs-card--off strong {
   color: var(--muted);
 }
+/* plan 36 D6: inside each card, what its docs hold */
+.docs-card .docs-card__groups {
+  margin-top: 18px;
+  color: var(--text);
+  font-size: 16px;
+}
+
+/* plan 36 §12.3: one timeline, newest first: date, module, version, the release's own line */
+.changelog {
+  max-width: 960px;
+  margin-top: clamp(40px, 6vh, 56px);
+}
+.changelog__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.changelog__meta > span {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.changelog__meta a {
+  white-space: nowrap;
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+.changelog__list {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.changelog__list a {
+  display: grid;
+  grid-template-columns: 7.5em 5em 4.5em minmax(0, 1fr);
+  gap: 4px 16px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+.changelog__list time,
+.changelog__list strong,
+.changelog__mod {
+  font: 500 14px/1.5 var(--mono);
+}
+.changelog__list time {
+  color: var(--muted);
+  font-weight: 400;
+}
+.changelog__mod::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  vertical-align: 1px;
+}
+.changelog__mod--goten::before {
+  background: var(--peach);
+}
+.changelog__mod--trunks::before {
+  background: var(--sage);
+}
+.changelog__list a > span:last-child {
+  font-size: 16px;
+  line-height: 1.45;
+}
+.changelog__list a > span:last-child::first-letter {
+  text-transform: uppercase;
+}
+.changelog__list a:hover > span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* the page that answers an address that does not exist */
+.notfound {
+  margin: 28px 0 96px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: 17px;
+}
+.notfound a {
+  font-weight: 500;
+  text-decoration: none;
+}
 
 @media (max-width: 960px) {
   .docs {
@@ -345,6 +468,12 @@ a.docs-card:hover {
   }
   .docs-index__cards {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .changelog__list a {
+    grid-template-columns: 7.5em 5em minmax(0, 1fr);
+  }
+  .changelog__list a > span:last-child {
+    grid-column: 1 / -1;
   }
   .docs-card {
     min-height: 0;

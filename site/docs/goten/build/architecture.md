@@ -1,8 +1,8 @@
 # Architecture
 
-> Goten v1.3.1. Source: https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/build/architecture.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/build/architecture.md
 
-Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the [technical design](https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/02_TECH_DESIGN.md).
+Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the [technical design](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/02_TECH_DESIGN.md).
 
 ## Layout
 
@@ -73,7 +73,7 @@ The investor list is never rewritten by a withdrawal or a fee payer change. Each
 
 ## Persistence
 
-`saveState` in `state.ts` writes the whole state as JSON to `localStorage` under `deal-ops-toolkit:v1`, with a schema version; the current schema is 2, and `parseSaved` shape-checks everything it reads. When storage is full, the oldest activity log entries are dropped first so the deal data is kept, and the page says so. If storage is blocked or full, the page says that too.
+`saveState` in `state.ts` writes the whole state as JSON to `localStorage` under `goten:v1`, with a schema version; the current schema is 2, and `parseSaved` shape-checks everything it reads. When storage is full, the oldest activity log entries are dropped first so the deal data is kept, and the page says so. If storage is blocked or full, the page says that too.
 
 ## Guided tour
 

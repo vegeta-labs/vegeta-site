@@ -4,9 +4,9 @@
 
 document.documentElement.classList.add('js')
 
-// Plan 13 N29: the Toolkit moved from / to /toolkit/. An old link to one of its sections (/#faq-import, /#step-2, /#how,
+// Plan 13 N29: Goten moved from / to /goten/. An old link to one of its sections (/#faq-import, /#step-2, /#how,
 // /#trust, /#built) lands on the same section there. Reads the address only; the overview page has none of these ids.
-if (location.pathname === '/' && /^#(faq-[a-z-]+|step-[1-3]|how|trust|built)$/.test(location.hash)) location.replace('/toolkit/' + location.hash)
+if (location.pathname === '/' && /^#(faq-[a-z-]+|step-[1-3]|how|trust|built)$/.test(location.hash)) location.replace('/goten/' + location.hash)
 
 const motion = matchMedia('(prefers-reduced-motion: no-preference)')
 const moving = () => motion.matches
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   film()
   captions()
   reel()
+  docsSide()
 })
 
 /** The blog's film: Chromium ignores a click on the picture while nothing is loaded (preload="none"), so start it here. Its own controls do the rest. */
@@ -38,8 +39,7 @@ function film() {
   if (!video) return
   video.addEventListener('click', () => {
     if (video.readyState !== 0 || !video.paused) return
-    const started = video.play()
-    if (started) started.catch(() => {})
+    video.play()?.catch(() => {})
   })
 }
 
@@ -84,8 +84,7 @@ function onceVideo() {
     const update = () => {
       if (failed || !moving() || !started || video.ended) return
       if (inView && !document.hidden) {
-        const playing = video.play()
-        if (playing) playing.catch((e) => e.name === 'AbortError' || giveUp())
+        video.play()?.catch((e) => e.name === 'AbortError' || giveUp())
       } else video.pause()
     }
     video.addEventListener('error', giveUp)
@@ -121,8 +120,7 @@ function ambientVideo() {
     const update = () => {
       if (failed) return
       if (seen && moving() && !document.hidden) {
-        const started = video.play()
-        if (started) started.catch((e) => e.name === 'AbortError' || giveUp())
+        video.play()?.catch((e) => e.name === 'AbortError' || giveUp())
       } else video.pause()
     }
     video.addEventListener('playing', () => video.classList.add('is-on'))
@@ -382,7 +380,7 @@ function scrollEffects() {
     })
   })
 
-  addEventListener('scroll', queue, { passive: true })
+  addEventListener('scroll', queue)
   addEventListener('resize', queue)
   onMotionChange(queue)
   document.addEventListener('visibilitychange', queue)
@@ -727,4 +725,26 @@ function reel() {
   }).observe(box)
   onMotionChange(() => (playLoop(), run()))
   new ResizeObserver(size).observe(frame)
+}
+
+/** Plan 36 §11 F3b, F3c: the docs sidebar scrolls on its own, so bring the current page into it on arrival; on a release
+ *  notes page, mark the release being read as the page scrolls and keep it in the sidebar's view. The sidebar is sticky
+ *  and on screen, so "nearest" moves only the sidebar. */
+function docsSide() {
+  const side = document.querySelector('.docs__side')
+  if (!side) return
+  const go = (a) => a?.scrollIntoView({ block: 'nearest' })
+  const links = [...side.querySelectorAll('.docs__sub a')]
+  go(side.querySelector('[aria-current]'))
+  if (!links.length) return
+  let cur
+  const mark = () => {
+    const a = links.findLast((l) => document.querySelector(l.hash).getBoundingClientRect().top < 160) ?? links[0]
+    if (a == cur) return
+    cur?.removeAttribute('aria-current')
+    a.setAttribute('aria-current', 'location')
+    go((cur = a))
+  }
+  addEventListener('scroll', mark) // scroll events cannot be cancelled, so passive changes nothing
+  mark()
 }

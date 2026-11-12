@@ -35,7 +35,7 @@
     <link rel="preload" href="/fonts/plex-mono-latin-500.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
     <!-- Site handbook §6: one self-hosted script, loaded first; the page is complete without it. On this page it also sends
-         old links to the Toolkit's sections (#faq-…, #step-…, #how, #trust, #built) on to /toolkit/ (plan 13 N29). -->
+         old links to the Toolkit's sections (#faq-…, #step-…, #how, #trust, #built) on to /goten/ (plan 13 N29). -->
     <script src="/site.js"></script>
   </head>
   <body>
@@ -49,8 +49,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -60,8 +60,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/" aria-current="page">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -179,9 +179,10 @@
         <div class="trust__inner">
           <h2 class="eyebrow section-label" id="modules-h">Modules</h2>
           <div class="modules__grid">
-            <article class="module module--toolkit" data-reveal>
+            <article class="module module--goten" data-reveal>
               <h3 class="module__name">Goten</h3>
               <p class="module__type">Deal Calculations</p>
+              <p class="module__version"><a href="/changelog/">v1.4.0 · 2026-11-12</a></p>
               <p class="module__lede">Reconcile, allocate and distribute an SPV, to the penny.</p>
               <p class="module__runs">Runs in your browser</p>
               <ul class="module__caps">
@@ -191,16 +192,17 @@
               </ul>
               <div class="module__proof">
                 <span class="module__figure">1,800</span>
-                <p>generated cases where an independent Python implementation agrees field by field<small>Toolkit v1.2.1 release checks</small></p>
+                <p>generated cases where an independent Python implementation agrees field by field<small>Goten v1.4.0 release checks</small></p>
               </div>
               <p class="fact__links">
-                <a href="https://deal-ops-toolkit.vercel.app">Open the app <span class="arrow" aria-hidden="true">→</span></a>
-                <a href="/toolkit/">How it works <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="https://vegeta-goten.vercel.app">Open the app <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="/goten/">How it works <span class="arrow" aria-hidden="true">→</span></a>
               </p>
             </article>
-            <article class="module module--inbox" data-reveal>
+            <article class="module module--trunks" data-reveal>
               <h3 class="module__name">Trunks</h3>
               <p class="module__type">Operations Inbox</p>
+              <p class="module__version"><a href="/changelog/">v0.5.0 · 2026-11-12</a></p>
               <p class="module__lede">Every deal email, ready for a person to review.</p>
               <p class="module__runs">Runs on your server</p>
               <ul class="module__caps">
@@ -210,14 +212,35 @@
               </ul>
               <div class="module__proof">
                 <span class="module__figure">80 / 80</span>
-                <p>high-risk emails rated high, on emails development never read<small>Inbox v0.4.0 release checks; measured on v0.3.0</small></p>
+                <p>high-risk emails rated high, on emails development never read<small>Trunks v0.5.0 release checks; measured on v0.3.0</small></p>
               </div>
               <p class="fact__links">
-                <a href="/inbox/demo/">See the demo <span class="arrow" aria-hidden="true">→</span></a>
-                <a href="/inbox/">How it works <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="/trunks/demo/">See the demo <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="/trunks/">How it works <span class="arrow" aria-hidden="true">→</span></a>
               </p>
             </article>
           </div>
+          <!-- plan 36 B1, §11 F1: a module in development has its name, who it is for, the flow in one sentence and the feedback form; no figures -->
+          <aside class="modnext" aria-labelledby="bulma-h">
+            <div>
+              <h3 class="module__name modnext__name" id="bulma-h">Bulma</h3>
+              <p class="module__type">Deal Room</p>
+              <p class="module__runs modnext__state">In development</p>
+            </div>
+            <div>
+              <p class="module__lede modnext__for">For syndicate leads and the investors they invite.</p>
+              <p class="modnext__what">
+                The lead sets up a deal and invites investors by link. Each investor confirms eligibility, commits, signs and gets payment instructions; the
+                lead follows every payment and closes the deal, and each investor gets their documents. Follow-ons and exits are planned. Not released yet.
+              </p>
+              <p class="fact__links">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Bulma"
+                  >Tell us what you need <span class="arrow" aria-hidden="true">→</span></a
+                >
+              </p>
+            </div>
+          </aside>
           <p class="trust__note">Each module is released only when it is built and tested.</p>
         </div>
       </section>
@@ -231,21 +254,35 @@
           <thead role="rowgroup">
             <tr role="row">
               <td role="cell" class="fits__corner"></td>
-              <th scope="col" role="columnheader">Commit and pay</th>
+              <th scope="col" role="columnheader">Raise</th>
+              <th scope="col" role="columnheader">Pay</th>
               <th scope="col" role="columnheader">Close</th>
               <th scope="col" role="columnheader">Exit</th>
             </tr>
           </thead>
           <tbody role="rowgroup">
             <tr role="row">
+              <th scope="row" role="rowheader">Bulma<span class="fits__state">In development</span></th>
+              <td role="cell" class="fits__next" data-stage="Raise">
+                Launch a deal, bring investors in<small>Invite links, eligibility, KYC, commitment, signing, payment instructions</small>
+              </td>
+              <td role="cell" class="fits__next" data-stage="Pay">Follow every payment<small>Reminders, who has paid, refunds owed, withdrawals</small></td>
+              <td role="cell" class="fits__next" data-stage="Close">
+                Close the deal<small>Closing steps, final amounts from Goten, signed documents, proof of investment</small>
+              </td>
+              <td role="cell" class="fits__next" data-stage="Exit">After the close<small>Follow-on rounds, conversions, exits</small></td>
+            </tr>
+            <tr role="row">
               <th scope="row" role="rowheader">Goten</th>
-              <td role="cell" class="fits__toolkit" data-stage="Commit and pay">Reconcile receipts<small>Match the bank statement to commitments</small></td>
-              <td role="cell" class="fits__toolkit" data-stage="Close">Allocate the close<small>Fees, scale-back, refunds, the wire</small></td>
-              <td role="cell" class="fits__toolkit" data-stage="Exit">Distribute the exit<small>Carry, hurdle and catch-up, step by step</small></td>
+              <td role="cell" class="fits__gap"></td>
+              <td role="cell" class="fits__goten" data-stage="Pay">Reconcile receipts<small>Match the bank statement to commitments</small></td>
+              <td role="cell" class="fits__goten" data-stage="Close">Allocate the close<small>Fees, scale-back, refunds, the wire</small></td>
+              <td role="cell" class="fits__goten" data-stage="Exit">Distribute the exit<small>Carry, hurdle and catch-up, step by step</small></td>
             </tr>
             <tr role="row">
               <th scope="row" role="rowheader">Trunks</th>
-              <td role="cell" class="fits__inbox" colspan="3">
+              <td role="cell" class="fits__gap"></td>
+              <td role="cell" class="fits__trunks" colspan="3">
                 Every investor email, at every stage<small
                   >Payment questions and confirmations, KYC files, withdrawals, closing and exit questions, changes of bank details</small
                 >
@@ -281,10 +318,7 @@
         </ol>
         <p class="built__links">
           <a href="https://github.com/vegeta-labs">GitHub <span class="arrow" aria-hidden="true">→</span></a>
-          <a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md"
-            >Goten review summary <span class="arrow" aria-hidden="true">→</span></a
-          >
-          <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="/changelog/">Changelog <span class="arrow" aria-hidden="true">→</span></a>
         </p>
       </section>
 
@@ -297,8 +331,8 @@
               <summary>What is Vegeta?</summary>
               <p>
                 Vegeta is open-source software for SPV and syndicate operations teams. Each module handles a specific part of the work.
-                <a href="/toolkit/">Goten — Deal Calculations</a> reconciles receipts, works out the closing allocation and splits an exit, in your browser.
-                <a href="/inbox/">Trunks — Operations Inbox</a> prepares each email in your operations mailbox for a person to review, on your own server.
+                <a href="/goten/">Goten — Deal Calculations</a> reconciles receipts, works out the closing allocation and splits an exit, in your browser.
+                <a href="/trunks/">Trunks — Operations Inbox</a> prepares each email in your operations mailbox for a person to review, on your own server.
               </p>
             </details>
             <details class="faq__item" id="dfaq-free">
@@ -325,7 +359,7 @@
               <p>
                 Goten: Your deal data is processed in your browser and never sent by this app. The hosting provider still receives normal page requests. Trunks:
                 it runs on your own server and sends only redacted text to the model provider you configure, or, with a local model, keeps the model traffic
-                inside your network. <a href="/inbox/#ifaq-sent">What is sent to the model</a>
+                inside your network. <a href="/trunks/#ifaq-sent">What is sent to the model</a>
               </p>
             </details>
             <details class="faq__item" id="dfaq-fit">
@@ -338,12 +372,20 @@
             <details class="faq__item" id="dfaq-tested">
               <summary>How is it tested?</summary>
               <p>
-                Each module page shows the figures from its latest release checks: <a href="/toolkit/#trust">Goten</a> and <a href="/inbox/#trust">Trunks</a>.
+                Each module page shows the figures from its latest release checks: <a href="/goten/#trust">Goten</a> and <a href="/trunks/#trust">Trunks</a>.
                 Both compare their rules with an independent Python implementation and use mutation checks. Trunks is also measured on emails that development
                 never read, with a real model, once per release.
               </p>
             </details>
           </div>
+        </div>
+        <div class="faq__group">
+          <h3 class="faq__h">Not answered here?</h3>
+          <p class="faq__ask">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform"
+              >Tell us what you need&nbsp;<span class="arrow" aria-hidden="true">→</span></a
+            >
+          </p>
         </div>
       </section>
 
@@ -356,8 +398,8 @@
         <h2 class="cta__title" id="cta-h" data-reveal>Start with the sample data</h2>
         <p class="cta__body" data-reveal>Fictional deals and people. Nothing to install.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://deal-ops-toolkit.vercel.app">Take the Goten tour</a>
-          <a class="btn btn--quiet" href="/inbox/demo/">See the Trunks demo <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--primary" href="https://vegeta-goten.vercel.app">Take the Goten tour</a>
+          <a class="btn btn--quiet" href="/trunks/demo/">See the Trunks demo <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </section>
     </main>
@@ -367,10 +409,10 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -378,8 +420,7 @@
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -387,7 +428,7 @@
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

@@ -1,6 +1,6 @@
 # Deploy with an AI coding assistant
 
-> Trunks v0.4.0. Source: https://github.com/vegeta-labs/trunks/blob/d710459cd237c77459f388cbda226e2431260c1f/docs/en/deploy-with-ai.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/deploy-with-ai.md
 
 An AI coding assistant (one that can run commands on your machine) can deploy the Trunks demo from these documents:
 a fresh assistant did so in a test, with the prompt below. For a real deployment it can run the commands while a person

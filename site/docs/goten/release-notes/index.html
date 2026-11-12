@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Goten — Deal Calculations — release notes | Vegeta</title>
+    <meta
+      name="description"
+      content="Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Goten — Deal Calculations — release notes | Vegeta" />
+    <meta
+      property="og:description"
+      content="Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/release-notes/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Goten — Deal Calculations — release notes | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/goten/release-notes/" />
+    <link rel="alternate" type="text/markdown" href="/docs/goten/release-notes.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Goten docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/goten/">Overview</a></li>
+            <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+            <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+            <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+            <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+            <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+            <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+            <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+            <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/goten/build/">Overview</a></li>
+            <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+            <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/goten/build/verification/">Verification</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li>
+              <a href="/docs/goten/release-notes/" aria-current="page">Release notes</a>
+              <ul class="docs__sub">
+                <li>
+                  <a href="#v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over"
+                    >v1.4.0 <span>2026-11-12</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#v131-2026-11-10-tour-end-card-theme-switch-and-exit-waterfall-steps-fit-a-phone-screen">v1.3.1 <span>2026-11-10</span></a>
+                </li>
+                <li>
+                  <a href="#v130-2026-11-10-out-of-date-pages-no-longer-let-you-copy-or-export-old-figures">v1.3.0 <span>2026-11-10</span></a>
+                </li>
+                <li>
+                  <a href="#v125-2026-11-09-loading-the-sample-deal-or-importing-investors-asks-before-you-lose-work">v1.2.5 <span>2026-11-09</span></a>
+                </li>
+                <li>
+                  <a href="#v124-2026-11-07-send-feedback-through-a-form-instead-of-email">v1.2.4 <span>2026-11-07</span></a>
+                </li>
+                <li>
+                  <a href="#v123-2026-11-04-new-name-goten--deal-calculations">v1.2.3 <span>2026-11-04</span></a>
+                </li>
+                <li>
+                  <a href="#v122-2026-10-28-the-message-text-box-and-the-withdraw-form-fit-a-phone-screen">v1.2.2 <span>2026-10-28</span></a>
+                </li>
+                <li>
+                  <a href="#v121-2026-10-28-reworded-chase-message-for-investors-who-have-already-paid">v1.2.1 <span>2026-10-28</span></a>
+                </li>
+                <li>
+                  <a href="#v120-2026-10-27-chase-messages-an-activity-log-withdrawals-and-fee-payer-changes">v1.2.0 <span>2026-10-27</span></a>
+                </li>
+                <li>
+                  <a href="#v111-2026-10-23-the-page-tells-you-when-your-changes-are-not-being-saved">v1.1.1 <span>2026-10-23</span></a>
+                </li>
+                <li>
+                  <a href="#v110-2026-10-21-deal-currency-on-every-amount-and-a-light-or-dark-theme">v1.1.0 <span>2026-10-21</span></a>
+                </li>
+                <li>
+                  <a href="#v100-2026-10-20-first-release-reconciliation-closing-allocation-and-exit-distribution">v1.0.0 <span>2026-10-20</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Goten docs</summary>
+            <nav aria-label="Goten docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/goten/">Overview</a></li>
+                <li><a href="/docs/goten/use/getting-started/">Walk the sample deal</a></li>
+                <li><a href="/docs/goten/use/import-csv/">Prepare and import CSV files</a></li>
+                <li><a href="/docs/goten/use/reconciliation/">Reconciliation</a></li>
+                <li><a href="/docs/goten/use/closing-allocation/">Closing allocation</a></li>
+                <li><a href="/docs/goten/use/exit-distribution/">Exit distribution</a></li>
+                <li><a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a></li>
+                <li><a href="/docs/goten/use/exports-and-records/">Exports and records</a></li>
+                <li><a href="/docs/goten/use/how-the-numbers-work/">How the numbers work</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/goten/build/">Overview</a></li>
+                <li><a href="/docs/goten/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/goten/build/csv-reference/">CSV reference</a></li>
+                <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/goten/build/verification/">Verification</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li>
+                  <a href="/docs/goten/release-notes/" aria-current="page">Release notes</a>
+                  <ul class="docs__sub">
+                    <li>
+                      <a href="#v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over"
+                        >v1.4.0 <span>2026-11-12</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#v131-2026-11-10-tour-end-card-theme-switch-and-exit-waterfall-steps-fit-a-phone-screen">v1.3.1 <span>2026-11-10</span></a>
+                    </li>
+                    <li>
+                      <a href="#v130-2026-11-10-out-of-date-pages-no-longer-let-you-copy-or-export-old-figures">v1.3.0 <span>2026-11-10</span></a>
+                    </li>
+                    <li>
+                      <a href="#v125-2026-11-09-loading-the-sample-deal-or-importing-investors-asks-before-you-lose-work">v1.2.5 <span>2026-11-09</span></a>
+                    </li>
+                    <li>
+                      <a href="#v124-2026-11-07-send-feedback-through-a-form-instead-of-email">v1.2.4 <span>2026-11-07</span></a>
+                    </li>
+                    <li>
+                      <a href="#v123-2026-11-04-new-name-goten--deal-calculations">v1.2.3 <span>2026-11-04</span></a>
+                    </li>
+                    <li>
+                      <a href="#v122-2026-10-28-the-message-text-box-and-the-withdraw-form-fit-a-phone-screen">v1.2.2 <span>2026-10-28</span></a>
+                    </li>
+                    <li>
+                      <a href="#v121-2026-10-28-reworded-chase-message-for-investors-who-have-already-paid">v1.2.1 <span>2026-10-28</span></a>
+                    </li>
+                    <li>
+                      <a href="#v120-2026-10-27-chase-messages-an-activity-log-withdrawals-and-fee-payer-changes">v1.2.0 <span>2026-10-27</span></a>
+                    </li>
+                    <li>
+                      <a href="#v111-2026-10-23-the-page-tells-you-when-your-changes-are-not-being-saved">v1.1.1 <span>2026-10-23</span></a>
+                    </li>
+                    <li>
+                      <a href="#v110-2026-10-21-deal-currency-on-every-amount-and-a-light-or-dark-theme">v1.1.0 <span>2026-10-21</span></a>
+                    </li>
+                    <li>
+                      <a href="#v100-2026-10-20-first-release-reconciliation-closing-allocation-and-exit-distribution">v1.0.0 <span>2026-10-20</span></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
+          <h1 class="docs__title">Goten — Deal Calculations — release notes</h1>
+          <p class="docs__version">v1.4.0</p>
+          <div class="docs__body">
+            <p>Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it.</p>
+            <h2 id="v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over">
+              v1.4.0 (2026-11-12): Saved data now uses the Goten name, so data saved by earlier versions is not carried over<a
+                class="docs__anchor"
+                href="#v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The last identifiers that carried the product&#39;s earlier name now say Goten. The browser storage keys are <code>goten:v1</code> (the deal and
+              its activity log), <code>goten:theme</code> and <code>goten:tour</code>, and the package name is <code>goten</code> (Technical design §1, §9.1;
+              R-X-02, R-X-04; the key tests in <code>src/state.test.ts</code> and <code>src/theme.test.ts</code>, E2E-04).
+              <strong>Data saved by an earlier version is not carried over:</strong> a browser that used v1.3.1 or earlier at this address opens with an empty
+              deal, the theme following the device and the tour at its start; entries under the earlier keys are not read and stay in the browser&#39;s storage
+              until its site data is cleared. (The app&#39;s address also changed on 2026-11-12, and a browser keeps saved data per address.) There is no
+              migration because the tool has had no users to migrate. Document titles, code comments and the oracle&#39;s description use the current name;
+              records of releases up to v1.2.2 keep the name they were released under.
+            </p>
+            <p>Calculations, rounding, import and export formats and the saved-data schema (version 2) are unchanged.</p>
+            <p>
+              Checked on the release branch on 2026-11-12: 466 unit tests pass; all 210 test-plan cases due at M6 ran and passed; 12 of 12 end-to-end cases (37
+              tests); 301 of 301 deliberate code breakages caught (the full run, made in three parts on 2026-11-12; three were added for the renamed keys); the
+              Python oracle&#39;s self-check 180 of 180, and the TypeScript engines agree with it on 1,800 generated cases.
+            </p>
+            <h2 id="v131-2026-11-10-tour-end-card-theme-switch-and-exit-waterfall-steps-fit-a-phone-screen">
+              v1.3.1 (2026-11-10): Tour end card, theme switch and exit waterfall steps fit a phone screen<a
+                class="docs__anchor"
+                href="#v131-2026-11-10-tour-end-card-theme-switch-and-exit-waterfall-steps-fit-a-phone-screen"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Phone-width fixes from a real-phone check. The guided tour&#39;s end card now shows <strong>Keep exploring the sample</strong>,
+              <strong>Clear and start my own deal</strong> and <strong>Replay tour</strong> under its title without scrolling, folds to one line (<strong
+                >Tour finished · Show</strong
+              >), closes with Esc, and leaves room for a browser toolbar at the bottom of the screen (05_GUIDED_TOUR §4; E2E-05). At 600px and narrower, the
+              System / Light / Dark choice moves to the foot of the page with 44px buttons, the breadcrumb is hidden, and <strong>Load sample deal</strong> sits
+              with the tour and clear buttons; wider screens are unchanged (R-X-04; E2E-07). On the exit page, each waterfall step&#39;s reason sits under its
+              name on a phone instead of in a cut-off <strong>Why</strong> column (E2E-07). Calculations, import and export formats, and saved data are
+              unchanged.
+            </p>
+            <p>
+              Counts at release: 464 unit tests, 210 of 210 due test-plan cases, 37 end-to-end tests covering 12 of 12 planned end-to-end cases, 36 of 36
+              mutants in the changed files caught (the full mutation run is weekly), the Python oracle&#39;s self-check 180 of 180.
+            </p>
+            <h2 id="v130-2026-11-10-out-of-date-pages-no-longer-let-you-copy-or-export-old-figures">
+              v1.3.0 (2026-11-10): Out-of-date pages no longer let you copy or export old figures<a
+                class="docs__anchor"
+                href="#v130-2026-11-10-out-of-date-pages-no-longer-let-you-copy-or-export-old-figures"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Pages marked <strong>out of date</strong> no longer pass on old figures. On the allocation page, <strong>Copy closing confirmation</strong>,
+              <strong>Export allocation CSV</strong> and <strong>Hand off to exit distribution</strong> are disabled until you hand off again, and the page says
+              why; on the exit page, <strong>Export holdings CSV</strong> and <strong>Export distribution CSV</strong> are disabled while the holdings or the
+              allocation behind them are out of date (R-X-07; TC-ALL-50, TC-DIS-32).
+            </p>
+            <p>
+              After a fee payer change, the allocation page shows no result, refund list or confirmation until you hand off again, because those figures would
+              mix the new fee table with the old investor amounts (R-ALL-12.3, C-ALL-11; TC-ALL-51).
+            </p>
+            <p>
+              Bank lines marked <strong>Not part of this deal</strong> no longer get the &quot;unmatched for N days&quot; reminder; undoing the mark brings it
+              back, and the money still counts as not booked (R-REC-06, C-REC-5; TC-REC-58). The &quot;Copied to the clipboard.&quot; message goes once the
+              confirmation can no longer be copied or has changed (R-ALL-10; TC-ALL-52), and the settings-changed reminder no longer points to a preview that is
+              not there.
+            </p>
+            <p>Calculations, rounding, import and export formats, and saved data are unchanged.</p>
+            <h2 id="v125-2026-11-09-loading-the-sample-deal-or-importing-investors-asks-before-you-lose-work">
+              v1.2.5 (2026-11-09): Loading the sample deal or importing investors asks before you lose work<a
+                class="docs__anchor"
+                href="#v125-2026-11-09-loading-the-sample-deal-or-importing-investors-asks-before-you-lose-work"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Two actions that can lose work now ask first. <strong>Load sample deal</strong> asks before replacing a deal that has anything to lose (R-X-01.3;
+              TC-X-21, TC-X-22, TC-X-23). Importing an investor list says how many confirmed decisions, withdrawal marks and fee payer adjustments it would
+              void, and offers <strong>Import anyway</strong> or <strong>Cancel</strong> (R-REC-01.3; TC-REC-56, TC-REC-57). Calculations, import and export
+              formats, and saved data are unchanged.
+            </p>
+            <h2 id="v124-2026-11-07-send-feedback-through-a-form-instead-of-email">
+              v1.2.4 (2026-11-07): Send feedback through a form instead of email<a
+                class="docs__anchor"
+                href="#v124-2026-11-07-send-feedback-through-a-form-instead-of-email"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The footer&#39;s feedback link now opens a feedback form in a new tab, and the app no longer shows an email address (R-X-06; TC-X-02, E2E-06).
+              Calculations, import and export formats, and saved data are unchanged.
+            </p>
+            <h2 id="v123-2026-11-04-new-name-goten--deal-calculations">
+              v1.2.3 (2026-11-04): New name: Goten — Deal Calculations<a
+                class="docs__anchor"
+                href="#v123-2026-11-04-new-name-goten--deal-calculations"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              <strong>Goten — Deal Calculations</strong>, part of Vegeta. The app heading, breadcrumb, browser title and description, feedback email subject
+              (R-X-06), and current product introduction use the confirmed product name. Tests: TC-X-02 and P6 branding/breadcrumb checks; existing end-to-end
+              persistence, privacy, reconciliation, allocation and distribution cases.
+            </p>
+            <p>
+              The application address, package name, saved-data keys, schemas, import/export formats and calculations are unchanged. Existing browser data,
+              theme and tour progress remain readable. Historical release records retain their original product names.
+            </p>
+            <h2 id="v122-2026-10-28-the-message-text-box-and-the-withdraw-form-fit-a-phone-screen">
+              v1.2.2 (2026-10-28): The message text box and the withdraw form fit a phone screen<a
+                class="docs__anchor"
+                href="#v122-2026-10-28-the-message-text-box-and-the-withdraw-form-fit-a-phone-screen"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Live at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a> (build <code>index-tN1Qq31h.js</code>). The tag
+              <code>v1.2.2</code> and the release commit <code>b5bf8f1</code> are in the private development repository. Production smoke test on 2026-10-28:
+              the sample deal&#39;s figures match Test Plan §3; at phone width the copy box and the withdraw form open wholly on screen; 12 requests, all
+              same-origin GETs without bodies or query strings; no console errors; the security headers match <code>vercel.json</code> (Tech Design §4).
+            </p>
+            <p>
+              A small fix for phone-width screens (PR #34 in the private development repository). No calculation, money decision, export column or saved-data
+              format changed. Checked on <code>main</code> on 2026-10-28: all 199 test-plan cases due at M6 ran and passed; 11 of 11 end-to-end cases (32
+              tests); the deliberate code breakages in the changed files 18 of 18 caught (the full run was skipped at the owner&#39;s choice, as no calculation
+              code changed); the Python oracle&#39;s self-check 178 of 178.
+            </p>
+            <p><strong>Phone-width screens</strong> (R-X-04)</p>
+            <ul>
+              <li>
+                When the clipboard is unavailable, the chase or query text box is brought wholly on screen before it is selected; before, on a phone it could
+                sit partly off the right edge of the investors table.
+              </li>
+              <li>
+                The withdraw form fits the screen and appears at once, with the consent box ready to tick; before, it was wider than a phone screen and scrolled
+                into place over about half a second.
+              </li>
+              <li>Test: E2E-09 (375px).</li>
+            </ul>
+            <h2 id="v121-2026-10-28-reworded-chase-message-for-investors-who-have-already-paid">
+              v1.2.1 (2026-10-28): Reworded chase message for investors who have already paid<a
+                class="docs__anchor"
+                href="#v121-2026-10-28-reworded-chase-message-for-investors-who-have-already-paid"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Live at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a> (build <code>index-bxRVcwES.js</code>). The tag
+              <code>v1.2.1</code> and the release commit <code>e19b640</code> are in the private development repository. Production smoke test on 2026-10-28:
+              the sample deal&#39;s figures match Test Plan §3; the copied chase message carries the new wording word for word; withdrawing an investor and
+              changing then reversing who pays the platform fee work as before; 12 requests, all same-origin GETs without bodies or query strings; no console
+              errors; the security headers match <code>vercel.json</code> (Tech Design §4).
+            </p>
+            <p>
+              A wording change (PRD v0.8.2; PR #32 in the private development repository). No calculation, money decision, export column or saved-data format
+              changed. Checked on <code>main</code> on 2026-10-28: 420 unit tests pass; all 199 test-plan cases due at M6 ran and passed; 11 of 11 end-to-end
+              cases (31 tests); 267 of 267 deliberate code breakages caught; the Python oracle&#39;s self-check 178 of 178, and the TypeScript engines agree
+              with it on 1,800 generated cases.
+            </p>
+            <p><strong>Chase message</strong> (R-REC-10, C-REC-8 template A)</p>
+            <ul>
+              <li>
+                The paragraph for investors who have already paid now reads: &quot;If you have already sent this payment, please ask your bank for the MT103 (or
+                equivalent) for the transfer, showing its UETR, and send it to us so we can trace the payment.&quot; The Reconciliation hint says the message
+                asks anyone who has already paid to send the bank&#39;s MT103 / UETR.
+              </li>
+              <li>Tests: TC-REC-42, TC-REC-43, TC-X-14, E2E-08.</li>
+            </ul>
+            <h2 id="v120-2026-10-27-chase-messages-an-activity-log-withdrawals-and-fee-payer-changes">
+              v1.2.0 (2026-10-27): Chase messages, an activity log, withdrawals and fee payer changes<a
+                class="docs__anchor"
+                href="#v120-2026-10-27-chase-messages-an-activity-log-withdrawals-and-fee-payer-changes"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Live at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a> (build <code>index-fWQP9R2X.js</code>). The tag
+              <code>v1.2.0</code> and the release commit <code>69f211a</code> are in the private development repository. Production smoke test on 2026-10-27:
+              the sample deal&#39;s figures match Test Plan §3 (reconciliation, allocation and exit); copying a chase message, withdrawing an investor and
+              changing then reversing who pays the platform fee work as checked before release; 12 requests, all same-origin GETs without bodies or query
+              strings; no console errors; the security headers match <code>vercel.json</code> (Tech Design §4).
+            </p>
+            <p>
+              M5 and M6 (PRD v0.8 and v0.8.1; PRs #24 and #27 in the private development repository). No existing calculation rule changed. Checked on
+              <code>main</code> on 2026-10-27: 420 unit tests pass; all 199 test-plan cases due at M6 ran and passed; 11 of 11 end-to-end cases (31 tests); 264
+              of 265 deliberate code breakages caught, the remaining one on redundant code that was then removed (re-run 5 of 5); the Python oracle&#39;s
+              self-check 178 of 178, and the TypeScript engines agree with it on 1,800 generated cases.
+            </p>
+            <p><strong>Messages to investors</strong> (R-REC-10)</p>
+            <ul>
+              <li>
+                &quot;Copy message&quot; next to each investor who is short or has not paid copies a chase email (with what to ask the bank for: the MT103 and
+                its UETR); the chase list CSV has the same text in a <code>message</code> column.
+              </li>
+              <li>
+                &quot;Copy query&quot; next to each suggested investor for an unmatched receipt copies a question with only the date, the amount and the
+                currency — never the payer, the bank reference or the transaction ID.
+              </li>
+              <li>Nothing is sent: the text is copied for you to send; without a clipboard it is shown selected for copying by hand.</li>
+              <li>Tests: TC-REC-42 to TC-REC-46, E2E-08.</li>
+            </ul>
+            <p><strong>Activity log</strong> (R-X-08)</p>
+            <ul>
+              <li>
+                A read-only &quot;Activity log&quot; page: imports, every decision, voided decisions, hand-offs, copies, withdrawals, fee payer changes and
+                exports, newest first, with your initials if you set them; export as CSV.
+              </li>
+              <li>
+                Up to 5,000 entries; a reminder to export from 4,000; when the browser&#39;s storage is full the oldest entries go first so the deal data is
+                kept, and the page says how many were removed before export.
+              </li>
+              <li>Tests: TC-X-05 to TC-X-11, TC-X-16 to TC-X-19.</li>
+            </ul>
+            <p><strong>Withdrawal before closing</strong> (R-REC-11, C-REC-7)</p>
+            <ul>
+              <li>
+                Mark an investor withdrawn with their written consent and a date; it can be undone. They are not chased and not carried into the allocation;
+                everything they paid is listed to refund, and the closing confirmation lists them under &quot;Withdrawn before closing (refund in full)&quot;.
+                The ledger CSV gains <code>withdrawn_on</code>.
+              </li>
+              <li>Tests: TC-REC-47 to TC-REC-54, TC-IO-47, E2E-09.</li>
+            </ul>
+            <p><strong>Changing who pays a percentage fee before closing</strong> (R-ALL-12, R-REC-12, C-ALL-10, C-ALL-11)</p>
+            <ul>
+              <li>
+                A panel previews each investor&#39;s new amount due so that their investment stays the same, with the top-ups and refunds it causes and the
+                consent the new payer needs; applying it records an adjustment beside the investor list (the list itself is not changed) and can be reversed in
+                one step. Reconciliation, the chase list (with <code>committed_original</code> and <code>committed_adjustment</code>) and refunds use the
+                adjusted amounts.
+              </li>
+              <li>
+                Edits that no longer fit an adjustment void it for good and say so; a change of allocation settings brings a reminder and a re-check. While a
+                change is active, the deal currency is locked until it is reversed (decision 12).
+              </li>
+              <li>Tests: TC-ALL-31 to TC-ALL-49, TC-REC-53, TC-REC-54, E2E-09.</li>
+            </ul>
+            <p>
+              <strong>Guided tour</strong> (R-X-01.2): still 12 steps; step 6 mentions &quot;Copy message&quot;; the end card points to the Activity log and
+              offers three things to try next, each with &quot;Take me to it&quot; (TC-X-11, TC-X-12, TC-X-20, E2E-05).
+            </p>
+            <p>
+              <strong>Saved data:</strong> this version saves in a new format (schema 2) and reads saves from v1.1.x. Earlier versions cannot read the new
+              format: going back to v1.1.x would start from an empty page (Tech Design §9.7).
+            </p>
+            <h2 id="v111-2026-10-23-the-page-tells-you-when-your-changes-are-not-being-saved">
+              v1.1.1 (2026-10-23): The page tells you when your changes are not being saved<a
+                class="docs__anchor"
+                href="#v111-2026-10-23-the-page-tells-you-when-your-changes-are-not-being-saved"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Live at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a> (build <code>index-CZaWFdNy.js</code>). The tag
+              <code>v1.1.1</code> and the release commit <code>8734580</code> are in the private development repository. Production smoke test on 2026-10-23:
+              the sample deal&#39;s figures match Test Plan §3 (reconciliation, allocation and exit); the save-status region is present and empty while saving
+              works; 7 requests, all same-origin GETs without bodies or query strings; no console errors; the security headers read from the production URL
+              match <code>vercel.json</code> (Tech Design §4).
+            </p>
+            <p>
+              A fix found while preparing the next version (PR #18 in the private development repository; PRD v0.7.6). The tag <code>v1.1.1</code> and the
+              release commit <code>8734580</code> are in the private development repository. No calculation rule or figure changed. Checked on
+              <code>main</code> on 2026-10-23: 287 unit tests pass; all 150 test-plan cases due at M4 ran and passed; 9 of 9 end-to-end cases (27 tests); 141 of
+              141 deliberate code breakages caught; the Python oracle&#39;s self-check 139 of 139.
+            </p>
+            <p><strong>Saving in the browser</strong> (R-X-02, TC-X-04)</p>
+            <ul>
+              <li>
+                When the browser&#39;s storage for the page is full, the page now says so: &quot;This browser&#39;s storage for this page is full, so your
+                latest changes are not being saved. Export what you need before you close the page.&quot; Before, it wrongly said storage was blocked.
+              </li>
+              <li>
+                When the browser refuses storage altogether (for example when site data is blocked), the page now says &quot;storage is blocked&quot;. Before,
+                it said nothing, so the data looked saved but was gone when the page closed.
+              </li>
+              <li>The message is announced by screen readers.</li>
+            </ul>
+            <h2 id="v110-2026-10-21-deal-currency-on-every-amount-and-a-light-or-dark-theme">
+              v1.1.0 (2026-10-21): Deal currency on every amount, and a light or dark theme<a
+                class="docs__anchor"
+                href="#v110-2026-10-21-deal-currency-on-every-amount-and-a-light-or-dark-theme"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Live at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a> (build <code>index-DLntVfU4.js</code>). The tag
+              <code>v1.1.0</code> and the release commit <code>d588b56</code> are in the private development repository. Production smoke test on 2026-10-21:
+              the sample deal&#39;s figures match Test Plan §3 and the confirmation names <code>Currency: GBP</code>; a Dark choice survives a reload; 12
+              requests, all same-origin GETs without bodies or query strings; no console errors; the security headers match Tech Design §4.
+            </p>
+            <p>
+              Changes since v1.0.0 after the owner&#39;s review of the live site (PR #11 in the private development repository; PRD v0.7.4 and v0.7.5). No
+              calculation rule or figure changed. Checked on <code>main</code> on 2026-10-21: 284 unit tests pass; all 149 test-plan cases due at M4 ran and
+              passed; 9 of 9 end-to-end cases (27 tests); 131 of 131 deliberate code breakages caught; the Python oracle&#39;s self-check 139 of 139.
+            </p>
+            <p><strong>Currency</strong> (R-DEAL-01, R-ALL-10, I-01, I-03, §5.5; decision 10)</p>
+            <ul>
+              <li>
+                Every money field names the deal currency (£ / € / US$), also for screen readers; US dollars are shown as US$, and <code>$</code> or
+                <code>US$</code> is accepted on input.
+              </li>
+              <li>
+                Changing the currency converts nothing: the page says so, and when amounts exist it asks first, giving how many amounts will be recorded in the
+                new currency.
+              </li>
+              <li>
+                Every CSV export ends with a <code>currency</code> column (ISO code on each row); imports accept an optional <code>currency</code> column and
+                refuse a different currency.
+              </li>
+              <li>
+                The closing confirmation names the currency code; import messages say which currency the amounts were read in; share prices accept thousands
+                commas.
+              </li>
+              <li>Tests: TC-IO-44, TC-IO-45, TC-IO-46, TC-DEAL-03, TC-ALL-30.</li>
+            </ul>
+            <p><strong>Appearance and interaction</strong> (R-X-04, R-X-05; decision 9)</p>
+            <ul>
+              <li>
+                A System / Light / Dark switch, following the device by default and kept only in this browser; &quot;Clear all data&quot; returns it to System.
+                Printing stays black on white in every theme (TC-X-03, E2E-07).
+              </li>
+              <li>
+                Glossary explanations open under their &quot;?&quot; without splitting the sentence, close with Esc, a click elsewhere or moving focus away, and
+                stay inside the window on a phone (TC-X-01, E2E-01b).
+              </li>
+              <li>
+                The &quot;Clear all data&quot; confirmation fits the sidebar and takes keyboard focus (E2E-04); one arrow style for every select, with the
+                native arrow in high-contrast mode; fee placeholders that do not look like values; fields in a row line up.
+              </li>
+            </ul>
+            <h2 id="v100-2026-10-20-first-release-reconciliation-closing-allocation-and-exit-distribution">
+              v1.0.0 (2026-10-20): First release: reconciliation, closing allocation and exit distribution<a
+                class="docs__anchor"
+                href="#v100-2026-10-20-first-release-reconciliation-closing-allocation-and-exit-distribution"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Live at <a href="https://deal-ops-toolkit.vercel.app">https://deal-ops-toolkit.vercel.app</a> (build <code>index-Dav9BeIm.js</code>). The tag
+              <code>v1.0.0</code> and the release commit <code>d54c903</code> are in the private development repository; the public repository is a snapshot of
+              that release. Checked on the release commit on 2026-10-20: 271 unit tests pass; all 143 test-plan cases due at M4 ran and passed (the other 5 IDs
+              were removed in PRD v0.7); 9 of 9 end-to-end cases (22 tests); 107 of 107 deliberate code breakages caught by the tests; the Python oracle&#39;s
+              self-check 139 of 139. Production smoke test: the sample deal&#39;s figures match Test Plan §3, only same-origin static files are requested, and
+              the security headers match Tech Design §4.
+            </p>
+            <p>
+              A browser tool for SPV deal operations: payment reconciliation → closing allocation → exit distribution. Deal data is processed in the browser and
+              never sent by the app.
+            </p>
+            <p><strong>Payment reconciliation</strong> (R-REC-01..09)</p>
+            <ul>
+              <li>
+                Import investors and bank statements by paste, CSV file or table editing; append or replace statements, with duplicate and conflict detection.
+                Imports are all-or-nothing, and every error is listed with its row and column.
+              </li>
+              <li>
+                A receipt is booked automatically only when its bank reference contains exactly one investor&#39;s payment reference. Everything else is a
+                suggestion with a score and reasons, and a person confirms, assigns, rejects or undoes it.
+              </li>
+              <li>Changing or deleting a line or an investor voids the decisions made on it.</li>
+              <li>Per-investor status (paid, underpaid, overpaid, not paid); unmatched-receipt reminders; ledger and chase-list CSV exports.</li>
+              <li>Tests: TC-IO-<em>, TC-REC-</em>, TC-IO-20, E2E-01a, E2E-02a.</li>
+            </ul>
+            <p><strong>Closing allocation</strong> (R-ALL-01..11)</p>
+            <ul>
+              <li>Covers the share price, round cap, investor / company / lead fees (percentage or fixed), the minimum commitment, and pro-rata scale-back.</li>
+              <li>Fractional shares through the nominee.</li>
+              <li>S/EIS whole-share estimates, with the not-claimable remainder flagged.</li>
+              <li>Blockers (&quot;Can&#39;t close yet&quot;) with the investors named.</li>
+              <li>A closing confirmation to copy, including over-payment refunds, and a CSV export.</li>
+              <li>Tests: TC-ALL-*, TC-ALL-24, E2E-01a.</li>
+            </ul>
+            <p><strong>Exit distribution</strong> (R-DIS-01..07)</p>
+            <ul>
+              <li>Holdings handed off from the allocation, or imported and edited.</li>
+              <li>Fixed carry with an optional compounding hurdle and catch-up, or tiered carry.</li>
+              <li>A step-by-step waterfall with the reason for each step.</li>
+              <li>Per-investor distribution, profit and multiple.</li>
+              <li>A shortfall is shown when exit costs exceed proceeds.</li>
+              <li>CSV exports.</li>
+              <li>Tests: TC-DIS-*, TC-DIS-21, E2E-01b, E2E-02b.</li>
+            </ul>
+            <p><strong>Throughout</strong></p>
+            <ul>
+              <li>Hand-offs between modules are snapshots; changes upstream mark the downstream module &quot;out of date&quot; (R-X-07).</li>
+              <li>
+                Every figure comes from exact integer arithmetic and is cross-checked against an independent Python implementation, which agrees on the
+                hand-calculated cases and on 1,100 generated cases (400 allocations, 400 waterfalls, 300 reconciliations).
+              </li>
+              <li>A 3-minute guided tour on a fictional deal (R-X-01, E2E-05).</li>
+              <li>
+                First-open disclaimer, glossary of terms, feedback by email, local saving with a confirmed &quot;Clear all data&quot; (R-X-02, R-X-03, R-X-05,
+                R-X-06; E2E-03, E2E-04, E2E-06).
+              </li>
+              <li>Security headers and a strict content security policy; the app makes no network requests of its own (E2E-03).</li>
+              <li>
+                Light and dark appearance that follows the device setting, open-licensed fonts served by the site itself, and a layout that works on a phone
+                (E2E-07); print shows the page content only.
+              </li>
+              <li>
+                List sections stay open after an import or a first row added by hand, so the result is visible; an import message disappears once the list is
+                replaced by something else.
+              </li>
+            </ul>
+            <p>
+              <strong>Not in this release:</strong> money movement, bank connections, legal documents, KYC/AML, tax filings, multi-currency within a deal,
+              staged contributions or prior distributions in the exit, investor-specific carry terms, management fees, VAT (PRD §2.2).
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

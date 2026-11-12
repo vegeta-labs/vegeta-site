@@ -16,7 +16,7 @@
       property="og:description"
       content="Trunks by Vegeta: classify investor emails, connect imported deal records, flag risks and prepare template replies for human review. Self-hosted, open-source operations software."
     />
-    <meta property="og:url" content="https://vegeta-ops.vercel.app/inbox/" />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/trunks/" />
     <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -29,7 +29,7 @@
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
-    <link rel="canonical" href="https://vegeta-ops.vercel.app/inbox/" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/trunks/" />
     <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/plex-mono-latin-500.woff2" as="font" type="font/woff2" crossorigin />
@@ -47,8 +47,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/" aria-current="page">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/" aria-current="page">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -58,8 +58,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/" aria-current="page">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/" aria-current="page">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -87,7 +87,7 @@
         </h1>
         <p class="hero__lede">An operations inbox for SPV and syndicate teams.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="/inbox/demo/">See the demo</a>
+          <a class="btn btn--primary" href="/trunks/demo/">See the demo</a>
           <a class="btn btn--quiet" href="https://github.com/vegeta-labs/trunks">View the code <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
@@ -143,14 +143,15 @@
         >
         <span class="nav__links glass" data-nav-links>
           <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-          <a href="#problem">Problem</a>
           <a href="#how">How it works</a>
+          <a href="#trust">Why trust it</a>
           <a href="#cases">Use cases</a>
           <a href="#security">Security</a>
           <a href="#faq">Trunks FAQ</a>
+          <a href="/docs/trunks/">Docs</a>
         </span>
         <span class="nav__end">
-          <a class="nav__cta glass" href="/inbox/demo/">See the demo</a>
+          <a class="nav__cta glass" href="/trunks/demo/">See the demo</a>
         </span>
       </nav>
 
@@ -438,7 +439,7 @@
             </div>
           </dl>
           <p class="trust__note">
-            v0.4.0 release checks: 126 held-out fictional emails, one run with a real model (Claude Opus 5.5) by an independent runner.<br />
+            v0.5.0 release checks: 126 held-out fictional emails, one run with a real model (Claude Opus 5.5) by an independent runner.<br />
             Measured on v0.3.0; carried forward unchanged. A person still reviews every Case and reply.
           </p>
         </div>
@@ -451,25 +452,25 @@
             <span class="built__n">01</span>
             <h3>I&rsquo;ve paid. Has it arrived?</h3>
             <p>Finds the investor&rsquo;s commitment, checks the ledger and prepares the reply that fits what has arrived.</p>
-            <a class="case__link" href="/inbox/demo/#case=E0001">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="case__link" href="/trunks/demo/#case=E0001">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
           <li class="case" id="case-evidence">
             <span class="built__n">02</span>
             <h3>A payment confirmation is attached</h3>
             <p>Reads the UETR, amount and value date from the MT103 or pacs.008 file, and shows it as the sender&rsquo;s confirmation, not proof of receipt.</p>
-            <a class="case__link" href="/inbox/demo/#case=E0024">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="case__link" href="/trunks/demo/#case=E0024">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
           <li class="case" id="case-unreferenced">
             <span class="built__n">03</span>
             <h3>Paid from someone else&rsquo;s account</h3>
             <p>Finds the investor and the commitment, and asks you to check the payment in the ledger.</p>
-            <a class="case__link" href="/inbox/demo/#case=E0035">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="case__link" href="/trunks/demo/#case=E0035">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
           <li class="case" id="case-kyc">
             <span class="built__n">04</span>
             <h3>KYC documents</h3>
             <p>Code spots likely ID documents, keeps them from any model and transfers them to your KYC folder or webhook. It never verifies KYC.</p>
-            <a class="case__link" href="/inbox/demo/#case=E0045">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="case__link" href="/trunks/demo/#case=E0045">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
           <li class="case" id="case-withdrawal">
             <span class="built__n">05</span>
@@ -478,13 +479,13 @@
               Checks for the investor&rsquo;s consent (here, the investor is copied in) and suggests marking them withdrawn in Goten; without it, it asks for
               written consent first. A person makes the change.
             </p>
-            <a class="case__link" href="/inbox/demo/#case=E0053">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="case__link" href="/trunks/demo/#case=E0053">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
           <li class="case" id="case-bank">
             <span class="built__n">06</span>
             <h3>Our bank details have changed</h3>
             <p>Never takes the new details. It prepares a fixed acknowledgement and a call-back task that a second person approves.</p>
-            <a class="case__link" href="/inbox/demo/#case=E0225">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="case__link" href="/trunks/demo/#case=E0225">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
         </ol>
         <details class="faq__item built__more" id="case-categories">
@@ -642,7 +643,7 @@
           </div>
         </dl>
         <p class="built__links">
-          <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/security-model.md">Security model <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="/docs/trunks/build/security-model/">Security model <span class="arrow" aria-hidden="true">→</span></a>
         </p>
       </section>
 
@@ -680,12 +681,12 @@
           Three roles: reviewer, approver and admin. A change of bank details needs a call-back and a second, different person to approve.
         </p>
         <p class="built__links">
-          <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/quickstart.md">Quick start <span class="arrow" aria-hidden="true">→</span></a>
-          <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Release notes <span class="arrow" aria-hidden="true">→</span></a>
-          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.4.0/deal-ops-inbox-demo-v0.4.0.tar.gz"
+          <a href="/docs/trunks/build/quickstart/">Quick start <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.5.0">Release notes <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.5.0/trunks-demo-v0.5.0.tar.gz"
             >Demo package <span class="arrow" aria-hidden="true">→</span></a
           >
-          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.4.0/deal-ops-inbox-demo-v0.4.0.tar.gz.sha256"
+          <a href="https://github.com/vegeta-labs/trunks/releases/download/v0.5.0/trunks-demo-v0.5.0.tar.gz.sha256"
             >Package checksum <span class="arrow" aria-hidden="true">→</span></a
           >
         </p>
@@ -719,8 +720,8 @@
               <summary>How do I install it?</summary>
               <p>
                 With Docker Compose on your own server: separate containers for the app, maintenance, the database, the virus scanner and a sandboxed attachment
-                parser. The <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/quickstart.md">quick start</a> walks through it, and the demo runs
-                on your own machine with fictional data and no outbound connections.
+                parser. The <a href="/docs/trunks/build/quickstart/">quick start</a> walks through it, and the demo runs on your own machine with fictional data
+                and no outbound connections.
               </p>
             </details>
             <details class="faq__item" id="ifaq-mailbox">
@@ -750,7 +751,7 @@
               <p>
                 Three roles: reviewer, approver and admin. Sign in with local accounts or with your own identity provider (OIDC). Admins manage users and import
                 directories through the API, as described in
-                <a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/users-and-directory.md">Users and directory</a>.
+                <a href="/docs/trunks/build/users-and-directory/">Users and directory</a>.
               </p>
             </details>
           </div>
@@ -771,10 +772,8 @@
                 Only redacted text: the subject, display names, the body, attachment file names and the text of attachments that are not possible KYC documents.
                 Values that match the documented patterns are replaced with placeholders first: IBANs, UK account numbers and sort codes, UK ID numbers, dates
                 of birth, UK addresses, phone numbers, the local part of email addresses and the names in your directory. Other values, such as a name that is
-                not in your directory, are not recognised (<a href="https://github.com/vegeta-labs/trunks/blob/main/docs/en/models-and-data-protection.md"
-                  >what is redacted</a
-                >). Account and ID placeholders are never turned back into values, even on screen. Amounts, references and UETRs are kept, because sorting needs
-                them.
+                not in your directory, are not recognised (<a href="/docs/trunks/build/models-and-data-protection/">what is redacted</a>). Account and ID
+                placeholders are never turned back into values, even on screen. Amounts, references and UETRs are kept, because sorting needs them.
               </p>
             </details>
             <details class="faq__item" id="ifaq-kyc">
@@ -820,11 +819,14 @@
             <details class="faq__item" id="ifaq-ready">
               <summary>Is it ready for real mailboxes?</summary>
               <p>
-                It is version 0.4.0: only what is built and tested is described here, and the
-                <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">release notes</a> list its limits; for example, it has not been tested with
+                It is version 0.5.0: only what is built and tested is described here, and the
+                <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.5.0">release notes</a> list its limits; for example, it has not been tested with
                 real production mail volumes. Read the security model and fill in the DPIA and LIA templates before connecting a real mailbox. Report problems
-                through the <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">feedback form</a>,
-                without real investor details.
+                through the
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Trunks"
+                  >feedback form</a
+                >, without real investor details.
               </p>
             </details>
           </div>
@@ -840,7 +842,7 @@
         <h2 class="cta__title" id="cta-h" data-reveal>See it work on sample emails</h2>
         <p class="cta__body" data-reveal>Fictional deals, people and emails. Nothing to install.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="/inbox/demo/">See the demo</a>
+          <a class="btn btn--primary" href="/trunks/demo/">See the demo</a>
           <a class="btn btn--quiet" href="https://github.com/vegeta-labs/trunks">View the code <span class="arrow" aria-hidden="true">→</span></a>
           <a class="btn btn--quiet" href="/blog/every-investor-email/">Read the walkthrough <span class="arrow" aria-hidden="true">→</span></a>
         </div>
@@ -852,10 +854,10 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -863,8 +865,7 @@
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -872,7 +873,7 @@
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

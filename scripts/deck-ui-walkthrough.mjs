@@ -31,7 +31,7 @@ const layout = (page) =>
     })),
   }))
 try {
-  for (const path of ['/toolkit/', '/inbox/']) {
+  for (const path of ['/goten/', '/trunks/']) {
     const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, recordVideo: { dir: out, size: { width: 1440, height: 900 } } })
     const page = await context.newPage()
     page.setDefaultTimeout(10000)

@@ -39,8 +39,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -50,8 +50,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -86,6 +86,10 @@
             <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
             <li><a href="/docs/goten/build/verification/">Verification</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/goten/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -111,11 +115,15 @@
                 <li><a href="/docs/goten/build/architecture/">Architecture</a></li>
                 <li><a href="/docs/goten/build/verification/">Verification</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/goten/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Run locally and deploy your own copy</h1>
-          <p class="docs__version">v1.3.1</p>
+          <p class="docs__version">v1.4.0</p>
           <div class="docs__body">
             <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
             <ul>
@@ -165,8 +173,9 @@ npm run preview</code></pre>
                 it at your own form.
               </li>
               <li>
-                The storage keys, <code>deal-ops-toolkit:v1</code> and its siblings, keep their names so existing saved data remains readable. Leave them unless
-                you are also migrating the data.
+                The storage keys are <code>goten:v1</code>, <code>goten:theme</code> and <code>goten:tour</code> (<code>src/state.ts</code>,
+                <code>src/theme.ts</code>, <code>src/tour/progress.ts</code>). If you rename them, data saved under the old names is no longer read unless you
+                also migrate it.
               </li>
               <li>Check that the disclaimer and privacy text in <code>src/config.ts</code> still hold for your deployment.</li>
               <li>Consider who hosts it. The host receives normal page requests but no deal data.</li>
@@ -213,10 +222,10 @@ npm run preview</code></pre>
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -224,8 +233,7 @@ npm run preview</code></pre>
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -233,7 +241,7 @@ npm run preview</code></pre>
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

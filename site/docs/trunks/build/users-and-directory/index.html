@@ -54,8 +54,8 @@ Compose test exactly as written here (test plan TC-OPS-08)."
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -65,8 +65,8 @@ Compose test exactly as written here (test plan TC-OPS-08)."
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -107,6 +107,10 @@ Compose test exactly as written here (test plan TC-OPS-08)."
             <li><a href="/docs/trunks/build/retention/">Retention</a></li>
             <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -138,11 +142,15 @@ Compose test exactly as written here (test plan TC-OPS-08)."
                 <li><a href="/docs/trunks/build/retention/">Retention</a></li>
                 <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/trunks/">Trunks</a></p>
           <h1 class="docs__title">Users and directory</h1>
-          <p class="docs__version">v0.4.0</p>
+          <p class="docs__version">v0.5.0</p>
           <div class="docs__body">
             <p>
               <strong>This version has no screen for users or for the directory.</strong> An admin manages both through the app&#39;s HTTP API with
@@ -172,18 +180,18 @@ Compose test exactly as written here (test plan TC-OPS-08)."
               4).
             </p>
             &lt;!-- tested: run --&gt;
-            <pre tabindex="0"><code>DOI_URL=https://inbox.capital.example
+            <pre tabindex="0"><code>TRUNKS_URL=https://inbox.capital.example
 umask 077
-printf 'admin user name: '; IFS= read -r DOI_USER
-printf 'password: '; IFS= read -rs DOI_PASS; echo
-printf '{&quot;username&quot;:&quot;%s&quot;,&quot;password&quot;:&quot;%s&quot;}' &quot;$DOI_USER&quot; &quot;$DOI_PASS&quot; |
-  curl -sS --fail-with-body -c doi-cookies.txt -o /dev/null -H 'content-type: application/json' --data-binary @- &quot;$DOI_URL/api/login&quot;
-unset DOI_PASS
-CSRF=$(curl -sS --fail-with-body -b doi-cookies.txt &quot;$DOI_URL/api/csrf&quot; | sed -E 's/.*&quot;csrf&quot;:&quot;([^&quot;]*)&quot;.*/\1/')</code></pre>
+printf 'admin user name: '; IFS= read -r TRUNKS_USER
+printf 'password: '; IFS= read -rs TRUNKS_PASS; echo
+printf '{&quot;username&quot;:&quot;%s&quot;,&quot;password&quot;:&quot;%s&quot;}' &quot;$TRUNKS_USER&quot; &quot;$TRUNKS_PASS&quot; |
+  curl -sS --fail-with-body -c trunks-cookies.txt -o /dev/null -H 'content-type: application/json' --data-binary @- &quot;$TRUNKS_URL/api/login&quot;
+unset TRUNKS_PASS
+CSRF=$(curl -sS --fail-with-body -b trunks-cookies.txt &quot;$TRUNKS_URL/api/csrf&quot; | sed -E 's/.*&quot;csrf&quot;:&quot;([^&quot;]*)&quot;.*/\1/')</code></pre>
             <ul>
               <li>
-                Set <code>DOI_URL</code> to your app&#39;s address. On the host itself without the proxy it is <code>http://127.0.0.1:8080</code> (or your
-                <code>DOI_PORT</code>).
+                Set <code>TRUNKS_URL</code> to your app&#39;s address. On the host itself without the proxy it is <code>http://127.0.0.1:8080</code> (or your
+                <code>TRUNKS_PORT</code>).
               </li>
               <li>
                 Passwords are typed at a prompt and sent on curl&#39;s standard input, so they never appear in the shell history or in the process list
@@ -233,8 +241,8 @@ CSRF=$(curl -sS --fail-with-body -b doi-cookies.txt &quot;$DOI_URL/api/csrf&quot
   printf 'role (reviewer, approver or admin): '; read -r R
   printf 'first password (12 characters or more): '; IFS= read -rs P; echo
   printf '{&quot;username&quot;:&quot;%s&quot;,&quot;role&quot;:&quot;%s&quot;,&quot;password&quot;:&quot;%s&quot;}' &quot;$U&quot; &quot;$R&quot; &quot;$P&quot; |
-    curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: application/json' \
-      --data-binary @- &quot;$DOI_URL/api/users&quot;
+    curl -sS --fail-with-body -b trunks-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: application/json' \
+      --data-binary @- &quot;$TRUNKS_URL/api/users&quot;
   echo; unset P
 }</code></pre>
             <p>Then run it once per person, for example a reviewer and an approver:</p>
@@ -256,11 +264,11 @@ new_user</code></pre>
               <li>A user name that already exists is refused (<code>username taken</code>).</li>
             </ul>
             <p>Change a user&#39;s role, or reset a user&#39;s password (the user must change it again at the next sign-in, and all their sessions end):</p>
-            <pre tabindex="0"><code>curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: application/json' \
-  -X PUT --data '{&quot;role&quot;:&quot;approver&quot;}' &quot;$DOI_URL/api/users/&lt;id&gt;/role&quot;
+            <pre tabindex="0"><code>curl -sS --fail-with-body -b trunks-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: application/json' \
+  -X PUT --data '{&quot;role&quot;:&quot;approver&quot;}' &quot;$TRUNKS_URL/api/users/&lt;id&gt;/role&quot;
 printf 'new first password: '; IFS= read -rs P; echo
-printf '{&quot;password&quot;:&quot;%s&quot;}' &quot;$P&quot; | curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; \
-  -H 'content-type: application/json' --data-binary @- &quot;$DOI_URL/api/users/&lt;id&gt;/reset&quot;; unset P</code></pre>
+printf '{&quot;password&quot;:&quot;%s&quot;}' &quot;$P&quot; | curl -sS --fail-with-body -b trunks-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; \
+  -H 'content-type: application/json' --data-binary @- &quot;$TRUNKS_URL/api/users/&lt;id&gt;/reset&quot;; unset P</code></pre>
             <h3 id="users-and-two-person-control">
               Users and two-person control<a class="docs__anchor" href="#users-and-two-person-control" aria-label="Link to this section">#</a>
             </h3>
@@ -427,13 +435,13 @@ T-NW-0001,2026-10-20,10000.00,A HART,NW-001 Hart,auto,001,Amelia Hart,system,,GB
             &lt;!-- tested: run --&gt;
             <pre
               tabindex="0"
-            ><code>imp() { curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: text/csv' &quot;$@&quot;; echo; }
-imp --data-binary @deals.csv &quot;$DOI_URL/api/directory/deals&quot;
-imp --data-binary @contacts.csv &quot;$DOI_URL/api/directory/contacts&quot;
+            ><code>imp() { curl -sS --fail-with-body -b trunks-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -H 'content-type: text/csv' &quot;$@&quot;; echo; }
+imp --data-binary @deals.csv &quot;$TRUNKS_URL/api/directory/deals&quot;
+imp --data-binary @contacts.csv &quot;$TRUNKS_URL/api/directory/contacts&quot;
 DEAL='Northwind Robotics'
-imp --url-query &quot;deal=$DEAL&quot; --data-binary @commitments.csv &quot;$DOI_URL/api/directory/commitments&quot;
-imp --url-query &quot;deal=$DEAL&quot; --data-binary @bank.csv &quot;$DOI_URL/api/directory/bank&quot;
-imp --url-query &quot;deal=$DEAL&quot; --data-binary @ledger.csv &quot;$DOI_URL/api/directory/ledger&quot;</code></pre>
+imp --url-query &quot;deal=$DEAL&quot; --data-binary @commitments.csv &quot;$TRUNKS_URL/api/directory/commitments&quot;
+imp --url-query &quot;deal=$DEAL&quot; --data-binary @bank.csv &quot;$TRUNKS_URL/api/directory/bank&quot;
+imp --url-query &quot;deal=$DEAL&quot; --data-binary @ledger.csv &quot;$TRUNKS_URL/api/directory/ledger&quot;</code></pre>
             <h3 id="emptying-a-list">Emptying a list<a class="docs__anchor" href="#emptying-a-list" aria-label="Link to this section">#</a></h3>
             <p>
               An import never empties a list by accident. To empty one on purpose, for example after importing a ledger into the wrong deal when the right deal
@@ -443,7 +451,7 @@ imp --url-query &quot;deal=$DEAL&quot; --data-binary @ledger.csv &quot;$DOI_URL/
             <pre
               tabindex="0"
             ><code>printf 'transaction_id,date,amount,payer,reference,status,investor_id,investor_name,decided_by,withdrawn_on,currency\n' &gt; empty-ledger.csv
-imp --url-query &quot;deal=$DEAL&quot; --url-query clear=yes --data-binary @empty-ledger.csv &quot;$DOI_URL/api/directory/ledger&quot;</code></pre>
+imp --url-query &quot;deal=$DEAL&quot; --url-query clear=yes --data-binary @empty-ledger.csv &quot;$TRUNKS_URL/api/directory/ledger&quot;</code></pre>
             <p>
               The answer is <code>{&quot;ok&quot;:true,…,&quot;rows&quot;:0}</code>; the audit chain records the import as a clear. A cleared ledger counts as
               no ledger: Cases show &quot;No ledger imported for this deal&quot;, as before the mistaken import. <code>clear=yes</code> with a file that has
@@ -458,8 +466,8 @@ imp --url-query &quot;deal=$DEAL&quot; --url-query clear=yes --data-binary @empt
             &lt;!-- tested: run --&gt;
             <pre
               tabindex="0"
-            ><code>curl -sS --fail-with-body -b doi-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -X POST -o /dev/null &quot;$DOI_URL/api/logout&quot;
-rm doi-cookies.txt</code></pre>
+            ><code>curl -sS --fail-with-body -b trunks-cookies.txt -H &quot;x-csrf-token: $CSRF&quot; -X POST -o /dev/null &quot;$TRUNKS_URL/api/logout&quot;
+rm trunks-cookies.txt</code></pre>
             <p>Every step is recorded in the audit chain with the admin who made it (<code>user.created</code>, <code>directory.imported</code>, …).</p>
           </div>
         </div>
@@ -471,10 +479,10 @@ rm doi-cookies.txt</code></pre>
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -482,8 +490,7 @@ rm doi-cookies.txt</code></pre>
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -491,7 +498,7 @@ rm doi-cookies.txt</code></pre>
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

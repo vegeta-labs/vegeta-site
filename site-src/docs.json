@@ -3,15 +3,22 @@
   "heading": "Use and run each module.",
   "line": "Choose a module.",
   "llms": "SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.",
+  "changelog": {
+    "title": "Changelog",
+    "heading": "Every release of each module.",
+    "lede": "What changed in each release of Goten and Trunks, newest first.",
+    "line": "Every release of Goten and Trunks, with a link to its full release notes.",
+    "pageTitle": "All releases"
+  },
   "products": [
     {
       "id": "goten",
       "name": "Goten",
       "role": "Deal Calculations",
-      "version": "v1.3.1",
+      "version": "v1.4.0",
       "source": {
         "repo": "https://github.com/vegeta-labs/goten",
-        "ref": "e9cab3e02360001967b9fc471cb40ec75fd6962b",
+        "ref": "c915491596deb01b3ce527c53e1ed3be738451be",
         "notes": "docs/RELEASE_NOTES.md"
       },
       "groups": [
@@ -94,6 +101,16 @@
               "route": "/docs/goten/build/verification/"
             }
           ]
+        },
+        {
+          "label": "Releases",
+          "items": [
+            {
+              "title": "Release notes",
+              "source": "docs/RELEASE_NOTES.md",
+              "route": "/docs/goten/release-notes/"
+            }
+          ]
         }
       ]
     },
@@ -101,10 +118,10 @@
       "id": "trunks",
       "name": "Trunks",
       "role": "Operations Inbox",
-      "version": "v0.4.0",
+      "version": "v0.5.0",
       "source": {
         "repo": "https://github.com/vegeta-labs/trunks",
-        "ref": "d710459cd237c77459f388cbda226e2431260c1f",
+        "ref": "7b32c954f7017b87fa3686d72b3a303048fd018b",
         "notes": "CHANGELOG.md"
       },
       "groups": [
@@ -215,6 +232,16 @@
               "title": "Backup and upgrade",
               "source": "docs/en/backup-and-upgrade.md",
               "route": "/docs/trunks/build/backup-and-upgrade/"
+            }
+          ]
+        },
+        {
+          "label": "Releases",
+          "items": [
+            {
+              "title": "Release notes",
+              "source": "CHANGELOG.md",
+              "route": "/docs/trunks/release-notes/"
             }
           ]
         }

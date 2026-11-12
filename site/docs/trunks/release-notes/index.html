@@ -1,0 +1,1518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Changelog | Vegeta</title>
+    <meta
+      name="description"
+      content="Every name that still said “Deal Ops Inbox”, deal-ops-inbox or DOI is now Trunks. There is no compatibility with the old names: nothing reads an old variable, cookie, header or file name."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Changelog | Vegeta" />
+    <meta
+      property="og:description"
+      content="Every name that still said “Deal Ops Inbox”, deal-ops-inbox or DOI is now Trunks. There is no compatibility with the old names: nothing reads an old variable, cookie, header or file name."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/trunks/release-notes/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Changelog | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Every name that still said “Deal Ops Inbox”, deal-ops-inbox or DOI is now Trunks. There is no compatibility with the old names: nothing reads an old variable, cookie, header or file name."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/release-notes/" />
+    <link rel="alternate" type="text/markdown" href="/docs/trunks/release-notes.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
+        <a href="/#build">Why trust it</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Trunks docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/trunks/">Overview</a></li>
+            <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+            <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+            <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+            <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+            <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+            <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/trunks/build/">Overview</a></li>
+            <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+            <li><a href="/docs/trunks/build/deploy-with-ai/">Deploy with an AI coding assistant</a></li>
+            <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+            <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+            <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+            <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+            <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+            <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+            <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+            <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+            <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li>
+              <a href="/docs/trunks/release-notes/" aria-current="page">Release notes</a>
+              <ul class="docs__sub">
+                <li>
+                  <a href="#v050-2026-11-12-everything-renamed-to-trunks-existing-deployments-must-reinstall-or-rename-before-upgrading"
+                    >v0.5.0 <span>2026-11-12</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#v040-2026-11-10-stricter-case-closing-verification-that-no-longer-disappears-on-its-own-and-an-independent-approver-for-edited-replies"
+                    >v0.4.0 <span>2026-11-10</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#v030-2026-11-09-fewer-false-bank-detail-alarms-for-qualifying-mt103-and-pacs008-payment-attachments"
+                    >v0.3.0 <span>2026-11-09</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#v022-2026-11-04-case-summary-first-grouped-inbox-filters-and-clearer-demo-notices">v0.2.2 <span>2026-11-04</span></a>
+                </li>
+                <li>
+                  <a href="#v021-2026-11-04-product-renamed-to-trunks-in-the-app-and-user-documentation">v0.2.1 <span>2026-11-04</span></a>
+                </li>
+                <li>
+                  <a
+                    href="#v020-2026-11-04-signature-images-under-the-size-limits-no-longer-count-as-identity-documents-approvers-can-restart-verification-tasks"
+                    >v0.2.0 <span>2026-11-04</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#v011-2026-11-03-read-only-demo-bar-case-page-for-narrow-screens-and-safer-directory-imports">v0.1.1 <span>2026-11-03</span></a>
+                </li>
+                <li>
+                  <a href="#v010-2026-11-03-first-public-release">v0.1.0 <span>2026-11-03</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Trunks docs</summary>
+            <nav aria-label="Trunks docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/trunks/">Overview</a></li>
+                <li><a href="/docs/trunks/use/getting-started/">Walk the demo</a></li>
+                <li><a href="/docs/trunks/use/reading-a-case/">Read a case</a></li>
+                <li><a href="/docs/trunks/use/checking-a-reply/">Check and send a reply</a></li>
+                <li><a href="/docs/trunks/use/risk-and-verification/">Risk and verification</a></li>
+                <li><a href="/docs/trunks/use/roles/">Roles</a></li>
+                <li><a href="/docs/trunks/use/limits-and-help/">Limits and help</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/trunks/build/">Overview</a></li>
+                <li><a href="/docs/trunks/build/quickstart/">Quick start</a></li>
+                <li><a href="/docs/trunks/build/deploy-with-ai/">Deploy with an AI coding assistant</a></li>
+                <li><a href="/docs/trunks/build/users-and-directory/">Users and directory</a></li>
+                <li><a href="/docs/trunks/build/mailboxes/">Mailboxes</a></li>
+                <li><a href="/docs/trunks/build/models-and-data-protection/">Models and data protection</a></li>
+                <li><a href="/docs/trunks/build/payment-messages/">Accounts in payment messages</a></li>
+                <li><a href="/docs/trunks/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/trunks/build/security-model/">Security model</a></li>
+                <li><a href="/docs/trunks/build/dpia-template/">DPIA template</a></li>
+                <li><a href="/docs/trunks/build/lia-template/">LIA template</a></li>
+                <li><a href="/docs/trunks/build/retention/">Retention</a></li>
+                <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li>
+                  <a href="/docs/trunks/release-notes/" aria-current="page">Release notes</a>
+                  <ul class="docs__sub">
+                    <li>
+                      <a href="#v050-2026-11-12-everything-renamed-to-trunks-existing-deployments-must-reinstall-or-rename-before-upgrading"
+                        >v0.5.0 <span>2026-11-12</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#v040-2026-11-10-stricter-case-closing-verification-that-no-longer-disappears-on-its-own-and-an-independent-approver-for-edited-replies"
+                        >v0.4.0 <span>2026-11-10</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#v030-2026-11-09-fewer-false-bank-detail-alarms-for-qualifying-mt103-and-pacs008-payment-attachments"
+                        >v0.3.0 <span>2026-11-09</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#v022-2026-11-04-case-summary-first-grouped-inbox-filters-and-clearer-demo-notices">v0.2.2 <span>2026-11-04</span></a>
+                    </li>
+                    <li>
+                      <a href="#v021-2026-11-04-product-renamed-to-trunks-in-the-app-and-user-documentation">v0.2.1 <span>2026-11-04</span></a>
+                    </li>
+                    <li>
+                      <a
+                        href="#v020-2026-11-04-signature-images-under-the-size-limits-no-longer-count-as-identity-documents-approvers-can-restart-verification-tasks"
+                        >v0.2.0 <span>2026-11-04</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#v011-2026-11-03-read-only-demo-bar-case-page-for-narrow-screens-and-safer-directory-imports">v0.1.1 <span>2026-11-03</span></a>
+                    </li>
+                    <li>
+                      <a href="#v010-2026-11-03-first-public-release">v0.1.0 <span>2026-11-03</span></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/trunks/">Trunks</a></p>
+          <h1 class="docs__title">Changelog</h1>
+          <p class="docs__version">v0.5.0</p>
+          <div class="docs__body">
+            <h2 id="v050-2026-11-12-everything-renamed-to-trunks-existing-deployments-must-reinstall-or-rename-before-upgrading">
+              v0.5.0 (2026-11-12): everything renamed to Trunks; existing deployments must reinstall or rename before upgrading<a
+                class="docs__anchor"
+                href="#v050-2026-11-12-everything-renamed-to-trunks-existing-deployments-must-reinstall-or-rename-before-upgrading"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Every name that still said &quot;Deal Ops Inbox&quot;, <code>deal-ops-inbox</code> or <code>DOI_</code> is now Trunks. There is no compatibility
+              with the old names: nothing reads an old variable, cookie, header or file name.
+            </p>
+            <h3 id="before-you-upgrade">Before you upgrade<a class="docs__anchor" href="#before-you-upgrade" aria-label="Link to this section">#</a></h3>
+            <p>
+              A deployment made with v0.4.0 or earlier does not start with these files as it is. The simplest path is a new installation
+              (<code>init-secrets</code>, then <code>docker compose up</code>). To keep existing data, rename everything in the table yourself before the first
+              start; the database roles are renamed by <code>migrate</code> on its own, and migration <code>010_rename.sql</code> only goes forward. This path
+              is not documented step by step and is tested only for the database part.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What</th>
+                    <th>Before</th>
+                    <th>Now</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Images</td>
+                    <td><code>deal-ops-inbox:local</code>, <code>deal-ops-inbox-parser:local</code></td>
+                    <td><code>trunks:local</code>, <code>trunks-parser:local</code></td>
+                  </tr>
+                  <tr>
+                    <td>Compose project and volumes</td>
+                    <td>
+                      <code>deal-ops-inbox</code>, <code>deal-ops-inbox_db</code> …; demo <code>deal-ops-inbox-demo</code>,
+                      <code>deal-ops-inbox-demo-db</code> …
+                    </td>
+                    <td><code>trunks</code>, <code>trunks_db</code> …; demo <code>trunks-demo</code>, <code>trunks-demo-db</code> …</td>
+                  </tr>
+                  <tr>
+                    <td>Paths in the containers and in <code>deployment.yaml</code></td>
+                    <td><code>/var/lib/deal-ops-inbox/…</code></td>
+                    <td><code>/var/lib/trunks/…</code></td>
+                  </tr>
+                  <tr>
+                    <td>Environment variables</td>
+                    <td>
+                      <code>DOI_*</code> (<code>DOI_SECRETS_DIR</code>, <code>DOI_CONFIG_DIR</code>, <code>DOI_PORT</code>, <code>DOI_DOMAIN</code>,
+                      <code>DOI_PROXY_IP</code>, <code>DOI_EDGE_SUBNET</code>, <code>DOI_VERSION</code>, <code>DOI_MASTER_KEYS</code>,
+                      <code>DOI_ACTIVE_KEY</code>, <code>DOI_HMAC_KEY</code>, <code>DOI_*_DB_PASSWORD</code>, the <code>_FILE</code> forms;
+                      <code>DOI_URL</code> in the documentation&#39;s examples)
+                    </td>
+                    <td><code>TRUNKS_*</code>, same endings</td>
+                  </tr>
+                  <tr>
+                    <td>Secret files</td>
+                    <td>
+                      <code>doi_master_keys</code>, <code>doi_hmac_key</code>, <code>doi_app_db_password</code>, <code>doi_maintenance_db_password</code>,
+                      <code>doi_rotation_db_password</code>
+                    </td>
+                    <td>
+                      <code>trunks_master_keys</code>, <code>trunks_hmac_key</code>, <code>trunks_app_db_password</code>,
+                      <code>trunks_maintenance_db_password</code>, <code>trunks_rotation_db_password</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Database and roles</td>
+                    <td>database <code>doi</code>; roles <code>doi_app</code>, <code>doi_maintenance</code>, <code>doi_rotation</code></td>
+                    <td>
+                      database <code>trunks</code>; roles <code>trunks_app</code>, <code>trunks_maintenance</code>, <code>trunks_rotation</code>. All four
+                      <code>*_database_url</code> secrets carry the database name and three of them a role name. Nothing renames an existing database: rename it
+                      (<code>ALTER DATABASE doi RENAME TO trunks</code>) or keep <code>/doi</code> in the four URLs and use <code>-d doi</code> in the
+                      documentation&#39;s <code>psql</code> commands
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cookies</td>
+                    <td><code>doi_session</code>, <code>doi_oidc</code></td>
+                    <td><code>trunks_session</code>, <code>trunks_oidc</code> (everyone signs in again)</td>
+                  </tr>
+                  <tr>
+                    <td>AppArmor profile</td>
+                    <td><code>doi-parser</code>, file <code>deploy/apparmor/doi-parser</code></td>
+                    <td>
+                      <code>trunks-parser</code>, file <code>deploy/apparmor/trunks-parser</code>. Load the new profile (<code
+                        >sudo cp deploy/apparmor/trunks-parser /etc/apparmor.d/ &amp;&amp; sudo apparmor_parser -r -W /etc/apparmor.d/trunks-parser</code
+                      >); the parser container does not start without it
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Webhook signature header (events and KYC webhook)</td>
+                    <td><code>X-DealOps-Signature</code></td>
+                    <td><code>X-Trunks-Signature</code> (same algorithm, secret and body)</td>
+                  </tr>
+                  <tr>
+                    <td>Header of the placeholder that replaces a removed KYC attachment</td>
+                    <td><code>X-Deal-Ops-Removed: kyc</code></td>
+                    <td><code>X-Trunks-Removed: kyc</code></td>
+                  </tr>
+                  <tr>
+                    <td>Suggested action <code>mark_withdrawn</code>, <code>details</code> text (case page, actions CSV)</td>
+                    <td>&quot;Mark … as withdrawn in Deal Ops Toolkit (consent: …)&quot;</td>
+                    <td>&quot;Mark … as withdrawn in Goten (consent: …)&quot;</td>
+                  </tr>
+                  <tr>
+                    <td>Static demo package</td>
+                    <td><code>deal-ops-inbox-demo-vX.Y.Z.tar.gz</code>, global <code>DOI_DEMO</code> in <code>data/snapshot.js</code></td>
+                    <td><code>trunks-demo-vX.Y.Z.tar.gz</code>, global <code>TRUNKS_DEMO</code></td>
+                  </tr>
+                  <tr>
+                    <td>Browser storage key for the CSRF token</td>
+                    <td><code>doi.csrf</code></td>
+                    <td><code>trunks.csrf</code></td>
+                  </tr>
+                  <tr>
+                    <td>Command name in messages and documentation</td>
+                    <td><code>doi gmail-auth</code>, <code>doi rotate-keys</code> …</td>
+                    <td>
+                      <code>trunks gmail-auth</code>, <code>trunks rotate-keys</code> … (the commands themselves are unchanged:
+                      <code>docker compose run --rm app &lt;command&gt;</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Package name (<code>package.json</code>)</td>
+                    <td><code>deal-ops-inbox</code></td>
+                    <td><code>trunks</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Unchanged: the queue id <code>deal_ops</code> in <code>cases.yaml</code>, the format of stored files, the event schema, every classification,
+              risk, template and reply rule.
+            </p>
+            <h3 id="what-changed">What changed<a class="docs__anchor" href="#what-changed" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>
+                <strong>Names:</strong> as in the table. Messages and documentation that named the companion product &quot;Deal Ops Toolkit&quot; or &quot;the
+                Toolkit&quot; now say Goten (for example the ledger import error &quot;reverse it in Goten and export again&quot; and the demo notice).
+              </li>
+              <li>
+                <strong>Database roles:</strong> <code>migrate</code> renames existing <code>doi_*</code> roles (grants and ownership follow) and stops if both
+                an old and a new role exist. The released migrations <code>001</code>–<code>009</code> are unchanged on disk and are run with the three role
+                names replaced.
+              </li>
+              <li>
+                <strong>Documentation:</strong> the overview in <code>docs/en/README.md</code> is now titled &quot;run and build (administrator
+                documentation)&quot;.
+              </li>
+              <li>
+                <strong>Editing single-choice fields:</strong> on the case page, <strong>Edit</strong> on a single-choice field such as Sender role offers a
+                drop-down of the allowed values, instead of a text box where the exact value had to be typed. The server&#39;s checks are unchanged.
+              </li>
+            </ul>
+            <h3 id="testing">Testing<a class="docs__anchor" href="#testing" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>
+                The unit, integration, browser and Compose suites run under the new names. The upgrade test starts from the old code with the old names and
+                checks that only <code>trunks_*</code> roles remain. A check in CI (<code>npm run check:old-names</code>) fails when an old name comes back
+                outside the historical records.
+              </li>
+              <li>
+                The development evaluation set on recorded model replies gives byte-identical output before and after the change; no classification, risk,
+                template or reply logic changed, so no new blind evaluation was run.
+              </li>
+              <li>Browser test for the single-choice drop-down (test plan TC-REV-19).</li>
+            </ul>
+            <h3 id="evaluation-carried-forward-from-v030">
+              Evaluation carried forward from v0.3.0<a class="docs__anchor" href="#evaluation-carried-forward-from-v030" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              The following held-out results were <strong>measured on v0.3.0</strong> (frozen code <code>bbdfc8b</code>, 126 emails, Claude Opus 5.5) and are
+              quoted unchanged under the rule for small versions; they are not a new measurement. The judgement-related files that differ from
+              <code>bbdfc8b</code> were each checked against what the evaluation scores: since v0.4.0 they are the renamed names, paths, roles, headers and
+              comments, and the wording of the suggested action <code>mark_withdrawn</code>, which the evaluation does not score. The development set on
+              recorded model replies gives byte-identical output on <code>bbdfc8b</code> and on this release.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Threshold</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Classification, macro F1</td>
+                    <td>≥ 0.85</td>
+                    <td>0.960</td>
+                  </tr>
+                  <tr>
+                    <td>Fields extracted by rules (re-scored after the v0.3.0 scoring fix)</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Field recall</td>
+                    <td>≥ 0.90</td>
+                    <td>90.0% (442/491)</td>
+                  </tr>
+                  <tr>
+                    <td>Field precision</td>
+                    <td>≥ 0.90</td>
+                    <td>97.1% (440/453)</td>
+                  </tr>
+                  <tr>
+                    <td>Fields that should stay empty</td>
+                    <td>≥ 0.95</td>
+                    <td>100% (26/26)</td>
+                  </tr>
+                  <tr>
+                    <td>Contact, commitment and deal linked correctly</td>
+                    <td>≥ 0.95</td>
+                    <td>98.4% (123/125)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk never underestimated</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>High-risk emails rated high</td>
+                    <td>100%</td>
+                    <td>100% (80/80)</td>
+                  </tr>
+                  <tr>
+                    <td>Malicious bank-detail changes or look-alike senders rated high</td>
+                    <td>100%</td>
+                    <td>100% (18/18)</td>
+                  </tr>
+                  <tr>
+                    <td>Replies never disclose more than allowed</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                    <td>100%</td>
+                    <td>100% (15/15)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk and template from the rules, given the annotated categories and fields</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Rule consistency against the independent implementation</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Real-model cancellations of an otherwise qualifying payment message (reported, no threshold)</td>
+                    <td>—</td>
+                    <td>2 of 10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="v040-2026-11-10-stricter-case-closing-verification-that-no-longer-disappears-on-its-own-and-an-independent-approver-for-edited-replies">
+              v0.4.0 (2026-11-10): stricter case closing, verification that no longer disappears on its own and an independent approver for edited replies<a
+                class="docs__anchor"
+                href="#v040-2026-11-10-stricter-case-closing-verification-that-no-longer-disappears-on-its-own-and-an-independent-approver-for-edited-replies"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <h3 id="before-you-upgrade-1">Before you upgrade<a class="docs__anchor" href="#before-you-upgrade-1" aria-label="Link to this section">#</a></h3>
+            <p>
+              New images and migration <code>009_fraud_gates.sql</code> (<code>migrate</code> applies it before <code>app</code> starts; it only goes forward).
+              No configuration change is needed. At the first start of v0.4.0:
+            </p>
+            <ul>
+              <li>
+                Every approved reply that was not marked as sent goes back to draft, and its case goes back to open unless it is closed. Approve these replies
+                again.
+              </li>
+              <li>
+                For a reply from before the upgrade, everyone who created any reply on that case counts as an editor, so it needs an approver or admin who is
+                none of them.
+              </li>
+              <li>
+                Every verification task from before the upgrade is cancelled, approved ones included. An open case that had finished processing is processed
+                again and gets a new task: do the checklist, cooling-off and second-person approval again. On a closed case the task is not replaced.
+              </li>
+              <li>
+                A <code>bank_details</code> or <code>identity_change</code> class removed before the upgrade counts again, and the case gets a new task, unless
+                it was removed with a reason by someone who is still an approver or admin and whose role has not changed since.
+              </li>
+              <li>
+                If one case fails in this startup step, it is recorded in the audit log and startup continues; that case cannot be closed normally until it is
+                reprocessed.
+              </li>
+            </ul>
+            <p>Operators: see <code>docs/en/use/limits-and-help.md</code>, &quot;After an upgrade to v0.4.0&quot;.</p>
+            <h3 id="what-changed-1">What changed<a class="docs__anchor" href="#what-changed-1" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>
+                <strong>Verification no longer disappears on its own:</strong> once a case has taken <code>bank_details</code> or <code>identity_change</code>,
+                the class stays through re-runs and relinks. Only an approver or admin can remove it, with a reason; the removal is recorded and lasts through
+                reprocessing. Labels set by the fixed rules cannot be removed.
+              </li>
+              <li>
+                <strong>A changed field invalidates the check:</strong> a verification task records the values of the fields it depends on. When a re-run or a
+                KYC attachment replacement changes one of them, the task is cancelled with an audit entry and a new task is made. Clicking
+                <strong>Confirm</strong> on an unchanged value keeps the task (it no longer resets a finished check).
+              </li>
+              <li>
+                <strong>Closing a case:</strong> a normal close needs finished processing, an approved and still valid verification task where one is required,
+                and no approved reply that is not marked as sent. Otherwise only an approver or admin can close, with a reason. Closing cancels approved replies
+                and unfinished tasks; a closed case refuses every change except a retention hold, and background stages finish without writing risk, drafts,
+                tasks or events. There is no reopen in this version.
+              </li>
+              <li>
+                <strong>Look-alike senders:</strong> when the sender&#39;s display name or domain imitates a known contact, the reply has no recipient and
+                cannot be approved. An approver or admin can allow replying to the original address, with a reason, if the alert is wrong.
+              </li>
+              <li>
+                <strong>Edited replies:</strong> a reply whose text differs from its template needs an approver or admin who did not edit it and has no account
+                relationship with an editor (created the account, granted a role, reset a password). Switching templates is not an edit; restoring the template
+                text restores the normal approval.
+              </li>
+              <li>
+                <strong>Checked again at every step:</strong> approve, copy and mark as sent run the same checks against the recorded approver. A reply that
+                fails goes back to draft.
+              </li>
+              <li>
+                <strong>Inbox:</strong> the case list shows 50 cases a page with <strong>Previous</strong> / <strong>Next</strong> and &quot;Showing 1–50 of N
+                cases&quot;; <code>GET /api/cases</code> now also returns <code>total</code>. Menus and warnings load right after sign-in, without a reload.
+                Internal rule codes and identifiers on the case page are replaced by plain names; the risk banner no longer flashes during reprocessing.
+              </li>
+              <li>
+                <strong>Editing yes/no and list fields:</strong> on the case page, <strong>Edit</strong> on a yes/no field such as Change requested offers
+                <strong>Yes</strong>, <strong>No</strong> or <strong>No value</strong>, and on a list field such as Document types or Details to change it
+                offers one box per allowed value. These fields could not be saved from the page before. The server&#39;s checks are unchanged.
+              </li>
+              <li>
+                <strong>Operator guide:</strong> <code>docs/en/use/</code> is a new step-by-step guide for reviewers and approvers: reading a case, risk and
+                verification, checking a reply, roles, limits and help.
+              </li>
+            </ul>
+            <h3 id="testing-1">Testing<a class="docs__anchor" href="#testing-1" aria-label="Link to this section">#</a></h3>
+            <p>
+              No new blind evaluation was run for this release (owner decision D5 in the plan): the evaluation scores classification, risk and reply template
+              once per email, and this release does not change those; it changes what people can do afterwards (closing, removing classes, recipients,
+              approvals), which the evaluation does not measure. Instead:
+            </p>
+            <ul>
+              <li>
+                Unit, integration and browser tests for every new rule (test plan TC-FRD-13–28, TC-DRF-22–28, TC-REV-14–18), including the real migration and
+                the startup step.
+              </li>
+              <li>
+                The independent Python oracle is updated for the new recipient rule; its self-check and the rule-consistency comparison on the development set
+                pass.
+              </li>
+              <li>Development set on recorded model replies: unchanged and passing.</li>
+              <li>
+                Mutation testing on the changed files of each pull request. The full mutation run now runs weekly in this repository
+                (<code>.github/workflows/mutation-weekly.yml</code>) and does not block releases.
+              </li>
+              <li>
+                Review: a fresh reviewer and Codex in every round. The inbox fixes had one plan round and one code round (code: both READY); the closing and
+                two-person rules had two plan rounds and two code rounds; the operator guide had one round. Every finding was judged and recorded.
+              </li>
+            </ul>
+            <h3 id="evaluation-carried-forward-from-v030-1">
+              Evaluation carried forward from v0.3.0<a class="docs__anchor" href="#evaluation-carried-forward-from-v030-1" aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>
+              The following held-out results were <strong>measured on v0.3.0</strong> (frozen code <code>bbdfc8b</code>, 126 emails, Claude Opus 5.5) and are
+              quoted unchanged under the rule for small versions; they are not a new measurement. The judgement-related files that differ from
+              <code>bbdfc8b</code>, each checked against what the evaluation scores, cover: closing, class removal, recipients, verification tasks, the startup
+              step and the server, none of which the evaluation scores; the evaluation scoring fix already used for the v0.3.0 figures; a field-type table moved
+              to its own file unchanged; oracle additions for the recipient rule; and the version number. The development set on recorded model replies gives
+              byte-identical output on <code>bbdfc8b</code> and on this release.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Threshold</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Classification, macro F1</td>
+                    <td>≥ 0.85</td>
+                    <td>0.960</td>
+                  </tr>
+                  <tr>
+                    <td>Fields extracted by rules (re-scored after the v0.3.0 scoring fix)</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Field recall</td>
+                    <td>≥ 0.90</td>
+                    <td>90.0% (442/491)</td>
+                  </tr>
+                  <tr>
+                    <td>Field precision</td>
+                    <td>≥ 0.90</td>
+                    <td>97.1% (440/453)</td>
+                  </tr>
+                  <tr>
+                    <td>Fields that should stay empty</td>
+                    <td>≥ 0.95</td>
+                    <td>100% (26/26)</td>
+                  </tr>
+                  <tr>
+                    <td>Contact, commitment and deal linked correctly</td>
+                    <td>≥ 0.95</td>
+                    <td>98.4% (123/125)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk never underestimated</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>High-risk emails rated high</td>
+                    <td>100%</td>
+                    <td>100% (80/80)</td>
+                  </tr>
+                  <tr>
+                    <td>Malicious bank-detail changes or look-alike senders rated high</td>
+                    <td>100%</td>
+                    <td>100% (18/18)</td>
+                  </tr>
+                  <tr>
+                    <td>Replies never disclose more than allowed</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                    <td>100%</td>
+                    <td>100% (15/15)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk and template from the rules, given the annotated categories and fields</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Rule consistency against the independent implementation</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Real-model cancellations of an otherwise qualifying payment message (reported, no threshold)</td>
+                    <td>—</td>
+                    <td>2 of 10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 id="known-limits">Known limits<a class="docs__anchor" href="#known-limits" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>Tasks from before the upgrade are bound to field values only after their case is reprocessed.</li>
+              <li>A case that was mid-processing at the upgrade gets no new task until it is reprocessed.</li>
+              <li>While you page through the list, a case that changes can be skipped or shown twice; reload to correct it.</li>
+              <li>A small team with one approver cannot approve that approver&#39;s own edited reply: restore the template text, or ask an admin.</li>
+            </ul>
+            <h2 id="v030-2026-11-09-fewer-false-bank-detail-alarms-for-qualifying-mt103-and-pacs008-payment-attachments">
+              v0.3.0 (2026-11-09): fewer false bank-detail alarms for qualifying MT103 and pacs.008 payment attachments<a
+                class="docs__anchor"
+                href="#v030-2026-11-09-fewer-false-bank-detail-alarms-for-qualifying-mt103-and-pacs008-payment-attachments"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <ul>
+              <li>
+                <strong>Fix, narrow scope:</strong> the payer and beneficiary accounts in an MT103 or pacs.008 attachment no longer count as a bank details
+                change, <strong>only</strong> when the attachment is a structurally valid plain text MT103 or XML pacs.008, the deal has
+                <code>receiving_accounts</code> configured and the beneficiary is on it, the sender is authenticated and in one deal, there is no other
+                attachment, the mail has no account or redirect wording, and the model gives only payment classes. Everything else keeps the previous
+                <code>safe_ack</code> and verification task, including <strong>a bank&#39;s printed PDF, an MT103 pasted into the body</strong>, a deal without
+                <code>receiving_accounts</code>, an unauthenticated sender and an investor in several deals. Details and limits:
+                <code>docs/en/payment-messages.md</code>.
+              </li>
+              <li>
+                <strong>False alarms remain by design:</strong> when the model adds another class to an otherwise qualifying message, the exception is cancelled
+                and the reply stays <code>safe_ack</code>. On the development set this happened for 1 of 20 qualifying messages; on the blind set, 2 of 10.
+              </li>
+              <li>
+                <strong>Raised safeguards:</strong> a beneficiary account that is not on the linked deal&#39;s list now gives high risk,
+                <code>bank_details</code> and a verification task, and the label stays through re-runs and relinks. With an MT103 or pacs.008 amount in the
+                mail, change wording in the subject and phrases such as &quot;from now on&quot; add <code>bank_details</code> too.
+              </li>
+              <li>
+                <strong>No second request for a confirmation:</strong> after five working days, or with no ledger, a single qualifying message with a valid UETR
+                per payment, one value date, the deal&#39;s currency and an amount within the commitment gives <code>payment_evidence_received</code> and the
+                action <code>check_payment_evidence</code>, instead of asking for the MT103 again. A deployment without that template keeps
+                <code>payment_need_evidence</code>.
+              </li>
+              <li>
+                <strong>Masking:</strong> account values in MT103 party fields and pacs.008 account elements with six or more digits are masked before any model
+                call, whatever their shape, for mail parsed after the upgrade.
+              </li>
+              <li>
+                <strong>Directory:</strong> <code>deals.csv</code> takes an optional <code>receiving_accounts</code> column; only a keyed hash and the last four
+                characters are stored. Migration <code>008_f1.sql</code>.
+              </li>
+              <li>
+                <strong>Coverage note:</strong> in both blind sets the qualifying samples were pacs.008; qualifying MT103 messages are covered by the
+                development set and the pipeline tests only.
+              </li>
+              <li><strong>Known issue:</strong> the rule-extracted amount list can hold the same amount twice in some mails; comparisons treat it as a set.</li>
+              <li>
+                <strong>Known issue:</strong> the field extraction prompt still describes <code>party_role</code> as the person who signs; for
+                <code>bank_details</code> the settled meaning is the account holder (the deal&#39;s SPV is <code>other</code>, the investor&#39;s own account
+                <code>investor</code>). Planned for the next version, as it needs a new prompt version and new recordings.
+              </li>
+            </ul>
+            <h3 id="blind-evaluation">Blind evaluation<a class="docs__anchor" href="#blind-evaluation" aria-label="Link to this section">#</a></h3>
+            <p>
+              Measured on frozen code <code>bbdfc8b</code> with Claude Opus 5.5, on a new held-out set of 126 emails written and annotation-reviewed by
+              independent agents (one run, 246 model requests, 0 errors or fallbacks). The first scoring failed only &quot;fields extracted by rules&quot;: the
+              scorer compared amount objects as JSON text, so <code>{currency, minor}</code> and <code>{minor, currency}</code> differed. The owner decided
+              「修评分，重算」; the scorer now compares by value (<code>903a8ec</code>, <code>0570508</code>, no change to judgement code) and the custodian
+              re-scored that metric without a model. The other figures are from the original run. An earlier held-out set failed (field recall 87.2%, rule risk
+              and template 97.5%) and led to the two fixes in this release; that set is consumed.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Threshold</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Classification, macro F1</td>
+                    <td>≥ 0.85</td>
+                    <td>0.960</td>
+                  </tr>
+                  <tr>
+                    <td>Fields extracted by rules (re-scored after the scoring fix, see below)</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Field recall</td>
+                    <td>≥ 0.90</td>
+                    <td>90.0% (442/491)</td>
+                  </tr>
+                  <tr>
+                    <td>Field precision</td>
+                    <td>≥ 0.90</td>
+                    <td>97.1% (440/453)</td>
+                  </tr>
+                  <tr>
+                    <td>Fields that should stay empty</td>
+                    <td>≥ 0.95</td>
+                    <td>100% (26/26)</td>
+                  </tr>
+                  <tr>
+                    <td>Contact, commitment and deal linked correctly</td>
+                    <td>≥ 0.95</td>
+                    <td>98.4% (123/125)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk never underestimated</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>High-risk emails rated high</td>
+                    <td>100%</td>
+                    <td>100% (80/80)</td>
+                  </tr>
+                  <tr>
+                    <td>Malicious bank-detail changes or look-alike senders rated high</td>
+                    <td>100%</td>
+                    <td>100% (18/18)</td>
+                  </tr>
+                  <tr>
+                    <td>Replies never disclose more than allowed</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                    <td>100%</td>
+                    <td>100% (15/15)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk and template from the rules, given the annotated categories and fields</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Rule consistency against the independent implementation</td>
+                    <td>100%</td>
+                    <td>100% (126/126)</td>
+                  </tr>
+                  <tr>
+                    <td>Real-model cancellations of an otherwise qualifying payment message (reported, no threshold)</td>
+                    <td>—</td>
+                    <td>2 of 10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="v022-2026-11-04-case-summary-first-grouped-inbox-filters-and-clearer-demo-notices">
+              v0.2.2 (2026-11-04): case summary first, grouped inbox filters and clearer demo notices<a
+                class="docs__anchor"
+                href="#v022-2026-11-04-case-summary-first-grouped-inbox-filters-and-clearer-demo-notices"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <ul>
+              <li>
+                <strong>Demo guidance:</strong> fictional data and view-only access stay visible. About explains precomputed results and unavailable
+                editing/approval workflows; build metadata is kept for version tracing. Internal evaluation-directory and sample-comparison notes no longer
+                interrupt the public demo.
+              </li>
+              <li>
+                <strong>KYC and verification:</strong> attachment transfer states remain distinct. A recorded transfer no longer suggests that demo removal is
+                still pending; the attachment explains the demo exception and real-deployment limits. Read-only verification checklists no longer ask visitors
+                to tick items.
+              </li>
+              <li>
+                <strong>Inbox navigation:</strong> grouped filters, displayed counts, due-time ordering and warning-signal wording; native Case links and
+                per-history-entry restoration of filters, focus and scroll. Live-service counts describe rows shown rather than claiming a complete total.
+              </li>
+              <li>
+                <strong>Case review:</strong> a short current-result summary precedes email evidence and review panels. Business display names replace internal
+                identifiers in primary content; classification evidence and diagnostic references remain accessible. Incomplete analysis, uncompleted checks,
+                low confidence and risk awaiting confirmation stay explicit.
+              </li>
+              <li>
+                <strong>Validation:</strong> 554 local unit/integration tests passed with 3 environment skips; 22 application and 9 static-demo browser tests
+                passed, plus 3 display-layer mutation checks. Application, parser and Compose CI checks passed. The unchanged coverage script passed against
+                their official CI reports (217 required cases); public release-candidate CI is required before publication. Approval/copy safeguards, no-send
+                behavior and shared design tokens are unchanged.
+              </li>
+            </ul>
+            <h3 id="evaluation-carried-forward-from-v020">
+              Evaluation carried forward from v0.2.0<a class="docs__anchor" href="#evaluation-carried-forward-from-v020" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              The following held-out results were <strong>measured on v0.2.0</strong>, on a held-out set of 121 emails with Claude Opus 5.5. They are quoted
+              unchanged under the G3 patch-release rule, not a new measurement. Classification, extraction, linking, risk, template selection, reply
+              preparation, runtime configuration and evaluation inputs are unchanged. The enumerated non-UI differences are agent guidance, presentation-only
+              requirements and test-plan documentation, and root package-version metadata. The validator’s consumed PRD field inventory is unchanged;
+              presentation requirements and test-plan additions do not change the business judgement rules, runtime model inputs or metric thresholds.
+              Development evaluation on recorded model replies is required again for this release.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Threshold</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Classification, macro F1 (¹)</td>
+                    <td>≥ 0.85</td>
+                    <td>0.965</td>
+                  </tr>
+                  <tr>
+                    <td>Fields extracted by rules</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Field recall</td>
+                    <td>≥ 0.90</td>
+                    <td>93.1% (326/350)</td>
+                  </tr>
+                  <tr>
+                    <td>Field precision</td>
+                    <td>≥ 0.90</td>
+                    <td>95.2% (320/336)</td>
+                  </tr>
+                  <tr>
+                    <td>Fields that should stay empty</td>
+                    <td>≥ 0.95</td>
+                    <td>100% (36/36)</td>
+                  </tr>
+                  <tr>
+                    <td>Contact, commitment and deal all linked correctly, samples with one unambiguous answer</td>
+                    <td>≥ 0.95</td>
+                    <td>99.2% (119/120)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk never underestimated</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>High-risk emails rated high</td>
+                    <td>100%</td>
+                    <td>100% (79/79)</td>
+                  </tr>
+                  <tr>
+                    <td>Emails annotated as malicious bank-detail changes or look-alike senders rated high</td>
+                    <td>100%</td>
+                    <td>100% (25/25)</td>
+                  </tr>
+                  <tr>
+                    <td>Replies never disclose more than allowed</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                    <td>100%</td>
+                    <td>100% (15/15)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk and template from the rules, given the annotated categories and fields</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Rule consistency against the independent implementation, using actual inputs</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              (¹) Over the categories whose risk floor is not high, excluding <code>unclassified</code> and categories with no example. Macro F1 rounded to six
+              decimal places is 0.964884 across 10 eligible categories. High-risk categories are measured by the risk rows. Reported without a threshold: exact
+              end-to-end risk 99.2% (120/121), exact end-to-end reply template 95.9% (116/121). A person still reviews every Case and reply.
+            </p>
+            <p>
+              The original prerelease failure and subsequent fresh-set PASS remain recorded in the v0.2.0 section. No consumed held-out set is rerun or reused
+              as a new measurement.
+            </p>
+            <h3 id="scope-and-limits">Scope and limits<a class="docs__anchor" href="#scope-and-limits" aria-label="Link to this section">#</a></h3>
+            <p>
+              This release changes product presentation only. Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated services.
+              Gmail polling was tested on one personal Gmail account. No new production-mail-volume, clean-machine, model or mailbox measurement is claimed.
+            </p>
+            <h2 id="v021-2026-11-04-product-renamed-to-trunks-in-the-app-and-user-documentation">
+              v0.2.1 (2026-11-04): product renamed to Trunks in the app and user documentation<a
+                class="docs__anchor"
+                href="#v021-2026-11-04-product-renamed-to-trunks-in-the-app-and-user-documentation"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <ul>
+              <li>
+                <strong>Product name:</strong> Trunks — Operations Inbox, part of Vegeta. The sign-in screen, review header, browser title, demo navigation and
+                current user documentation use the confirmed product names.
+              </li>
+              <li>
+                <strong>Companion product:</strong> the review UI displays Goten — Deal Calculations in withdrawal guidance, including existing records. Stored
+                action details, API/CSV output and reply preparation hashes retain their existing values.
+              </li>
+              <li>
+                <strong>Compatibility:</strong> repository URLs, package name, API, schema, configuration, secrets, cookies, Docker projects/volumes and storage
+                paths are unchanged. Historical release notes and v0.2.0 assets are preserved.
+              </li>
+            </ul>
+            <h3 id="evaluation-carried-forward-from-v020-1">
+              Evaluation carried forward from v0.2.0<a class="docs__anchor" href="#evaluation-carried-forward-from-v020-1" aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <p>
+              The following held-out results were <strong>measured on v0.2.0</strong>, on a held-out set of 121 emails with Claude Opus 5.5. They are quoted
+              unchanged under the G3 patch-release rule, not a new measurement. Classification, extraction, linking, risk, template selection, reply
+              preparation, runtime configuration and evaluation inputs are unchanged. The enumerated non-UI differences are agent guidance and root
+              package-version metadata only; neither affects the evaluated pipeline. Development evaluation on recorded model replies is required again for this
+              release.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Threshold</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Classification, macro F1 (¹)</td>
+                    <td>≥ 0.85</td>
+                    <td>0.965</td>
+                  </tr>
+                  <tr>
+                    <td>Fields extracted by rules</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Field recall</td>
+                    <td>≥ 0.90</td>
+                    <td>93.1% (326/350)</td>
+                  </tr>
+                  <tr>
+                    <td>Field precision</td>
+                    <td>≥ 0.90</td>
+                    <td>95.2% (320/336)</td>
+                  </tr>
+                  <tr>
+                    <td>Fields that should stay empty</td>
+                    <td>≥ 0.95</td>
+                    <td>100% (36/36)</td>
+                  </tr>
+                  <tr>
+                    <td>Contact, commitment and deal all linked correctly, samples with one unambiguous answer</td>
+                    <td>≥ 0.95</td>
+                    <td>99.2% (119/120)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk never underestimated</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>High-risk emails rated high</td>
+                    <td>100%</td>
+                    <td>100% (79/79)</td>
+                  </tr>
+                  <tr>
+                    <td>Emails annotated as malicious bank-detail changes or look-alike senders rated high</td>
+                    <td>100%</td>
+                    <td>100% (25/25)</td>
+                  </tr>
+                  <tr>
+                    <td>Replies never disclose more than allowed</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                    <td>100%</td>
+                    <td>100% (15/15)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk and template from the rules, given the annotated categories and fields</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Rule consistency against the independent implementation, using actual inputs</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              (¹) Over the categories whose risk floor is not high, excluding <code>unclassified</code> and categories with no example. Macro F1 rounded to six
+              decimal places is 0.964884 across 10 eligible categories. High-risk categories are measured by the risk rows. Reported without a threshold: exact
+              end-to-end risk 99.2% (120/121), exact end-to-end reply template 95.9% (116/121). A person still reviews every Case and reply.
+            </p>
+            <p>
+              The original prerelease failure and subsequent fresh-set PASS remain recorded in the v0.2.0 section. No consumed held-out set is rerun or reused
+              as a new measurement.
+            </p>
+            <h3 id="scope-and-limits-1">Scope and limits<a class="docs__anchor" href="#scope-and-limits-1" aria-label="Link to this section">#</a></h3>
+            <p>
+              This release changes product presentation only. Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated services.
+              Gmail polling was tested on one personal Gmail account. No new production-mail-volume, clean-machine, model or mailbox measurement is claimed.
+            </p>
+            <h2 id="v020-2026-11-04-signature-images-under-the-size-limits-no-longer-count-as-identity-documents-approvers-can-restart-verification-tasks">
+              v0.2.0 (2026-11-04): signature images under the size limits no longer count as identity documents; approvers can restart verification tasks<a
+                class="docs__anchor"
+                href="#v020-2026-11-04-signature-images-under-the-size-limits-no-longer-count-as-identity-documents-approvers-can-restart-verification-tasks"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <ul>
+              <li>
+                <strong>Inline images:</strong> a narrow, configurable signature-image exception uses strict MIME/HTML and PNG/JPEG/GIF structural checks.
+                Defaults: 400 pixels on the long side, 150 on the short side and 51,200 bytes; hard caps: 1280/300 pixels and 102,400 bytes. Images are never
+                decoded for OCR or sent to a model. An identity image reduced to the qualifying limits, or data encoded in permitted metadata, can remain in the
+                archive instead of being transferred; see the DPIA/LIA templates.
+              </li>
+              <li>
+                <strong>KYC:</strong> decisions and transfer jobs are saved before model classification. Stricter decisions retry durably and can trigger later
+                archive-replacement rounds. Legacy MIME identities, oversized archive fallback, transfer hashes and recorded-copy recovery are checked before
+                deletion.
+              </li>
+              <li>
+                <strong>Verification:</strong> all approval blockers are explained. An approver/admin can restart an open or checklist-done task with a reason;
+                the same task generator supplies the new checklist, contact details and cooling-off period, with an audit record.
+              </li>
+              <li>
+                <strong>Review UI and templates:</strong> Cc, escaped/masked hidden-text evidence, low-confidence risk floors, invalid-IBAN hints, persistent
+                refusal notices and Case hash navigation; deployment sign-off and clearer payment-reference wording.
+              </li>
+              <li>
+                <strong>Data protection:</strong> fixed failure codes at job/log boundaries, CID HMAC/disposition enums, and message-wide sensitivity
+                propagation in derived hidden evidence.
+              </li>
+              <li>
+                <strong>Classification:</strong> versioned prompt guidance distinguishes a missing business fact from a detail that an email did not supply.
+                Relevant but uncertain evidence can still produce a low-confidence label, and multiple business purposes remain supported; adoption, risk and
+                reply rules are unchanged.
+              </li>
+            </ul>
+            <h3 id="independent-held-out-evaluation">
+              Independent held-out evaluation<a class="docs__anchor" href="#independent-held-out-evaluation" aria-label="Link to this section">#</a>
+            </h3>
+            <p>
+              A newly written <strong>held-out set of 121 emails</strong>, unseen by development, was run once by an independent runner with a real model
+              (<strong>Claude Opus 5.5</strong>, response model <code>claude-opus-5-5</code>). All 121 emails were processed with no model fallbacks or errors;
+              232 requests received 232 successful responses. Every gated metric passed:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Threshold</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Classification, macro F1 (¹)</td>
+                    <td>≥ 0.85</td>
+                    <td>0.965</td>
+                  </tr>
+                  <tr>
+                    <td>Fields extracted by rules</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Field recall</td>
+                    <td>≥ 0.90</td>
+                    <td>93.1% (326/350)</td>
+                  </tr>
+                  <tr>
+                    <td>Field precision</td>
+                    <td>≥ 0.90</td>
+                    <td>95.2% (320/336)</td>
+                  </tr>
+                  <tr>
+                    <td>Fields that should stay empty</td>
+                    <td>≥ 0.95</td>
+                    <td>100% (36/36)</td>
+                  </tr>
+                  <tr>
+                    <td>Contact, commitment and deal all linked correctly, samples with one unambiguous answer</td>
+                    <td>≥ 0.95</td>
+                    <td>99.2% (119/120)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk never underestimated</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>High-risk emails rated high</td>
+                    <td>100%</td>
+                    <td>100% (79/79)</td>
+                  </tr>
+                  <tr>
+                    <td>Emails annotated as malicious bank-detail changes or look-alike senders rated high</td>
+                    <td>100%</td>
+                    <td>100% (25/25)</td>
+                  </tr>
+                  <tr>
+                    <td>Replies never disclose more than allowed</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                    <td>100%</td>
+                    <td>100% (15/15)</td>
+                  </tr>
+                  <tr>
+                    <td>Risk and template from the rules, given the annotated categories and fields</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                  <tr>
+                    <td>Rule consistency against the independent implementation, using actual inputs</td>
+                    <td>100%</td>
+                    <td>100% (121/121)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              (¹) Over the categories whose risk floor is not high, excluding <code>unclassified</code> and categories with no example. Macro F1 rounded to six
+              decimal places is 0.964884 across 10 eligible categories. High-risk categories are measured by the risk rows. Reported without a threshold: exact
+              end-to-end risk 99.2% (120/121), exact end-to-end reply template 95.9% (116/121). A person still reviews every Case and reply.
+            </p>
+            <p>
+              The initial prerelease attempt failed injection invariance at 14/15; that result remains FAIL. After the classification repair, the result above
+              was measured on a completely new independent set, with no old recordings reused. The consumed sets do not supply future release evidence; private
+              development regression results are not reported as new holdout measurements.
+            </p>
+            <h3 id="scope-and-limits-2">Scope and limits<a class="docs__anchor" href="#scope-and-limits-2" aria-label="Link to this section">#</a></h3>
+            <p>
+              Development evaluation on 199 fictional emails, independent oracle checks, unit/integration/browser checks and the read-only static demo were
+              validated. Existing v0.1.0 limitations remain except for the narrow inline-image exception above. Microsoft 365 and Gmail push notifications
+              (Pub/Sub) were tested only against simulated services. Gmail polling was tested on one personal Gmail account. The startup timing in the
+              historical v0.1.0 section is that version&#39;s cached-image measurement; no new clean-machine timing or production-mail-volume test claim is
+              added.
+            </p>
+            <h2 id="v011-2026-11-03-read-only-demo-bar-case-page-for-narrow-screens-and-safer-directory-imports">
+              v0.1.1 (2026-11-03): read-only demo bar, case page for narrow screens and safer directory imports<a
+                class="docs__anchor"
+                href="#v011-2026-11-03-read-only-demo-bar-case-page-for-narrow-screens-and-safer-directory-imports"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <ul>
+              <li>
+                <strong>Static demo:</strong> a compact read-only bar with the snapshot version and an “About this demo” fold; change controls and account
+                information are hidden. Every Reply panel, including cases without a draft, explains that the app cannot send. Case contents and verification
+                information remain readable.
+              </li>
+              <li>
+                <strong>Review UI:</strong> warning and unchecked signals stay visible, with the full list folded. Case details use two columns from 1024px and
+                one column on narrow screens; long candidates and recipient addresses fit at 1024px and 375px. Select arrows have room in both light and dark
+                themes.
+              </li>
+              <li>
+                <strong>Directory imports (D9):</strong> header-only files are rejected without replacing the current directory. Clearing requires an explicit
+                <code>clear=yes</code> request. An explicitly cleared ledger is treated as no ledger imported; existing ledgers retain their previous meaning.
+              </li>
+              <li>
+                <strong>Validation:</strong> development evaluation on recorded model replies passed; unit, integration, browser, parser, Compose and coverage
+                checks passed in CI. All 11 review-UI mutation checks were caught.
+              </li>
+            </ul>
+            <p>
+              <strong>Evaluation:</strong> the v0.1.0 holdout result applies (measured on v0.1.0; judgement code unchanged except D9, which acts only on
+              header-only lists or <code>clear=yes</code>). The unchanged metric values are the table in the v0.1.0 section below. The independent runner
+              confirmed that the held-out run met neither D9 condition. This release does not report a new holdout measurement. Version metadata, release/test
+              tooling and UI/documentation changes do not alter the evaluation inputs, model or judgement pipeline; the PRD field table and evaluation
+              thresholds are unchanged. Other changes require a newly written holdout under G3.
+            </p>
+            <p>
+              The v0.1.0 limitations below still apply, including simulated Microsoft 365 and Gmail push tests and the single-account Gmail polling test. No
+              real-production-volume or clean-machine start-up claim is added.
+            </p>
+            <h2 id="v010-2026-11-03-first-public-release">
+              v0.1.0 (2026-11-03): first public release<a class="docs__anchor" href="#v010-2026-11-03-first-public-release" aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Deal Ops Inbox is a self-hosted, <strong>read-only</strong> email agent for investment-operations inboxes. For each inbound email it picks
+              categories, extracts the key facts, links the email to your directory, flags risk, prepares a reply from a fixed template for a person to check,
+              copy and send, and routes the email to a queue. It never sends email, never writes to a mailbox, never moves money and never changes business
+              records.
+            </p>
+            <p>This list names only what has been built <strong>and tested</strong>. Where a part was tested only in a limited way, it says so.</p>
+            <h3 id="what-it-does">What it does<a class="docs__anchor" href="#what-it-does" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>
+                <strong>Mailboxes, read-only:</strong> IMAP (opened read-only), <code>.eml</code> import, Gmail (<code>gmail.readonly</code>, one consent per
+                mailbox), Microsoft 365 (<code>Mail.Read</code> on named mailboxes, permission check at every start). No code path can send or write mail; a CI
+                check blocks mail-write calls.
+              </li>
+              <li>
+                <strong>Rules first, model second:</strong> amounts, dates, payment references, UETRs, IBANs and UK account numbers, MT103 and pacs.008 payment
+                messages are read by code. A language model only picks categories and extracts fields, as validated JSON, with no tools. Everything sent to a
+                model is redacted first; attachments that may be identity documents never go to any model.
+              </li>
+              <li>
+                <strong>Models:</strong> Anthropic Claude, or a local model through Ollama. By default a hosted provider refuses to start until the operator
+                records that a data processing agreement exists (<code>dpa: true</code>, the operator&#39;s own declaration); an explicit override (<code
+                  >allow_without_dpa: true</code
+                >) starts it with a warning in the log and the review UI.
+              </li>
+              <li>
+                <strong>Fraud rules fixed in code:</strong> bank details from an email are never applied; an emailed payment confirmation never counts as
+                received; risk wording never appears in replies. Bank-detail and identity changes create a verification task: call the phone number on file, a
+                cooling-off period, approval by a second person.
+              </li>
+              <li>
+                <strong>Replies from fixed templates only:</strong> the template is chosen by code; record data is disclosed only to an authenticated sender who
+                is entitled to see it.
+              </li>
+              <li>
+                <strong>Directory:</strong> deals, commitments, bank lines and the reconciliation ledger from Deal Ops Toolkit CSV files, plus a contacts file.
+              </li>
+              <li>
+                <strong>Review UI:</strong> plain-text email view, signals, risk with reasons, replies to approve and copy, verification tasks, CSV exports,
+                JSON events to a signed webhook.
+              </li>
+              <li>
+                <strong>Data protection:</strong> every text value in the database is encrypted; a hash-chained audit log; retention periods per category;
+                possible-KYC attachments transferred to your own folder or webhook and then removed; master key rotation; DPIA and LIA templates.
+              </li>
+              <li>
+                <strong>Packaging:</strong> Docker Compose with separate containers for the app, maintenance, the database, the virus scanner and a sandboxed
+                attachment parser (its own seccomp and AppArmor profiles); a local demo with fictional data and no outbound connections.
+              </li>
+            </ul>
+            <h3 id="how-it-was-tested">How it was tested<a class="docs__anchor" href="#how-it-was-tested" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>
+                <p>
+                  Unit, integration and browser tests; an independent Python implementation of the rules, written only from the requirements, compared with the
+                  code; mutation checks; the Docker Compose stack started, backed up and restored in CI (and upgraded from the previous internal version, in the
+                  development repository); the documented user and directory commands run exactly as written in CI.
+                </p>
+              </li>
+              <li>
+                <p>
+                  An evaluation set of fictional emails written by independent agents that saw only the requirements: a development set of 178 emails (run on
+                  recorded model replies in CI) and a separate held-out set of 121 emails that development never read.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Held-out set, real model (Claude Opus 5.5), run once for this release by an independent runner</strong> (121 emails, all processed, no
+                  model fallbacks). Every gated metric met its threshold:
+                </p>
+                <div class="docs__table" tabindex="0">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Threshold</th>
+                        <th>Result</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Classification, macro F1 (¹)</td>
+                        <td>≥ 0.85</td>
+                        <td>0.946</td>
+                      </tr>
+                      <tr>
+                        <td>Fields extracted by rules</td>
+                        <td>100%</td>
+                        <td>100% (121/121)</td>
+                      </tr>
+                      <tr>
+                        <td>Field recall</td>
+                        <td>≥ 0.90</td>
+                        <td>93.6%</td>
+                      </tr>
+                      <tr>
+                        <td>Field precision</td>
+                        <td>≥ 0.90</td>
+                        <td>91.9%</td>
+                      </tr>
+                      <tr>
+                        <td>Fields that should stay empty</td>
+                        <td>≥ 0.95</td>
+                        <td>96.9%</td>
+                      </tr>
+                      <tr>
+                        <td>Contact, commitment and deal all linked correctly, samples with one unambiguous answer</td>
+                        <td>≥ 0.95</td>
+                        <td>100% (120/120)</td>
+                      </tr>
+                      <tr>
+                        <td>Risk never underestimated</td>
+                        <td>100%</td>
+                        <td>100% (121/121)</td>
+                      </tr>
+                      <tr>
+                        <td>High-risk emails rated high</td>
+                        <td>100%</td>
+                        <td>100% (57/57)</td>
+                      </tr>
+                      <tr>
+                        <td>Emails annotated as malicious bank-detail changes or look-alike senders rated high</td>
+                        <td>100%</td>
+                        <td>100% (12/12)</td>
+                      </tr>
+                      <tr>
+                        <td>Replies never disclose more than allowed</td>
+                        <td>100%</td>
+                        <td>100% (121/121)</td>
+                      </tr>
+                      <tr>
+                        <td>Prompt injection does not change the judgement (vs. a clean twin)</td>
+                        <td>100%</td>
+                        <td>100% (7/7)</td>
+                      </tr>
+                      <tr>
+                        <td>Risk and template from the rules, given the annotated categories and fields</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>
+                  (¹) Over the categories whose risk floor is not high, without <code>unclassified</code> and without categories that have no example in the
+                  set. Emails in the high-risk categories (for example bank details and identity changes) are measured by the risk rows instead (risk never
+                  underestimated, high-risk emails rated high).
+                </p>
+                <p>
+                  Reported without a threshold (end to end, with the model&#39;s own categories): risk exactly as annotated 94.2%, reply template exactly as
+                  annotated 86.0%. A person reviews every Case and reply. The held-out set is now used up; the next release is measured on a newly written one.
+                </p>
+              </li>
+            </ul>
+            <h3 id="limits-of-this-release">
+              Limits of this release<a class="docs__anchor" href="#limits-of-this-release" aria-label="Link to this section">#</a>
+            </h3>
+            <ul>
+              <li>
+                <strong>Microsoft 365 and Gmail push notifications (Pub/Sub)</strong> were tested only against simulated services. Gmail polling was tested on
+                one personal Gmail account. Test with your own tenant before going live.
+              </li>
+              <li>
+                <strong>Demo start-up time:</strong> measured at about 2 minutes on a machine that already had the images and base images cached (macOS, Docker
+                Desktop). A first start on a clean machine also downloads the base images and was not measured.
+              </li>
+              <li>
+                <strong>No screens for users and the directory:</strong> an admin uses the HTTP API with <code>curl</code> (see
+                <code>docs/en/users-and-directory.md</code>).
+              </li>
+              <li>
+                Inline signature images count as possible identity documents; there is no OCR; the AppArmor profile needs AppArmor 4 (for example Ubuntu 24.04);
+                macOS runs the parser without AppArmor. See <code>docs/en/security-model.md</code> §8.
+              </li>
+              <li>Not tested with real production mail volumes.</li>
+            </ul>
+            <p>Licence: Apache-2.0.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

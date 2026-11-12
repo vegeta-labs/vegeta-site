@@ -1,0 +1,72 @@
+name: Goten and Trunks drift
+# Daily (and on demand), plan 36 §11 F3d: (1) fails when Goten or Trunks has a release newer than the version the site is
+# built from, and opens or updates an issue saying what to do; (2) runs the website checks against the public Goten and
+# Trunks at their latest main, not the pinned goten.ref / trunks.ref, and fails when a release changed a sentence, label or
+# figure the site quotes: then update the page and the ref (for Trunks also the demo package, scripts/trunks-demo.mjs).
+# Nothing here changes the site; moving the pins, the owner's check and the release stay with a person.
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Is the site behind a release?
+        id: releases
+        continue-on-error: true
+        # exit 1: behind a release; exit 2: the check itself failed (no issue for that)
+        run: |
+          set +e
+          node scripts/check-releases.mjs | tee releases.txt
+          code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit "$code"
+      - name: Open or update the issue
+        # no issues in the public repository; its copy just fails
+        if: steps.releases.outputs.code == '1' && github.repository != 'vegeta-labs/vegeta-site'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title='The site is behind a product release'
+          n=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -z "$n" ]; then gh issue create --title "$title" --body-file releases.txt; exit 0; fi
+          # one comment per new state, not one a day
+          last=$(gh issue view "$n" --json body,comments --jq '([.body] + [.comments[] | select(.author.login == "github-actions") | .body]) | last')
+          if [ "$last" != "$(cat releases.txt)" ]; then gh issue comment "$n" --body-file releases.txt; fi
+      - name: Close the issue once the site has caught up
+        if: steps.releases.outputs.code == '0' && github.repository != 'vegeta-labs/vegeta-site'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --state open --search "\"The site is behind a product release\" in:title" --json number --jq '.[0].number')
+          if [ -n "$n" ]; then gh issue close "$n" --comment "$(cat releases.txt)"; fi
+      - run: npm ci
+      - name: Public Goten at its latest main
+        run: npm run goten:fetch
+        env:
+          GOTEN_REF: main
+      - name: Public Trunks at its latest main
+        run: npm run trunks:fetch
+        env:
+          TRUNKS_REF: main
+      - name: Public product docs at the docs pin in site-src/docs.json (the docs pages are re-rendered and compared)
+        run: npm run docs:fetch
+      - name: Website checks against them
+        run: npm run site:check
+        env:
+          GOTEN_DIR: vendor/goten
+          TRUNKS_DIR: vendor/trunks
+      - name: Fail when the site is behind a release, or the release check failed
+        if: steps.releases.outcome == 'failure'
+        run: exit 1

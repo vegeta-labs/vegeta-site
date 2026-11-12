@@ -1,17 +1,17 @@
 {
-  "name": "deal-ops-site",
+  "name": "vegeta-site",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "license": "Apache-2.0",
   "scripts": {
-    "toolkit:fetch": "node scripts/fetch-toolkit.mjs",
-    "inbox:fetch": "node scripts/fetch-inbox.mjs",
+    "goten:fetch": "node scripts/fetch-goten.mjs",
+    "trunks:fetch": "node scripts/fetch-trunks.mjs",
     "site:build": "rolldown site-src/site.js -f iife -m -o site/site.js",
     "site:share": "node scripts/render-share-card.mjs",
     "site:check": "node scripts/check-site.mjs",
     "site:preview": "node scripts/site-preview.mjs 4181",
-    "lint": "oxlint --deny-warnings --ignore-pattern site/site.js --ignore-pattern site/inbox/demo --ignore-pattern vendor",
+    "lint": "oxlint --deny-warnings --ignore-pattern site/site.js --ignore-pattern site/trunks/demo --ignore-pattern vendor",
     "docs:fetch": "node scripts/fetch-docs.mjs"
   },
   "devDependencies": {

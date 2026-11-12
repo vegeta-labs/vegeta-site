@@ -1,6 +1,6 @@
 # How the numbers work
 
-> Goten v1.3.1. Source: https://github.com/vegeta-labs/goten/blob/e9cab3e02360001967b9fc471cb40ec75fd6962b/docs/en/use/how-the-numbers-work.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/how-the-numbers-work.md
 
 These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.
 

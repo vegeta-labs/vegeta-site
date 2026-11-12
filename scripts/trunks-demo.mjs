@@ -1,8 +1,8 @@
-// Installs the Deal Ops Inbox demo package (a GitHub Release asset) into site/inbox/demo/ and records it in inbox-demo.lock
-// (plan 13 §6.4). Usage: node scripts/inbox-demo.mjs <deal-ops-inbox-demo-vX.tar.gz> <its .sha256 file>
+// Installs the Trunks demo package (a GitHub Release asset) into site/trunks/demo/ and records it in trunks-demo.lock
+// (plan 13 §6.4). Usage: node scripts/trunks-demo.mjs <trunks-demo-vX.tar.gz> <its .sha256 file>
 // The tarball must match its published SHA-256 and hold only plain files and directories at safe relative paths; every
-// file must match the package's MANIFEST.sha256, and the package's commit (snapshot-info.json) must equal inbox.ref.
-// Everything is checked in a temporary directory; only then is the whole site/inbox/demo/ replaced and the lock written.
+// file must match the package's MANIFEST.sha256, and the package's commit (snapshot-info.json) must equal trunks.ref.
+// Everything is checked in a temporary directory; only then is the whole site/trunks/demo/ replaced and the lock written.
 // No file in it is ever edited by hand.
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
@@ -12,17 +12,17 @@ import { gunzipSync } from 'node:zlib'
 
 const [tgz, shaFile] = process.argv.slice(2)
 if (!tgz || !shaFile) {
-  console.error('usage: node scripts/inbox-demo.mjs <deal-ops-inbox-demo-vX.tar.gz> <its .sha256 file>')
+  console.error('usage: node scripts/trunks-demo.mjs <trunks-demo-vX.tar.gz> <its .sha256 file>')
   process.exit(1)
 }
-const DEST = 'site/inbox/demo'
+const DEST = 'site/trunks/demo'
 const sha = (buf) => createHash('sha256').update(buf).digest('hex')
 // throws, so the temporary directory is always removed (finally below) before the process ends with an error
 const die = (m) => {
   throw new Error(m)
 }
 process.on('uncaughtException', (e) => {
-  console.error('inbox demo: ' + e.message)
+  console.error('trunks demo: ' + e.message)
   process.exit(1)
 })
 const archive = readFileSync(tgz)
@@ -43,7 +43,7 @@ const field = (b, at, len) =>
     .replace(/\0[\s\S]*$/, '')
 const safe = (path) => path && !path.startsWith('/') && !path.split('/').includes('..')
 let next = null
-for (let at = 0; at + 512 <= tar.length;) {
+for (let at = 0; at + 512 <= tar.length; ) {
   const h = tar.subarray(at, at + 512)
   if (h.every((x) => x === 0)) break
   const type = String.fromCharCode(h[156] || 48)
@@ -63,7 +63,7 @@ for (let at = 0; at + 512 <= tar.length;) {
   at += 512 + Math.ceil(size / 512) * 512
 }
 
-const tmp = mkdtempSync(join('site/inbox', '.demo-'))
+const tmp = mkdtempSync(join('site/trunks', '.demo-'))
 try {
   execFileSync('tar', ['-xzf', tgz, '-C', tmp])
   const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(d, e.name)) : [join(d, e.name)]))
@@ -76,8 +76,8 @@ try {
   for (const f of files) if (f !== 'MANIFEST.sha256' && listed.get(f) !== sha(readFileSync(join(tmp, f)))) die(`${f} is not in MANIFEST.sha256 or differs`)
   for (const f of listed.keys()) if (!files.includes(f)) die(`${f} is in MANIFEST.sha256 but not in the package`)
   const info = JSON.parse(readFileSync(join(tmp, 'snapshot-info.json'), 'utf8'))
-  const ref = readFileSync('inbox.ref', 'utf8').trim()
-  if (info.commit !== ref) die(`the package was built from ${info.commit}, inbox.ref is ${ref}`)
+  const ref = readFileSync('trunks.ref', 'utf8').trim()
+  if (info.commit !== ref) die(`the package was built from ${info.commit}, trunks.ref is ${ref}`)
 
   const lock = {
     package: basename(tgz),
@@ -91,8 +91,8 @@ try {
   // all checks passed: replace the directory, then the lock
   rmSync(DEST, { recursive: true, force: true })
   renameSync(tmp, DEST)
-  writeFileSync('inbox-demo.lock', JSON.stringify(lock, null, 2) + '\n')
-  console.log(`inbox demo: v${info.version} (${info.commit.slice(0, 7)}) installed in ${DEST}, ${files.length} files; inbox-demo.lock written`)
+  writeFileSync('trunks-demo.lock', JSON.stringify(lock, null, 2) + '\n')
+  console.log(`trunks demo: v${info.version} (${info.commit.slice(0, 7)}) installed in ${DEST}, ${files.length} files; trunks-demo.lock written`)
 } finally {
   rmSync(tmp, { recursive: true, force: true })
 }

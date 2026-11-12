@@ -39,8 +39,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -50,8 +50,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -92,6 +92,10 @@
             <li><a href="/docs/trunks/build/retention/">Retention</a></li>
             <li><a href="/docs/trunks/build/backup-and-upgrade/" aria-current="page">Backup and upgrade</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -123,11 +127,15 @@
                 <li><a href="/docs/trunks/build/retention/">Retention</a></li>
                 <li><a href="/docs/trunks/build/backup-and-upgrade/" aria-current="page">Backup and upgrade</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/trunks/">Trunks</a></p>
           <h1 class="docs__title">Backup and upgrade</h1>
-          <p class="docs__version">v0.4.0</p>
+          <p class="docs__version">v0.5.0</p>
           <div class="docs__body">
             <h2 id="what-to-back-up">What to back up<a class="docs__anchor" href="#what-to-back-up" aria-label="Link to this section">#</a></h2>
             <div class="docs__table" tabindex="0">
@@ -142,35 +150,35 @@
                 <tbody>
                   <tr>
                     <td><strong>Database</strong></td>
-                    <td>volume <code>deal-ops-inbox_db</code></td>
+                    <td>volume <code>trunks_db</code></td>
                     <td>Cases, directory, users, audit chain, and all text (encrypted)</td>
                   </tr>
                   <tr>
                     <td><strong>Files</strong></td>
-                    <td>volume <code>deal-ops-inbox_files</code></td>
+                    <td>volume <code>trunks_files</code></td>
                     <td>raw emails and attachments (encrypted)</td>
                   </tr>
                   <tr>
                     <td><strong>State</strong></td>
-                    <td>volume <code>deal-ops-inbox_state</code></td>
+                    <td>volume <code>trunks_state</code></td>
                     <td>the daily audit chain head export</td>
                   </tr>
                   <tr>
                     <td><strong>Secrets</strong></td>
                     <td>your secret directory (<code>./secrets</code>)</td>
                     <td>
-                      <code>doi_master_keys</code>, <code>doi_hmac_key</code> and the database passwords.
+                      <code>trunks_master_keys</code>, <code>trunks_hmac_key</code> and the database passwords.
                       <strong>Without the keys, a backup cannot be read.</strong>
                     </td>
                   </tr>
                   <tr>
                     <td><strong>Configuration</strong></td>
-                    <td>your configuration directory (<code>DOI_CONFIG_DIR</code>) and <code>docker-compose.override.yml</code></td>
+                    <td>your configuration directory (<code>TRUNKS_CONFIG_DIR</code>) and <code>docker-compose.override.yml</code></td>
                     <td>to start the same deployment again</td>
                   </tr>
                   <tr>
                     <td>KYC folder (if you use a folder target)</td>
-                    <td>volume <code>deal-ops-inbox_kyc</code></td>
+                    <td>volume <code>trunks_kyc</code></td>
                     <td>transferred KYC files; back it up under your KYC policy</td>
                   </tr>
                 </tbody>
@@ -193,7 +201,7 @@ B=&quot;$PWD/backup/$(date +%Y%m%dT%H%M%S)&quot;
 mkdir -p &quot;$PWD/backup&quot; &amp;&amp; mkdir &quot;$B&quot; || exit 1
 docker compose stop
 for v in db files state kyc; do
-  docker run --rm -v &quot;deal-ops-inbox_$v:/v:ro&quot; -v &quot;$B:/b&quot; postgres:16 \
+  docker run --rm -v &quot;trunks_$v:/v:ro&quot; -v &quot;$B:/b&quot; postgres:16 \
     tar --numeric-owner -czf &quot;/b/$v.tgz&quot; -C /v .
 done
 docker compose start
@@ -218,8 +226,8 @@ cp -a config/local &quot;$B/config&quot;</code></pre>
               call your model provider.
             </p>
             <pre tabindex="0"><code>B=&quot;$PWD/backup/20261102T093000&quot;   # the backup to restore
-P=doi-restore
-export DOI_SECRETS_DIR=&quot;$B/secrets&quot; DOI_CONFIG_DIR=&quot;$B/config&quot; DOI_PORT=8081
+P=trunks-restore
+export TRUNKS_SECRETS_DIR=&quot;$B/secrets&quot; TRUNKS_CONFIG_DIR=&quot;$B/config&quot; TRUNKS_PORT=8081
 # the restored copy's own file list: never the bundled proxy of the live deployment (it would take the same network
 # range and ports 80/443). Keep your override for the credentials if the copy needs them; this overrides .env.
 export COMPOSE_FILE=docker-compose.yml
@@ -250,7 +258,8 @@ docker compose -p &quot;$P&quot; up -d</code></pre>
               <li><p>Open a few Cases and their raw emails and attachments.</p></li>
             </ol>
             <p>
-              When you are satisfied, either keep the restored project as your deployment, or remove it with <code>docker compose -p doi-restore down -v</code>.
+              When you are satisfied, either keep the restored project as your deployment, or remove it with
+              <code>docker compose -p trunks-restore down -v</code>.
             </p>
             <h2 id="upgrades">Upgrades<a class="docs__anchor" href="#upgrades" aria-label="Link to this section">#</a></h2>
             <ol>
@@ -289,23 +298,23 @@ docker compose build</code></pre>
               </li>
             </ul>
             <h2 id="key-rotation">Key rotation<a class="docs__anchor" href="#key-rotation" aria-label="Link to this section">#</a></h2>
-            <p>Master keys are listed in the secret file <code>doi_master_keys</code> as <code>id:base64</code>, separated by commas:</p>
+            <p>Master keys are listed in the secret file <code>trunks_master_keys</code> as <code>id:base64</code>, separated by commas:</p>
             <pre tabindex="0"><code>k1:&lt;base64 of 32 bytes&gt;,k2:&lt;base64 of 32 bytes&gt;</code></pre>
             <p>
               <code>app</code> and <code>maintenance</code> write with the <strong>last</strong> key in the list. The rotation tool writes with
-              <code>DOI_ACTIVE_KEY</code>.
+              <code>TRUNKS_ACTIVE_KEY</code>.
             </p>
             <p>Steps:</p>
             <ol>
               <li>
-                <p><strong>Back up</strong>, including the current <code>doi_master_keys</code>.</p>
+                <p><strong>Back up</strong>, including the current <code>trunks_master_keys</code>.</p>
               </li>
               <li>
                 <p>Add a new key <strong>at the end</strong> of the list, on the same line:</p>
                 <pre tabindex="0"><code>NEW=$(openssl rand -base64 32)
-printf '%s,k2:%s\n' &quot;$(cat secrets/doi_master_keys)&quot; &quot;$NEW&quot; &gt; secrets/doi_master_keys.new
-mv secrets/doi_master_keys.new secrets/doi_master_keys
-chmod 644 secrets/doi_master_keys</code></pre>
+printf '%s,k2:%s\n' &quot;$(cat secrets/trunks_master_keys)&quot; &quot;$NEW&quot; &gt; secrets/trunks_master_keys.new
+mv secrets/trunks_master_keys.new secrets/trunks_master_keys
+chmod 644 secrets/trunks_master_keys</code></pre>
               </li>
               <li>
                 <p><strong>Restart every instance with the new key first:</strong></p>
@@ -317,7 +326,7 @@ chmod 644 secrets/doi_master_keys</code></pre>
               </li>
               <li>
                 <p>Run the rotation:</p>
-                <pre tabindex="0"><code>DOI_ACTIVE_KEY=k2 docker compose run --rm rotate</code></pre>
+                <pre tabindex="0"><code>TRUNKS_ACTIVE_KEY=k2 docker compose run --rm rotate</code></pre>
                 <p>
                   It rewraps the data key of every encrypted text value and every stored file with <code>k2</code>, and deletes the old stored versions of
                   rewritten files. File contents are not re-encrypted; only the wrapped data key in the file header changes. You can stop it and run it again:
@@ -330,7 +339,7 @@ chmod 644 secrets/doi_master_keys</code></pre>
               </li>
               <li>
                 <p>
-                  Only after the rotation is complete may you remove <code>k1</code> from <code>doi_master_keys</code> and restart <code>app</code> and
+                  Only after the rotation is complete may you remove <code>k1</code> from <code>trunks_master_keys</code> and restart <code>app</code> and
                   <code>maintenance</code>.
                 </p>
                 <ul>
@@ -344,7 +353,7 @@ chmod 644 secrets/doi_master_keys</code></pre>
                 </p>
               </li>
             </ol>
-            <p>The HMAC key (<code>doi_hmac_key</code>) is not rotated by this tool. Keep it for the life of the deployment.</p>
+            <p>The HMAC key (<code>trunks_hmac_key</code>) is not rotated by this tool. Keep it for the life of the deployment.</p>
           </div>
         </div>
       </div>
@@ -355,10 +364,10 @@ chmod 644 secrets/doi_master_keys</code></pre>
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -366,8 +375,7 @@ chmod 644 secrets/doi_master_keys</code></pre>
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -375,7 +383,7 @@ chmod 644 secrets/doi_master_keys</code></pre>
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

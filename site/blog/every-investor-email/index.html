@@ -46,8 +46,8 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/" aria-current="page">Blog</a>
@@ -57,8 +57,8 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/" aria-current="page">Blog</a></li>
@@ -148,59 +148,59 @@
             </thead>
             <tbody>
               <tr>
-                <td><a href="/inbox/demo/#case=E0001">Has my payment arrived?</a></td>
+                <td><a href="/trunks/demo/#case=E0001">Has my payment arrived?</a></td>
                 <td>Finds the commitment, checks the ledger, and drafts the reply that fits what has arrived</td>
                 <td>Checks it against the ledger and sends it</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0024">A payment confirmation is attached</a></td>
+                <td><a href="/trunks/demo/#case=E0024">A payment confirmation is attached</a></td>
                 <td>
                   Reads the UETR, amount and value date from an MT103 or pacs.008 file, and shows it as the sender&rsquo;s confirmation, not proof of receipt
                 </td>
                 <td>Checks the bank statement</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0035">Paid from someone else&rsquo;s account</a></td>
+                <td><a href="/trunks/demo/#case=E0035">Paid from someone else&rsquo;s account</a></td>
                 <td>Finds the investor and the commitment, and asks you to check the payment in the ledger</td>
                 <td>Checks the payment</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0045">KYC documents</a></td>
+                <td><a href="/trunks/demo/#case=E0045">KYC documents</a></td>
                 <td>Code spots likely ID documents, keeps them from any model and transfers them to your KYC folder or webhook</td>
                 <td>Does the KYC check; Trunks never does</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0053">A withdrawal</a> or <a href="/inbox/demo/#case=E0063">a change of commitment</a></td>
+                <td><a href="/trunks/demo/#case=E0053">A withdrawal</a> or <a href="/trunks/demo/#case=E0063">a change of commitment</a></td>
                 <td>An acknowledgement that commits to nothing. For a withdrawal, a check for the investor&rsquo;s consent</td>
                 <td>Decides, and makes the change</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0082">Closing numbers</a> or <a href="/inbox/demo/#case=E0090">documents to sign</a></td>
+                <td><a href="/trunks/demo/#case=E0082">Closing numbers</a> or <a href="/trunks/demo/#case=E0090">documents to sign</a></td>
                 <td>An acknowledgement, in the deal team&rsquo;s or the legal team&rsquo;s queue</td>
                 <td>Reviews them and runs the closing</td>
               </tr>
               <tr>
                 <td>
-                  <a href="/inbox/demo/#case=E0112">Tax certificates</a>, <a href="/inbox/demo/#case=E0201">bank letters</a>,
-                  <a href="/inbox/demo/#case=E0120">exit timing</a>, <a href="/inbox/demo/#case=E0209">portal access</a>
+                  <a href="/trunks/demo/#case=E0112">Tax certificates</a>, <a href="/trunks/demo/#case=E0201">bank letters</a>,
+                  <a href="/trunks/demo/#case=E0120">exit timing</a>, <a href="/trunks/demo/#case=E0209">portal access</a>
                 </td>
                 <td>A reply saying what happens next</td>
                 <td>Issues the certificate or letter, or makes the change</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0144">A complaint</a></td>
+                <td><a href="/trunks/demo/#case=E0144">A complaint</a></td>
                 <td>An apology saying a senior colleague will reply, in the ops lead&rsquo;s queue</td>
                 <td>Replies</td>
               </tr>
               <tr>
-                <td><a href="/inbox/demo/#case=E0225">New bank details</a> or <a href="/inbox/demo/#case=E0105">a new email address</a></td>
+                <td><a href="/trunks/demo/#case=E0225">New bank details</a> or <a href="/trunks/demo/#case=E0105">a new email address</a></td>
                 <td>A fixed acknowledgement, high risk, and a verification task. Nothing from the email is applied to any record</td>
                 <td>Calls the number on file; a second person approves</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p>A newsletter stays unclassified, with no reply prepared. Every category is on <a href="/inbox/">the Trunks page</a>.</p>
+        <p>A newsletter stays unclassified, with no reply prepared. Every category is on <a href="/trunks/">the Trunks page</a>.</p>
         <p>Three emails show it in more detail, from routine to dangerous.</p>
         <h2>&ldquo;Did my payment arrive?&rdquo;</h2>
         <p>
@@ -246,9 +246,8 @@
         <p>
           The account numbers in the file normally count as a change of bank details. Trunks sets that aside only when it can check them: a valid MT103 text
           file or pacs.008 file whose beneficiary account is on your list for that deal, and
-          <a href="https://github.com/vegeta-labs/trunks/blob/v0.3.0/docs/en/payment-messages.md">the other conditions here</a>. Anything else takes the
-          cautious route below, including a bank&rsquo;s printed PDF, so some genuine confirmations do too. A valid message whose beneficiary account is not on
-          the list goes to high risk.
+          <a href="/docs/trunks/build/payment-messages/">the other conditions here</a>. Anything else takes the cautious route below, including a bank&rsquo;s
+          printed PDF, so some genuine confirmations do too. A valid message whose beneficiary account is not on the list goes to high risk.
         </p>
         <p>
           The person gets a case showing who paid, for which deal and how much, with the UETR ready if the bank needs to trace it. They check the bank
@@ -326,15 +325,22 @@
           One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read, measured on v0.3.0. An earlier set of the same kind
           failed and led to two fixes in that release. Malicious bank changes and look-alike senders were rated high in 18 of 18. The contact, commitment and
           deal were linked correctly in 123 of 125. The test emails that passed the payment message checks were all pacs.008; MT103 was covered only by
-          development tests. <a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.3.0">The release notes</a> have the full table, and a scoring error
-          that was fixed and re-scored.
+          development tests.
+          <a href="/docs/trunks/release-notes/#v030-2026-11-09-fewer-false-bank-detail-alarms-for-qualifying-mt103-and-pacs008-payment-attachments"
+            >The release notes</a
+          >
+          have the full table, and a scoring error that was fixed and re-scored.
         </p>
         <h2>Try it</h2>
         <p>
-          Every row in the table above opens in <a href="/inbox/demo/">the Trunks demo</a>.
-          <a href="/inbox/demo/#case=E1012">An MT103 with an account number on your list</a> is there too. Trunks v0.4.0 runs on your own server with Docker.
+          Every row in the table above opens in <a href="/trunks/demo/">the Trunks demo</a>.
+          <a href="/trunks/demo/#case=E1012">An MT103 with an account number on your list</a> is there too. Trunks v0.5.0 runs on your own server with Docker.
         </p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Send feedback</a>.</p>
+        <p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Trunks"
+            >Send feedback</a
+          >.
+        </p>
 
         <nav class="article__next" aria-labelledby="next-h">
           <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
@@ -356,10 +362,10 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -367,8 +373,7 @@
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -376,7 +381,7 @@
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>

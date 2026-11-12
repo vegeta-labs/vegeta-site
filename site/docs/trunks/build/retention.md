@@ -1,6 +1,6 @@
 # Retention
 
-> Trunks v0.4.0. Source: https://github.com/vegeta-labs/trunks/blob/d710459cd237c77459f388cbda226e2431260c1f/docs/en/retention.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/retention.md
 
 ## Default periods
 
@@ -114,7 +114,7 @@ Removing a mailbox from the configuration stops collection but keeps its stored 
 2. Delete the stored row as the database owner (the app's own role cannot delete it):
 
    ```sh
-   docker compose exec db psql -U postgres -d doi -c "DELETE FROM mailbox_credential WHERE mailbox_id = '<mailbox id>'"
+   docker compose exec db psql -U postgres -d trunks -c "DELETE FROM mailbox_credential WHERE mailbox_id = '<mailbox id>'"
    ```
 
    The encrypted token it referred to is removed by the next daily clean-up.

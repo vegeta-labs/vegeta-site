@@ -51,8 +51,8 @@ security assessment."
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/toolkit/">Goten</a>
-        <a href="/inbox/">Trunks</a>
+        <a href="/goten/">Goten</a>
+        <a href="/trunks/">Trunks</a>
         <a href="/#build">Why trust it</a>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
@@ -62,8 +62,8 @@ security assessment."
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
-          <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-          <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -104,6 +104,10 @@ security assessment."
             <li><a href="/docs/trunks/build/retention/">Retention</a></li>
             <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
           </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+          </ul>
         </nav>
         <div class="docs__main">
           <details class="docs__menu">
@@ -135,11 +139,15 @@ security assessment."
                 <li><a href="/docs/trunks/build/retention/">Retention</a></li>
                 <li><a href="/docs/trunks/build/backup-and-upgrade/">Backup and upgrade</a></li>
               </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/trunks/release-notes/">Release notes</a></li>
+              </ul>
             </nav>
           </details>
           <p class="docs__kicker"><a href="/docs/trunks/">Trunks</a></p>
           <h1 class="docs__title">Security model</h1>
-          <p class="docs__version">v0.4.0</p>
+          <p class="docs__version">v0.5.0</p>
           <div class="docs__body">
             <p>This page describes what the software does to limit harm, and where its limits are. It does not replace your own security assessment.</p>
             <h2 id="1-read-only-by-design">
@@ -303,7 +311,7 @@ security assessment."
                 the file matches its generator script.
               </li>
               <li>
-                <strong>Dedicated AppArmor profile</strong> (<code>deploy/apparmor/doi-parser</code>): Docker&#39;s default rules plus only what bubblewrap
+                <strong>Dedicated AppArmor profile</strong> (<code>deploy/apparmor/trunks-parser</code>): Docker&#39;s default rules plus only what bubblewrap
                 needs (user namespaces, mounts below its staging root, <code>pivot_root</code>). If the profile is not loaded, the container does not start. The
                 Compose file never uses <code>unconfined</code>.
               </li>
@@ -335,21 +343,21 @@ security assessment."
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>doi_app</code></td>
+                    <td><code>trunks_app</code></td>
                     <td>
                       read all tables; insert into the tables it needs; update a listed set of status columns; delete only its own write intents, sessions and
                       model-call reservations that were certainly not sent
                     </td>
                   </tr>
                   <tr>
-                    <td><code>doi_maintenance</code></td>
+                    <td><code>trunks_maintenance</code></td>
                     <td>
                       read all tables; delete in the fixed retention order; clear the link to a deleted earlier Case (a trigger allows clearing only); queue the
                       one KYC continuation job
                     </td>
                   </tr>
                   <tr>
-                    <td><code>doi_rotation</code></td>
+                    <td><code>trunks_rotation</code></td>
                     <td>rewrap encrypted values and file headers during key rotation</td>
                   </tr>
                   <tr>
@@ -607,10 +615,10 @@ docker compose exec app node --experimental-strip-types --no-warnings src/main.t
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
-            <li><a href="/toolkit/">Goten — Deal Calculations</a></li>
-            <li><a href="https://deal-ops-toolkit.vercel.app">Open Goten</a></li>
-            <li><a href="/inbox/">Trunks — Operations Inbox</a></li>
-            <li><a href="/inbox/demo/">Trunks demo</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
@@ -618,8 +626,7 @@ docker compose exec app node --experimental-strip-types --no-warnings src/main.t
           <ul>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
           </ul>
         </div>
         <div>
@@ -627,7 +634,7 @@ docker compose exec app node --experimental-strip-types --no-warnings src/main.t
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>
