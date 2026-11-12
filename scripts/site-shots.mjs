@@ -40,6 +40,10 @@ const hero = ['hero', async () => {}]
 const home = [
   hero,
   ['show', at('[data-scene]')],
+  // plan 32: the reel at rest, filled under the pointer, and spread into the playing film
+  ['reel', at('#film')],
+  ['reel-hover', async (p) => p.hover('[data-reel-play]')],
+  ['reel-open', async (p) => (await p.click('[data-reel-play]'), p.waitForTimeout(2200))],
   ['modules', at('#modules')],
   ['fits', at('#fits')],
   ['build', at('#build')],
@@ -49,7 +53,33 @@ const home = [
 await run('home-light', '/', DESK, home)
 await run('home-dark', '/', DARK, home.slice(0, 3))
 await run('home-short', '/', SHORT, home.slice(0, 2))
-await run('home-phone', '/', PHONE, [hero, ['scene', at('[data-scene]')], ['modules', at('#modules')], ['menu', async (p) => p.click('.nav__menu > summary')]])
+await run('home-reduced', '/', REDUCED, [
+  ['reel', at('#film')],
+  ['reel-open', async (p) => (await p.click('[data-reel-play]'), p.waitForTimeout(1200))],
+])
+await run('home-tablet', '/', { viewport: { width: 834, height: 1194 }, colorScheme: 'light' }, [['reel', at('#film')]])
+await run('home-nojs', '/', { ...DESK, javaScriptEnabled: false }, [['reel', at('#film')]])
+// the reel without WebGL: the still, and the film in a plain player in the same place
+{
+  const nogl = await chromium.launch({ args: ['--disable-webgl', '--disable-3d-apis'] })
+  const p = await nogl.newPage(DESK)
+  p.on('pageerror', (e) => errs.push('home-nogl: ' + e.message))
+  await p.goto(BASE + '/#film')
+  await p.waitForTimeout(1500)
+  await p.screenshot({ path: `${out}/home-nogl-reel.png` })
+  await p.click('[data-reel-play]')
+  await p.waitForTimeout(2000)
+  await p.screenshot({ path: `${out}/home-nogl-open.png` })
+  console.log('home-nogl', await p.evaluate(() => document.querySelector('.reel').className))
+  await nogl.close()
+}
+await run('home-phone', '/', PHONE, [
+  hero,
+  ['scene', at('[data-scene]')],
+  ['reel', at('#film')],
+  ['modules', at('#modules')],
+  ['menu', async (p) => p.click('.nav__menu > summary')],
+])
 // /toolkit/ (the accepted page, moved): the same frames as before the move
 const deck3 = [hero, ['show', at('[data-scene]')], ['deck0', deckAt(0)], ['deck50', deckAt(0.5)], ['deck100', deckAt(1)], ['footer', bottom]]
 await run('toolkit-light', '/toolkit/', DESK, deck3)

@@ -1,10 +1,16 @@
 /* Documentation pages (plan 30). Kept apart from styles.css; uses its tokens and fonts. Long reading: one text column, a sidebar on desktop, a menu on small screens. */
-.docs,
-.docs-index {
+.docs {
   box-sizing: border-box;
   max-width: 1140px;
   margin: 0 auto;
   padding: 128px var(--gutter) 96px;
+}
+/* the index opens like the blog's list pages (.blogindex__intro), the cards sit in the same column */
+.docs-index {
+  box-sizing: border-box;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 96px;
 }
 .docs {
   display: grid;
@@ -101,18 +107,22 @@
   padding: 10px 12px;
 }
 
-/* page head */
+/* page head: the module as a dot label, the title, the version under it (plan 33) */
+.docs__kicker {
+  margin: 0 0 14px;
+  font-size: 15px;
+}
 .docs__version {
-  margin: 0 0 12px;
+  margin: 12px 0 0;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 14px;
 }
 .docs__title {
   margin: 0;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: var(--t-read);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -138,7 +148,7 @@
 }
 .docs__body h2 {
   margin: 56px 0 0;
-  font-size: clamp(24px, 3vw, 28px);
+  font-size: var(--t-h2);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
@@ -261,17 +271,11 @@
 }
 
 /* choose a module */
-.docs-index__line {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 19px;
-  line-height: 1.4;
-}
 .docs-index__cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 48px;
+  margin-top: clamp(40px, 6vh, 56px);
 }
 .docs-card {
   display: flex;
@@ -324,9 +328,11 @@ a.docs-card:hover {
   }
 }
 @media (max-width: 760px) {
-  .docs,
-  .docs-index {
+  .docs {
     padding-top: 88px;
+    padding-bottom: 72px;
+  }
+  .docs-index {
     padding-bottom: 72px;
   }
   .docs__body h2,

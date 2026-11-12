@@ -191,6 +191,8 @@ for (const [url, h] of Object.entries(html)) {
   const scripts = [...h.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)]
   if ((h.match(/<script\b/gi) ?? []).length !== 1 || scripts.length !== 1 || !/\bsrc="\/site\.js"/.test(scripts[0][1]) || scripts[0][2].trim())
     fail(at('page must have exactly one <script src="/site.js"></script> and no inline script'))
+  // an iPhone will not play a video whose page lists a caption track; captions go in data-captions and site.js adds the track (2026-11-11)
+  if (/<track\b/i.test(h)) fail(at('a <track> in the page stops the video playing on iPhones: use data-captions on the <video>'))
   if (/\sstyle\s*=/i.test(h)) fail(at('page has a style attribute'))
   if (/<style\b/i.test(h)) fail(at('page has a <style> element'))
   if (/\son[a-z]+\s*=/i.test(h)) fail(at('page has an inline event handler'))
@@ -221,6 +223,12 @@ for (const [url, h] of Object.entries(html)) {
   }
   // the footer is the same everywhere
   footers.add(/<footer[\s\S]*<\/footer>/.exec(h)?.[0] ?? '')
+  // one page head (plan 33): outside the three product openings, the title follows a dot label
+  if (
+    !['/', '/toolkit/', '/inbox/', '/inbox/demo/'].includes(url) &&
+    ((h.match(/<h1\b/g) ?? []).length !== 1 || !/<p class="(?:eyebrow section-label|article__kicker|docs__kicker)">(?:(?!<\/p>)[\s\S])*<\/p>\s*<h1\b/.test(h))
+  )
+    fail(at('the page needs one h1, right after a dot label (eyebrow, article__kicker or docs__kicker)'))
   const text = plain(h)
   // readers reach the project through the form, so no address on any page; this file is public, so it names none either
   const decoded = decodeForScan(h)
@@ -230,6 +238,12 @@ for (const [url, h] of Object.entries(html)) {
 }
 if (footers.size !== 1) fail('the footer differs between pages')
 if (![...footers][0]?.includes(`<a href="${FEEDBACK_FORM}">Feedback</a>`)) fail('the footer has no Feedback link to the form')
+// the footer's release notes always point at the latest notes on main, never at a tag (plan 34 C)
+for (const notes of [
+  '<a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a>',
+  '<a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a>',
+])
+  if (![...footers][0]?.includes(notes)) fail(`the footer must link the latest release notes on main: ${notes}`)
 {
   const headers = Object.entries(html).map(([url, h]) => [url, /<header class="nav"[\s\S]*?<\/header>/.exec(h)?.[0] ?? ''])
   if (new Set(headers.map(([, h]) => h.replace(/\s+aria-current="page"/g, ''))).size !== 1) fail('the global nav differs between pages (plan 14 R1)')
@@ -269,7 +283,13 @@ for (const sheet of ['styles.css', 'docs.css']) {
     const sidebar = items.map((i) => (i.route ? `<a href="${i.route}"` : `<span>${esc(i.title)}</span>`))
     for (const i of items.filter((x) => x.route)) {
       const h = html[i.route]
-      if (!h.includes(`<p class="docs__version">${p.name} ${p.version}</p>`)) fail(`${i.route}: does not say ${p.name} ${p.version}`)
+      if (
+        !h.includes(`<p class="docs__version">${p.version}</p>`) ||
+        !h.includes(
+          `<p class="docs__kicker"><a href="${items.find((x) => x.route).route}"${i.route === items.find((x) => x.route).route ? ' aria-current="page"' : ''}>${p.name}</a></p>`,
+        )
+      )
+        fail(`${i.route}: does not say ${p.name} ${p.version}`)
       const side = /<nav class="docs__side"[\s\S]*?<\/nav>/.exec(h)?.[0] ?? ''
       if (sidebar.some((s) => !side.includes(s)) || (side.match(/<li>/g) ?? []).length !== items.length)
         fail(`${i.route}: the sidebar is not the docs.json list`)
@@ -605,7 +625,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     if (mod === 'inbox' && inboxMeasuredVersion !== inboxVersion && !plain(body).includes(`measured on v${inboxMeasuredVersion}`))
       fail('/: Inbox module does not identify the measured release')
   }
-  const withoutModules = modules.reduce((h, m) => h.replace(m[0], ''), html['/'])
+  // the reel button's running time is checked against the film itself (plan 32)
+  const withoutModules = modules.reduce((h, m) => h.replace(m[0], ''), html['/']).replace(/<span class="reel__t">\d+:\d\d<\/span>/, '')
   for (const [n] of figures(withoutModules)) {
     if (numbering.includes(n) || names[n]) continue
     // the Toolkit sample deal's figures in the hero panel: the same as the accepted /toolkit/ hero
@@ -676,6 +697,9 @@ const ALLOWED_CLIPS = [
   join('img', 'valley-loop.mp4'),
   join('media', 'goten-film.mp4'),
   join('media', 'trunks-film.mp4'),
+  join('media', 'vegeta-film-wide.mp4'),
+  join('media', 'vegeta-film.mp4'),
+  join('media', 'vegeta-loop.mp4'),
   ...BLOG_LOOPS.map((n) => join('media', 'blog', n + '.mp4')),
   ...EDUCATION.articles
     .flatMap((a) => [a.hero.film ? `${a.slug}-film` : a.slug, ...(a.figures ?? []).map((_, i) => `${a.slug}-${i + 1}`)])
@@ -737,7 +761,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     )
       fail(`${url}: the figures were not rendered from the current specification`)
     const figure = `<figure class="article__media"> ?<video data-ambient muted loop playsinline preload="none" width="904" height="946" tabindex="-1" poster="/media/blog/edu/${a.slug}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${a.slug}\\.mp4" type="video/mp4" ?/> ?</video> ?</figure>`
-    const film = `<figure class="article__media"> ?<video data-film controls playsinline preload="none" width="864" height="1080" poster="/media/blog/edu/${a.slug}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${a.slug}-film\\.mp4" type="video/mp4" ?/> ?<track kind="captions" src="/media/blog/edu/${a.slug}-film\\.vtt" srclang="en" label="English" ?/> ?</video> ?</figure>`
+    const film = `<figure class="article__media"> ?<video data-captions="/media/blog/edu/${a.slug}-film\\.vtt" data-film controls playsinline preload="none" width="864" height="1080" poster="/media/blog/edu/${a.slug}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${a.slug}-film\\.mp4" type="video/mp4" ?/> ?</video> ?</figure>`
     if (!new RegExp(a.hero.film ? film : figure).test(body)) fail(`${url}: its figure is missing or broken`)
     for (const n of figuresOf(a)) {
       const inner = `<figure class="article__media article__media--wide"> ?<video data-ambient muted loop playsinline preload="none" width="904" height="702" tabindex="-1" poster="/media/blog/edu/${n}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${n}\\.mp4" type="video/mp4" ?/> ?</video> ?</figure>`
@@ -844,7 +868,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     if (!/\baria-label="[^"]+"/.test(video)) fail(`${url}: the film has no accessible name`)
     if (!video.includes(`poster="/media/${film}-film-poster.jpg"`)) fail(`${url}: the film has the wrong poster`)
     if (!body.includes(`<source src="/media/${film}-film.mp4" type="video/mp4"`)) fail(`${url}: the article plays the wrong film`)
-    if (!body.includes(`<track kind="captions" src="/media/${film}-film.vtt"`)) fail(`${url}: the film has no captions`)
+    if (!body.includes(`data-captions="/media/${film}-film.vtt"`)) fail(`${url}: the film has no captions`)
     // what readers see is held to the same lists
     const seen = [
       text,
@@ -1034,7 +1058,6 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
 
   // the films and their captions: real files, in order, inside the film, placed clear of the film's own text, and scanned like a page.
   // Every block is read, so a malformed one fails instead of dropping out of the count. line:3% is the top of the picture: the film's text sits low
-  if (existsSync(join(SITE, 'media', 'vegeta-film.mp4'))) fail('blog: the whole film is not on the site (plan 22)')
   for (const [film, seconds, count] of [
     ['goten', 36, 9],
     ['trunks', 40, 15],
@@ -1063,6 +1086,98 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     for (const [re, what] of PRIVATE_TERMS) if (re.test(vtt)) fail(`blog: ${film} captions mention ${what}`)
     if (/invited|calls that matter/i.test(vtt)) fail(`blog: ${film} captions carry the film's ending`)
   }
+}
+
+// ---- Plan 32: the home page's film reel. The two cuts and the loop are what the reel plays, sized for the web, each with its index first;
+// the button names the films' running time; the captions are the film's; the film is bound to the module releases it describes ----
+{
+  const mp4 = (name) => {
+    const b = readFileSync(join(SITE, 'media', name)).subarray(0, 300000)
+    const s = b.toString('latin1')
+    const at = s.indexOf('mvhd')
+    const v1 = b[at + 4] === 1
+    const avc = s.indexOf('avc1', s.indexOf('stsd'))
+    return {
+      bytes: statSync(join(SITE, 'media', name)).size,
+      indexFirst: s.slice(4, 8) === 'ftyp' && at > 0 && (s.indexOf('mdat') < 0 || at < s.indexOf('mdat')),
+      sound: /hdlr[\s\S]{8}soun/.test(s), // the track's handler type, not any four bytes
+      picture: avc > 0 ? `${b.readUInt16BE(avc + 28)}x${b.readUInt16BE(avc + 30)}` : '',
+      seconds: at > 0 ? (v1 ? Number(b.readBigUInt64BE(at + 28)) : b.readUInt32BE(at + 20)) / b.readUInt32BE(at + (v1 ? 24 : 16)) : 0,
+    }
+  }
+  const films = [
+    ['vegeta-film-wide.mp4', '1920x1080', 45e6, true],
+    ['vegeta-film.mp4', '1080x1350', 25e6, true],
+    ['vegeta-loop.mp4', '1280x720', 1.5e6, false],
+  ].map(([name, picture, max, sound]) => {
+    const f = mp4(name)
+    if (f.bytes > max) fail(`reel: ${name} is over ${max / 1e6} MB`)
+    if (!f.indexFirst) fail(`reel: ${name} does not start with its index (faststart), so it cannot play while it downloads`)
+    if (f.picture !== picture) fail(`reel: ${name} is ${f.picture || 'not H.264'}, expected ${picture}`)
+    if (f.sound !== sound) fail(`reel: ${name} ${sound ? 'has no sound' : 'has sound'}`)
+    return f
+  })
+  const [wide, upright] = films
+  for (const [f, name] of [
+    [wide, 'wide cut'],
+    [upright, 'upright cut'],
+  ])
+    if (!(f.seconds > 60)) fail(`reel: the ${name} has no readable length`)
+  if (!(Math.abs(wide.seconds - upright.seconds) <= 0.2)) fail('reel: the two cuts differ in length')
+  const home = html['/']
+  const section = /<section class="reel" id="film"[^>]*>([\s\S]*?)<\/section>/.exec(home)?.[0] ?? ''
+  if (!section) fail('/: the film reel is missing')
+  else {
+    const at = home.indexOf(section)
+    if (
+      at < home.indexOf('class="hero') ||
+      home
+        .slice(at + section.length)
+        .trimStart()
+        .indexOf('<section class="trust" id="modules"') !== 0
+    )
+      fail('/: the reel must sit between the hero and Modules')
+    const time = /<span class="reel__t">(\d+):(\d\d)<\/span>/.exec(section)
+    if (!time || +time[1] * 60 + +time[2] !== Math.round(wide.seconds))
+      fail(`/: the reel button does not show the film's length (${Math.round(wide.seconds)} s)`)
+    for (const need of [
+      'href="/media/vegeta-film-wide.mp4"',
+      'src="/media/vegeta-loop.mp4"',
+      'src="/media/vegeta-reel.webp"',
+      'data-captions="/media/vegeta-film.vtt"',
+    ])
+      if (!section.includes(need)) fail(`/: the reel lacks ${need}`)
+    if (/\bdefault\b|\bautoplay\b/.test(section)) fail('/: the reel starts nothing by itself and its captions start off')
+  }
+  if (!existsSync(join(SITE, 'media', 'vegeta-reel.webp'))) fail('reel: the still is missing')
+  const vtt = read(join(SITE, 'media', 'vegeta-film.vtt')).replace(/\r\n/g, '\n')
+  const cues = vtt
+    .trim()
+    .split(/\n\s*\n/)
+    .slice(1)
+  if (!vtt.startsWith('WEBVTT\n') || cues.length !== 28) fail("reel: the captions are not the film's 28 narration lines")
+  let last = 0
+  cues.forEach((cue, i) => {
+    const [number, timing, ...words] = cue.split('\n')
+    const m = /^(\d\d):([0-5]\d):([0-5]\d)\.(\d{3}) --> (\d\d):([0-5]\d):([0-5]\d)\.(\d{3})$/.exec(timing ?? '')
+    if (number !== String(i + 1) || !m || !words.join('').trim()) return fail(`reel: caption ${i + 1} is malformed`)
+    const from = +m[1] * 3600 + +m[2] * 60 + +m[3] + +m[4] / 1000
+    const to = +m[5] * 3600 + +m[6] * 60 + +m[7] + +m[8] / 1000
+    if (from < last || to <= from || to > wide.seconds) fail(`reel: caption ${i + 1} is out of order or past the end`)
+    last = to
+  })
+  // the narration runs to the brand line near the end, so the captions must too
+  if (last < wide.seconds - 8) fail('reel: the captions stop before the narration does')
+  for (const [re, what] of PRIVATE_TERMS) if (re.test(vtt)) fail(`reel: the captions mention ${what}`)
+  // the film shows Goten and Trunks as released at these commits; a new release means watching the film again before moving the ref
+  const claims = JSON.parse(read('site-src/film-claims.json'))
+  for (const ref of ['toolkit', 'inbox'])
+    if (claims[ref] !== read(`${ref}.ref`).trim())
+      fail(
+        `reel: ${ref}.ref moved from ${claims[ref]}, the release the film was checked against; re-check the film's claims and update site-src/film-claims.json`,
+      )
+  if (!(claims.claims?.length > 0) || claims.claims.some((c) => !c.says || !/^(goten|trunks)$/.test(c.module) || !c.evidence))
+    fail('site-src/film-claims.json: every claim needs what it says, its module and its evidence')
 }
 
 // headers (K9: one rule for the whole site, unchanged)

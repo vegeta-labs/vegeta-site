@@ -145,6 +145,36 @@
         </figure>
       </section>
 
+      <section class="reel" id="film" data-tone="dark" data-reel aria-labelledby="film-h">
+        <div class="reel__frame" tabindex="-1" aria-label="Film">
+          <img class="reel__still" src="/media/vegeta-reel.webp" width="1400" height="1400" alt="" />
+          <canvas class="reel__canvas" aria-hidden="true"></canvas>
+          <video
+            class="reel__loop"
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster="/media/vegeta-loop.jpg"
+            src="/media/vegeta-loop.mp4"
+            aria-hidden="true"
+            tabindex="-1"
+          ></video>
+          <video data-captions="/media/vegeta-film.vtt" class="reel__film" playsinline preload="none" aria-label="Film: more deals, the same team"></video>
+          <p class="reel__cc" aria-hidden="true"></p>
+          <div class="reel__ctl">
+            <button class="reel__icon" type="button" data-reel-cc aria-pressed="false" aria-label="Captions">CC</button>
+            <button class="reel__icon" type="button" data-reel-close aria-label="Close the film">&times;</button>
+          </div>
+          <div class="reel__over">
+            <h2 class="reel__title" id="film-h">More deals same team</h2>
+            <a class="reel__btn" href="/media/vegeta-film-wide.mp4" data-reel-play
+              ><span class="reel__play" aria-hidden="true"></span>Watch the film <span class="reel__t">1:31</span></a
+            >
+          </div>
+        </div>
+      </section>
+
       <section class="trust" id="modules" data-tone="dark" aria-labelledby="modules-h">
         <div class="trust__inner">
           <h2 class="eyebrow section-label" id="modules-h">Modules</h2>
@@ -344,26 +374,28 @@
           </ul>
         </div>
         <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/CHANGELOG.md">Trunks release notes</a></li>
+          </ul>
+        </div>
+        <div>
           <h2 class="footer__h">Code</h2>
           <ul>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/RELEASE_NOTES.md">Goten release notes</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/releases/tag/v0.4.0">Trunks release notes</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
           </ul>
         </div>
         <div>
           <h2 class="footer__h">Project</h2>
           <ul>
             <li><a href="/#build">Why trust it</a></li>
-            <li><a href="https://github.com/vegeta-labs/goten/blob/main/docs/en/REVIEW_SUMMARY.md">Goten review summary</a></li>
+            <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
-            <li><a href="https://github.com/vegeta-labs/trunks/blob/main/LICENSE">Licence: Apache-2.0</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2 class="footer__h">Contact</h2>
-          <ul>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
           </ul>
         </div>

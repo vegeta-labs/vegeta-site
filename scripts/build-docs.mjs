@@ -237,8 +237,9 @@ export function renderDocs() {
           ${links}
             </nav>
           </details>
-          <p class="docs__version">${esc(product.name)} ${esc(product.version)}</p>
+          <p class="docs__kicker"><a href="${items[0].route}"${item === items[0] ? ' aria-current="page"' : ''}>${esc(product.name)}</a></p>
           <h1 class="docs__title">${esc(title)}</h1>
+          <p class="docs__version">${esc(product.version)}</p>
           <div class="docs__body">
 ${html}
           </div>
@@ -272,9 +273,11 @@ ${html}
       spec.title,
       spec.line,
       '/docs/',
-      `      <div class="docs-index">
-        <h1 class="docs__title">${esc(spec.title)}</h1>
-        <p class="docs-index__line">${esc(spec.line)}</p>
+      `      <div class="blogindex__intro">
+        <p class="eyebrow section-label">Docs</p>
+        <h1 class="blogindex__title">${esc(spec.heading)}</h1>
+      </div>
+      <div class="docs-index">
         <div class="docs-index__cards">
 ${cards}
         </div>
