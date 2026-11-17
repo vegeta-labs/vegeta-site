@@ -433,7 +433,7 @@
             <div class="fact" data-reveal>
               <dt>0.960</dt>
               <dd>
-                Classification score (macro F1), over the categories whose risk floor is not high, without unclassified and categories with no example in the
+                Classification score (macro F1), over the kinds of email that do not start at high risk, without unclassified and kinds with no example in the
                 set.
               </dd>
             </div>
@@ -488,117 +488,53 @@
             <a class="case__link" href="/trunks/demo/#case=E0225">Open in the demo <span class="arrow" aria-hidden="true">→</span></a>
           </li>
         </ol>
-        <details class="faq__item built__more" id="case-categories">
-          <summary>All default categories, with their risk floor and queue</summary>
-          <div>
-            <table class="cats">
-              <thead>
-                <tr>
-                  <th scope="col">Category</th>
-                  <th scope="col">Risk floor</th>
-                  <th scope="col">Queue</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>payment_query</code></td>
-                  <td>medium</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>payment_evidence</code></td>
-                  <td>medium</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>unreferenced_payment</code></td>
-                  <td>medium</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>kyc_documents</code></td>
-                  <td>high</td>
-                  <td><code>compliance</code></td>
-                </tr>
-                <tr>
-                  <td><code>withdrawal</code></td>
-                  <td>high</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>commitment_change</code></td>
-                  <td>medium</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>fee_or_terms_change</code></td>
-                  <td>high</td>
-                  <td><code>deal_ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>closing_confirmation</code></td>
-                  <td>medium</td>
-                  <td><code>deal_ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>legal_documents</code></td>
-                  <td>high</td>
-                  <td><code>legal</code></td>
-                </tr>
-                <tr>
-                  <td><code>bank_details</code></td>
-                  <td>high</td>
-                  <td><code>compliance</code></td>
-                </tr>
-                <tr>
-                  <td><code>identity_change</code></td>
-                  <td>high</td>
-                  <td><code>compliance</code></td>
-                </tr>
-                <tr>
-                  <td><code>tax_certificates</code></td>
-                  <td>medium</td>
-                  <td><code>legal</code></td>
-                </tr>
-                <tr>
-                  <td><code>exit_distribution</code></td>
-                  <td>medium</td>
-                  <td><code>deal_ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>bank_letter_request</code></td>
-                  <td>low</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>account_access</code></td>
-                  <td>medium</td>
-                  <td><code>ops</code></td>
-                </tr>
-                <tr>
-                  <td><code>complaint</code></td>
-                  <td>medium</td>
-                  <td><code>ops_lead</code></td>
-                </tr>
-                <tr>
-                  <td><code>other_known</code></td>
-                  <td>high</td>
-                  <td><code>ops_lead</code></td>
-                </tr>
-                <tr>
-                  <td><code>unclassified</code></td>
-                  <td>medium</td>
-                  <td><code>ops</code></td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Categories, templates, queues and deadlines are configuration, not code.</p>
+        <div class="kinds" id="case-categories">
+          <div class="kinds__head">
+            <h3>18 kinds of email</h3>
+            <p>Each starts at a default risk; signals can raise it.</p>
+            <a href="/docs/trunks/use/reading-a-case/#2-check-the-email-type">Every kind, with its queue <span class="arrow" aria-hidden="true">→</span></a>
           </div>
-        </details>
+          <div class="kinds__groups">
+            <div class="kinds__group kinds__group--high">
+              <h4 class="kinds__risk"><span class="kinds__n">7</span> <span class="kinds__tier">High</span></h4>
+              <ul class="kinds__list">
+                <li>KYC documents</li>
+                <li>Withdrawal</li>
+                <li>Fee or terms change</li>
+                <li>Legal documents</li>
+                <li>Bank details</li>
+                <li>Identity change</li>
+                <li>Other known request</li>
+              </ul>
+            </div>
+            <div class="kinds__group kinds__group--medium">
+              <h4 class="kinds__risk"><span class="kinds__n">10</span> <span class="kinds__tier">Medium</span></h4>
+              <ul class="kinds__list">
+                <li>Payment query</li>
+                <li>Payment confirmation</li>
+                <li>Unreferenced payment</li>
+                <li>Commitment change</li>
+                <li>Closing confirmation</li>
+                <li>Tax certificates</li>
+                <li>Exit distribution</li>
+                <li>Account access</li>
+                <li>Complaint</li>
+                <li>Unclassified</li>
+              </ul>
+            </div>
+            <div class="kinds__group kinds__group--low">
+              <h4 class="kinds__risk"><span class="kinds__n">1</span> <span class="kinds__tier">Low</span></h4>
+              <ul class="kinds__list">
+                <li>Bank letter request</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section class="privacy privacy--tight" id="security" aria-labelledby="security-h">
-        <h2 class="privacy__title" id="security-h" data-reveal>It reads. It suggests. It never sends.</h2>
+      <section class="privacy privacy--tight privacy--labelled" id="security" aria-labelledby="security-h">
+        <h2 class="eyebrow section-label" id="security-h">Security</h2>
+        <p class="privacy__title" data-reveal>It reads. It suggests. It never sends.</p>
         <p class="privacy__body" data-reveal>
           No code path sends email or writes to a mailbox, and a CI check fails the build on any mail-write call. A person sends every reply.
         </p>
@@ -742,7 +678,7 @@
             <details class="faq__item" id="ifaq-config">
               <summary>Can I change the categories and replies?</summary>
               <p>
-                Yes. Categories, queues, reply templates and deadlines are configuration files. The investment categories in the
+                Yes. Categories, queues, reply templates and deadlines are configuration files. The kinds of email in the
                 <a href="#case-categories">list above</a> are only the default.
               </p>
             </details>

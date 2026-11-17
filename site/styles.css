@@ -1668,31 +1668,10 @@ a:hover > .arrow {
   font-weight: 500;
   text-decoration: none;
 }
-.cats {
-  width: 100%;
-  margin: 4px 0 20px;
-  border-collapse: collapse;
-  font-size: 15px;
-}
-.cats th,
-.cats td {
-  padding: 8px 12px 8px 0;
-  border-top: 1px solid var(--line);
-  text-align: left;
-  vertical-align: top;
-}
-.cats th {
-  color: var(--muted);
-  font: 500 12px/1.4 var(--mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.cats code,
 .case__rows code,
 .faq__item code {
   font: 400 0.92em var(--mono);
 }
-.faq__item .cats + p,
 .faq__item > div > p {
   padding-bottom: 20px;
 }
@@ -1701,6 +1680,20 @@ a:hover > .arrow {
 /* the line and its list are one section (plan 32 §5 counts gaps between sections, not inside one) */
 .privacy--tight {
   padding-bottom: 72px;
+}
+/* Trunks: the security section opens like the others, with its label and a hairline (plan 38 D1) */
+.privacy--labelled > .section-label {
+  /* the other sections' content width: 1180px less their side padding */
+  max-width: calc(1180px - 2 * var(--gutter));
+  margin: 0 auto 72px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+@media (max-width: 760px) {
+  .privacy--labelled > .section-label {
+    margin-bottom: 48px;
+  }
 }
 @media (max-width: 760px) {
   .privacy--tight {
@@ -3223,14 +3216,116 @@ html:not(.js) .subnav {
 .built__grid .case__link {
   margin-top: 14px;
 }
-.built__more {
-  max-width: 820px;
-  /* the closed row's bottom padding is click area: the section gap starts at its text */
-  margin: 56px 0 -16px;
+/* the 18 kinds of email under the use cases (plan 38 §8): the risk list's two columns, the names in aligned columns,
+   colour only on the risk word. No entrance animation: the FAQ links here (handbook §10 item 12) */
+.kinds {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 32px;
+  margin: 72px 0 0;
+  padding-top: 20px;
   border-top: 1px solid var(--line);
+  scroll-margin-top: 140px;
 }
-.built__more summary {
-  padding-top: 16px;
+.kinds__head h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.kinds__head p {
+  max-width: 30ch;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.kinds__head a {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.kinds__group + .kinds__group {
+  margin-top: 32px;
+}
+.kinds__risk {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+}
+/* the count is set like the trust figures: large, tight, fading top to bottom */
+.kinds__n {
+  font-size: 48px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .kinds__n {
+    background: linear-gradient(180deg, var(--text) 25%, var(--soft) 120%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+.kinds__tier {
+  font-size: 16px;
+}
+.kinds__group--high .kinds__tier {
+  color: #973c2b;
+}
+.kinds__group--medium .kinds__tier {
+  color: #8a5a00;
+}
+.kinds__group--low .kinds__tier {
+  color: #1a6b41;
+}
+.kinds__list {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  columns: 3;
+  column-gap: 32px;
+}
+.kinds__list li {
+  padding: 5px 0;
+  font-size: 16px;
+  break-inside: avoid;
+}
+@media (prefers-color-scheme: dark) {
+  .kinds__group--high .kinds__tier {
+    color: #f1a99a;
+  }
+  .kinds__group--medium .kinds__tier {
+    color: #eab189;
+  }
+  .kinds__group--low .kinds__tier {
+    color: #5cc48e;
+  }
+}
+@media (max-width: 900px) {
+  .kinds {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .kinds__list {
+    columns: 2;
+    column-gap: 20px;
+  }
+  .kinds__list li {
+    font-size: 15px;
+  }
+  .kinds__n {
+    font-size: 40px;
+  }
 }
 .built__note {
   max-width: 62ch;
@@ -3687,10 +3782,9 @@ html:not(.js) .subnav {
     grid-template-columns: minmax(0, 1fr);
     gap: 18px;
   }
+  /* not sticky: on an iPhone a stuck bar, or a sideways scroller in a stuck or fixed bar, is not painted for 2-3 frames when a page
+     comes back from the back-forward cache (plan 35 §7, 2026-11-16) */
   .blogchips {
-    position: sticky;
-    top: 56px;
-    z-index: 5;
     flex-wrap: nowrap;
     overflow-x: auto;
     white-space: nowrap;
@@ -4090,9 +4184,6 @@ html:not(.js) .subnav {
     margin-right: calc(-1 * var(--gutter));
     margin-left: calc(-1 * var(--gutter));
     padding: 8px var(--gutter);
-    background: var(--glass);
-    -webkit-backdrop-filter: blur(14px) saturate(1.4);
-    backdrop-filter: blur(14px) saturate(1.4);
   }
   .blogband .module + .module {
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -4194,9 +4285,6 @@ html:not(.js) .subnav {
 }
 @media (max-width: 760px) {
   .blogpage > .blogchips:not(.blogchips--wrap) {
-    position: sticky;
-    top: 56px;
-    z-index: 5;
     margin: 20px 0 24px;
     padding: 8px var(--gutter);
   }
@@ -4303,6 +4391,21 @@ html:not(.js) .subnav {
 }
 .blogindex__lede {
   margin-top: 14px;
+}
+/* stacked hero panels (1080px and below) end above the film's dark band with the room Goten and Trunks leave (plan 38 A2) */
+@media (max-width: 1080px) {
+  .hero--overview {
+    padding-bottom: 88px;
+  }
+}
+/* phones: the list pages and articles start where the home, Goten and Trunks pages do, 47px under the nav (plan 38, 2026-11-16) */
+@media (max-width: 760px) {
+  .blogindex__intro {
+    padding-top: 104px;
+  }
+  .article {
+    padding-top: 88px;
+  }
 }
 .blogindex__intro::after {
   content: '';

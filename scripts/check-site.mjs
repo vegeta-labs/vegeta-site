@@ -666,14 +666,39 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   const caseItems = [...page.matchAll(/<li class="case" id="(case-[a-z]+)"[^>]*>([\s\S]*?)<\/li>/g)]
   if (caseItems.length !== 6) fail(`/trunks/: expected six use cases, found ${caseItems.length}`)
   for (const [, id, body] of caseItems) if (!/href="\/trunks\/demo\/#case=E\d{4}"/.test(body)) fail(`/trunks/ use case ${id} has no demo link`)
-  // the category list matches the default configuration
-  const cfgClasses = [...read(join(TRUNKS, 'config/default/cases.yaml')).matchAll(/\{ id: ([a-z_]+), risk_floor: ([a-z]+), queue: ([a-z_]+) \}/g)].map((m) =>
-    m.slice(1).join(' '),
-  )
-  const pageClasses = [...page.matchAll(/<tr>\s*<td><code>([a-z_]+)<\/code><\/td>\s*<td>([a-z]+)<\/td>\s*<td><code>([a-z_]+)<\/code><\/td>\s*<\/tr>/g)].map(
-    (m) => m.slice(1).join(' '),
-  )
-  if (cfgClasses.length < 1 || cfgClasses.join('|') !== pageClasses.join('|')) fail('/trunks/: the category table differs from config/default/cases.yaml')
+  // the 18 kinds of email (plan 38 §8): the default configuration, the user docs' table and the page agree.
+  // config/default/cases.yaml gives each kind's risk floor in order; docs/en/use/reading-a-case.md names them as the UI does
+  const cfgKinds = [...read(join(TRUNKS, 'config/default/cases.yaml')).matchAll(/\{ id: ([a-z_]+), risk_floor: ([a-z]+), queue: ([a-z_]+) \}/g)].map((m) => ({
+    id: m[1],
+    risk: m[2],
+  }))
+  const docKinds = [...read(join(TRUNKS, 'docs/en/use/reading-a-case.md')).matchAll(/^\| ([A-Z][^|]*?) \| (High|Medium|Low) \| [^|]+ \|$/gm)].map((m) => ({
+    name: m[1],
+    risk: m[2].toLowerCase(),
+  }))
+  if (cfgKinds.length < 1 || docKinds.map((k) => k.risk).join('|') !== cfgKinds.map((k) => k.risk).join('|'))
+    fail('/trunks/: the email types in docs/en/use/reading-a-case.md differ from config/default/cases.yaml (count or starting risk)')
+  const kindsBlock = /<div class="kinds" id="case-categories">([\s\S]*?)\n {8}<\/div>\n/.exec(page)?.[1] ?? ''
+  if (!kindsBlock) fail('/trunks/: no kinds of email block (#case-categories)')
+  const kindsTitle = /<h3>(\d+) kinds of email<\/h3>/.exec(kindsBlock)?.[1]
+  if (Number(kindsTitle) !== cfgKinds.length) fail(`/trunks/: the title says ${kindsTitle} kinds of email; the configuration has ${cfgKinds.length}`)
+  for (const tier of ['high', 'medium', 'low']) {
+    const group = new RegExp(`<div class="kinds__group kinds__group--${tier}">([\\s\\S]*?)</ul>`).exec(kindsBlock)?.[1]
+    const want = docKinds.filter((k) => k.risk === tier).map((k) => k.name)
+    // a risk with no kinds has no group (no "0 Low" heading)
+    if (!want.length) {
+      if (group !== undefined) fail(`/trunks/: the ${tier} group is shown, but no kind of email starts at ${tier} risk`)
+      continue
+    }
+    const got = [...(group ?? '').matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map((m) => plain(m[1]).trim())
+    const count = /<h4 class="kinds__risk"><span class="kinds__n">(\d+)<\/span> <span class="kinds__tier">[A-Za-z]+<\/span><\/h4>/.exec(group ?? '')?.[1]
+    if (got.join('|') !== want.join('|')) fail(`/trunks/: the ${tier} kinds of email differ from the Trunks docs (${got.join(', ')} vs ${want.join(', ')})`)
+    if (Number(count) !== want.length) fail(`/trunks/: the ${tier} kinds of email are counted as ${count}, not ${want.length}`)
+  }
+  // nothing else in the block: no other group, no extra names
+  const kindsShown = [...kindsBlock.matchAll(/<li\b/g)].length
+  if (kindsShown !== docKinds.length) fail(`/trunks/: the kinds of email block lists ${kindsShown} names; the Trunks docs have ${docKinds.length}`)
+  if (/kinds__group--(?!high"|medium"|low")/.test(kindsBlock)) fail('/trunks/: the kinds of email block has a group other than high, medium and low')
   // FAQ: only the current release, Apache-2.0, MT103, pacs.008 and Microsoft 365 are numbers.
   faqOf('/trunks/', 'ifaq', [trunksVersion, trunksMeasuredVersion, '2.0', '103', '008', '365'], 14)
 }
@@ -702,7 +727,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   // Each trust value is already parsed and validated against its current release metric above.
   const releaseFigureNumbers = new Set(Object.values(trunksTrust).flatMap((value) => value.split(' / ')))
   const INBOX_FIGURES = { 126: /held-out set of 126 emails/, 5.5: /Claude Opus 5\.5/ }
-  for (const [n] of figures(html['/trunks/'])) {
+  // the kinds of email block's counts are checked against the configuration above, so its numbers are left out here
+  for (const [n] of figures(html['/trunks/'].replace(/<div class="kinds" id="case-categories">[\s\S]*?\n {8}<\/div>\n/, ' '))) {
     if (numbering.includes(n) || names[n]) continue
     if (['£41.3m', '68%', '2025', '2026'].includes(n)) continue // the problem section's report figures, checked above
     if (releaseFigureNumbers.has(n)) continue
