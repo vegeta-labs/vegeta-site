@@ -178,7 +178,8 @@
               </li>
               <li>
                 <strong>No secrets in these files.</strong> Keys ending in <code>_env</code> hold the <em>name</em> of an environment variable. The app reads
-                that variable, or the file named by <code>&lt;NAME&gt;_FILE</code>. Names are upper-case letters, digits and <code>_</code>.
+                that variable, or the file named by <code>&lt;NAME&gt;_FILE</code>. Names start with an upper-case letter and use only upper-case letters,
+                digits and <code>_</code>.
               </li>
               <li>
                 <strong>Fixed rules cannot be configured.</strong> These include the fraud rules and the built-in word lists. A key that tries to switch them
@@ -372,8 +373,8 @@
                   <tr>
                     <td><code>gmail.pubsub.topic</code></td>
                     <td><code>projects/&lt;p&gt;/topics/&lt;t&gt;</code></td>
-                    <td>none</td>
-                    <td>Optional. The topic Gmail&#39;s watch publishes to. Without the <code>pubsub</code> block, the app only polls.</td>
+                    <td>required with <code>pubsub</code></td>
+                    <td>The topic Gmail&#39;s watch publishes to. The <code>pubsub</code> block is optional: without it, the app only polls.</td>
                   </tr>
                   <tr>
                     <td><code>gmail.pubsub.subscription</code></td>
@@ -569,6 +570,10 @@
             <p>
               Deadlines are counted in working hours from the receive time, in <code>deployment.timezone</code>. Working days are Monday to Friday, minus
               <code>routing.holidays</code>.
+            </p>
+            <p>
+              The defaults of <code>working_hours</code> and <code>follow_up</code> apply only when the whole block is left out. If you write the block, give
+              both of its keys: <code>follow_up: { enabled: false }</code> alone is a configuration error.
             </p>
             <div class="docs__table" tabindex="0">
               <table>
@@ -848,8 +853,8 @@
                     <td>string</td>
                     <td>none</td>
                     <td>
-                      The provider&#39;s processing region, for example <code>eu</code> or <code>uk</code>. Outside UK / EEA without
-                      <code>transfer_basis</code> gives a warning.
+                      The provider&#39;s processing region, for example <code>eu</code> or <code>uk</code>. For an external provider, a region outside UK / EEA,
+                      or none, without <code>transfer_basis</code> gives a warning.
                     </td>
                   </tr>
                   <tr>
@@ -865,7 +870,7 @@
                     <td><code>model.no_training</code></td>
                     <td>boolean</td>
                     <td>required</td>
-                    <td>The provider does not train on your data. <code>false</code> gives a warning.</td>
+                    <td>The provider does not train on your data. For an external provider, <code>false</code> gives a warning.</td>
                   </tr>
                   <tr>
                     <td><code>model.transfer_basis</code></td>

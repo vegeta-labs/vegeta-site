@@ -175,7 +175,8 @@ npm run preview</code></pre>
               <li>
                 The storage keys are <code>goten:v1</code>, <code>goten:theme</code> and <code>goten:tour</code> (<code>src/state.ts</code>,
                 <code>src/theme.ts</code>, <code>src/tour/progress.ts</code>). If you rename them, data saved under the old names is no longer read unless you
-                also migrate it.
+                also migrate it. v1.4.0 renamed them itself, without a migration: a copy upgraded from v1.3.1 or earlier opens with an empty deal, so export
+                anything you need first.
               </li>
               <li>Check that the disclaimer and privacy text in <code>src/config.ts</code> still hold for your deployment.</li>
               <li>Consider who hosts it. The host receives normal page requests but no deal data.</li>

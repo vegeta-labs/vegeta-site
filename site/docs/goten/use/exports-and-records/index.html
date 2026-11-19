@@ -195,6 +195,10 @@
             </div>
             <p><strong>Copy closing confirmation</strong> copies the summary for the lead, and waits for the same things as the allocation export.</p>
             <p>
+              All of these except <strong>Export activity log CSV</strong> also wait while you are part-way through editing a cell: press Enter or click out of
+              the field first.
+            </p>
+            <p>
               A page marked <strong>out of date</strong> holds back its copy and exports until you hand off again:
               <strong>Copy closing confirmation</strong> and <strong>Export allocation CSV</strong> on the allocation page,
               <strong>Export holdings CSV</strong> and <strong>Export distribution CSV</strong> on the exit page.
@@ -210,9 +214,9 @@
             <h2 id="the-activity-log">The activity log<a class="docs__anchor" href="#the-activity-log" aria-label="Link to this section">#</a></h2>
             <p>
               <strong>Activity log</strong> lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a
-              receipt, voided decisions, hand-offs, copied chase messages, withdrawals, fee payer changes, loading the sample, and exports of the log itself.
-              Not logged: importing allocation investors or holdings, the other five exports, <strong>Copy closing confirmation</strong>, and editing a table
-              cell, unless the edit voids a decision.
+              receipt, voided decisions, hand-offs, copied chase messages and queries, withdrawals, fee payer changes, loading the sample, and exports of the
+              log itself. Not logged: importing allocation investors or holdings, the other five exports, <strong>Copy closing confirmation</strong>, and
+              editing a table cell, unless the edit voids a decision.
             </p>
             <p>Set <strong>Your initials</strong> in <strong>Deal settings</strong> to have them added to each entry.</p>
             <p>
@@ -236,6 +240,11 @@
               <li>Anyone who can use this browser profile can see it. On a shared computer, clear the data when you finish.</li>
               <li>Goten holds one deal at a time. <strong>Load sample deal</strong> replaces it, after asking if there is anything to lose.</li>
               <li>A private window can lose the data when it closes.</li>
+              <li>
+                Each web address keeps its own data. Since v1.4.0 Goten saves your data differently, so a deal saved by v1.3.1 or earlier, or at the app&#39;s
+                earlier address, does not appear: the app opens empty, with the theme following your device and the tour at its start. If you run your own copy,
+                export what you need before you upgrade it.
+              </li>
             </ul>
             <p>If the browser cannot save, Goten tells you at the top of the page:</p>
             <div class="docs__table" tabindex="0">
@@ -258,6 +267,12 @@
                 </tbody>
               </table>
             </div>
+            <h2 id="theme">Theme<a class="docs__anchor" href="#theme" aria-label="Link to this section">#</a></h2>
+            <p>
+              Choose <strong>System</strong>, <strong>Light</strong> or <strong>Dark</strong> at the top of the page; on a phone the choice is at the foot of
+              the page. <strong>System</strong> follows your device. The choice is saved in this browser separately from the deal.
+              <strong>Clear all data</strong> sets it back to <strong>System</strong>.
+            </p>
             <h2 id="real-investor-data-and-ai-tools">
               Real investor data and AI tools<a class="docs__anchor" href="#real-investor-data-and-ai-tools" aria-label="Link to this section">#</a>
             </h2>

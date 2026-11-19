@@ -182,7 +182,8 @@
                     <td>Right</td>
                     <td>
                       <strong>Risk</strong>, <strong>Signals</strong>, <strong>Related records</strong>, <strong>Suggested next steps</strong>, any verification
-                      task, <strong>Reply</strong>, <strong>Queue and owner</strong>
+                      task, <strong>Reply</strong>, <strong>Queue and owner</strong>, and <strong>Retention hold</strong> (approvers and admins always see it;
+                      reviewers only while a hold is active)
                     </td>
                   </tr>
                 </tbody>
@@ -258,6 +259,10 @@
                     <td><strong>Blocked by the virus scan; not transferred</strong></td>
                     <td>The scan stopped it. Ask an admin.</td>
                   </tr>
+                  <tr>
+                    <td><strong>Blocked by the virus scan; handled manually</strong></td>
+                    <td>An admin dealt with it by hand and marked it as handled.</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -280,7 +285,7 @@
                   </tr>
                   <tr>
                     <td><strong>Payment query</strong> with <strong>×</strong></td>
-                    <td>A language model picked it. A person can remove it.</td>
+                    <td>A language model or a person picked it. A person can remove it.</td>
                   </tr>
                   <tr>
                     <td><strong>KYC documents (low confidence — needs confirmation; counts for risk)</strong></td>
@@ -291,9 +296,10 @@
             </div>
             <p>Open <strong>Classification evidence</strong> to see where each type came from and the model&#39;s reason.</p>
             <p>
-              To correct the type, click <strong>×</strong> to remove one, or choose from <strong>Add a class…</strong> and click <strong>Add</strong>. Some
-              changes need an approver or admin and a reason in
-              <strong>Reason (needed to remove bank details or identity change, or when it lowers the risk)</strong>:
+              To correct the type, click <strong>×</strong> to remove one, or choose from <strong>Add a class…</strong> and click <strong>Add</strong>. The
+              change is sent as soon as you click, so when a reason is needed, type it <strong>first</strong> in
+              <strong>Reason (needed to remove bank details or identity change, or when it lowers the risk)</strong>. These changes need an approver or admin
+              and a reason:
             </p>
             <ul>
               <li>
@@ -451,6 +457,13 @@
                   <tr>
                     <td><strong>(needs confirmation: not a matched reference)</strong></td>
                     <td>The value was found, but it matches nothing in your records. Check it.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>(differs from the rules — rule value shown)</strong></td>
+                    <td>
+                      The model&#39;s value does not match what fixed rules found in the email. The rules&#39; value is shown, or none when they found several.
+                      Check it against the email and use <strong>Edit</strong> if needed.
+                    </td>
                   </tr>
                 </tbody>
               </table>

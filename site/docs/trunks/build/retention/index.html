@@ -153,8 +153,8 @@
                   <tr>
                     <td>
                       <strong>All data of one email</strong>: the message row, the raw email and attachment files (with all stored versions), parse results, the
-                      Case and its labels, fields, links, signals, replies, verification tasks, the redaction table, the audit detail, and the Case&#39;s event
-                      outbox rows
+                      Case and its labels, fields, links, signals, replies, verification tasks, the redaction table, the audit detail, the model&#39;s raw
+                      replies (model output table), and the Case&#39;s event outbox rows
                     </td>
                     <td>5 years (1826 days)</td>
                     <td>the email&#39;s receive time</td>
@@ -227,8 +227,9 @@
               <li>
                 <strong>One email at a time.</strong> Each email is deleted in one transaction, in a fixed order. First a file-deletion job is recorded, then
                 the database rows are deleted, including the encrypted text they refer to. After the commit, a background job deletes the files and every stored
-                version of them. If the files cannot be deleted, the job stays and is retried every ten minutes, and the review UI shows a reminder. The deleted
-                rows are not brought back.
+                version of them. If the files cannot be deleted, the job stays and is retried. The file job runs every ten minutes. A failed file becomes due
+                again after 5 minutes, then after twice as long at each failure, up to 1,280 minutes (about 21 hours), and is retried at the next run after
+                that. The review UI shows a reminder. The deleted rows are not brought back.
               </li>
               <li>
                 <strong>Audited.</strong> Each deletion writes an audit record (<code>retention.deleted</code>) with references and hashes only, never content.

@@ -173,13 +173,21 @@
                   </tr>
                   <tr>
                     <td><strong>Configuration</strong></td>
-                    <td>your configuration directory (<code>TRUNKS_CONFIG_DIR</code>) and <code>docker-compose.override.yml</code></td>
+                    <td>
+                      your configuration directory (<code>TRUNKS_CONFIG_DIR</code>), <code>.env</code>, and <code>docker-compose.override.yml</code> if you have
+                      one
+                    </td>
                     <td>to start the same deployment again</td>
                   </tr>
                   <tr>
                     <td>KYC folder (if you use a folder target)</td>
                     <td>volume <code>trunks_kyc</code></td>
                     <td>transferred KYC files; back it up under your KYC policy</td>
+                  </tr>
+                  <tr>
+                    <td>Proxy certificates (if you use the bundled HTTPS proxy)</td>
+                    <td>volume <code>trunks_caddy</code></td>
+                    <td>the TLS certificates and their account. Optional: the proxy fetches new ones if it is lost</td>
                   </tr>
                 </tbody>
               </table>
@@ -206,7 +214,8 @@ for v in db files state kyc; do
 done
 docker compose start
 cp -a secrets &quot;$B/secrets&quot;            # better: store the secrets in a separate, stricter place
-cp -a config/local &quot;$B/config&quot;</code></pre>
+cp -a config/local &quot;$B/config&quot;       # your TRUNKS_CONFIG_DIR
+cp -a .env &quot;$B/&quot; 2&gt;/dev/null; cp -a docker-compose.override.yml &quot;$B/&quot; 2&gt;/dev/null</code></pre>
             <p><code>postgres:16</code> is used only because it is already present and has <code>tar</code>. Any image with <code>tar</code> will do.</p>
             <p>
               How long you keep backups is your decision. The app&#39;s retention deletion does not reach backups (see

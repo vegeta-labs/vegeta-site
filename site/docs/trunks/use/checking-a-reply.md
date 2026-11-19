@@ -1,6 +1,6 @@
 # Check and send a reply
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/use/checking-a-reply.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/use/checking-a-reply.md
 
 Trunks prepares a reply from a fixed template. You check it, approve it, copy it and send it from your own mail client. Trunks never sends email.
 

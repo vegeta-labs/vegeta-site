@@ -1,6 +1,6 @@
 # Withdrawing an investor and changing who pays a fee
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/withdrawal-and-fee-payer.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/withdrawal-and-fee-payer.md
 
 Both of these are for before closing. Goten records each one beside your investor list, so your list is never rewritten and each can be undone.
 
@@ -75,7 +75,7 @@ The fee in the **Fees** table changes payer, and a banner appears: **Fee payer c
 
 In **1. Reconciliation** each investor's cash due shows where the amount came from, such as **was £10,000.00 · −£300.00 fee payer change (Platform fee: investors → company)**. An investor who has already paid the old amount shows as **Overpaid** and is listed for a refund of the difference; someone who now owes more shows as **Underpaid** and goes on the chase list.
 
-With the sample, moving the platform fee to the company, and handing off again, gives **Total invested** £100,455.00, **Company-paid fees** £4,513.65 and **Wire to company** £95,941.35.
+With the sample, the change is blocked at first because Isla Campbell would fall below the £1,000 minimum (see the table below). After lowering **Minimum commitment** in **Deal settings** to £970.00 or less, moving the platform fee to the company and handing off again gives **Total invested** £100,455.00, **Company-paid fees** £4,513.65 and **Wire to company** £95,941.35.
 
 To undo it, click **Reverse**. No consent is needed to reverse. The fee goes back to its original payer and every amount goes back. The allocation is then out of date and shows no results, so hand off again.
 
@@ -92,6 +92,6 @@ While a change is active, **Currency** in **Deal settings** cannot be changed.
 | **The fee payer change (…) no longer applies — redo it.**                                   | The fee's rate, payer or type was edited, the fee was deleted, or the fee basis changed. The whole change is void for good; changing the value back does not restore it.                    |
 | **This fee payer change no longer applies — redo it** on one investor                       | Their ID or reference changed, or their cash due was edited by hand. **Reverse** the change and redo it.                                                                                    |
 | **Not covered by the active fee payer change — reverse and redo**                           | An investor was added or restored after the change was applied. Hand-off stays disabled until you **Reverse** it and redo it.                                                               |
-| **Allocation settings changed since this fee payer change — any problems are listed here**             | You changed the minimum, cap, share price or another fee. The change still stands. Any problems are listed under the banner.                                                                |
+| **Allocation settings changed since this fee payer change — any problems are listed here**  | You changed the minimum, cap, share price or another fee. The change still stands. Any problems are listed under the banner.                                                                |
 
 If you need to change how much someone owes for any other reason, edit **Cash due** in the investor list before you apply a change. See [How the numbers work](https://vegeta-ops.vercel.app/docs/goten/use/how-the-numbers-work.md#changing-who-pays-a-fee) for the calculation.

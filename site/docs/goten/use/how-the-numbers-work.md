@@ -1,12 +1,12 @@
 # How the numbers work
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/how-the-numbers-work.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/how-the-numbers-work.md
 
 These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.
 
 ## General rules
 
-- **Money is exact.** Goten holds money as whole pence and does the maths exactly, without the small errors spreadsheets can build up.
+- **Money is exact.** Goten holds money as whole pence (or cents, for a euro or dollar deal) and does the maths exactly, without the small errors spreadsheets can build up.
 - **Rounding is half-up**: an exact half-penny rounds up. The exceptions below say so.
 - **Pro-rata splits add up exactly.** The pennies left after rounding down go to the largest remainders; if two are equal, to the person earlier in the list.
 
@@ -63,7 +63,7 @@ The money is paid out in this order:
 
 1. **Exit costs** come off the proceeds. If they are more than the proceeds, nothing can be distributed.
 2. **Return of capital**: investors get back what they invested, or everything that is left if it is less. If it is not enough, there is no carry.
-3. **Hurdle**, with fixed carry: amount invested × ((1 + hurdle rate) to the power of years − 1). It is worked out exactly and rounded once, half-up. If less is left, investors get what remains.
+3. **Hurdle**, with fixed carry: amount invested × ((1 + hurdle rate) to the power of years − 1). It is worked out exactly for whole years, and for part years to far more precision than a penny needs, then rounded once, half-up. If less is left, investors get what remains.
 4. **Catch-up**, if set: a band of (carry rate × hurdle paid ÷ (catch-up rate − carry rate)), rounded half-up, or whatever is left if that is less. The lead takes the catch-up rate of it and investors take the rest.
 5. **Carried interest split**: the lead gets the carry rate of what remains, rounded half-up, and investors get the rest.
 

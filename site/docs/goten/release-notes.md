@@ -1,6 +1,6 @@
 # Goten — Deal Calculations — release notes
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/RELEASE_NOTES.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/RELEASE_NOTES.md
 
 Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it.
 

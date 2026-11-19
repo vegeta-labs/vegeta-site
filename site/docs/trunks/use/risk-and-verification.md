@@ -1,6 +1,6 @@
 # Risk and verification
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/use/risk-and-verification.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/use/risk-and-verification.md
 
 Trunks rates every email and, for bank details and identity changes, sets you a checklist that two people must complete. The rating and the checklist help you. They do not make the decision.
 
@@ -39,7 +39,7 @@ The **Signals** panel lists the checks that fired. **All signals (9)** shows eve
 
 A check that could not run shows **could not be checked**. That is not the same as passing.
 
-Other findings shown under **Risk** include **Attachment amounts differ from the mail**, **First mail from this address, with an account number**, **Pressure words in a payment or account mail (+1)** and **Planned close within 3 working days (+1)**.
+Other findings shown under **Risk** include **Attachment amounts differ from the mail**, **First mail from this address, with an account number**, **The beneficiary account in the payment message is not a receiving account on file**, **A UETR-like value that is not valid**, **An attachment was blocked or over the limit**, **Authentication failed (+1)**, **Reply-To differs from From (+1)**, **Pressure words in a payment or account mail (+1)** and **Planned close within 3 working days (+1)**.
 
 ## Change the risk
 

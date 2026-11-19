@@ -1,6 +1,6 @@
 # CSV reference
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/build/csv-reference.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/build/csv-reference.md
 
 Everything here comes from `src/lib/csv.ts`, `src/lib/money.ts`, `src/lib/validate.ts`, `src/lib/reconcile.ts` and `src/lib/exports.ts`. Sample files for each import are in `fixtures/`. For operations staff, see [Prepare and import your CSV files](https://vegeta-ops.vercel.app/docs/goten/use/import-csv.md).
 

@@ -220,6 +220,11 @@ services:
 secrets:
   imap_ops_user: { file: ./secrets/imap_ops_user }
   imap_ops_password: { file: ./secrets/imap_ops_password }</code></pre>
+            <p>
+              Give each of these files mode 0644 (<code>chmod 644</code>), inside a directory only you can open (mode 700), as <code>init-secrets</code> does.
+              Compose keeps the host file mode and the app runs as user 10001, so a file with mode 600 cannot be read and the app does not start. If you set
+              <code>TRUNKS_SECRETS_DIR</code>, use that directory instead of <code>./secrets</code>.
+            </p>
             <p>Only the <code>app</code> service collects mail. Do not give mailbox credentials to <code>maintenance</code>.</p>
             <h2 id="authentication-results-all-kinds-except-eml">
               Authentication results (all kinds except <code>.eml</code>)<a
@@ -274,16 +279,28 @@ secrets:
             <p>Import files with the <code>import-eml</code> command, run inside the app image:</p>
             <pre
               tabindex="0"
-            ><code>docker compose run --rm -v &quot;$PWD/mail:/import:ro&quot; app import-eml archive /import/one.eml /import/two.eml</code></pre>
+            ><code>docker compose run --rm -v &quot;$PWD/import/mail:/import:ro&quot; app import-eml archive /import/one.eml /import/two.eml</code></pre>
             <ul>
-              <li>The receive time is the import time.</li>
+              <li><p>The receive time is the import time.</p></li>
               <li>
-                Authentication results are never adopted from imported files: authentication is always &quot;unknown&quot; and the sender is never an
-                authenticated sender. Most saved emails carry the <code>Authentication-Results</code> header of the server that received them, and that server
-                is not your trusted one, so such a file also gets the signal &quot;authentication header from an unknown server&quot; and its risk goes up one
-                level.
+                <p>
+                  The app runs as user 10001, so the mounted folder and its files must be readable by other users (folder 755, files 644). Keep that folder
+                  inside a folder only you can open, so other users on the host cannot reach the mail, and delete the copies after the import:
+                </p>
+                <pre tabindex="0"><code>mkdir -m 700 import &amp;&amp; mkdir -m 755 import/mail
+cp /path/to/*.eml import/mail/ &amp;&amp; chmod 644 import/mail/*.eml
+docker compose run --rm -v &quot;$PWD/import/mail:/import:ro&quot; app import-eml archive /import/one.eml
+rm -r import</code></pre>
               </li>
-              <li>The same email imported twice creates only one Case.</li>
+              <li>
+                <p>
+                  Authentication results are never adopted from imported files: authentication is always &quot;unknown&quot; and the sender is never an
+                  authenticated sender. Most saved emails carry the <code>Authentication-Results</code> header of the server that received them, and that server
+                  is not your trusted one, so such a file also gets the signal &quot;authentication header from an unknown server&quot; and its risk goes up one
+                  level.
+                </p>
+              </li>
+              <li><p>The same email imported twice creates only one Case.</p></li>
             </ul>
             <h2 id="gmail">Gmail<a class="docs__anchor" href="#gmail" aria-label="Link to this section">#</a></h2>
             <p>

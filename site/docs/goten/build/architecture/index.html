@@ -136,7 +136,7 @@
           <div class="docs__body">
             <p>
               Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the
-              <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/02_TECH_DESIGN.md">technical design</a>.
+              <a href="https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/02_TECH_DESIGN.md">technical design</a>.
             </p>
             <h2 id="layout">Layout<a class="docs__anchor" href="#layout" aria-label="Link to this section">#</a></h2>
             <pre tabindex="0"><code>src/
@@ -297,8 +297,9 @@ e2e/            Playwright tests</code></pre>
             <h2 id="persistence">Persistence<a class="docs__anchor" href="#persistence" aria-label="Link to this section">#</a></h2>
             <p>
               <code>saveState</code> in <code>state.ts</code> writes the whole state as JSON to <code>localStorage</code> under <code>goten:v1</code>, with a
-              schema version; the current schema is 2, and <code>parseSaved</code> shape-checks everything it reads. When storage is full, the oldest activity
-              log entries are dropped first so the deal data is kept, and the page says so. If storage is blocked or full, the page says that too.
+              schema version; the current schema is 2, and <code>parseSaved</code> shape-checks everything it reads and upgrades schema 1 (saved by v1.1.x) on
+              load. When storage is full, the oldest activity log entries are dropped first so the deal data is kept, and the page says so. If storage is
+              blocked or full, the page says that too.
             </p>
             <h2 id="guided-tour">Guided tour<a class="docs__anchor" href="#guided-tour" aria-label="Link to this section">#</a></h2>
             <p>

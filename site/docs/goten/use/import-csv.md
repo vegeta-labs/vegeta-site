@@ -1,6 +1,6 @@
 # Prepare and import your CSV files
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/import-csv.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/import-csv.md
 
 Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step.
 
@@ -114,7 +114,7 @@ A green message such as **Imported 4 investors. Amounts read as GBP.** or **Repl
 
 An investor list import replaces the whole list. Decisions you made about receipts are checked against the new list; any whose investor changed are set aside for review.
 
-Import the list again only with the same `investor_id` values. A different or blank ID counts as a new investor, even with the same name. Their confirmed decisions are set aside, and any withdrawal mark is removed, so a withdrawn investor returns to the next hand-off with their money. If an import would do any of this, Goten first says how many items it would void and offers **Import anyway** or **Cancel**. **Cancel** changes nothing.
+Import the list again only with the same `investor_id` values. A different or blank ID counts as a new investor, even with the same name. Their confirmed decisions are set aside, any withdrawal mark is removed, so a withdrawn investor returns to the next hand-off with their money, and any fee payer adjustment to their amount is voided. If an import would do any of this, Goten first says how many decisions, withdrawal marks and fee payer adjustments it would void and offers **Import anyway** or **Cancel**. **Cancel** changes nothing.
 
 ## When it goes wrong
 

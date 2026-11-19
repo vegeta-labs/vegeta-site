@@ -1,6 +1,6 @@
 # Use Trunks
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/use/README.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/use/README.md
 
 Trunks is the operations inbox of Vegeta. For each email that arrives in a shared operations mailbox, it picks a category, pulls out the key facts, links the email to deals and people, flags risk and prepares a reply. You check the reply, copy it and send it from your own mail client.
 

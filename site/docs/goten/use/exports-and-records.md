@@ -1,21 +1,23 @@
 # Exports, the activity log and where your data is stored
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/use/exports-and-records.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/exports-and-records.md
 
 ## Exports
 
 Each button saves a CSV file to your computer. Nothing is uploaded. File names end with the deal's currency, for example ledger_GBP.csv.
 
-| Button                      | Page                 | File         | Contents                                                             | Waits while                                                 |
-| --------------------------- | -------------------- | ------------ | -------------------------------------------------------------------- | ----------------------------------------------------------- |
-| **Export ledger CSV**       | 1. Reconciliation    | ledger       | One row per bank line, its status, who it is booked to, who decided. | There are input errors.                                     |
-| **Export chase list CSV**   | 1. Reconciliation    | chase_list   | Each investor who is short or unpaid, with the chase text.           | There are input errors.                                     |
+| Button                      | Page                 | File         | Contents                                                             | Waits while                                                                          |
+| --------------------------- | -------------------- | ------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Export ledger CSV**       | 1. Reconciliation    | ledger       | One row per bank line, its status, who it is booked to, who decided. | There are input errors.                                                              |
+| **Export chase list CSV**   | 1. Reconciliation    | chase_list   | Each investor who is short or unpaid, with the chase text.           | There are input errors.                                                              |
 | **Export allocation CSV**   | 2. Allocation        | allocation   | One row per investor: invested, shares, each fee, refund, status.    | There are input errors or blockers, a refund is flagged, or the page is out of date. |
-| **Export holdings CSV**     | 3. Exit distribution | holdings     | Each holding. It can be imported again unchanged.                    | The holdings table has an error, or the page is out of date. |
-| **Export distribution CSV** | 3. Exit distribution | distribution | One row per investor: distribution, profit, multiple.                | There are input errors or a shortfall, or the page is out of date. |
-| **Export activity log CSV** | Activity log         | activity_log | Every log entry, oldest first.                                       | The log is empty.                                           |
+| **Export holdings CSV**     | 3. Exit distribution | holdings     | Each holding. It can be imported again unchanged.                    | The holdings table has an error, or the page is out of date.                         |
+| **Export distribution CSV** | 3. Exit distribution | distribution | One row per investor: distribution, profit, multiple.                | There are input errors or a shortfall, or the page is out of date.                   |
+| **Export activity log CSV** | Activity log         | activity_log | Every log entry, oldest first.                                       | The log is empty.                                                                    |
 
 **Copy closing confirmation** copies the summary for the lead, and waits for the same things as the allocation export.
+
+All of these except **Export activity log CSV** also wait while you are part-way through editing a cell: press Enter or click out of the field first.
 
 A page marked **out of date** holds back its copy and exports until you hand off again: **Copy closing confirmation** and **Export allocation CSV** on the allocation page, **Export holdings CSV** and **Export distribution CSV** on the exit page.
 
@@ -25,7 +27,7 @@ Only the investor list, bank statement, allocation investors and holdings can be
 
 ## The activity log
 
-**Activity log** lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a receipt, voided decisions, hand-offs, copied chase messages, withdrawals, fee payer changes, loading the sample, and exports of the log itself. Not logged: importing allocation investors or holdings, the other five exports, **Copy closing confirmation**, and editing a table cell, unless the edit voids a decision.
+**Activity log** lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a receipt, voided decisions, hand-offs, copied chase messages and queries, withdrawals, fee payer changes, loading the sample, and exports of the log itself. Not logged: importing allocation investors or holdings, the other five exports, **Copy closing confirmation**, and editing a table cell, unless the edit voids a decision.
 
 Set **Your initials** in **Deal settings** to have them added to each entry.
 
@@ -44,6 +46,7 @@ That has practical effects:
 - Anyone who can use this browser profile can see it. On a shared computer, clear the data when you finish.
 - Goten holds one deal at a time. **Load sample deal** replaces it, after asking if there is anything to lose.
 - A private window can lose the data when it closes.
+- Each web address keeps its own data. Since v1.4.0 Goten saves your data differently, so a deal saved by v1.3.1 or earlier, or at the app's earlier address, does not appear: the app opens empty, with the theme following your device and the tour at its start. If you run your own copy, export what you need before you upgrade it.
 
 If the browser cannot save, Goten tells you at the top of the page:
 
@@ -51,6 +54,10 @@ If the browser cannot save, Goten tells you at the top of the page:
 | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **This browser is not saving your data (storage is blocked), so it will be gone when you close the page.** | Allow site data for this site, or export what you need before closing.                                            |
 | **This browser's storage for this page is full, so your latest changes are not being saved.**              | Export what you need before you close the page. Goten removes the oldest log entries first to keep the deal data. |
+
+## Theme
+
+Choose **System**, **Light** or **Dark** at the top of the page; on a phone the choice is at the foot of the page. **System** follows your device. The choice is saved in this browser separately from the deal. **Clear all data** sets it back to **System**.
 
 ## Real investor data and AI tools
 

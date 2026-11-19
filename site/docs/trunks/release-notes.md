@@ -1,6 +1,6 @@
 # Changelog
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/CHANGELOG.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/CHANGELOG.md
 
 ## v0.5.0 (2026-11-12): everything renamed to Trunks; existing deployments must reinstall or rename before upgrading
 

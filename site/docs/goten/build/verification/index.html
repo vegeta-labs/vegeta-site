@@ -7,14 +7,14 @@
     <title>Verification | Vegeta</title>
     <meta
       name="description"
-      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the mutation tests and benchmarks."
+      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the benchmarks on every pull request and on every push to main and release; the full mutation run is a separate weekly job."
     />
     <meta property="og:site_name" content="Vegeta" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Verification | Vegeta" />
     <meta
       property="og:description"
-      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the mutation tests and benchmarks."
+      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the benchmarks on every pull request and on every push to main and release; the full mutation run is a separate weekly job."
     />
     <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/build/verification/" />
     <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Verification | Vegeta" />
     <meta
       name="twitter:description"
-      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the mutation tests and benchmarks."
+      content="Goten's calculations are checked in several independent ways. All the commands below run from the repository root after npm install. CI on the public repository runs everything except the benchmarks on every pull request and on every push to main and release; the full mutation run is a separate weekly job."
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
@@ -136,10 +136,16 @@
           <div class="docs__body">
             <p>
               Goten&#39;s calculations are checked in several independent ways. All the commands below run from the repository root after
-              <code>npm install</code>. CI on the public repository runs everything except the mutation tests and benchmarks.
+              <code>npm install</code>. CI on the public repository runs everything except the benchmarks on every pull request and on every push to
+              <code>main</code> and <code>release</code>; the full mutation run is a separate weekly job.
             </p>
             <p>
-              The <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/04_TEST_PLAN.md">test plan</a> lists every
+              The counts each check reports grow as tests are added. The figures for the current release are at the end of its entry in the
+              <a href="/docs/goten/release-notes/">release notes</a>; the output of each command should match them on that release&#39;s own commit; later
+              commits may have more.
+            </p>
+            <p>
+              The <a href="https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/04_TEST_PLAN.md">test plan</a> lists every
               case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
             </p>
             <h2 id="quick-checks">Quick checks<a class="docs__anchor" href="#quick-checks" aria-label="Link to this section">#</a></h2>
@@ -149,16 +155,16 @@ npm run check:tokens</code></pre>
             <h2 id="unit-tests">Unit tests<a class="docs__anchor" href="#unit-tests" aria-label="Link to this section">#</a></h2>
             <pre tabindex="0"><code>npm test</code></pre>
             <p>
-              Runs the Vitest suite in <code>src/</code>, including the comparison with the Python oracle, so it needs <code>python3</code>. Expect 445 tests to
-              pass and 1 to be skipped: the benchmark, which runs only on request.
+              Runs the Vitest suite in <code>src/</code>, including the comparison with the Python oracle, so it needs <code>python3</code>. All tests should
+              pass, with 1 skipped: the benchmark, which runs only on request.
             </p>
             <p>Test names start with their case ID, such as <code>TC-REC-12</code>.</p>
             <h2 id="test-plan-coverage">Test-plan coverage<a class="docs__anchor" href="#test-plan-coverage" aria-label="Link to this section">#</a></h2>
             <pre tabindex="0"><code>npm run coverage:check</code></pre>
             <p>
               Runs the unit tests and then <code>scripts/check-coverage.mjs</code>, which reads the JSON report and fails unless every case due at the current
-              milestone actually ran and passed. It does not search the source text. The current milestone is in <code>docs/milestone.txt</code>. Expect
-              <code>milestone M6: 205 cases due, 205 passed</code>.
+              milestone actually ran and passed. It does not search the source text. The current milestone is in <code>docs/milestone.txt</code>. It prints a
+              line such as <code>milestone M6: N cases due, N passed</code>, where the two numbers must be equal.
             </p>
             <h2 id="the-independent-oracle">
               The independent oracle<a class="docs__anchor" href="#the-independent-oracle" aria-label="Link to this section">#</a>
@@ -166,10 +172,10 @@ npm run check:tokens</code></pre>
             <p>
               <code>scripts/oracle/</code> is a separate Python implementation written from the written rules alone, using only the standard library. It does
               not share code with the TypeScript. Its case format is in
-              <a href="https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/scripts/oracle/SCHEMA.md">SCHEMA</a>.
+              <a href="https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/scripts/oracle/SCHEMA.md">SCHEMA</a>.
             </p>
             <pre tabindex="0"><code>npm run oracle:selfcheck</code></pre>
-            <p>Checks the oracle against the hand calculations in the test plan. Expect <code>selfcheck: 178 passed, 0 failed</code>.</p>
+            <p>Checks the oracle against the hand calculations in the test plan. It prints <code>selfcheck: N passed, 0 failed</code>.</p>
             <p>
               <code>npm test</code> then runs the TypeScript engines and the oracle on the hand-calculated cases and on 1,800 generated cases, and compares them
               field by field.
@@ -180,15 +186,16 @@ npm run check:tokens</code></pre>
 npm run e2e:check</code></pre>
             <p>
               Runs Playwright in Chromium, at default and phone sizes, against a production build served with the production headers, so a content security
-              policy problem fails a test. It then fails unless every due end-to-end case ran and passed. Expect 33 tests covering 12 of 12 cases.
+              policy problem fails a test. It then fails unless every due end-to-end case ran and passed. It prints a line such as
+              <code>milestone M6: N end-to-end cases due, N passed</code>, where the two numbers must be equal.
             </p>
             <p>These tests also record every network request, to confirm that only the site&#39;s own static files are loaded.</p>
             <p><code>npm run e2e</code> runs the tests without the coverage check.</p>
             <h2 id="mutation-tests">Mutation tests<a class="docs__anchor" href="#mutation-tests" aria-label="Link to this section">#</a></h2>
             <pre tabindex="0"><code>npm run mutation</code></pre>
             <p>
-              <code>scripts/mutation-check.mjs</code> deliberately breaks the code in 276 places, one at a time, and runs the whole unit suite after each. A
-              test must fail each time.
+              <code>scripts/mutation-check.mjs</code> deliberately breaks the code in a few hundred places (the list is in that file), one at a time, and runs
+              the whole unit suite after each. A test must fail each time.
             </p>
             <ul>
               <li>
@@ -221,7 +228,13 @@ npm run e2e:check</code></pre>
               </li>
               <li><code>npm run mutation -- --files=&lt;changed files&gt;</code> for a calculation change, and the full run before you rely on it.</li>
             </ol>
-            <p>If a rule changes, update the requirements first, then the code, the tests and, separately, the oracle.</p>
+            <p>
+              If a rule changes, update the requirements first, then the code, the tests and, separately, the oracle. The oracle&#39;s files are in
+              <code>scripts/oracle/</code> (<code>oracle.py</code>, <code>batch.py</code>, <code>selfcheck.py</code> and <code>SCHEMA.md</code>); whoever
+              changes them should work from the new rule wording, the test plan and <code>SCHEMA.md</code> only. The expected figures for the sample deal are
+              frozen in <code>src/lib/sample.expected.json</code>: if a rule change moves them, regenerate the file with
+              <code>FREEZE=1 npx vitest run src/lib/sample.test.ts</code> only after every changed figure has been checked by hand and approved.
+            </p>
           </div>
         </div>
       </div>

@@ -160,6 +160,7 @@ The account fields then do not count as a change of bank details."
             <p>The attachment:</p>
             <ul>
               <li>is a top-level plain text MT103 or XML pacs.008, with no other attachment except an inline signature image;</li>
+              <li>is not itself a possible-KYC attachment;</li>
               <li>passes the strict structure check, and every account sits in the payer or beneficiary account position;</li>
               <li>has no change-of-account wording elsewhere, and no long numbers in its free text;</li>
               <li>names only beneficiary accounts listed in <code>receiving_accounts</code> for the deal.</li>
@@ -167,6 +168,8 @@ The account fields then do not count as a change of bank details."
             <p>The mail:</p>
             <ul>
               <li>comes from an authenticated sender with all signals clear, who is involved in one deal only;</li>
+              <li>has every reference the rules find pointing to that same deal;</li>
+              <li>has no attachment blocked by the virus scan or over a size or page limit, and was fully decoded;</li>
               <li>has no account or redirect wording in the subject, body or file names;</li>
               <li>has model labels limited to payment query and payment evidence;</li>
               <li>belongs to a Case that has never had the <code>bank_details</code> rule label.</li>

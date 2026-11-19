@@ -1,6 +1,6 @@
 # Accounts in payment messages
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/payment-messages.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/payment-messages.md
 
 An IBAN or UK account in an attachment normally adds the `bank_details` label: the reply is limited to `safe_ack`, and
 a verification task opens. A structurally valid MT103 or pacs.008 is the exception, when every condition below holds.
@@ -9,6 +9,7 @@ The account fields then do not count as a change of bank details.
 The attachment:
 
 - is a top-level plain text MT103 or XML pacs.008, with no other attachment except an inline signature image;
+- is not itself a possible-KYC attachment;
 - passes the strict structure check, and every account sits in the payer or beneficiary account position;
 - has no change-of-account wording elsewhere, and no long numbers in its free text;
 - names only beneficiary accounts listed in `receiving_accounts` for the deal.
@@ -16,6 +17,8 @@ The attachment:
 The mail:
 
 - comes from an authenticated sender with all signals clear, who is involved in one deal only;
+- has every reference the rules find pointing to that same deal;
+- has no attachment blocked by the virus scan or over a size or page limit, and was fully decoded;
 - has no account or redirect wording in the subject, body or file names;
 - has model labels limited to payment query and payment evidence;
 - belongs to a Case that has never had the `bank_details` rule label.

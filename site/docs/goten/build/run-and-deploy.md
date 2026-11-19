@@ -1,6 +1,6 @@
 # Run locally and deploy your own copy
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/build/run-and-deploy.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/build/run-and-deploy.md
 
 ## What you need
 
@@ -51,7 +51,7 @@ Your copy has its own saved data, separate from any other copy, because browser 
 ## Before you use it for real deals
 
 - The footer's **Send feedback** link goes to the form set in `FEEDBACK_FORM_URL` in `src/config.ts`. Point it at your own form.
-- The storage keys are `goten:v1`, `goten:theme` and `goten:tour` (`src/state.ts`, `src/theme.ts`, `src/tour/progress.ts`). If you rename them, data saved under the old names is no longer read unless you also migrate it.
+- The storage keys are `goten:v1`, `goten:theme` and `goten:tour` (`src/state.ts`, `src/theme.ts`, `src/tour/progress.ts`). If you rename them, data saved under the old names is no longer read unless you also migrate it. v1.4.0 renamed them itself, without a migration: a copy upgraded from v1.3.1 or earlier opens with an empty deal, so export anything you need first.
 - Check that the disclaimer and privacy text in `src/config.ts` still hold for your deployment.
 - Consider who hosts it. The host receives normal page requests but no deal data.
 

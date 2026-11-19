@@ -1,6 +1,6 @@
 # Backup and upgrade
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/backup-and-upgrade.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/backup-and-upgrade.md
 
 ## What to back up
 
@@ -10,8 +10,9 @@
 | **Files** | volume `trunks_files` | raw emails and attachments (encrypted) |
 | **State** | volume `trunks_state` | the daily audit chain head export |
 | **Secrets** | your secret directory (`./secrets`) | `trunks_master_keys`, `trunks_hmac_key` and the database passwords. **Without the keys, a backup cannot be read.** |
-| **Configuration** | your configuration directory (`TRUNKS_CONFIG_DIR`) and `docker-compose.override.yml` | to start the same deployment again |
+| **Configuration** | your configuration directory (`TRUNKS_CONFIG_DIR`), `.env`, and `docker-compose.override.yml` if you have one | to start the same deployment again |
 | KYC folder (if you use a folder target) | volume `trunks_kyc` | transferred KYC files; back it up under your KYC policy |
+| Proxy certificates (if you use the bundled HTTPS proxy) | volume `trunks_caddy` | the TLS certificates and their account. Optional: the proxy fetches new ones if it is lost |
 
 Keep the secrets **apart from** the data backups, with stricter access. Anyone who has both can read everything.
 
@@ -37,7 +38,8 @@ for v in db files state kyc; do
 done
 docker compose start
 cp -a secrets "$B/secrets"            # better: store the secrets in a separate, stricter place
-cp -a config/local "$B/config"
+cp -a config/local "$B/config"       # your TRUNKS_CONFIG_DIR
+cp -a .env "$B/" 2>/dev/null; cp -a docker-compose.override.yml "$B/" 2>/dev/null
 ```
 
 `postgres:16` is used only because it is already present and has `tar`. Any image with `tar` will do.

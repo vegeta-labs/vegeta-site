@@ -1,10 +1,12 @@
 # Verification
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/build/verification.md
+> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/build/verification.md
 
-Goten's calculations are checked in several independent ways. All the commands below run from the repository root after `npm install`. CI on the public repository runs everything except the mutation tests and benchmarks.
+Goten's calculations are checked in several independent ways. All the commands below run from the repository root after `npm install`. CI on the public repository runs everything except the benchmarks on every pull request and on every push to `main` and `release`; the full mutation run is a separate weekly job.
 
-The [test plan](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/docs/en/04_TEST_PLAN.md) lists every case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
+The counts each check reports grow as tests are added. The figures for the current release are at the end of its entry in the [release notes](https://vegeta-ops.vercel.app/docs/goten/release-notes.md); the output of each command should match them on that release's own commit; later commits may have more.
+
+The [test plan](https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/04_TEST_PLAN.md) lists every case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
 
 ## Quick checks
 
@@ -20,7 +22,7 @@ npm run check:tokens
 npm test
 ```
 
-Runs the Vitest suite in `src/`, including the comparison with the Python oracle, so it needs `python3`. Expect 445 tests to pass and 1 to be skipped: the benchmark, which runs only on request.
+Runs the Vitest suite in `src/`, including the comparison with the Python oracle, so it needs `python3`. All tests should pass, with 1 skipped: the benchmark, which runs only on request.
 
 Test names start with their case ID, such as `TC-REC-12`.
 
@@ -30,17 +32,17 @@ Test names start with their case ID, such as `TC-REC-12`.
 npm run coverage:check
 ```
 
-Runs the unit tests and then `scripts/check-coverage.mjs`, which reads the JSON report and fails unless every case due at the current milestone actually ran and passed. It does not search the source text. The current milestone is in `docs/milestone.txt`. Expect `milestone M6: 205 cases due, 205 passed`.
+Runs the unit tests and then `scripts/check-coverage.mjs`, which reads the JSON report and fails unless every case due at the current milestone actually ran and passed. It does not search the source text. The current milestone is in `docs/milestone.txt`. It prints a line such as `milestone M6: N cases due, N passed`, where the two numbers must be equal.
 
 ## The independent oracle
 
-`scripts/oracle/` is a separate Python implementation written from the written rules alone, using only the standard library. It does not share code with the TypeScript. Its case format is in [SCHEMA](https://github.com/vegeta-labs/goten/blob/c915491596deb01b3ce527c53e1ed3be738451be/scripts/oracle/SCHEMA.md).
+`scripts/oracle/` is a separate Python implementation written from the written rules alone, using only the standard library. It does not share code with the TypeScript. Its case format is in [SCHEMA](https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/scripts/oracle/SCHEMA.md).
 
 ```bash
 npm run oracle:selfcheck
 ```
 
-Checks the oracle against the hand calculations in the test plan. Expect `selfcheck: 178 passed, 0 failed`.
+Checks the oracle against the hand calculations in the test plan. It prints `selfcheck: N passed, 0 failed`.
 
 `npm test` then runs the TypeScript engines and the oracle on the hand-calculated cases and on 1,800 generated cases, and compares them field by field.
 
@@ -53,7 +55,7 @@ npx playwright install chromium   # once
 npm run e2e:check
 ```
 
-Runs Playwright in Chromium, at default and phone sizes, against a production build served with the production headers, so a content security policy problem fails a test. It then fails unless every due end-to-end case ran and passed. Expect 33 tests covering 12 of 12 cases.
+Runs Playwright in Chromium, at default and phone sizes, against a production build served with the production headers, so a content security policy problem fails a test. It then fails unless every due end-to-end case ran and passed. It prints a line such as `milestone M6: N end-to-end cases due, N passed`, where the two numbers must be equal.
 
 These tests also record every network request, to confirm that only the site's own static files are loaded.
 
@@ -65,7 +67,7 @@ These tests also record every network request, to confirm that only the site's o
 npm run mutation
 ```
 
-`scripts/mutation-check.mjs` deliberately breaks the code in 276 places, one at a time, and runs the whole unit suite after each. A test must fail each time.
+`scripts/mutation-check.mjs` deliberately breaks the code in a few hundred places (the list is in that file), one at a time, and runs the whole unit suite after each. A test must fail each time.
 
 - **It takes a long time.** Each mutant runs the full unit suite, about 10 seconds here, so allow 45 minutes or more for the full run.
 - **It edits source files.** Run it on a clean working tree, and do not run anything else against that tree at the same time. If you interrupt it, the file it was working on is left broken: run `git status` and restore that file.
@@ -91,4 +93,4 @@ Times the engines at the size limits and writes the results to `docs/perf.md`, s
 3. Walk the [sample deal](https://vegeta-ops.vercel.app/docs/goten/use/getting-started.md) by hand if a figure could have changed: £114,840.00 of receipts, £100,395.00 invested, £57,021.00 of carry and £328,479.00 to investors.
 4. `npm run mutation -- --files=<changed files>` for a calculation change, and the full run before you rely on it.
 
-If a rule changes, update the requirements first, then the code, the tests and, separately, the oracle.
+If a rule changes, update the requirements first, then the code, the tests and, separately, the oracle. The oracle's files are in `scripts/oracle/` (`oracle.py`, `batch.py`, `selfcheck.py` and `SCHEMA.md`); whoever changes them should work from the new rule wording, the test plan and `SCHEMA.md` only. The expected figures for the sample deal are frozen in `src/lib/sample.expected.json`: if a rule change moves them, regenerate the file with `FREEZE=1 npx vitest run src/lib/sample.test.ts` only after every changed figure has been checked by hand and approved.

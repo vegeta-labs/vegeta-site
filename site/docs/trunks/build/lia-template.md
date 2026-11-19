@@ -1,6 +1,6 @@
 # Legitimate interests assessment (LIA): template
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/lia-template.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/lia-template.md
 
 **For the organisation that deploys Trunks**, if it relies on legitimate interests (UK GDPR Article 6(1)(f))
 for some or all of the processing. The structure follows the three-part test: purpose, necessity and balancing.

@@ -143,8 +143,9 @@
               <li>it <strong>extracts fields</strong>, such as amount, payment date and reference.</li>
             </ul>
             <p>
-              Each job is one request: the input is redacted text and a JSON Schema, and the output is JSON that the app checks. There is no agent loop, and the
-              model is given no tools. Everything else is done by fixed code: risk, linking, deadlines, template choice and the reply text.
+              Each request carries redacted text and a JSON Schema, and the output is JSON that the app checks. Classifying is one request. Field extraction
+              asks for at most eight fields per request, so a case that needs more fields makes several. There is no agent loop, and the model is given no
+              tools. Everything else is done by fixed code: risk, linking, deadlines, template choice and the reply text.
             </p>
             <h2 id="providers">Providers<a class="docs__anchor" href="#providers" aria-label="Link to this section">#</a></h2>
             <div class="docs__table" tabindex="0">
@@ -160,7 +161,10 @@
                   <tr>
                     <td><code>anthropic</code></td>
                     <td>always <code>external</code></td>
-                    <td>The hosted model API. Needs <code>dpa</code>, <code>no_training</code>, <code>region</code> and the API key.</td>
+                    <td>
+                      The hosted model API. Needs <code>dpa</code>, <code>no_training</code> and the API key. State <code>region</code> too: without a UK / EEA
+                      <code>region</code> and without a <code>transfer_basis</code>, the start-up gives a warning.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>ollama</code></td>
@@ -246,11 +250,11 @@
                     <td>starts; <strong>warning</strong> in the start-up log and at the top of the review UI</td>
                   </tr>
                   <tr>
-                    <td>External provider whose <code>region</code> is not UK / EEA, and no <code>transfer_basis</code></td>
+                    <td>External provider whose <code>region</code> is not UK / EEA, or not stated, and no <code>transfer_basis</code></td>
                     <td>starts; <strong>warning</strong></td>
                   </tr>
                   <tr>
-                    <td><code>no_training: false</code></td>
+                    <td>External provider with <code>no_training: false</code></td>
                     <td>starts; <strong>warning</strong></td>
                   </tr>
                   <tr>
@@ -279,7 +283,7 @@
             <p>The text sent is:</p>
             <ul>
               <li>the subject</li>
-              <li>display names</li>
+              <li>the sender&#39;s display name</li>
               <li>the body, including quoted earlier emails</li>
               <li>attachment file names</li>
               <li>the text of attachments that are <strong>not</strong> possible-KYC.</li>
@@ -396,20 +400,29 @@
                 >#</a
               >
             </h3>
-            <p>Each call is audited with:</p>
+            <p>The audit row of each classify or extract step records:</p>
             <ul>
-              <li>provider, model name and model version</li>
-              <li>prompt version and schema version</li>
-              <li>a hash of the input.</li>
+              <li>the provider and model (for example <code>anthropic/&lt;model id&gt;</code>)</li>
+              <li>the prompt and its version (for example <code>classify@v3</code>)</li>
+              <li>a hash of the step&#39;s input.</li>
             </ul>
             <p>
-              The full request and response are stored encrypted in the audit detail table. The audit row keeps only their hash. The detail is deleted with the
-              email at the end of its retention period.
+              The full request, with its JSON Schema, and every response are stored encrypted in the audit detail table. The raw responses are also kept,
+              encrypted, in the model output table, so that a re-run can reuse them instead of calling the model again. Both are deleted with the email at the
+              end of its retention period.
             </p>
             <p>
-              A model call is tried at most twice per request. If both attempts fail, the email is classified <code>unclassified</code> and its model fields are
-              left empty. A person then reviews it as usual.
+              The system prompt also lists the category ids of your <code>cases.yaml</code>, each with a fixed description (a category you added is described by
+              its id alone), and a fixed description of each field asked for. None of this is personal data, but the provider receives it.
             </p>
+            <p>A model call is tried at most twice per request. If both attempts fail, only that request&#39;s answer is missing:</p>
+            <ul>
+              <li>if classifying failed, the email keeps the labels the fixed rules found, and is <code>unclassified</code> only if they found none;</li>
+              <li>
+                if a field extraction request failed, the fields it asked for come from the rules only. Fields from the email&#39;s other requests are kept.
+              </li>
+            </ul>
+            <p>A person then reviews it as usual.</p>
             <h2 id="what-the-model-never-does">
               What the model never does<a class="docs__anchor" href="#what-the-model-never-does" aria-label="Link to this section">#</a>
             </h2>

@@ -1,6 +1,6 @@
 # Users and directory
 
-> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/7b32c954f7017b87fa3686d72b3a303048fd018b/docs/en/users-and-directory.md
+> Trunks v0.5.0. Source: https://github.com/vegeta-labs/trunks/blob/9f80db3c131c38e1f418336b839a23583456d220/docs/en/users-and-directory.md
 
 **This version has no screen for users or for the directory.** An admin manages both through the app's HTTP API
 with `curl`, from a terminal on any machine that can reach the app. The commands on this page are run by the
@@ -51,8 +51,8 @@ There are three roles. Each one can do everything the role before it can:
 | Role | Can |
 |---|---|
 | `reviewer` | work Cases, edit and approve replies, tick verification checklists |
-| `approver` | also approve verification tasks, lower risk, set the hold flag |
-| `admin` | also manage users, import the directory, retry KYC transfers |
+| `approver` | also approve and restart verification tasks, lower risk, allow the original sender as recipient on a look-alike Case, set the hold flag |
+| `admin` | also manage users, import the directory, retry KYC transfers, mark a blocked KYC attachment as handled by hand |
 
 Define a small helper once in your terminal. It asks for the new user's name, role and first password:
 
@@ -147,7 +147,7 @@ deal's currency, for example `10000.00`, `10,000` or `£10,000.00`.
 `receiving_accounts` lists the accounts a deal collects into, separated by semicolons. Values need not be IBANs; an
 IBAN-shaped value with a bad check digit is an error. Only an admin can import it, and only a keyed hash and the last
 four characters are stored. Email content never reaches this list. Without it, an account in an MT103 or pacs.008 attachment
-counts as a possible change of bank details. See `docs/en/payment-messages.md`.
+counts as a possible change of bank details. See [Accounts in payment messages](https://vegeta-ops.vercel.app/docs/trunks/build/payment-messages.md).
 
 Without an id column, contacts, commitments and bank lines get a stable id from the file version and the row number.
 A repeated id is an error.
