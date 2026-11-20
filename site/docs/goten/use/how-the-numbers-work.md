@@ -1,6 +1,6 @@
 # How the numbers work
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/how-the-numbers-work.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/how-the-numbers-work.md
 
 These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.
 
@@ -25,7 +25,7 @@ For everything else, each investor gets a score between 0 and 1, built from:
 | Payer name matches        | Up to 0.30, by the share of name words that match              |
 | Amount matches            | 0.25: the amount equals their cash due, or what they still owe |
 
-Only investors with a score of 0.30 or more are shown, and at most three. In the sample, Kavya Iyer's receipt with the reference NW 11 scores 0.80: 0.25 for a near reference, 0.30 for the payer name and 0.25 for the amount.
+Only investors with a score of 0.30 or more are shown, and at most three. If nobody reaches 0.30, no suggestion is shown: the receipt shows **Not matched** (or **Needs review** if an earlier decision on it was set aside) and waits for a person to assign it or mark it not part of this deal. In the sample, Kavya Iyer's receipt with the reference NW 11 scores 0.80: 0.25 for a near reference, 0.30 for the payer name and 0.25 for the amount.
 
 **Received** is the sum of the receipts booked to an investor. **Difference** is received minus cash due.
 

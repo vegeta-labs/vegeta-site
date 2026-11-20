@@ -1,6 +1,6 @@
 {
   "film": "Vegeta Cut 16 (wide web cut: same words)",
-  "goten": "c915491596deb01b3ce527c53e1ed3be738451be",
+  "goten": "91879ea4a952dff0bc3b297ee346bb645f81aa83",
   "trunks": "f8a0d5530947606ecf8fc1a99305490fe63fb85a",
   "claims": [
     {
@@ -9,9 +9,9 @@
       "evidence": "vendor/goten/src/lib/reconcile.ts:314"
     },
     {
-      "says": "Anything else is a suggestion that waits for a person to confirm, assign or reject",
+      "says": "Anything else waits for a person",
       "module": "goten",
-      "evidence": "vendor/goten/docs/RELEASE_NOTES.md:131"
+      "evidence": "vendor/goten/src/components/Reconciliation.tsx:157"
     },
     {
       "says": "Shows a suggested match with a score and reasons",

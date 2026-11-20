@@ -1,6 +1,6 @@
 # Closing allocation
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/closing-allocation.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/closing-allocation.md
 
 The allocation works out what each investor invests, pays in fees and gets back, what is wired to the company, and whether the deal can close.
 

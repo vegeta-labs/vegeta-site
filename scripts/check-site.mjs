@@ -509,9 +509,15 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   }
   // trust figures (P9): each must be backed by the release notes
   const notes = read(join(GOTEN, 'docs/RELEASE_NOTES.md'))
-  // all three restated in the newest release's notes (v1.4.0, 2026-11-12), so the page names that release alone
-  const latestGoten = releasesOf(notes)[0].version
-  const latestNotes = releaseSection(notes, latestGoten.slice(1))
+  // the page names the release whose checks measured all three (v1.4.0, 2026-11-12); a later release may keep them only
+  // while it says the calculations are unchanged (same rule as the overview's "measured on")
+  const measuredGoten = /<p class="trust__note">Figures from the (v[\d.]+) release checks\.<\/p>/.exec(html['/goten/'])?.[1] ?? ''
+  const gotenReleases = releasesOf(notes).map((r) => r.version)
+  if (!gotenReleases.includes(measuredGoten)) fail(`/goten/: the trust note must name a release in Goten's notes ("Figures from the vX.Y.Z release checks.")`)
+  for (const v of gotenReleases.slice(0, Math.max(0, gotenReleases.indexOf(measuredGoten))))
+    if (!/\b[Cc]alculations\b(?:(?!\bchanged\b)[^.;])*\bunchanged\b/.test(releaseSection(notes, v.slice(1))))
+      fail(`/goten/: Goten ${v} does not say the calculations are unchanged, so figures from ${measuredGoten} cannot stand for it`)
+  const measuredNotes = releaseSection(notes, measuredGoten.slice(1))
   const figures = [
     ['1,800', /agree with it on 1,800 generated cases/],
     ['301 / 301', /301 of 301 deliberate code breakages caught/],
@@ -519,10 +525,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   ]
   for (const [shown, backed] of figures) {
     if (!html['/goten/'].includes(`<dt>${shown}</dt>`)) fail(`/goten/ trust figure ${shown} not on the page as expected`)
-    if (!backed.test(latestNotes)) fail(`/goten/ trust figure ${shown} is not in the ${latestGoten} section of Goten's docs/RELEASE_NOTES.md`)
+    if (!backed.test(measuredNotes)) fail(`/goten/ trust figure ${shown} is not in the ${measuredGoten} section of Goten's docs/RELEASE_NOTES.md`)
   }
-  if (!html['/goten/'].includes(`<p class="trust__note">Figures from the ${latestGoten} release checks.</p>`))
-    fail(`/goten/: the trust note must name the ${latestGoten} release checks`)
 }
 
 // ---- / (overview) ----
@@ -741,8 +745,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   }
   const gotenNotes = read(join(GOTEN, 'docs/RELEASE_NOTES.md'))
   const MODULE_PROOF = {
-    // Goten's figure is restated in its newest release (v1.4.0); if a later release does not restate it, set release to the
-    // one that did and the column will say "measured on" that release
+    // Goten's figure was measured on v1.4.0 and v1.4.1 says the calculations are unchanged, so the column says "measured on v1.4.0";
+    // when a later release restates the figure, set release to it and "measured on" goes away
     goten: {
       figure: '1,800',
       release: '1.4.0',
@@ -759,7 +763,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   // "measured on" an older release holds only while every later release says its calculations are unchanged
   for (const r of releasesOf(gotenNotes)) {
     if (r.version === `v${MODULE_PROOF.goten.release}`) break
-    if (!/[Cc]alculations[^.]*\bunchanged\b/.test(releaseSection(gotenNotes, r.version.slice(1))))
+    if (!/\b[Cc]alculations\b(?:(?!\bchanged\b)[^.;])*\bunchanged\b/.test(releaseSection(gotenNotes, r.version.slice(1))))
       fail(
         `Goten ${r.version}: its notes do not say the calculations are unchanged, so the figure measured on v${MODULE_PROOF.goten.release} cannot be quoted for it`,
       )

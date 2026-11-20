@@ -126,7 +126,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">How the numbers work</h1>
-          <p class="docs__version">v1.4.0</p>
+          <p class="docs__version">v1.4.1</p>
           <div class="docs__body">
             <p>These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.</p>
             <h2 id="general-rules">General rules<a class="docs__anchor" href="#general-rules" aria-label="Link to this section">#</a></h2>
@@ -180,8 +180,10 @@
               </table>
             </div>
             <p>
-              Only investors with a score of 0.30 or more are shown, and at most three. In the sample, Kavya Iyer&#39;s receipt with the reference NW 11 scores
-              0.80: 0.25 for a near reference, 0.30 for the payer name and 0.25 for the amount.
+              Only investors with a score of 0.30 or more are shown, and at most three. If nobody reaches 0.30, no suggestion is shown: the receipt shows
+              <strong>Not matched</strong> (or <strong>Needs review</strong> if an earlier decision on it was set aside) and waits for a person to assign it or
+              mark it not part of this deal. In the sample, Kavya Iyer&#39;s receipt with the reference NW 11 scores 0.80: 0.25 for a near reference, 0.30 for
+              the payer name and 0.25 for the amount.
             </p>
             <p><strong>Received</strong> is the sum of the receipts booked to an investor. <strong>Difference</strong> is received minus cash due.</p>
             <h2 id="closing-allocation">Closing allocation<a class="docs__anchor" href="#closing-allocation" aria-label="Link to this section">#</a></h2>

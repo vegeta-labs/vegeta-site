@@ -101,6 +101,9 @@
               <a href="/docs/goten/release-notes/" aria-current="page">Release notes</a>
               <ul class="docs__sub">
                 <li>
+                  <a href="#v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor">v1.4.1 <span>2026-11-20</span></a>
+                </li>
+                <li>
                   <a href="#v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over"
                     >v1.4.0 <span>2026-11-12</span></a
                   >
@@ -172,6 +175,9 @@
                   <a href="/docs/goten/release-notes/" aria-current="page">Release notes</a>
                   <ul class="docs__sub">
                     <li>
+                      <a href="#v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor">v1.4.1 <span>2026-11-20</span></a>
+                    </li>
+                    <li>
                       <a href="#v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over"
                         >v1.4.0 <span>2026-11-12</span></a
                       >
@@ -216,9 +222,29 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Goten — Deal Calculations — release notes</h1>
-          <p class="docs__version">v1.4.0</p>
+          <p class="docs__version">v1.4.1</p>
           <div class="docs__body">
             <p>Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it.</p>
+            <h2 id="v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor">
+              v1.4.1 (2026-11-20): The reconciliation hint now says a receipt may have no suggested investor<a
+                class="docs__anchor"
+                href="#v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The hint under the Reconciliation heading said that every receipt not booked automatically is a suggestion. A receipt can have no suggested
+              investor at all: only investors who score 0.30 or more are suggested (C-REC-3), so a receipt whose payer, reference and amount match nobody well
+              enough gets none. The hint now reads: &quot;Everything else waits for you, with scored suggestions and reasons when there are any.&quot; The user
+              guide adds that such a receipt shows <strong>Not matched</strong> (or <strong>Needs review</strong> if an earlier decision on it was set aside)
+              and waits for a person.
+            </p>
+            <p>Calculations, rounding, import and export formats and saved data are unchanged.</p>
+            <p>
+              Counts at release: 466 unit tests, 210 of 210 due test-plan cases, 37 end-to-end tests covering 12 of 12 planned end-to-end cases, 17 of 17
+              mutants in the changed file caught (the full mutation run is weekly), the Python oracle&#39;s self-check 180 of 180.
+            </p>
             <h2 id="v140-2026-11-12-saved-data-now-uses-the-goten-name-so-data-saved-by-earlier-versions-is-not-carried-over">
               v1.4.0 (2026-11-12): Saved data now uses the Goten name, so data saved by earlier versions is not carried over<a
                 class="docs__anchor"

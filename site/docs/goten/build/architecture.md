@@ -1,8 +1,8 @@
 # Architecture
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/build/architecture.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/build/architecture.md
 
-Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the [technical design](https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/02_TECH_DESIGN.md).
+Goten is a client-only React 19 and TypeScript app, built with Vite. There is no backend. For the reasoning behind each decision, see the [technical design](https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/02_TECH_DESIGN.md).
 
 ## Layout
 

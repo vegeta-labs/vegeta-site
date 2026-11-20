@@ -15,10 +15,10 @@
       "id": "goten",
       "name": "Goten",
       "role": "Deal Calculations",
-      "version": "v1.4.0",
+      "version": "v1.4.1",
       "source": {
         "repo": "https://github.com/vegeta-labs/goten",
-        "ref": "e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211",
+        "ref": "91879ea4a952dff0bc3b297ee346bb645f81aa83",
         "notes": "docs/RELEASE_NOTES.md"
       },
       "groups": [

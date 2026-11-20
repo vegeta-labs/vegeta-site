@@ -1,6 +1,6 @@
 # Reconciliation: match receipts and chase the rest
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/reconciliation.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/reconciliation.md
 
 Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the deal.
 

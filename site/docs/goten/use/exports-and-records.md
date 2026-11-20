@@ -1,6 +1,6 @@
 # Exports, the activity log and where your data is stored
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/exports-and-records.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/exports-and-records.md
 
 ## Exports
 

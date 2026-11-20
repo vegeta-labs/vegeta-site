@@ -1,6 +1,6 @@
 # Exit distribution
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/exit-distribution.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/exit-distribution.md
 
 The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor.
 

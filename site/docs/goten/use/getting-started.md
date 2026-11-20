@@ -1,6 +1,6 @@
 # Walk the sample deal
 
-> Goten v1.4.0. Source: https://github.com/vegeta-labs/goten/blob/e6bfcb52ea45cfacba5e8d83b8fa62d6e3a69211/docs/en/use/getting-started.md
+> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/getting-started.md
 
 Go through all three steps with the built-in Northwind Robotics seed round. It has 12 investors and 16 bank lines, in pounds.
 
