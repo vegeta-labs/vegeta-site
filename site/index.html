@@ -105,23 +105,23 @@
             <ul class="ledger">
               <li>
                 <span class="ledger__who">A HART<small>NW-001</small></span
-                ><span class="ledger__amt">£10,000.00</span><span class="pill pill--ok">Matched</span>
+                ><span class="ledger__amt">£10,000.00</span><span class="pill pill--ok">Matched automatically</span>
               </li>
               <li>
                 <span class="ledger__who">B OKAFOR<small>NW002 NORTHWIND</small></span
-                ><span class="ledger__amt">£5,000.00</span><span class="pill pill--ok">Matched</span>
+                ><span class="ledger__amt">£5,000.00</span><span class="pill pill--ok">Matched automatically</span>
               </li>
               <li class="ledger__focus">
                 <span class="ledger__who">CHLOE MARTIN<small>no reference · suggested Chloe Martin, score 0.55 · confirmed by a person</small></span
                 ><span class="ledger__amt">£20,000.00</span
                 ><span class="pill pill--swap"
-                  ><span class="pill__before" aria-hidden="true">Review</span><span class="pill__after" aria-hidden="true">Confirmed</span
-                  ><span class="sr-only">Confirmed</span></span
+                  ><span class="pill__before" aria-hidden="true">Needs review</span><span class="pill__after" aria-hidden="true">Confirmed by you</span
+                  ><span class="sr-only">Confirmed by you</span></span
                 >
               </li>
               <li>
                 <span class="ledger__who">D KIM<small>NW-004</small></span
-                ><span class="ledger__amt">£2,000.00</span><span class="pill pill--ok">Matched</span>
+                ><span class="ledger__amt">£2,000.00</span><span class="pill pill--ok">Matched automatically</span>
               </li>
             </ul>
           </div>
@@ -367,8 +367,8 @@
             <details class="faq__item" id="dfaq-fit">
               <summary>How do the modules fit together?</summary>
               <p>
-                They are separate tools. Trunks can import the deals, commitments, bank lines and reconciliation ledger you export from Goten as CSV files,
-                read-only, and it suggests actions such as marking an investor withdrawn in Goten. A person makes the change.
+                They are separate tools. Trunks can import your deals, the Goten commitments file, your bank statement and the reconciliation ledger exported
+                from Goten as CSV files, read-only, and it suggests actions such as marking an investor withdrawn in Goten. A person makes the change.
               </p>
             </details>
             <details class="faq__item" id="dfaq-tested">
@@ -376,7 +376,7 @@
               <p>
                 Each module page shows the figures from the release checks that measured them: <a href="/goten/#trust">Goten</a> and
                 <a href="/trunks/#trust">Trunks</a>. Both compare their rules with an independent Python implementation and use mutation checks. Trunks is also
-                measured on emails that development never read, with a real model, once per release.
+                measured on emails that development never read, with a real model, before each release that changes how emails are judged.
               </p>
             </details>
           </div>

@@ -95,23 +95,23 @@
             <ul class="ledger">
               <li>
                 <span class="ledger__who">A HART<small>NW-001</small></span
-                ><span class="ledger__amt">£10,000.00</span><span class="pill pill--ok">Matched</span>
+                ><span class="ledger__amt">£10,000.00</span><span class="pill pill--ok">Matched automatically</span>
               </li>
               <li>
                 <span class="ledger__who">B OKAFOR<small>NW002 NORTHWIND</small></span
-                ><span class="ledger__amt">£5,000.00</span><span class="pill pill--ok">Matched</span>
+                ><span class="ledger__amt">£5,000.00</span><span class="pill pill--ok">Matched automatically</span>
               </li>
               <li class="ledger__focus">
                 <span class="ledger__who">CHLOE MARTIN<small>no reference · suggested Chloe Martin, score 0.55 · confirmed by a person</small></span
                 ><span class="ledger__amt">£20,000.00</span
                 ><span class="pill pill--swap"
-                  ><span class="pill__before" aria-hidden="true">Review</span><span class="pill__after" aria-hidden="true">Confirmed</span
-                  ><span class="sr-only">Confirmed</span></span
+                  ><span class="pill__before" aria-hidden="true">Needs review</span><span class="pill__after" aria-hidden="true">Confirmed by you</span
+                  ><span class="sr-only">Confirmed by you</span></span
                 >
               </li>
               <li>
                 <span class="ledger__who">D KIM<small>NW-004</small></span
-                ><span class="ledger__amt">£2,000.00</span><span class="pill pill--ok">Matched</span>
+                ><span class="ledger__amt">£2,000.00</span><span class="pill pill--ok">Matched automatically</span>
               </li>
             </ul>
           </div>
@@ -221,21 +221,23 @@
                           <ul class="illus__rows" aria-hidden="true">
                             <li class="illus__row is-dim">
                               <span class="illus__who">A HART<small>2026-10-06 · NW-001</small></span
-                              ><span class="illus__amt">£10,000.00</span><span class="pill">Matched</span>
+                              ><span class="illus__amt">£10,000.00</span><span class="pill">Matched automatically</span>
                             </li>
                             <li class="illus__row is-focus">
                               <span class="illus__who">CHLOE MARTIN<small>2026-10-07 · no reference</small></span
                               ><span class="illus__amt">£20,000.00</span
-                              ><span class="pill illus__state"><span class="swap__a">Review</span><span class="swap__b">Confirmed</span></span>
+                              ><span class="pill illus__state"><span class="swap__a">Needs review</span><span class="swap__b">Confirmed by you</span></span>
                               <span class="illus__suggest">
                                 <span class="illus__match">Chloe Martin<small>NW-003</small></span>
                                 <span class="illus__why">score 0.55 — payer name matches, amount matches</span>
-                                <span class="illus__btn"><span class="swap__a">Confirm</span><span class="swap__b">&#10003; Confirmed by a person</span></span>
+                                <span class="illus__btn"
+                                  ><span class="swap__a">Confirm Chloe Martin</span><span class="swap__b">&#10003; Confirmed by you</span></span
+                                >
                               </span>
                             </li>
                             <li class="illus__row is-dim">
                               <span class="illus__who">D KIM<small>2026-10-07 · NW-004</small></span
-                              ><span class="illus__amt">£2,000.00</span><span class="pill">Matched</span>
+                              ><span class="illus__amt">£2,000.00</span><span class="pill">Matched automatically</span>
                             </li>
                           </ul>
                         </div>
@@ -367,7 +369,7 @@
           <dl class="facts">
             <div class="fact" data-reveal>
               <dt>Exact</dt>
-              <dd>Whole pence and integer maths, no floating point.</dd>
+              <dd>Whole pence or cents and integer maths, no floating point.</dd>
             </div>
             <div class="fact" data-reveal>
               <dt>1,800</dt>

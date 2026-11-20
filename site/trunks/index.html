@@ -574,7 +574,7 @@
             <dd>
               All text in the database is encrypted; only ids, types, hashes, times, amounts and the last four characters of each deal&rsquo;s receiving
               accounts are kept in the clear. The audit log is hash-chained, the app&rsquo;s own database roles cannot change or delete it, and a daily export
-              of its latest hash, kept off the server, shows if recent records go missing.
+              of its latest hash, which the operator copies off the server, shows if recent records go missing.
             </dd>
           </div>
         </dl>
@@ -590,8 +590,8 @@
             <span class="built__n">01</span>
             <h3>Mailboxes</h3>
             <p>
-              IMAP, .eml import, Gmail and Microsoft 365, all read-only. Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated
-              services. Gmail polling was tested on one personal Gmail account.
+              IMAP, .eml import, Gmail and Microsoft 365, all read-only. Microsoft 365, and Gmail push notifications (Pub/Sub), were tested only against
+              simulated services. Gmail polling was tested on one personal Gmail account.
             </p>
           </li>
           <li data-reveal>
@@ -602,7 +602,10 @@
           <li data-reveal>
             <span class="built__n">03</span>
             <h3>Your records</h3>
-            <p>Deals, commitments, bank lines and the reconciliation ledger from Goten CSV files, plus a contacts file. Out: CSV lists and signed events.</p>
+            <p>
+              Deals, the Goten commitments file, your bank statement and the reconciliation ledger exported from Goten, as CSV files, plus a contacts file. Out:
+              CSV lists and signed events.
+            </p>
           </li>
           <li data-reveal>
             <span class="built__n">04</span>
@@ -664,7 +667,7 @@
               <summary>Which mailboxes can it read?</summary>
               <p>
                 IMAP (opened read-only), .eml import, Gmail (read-only, one consent per mailbox) and Microsoft 365 (read permission on the mailboxes you name,
-                checked at every start). Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated services. Gmail polling was
+                checked at every start). Microsoft 365, and Gmail push notifications (Pub/Sub), were tested only against simulated services. Gmail polling was
                 tested on one personal Gmail account.
               </p>
             </details>

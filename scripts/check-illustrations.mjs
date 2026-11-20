@@ -95,22 +95,76 @@ export function checkIllustrations({ html, css, goten, trunks, snapshot, fail })
   const ledger = /l\.ledger === 'not_received' \? '([^']+)'/.exec(ui)?.[1]
   for (const phrase of ['Copy text', 'authenticated sender', 'computed by the rules:'])
     if (!ui.includes(phrase)) fail(`illustrations: Trunks UI no longer contains ${phrase}`)
+  // the reconciliation status words and button are Goten's own (audit 2026-11-20 A8): line statuses and the candidate button
+  const gotenUi = readFileSync(join(goten, 'src/lib/activity.ts'), 'utf8') + readFileSync(join(goten, 'src/components/Reconciliation.tsx'), 'utf8')
+  for (const phrase of ["auto: 'Matched automatically'", "suggested: 'Needs review'", "confirmed: 'Confirmed by you'", 'Confirm {who.name}'])
+    if (!gotenUi.includes(phrase)) fail(`illustrations: Goten UI no longer contains ${phrase}`)
+  // the hero bank statements on / and /goten/ use Goten's line-status words and nothing else (audit 2026-11-20 R3):
+  // only LINE_STATUS_WORDS counts; every element whose class names a pill, its two states or its screen-reader text is a
+  // status, whatever the class order or line breaks; each row has one status, a swap row shows two states and names the last
+  const block = /LINE_STATUS_WORDS[^=]*=\s*\{([\s\S]*?)\}/.exec(gotenUi)?.[1] ?? ''
+  const statusWords = new Set([...block.matchAll(/^\s*\w+: '([^']+)'/gm)].map((m) => m[1]))
+  if (statusWords.size < 3) fail('illustrations: cannot read Goten LINE_STATUS_WORDS')
+  // a status element is any span whose classes name a pill (any variant or state) or screen-reader text; its text is all
+  // of its content, nested tags included (a tag counts as a space), non-breaking spaces read as spaces, whitespace collapsed
+  const isStatus = (cls) => cls.some((c) => c === 'sr-only' || c.startsWith('pill'))
+  const spans = (row) => {
+    const out = []
+    const re = /<(\/?)span\b([^>]*)>/g
+    const stack = []
+    let m
+    while ((m = re.exec(row))) {
+      if (!m[1]) stack.push({ cls: (/\bclass="([^"]*)"/.exec(m[2])?.[1] ?? '').split(/\s+/), from: re.lastIndex })
+      else {
+        const open = stack.pop()
+        if (open && isStatus(open.cls))
+          out.push({
+            cls: open.cls,
+            text: row
+              .slice(open.from, m.index)
+              .replace(/<[^>]*>/g, ' ')
+              .replace(/&(?:nbsp|#160|#xa0);/gi, ' ')
+              .replace(/&amp;/g, '&')
+              .replace(/\s+/g, ' ')
+              .trim(),
+          })
+      }
+    }
+    return out
+  }
+  for (const url of ['/', '/goten/']) {
+    const ledger = /<ul class="ledger">[\s\S]*?<\/ul>/.exec(html[url] ?? '')?.[0] ?? ''
+    const rows = [...ledger.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map((m) => m[1])
+    if (rows.length !== 4) fail(`${url}: the bank statement should have 4 rows, found ${rows.length}`)
+    for (const row of rows) {
+      const found = spans(row)
+      const swap = found.find((f) => f.cls.includes('pill--swap'))
+      const parts = swap ? found.filter((f) => f !== swap) : found
+      const want = swap ? ['pill__before', 'pill__after', 'sr-only'] : ['pill']
+      if (parts.length !== want.length || !want.every((c) => parts.filter((f) => f.cls.includes(c)).length === 1))
+        fail(`${url}: a bank statement row must show ${swap ? 'two states and name the last' : 'one status'}`)
+      for (const f of parts) if (!statusWords.has(f.text)) fail(`${url}: bank statement status "${f.text}" is not a Goten line status`)
+      if (swap && swap.text !== parts.map((f) => f.text).join(' ')) fail(`${url}: the swapping status holds words besides its two states`)
+      if (swap && parts.find((f) => f.cls.includes('sr-only'))?.text !== parts.find((f) => f.cls.includes('pill__after'))?.text)
+        fail(`${url}: the screen-reader status must be the state shown last`)
+    }
+  }
   const want = {
     reconciliation: [
       'Bank statement',
       'Needs your review ·',
       before.pendingSuggestions,
       after.pendingSuggestions,
-      ...bankRow('t01', receipt('t01').reference, 'Matched'),
-      ...bankRow('t03', 'no reference', 'Review Confirmed'),
+      ...bankRow('t01', receipt('t01').reference, 'Matched automatically'),
+      ...bankRow('t03', 'no reference', 'Needs review Confirmed by you'),
       person.name,
       person.reference,
       'score',
       candidate.score,
       '—',
       candidate.reasons.join(', '),
-      'Confirm ✓ Confirmed by a person',
-      ...bankRow('t04', receipt('t04').reference, 'Matched'),
+      `Confirm ${person.name} ✓ Confirmed by you`,
+      ...bankRow('t04', receipt('t04').reference, 'Matched automatically'),
     ],
     allocation: [
       'Closing allocation',

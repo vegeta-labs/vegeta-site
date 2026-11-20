@@ -104,12 +104,12 @@
       "evidence": "vendor/trunks/src/web/CaseE3.tsx:556"
     },
     {
-      "says": "On screen, closing window: All checks pass",
+      "says": "Illustrative, not the product's words: the closing window shows \"All checks pass\"; Goten lists each check under \"Checks\"",
       "module": "goten",
       "evidence": "vendor/goten/src/components/common.tsx:203"
     },
     {
-      "says": "On screen, Trunks window label: Bank details check",
+      "says": "Illustrative, not the product's words: the Trunks window label \"Bank details check\" and the checklist line \"Call the number on file\"; the product says \"Check the bank details request\" and \"Verify the request by calling the phone number on file\" (src/lib/actions.ts:29)",
       "module": "trunks",
       "evidence": "vendor/trunks/src/web/CaseE3.tsx:517"
     }

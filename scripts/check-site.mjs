@@ -597,17 +597,33 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
       fail(`/trunks/ problem section: figure ${n} is not one checked against the report`)
   if (!problem.includes('Fraud figures: UK Finance, Annual Fraud Report 2026 (figures for 2025), invoice and mandate scams.'))
     fail('/trunks/ problem section: the source line for the fraud figures is missing')
-  // K5: the release notes' test-scope sentences for Microsoft 365 and Gmail, word for word, on the page
-  for (const s of [
-    'Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated services.',
-    'Gmail polling was tested on one personal Gmail account.',
-  ]) {
-    if (!allNotes.includes(s)) fail(`Trunks CHANGELOG.md no longer says: ${s}`)
-    if (!text.includes(s)) fail(`/trunks/ does not carry the release notes' sentence: ${s}`)
+  // K5: the release notes' test-scope sentences for Microsoft 365 and Gmail, on the page. The first is punctuated as
+  // mailboxes.md:21-23 means it (the whole Microsoft 365 connector, and Gmail's Pub/Sub, were tested only against
+  // simulated services; Microsoft 365 has no push), because the CHANGELOG wording reads as if Microsoft 365 had push
+  // notifications (audit 2026-11-20 A4)
+  const testScope = [
+    [
+      'Microsoft 365 and Gmail push notifications (Pub/Sub) were tested only against simulated services.',
+      'Microsoft 365, and Gmail push notifications (Pub/Sub), were tested only against simulated services.',
+    ],
+    ['Gmail polling was tested on one personal Gmail account.', 'Gmail polling was tested on one personal Gmail account.'],
+  ]
+  // each sentence is said in the Mailboxes card and in the mailbox FAQ answer, each place on its own; the ambiguous
+  // original never appears anywhere on the page (audit 2026-11-20 R1)
+  const oneLine = (h) => plain(h).replace(/\s+/g, ' ')
+  const mailboxPlaces = {
+    'the Mailboxes card': oneLine(/<li\b[^>]*>\s*<span class="built__n">\d+<\/span>\s*<h3>Mailboxes<\/h3>[\s\S]*?<\/li>/.exec(page)?.[0] ?? ''),
+    'the mailbox FAQ answer': oneLine(/<details class="faq__item" id="ifaq-mailbox">[\s\S]*?<\/details>/.exec(page)?.[0] ?? ''),
+  }
+  const pageLine = oneLine(page)
+  for (const [note, said] of testScope) {
+    if (!allNotes.includes(note)) fail(`Trunks CHANGELOG.md no longer says: ${note}`)
+    for (const [where, t] of Object.entries(mailboxPlaces)) if (!t.includes(said)) fail(`/trunks/ ${where} must carry: ${said}`)
+    if (note !== said && pageLine.includes(note)) fail(`/trunks/ uses the ambiguous wording: ${note}`)
   }
   // and every sentence on the page about how a mailbox kind was tested is one of them
   for (const t of text.split(/(?<=\.)\s+/))
-    if (/\btested\b/.test(t) && /Gmail|Microsoft 365|Pub\/Sub|IMAP/.test(t) && !allNotes.includes(t.trim()))
+    if (/\btested\b/.test(t) && /Gmail|Microsoft 365|Pub\/Sub|IMAP/.test(t) && !allNotes.includes(t.trim()) && !testScope.some(([, said]) => said === t.trim()))
       fail(`/trunks/: "${t.trim()}" is not the release notes' wording`)
   // K4: a quoted phrase is, whole, Trunks on-screen text: a string literal or a JSX text run in src/web (not tests, comments
   // removed), or a value shown in the demo snapshot. "Whole" means the entire literal or text run, or one or more complete
@@ -1062,7 +1078,8 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       ...[...body.matchAll(/\b(?:alt|aria-label)="([^"]*)"/g)].map((m) => m[1]),
       ...['description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'].map((key) => metaOf(key) ?? ''),
     ].join(' \n ')
-    const allowed = new Set([...numbers, '7', '2026']) // the update date
+    const updated = /<p class="article__date">Updated (\d{1,2}) [A-Z][a-z]+ (\d{4})<\/p>/.exec(body)?.slice(1) ?? []
+    const allowed = new Set([...numbers, ...updated]) // the update date
     for (const [n] of seen.matchAll(/\d[\d,.]*\d|\d/g)) if (!allowed.has(n)) fail(`${url}: number ${n} is not on the checked list`)
     for (const re of [
       /you.re invited/i,
@@ -1167,7 +1184,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     summary:
       'Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.',
     film: 'trunks',
-    numbers: `10,000.00 001 20,000.00 005 24 126 5.5 18 123 125 103 008 9 ${trunksVersion} ${trunksMeasuredVersion}`.split(' '),
+    numbers: `10,000.00 001 1,000.00 005 24 126 5.5 18 123 125 103 008 9 ${trunksVersion} ${trunksMeasuredVersion}`.split(' '),
     figures: {
       inbox: 'Trunks inbox with four investor emails. The first, Did my payment arrive? from Son Goku, is selected.',
       reply:
@@ -1175,7 +1192,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       verification:
         'Trunks verification for a change of bank account, rated high risk with a look-alike domain: call the number on file, cooling-off of 24 hours by default, then approval by a second person, still waiting.',
       evidence:
-        "Trunks payment confirmation from Yamcha: GBP 20,000.00, reference SEN-005, with its value date and UETR. Not in your ledger yet: the sender's confirmation, not proof of receipt.",
+        "Trunks payment confirmation from Yamcha: GBP 1,000.00, reference SEN-005, with its value date and UETR. Not in your ledger yet: the sender's confirmation, not proof of receipt.",
     },
     phrases: [
       'Trunks connects to the mailbox read-only',
