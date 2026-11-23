@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Run and build Bulma | Vegeta</title>
+    <meta
+      name="description"
+      content="Bulma — SPV Workspace is self-hosted software for one operator running SPV deals: a Fastify server and a PostgreSQL database, with a React app served by the same server, shipped as one Docker image. These pages are for operators who run an instance and for developers, including anyone working with an AI coding agent."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Run and build Bulma | Vegeta" />
+    <meta
+      property="og:description"
+      content="Bulma — SPV Workspace is self-hosted software for one operator running SPV deals: a Fastify server and a PostgreSQL database, with a React app served by the same server, shipped as one Docker image. These pages are for operators who run an instance and for developers, including anyone working with an AI coding agent."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Run and build Bulma | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Bulma — SPV Workspace is self-hosted software for one operator running SPV deals: a Fastify server and a PostgreSQL database, with a React app served by the same server, shipped as one Docker image. These pages are for operators who run an instance and for developers, including anyone working with an AI coding agent."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/" aria-current="page">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/" aria-current="page">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Run and build Bulma</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Bulma — SPV Workspace is self-hosted software for one operator running SPV deals: a Fastify server and a PostgreSQL database, with a React app
+              served by the same server, shipped as one Docker image. These pages are for operators who run an instance and for developers, including anyone
+              working with an AI coding agent.
+            </p>
+            <h2 id="run-an-instance">Run an instance<a class="docs__anchor" href="#run-an-instance" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                <a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy your own copy</a>: what you need, starting it with Docker Compose, the
+                developer setup, deploying behind HTTPS and checking your copy.
+              </li>
+              <li>
+                <a href="/docs/bulma/build/configuration/">Configuration reference</a>: every setting the server reads, with its default and when it is needed.
+              </li>
+              <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a>: roles and the review work in the app.</li>
+              <li>
+                <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>: the switch from sandbox to real, sending mail, the KYC provider and the
+                payment instructions file.
+              </li>
+              <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a>: backing up, upgrading, rolling back and restoring.</li>
+            </ul>
+            <h2 id="understand-and-change-the-code">
+              Understand and change the code<a class="docs__anchor" href="#understand-and-change-the-code" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li><a href="/docs/bulma/build/architecture/">Architecture</a>: how the code is laid out.</li>
+              <li><a href="/docs/bulma/build/verification/">Verification</a>: the tests and checks, and how to run them.</li>
+              <li><a href="/docs/bulma/build/security-model/">Security model</a>: what the software protects, and how.</li>
+            </ul>
+            <h2 id="before-you-rely-on-it">
+              Before you rely on it<a class="docs__anchor" href="#before-you-rely-on-it" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li><a href="/docs/bulma/build/responsibilities/">Who does what</a>: which controls the software has, and which are yours.</li>
+              <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a>: for anyone deciding whether to rely on this software.</li>
+            </ul>
+            <p>
+              For how leads and investors use an instance, see <a href="/docs/bulma/">Use Bulma</a>. What each release contains is in the
+              <a href="/docs/bulma/release-notes/">release notes</a>.
+            </p>
+            <h2 id="the-sandbox-comes-first">
+              The sandbox comes first<a class="docs__anchor" href="#the-sandbox-comes-first" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              A new instance is a sandbox, and it stays one until two admins switch it to the real mode. In the sandbox the server uses fakes for mail, identity
+              checks, signing, file storage and virus scanning, whatever real services are configured. No email leaves it, and files are kept in memory and lost
+              when the app restarts. Use made-up details everywhere.
+            </p>
+            <p>
+              Bulma never moves money, holds shares or runs a wallet. It has no telemetry and sends nothing to the project. The only outside services it talks
+              to are the ones you configure for the real mode: your SMTP server, your KYC provider and your virus scanner. The ClamAV container added for the
+              real mode updates its virus signatures from the internet. It does not take on the operator&#39;s regulatory duties.
+            </p>
+            <h2 id="real-investor-data-and-ai-tools">
+              Real investor data and AI tools<a class="docs__anchor" href="#real-investor-data-and-ai-tools" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              A real instance holds names, email addresses, identity documents, amounts and payment details. Bulma cannot protect that data once it is copied
+              out of the instance. If you or an agent paste it into an AI tool, or attach a database dump, an evidence pack, an export, a log or a screenshot,
+              it goes to that provider under their terms.
+            </p>
+            <p>When you work with an AI coding agent:</p>
+            <ul>
+              <li>
+                Develop and report bugs against a sandbox or the test database, with made-up data. Do not give the agent a real instance, its database, its
+                <code>secrets</code> folder, its <code>.env</code> or its backups.
+              </li>
+              <li>Do not add real investor data to the repository, including as a test fixture.</li>
+              <li>Have the agent run the checks in <a href="/docs/bulma/build/verification/">Verification</a> before you rely on a change.</li>
+              <li>
+                Keep business rules and money calculations in <code>src/lib/</code>, in whole numbers, as described in
+                <a href="/docs/bulma/build/architecture/">Architecture</a>. Keep the Python oracle in <code>scripts/oracle/</code> independent: if a rule
+                changes, rewrite it from the written requirements, not from the TypeScript.
+              </li>
+            </ul>
+            <p>
+              Closing a deal is not built yet. See the
+              <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md">README</a> for what is done so far.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

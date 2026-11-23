@@ -2,12 +2,16 @@
 // CSS custom properties (through the CSSOM, which the CSP allows; the HTML carries no style attributes) and starts the step illustrations.
 'use strict'
 
-document.documentElement.classList.add('js')
+/** the page, read by every function below */
+const doc = document
+doc.documentElement.classList.add('js')
 
 // Plan 13 N29: Goten moved from / to /goten/. An old link to one of its sections (/#faq-import, /#step-2, /#how,
 // /#trust, /#built) lands on the same section there. Reads the address only; the overview page has none of these ids.
 if (location.pathname === '/' && /^#(faq-[a-z-]+|step-[1-3]|how|trust|built)$/.test(location.hash)) location.replace('/goten/' + location.hash)
 
+/** every observer below falls back to the plain page without Intersection Observer */
+const hasIO = 'IntersectionObserver' in window
 const motion = matchMedia('(prefers-reduced-motion: no-preference)')
 const moving = () => motion.matches
 const onMotionChange = (fn) => motion.addEventListener('change', fn)
@@ -15,7 +19,7 @@ const wide = matchMedia('(min-width: 900px) and (min-height: 620px)')
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v))
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
 
-document.addEventListener('DOMContentLoaded', () => {
+doc.addEventListener('DOMContentLoaded', () => {
   rotator()
   reveals()
   navPill()
@@ -35,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /** The blog's film: Chromium ignores a click on the picture while nothing is loaded (preload="none"), so start it here. Its own controls do the rest. */
 function film() {
-  const video = document.querySelector('[data-film]')
+  const video = doc.querySelector('[data-film]')
   if (!video) return
   video.addEventListener('click', () => {
     if (video.readyState !== 0 || !video.paused) return
@@ -46,10 +50,10 @@ function film() {
 /** Film captions: an iPhone (iOS 18) refuses to play a video whose page already lists a caption track (MEDIA_ERR_SRC_NOT_SUPPORTED, found
     2026-11-11 by elimination on the owner's phone), so the page names the file in data-captions and the track is added once the video has loaded. */
 function captions() {
-  document.querySelectorAll('video[data-captions]').forEach((video) => {
+  doc.querySelectorAll('video[data-captions]').forEach((video) => {
     const add = () => {
       if (video.querySelector('track')) return
-      const track = document.createElement('track')
+      const track = doc.createElement('track')
       Object.assign(track, { kind: 'captions', src: video.dataset.captions, srclang: 'en', label: 'English' })
       video.append(track)
     }
@@ -62,8 +66,8 @@ function captions() {
 /** Blog figures that tell one short story: they wait on their first frame until the part that changes is in view, play once and stop on
     the result. With reduced motion, no script or a failed video the poster stays: the complete result. */
 function onceVideo() {
-  if (!('IntersectionObserver' in window)) return
-  document.querySelectorAll('[data-once]').forEach((video) => {
+  if (!hasIO) return
+  doc.querySelectorAll('[data-once]').forEach((video) => {
     const complete = video.getAttribute('poster')
     let failed = false
     let inView = false
@@ -83,7 +87,7 @@ function onceVideo() {
     }
     const update = () => {
       if (failed || !moving() || !started || video.ended) return
-      if (inView && !document.hidden) {
+      if (inView && !doc.hidden) {
         video.play()?.catch((e) => e.name === 'AbortError' || giveUp())
       } else video.pause()
     }
@@ -100,15 +104,15 @@ function onceVideo() {
       },
       { threshold: Array.from({ length: 21 }, (_, i) => i / 20) },
     ).observe(video)
-    document.addEventListener('visibilitychange', update)
+    doc.addEventListener('visibilitychange', update)
     onMotionChange(setUp)
     setUp()
   })
 }
 
 function ambientVideo() {
-  if (!('IntersectionObserver' in window)) return
-  document.querySelectorAll('[data-ambient]:not([data-once])').forEach((video) => {
+  if (!hasIO) return
+  doc.querySelectorAll('[data-ambient]:not([data-once])').forEach((video) => {
     let seen = false
     let failed = false
     // if it cannot play, the complete still stays and nothing tries again
@@ -119,7 +123,7 @@ function ambientVideo() {
     }
     const update = () => {
       if (failed) return
-      if (seen && moving() && !document.hidden) {
+      if (seen && moving() && !doc.hidden) {
         video.play()?.catch((e) => e.name === 'AbortError' || giveUp())
       } else video.pause()
     }
@@ -130,7 +134,7 @@ function ambientVideo() {
       seen = e.isIntersecting
       update()
     }).observe(video)
-    document.addEventListener('visibilitychange', update)
+    doc.addEventListener('visibilitychange', update)
     onMotionChange(() => {
       if (!moving()) {
         video.classList.remove('is-on')
@@ -145,26 +149,25 @@ function ambientVideo() {
 /** Module pages (plan 14 R10): once the global nav has scrolled away with the page, the page's own nav comes down from the
     top, so only one bar shows at a time. Without the script it stays under the hero. */
 function subnavShow() {
-  const sub = document.querySelector('[data-subnav]')
-  const nav = document.querySelector('[data-nav]')
+  const sub = doc.querySelector('[data-subnav]')
+  const nav = doc.querySelector('[data-nav]')
   if (!sub || !nav) return
-  if (!('IntersectionObserver' in window)) return sub.classList.add('is-on')
+  if (!hasIO) return sub.classList.add('is-on')
   new IntersectionObserver(([e]) => sub.classList.toggle('is-on', !e.isIntersecting)).observe(nav)
 }
 
-/** Phones: the native <details> menu closes once one of its links is followed, so it does not cover where it led. */
+/** The native <details> menus (the phone Menu and the bar's Investors and Operations menus, plan 41) close on any click that is not on their
+    own summary: a followed link, so they do not cover where it led, a click outside, or another summary on the page. */
 function menuClose() {
-  const menu = document.querySelector('[data-menu]')
-  if (!menu) return
-  menu.addEventListener('click', (e) => {
-    if (e.target.closest('a')) menu.open = false
+  doc.addEventListener('click', (e) => {
+    for (const menu of doc.querySelectorAll('[data-menu]')) if (e.target.closest('summary')?.parentNode != menu) menu.open = false
   })
 }
 
 /** Hero: the visible headline loops every 2 s. Offscreen, hidden tabs and reduced motion stop the timer;
     returning to the title resumes from its current phrase. The matching panel lifts with each phrase. */
 function rotator() {
-  const box = document.querySelector('[data-rotator]')
+  const box = doc.querySelector('[data-rotator]')
   if (!box) return
   const phrases = box.dataset.phrases.split('|').map((p) => p.split(':'))
   // the grey part is the first half ("Reconcile an SPV") or, with data-grey="rest", the second ("for deal operations.");
@@ -172,16 +175,16 @@ function rotator() {
   const greyRest = box.dataset.grey === 'rest'
   box.textContent = ''
   const items = phrases.map(([verb, rest]) => {
-    const item = document.createElement('span')
+    const item = doc.createElement('span')
     item.className = 'rot__item'
     for (const [text, cls] of [
       [verb, greyRest ? '' : 'rot__verb'],
       [(/^[,.;:]/.test(rest) ? '' : ' ') + rest, greyRest ? 'rot__verb' : ''],
     ]) {
-      const part = document.createElement('span')
+      const part = doc.createElement('span')
       if (cls) part.className = cls
       for (const c of text) {
-        const ch = document.createElement('span')
+        const ch = doc.createElement('span')
         ch.className = 'ch'
         ch.textContent = c
         part.append(ch)
@@ -195,12 +198,12 @@ function rotator() {
   for (const item of items) item.querySelectorAll('.ch').forEach((ch, i) => ch.classList.add('d' + Math.min(i, 19)))
   let at = 0
   items[0].classList.add('is-on')
-  if (!('IntersectionObserver' in window)) return
+  if (!hasIO) return
   let visible = false
   let timer = 0
   let entrance = 0
   function turn() {
-    if (!visible || document.hidden || !moving()) return
+    if (!visible || doc.hidden || !moving()) return
     const from = items[at]
     at = (at + 1) % items.length
     const to = items[at]
@@ -212,7 +215,7 @@ function rotator() {
     lightPanel(at)
   }
   function update() {
-    if (!visible || document.hidden || !moving()) {
+    if (!visible || doc.hidden || !moving()) {
       clearInterval(timer)
       clearTimeout(entrance)
       timer = 0
@@ -228,20 +231,20 @@ function rotator() {
     visible = entry.isIntersecting
     update()
   }).observe(box)
-  document.addEventListener('visibilitychange', update)
+  doc.addEventListener('visibilitychange', update)
   onMotionChange(update)
 }
 
 /** Hero illustration: the panel for the phrase the headline shows lifts a little (the rotator calls this). A panel can
     stand for several phrases (data-step="1 2 3"). */
 function lightPanel(i) {
-  document.querySelectorAll('[data-scene] [data-step]').forEach((p) => p.classList.toggle('is-lit', p.dataset.step.split(' ').includes(String(i))))
+  doc.querySelectorAll('[data-scene] [data-step]').forEach((p) => p.classList.toggle('is-lit', p.dataset.step.split(' ').includes(String(i))))
 }
 
 /** Headings and text float in once as they enter the view. */
 function reveals() {
-  const els = document.querySelectorAll('[data-reveal]')
-  if (!('IntersectionObserver' in window)) return els.forEach((e) => e.classList.add('is-in'))
+  const els = doc.querySelectorAll('[data-reveal]')
+  if (!hasIO) return els.forEach((e) => e.classList.add('is-in'))
   const io = new IntersectionObserver(
     (entries) => {
       for (const e of entries) {
@@ -257,7 +260,7 @@ function reveals() {
 
 /** The hover pill slides under the link the pointer or the keyboard is on (in each bar that has one). */
 function navPill() {
-  for (const list of document.querySelectorAll('[data-nav-links]')) pillFor(list)
+  for (const list of doc.querySelectorAll('[data-nav-links]')) pillFor(list)
 }
 function pillFor(list) {
   const pill = list.querySelector('[data-nav-pill]')
@@ -267,7 +270,8 @@ function pillFor(list) {
     pill.style.setProperty('--pill-w', a.offsetWidth + 'px')
     list.classList.add('is-hover')
   }
-  for (const a of list.querySelectorAll('a')) {
+  // the bar's own links and its menus (plan 41: Investors, Operations), not the links inside a menu's panel
+  for (const a of list.querySelectorAll(':scope>a,:scope>details')) {
     a.addEventListener('mouseenter', () => move(a))
     a.addEventListener('focus', () => move(a))
   }
@@ -281,9 +285,9 @@ function pillFor(list) {
     them. The watched band is each bar's own strip, in pixels: Intersection Observer resolves percentage margins against
     the width, not the height. The sub-nav's strip is where it sticks (its CSS top), so it is right once it is stuck. */
 function navTone() {
-  const dark = document.querySelectorAll('[data-tone="dark"]')
-  if (!dark.length || !('IntersectionObserver' in window)) return
-  for (const bar of document.querySelectorAll('[data-nav], [data-subnav]')) {
+  const dark = doc.querySelectorAll('[data-tone="dark"]')
+  if (!dark.length || !hasIO) return
+  for (const bar of doc.querySelectorAll('[data-nav], [data-subnav]')) {
     let io
     const watch = () => {
       if (io) io.disconnect()
@@ -315,7 +319,7 @@ function faqOpen() {
     } catch {
       return // a malformed address matches nothing
     }
-    const el = id && document.getElementById(id)
+    const el = id && doc.getElementById(id)
     if (el && el.matches('.faq__item')) el.open = true
   }
   addEventListener('hashchange', open)
@@ -324,7 +328,7 @@ function faqOpen() {
 
 /** The live site's native scroll-linked deck. Playback is handled separately below. */
 function scrollEffects() {
-  const deck = document.querySelector('[data-deck]')
+  const deck = doc.querySelector('[data-deck]')
   const cards = deck ? [...deck.querySelectorAll('[data-card]')] : []
   const cardsBox = deck && deck.querySelector('.deck__cards')
   const links = deck ? [...deck.querySelectorAll('[data-deck-link]')] : []
@@ -383,15 +387,15 @@ function scrollEffects() {
   addEventListener('scroll', queue)
   addEventListener('resize', queue)
   onMotionChange(queue)
-  document.addEventListener('visibilitychange', queue)
+  doc.addEventListener('visibilitychange', queue)
   wide.addEventListener('change', queue)
   queue()
 }
 
 /** Each illustration loops as soon as it intersects the view, regardless of card position or the current step. */
 function stepIllustrations() {
-  const illus = [...document.querySelectorAll('[data-illus]')]
-  if (!('IntersectionObserver' in window)) {
+  const illus = [...doc.querySelectorAll('[data-illus]')]
+  if (!hasIO) {
     illus.forEach((el) => el.classList.add('is-static'))
     return
   }
@@ -400,7 +404,7 @@ function stepIllustrations() {
     for (const el of illus) {
       const shown = visible.has(el)
       el.classList.toggle('is-on', shown && moving())
-      el.classList.toggle('is-paused', document.hidden || !shown)
+      el.classList.toggle('is-paused', doc.hidden || !shown)
     }
   }
   const observer = new IntersectionObserver((entries) => {
@@ -410,7 +414,7 @@ function stepIllustrations() {
     update()
   })
   illus.forEach((el) => observer.observe(el))
-  document.addEventListener('visibilitychange', update)
+  doc.addEventListener('visibilitychange', update)
   onMotionChange(update)
 }
 
@@ -432,7 +436,7 @@ vec2 f=(p-filmBox.xy)/filmBox.zw;if(filmMix>0.&&f==clamp(f,0.,1.))c=mix(c,textur
 float g=h(floor(p)+seed);c=mix(c,mix(2.*c*g,1.-2.*(1.-c)*(1.-g),step(.5,c)),grain);gl_FragColor=vec4(c,1.);}`
 
 function reel() {
-  const box = document.querySelector('[data-reel]')
+  const box = doc.querySelector('[data-reel]')
   if (!box) return
   const frame = box.querySelector('.reel__frame')
   const canvas = box.querySelector('canvas')
@@ -444,7 +448,7 @@ function reel() {
   const BLEED = 60 // the canvas reaches past the frame, so the spreading fragments are never cut off
   const U = {}
   let gl = null
-  if ('IntersectionObserver' in window && 'ResizeObserver' in window)
+  if (hasIO && 'ResizeObserver' in window)
     try {
       gl = canvas.getContext('webgl', { antialias: false })
       // the grain's hash needs full float range: a GPU without it gets the plain player
@@ -647,7 +651,7 @@ function reel() {
     ;(gl ? frame : film).focus({ preventScroll: true })
     const r = frame.getBoundingClientRect()
     // centred in the window below the nav bar, whatever its height (a phone's bar, a landscape phone's short window)
-    const nav = document.querySelector('[data-nav]').getBoundingClientRect().bottom
+    const nav = doc.querySelector('[data-nav]').getBoundingClientRect().bottom
     scrollTo({ top: r.top + scrollY - nav - Math.max(0, (innerHeight - nav - r.height) / 2), behavior: moving() ? 'smooth' : 'auto' })
     wake()
     run()
@@ -678,7 +682,7 @@ function reel() {
   })
   // on the playing film: a click or Space pauses and resumes, C shows the captions, Escape folds it back
   canvas.addEventListener('click', () => openTo && toggle())
-  document.addEventListener('keydown', (e) => {
+  doc.addEventListener('keydown', (e) => {
     if (!openTo) return
     if (e.key === 'Escape') stop()
     else if (e.target !== frame || !gl || e.metaKey || e.ctrlKey || e.altKey) return
@@ -731,7 +735,7 @@ function reel() {
  *  notes page, mark the release being read as the page scrolls and keep it in the sidebar's view. The sidebar is sticky
  *  and on screen, so "nearest" moves only the sidebar. */
 function docsSide() {
-  const side = document.querySelector('.docs__side')
+  const side = doc.querySelector('.docs__side')
   if (!side) return
   const go = (a) => a?.scrollIntoView({ block: 'nearest' })
   const links = [...side.querySelectorAll('.docs__sub a')]
@@ -739,7 +743,7 @@ function docsSide() {
   if (!links.length) return
   let cur
   const mark = () => {
-    const a = links.findLast((l) => document.querySelector(l.hash).getBoundingClientRect().top < 160) ?? links[0]
+    const a = links.findLast((l) => doc.querySelector(l.hash).getBoundingClientRect().top < 160) ?? links[0]
     if (a == cur) return
     cur?.removeAttribute('aria-current')
     a.setAttribute('aria-current', 'location')

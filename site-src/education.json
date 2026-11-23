@@ -814,7 +814,11 @@
           "full": true
         }
       ],
-      "next": ["what-an-early-stage-cheque-buys", "angel-investing-with-a-day-job"]
+      "next": ["what-an-early-stage-cheque-buys", "angel-investing-with-a-day-job"],
+      "module": {
+        "name": "bulma",
+        "line": "Brings each invited investor through the same steps, up to exact payment instructions. It moves no money."
+      }
     },
     {
       "slug": "angel-investing-with-a-day-job",
@@ -1429,7 +1433,11 @@
           "full": true
         }
       ],
-      "next": ["fund-or-deal-by-deal-economics", "testing-a-fund-administrator"]
+      "next": ["fund-or-deal-by-deal-economics", "testing-a-fund-administrator"],
+      "module": {
+        "name": "bulma",
+        "line": "Takes a lead's deal through an operator's review and brings each invited investor to exact payment instructions. It moves no money."
+      }
     },
     {
       "slug": "first-fund-first-close",
@@ -2195,18 +2203,27 @@
       "next": ["bare-trust-nominee", "uk-nominee-or-delaware-lp"]
     }
   ],
-  "alsoFeatured": {
-    "href": "/blog/every-investor-email/",
-    "card": "/media/blog/inbox.webp",
-    "title": "Every investor email, ready for a person",
-    "summary": "Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.",
-    "tag": "Trunks"
-  },
+  "alsoFeatured": [
+    {
+      "href": "/blog/every-investor-email/",
+      "card": "/media/blog/inbox.webp",
+      "title": "Every investor email, ready for a person",
+      "summary": "What Trunks prepares for each kind of email an SPV or syndicate receives, and what a person still decides.",
+      "tag": "Trunks"
+    },
+    {
+      "href": "/blog/from-deal-to-payment/",
+      "card": "/media/blog/bulma-follow.webp",
+      "title": "Start a deal and bring your investors in",
+      "summary": "Set up and submit your deal for review. Once approved, go live, invite investors and follow their progress from commitment to payment instructions.",
+      "tag": "Bulma"
+    }
+  ],
   "featured": {
     "href": "/blog/from-bank-statement-to-exit/",
     "card": "/media/blog/reconciliation.webp",
     "title": "The money work on an SPV, ready for a person to check",
-    "summary": "Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides.",
+    "summary": "What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides.",
     "tag": "Goten"
   },
   "updated": "7 November 2026",
@@ -2219,6 +2236,10 @@
     "trunks": {
       "name": "Trunks",
       "href": "/blog/every-investor-email/"
+    },
+    "bulma": {
+      "name": "Bulma",
+      "href": "/blog/from-deal-to-payment/"
     }
   }
 }

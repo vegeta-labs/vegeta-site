@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Upgrades and backups | Vegeta</title>
+    <meta
+      name="description"
+      content="Run these from the folder holding .env and secrets. Compose reads .env on every command, so no setting has to be exported first. Back up .env too."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Upgrades and backups | Vegeta" />
+    <meta
+      property="og:description"
+      content="Run these from the folder holding .env and secrets. Compose reads .env on every command, so no setting has to be exported first. Back up .env too."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/upgrade-and-backup/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Upgrades and backups | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Run these from the folder holding .env and secrets. Compose reads .env on every command, so no setting has to be exported first. Back up .env too."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/upgrade-and-backup/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build/upgrade-and-backup.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/" aria-current="page">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/" aria-current="page">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Upgrades and backups</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Run these from the folder holding <code>.env</code> and <code>secrets</code>. Compose reads <code>.env</code> on every command, so no setting has
+              to be exported first. Back up <code>.env</code> too.
+            </p>
+            <h2 id="before-every-upgrade">Before every upgrade<a class="docs__anchor" href="#before-every-upgrade" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>
+                <strong>Back up</strong> the database, the <code>files</code> volume (both with the expiry job stopped, see the end of this page) and the
+                <code>secrets</code> folder, and keep them apart:
+                <code
+                  >mkdir -p -m 700 ~/bulma-backups &amp;&amp; docker compose exec -T db pg_dump -U postgres -Fc bulma &gt; ~/bulma-backups/bulma-$(date
+                  +%F).dump</code
+                >
+                Check it reads back: <code>docker compose exec -T db pg_restore --list &lt; ~/bulma-backups/bulma-$(date +%F).dump | tail -1</code> A dump holds
+                accounts, password hashes and any payment details, so keep it out of this folder and out of Git.
+              </li>
+              <li>
+                <strong>Export the audit head</strong> and keep it elsewhere: <code>docker compose run --rm -T app audit head</code>. Later,
+                <code>audit check-head &lt;seq&gt; &lt;hash&gt;</code> compares the database with it. <code>audit export</code> writes the whole log to standard
+                output.
+              </li>
+              <li>
+                <strong>Check deals in progress.</strong> Read the release notes for changes to gates, warnings and calculations, and decide what they mean for
+                those deals. A live deal keeps the pack version it went live with.
+              </li>
+            </ol>
+            <h2 id="upgrade">Upgrade<a class="docs__anchor" href="#upgrade" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>git pull
+docker compose build
+docker compose up -d</code></pre>
+            <p>Migrations run on start and only go forward. Afterwards run <code>docker compose run --rm -T app audit verify</code>.</p>
+            <h2 id="roll-back">Roll back<a class="docs__anchor" href="#roll-back" aria-label="Link to this section">#</a></h2>
+            <p>
+              Migrations do not reverse. To roll back, stop the app, replace the database with the backup and start the earlier version. Restoring over the
+              newer database would leave its new tables behind:
+            </p>
+            <pre tabindex="0"><code>docker compose stop app maintenance
+docker compose exec -T db dropdb -U postgres --force bulma
+docker compose exec -T db createdb -U postgres bulma
+docker compose exec -T db pg_restore -U postgres --exit-on-error -d bulma &lt; ~/bulma-backups/bulma-YYYY-MM-DD.dump
+docker run --rm -e OWNER=&quot;$(id -u):$(id -g)&quot; -v bulma_files:/data -v ~/bulma-backups:/backup alpine sh -c 'find /data -mindepth 1 -delete &amp;&amp; tar xzf /backup/files-YYYY-MM-DD.tgz -C /data &amp;&amp; chown -R &quot;$OWNER&quot; /data'
+git checkout &lt;earlier tag&gt;
+docker compose build &amp;&amp; docker compose up -d</code></pre>
+            <p>
+              Use the database dump and the files archive from the same backup: the database says which documents exist, the volume holds them. The files must
+              belong to <code>BULMA_UID:BULMA_GID</code>; the command assumes that is you, so if <code>.env</code> says otherwise, use those values for
+              <code>OWNER</code>.
+            </p>
+            <p>
+              Anything recorded after the backup is lost, so compare against the exported audit head and re-enter it. Then open a document on an entity, and
+              <code>docker compose run --rm -T app audit verify</code>: the audit check does not look at the files.
+            </p>
+            <h2 id="restore-on-a-fresh-machine">
+              Restore on a fresh machine<a class="docs__anchor" href="#restore-on-a-fresh-machine" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              A dump holds the grants but not the database roles they name, so create the roles first. Use the same <code>secrets</code> and <code>.env</code>,
+              with <code>BULMA_UID</code> and <code>BULMA_GID</code> set to your user on this machine.
+            </p>
+            <pre tabindex="0"><code>docker compose up -d db
+docker compose run --rm -T migrate migrate --roles-only
+docker compose exec -T db pg_restore -U postgres --exit-on-error -d bulma &lt; ~/bulma-backups/bulma-YYYY-MM-DD.dump
+docker run --rm -e OWNER=&quot;$(id -u):$(id -g)&quot; -v bulma_files:/data -v ~/bulma-backups:/backup alpine sh -c 'tar xzf /backup/files-YYYY-MM-DD.tgz -C /data &amp;&amp; chown -R &quot;$OWNER&quot; /data'
+docker compose up -d
+docker compose run --rm -T app audit verify</code></pre>
+            <p>
+              The archive keeps the owner from the old machine, and the app and the expiry job cannot write to or delete files they do not own, hence the
+              <code>chown</code>. Afterwards open a document on an entity and upload one: the audit check does not look at the files.
+            </p>
+            <p>
+              Identity documents are in the <code>files</code> volume, not the database, so a backup is both. Stop the expiry job while you take it, or it can
+              delete a file between the two:
+            </p>
+            <pre tabindex="0"><code>docker compose stop maintenance
+docker compose exec -T db pg_dump -U postgres -Fc bulma &gt; ~/bulma-backups/bulma-YYYY-MM-DD.dump
+docker run --rm -v bulma_files:/data -v ~/bulma-backups:/backup alpine tar czf /backup/files-YYYY-MM-DD.tgz -C /data .
+docker compose start maintenance</code></pre>
+            <p>
+              The volume is <code>bulma_files</code> because the compose file names the project <code>bulma</code>, whatever the folder is called. If you start
+              it under another project name (<code>-p</code> or <code>COMPOSE_PROJECT_NAME</code>), use that name instead of <code>bulma</code>;
+              <code>docker volume ls</code> shows it. The files are encrypted, so they need the same keys.
+            </p>
+            <p>
+              The master keys and HMAC key in <code>secrets</code> are needed to verify the log and read encrypted data, so a backup without them is not a full
+              backup. Test this before you need it, on a separate machine.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

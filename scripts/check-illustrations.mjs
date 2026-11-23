@@ -132,7 +132,7 @@ export function checkIllustrations({ html, css, goten, trunks, snapshot, fail })
     }
     return out
   }
-  for (const url of ['/', '/goten/']) {
+  for (const url of ['/goten/']) {
     const ledger = /<ul class="ledger">[\s\S]*?<\/ul>/.exec(html[url] ?? '')?.[0] ?? ''
     const rows = [...ledger.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map((m) => m[1])
     if (rows.length !== 4) fail(`${url}: the bank statement should have 4 rows, found ${rows.length}`)

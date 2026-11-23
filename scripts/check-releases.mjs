@@ -1,6 +1,6 @@
 // Plan 36 §11 F3d: is the site behind a product release? Compares each module's newest release tag in its public repo with the
 // version the site is built from (site-src/docs.json). Prints what to do and exits 1 when a module is behind; the daily
-// "Goten and Trunks drift" workflow then opens or updates an issue. Any error (network, no tags, bad version) exits 2, which
+// "Product drift" workflow then opens or updates an issue. Any error (network, no tags, bad version) exits 2, which
 // fails the job without an issue. Tags count as releases: the products tag at their release step.
 // Usage: node scripts/check-releases.mjs
 import { execFileSync } from 'node:child_process'
@@ -35,8 +35,8 @@ if (behind.length) {
       '',
       ...behind,
       '',
-      'To update: move the pins (goten.ref or trunks.ref, and the docs pin and version in site-src/docs.json; for Trunks also the',
-      'demo package), run npm run goten:fetch, trunks:fetch, docs:fetch, node scripts/build-docs.mjs and npm run site:check,',
+      'To update: move the pins (bulma.ref, goten.ref or trunks.ref, and the docs pin and version in site-src/docs.json; for Trunks',
+      'also the demo package), run npm run bulma:fetch, goten:fetch, trunks:fetch, docs:fetch, node scripts/build-docs.mjs and npm run site:check,',
       'then the owner checks a local preview before the release steps (handbook §8, G3).',
     ].join('\n'),
   )

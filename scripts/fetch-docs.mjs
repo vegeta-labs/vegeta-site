@@ -6,10 +6,14 @@ import { existsSync, mkdirSync, readFileSync } from 'node:fs'
 
 const spec = JSON.parse(readFileSync('site-src/docs.json', 'utf8'))
 let failed = false
+// Before Bulma's first public release (plan 39 D10, S6) BULMA_REPO names a local clone, as for scripts/fetch-bulma.mjs; the
+// pin in docs.json stays the public repo and a full commit id, and the same commit is fetched from the clone
+const LOCAL = { bulma: process.env.BULMA_REPO }
 for (const { id, source } of spec.products) {
   if (!source) continue
-  const { repo, ref } = source
-  if (!/^https:\/\/github\.com\/vegeta-labs\/[a-z-]+$/.test(repo) || !/^[0-9a-f]{40}$/.test(ref)) {
+  const { repo: publicRepo, ref } = source
+  const repo = LOCAL[id] ?? publicRepo
+  if (!/^https:\/\/github\.com\/vegeta-labs\/[a-z-]+$/.test(publicRepo) || !/^[0-9a-f]{40}$/.test(ref)) {
     console.error(`docs: ${id} needs a public vegeta-labs repo and one full commit id`)
     failed = true
     continue

@@ -1,8 +1,58 @@
 {
-  "film": "Vegeta Cut 16 (wide web cut: same words)",
+  "film": "Vegeta Cut 17 (wide web cut: same words; design repo d03eec0, line 4 re-take)",
   "goten": "91879ea4a952dff0bc3b297ee346bb645f81aa83",
   "trunks": "f8a0d5530947606ecf8fc1a99305490fe63fb85a",
   "claims": [
+    {
+      "says": "The operator's reviewer approves a deal before investors see it",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/lead-guide.md:3"
+    },
+    {
+      "says": "Invites investors by link; a link can carry its own terms where the operator allows it (the film: 'a link can carry its own terms')",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/lead-guide.md:55"
+    },
+    {
+      "says": "An investor confirms eligibility before seeing a deal",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/investor-guide.md:19"
+    },
+    {
+      "says": "Shows how the amount to pay is made up before committing",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/investor-guide.md:44"
+    },
+    {
+      "says": "Signing only after the identity check has passed; payment instructions after signing",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/investor-guide.md:62"
+    },
+    {
+      "says": "A change to a live deal's terms (the film: the valuation) goes to a reviewer; a higher price always needs reconfirming; an approver then approves it where the operator asks",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/lead-guide.md:116"
+    },
+    {
+      "says": "A change of terms: 'Do not send money: your earlier payment instructions are no longer valid'",
+      "module": "bulma",
+      "evidence": "vendor/bulma/src/lib/mailContent.ts:60"
+    },
+    {
+      "says": "Investors reconfirm changed terms and get new payment details",
+      "module": "bulma",
+      "evidence": "vendor/bulma/docs/en/use/investor-guide.md:97"
+    },
+    {
+      "says": "The lead sees each investor's status and who it waits on",
+      "module": "bulma",
+      "evidence": "vendor/bulma/src/web/LeadPanel.tsx:342"
+    },
+    {
+      "says": "The team imports the investor list into Goten (a person does it; nothing is handed over automatically)",
+      "module": "goten",
+      "evidence": "vendor/goten/docs/en/use/import-csv.md:7"
+    },
     {
       "says": "Books a payment only when its reference matches exactly one investor",
       "module": "goten",
@@ -46,12 +96,12 @@
     {
       "says": "Film figures computed by the pinned Goten engines",
       "module": "goten",
-      "evidence": "vegeta-design/films/cut_16/data/cut16_fixture.json:3"
+      "evidence": "vegeta-labs/vegeta-design@1349f3a films/cut_17/data/cut17_fixture.json:3 (gotenRef 91879ea = goten.ref)"
     },
     {
-      "says": "Links each email to the deal, the investor and the ledger",
+      "says": "Links each email to the deal, the investor and the contact in your directory (the ledger: see the next claim)",
       "module": "trunks",
-      "evidence": "vendor/trunks/README.md:7"
+      "evidence": "vendor/trunks/README.md:6"
     },
     {
       "says": "Shows the ledger status from the imported Goten ledger",
@@ -113,5 +163,6 @@
       "module": "trunks",
       "evidence": "vendor/trunks/src/web/CaseE3.tsx:517"
     }
-  ]
+  ],
+  "bulma": "e0166a67c51edebce77f91d0d53c208b292cdebb"
 }

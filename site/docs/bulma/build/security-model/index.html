@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Security model | Vegeta</title>
+    <meta
+      name="description"
+      content="This page describes what Bulma does to limit harm, and where its limits are. It does not replace your own security assessment, and nothing in it means an instance meets the operator's legal duties or is safe by itself."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Security model | Vegeta" />
+    <meta
+      property="og:description"
+      content="This page describes what Bulma does to limit harm, and where its limits are. It does not replace your own security assessment, and nothing in it means an instance meets the operator's legal duties or is safe by itself."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/security-model/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Security model | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="This page describes what Bulma does to limit harm, and where its limits are. It does not replace your own security assessment, and nothing in it means an instance meets the operator's legal duties or is safe by itself."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/security-model/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build/security-model.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/" aria-current="page">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/" aria-current="page">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Security model</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              This page describes what Bulma does to limit harm, and where its limits are. It does not replace your own security assessment, and nothing in it
+              means an instance meets the operator&#39;s legal duties or is safe by itself.
+            </p>
+            <p>
+              To report a vulnerability, see
+              <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/SECURITY.md">SECURITY.md</a>. Which controls are the
+              software&#39;s and which are yours is in <a href="/docs/bulma/build/responsibilities/">who does what</a>.
+            </p>
+            <h2 id="what-it-never-does">What it never does<a class="docs__anchor" href="#what-it-never-does" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>It never moves money, holds shares or runs a wallet. Money is recorded by a person after it happened at the bank.</li>
+              <li>It has no telemetry and sends nothing to the project.</li>
+              <li>
+                In the sandbox, no email leaves, and there is no way to type in the payment instructions investors pay to: they come only from a file at the
+                switch. An investor can enter their own bank account for refunds in any mode, so use made-up details in the sandbox.
+              </li>
+            </ul>
+            <h2 id="sign-in-and-sessions">Sign-in and sessions<a class="docs__anchor" href="#sign-in-and-sessions" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Control</th>
+                    <th>How</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Passwords</td>
+                    <td>
+                      Stored as argon2id hashes. At least 12 characters. An account an admin creates starts with a temporary password that must be changed
+                      before anything else.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Failed sign-ins</td>
+                    <td>
+                      Counted per network address and per email in a 15-minute window; after 10 failed attempts, more are refused until the window ends. Unknown
+                      user, wrong password and too many attempts get the same answer.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Two-step sign-in</td>
+                    <td>
+                      Time-based one-time codes, with ten recovery codes shown once. Each code works once. The secret is stored encrypted. Turning it on ends
+                      the account&#39;s other sessions.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Session cookie</td>
+                    <td>
+                      A random token in an <code>HttpOnly</code>, <code>SameSite=Strict</code> cookie, marked <code>Secure</code> unless
+                      <code>INSECURE_COOKIES=1</code>. It lasts 12 hours. The database keeps only an HMAC of the token.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ending sessions</td>
+                    <td>
+                      Changing the password or turning on two-step sign-in raises the account&#39;s credential version, which ends older sessions. Disabling an
+                      account deletes its sessions. Links issued before a credential change stop working.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CSRF</td>
+                    <td>Every request that is not a <code>GET</code> must carry a token derived from the session, compared in constant time.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Behind a reverse proxy, set <code>TRUST_PROXY</code> to the proxy&#39;s address. Without it every visitor shares one address, and ten failed
+              sign-ins lock out everyone: see
+              <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md#try-it">Try it</a>.
+            </p>
+            <h2 id="roles-and-access">Roles and access<a class="docs__anchor" href="#roles-and-access" aria-label="Link to this section">#</a></h2>
+            <p>
+              There are three staff roles: admin, reviewer and approver. A role counts only once its holder has a proven email address, a password that is not
+              temporary, and two-step sign-in turned on. Leads and investors have no role; they need a signed-in account with a proven email address.
+            </p>
+            <p>
+              Access to one deal is decided again for that deal. A reviewer or approver who leads, works on or receives carry from a deal, or is in its
+              syndicate, cannot review or approve it. In the real mode, role changes and some other changes wait for a second admin: see
+              <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>.
+            </p>
+            <h2 id="gates">Gates<a class="docs__anchor" href="#gates" aria-label="Link to this section">#</a></h2>
+            <p>
+              Every route names a gate from <code>src/lib/gate.ts</code>, and the gates deny by default. A route that names no gate, or is marked public without
+              being on the server&#39;s public list, stops the server starting. <code>npm run check:routes</code> lists every route with its gate. See
+              <a href="/docs/bulma/build/architecture/#gates">Gates</a> in the architecture page.
+            </p>
+            <h2 id="browser-protections">Browser protections<a class="docs__anchor" href="#browser-protections" aria-label="Link to this section">#</a></h2>
+            <p>Every response carries these headers:</p>
+            <ul>
+              <li>
+                a content security policy that allows scripts, styles, images, fonts and connections from the same origin only, with no inline scripts or
+                styles, no plugins and no framing of the app (<code>frame-ancestors &#39;none&#39;</code>);
+              </li>
+              <li>
+                <code>X-Frame-Options: DENY</code>, <code>X-Content-Type-Options: nosniff</code>, <code>Referrer-Policy: no-referrer</code> and
+                <code>Cache-Control: no-store</code>.
+              </li>
+            </ul>
+            <p>
+              The only exception an operator can add is framing a deck from named sites, over HTTPS. The browser tests run against a production build with this
+              policy, so a page that breaks it fails a test.
+            </p>
+            <p>
+              The server also limits a JSON body to 2 MB and an uploaded file to 15 MB (100 MB for a deal&#39;s legal documents), refuses bodies nested more
+              than 64 levels or holding characters Postgres cannot store, and gives a request at most three minutes to arrive. Its log records method, path and
+              status only: never bodies, cookies or query strings.
+            </p>
+            <h2 id="what-is-stored">What is stored<a class="docs__anchor" href="#what-is-stored" aria-label="Link to this section">#</a></h2>
+            <p>
+              Everything is in your Postgres database and, in the real mode, your file directory. The sandbox keeps files in memory, and they are gone after a
+              restart.
+            </p>
+            <ul>
+              <li>
+                <strong>Encryption.</strong> Uploaded files, queued mail bodies, two-step secrets and some link tokens are encrypted with AES-256-GCM, each with
+                its own data key wrapped by a master key. Master keys have IDs, so a new one can be added while old data stays readable.
+              </li>
+              <li>
+                <strong>Lookups.</strong> Sign-in throttling, sessions, CSRF tokens and recovery codes use HMAC-SHA256 with a separate key, so the raw values
+                are not stored.
+              </li>
+              <li>
+                <strong>Not encrypted.</strong> Other records, such as names, email addresses, deal terms, amounts and investors&#39; bank account details, are
+                ordinary database rows. Protect the database, its backups and the <code>secrets/</code> folder: see
+                <a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a>.
+              </li>
+              <li>
+                <strong>Retention.</strong> The <code>maintenance</code> service removes personal data when its retention period ends, using its own database
+                role, the only one allowed to delete that data. It gets the HMAC key but not the master keys.
+              </li>
+            </ul>
+            <h2 id="database-roles-and-containers">
+              Database roles and containers<a class="docs__anchor" href="#database-roles-and-containers" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              The server connects as <code>bulma_app</code>, which has only the grants each table needs: the audit tables allow reading and adding, not
+              changing. Migrations run once at start as the database owner, then exit.
+            </p>
+            <p>
+              In <code>docker-compose.yml</code>, the application containers run as a non-root user with a read-only root file system, drop all Linux
+              capabilities and set <code>no-new-privileges</code>. The app&#39;s port is published on <code>127.0.0.1</code> only; HTTPS in front of it is yours
+              to provide.
+            </p>
+            <h2 id="audit-log">Audit log<a class="docs__anchor" href="#audit-log" aria-label="Link to this section">#</a></h2>
+            <p>Every change writes an audit entry in the same transaction as the change.</p>
+            <ul>
+              <li>Entries form a hash chain: each holds the hash of the one before, the software version and the active pack version.</li>
+              <li>
+                The audit row holds IDs and an HMAC of the detail. Personal details go in a separate table, which can be deleted when its retention ends; the
+                row stays, and the chain still checks.
+              </li>
+              <li>Database triggers refuse any update or deletion of audit rows, and any update of their detail.</li>
+              <li>
+                <code>audit verify</code> walks the chain and checks every detail still present against its HMAC. <code>audit head</code> prints the latest
+                entry so you can keep it elsewhere, and <code>audit check-head</code> compares the database with it later. See
+                <a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a>.
+              </li>
+            </ul>
+            <p>
+              A hash chain shows that the log was changed; it cannot stop someone with full database access from rewriting it. Keeping an exported head outside
+              the instance is what makes that visible.
+            </p>
+            <h2 id="outbound-requests">Outbound requests<a class="docs__anchor" href="#outbound-requests" aria-label="Link to this section">#</a></h2>
+            <p>
+              The server makes outbound connections only through the adapters, and only in the real mode, to services you configure: your SMTP server, Sumsub
+              for KYC if you set it up, and your ClamAV scanner. The KYC webhook is accepted only with a valid HMAC-SHA256 or SHA-512 signature.
+            </p>
+            <p>
+              <code>npm run check:outbound</code> searches the source in <code>src/</code> for known network calls and outside host names. It fails if one
+              appears outside the adapter files and the browser&#39;s API client, if a host other than the KYC provider&#39;s API is named, or if a known
+              analytics package is added. It does not inspect the code of dependencies. A browser test records every request the pages make and fails if one
+              leaves the app&#39;s own address.
+            </p>
+            <h2 id="sandbox-by-default">Sandbox by default<a class="docs__anchor" href="#sandbox-by-default" aria-label="Link to this section">#</a></h2>
+            <p>
+              A new instance is a sandbox. It always uses fake adapters, whatever is configured: mail is kept in a table you can read under
+              <strong>Sandbox outbox</strong>, and KYC, signatures and virus scanning are simulated. A mail queued in the sandbox is never sent, even after the
+              switch. The switch to the real mode needs a second admin, and there is no way back. See
+              <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>.
+            </p>
+            <h2 id="what-the-operator-is-responsible-for">
+              What the operator is responsible for<a class="docs__anchor" href="#what-the-operator-is-responsible-for" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              The software records what people state and decide; it does not check that those statements are true. You are responsible for, among other things:
+            </p>
+            <ul>
+              <li>HTTPS, the reverse proxy and <code>TRUST_PROXY</code>;</li>
+              <li>the host, Docker, Postgres and their updates;</li>
+              <li>keeping <code>secrets/</code>, the database and backups safe;</li>
+              <li>making sure each admin and reviewer account belongs to a different real person;</li>
+              <li>the SMTP server, the KYC provider contract and the virus scanner in the real mode;</li>
+              <li>
+                everything in <a href="/docs/bulma/build/responsibilities/">who does what</a> and the
+                <a href="/docs/bulma/build/due-diligence/">due-diligence note</a>.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

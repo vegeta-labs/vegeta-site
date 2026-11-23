@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Bulma — SPV Workspace — release notes | Vegeta</title>
+    <meta name="description" content="Only what is built, tested and in the tagged version is listed. Format: release notes template." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bulma — SPV Workspace — release notes | Vegeta" />
+    <meta property="og:description" content="Only what is built, tested and in the tagged version is listed. Format: release notes template." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/release-notes/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bulma — SPV Workspace — release notes | Vegeta" />
+    <meta name="twitter:description" content="Only what is built, tested and in the tagged version is listed. Format: release notes template." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/release-notes/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/release-notes.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li>
+              <a href="/docs/bulma/release-notes/" aria-current="page">Release notes</a>
+              <ul class="docs__sub">
+                <li>
+                  <a href="#v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default"
+                    >v0.1.0 <span>2026-11-21</span></a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li>
+                  <a href="/docs/bulma/release-notes/" aria-current="page">Release notes</a>
+                  <ul class="docs__sub">
+                    <li>
+                      <a href="#v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default"
+                        >v0.1.0 <span>2026-11-21</span></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Bulma — SPV Workspace — release notes</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Only what is built, tested and in the tagged version is listed. Format:
+              <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/release-notes-template.md"
+                >release notes template</a
+              >.
+            </p>
+            <h2 id="v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default">
+              v0.1.0 (2026-11-21): Run an SPV deal from set-up to money received, refunds and a request to close, in a sandbox by default<a
+                class="docs__anchor"
+                href="#v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The first version. A new instance starts as a sandbox with fictional data, and no email leaves it. A lead sets up a deal and a syndicate; the
+              company sends its documents through a link without an account; a reviewer approves the deal and the lead takes it live. Investors are invited by
+              link or email, confirm eligibility, commit, pass an identity check decided by a person at the operator, sign the deal sheet and get payment
+              instructions. A reviewer or admin records the money that arrives, by hand or from a bank statement, and handles money nobody could be matched to,
+              refunds and money held after a refused identity check. The software never moves money.
+            </p>
+            <p>Also in this version:</p>
+            <ul>
+              <li>
+                Email from a real instance through the operator&#39;s SMTP server, with a queue that retries; reminders to commit, to pay and to reconfirm.
+              </li>
+              <li>
+                The lead&#39;s panel: who is waiting on whom, figures, filters, a CSV of the list, a preview of the deal as an investor sees it, and messages to
+                investors that an approver passes first.
+              </li>
+              <li>
+                Changes to a live deal: changes to what investors get are always reconfirmed; for other changes a reviewer decides whether investors are only
+                told or must reconfirm. Investors reconfirm on screen.
+              </li>
+              <li>When a deal is full: a proposed new amount that the investor answers on one screen, or a waiting list.</li>
+              <li>
+                Removing an investor from whom no money has arrived; recording a withdrawal, with written consent whose evidence a reviewer accepts before the
+                withdrawal takes effect and its refund is listed; cancelling a deal, confirmed by a second person.
+              </li>
+              <li>
+                For the operator: one to-do list across deals, complaints, an evidence pack per investor (PDF and JSON), and time limits on how long records are
+                kept.
+              </li>
+              <li>A roster for Goten and a read-back of Goten&#39;s reconciliation ledger, which a person confirms row by row.</li>
+            </ul>
+            <p>
+              Not in this version: closing. A lead can ask to close, but nothing takes the deal on to completion, and no deal&#39;s closing or allocation is
+              handed to Goten yet. Only reconciliation is handed over: the roster goes to Goten and Goten&#39;s ledger is read back. Bulma&#39;s matching is its
+              own code, not Goten&#39;s; the differences are listed in the <a href="/docs/bulma/build/operator-guide/">Operator guide</a>.
+            </p>
+            <h3 id="gates">Gates<a class="docs__anchor" href="#gates" aria-label="Link to this section">#</a></h3>
+            <p>
+              First version: who can see or do what is described in the <a href="/docs/bulma/use/lead-guide/">Lead guide</a>, the
+              <a href="/docs/bulma/use/investor-guide/">Investor guide</a> and the <a href="/docs/bulma/build/operator-guide/">Operator guide</a>.
+            </p>
+            <h3 id="warnings">Warnings<a class="docs__anchor" href="#warnings" aria-label="Link to this section">#</a></h3>
+            <p>
+              First version: warning texts come from the operator&#39;s regime pack. The packs shipped with the software hold placeholder text, and the real
+              mode refuses placeholders.
+            </p>
+            <h3 id="calculations">Calculations<a class="docs__anchor" href="#calculations" aria-label="Link to this section">#</a></h3>
+            <p>
+              First version: amounts are integer minor units and rates are basis points. Only the amount to pay is exact; investment amounts and fees are shown
+              as estimates, because they are settled at closing, which this version does not do.
+            </p>
+            <h3 id="other-changes">Other changes<a class="docs__anchor" href="#other-changes" aria-label="Link to this section">#</a></h3>
+            <p>Checked on the release branch on 2026-11-20, run locally:</p>
+            <ul>
+              <li>Unit and real-database tests: 1,130 of 1,130 pass.</li>
+              <li>Browser tests: 40 of 40 pass.</li>
+              <li>Test-plan cases due by this version: 185 of 185 have a passing test.</li>
+              <li>Deliberate code breakages (full mutation run): 1,477 of 1,477 caught.</li>
+              <li>Python oracle, written separately from the code: 35,084 of 35,084 random and boundary cases match.</li>
+            </ul>
+            <p>
+              The published version adds two tests for the check that keeps private files out of the public repository, and gives two slow reminder tests a
+              longer time limit. In the public repository&#39;s CI on 2026-11-20, 1,131 of its 1,132 unit and real-database tests passed and one was skipped (it
+              needs the private list, which only the development repository has), and the 40 browser tests passed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

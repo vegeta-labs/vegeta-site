@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Architecture | Vegeta</title>
+    <meta
+      name="description"
+      content="Bulma is one Node.js and TypeScript application: a Fastify server with a PostgreSQL database, and a React interface built with Vite and served by the same process. This page describes how the code is laid out, how a request is handled and where the business rules live."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Architecture | Vegeta" />
+    <meta
+      property="og:description"
+      content="Bulma is one Node.js and TypeScript application: a Fastify server with a PostgreSQL database, and a React interface built with Vite and served by the same process. This page describes how the code is laid out, how a request is handled and where the business rules live."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/architecture/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Architecture | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Bulma is one Node.js and TypeScript application: a Fastify server with a PostgreSQL database, and a React interface built with Vite and served by the same process. This page describes how the code is laid out, how a request is handled and where the business rules live."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/architecture/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build/architecture.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/" aria-current="page">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/" aria-current="page">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Architecture</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Bulma is one Node.js and TypeScript application: a Fastify server with a PostgreSQL database, and a React interface built with Vite and served by
+              the same process. This page describes how the code is laid out, how a request is handled and where the business rules live.
+            </p>
+            <p>
+              To run an instance, see <a href="/docs/bulma/build/run-and-deploy/">Run and deploy</a>. For what protects the data, see the
+              <a href="/docs/bulma/build/security-model/">security model</a>.
+            </p>
+            <h2 id="layout">Layout<a class="docs__anchor" href="#layout" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>src/
+  main.ts         the commands: init-secrets, migrate, serve, maintain, audit
+  lib/            business rules: pure functions, no database, no HTTP
+  server/         Fastify routes, grouped by milestone (d1.ts … d4Work.ts), sign-in, the mail queue, PDFs
+  store/          database pool, migrations, audit log, encryption, regime pack storage
+  adapters/       outside services: mail, KYC, signatures, file storage, virus scanning
+  maintenance/    the retention job
+  web/            the React screens, the API client, styles and design tokens
+packs/            the regime packs shipped with the software (placeholder text)
+assets/fonts/     fonts for the PDFs
+fixtures/         sample files
+scripts/          the check scripts, the mutation check and the Python oracle
+e2e/              Playwright browser tests
+deploy/           Compose additions for the real mode</code></pre>
+            <h2 id="one-image-several-commands">
+              One image, several commands<a class="docs__anchor" href="#one-image-several-commands" aria-label="Link to this section">#</a>
+            </h2>
+            <p><code>src/main.ts</code> is the only entry point. The same image runs as different services in <code>docker-compose.yml</code>:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Service</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>init-secrets &lt;dir&gt;</code></td>
+                    <td>one-off</td>
+                    <td>
+                      Writes the database passwords, master key, HMAC key and first admin password, each to its own file. It never overwrites a file that
+                      exists.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>migrate [--roles-only]</code></td>
+                    <td><code>migrate</code></td>
+                    <td>Creates the database roles and applies new migrations, then exits.</td>
+                  </tr>
+                  <tr>
+                    <td><code>serve</code></td>
+                    <td><code>app</code></td>
+                    <td>Starts the HTTP server and the mail queue worker.</td>
+                  </tr>
+                  <tr>
+                    <td><code>maintain [--once]</code></td>
+                    <td><code>maintenance</code></td>
+                    <td>Runs the retention job once a day, as a separate database role.</td>
+                  </tr>
+                  <tr>
+                    <td><code>audit verify</code>, <code>audit head</code>, <code>audit check-head</code>, <code>audit export</code></td>
+                    <td>one-off</td>
+                    <td>Checks or exports the audit log.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="request-flow">Request flow<a class="docs__anchor" href="#request-flow" aria-label="Link to this section">#</a></h2>
+            <ol>
+              <li>
+                The browser calls <code>/api/...</code> through <code>src/web/api.ts</code>, which sends the CSRF token on every request that is not a
+                <code>GET</code>.
+              </li>
+              <li>
+                <code>buildServer</code> in <code>src/server/app.ts</code> refuses a body that is nested too deeply or holds characters PostgreSQL cannot store.
+              </li>
+              <li>
+                The route&#39;s gate is read. A <code>public</code> route goes straight to its handler. Any other route needs a live session, a valid CSRF token
+                for writes, and a gate that says yes; otherwise the answer is 401 or 403.
+              </li>
+              <li>
+                The handler reads what it needs, calls pure functions in <code>src/lib/</code> to decide, and writes the result and its audit entry in one
+                database transaction.
+              </li>
+              <li>Every response gets the security headers, including the content security policy.</li>
+            </ol>
+            <h2 id="gates">Gates<a class="docs__anchor" href="#gates" aria-label="Link to this section">#</a></h2>
+            <p>
+              Every route declares a gate by name in its config, for example <code>{ config: { gate: &#39;canRecordMoney&#39; } }</code>. The names are the keys
+              of <code>GATES</code> in <code>src/lib/gate.ts</code>. When a route is registered, the server checks it:
+            </p>
+            <ul>
+              <li>a route with no gate, or a name that is not in <code>GATES</code>, stops the server starting;</li>
+              <li>a route marked <code>public</code> that is not in <code>PUBLIC_ROUTES</code> in <code>src/server/app.ts</code> stops the start too.</li>
+            </ul>
+            <p>
+              Route gates answer &quot;may this person call this at all&quot;: signed in, a verified email, two-step sign-in on, a role. Decisions about one
+              deal or one person are further pure functions in the same file, such as <code>canAdministerDeal</code>, <code>canReviewDeal</code>,
+              <code>canCommit</code> and <code>canSeePaymentInstructions</code>. Handlers call them with facts read from the database. A reviewer who leads,
+              works on or receives carry from a deal fails <code>canReviewDeal</code> for it.
+            </p>
+            <p><code>npm run check:routes</code> builds the server without a database and prints every route with its gate.</p>
+            <h2 id="business-rules">Business rules<a class="docs__anchor" href="#business-rules" aria-label="Link to this section">#</a></h2>
+            <p>Business judgement lives in <code>src/lib/</code>, as pure functions with no database or network access. Examples:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>What it decides</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>gate.ts</code></td>
+                    <td>Who may see or do what.</td>
+                  </tr>
+                  <tr>
+                    <td><code>dealState.ts</code>, <code>dealLife.ts</code></td>
+                    <td>Which moves a deal may make between states.</td>
+                  </tr>
+                  <tr>
+                    <td><code>fees.ts</code>, <code>money.ts</code></td>
+                    <td>Fees, the amount to pay, and the money held for each participation.</td>
+                  </tr>
+                  <tr>
+                    <td><code>allocation.ts</code></td>
+                    <td>A lead&#39;s proposed amount, a full deal and the waiting list.</td>
+                  </tr>
+                  <tr>
+                    <td><code>statement.ts</code>, <code>reference.ts</code>, <code>unallocated.ts</code></td>
+                    <td>Bank statement imports, payment references, money not yet assigned, and the roster for Goten.</td>
+                  </tr>
+                  <tr>
+                    <td><code>eligibility.ts</code>, <code>participation.ts</code></td>
+                    <td>Whether a person may continue with a deal.</td>
+                  </tr>
+                  <tr>
+                    <td><code>outbox.ts</code></td>
+                    <td>Whether a queued mail should still go, and when to try again.</td>
+                  </tr>
+                  <tr>
+                    <td><code>regimePack.ts</code></td>
+                    <td>Reading a regime pack and checking its format.</td>
+                  </tr>
+                  <tr>
+                    <td><code>retention.ts</code></td>
+                    <td>When records are due to be removed.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The server modules read facts, call these functions and store the result. The screens show what the server returns; the server judges every input
+              again.
+            </p>
+            <h2 id="money">Money<a class="docs__anchor" href="#money" aria-label="Link to this section">#</a></h2>
+            <p>
+              Money is stored and calculated as integer minor units (pence or cents), rates as basis points, and share prices as millionths of a currency unit
+              (&quot;micros&quot;). Arithmetic is on <code>BigInt</code>; multiplication and division go through <code>mulDiv</code> and
+              <code>mulDivHalfUp</code> in <code>src/lib/fees.ts</code>, so rounding happens only where a rule says so. Amounts typed into forms are read by
+              <code>src/lib/pounds.ts</code> without floating point.
+            </p>
+            <p>
+              Bulma records money; it never moves it. Receipts and refunds are rows, and each event is applied through <code>applyMoney</code> in
+              <code>src/lib/money.ts</code> inside the business transaction.
+            </p>
+            <h2 id="database-and-migrations">
+              Database and migrations<a class="docs__anchor" href="#database-and-migrations" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              PostgreSQL 16. Migrations are plain SQL files in <code>src/store/migrations/</code>, numbered and applied in order by
+              <code>src/store/migrate.ts</code> under an advisory lock. Each applied file&#39;s SHA-256 is stored, and the migration stops if a file already
+              applied has changed. A schema change is always a new file; <code>npm run check:migrations</code> fails if a file on the base branch was changed or
+              removed.
+            </p>
+            <p>The migration creates two login roles besides the owner:</p>
+            <ul>
+              <li>
+                <code>bulma_app</code>, used by the server, with only the grants each table needs. The audit tables, for example, allow <code>SELECT</code> and
+                <code>INSERT</code> only.
+              </li>
+              <li><code>bulma_maintenance</code>, used by the retention job, the role that removes data whose retention has ended.</li>
+            </ul>
+            <h2 id="mail-outbox">Mail outbox<a class="docs__anchor" href="#mail-outbox" aria-label="Link to this section">#</a></h2>
+            <p>
+              Mail is never sent inside a request. <code>enqueue</code> in <code>src/server/outbox.ts</code> writes the mail to
+              <code>notification_outbox</code> in the same transaction as the change it reports, with its body encrypted and the instance mode at that moment. A
+              worker picks due rows one at a time and, before every attempt, decides again from current data (<code>decideSend</code> in
+              <code>src/lib/outbox.ts</code>). A mail queued in one mode is never sent in the other. Delivery is at least once: a crash between sending and the
+              commit sends again.
+            </p>
+            <h2 id="sandbox-and-real-adapters">
+              Sandbox and real adapters<a class="docs__anchor" href="#sandbox-and-real-adapters" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Outside services sit behind interfaces in <code>src/adapters/index.ts</code>: <code>Mailer</code>, <code>KycProvider</code>,
+              <code>SignatureProvider</code>, <code>Storage</code> and <code>VirusScanner</code>. <code>selectAdapters</code> picks them by mode:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Mode</th>
+                    <th>Adapters</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sandbox</td>
+                    <td>
+                      Fakes only, whatever is configured. Mail goes to the <code>sandbox_outbox</code> table, files are kept in memory with a size limit, and
+                      KYC, signatures and scanning are simulated.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Real</td>
+                    <td>
+                      The adapters set up in <code>src/adapters/fromEnv.ts</code>: SMTP from <code>SMTP_SETTINGS_FILE</code>, Sumsub when all four of its
+                      settings are set, files under <code>STORAGE_DIR</code>, ClamAV at <code>CLAMD_HOST</code>. An adapter that is not configured throws when
+                      used.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Setting these up is described in <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>.</p>
+            <h2 id="regime-packs">Regime packs<a class="docs__anchor" href="#regime-packs" aria-label="Link to this section">#</a></h2>
+            <p>
+              A regime pack is a JSON file that holds the eligibility steps and their order, the assessment questions, and the warning and legal texts for one
+              regime. The two packs in <code>packs/</code> (<code>uk-fpo-template</code>, <code>uk-cobs-template</code>) hold placeholder text.
+              <code>src/lib/regimePack.ts</code> parses a pack and checks its format; passing says nothing about whether the pack meets the rules of that
+              regime. Stored pack versions never change: an edit is a new version. Keys of the form <code>uk-...-template</code> are kept for shipped packs, and
+              the real mode refuses a pack that still holds placeholder text.
+            </p>
+            <h2 id="audit-log">Audit log<a class="docs__anchor" href="#audit-log" aria-label="Link to this section">#</a></h2>
+            <p>
+              Every change writes an entry with <code>appendAudit</code> in <code>src/store/audit.ts</code>, inside the same transaction. Entries form a hash
+              chain. See <a href="/docs/bulma/build/security-model/#audit-log">the audit log</a> in the security model.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

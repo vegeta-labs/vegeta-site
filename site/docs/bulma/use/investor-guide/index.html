@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Investor guide: from an invitation to payment instructions | Vegeta</title>
+    <meta
+      name="description"
+      content="You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator who runs the instance, so yours may differ a little from this page."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Investor guide: from an invitation to payment instructions | Vegeta" />
+    <meta
+      property="og:description"
+      content="You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator who runs the instance, so yours may differ a little from this page."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/use/investor-guide/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Investor guide: from an invitation to payment instructions | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator who runs the instance, so yours may differ a little from this page."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/use/investor-guide/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/use/investor-guide.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/" aria-current="page">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/" aria-current="page">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Investor guide: from an invitation to payment instructions</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator who runs
+              the instance, so yours may differ a little from this page.
+            </p>
+            <h2 id="1-open-your-invitation">
+              1. Open your invitation<a class="docs__anchor" href="#1-open-your-invitation" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              An invitation is a link from the lead, by email or by hand. Opening it shows <strong>You have been invited</strong> and a reference, but no
+              details of the deal yet. <strong>Before you start</strong> says how many steps there are and roughly how long they take; times are estimates.
+            </p>
+            <p>
+              Then click <strong>Sign in or create an account</strong>. Your browser remembers the invitation for 30 days and adds it to your account when you
+              sign in from it. An invitation sent to your email address works only for an account that confirmed that address.
+            </p>
+            <p>If you see <strong>This link does not work. Ask whoever sent it for a new one.</strong>, the link is no longer usable.</p>
+            <h2 id="2-create-an-account">2. Create an account<a class="docs__anchor" href="#2-create-an-account" aria-label="Link to this section">#</a></h2>
+            <p>
+              Click <strong>Create an account</strong>: first and last name, email, and a password of at least 12 characters. Open the link in the email and
+              enter the same password to confirm your address. Two-step sign-in is optional for investors: turn it on under <strong>Your account</strong> with
+              <strong>Turn on two-step sign-in</strong>.
+            </p>
+            <h2 id="3-eligibility">3. Eligibility<a class="docs__anchor" href="#3-eligibility" aria-label="Link to this section">#</a></h2>
+            <p>
+              On <strong>Home</strong>, the <strong>Eligibility</strong> card lists your steps in order, marked <strong>(done)</strong> or
+              <strong>(next)</strong>. These are needed before you can see a deal. Depending on the operator, they include:
+            </p>
+            <ul>
+              <li>
+                <strong>Statement</strong> (called <strong>Classification</strong> under some operators): choose <strong>High net worth</strong>,
+                <strong>Sophisticated</strong> or <strong>None of these</strong>, answer the questions and type your full name to sign. A qualifying statement
+                lasts 12 months. If it does not qualify, you cannot continue for 12 months, unless the operator reopens it.
+              </li>
+              <li>
+                <strong>Assessment</strong>: multiple-choice questions, and every answer must be right. You can try again, with different questions; after the
+                second failed attempt, each further try waits 24 hours.
+              </li>
+              <li><strong>A risk warning</strong> to read and confirm.</li>
+              <li>
+                <strong>A waiting period</strong> under some operators&#39; rules: you click <strong>Ask to see deals</strong>, which starts a wait of at least
+                24 hours. You then read a <strong>Before you go on</strong> warning addressed to you and choose <strong>Continue</strong> or
+                <strong>Leave</strong>, then go on with the statement and the assessment. When the wait is over, you choose <strong>Continue</strong> or
+                <strong>Leave</strong> again.
+              </li>
+            </ul>
+            <h2 id="4-who-you-invest-as">4. Who you invest as<a class="docs__anchor" href="#4-who-you-invest-as" aria-label="Link to this section">#</a></h2>
+            <p>
+              Under <strong>Who you invest as</strong>, in <strong>Add one</strong>, choose a <strong>Type</strong> (<strong>Myself</strong>,
+              <strong>A company</strong>, <strong>A trust</strong> or <strong>Another entity</strong>) and click <strong>Add</strong>. Fill in the details and
+              add proof files (PDF, PNG or JPEG). A company or trust also lists its people: directors, anyone with a share over 25% or in control, and whoever
+              acts for it. Each beneficial owner confirms their details through their own link.
+            </p>
+            <p>You can also add a <strong>Bank account for refunds</strong>. It must be in the entity&#39;s name, and a person at the operator checks it.</p>
+            <h2 id="5-the-deal-page">5. The deal page<a class="docs__anchor" href="#5-the-deal-page" aria-label="Link to this section">#</a></h2>
+            <p>
+              Your deal appears under <strong>Your deals</strong>. The deal page starts with the operator&#39;s risk warning and then shows the company,
+              <strong>Key terms</strong>, any <strong>Custom terms</strong>, the <strong>Memo</strong>, the pitch deck and <strong>Documents</strong>.
+              Downloaded PDFs start with the warning.
+            </p>
+            <p>Fees and investment amounts are marked as estimates. Only the amount to pay is exact.</p>
+            <p>
+              To ask a question, use <strong>Ask the lead</strong>. The lead answers with a message: you read it on <strong>Home</strong> under
+              <strong>Messages from leads</strong>. The email only says there is a new message. A message opens only while you may see the deal; otherwise it
+              says to check your steps.
+            </p>
+            <p>If you do not want to invest, click <strong>I will not invest</strong>.</p>
+            <h2 id="6-commit">6. Commit<a class="docs__anchor" href="#6-commit" aria-label="Link to this section">#</a></h2>
+            <p>
+              Under <strong>Invest</strong>, type an amount and click <strong>Show what I would pay</strong>. You see how the amount to pay is made up, and
+              estimates of your investment where the platform fee is shared at close. Choose <strong>Who is investing</strong> (and, if the deal offers one, a
+              <strong>Tax scheme</strong>), then click <strong>Commit</strong> with the amount. You can commit before your identity check passes.
+            </p>
+            <p>
+              Each commitment has its own <strong>Payment reference</strong>. <strong>Change the amount</strong> works while the deal is live: up or down until
+              money arrives, then only up. A change means signing again, and earlier payment details stop being valid. To withdraw after paying, see
+              <a href="#leaving-a-deal">Leaving a deal</a>.
+            </p>
+            <p>
+              If the deal is full, <strong>Show what I would pay</strong> says why instead of offering <strong>Commit</strong>. If the lead keeps a waiting
+              list, click <strong>Join the waiting list for</strong> the amount. Nothing is created for you to pay while you wait. The
+              <strong>Waiting list</strong> card shows <strong>Waiting</strong> or <strong>Let in</strong>; the lead decides who is let in, in no set order, and
+              you are told. Once let in, commit as usual; whether there is room is checked again when you commit. <strong>Leave the waiting list</strong> takes
+              you off it.
+            </p>
+            <h2 id="7-identity-check">7. Identity check<a class="docs__anchor" href="#7-identity-check" aria-label="Link to this section">#</a></h2>
+            <p>You can send the check as soon as the entity is added, even before you commit. It must pass before you sign.</p>
+            <p>
+              When nothing is missing, tick <strong>This information is true</strong> and click <strong>Send for review, no face scan</strong>. On a real
+              instance with an identity provider you may also see <strong>Check me through the provider</strong>. Either way, a person at the operator decides.
+              The status shows next to the entity:
+            </p>
+            <p>
+              <strong>To do</strong>, <strong>With the provider</strong>, <strong>In review</strong>, <strong>Passed</strong>, <strong>Sent back</strong> (with
+              the reason), <strong>Expired</strong> or <strong>Cannot be used</strong>.
+            </p>
+            <p>A pass lasts 3 years unless the operator set otherwise. Changing the entity&#39;s details sends it back to be checked.</p>
+            <h2 id="8-sign">8. Sign<a class="docs__anchor" href="#8-sign" aria-label="Link to this section">#</a></h2>
+            <p>
+              Click <strong>Deal sheet</strong> once your identity check has passed. Read it, tick
+              <strong>I have read this document and agree to sign it.</strong>, type your full name and click <strong>Sign</strong>. Some deal sheets are signed
+              as a deed outside the site; the operator sends those to you. You can always download the <strong>Signed deal sheet</strong>.
+            </p>
+            <h2 id="9-pay">9. Pay<a class="docs__anchor" href="#9-pay" aria-label="Link to this section">#</a></h2>
+            <p>
+              Click <strong>Payment details</strong>. The page shows <strong>Still to pay</strong>, your <strong>Payment reference</strong>, the
+              <strong>Pay by</strong> date, the <strong>Receiving account</strong> and a <strong>Your money</strong> panel with what the operator states about
+              the account. The software has not checked it.
+            </p>
+            <ul>
+              <li><strong>This software does not receive money. Pay only to the account shown, which the operator set up.</strong></li>
+              <li>Type the details from this page, not from a saved payee.</li>
+              <li>Pay from an account in the name of whoever invests, in the deal&#39;s currency.</li>
+              <li>Before paying, use <strong>Check these details</strong> to see they are still valid. Account changes are never sent by email.</li>
+            </ul>
+            <p>Then click <strong>I have paid</strong>. This tells the lead; it is not a receipt. A person at the operator records money when it arrives.</p>
+            <p>
+              The page also says what to ask your bank for if a payment seems stuck. If you paid with the wrong reference, click
+              <strong>I used the wrong reference</strong>, say the date, the amount, the name on your account and the reference you used, and click
+              <strong>Tell the operator</strong>. A person at the operator checks the payment and gets in touch.
+            </p>
+            <h2 id="your-statuses">Your statuses<a class="docs__anchor" href="#your-statuses" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Verifying</strong></td>
+                    <td>Your identity check has not passed yet.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>To sign</strong></td>
+                    <td>Sign the deal sheet.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>To pay</strong></td>
+                    <td>Payment details are ready.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Payment sent</strong></td>
+                    <td>You said you have paid.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Part paid</strong></td>
+                    <td>Some of the amount has been recorded as received.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Funded</strong></td>
+                    <td>The full amount has been recorded.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Funded · refund due</strong></td>
+                    <td>More than the amount has been recorded.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Reconfirm terms</strong></td>
+                    <td>The terms changed: agree or decline.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Confirm amount</strong></td>
+                    <td>The lead proposed a new amount.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Removed</strong> / <strong>Withdrawn</strong> / <strong>Cancelled</strong></td>
+                    <td>Your commitment has ended.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Not approved</strong></td>
+                    <td>The check on who you invest as was refused, so that commitment ended. Any money you paid is held while the operator deals with it.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="when-the-terms-change">
+              When the terms change<a class="docs__anchor" href="#when-the-terms-change" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              If the lead changes the deal after you committed, the deal page shows <strong>What changed since you committed</strong>: the lead&#39;s sentence
+              and what changed. Some changes are only for your information.
+            </p>
+            <p>
+              If you must reconfirm, you see <strong>The terms have changed</strong>, with the differences and the last day to answer, counted in working days.
+              Tick <strong>I have read the changes and agree to them</strong> and click <strong>Agree</strong>. If your deal sheet changed, agreeing means
+              signing it again with your full name. To decline, tick the box that says your commitment ends and click <strong>Do not agree</strong>; any money
+              you sent is refunded. Silence is not agreement: if you do not answer in time, the operator may end your commitment.
+            </p>
+            <h2 id="when-the-lead-proposes-a-new-amount">
+              When the lead proposes a new amount<a class="docs__anchor" href="#when-the-lead-proposes-a-new-amount" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              The lead can propose a new amount while no money has arrived from you. Your deal page shows <strong>The lead proposes a new amount</strong>: what
+              you pay now and what you would pay, how the new amount is made up, and the last day to answer. Your earlier payment details are no longer valid
+              once you agree.
+            </p>
+            <p>
+              To accept, tick <strong>I agree to the new amount</strong> and click <strong>Agree</strong>; if your deal sheet needs it, you then sign it again.
+              To say no, click <strong>Keep my amount</strong>. If you do not answer in time, your amount stays as it is. If the deal no longer has room for a
+              higher amount, the page says so and you can only keep your amount.
+            </p>
+            <h2 id="leaving-a-deal">Leaving a deal<a class="docs__anchor" href="#leaving-a-deal" aria-label="Link to this section">#</a></h2>
+            <p>There is no button to withdraw. Write to the lead.</p>
+            <ul>
+              <li>If no money has arrived from you, the lead can remove you.</li>
+              <li>
+                If money has arrived, the lead records your written request, and a reviewer at the operator accepts it. Your commitment ends and the operator
+                refunds you.
+              </li>
+            </ul>
+            <p>
+              A deal can also be cancelled. Then every commitment ends and money received is refunded. A person at the operator sends refunds from the bank,
+              normally to the account the money came from, and a second person approves each one. The app does not show a refund&#39;s progress.
+            </p>
+            <h2 id="mail-you-get">Mail you get<a class="docs__anchor" href="#mail-you-get" aria-label="Link to this section">#</a></h2>
+            <p>
+              In the sandbox no mail is sent. On a real instance you get short emails when something needs you or has happened: your commitment was recorded,
+              money was received, your identity check passed or needs more, payment and reconfirmation reminders, a new message, a changed deal, or a proposed
+              new amount. They hold no details of the deal: sign in to see them.
+            </p>
+            <p>
+              A mail whose title starts with <strong>Do not send money</strong> or <strong>Do not pay</strong> is urgent: do not pay with the details you have.
+              Open <strong>Payment details</strong> again before you pay. <strong>Your documents</strong> on <strong>Home</strong> keeps your signed deal sheet
+              and any payment details that are still valid.
+            </p>
+            <h2 id="complaints">Complaints<a class="docs__anchor" href="#complaints" aria-label="Link to this section">#</a></h2>
+            <p>
+              On <strong>Home</strong>, <strong>Complaints</strong> shows where a complaint can go. Click <strong>Make a complaint</strong>, write it and click
+              <strong>Send the complaint</strong>. The page says by when it will be acknowledged.
+            </p>
+            <h2 id="not-available-yet">Not available yet<a class="docs__anchor" href="#not-available-yet" aria-label="Link to this section">#</a></h2>
+            <p>Closing a deal is not built yet.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

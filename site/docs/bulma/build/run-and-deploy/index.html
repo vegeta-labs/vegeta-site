@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Run locally and deploy your own copy | Vegeta</title>
+    <meta
+      name="description"
+      content="This page starts a Bulma instance with Docker Compose, sets up a machine for development, and explains how to deploy and check your own copy. A new instance is always a sandbox, with fictional data and no email leaving it."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Run locally and deploy your own copy | Vegeta" />
+    <meta
+      property="og:description"
+      content="This page starts a Bulma instance with Docker Compose, sets up a machine for development, and explains how to deploy and check your own copy. A new instance is always a sandbox, with fictional data and no email leaving it."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/run-and-deploy/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Run locally and deploy your own copy | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="This page starts a Bulma instance with Docker Compose, sets up a machine for development, and explains how to deploy and check your own copy. A new instance is always a sandbox, with fictional data and no email leaving it."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/run-and-deploy/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build/run-and-deploy.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/" aria-current="page">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/" aria-current="page">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Run locally and deploy your own copy</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              This page starts a Bulma instance with Docker Compose, sets up a machine for development, and explains how to deploy and check your own copy. A
+              new instance is always a sandbox, with fictional data and no email leaving it.
+            </p>
+            <p>There is no published image, so you build it from this repository.</p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Need</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Docker with Compose v2</td>
+                    <td>To run an instance. The image is built on Node.js 22 and the database is PostgreSQL 16.</td>
+                  </tr>
+                  <tr>
+                    <td>Node.js 22 or later</td>
+                    <td>Only to develop or run the tests. CI uses Node.js 22.</td>
+                  </tr>
+                  <tr>
+                    <td>Python 3</td>
+                    <td>To run the tests: <code>npm test</code> includes the oracle checks, which call <code>python3</code>. Not needed to run an instance.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="start-an-instance">Start an instance<a class="docs__anchor" href="#start-an-instance" aria-label="Link to this section">#</a></h2>
+            <p>Run these from the repository root.</p>
+            <pre tabindex="0"><code>docker compose build
+mkdir -m 700 secrets &amp;&amp; docker run --rm --user &quot;$(id -u):$(id -g)&quot; -v &quot;$PWD/secrets:/out&quot; bulma-deal-room:local init-secrets /out
+printf 'BULMA_UID=%s\nBULMA_GID=%s\nINITIAL_ADMIN_EMAIL=you@deals.example\nINSECURE_COOKIES=1\n' &quot;$(id -u)&quot; &quot;$(id -g)&quot; &gt; .env
+docker compose up -d</code></pre>
+            <ol>
+              <li><code>docker compose build</code> builds the image <code>bulma-deal-room:local</code>. One image serves every service.</li>
+              <li>
+                <code>init-secrets</code> writes six files to <code>secrets</code>: the database passwords, the master key, the HMAC key and the first
+                admin&#39;s password. It never overwrites a file that exists. Create the folder yourself first, so that it belongs to you and only you can read
+                it.
+              </li>
+              <li>
+                <code>.env</code> holds the settings. Compose reads it on every command, so every later command runs with the same settings. It is left out of
+                Git. See <a href="/docs/bulma/build/configuration/">Configuration</a> for every setting.
+              </li>
+              <li>
+                <code>docker compose up -d</code> starts four services: <code>db</code> (PostgreSQL), <code>migrate</code> (runs the database migrations, then
+                stops), <code>app</code> (the web app) and <code>maintenance</code> (removes personal data when its retention ends, once a day).
+              </li>
+            </ol>
+            <p>
+              Open http://127.0.0.1:8080 and sign in with that email and the password in <code>secrets/initial_admin_password</code>. You are asked to change
+              that password first. Then turn on two-step sign-in: a role works only once its holder has it.
+            </p>
+            <p><code>INSECURE_COOKIES=1</code> lets the browser sign in over plain <code>http://</code>. Use it only for a trial on your own machine.</p>
+            <h3 id="what-you-should-see">What you should see<a class="docs__anchor" href="#what-you-should-see" aria-label="Link to this section">#</a></h3>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Check</th>
+                    <th>Expected</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>docker compose ps</code></td>
+                    <td><code>app</code> is healthy; <code>migrate</code> has exited.</td>
+                  </tr>
+                  <tr>
+                    <td><code>docker compose logs migrate</code></td>
+                    <td><code>migrations applied:</code> followed by the migrations, or <code>none</code> on a later start.</td>
+                  </tr>
+                  <tr>
+                    <td><code>docker compose logs app</code></td>
+                    <td><code>initial admin: created</code> on the first start, <code>initial admin: exists</code> after that.</td>
+                  </tr>
+                  <tr>
+                    <td><code>curl -s http://127.0.0.1:8080/api/health</code></td>
+                    <td><code>{&quot;ok&quot;:true}</code></td>
+                  </tr>
+                  <tr>
+                    <td>Any page in the browser</td>
+                    <td>The banner <strong>Sandbox: fictional data only. No email leaves this instance and nothing here is a real offer.</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              If you see all of these, the instance is working. From here, <a href="/docs/bulma/">Use Bulma</a> and the
+              <a href="/docs/bulma/build/operator-guide/">Operator guide</a> take over.
+            </p>
+            <h3 id="stop-and-start-again">Stop and start again<a class="docs__anchor" href="#stop-and-start-again" aria-label="Link to this section">#</a></h3>
+            <p>
+              <code>docker compose stop</code> stops the services and keeps the data. <code>docker compose up -d</code> starts them again. The database and the
+              stored files are in the named volumes <code>db</code> and <code>files</code>. In the sandbox, uploaded files are held in memory and are gone after
+              a restart.
+            </p>
+            <p>
+              <code>docker compose down -v</code> deletes the volumes, and with them every account and deal. The next <code>docker compose up -d</code> creates
+              an empty sandbox again, with the first admin from <code>.env</code> and <code>secrets</code>.
+            </p>
+            <h2 id="develop">Develop<a class="docs__anchor" href="#develop" aria-label="Link to this section">#</a></h2>
+            <p>
+              The tests need a PostgreSQL 16 database. They use <code>TEST_DATABASE_URL</code>, which defaults to
+              <code>postgres://postgres:postgres@localhost:55433/postgres</code>, so this container fits:
+            </p>
+            <pre tabindex="0"><code>docker run -d --name bulma-pg -e POSTGRES_PASSWORD=postgres -p 55433:5432 postgres:16
+npm ci
+npx playwright install --with-deps chromium
+npm test
+npm run coverage:check</code></pre>
+            <p>
+              <code>npm test</code> runs the unit and database tests. <code>npm run coverage:check</code> runs them again with the browser tests and, in the
+              development repository, checks that every test case due at the current milestone ran and passed (the test plan is not in the public repository, so
+              there it only runs the tests). The browser tests build the app and start their own server, on a fresh database, on port 4318. Set
+              <code>E2E_PORT</code> to use another port. <a href="/docs/bulma/build/verification/">Verification</a> lists the other checks.
+            </p>
+            <h2 id="build">Build<a class="docs__anchor" href="#build" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run build</code></pre>
+            <p>
+              This builds the React app into <code>dist/web</code>. The server is not compiled: Node.js runs the TypeScript in <code>src/</code> directly (<code
+                >node --experimental-strip-types src/main.ts</code
+              >), as the image does. <code>npm run typecheck</code> checks the types.
+            </p>
+            <p>
+              The image is built in two stages. The second keeps only the production dependencies, <code>dist</code>, <code>src</code>, <code>packs</code> and
+              <code>assets</code>. <code>secrets</code>, <code>config/local</code> and <code>docs</code> are never copied in.
+            </p>
+            <h2 id="deploy-your-own-copy">Deploy your own copy<a class="docs__anchor" href="#deploy-your-own-copy" aria-label="Link to this section">#</a></h2>
+            <p>
+              Any machine that runs Docker Compose will do. The server listens on port 8080, which Compose publishes on <code>127.0.0.1</code> only, so nothing
+              outside the machine reaches it directly.
+            </p>
+            <ol>
+              <li>Build and start it as above, with a real email for <code>INITIAL_ADMIN_EMAIL</code>.</li>
+              <li>Put a reverse proxy with HTTPS in front of <code>127.0.0.1:8080</code>.</li>
+              <li>In <code>.env</code>, remove <code>INSECURE_COOKIES</code>, so the session cookie is sent over HTTPS only.</li>
+              <li>
+                In <code>.env</code>, set <code>TRUST_PROXY</code> to the address or CIDR your proxy connects from, as the app sees it (for example
+                <code>TRUST_PROXY=172.30.0.1</code>). Docker chooses the addresses of the Compose network <code>backend</code>; for a proxy on the host, use
+                that network&#39;s gateway, which <code>docker network inspect</code> shows. Without it, every visitor shares one address and ten failed
+                sign-ins lock out everyone. The app warns at start when it is not set.
+              </li>
+              <li>Set <code>PUBLIC_URL</code> to the address people use. Links in mail are built from it, and the real mode does not start without it.</li>
+              <li>
+                Before the switch to the real mode, add <code>COMPOSE_FILE=docker-compose.yml:deploy/compose.real.yml</code> to <code>.env</code>. It adds the
+                ClamAV virus scanner, which the real mode uses for every upload, and mounts the payment instructions file. The switch does not check for the
+                scanner: without it, every upload is refused after the switch. See <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>.
+              </li>
+              <li>Run <code>docker compose up -d</code> again.</li>
+            </ol>
+            <p>
+              The application containers run as your user (<code>BULMA_UID</code> and <code>BULMA_GID</code>), with a read-only file system, no Linux
+              capabilities and no new privileges.
+            </p>
+            <p>
+              Before you take real deals, read <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>,
+              <a href="/docs/bulma/build/responsibilities/">Who does what</a> and the <a href="/docs/bulma/build/due-diligence/">Due-diligence note</a>. Set up
+              backups before you need them: see <a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a>. It does not take on the operator&#39;s
+              regulatory duties.
+            </p>
+            <h2 id="check-your-copy">Check your copy<a class="docs__anchor" href="#check-your-copy" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>curl -s https://your-domain/api/health
+curl -sI https://your-domain/ | grep -i -E 'content-security|nosniff|referrer|x-frame'
+docker compose run --rm -T app audit verify</code></pre>
+            <ul>
+              <li>The health check answers <code>{&quot;ok&quot;:true}</code>.</li>
+              <li>
+                Every response carries <code>Content-Security-Policy</code>, <code>X-Content-Type-Options: nosniff</code>,
+                <code>Referrer-Policy: no-referrer</code> and <code>X-Frame-Options: DENY</code>. Check that your proxy keeps them.
+              </li>
+              <li>
+                <code>audit verify</code> checks the audit log&#39;s chain and prints <code>{&quot;ok&quot;:true,&quot;count&quot;:...}</code>. Any other answer
+                means the log does not match.
+              </li>
+              <li>Sign in over HTTPS from another machine, and check that the browser keeps you signed in.</li>
+            </ul>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Problem</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>init-secrets</code> cannot write to <code>secrets</code></td>
+                    <td>
+                      Docker created the folder as root. Remove it, run <code>mkdir -m 700 secrets</code> yourself, then run <code>init-secrets</code> again.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>app</code> stops with <code>INITIAL_ADMIN_EMAIL and the initial admin password file are required on first start</code></td>
+                    <td>Set <code>INITIAL_ADMIN_EMAIL</code> in <code>.env</code> and check that <code>secrets/initial_admin_password</code> exists.</td>
+                  </tr>
+                  <tr>
+                    <td><code>app</code> stops with <code>TRUST_PROXY must be the address or CIDR of your proxy</code></td>
+                    <td>Give one or more IP addresses or CIDRs, separated by commas. Host names are not accepted.</td>
+                  </tr>
+                  <tr>
+                    <td><code>app</code> stops with <code>PUBLIC_URL is required in the real mode</code></td>
+                    <td>Set <code>PUBLIC_URL</code> in <code>.env</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>app</code> stops with <code>built-in pack ... changed</code></td>
+                    <td>A shipped pack file in <code>packs/</code> was edited without a new version. Put it back, and add your own pack in the app instead.</td>
+                  </tr>
+                  <tr>
+                    <td>Sign-in does not stick over <code>http://</code></td>
+                    <td>
+                      Without <code>INSECURE_COOKIES=1</code> the session cookie is marked for HTTPS only, and the browser may not keep it. Use HTTPS, or set it
+                      for a trial on your own machine.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Port 8080 is in use</td>
+                    <td>Change the published port in <code>docker-compose.yml</code>, for example <code>&#39;127.0.0.1:8090:8080&#39;</code>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

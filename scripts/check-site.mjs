@@ -1,14 +1,16 @@
 // Project website checks (docs/en/SITE_HANDBOOK.md §6, §8; plan 13 §8.1 K1–K11). Exits 1 on any failure.
-// Pages: / (the Deal Ops overview), /goten/, /trunks/, the blog (plan 22) and /docs/ (plan 30); /trunks/demo/ is Trunks's own demo
+// Pages: / (the Deal Ops overview), /bulma/, /goten/, /trunks/, the blog (plan 22) and /docs/ (plan 30); /trunks/demo/ is Trunks's own demo
 // package, checked against its lock.
 // - CSP rules in every page: one external script (/site.js), no inline script, no style attribute, no <style>, no inline events
 // - every local file a page or the stylesheet refers to exists; every anchor, on the page or on another page, has a target;
-//   links go only to the site's own pages, Goten app, the two public repos, the GitHub organisation and the feedback form
+//   links go only to the site's own pages, Goten app, the three public repos, the GitHub organisation and the feedback form
 // - no page carries a mailto link or an e-mail address (the form replaces them; .example addresses are fine)
 // - the footer is the same on every page, links to the feedback form and carries Goten's disclaimer word for word
 // - /goten/: the privacy and disclaimer sentences match the app word for word; FAQ rules; trust figures in the release notes
 // - /trunks/: every figure is in Trunks release notes; quoted words are Trunks UI text, template text or demo data; the
 //   release notes' mailbox test-scope sentences are on the page word for word; FAQ rules
+// - /bulma/: every figure is in Bulma's release notes; the words in the hero and step pictures are Bulma UI text or its demo
+//   data; each Limits sentence is Bulma's own; FAQ rules
 // - /trunks/demo/: the files are exactly the locked release package (hashes), built from trunks.ref; noindex; no inline script;
 //   no secrets; only .example e-mail addresses in the snapshot
 // - no page says what it must not (unverifiable claims, "in design", and a private list of terms)
@@ -30,13 +32,16 @@ import { gzipSync } from 'node:zlib'
 import { runInNewContext } from 'node:vm'
 
 const SITE = 'site'
-// The apps' sentences, labels and release notes come from the public repos, checked out at the commits in goten.ref and
-// trunks.ref (CI does this; locally: npm run goten:fetch && npm run trunks:fetch). GOTEN_DIR / TRUNKS_DIR override the location.
+// The apps' sentences, labels and release notes come from the public repos, checked out at the commits in goten.ref,
+// trunks.ref and bulma.ref (CI does this; locally: npm run goten:fetch && npm run trunks:fetch && npm run bulma:fetch).
+// GOTEN_DIR / TRUNKS_DIR / BULMA_DIR override the location.
 const GOTEN = process.env.GOTEN_DIR ?? 'vendor/goten'
 const TRUNKS = process.env.TRUNKS_DIR ?? 'vendor/trunks'
+const BULMA = process.env.BULMA_DIR ?? 'vendor/bulma'
 for (const [dir, file, cmd] of [
   [GOTEN, 'src/config.ts', 'goten:fetch'],
   [TRUNKS, 'CHANGELOG.md', 'trunks:fetch'],
+  [BULMA, 'package.json', 'bulma:fetch'],
 ])
   if (!existsSync(join(dir, file))) {
     console.error(`site check: no checkout in ${dir} (run npm run ${cmd})`)
@@ -50,6 +55,7 @@ const git = (dir, ...a) =>
 for (const [env, dir, ref, cmd] of [
   ['GOTEN_DIR', GOTEN, 'goten.ref', 'goten:fetch'],
   ['TRUNKS_DIR', TRUNKS, 'trunks.ref', 'trunks:fetch'],
+  ['BULMA_DIR', BULMA, 'bulma.ref', 'bulma:fetch'],
 ]) {
   if (process.env[env]) continue
   const want = readFileSync(ref, 'utf8').trim()
@@ -76,7 +82,8 @@ const EDU_SOURCES =
   /^https:\/\/(www\.legislation\.gov\.uk|www\.gov\.uk|handbook\.fca\.org\.uk|api-handbook\.fca\.org\.uk|www\.fca\.org\.uk|ilpa\.org|www\.investor\.gov|www\.sec\.gov|www\.nber\.org|conference\.nber\.org|www\.ycombinator\.com|www\.law\.cornell\.edu|delcode\.delaware\.gov|rodneywhitecenter\.wharton\.upenn\.edu|nvca\.org|www\.prarulebook\.co\.uk|www\.irs\.gov|www\.fscs\.org\.uk|www\.cambridgeassociates\.com|econpapers\.repec\.org|ideas\.repec\.org|www\.theaic\.co\.uk|www\.privateequityvaluation\.com|www\.nasa\.gov|www\.jstor\.org|www\.bakerdonelson\.com|www\.angelcapitalassociation\.org|media\.mcguirewoods\.com|eprints\.lse\.ac\.uk|academic\.oup\.com)\//
 const BLOG_TOPICS = EDUCATION.categories.map((c) => `/blog/${c.anchor}/`)
 const BLOG_TRUNKS = '/blog/every-investor-email/'
-const BLOGS = [BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS]
+const BLOG_BULMA = '/blog/from-deal-to-payment/'
+const BLOGS = [BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, BLOG_BULMA, ...EDU_URLS]
 // /docs/ (plan 30): the index and every sidebar item with a route in site-src/docs.json
 const DOCS_SPEC = JSON.parse(read('site-src/docs.json'))
 const DOCS_ITEMS = DOCS_SPEC.products.flatMap((p) => p.groups.flatMap((g) => g.items.filter((i) => i.route).map((i) => ({ ...i, product: p }))))
@@ -91,6 +98,7 @@ for (const url of DOCS)
 if (new Set(DOCS).size !== DOCS.length) fail('docs.json: two items share a route')
 const PAGES = {
   '/': 'index.html',
+  '/bulma/': 'bulma/index.html',
   '/goten/': 'goten/index.html',
   '/trunks/': 'trunks/index.html',
   ...Object.fromEntries([...BLOGS, ...DOCS].map((url) => [url, url.slice(1) + 'index.html'])),
@@ -148,6 +156,38 @@ const trunksTrust = {
   classification: metricCell('Classification, macro F1'),
 }
 if (!/^0\.\d{3}$|^1\.000$/.test(trunksTrust.classification)) fail(`Trunks v${trunksVersion}: invalid classification figure`)
+// Bulma (plan 39): figures come from the section of docs/en/RELEASE_NOTES.md for the package version, which is the newest
+const bulmaVersion = JSON.parse(read(join(BULMA, 'package.json'))).version
+const bulmaNotesRaw = existsSync(join(BULMA, 'docs/en/RELEASE_NOTES.md')) ? read(join(BULMA, 'docs/en/RELEASE_NOTES.md')) : ''
+const bulmaNotes = releaseSection(bulmaNotesRaw, bulmaVersion)
+if (!bulmaNotes) fail(`Bulma release notes (docs/en/RELEASE_NOTES.md) have no section for v${bulmaVersion}`)
+// a figure is backed when one line of that section (not a heading) has it as a whole number and shares a word of five or
+// more letters with what the site says it measures, so a date or a count of something else does not back it
+const bulmaNoteLines = bulmaNotes
+  .split('\n')
+  .filter((l) => l.trim() && !/^\s*#/.test(l))
+  .map((l) =>
+    plain(l.replace(/\*\*|`/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1'))
+      .replace(/\s+/g, ' ')
+      .toLowerCase(),
+  )
+const bulmaBacked = (figure, label) => {
+  const re = new RegExp(`(?<!\\d|\\d[.,])${esc(figure.toLowerCase())}(?!\\d|[.,]\\d)`)
+  const words = label.toLowerCase().match(/[a-z]{5,}/g) ?? []
+  // the figure's own line must share a word with its label, and the label must not borrow a word that only another
+  // figure's line has (so 1,130 cannot be called "browser tests"): audit 2026-11-20 K2
+  const own = bulmaNoteLines.filter((l) => re.test(l))
+  // what another figure measures: the name before the colon of a "- name: count" line
+  const others = bulmaNoteLines.filter((l) => !re.test(l) && /^- [^:]+: .*\d/.test(l)).map((l) => l.slice(2, l.indexOf(':')))
+  return own.some((l) => words.some((w) => l.includes(w)) && !words.some((w) => !l.includes(w) && others.some((o) => o.includes(w))))
+}
+let bulmaLatest = null
+try {
+  bulmaLatest = releasesOf(bulmaNotesRaw)[0] ?? null
+} catch (e) {
+  fail(`Bulma release notes: ${e.message}`)
+}
+if (bulmaNotes && bulmaLatest?.version !== `v${bulmaVersion}`) fail('Bulma: the newest release in docs/en/RELEASE_NOTES.md is not the package version')
 const stripComments = (t) => t.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[\s;{}(),])\/\/.*$/gm, '$1')
 const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(d, e.name)) : [join(d, e.name)]))
 
@@ -181,7 +221,7 @@ const NO_CLAIMS = [
 ]
 // ---- K1, K2: every page ----
 const EXTERNAL =
-  /^https:\/\/(vegeta-ops\.vercel\.app(\/|$)|vegeta-goten\.vercel\.app(\/|$)|deal-ops-toolkit\.vercel\.app(\/|$)|github\.com\/vegeta-labs\/(goten|trunks)(\/|$)|github\.com\/vegeta-labs$)/
+  /^https:\/\/(vegeta-ops\.vercel\.app(\/|$)|vegeta-goten\.vercel\.app(\/|$)|deal-ops-toolkit\.vercel\.app(\/|$)|github\.com\/vegeta-labs\/(bulma|goten|trunks)(\/|$)|github\.com\/vegeta-labs$)/
 // encoded addresses display as real ones, so the address scan reads them decoded
 const decodeForScan = (t) =>
   t
@@ -219,7 +259,7 @@ for (const [url, h] of Object.entries(html)) {
     }
     if (!path.startsWith('/')) fail(at(`local reference ${ref} must start with / (pages live at different depths)`))
     if (path.endsWith('/')) {
-      if (!['/', '/goten/', '/trunks/', '/trunks/demo/', ...BLOGS, ...DOCS].includes(path)) fail(at(`link to an unknown page ${path}`))
+      if (!['/', '/bulma/', '/goten/', '/trunks/', '/trunks/demo/', ...BLOGS, ...DOCS].includes(path)) fail(at(`link to an unknown page ${path}`))
       if (!hash) continue
       if (path === '/trunks/demo/') {
         const id = /^case=(.+)$/.exec(hash)?.[1]
@@ -231,7 +271,7 @@ for (const [url, h] of Object.entries(html)) {
   footers.add(/<footer[\s\S]*<\/footer>/.exec(h)?.[0] ?? '')
   // one page head (plan 33): outside the three product openings, the title follows a dot label
   if (
-    !['/', '/goten/', '/trunks/', '/trunks/demo/'].includes(url) &&
+    !['/', '/bulma/', '/goten/', '/trunks/', '/trunks/demo/'].includes(url) &&
     ((h.match(/<h1\b/g) ?? []).length !== 1 || !/<p class="(?:eyebrow section-label|article__kicker|docs__kicker)">(?:(?!<\/p>)[\s\S])*<\/p>\s*<h1\b/.test(h))
   )
     fail(at('the page needs one h1, right after a dot label (eyebrow, article__kicker or docs__kicker)'))
@@ -274,6 +314,46 @@ if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not l
 {
   const headers = Object.entries(html).map(([url, h]) => [url, /<header class="nav"[\s\S]*?<\/header>/.exec(h)?.[0] ?? ''])
   if (new Set(headers.map(([, h]) => h.replace(/\s+aria-current="page"/g, ''))).size !== 1) fail('the global nav differs between pages (plan 14 R1)')
+  // plan 41 §3.1 (owner 2026-11-20): the bar names who each module is for, a native <details> menu per role: Investors
+  // (Bulma) and Operations (Goten, Trunks), and no module link of its own; the phone menu lists the same modules under the
+  // same names, between Overview and Why trust it; a menu's summary is never itself the current page
+  {
+    const MENUS = [
+      ['Investors', [['/bulma/', 'Bulma', 'SPV Workspace']]],
+      [
+        'Operations',
+        [
+          ['/goten/', 'Goten', 'Deal Calculations'],
+          ['/trunks/', 'Trunks', 'Operations Inbox'],
+        ],
+      ],
+    ]
+    const wantBar = MENUS.map(
+      ([label, ms]) =>
+        `<details class="nav__mods" data-menu> <summary>${label}</summary> <div class="nav__panel"> ${label === 'Investors' ? '<div role="group" aria-labelledby="nav-spvs"> <p class="nav__label" id="nav-spvs">SPVs</p> ' : ''}${ms.map(([href, n, w]) => `<a href="${href}">${n} <span>${w}</span></a>`).join(' ')}${label === 'Investors' ? ' </div>' : ''} </div> </details>`,
+    ).join(' ')
+    const wantMenu = [
+      '<a href="/">Overview</a>',
+      ...MENUS.flatMap(([label, ms]) => [label, ...ms.map(([href, n, w]) => `<a href="${href}">${n} — ${w}</a>`)]),
+      '<a href="/#build">Why trust it</a>',
+    ]
+    for (const [url, h] of headers) {
+      if (!h) continue
+      const bar = /<nav class="nav__links[\s\S]*?<\/nav>/.exec(h)?.[0] ?? ''
+      if (/<summary\s[^>]*>/.test(bar)) fail(`${url}: a nav menu's summary carries attributes; it is never the current page (plan 41)`)
+      const menus = (bar.replace(/\s+aria-current="page"/g, '').match(/<details class="nav__mods"[\s\S]*?<\/details>/g) ?? []).map((d) =>
+        d.replace(/\s+/g, ' '),
+      )
+      if (menus.join(' ') !== wantBar) fail(`${url}: the nav bar does not hold the Investors and Operations menus with their modules in order (plan 41)`)
+      if (/\shref="\/(bulma|goten|trunks)\b/.test(bar.replace(/<details[\s\S]*?<\/details>/g, '')))
+        fail(`${url}: the nav bar links a module outside its menu (plan 41)`)
+      const menu = /<details class="nav__menu" data-menu>[\s\S]*?<\/details>/.exec(h)?.[0] ?? ''
+      const items = [...menu.replace(/\s+aria-current="page"/g, '').matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map((m) => m[1].trim())
+      if (items.slice(0, wantMenu.length).join() !== wantMenu.join())
+        fail(`${url}: the phone menu does not list Overview, the modules under Investors and Operations, then Why trust it (plan 41)`)
+    }
+  }
+
   for (const [url, h] of headers) {
     // every page of the blog marks Blog (plan 29), every docs page Docs (plan 30), the other pages themselves
     const current = BLOGS.includes(url) ? BLOG_LIST : DOCS.includes(url) ? '/docs/' : url
@@ -290,7 +370,7 @@ if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not l
       if (!/nav__brand/.test(tag) && /\shref="([^"]+)"/.exec(tag)?.[1] === current && !/\saria-current="page"/.test(tag))
         fail(`${url}: a nav link to this page lacks aria-current`)
   }
-  for (const url of ['/goten/', '/trunks/']) {
+  for (const url of ['/bulma/', '/goten/', '/trunks/']) {
     const sub = /<nav class="nav subnav"[^>]*data-subnav>[\s\S]*?<\/nav>/.exec(html[url])?.[0] ?? ''
     if (!sub || !/<body class="has-subnav">/.test(html[url])) fail(`${url}: no sub-nav (plan 14 R1)`)
     for (const [, a] of sub.matchAll(/href="#([^"]+)"/g)) if (!idsOf(html[url]).includes(a)) fail(`${url}: sub-nav link #${a} has no target`)
@@ -306,6 +386,7 @@ if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not l
   const subLabels = (url) =>
     [.../<nav class="nav subnav"[^>]*data-subnav>[\s\S]*?<\/nav>/.exec(html[url])[0].matchAll(/<a href="[^"]+">([^<]+)<\/a>/g)].map((m) => m[1]).join(' · ')
   for (const [url, want] of [
+    ['/bulma/', 'How it works · Why trust it · Limits · Bulma FAQ · Docs'],
     ['/goten/', 'How it works · Why trust it · How we check · Goten FAQ · Docs'],
     ['/trunks/', 'How it works · Why trust it · Use cases · Security · Trunks FAQ · Docs'],
   ])
@@ -325,30 +406,29 @@ if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not l
   // plan 36 §12.4: a page that is about one product preselects it in the form, an education article for investors or for
   // leads preselects who the reader is; every other link to the form, the footer's among them, preselects nothing
   const formOn = {
+    '/bulma/': formUrl({ product: 'Bulma' }),
     '/goten/': formUrl({ product: 'Goten' }),
     '/trunks/': formUrl({ product: 'Trunks' }),
     '/blog/from-bank-statement-to-exit/': formUrl({ product: 'Goten' }),
     '/blog/every-investor-email/': formUrl({ product: 'Trunks' }),
+    [BLOG_BULMA]: formUrl({ product: 'Bulma' }),
   }
   for (const a of EDUCATION.articles) formOn[`/blog/${a.slug}/`] = formUrl({ role: ROLE_OF_CATEGORY[a.category] })
   for (const [url, h] of Object.entries(html)) {
     const footer = /<footer class="footer"[\s\S]*?<\/footer>/.exec(h)?.[0] ?? ''
-    const inDevBlock = url === '/' ? (/<aside class="modnext"[\s\S]*?<\/aside>/.exec(h)?.[0] ?? '') : ''
     const want = formOn[url] ?? FEEDBACK_FORM
-    for (const [, ref] of h
-      .replace(footer, '')
-      .replace(inDevBlock, '')
-      .matchAll(/href\s*=\s*"(https:\/\/docs\.google\.com\/forms\/[^"]*)"/gi))
+    for (const [, ref] of h.replace(footer, '').matchAll(/href\s*=\s*"(https:\/\/docs\.google\.com\/forms\/[^"]*)"/gi))
       if (ref !== want) fail(`${url}: the link to the feedback form should be ${want}`)
     for (const [, ref] of footer.matchAll(/href\s*=\s*"(https:\/\/docs\.google\.com\/forms\/[^"]*)"/gi))
       if (ref !== FEEDBACK_FORM) fail(`${url}: the footer's link to the feedback form preselects nothing`)
-    if (inDevBlock && !inDevBlock.includes(`href="${formUrl({ product: 'Bulma' })}"`))
-      fail('/: the module in development links the form with Bulma preselected')
   }
   const faqEnd = /<h3 class="faq__h">Not answered here\?<\/h3>\s*<p class="faq__ask">([\s\S]*?)<\/p>\s*<\/div>\s*<\/section>/.exec(html['/'])?.[1] ?? ''
   if (!flatTags(faqEnd).includes(formLink)) fail('/: the FAQ must end with "Not answered here?" and the link to the feedback form')
   const closing = /<section class="cta"[\s\S]*?<\/section>/.exec(html['/'])?.[0] ?? ''
-  if ((closing.match(/<a\b/g) ?? []).length !== 2) fail('/: the closing section has exactly two links, the two ways to try the modules')
+  // plan 41: the close is the suite's, not one module's: one button per module, to its page, nothing else
+  const CLOSING = ['/bulma/', '/goten/', '/trunks/']
+  if ([...closing.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)].map((m) => m[1]).join() !== CLOSING.join())
+    fail(`/: the closing section links exactly ${CLOSING.join(', ')}, in that order (plan 41)`)
   for (const url of EDU_URLS)
     if (!flatTags(html[url]).includes(`<p class="article__ask">Not answered here?<a href="${formOn[url]}">Tell us what you need`))
       fail(`${url}: no "Tell us what you need" line`)
@@ -475,7 +555,8 @@ if (privacyBody !== PRIVACY) fail('/goten/: the privacy section does not carry P
 
 // FAQ structure (handbook §4.5): every question has its own id with the page's prefix, a summary and its answer; numbers
 // only from a short fixed list per page (counts and figures live in the trust sections, backed by release notes)
-function faqOf(url, prefix, numbers, count, oneParagraph = true) {
+// quoted: { item id: product sentence } that item must carry word for word; its figures are allowed only there
+function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
   const faq = /<section class="faq"[\s\S]*?<\/section>/.exec(html[url])?.[0] ?? ''
   const answer = oneParagraph ? '<p>(?:(?!<\\/?p\\b)[\\s\\S])+<\\/p>' : '[\\s\\S]+?'
   const items = [
@@ -485,7 +566,14 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     fail(`${url} FAQ: every <details> needs a ${prefix}-* id, a summary and one answer`)
   if (!/<a href="#faq">[^<]*FAQ<\/a>/.test(html[url]) && !(url === '/' && html[url].includes('<a href="/#faq">FAQ</a>'))) fail(`${url} FAQ: nav link missing`)
   if (items.length !== count) fail(`${url} FAQ: ${items.length} questions, the approved number is ${count}`)
-  for (const [n] of plain(faq).matchAll(/\d[\d,.]*\d|\d/g)) if (!numbers.includes(n)) fail(`${url} FAQ: number ${n} is not allowed`)
+  const oneLine = (h) => plain(h).replace(/\s+/g, ' ')
+  let rest = faq
+  for (const [id, q] of Object.entries(quoted)) {
+    const item = new RegExp(`<details class="faq__item" id="${id}">[\\s\\S]*?<\\/details>`).exec(faq)?.[0] ?? ''
+    if (!oneLine(item).includes(q)) fail(`${url} FAQ: ${id} must carry the product's sentence: ${q}`)
+    rest = rest.replace(item, oneLine(item).split(q).join(' '))
+  }
+  for (const [n] of oneLine(rest).matchAll(/\d[\d,.]*\d|\d/g)) if (!numbers.includes(n)) fail(`${url} FAQ: number ${n} is not allowed`)
   return faq
 }
 
@@ -662,7 +750,6 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     [...h.matchAll(new RegExp(`<${tag}\\b[^>]*\\bclass="[^"]*\\b${cls}\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'g'))].map((m) => m[1])
   const textOf = (frag) => norm(plain(frag).replace(/&hellip;|…/g, ''))
   const HERO = {
-    '/': { reasons: 3, checks: 0, reply: 0, excerpt: 0 },
     '/trunks/': { reasons: 3, checks: 2, reply: 1, excerpt: 1 },
   }
   for (const [url, want] of Object.entries(HERO)) {
@@ -723,6 +810,121 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   faqOf('/trunks/', 'ifaq', [trunksVersion, trunksMeasuredVersion, '2.0', '103', '008', '365'], 14)
 }
 
+// ---- /bulma/ (plan 39) ----
+{
+  const page = html['/bulma/']
+  const norm = (t) => t.replace(/\s+/g, ' ').trim()
+  // Bulma's on-screen words: every string literal and JSX text run in src/web and src/lib (not tests, comments removed), as
+  // for Trunks K4; src/lib too, because the status words the screens show live there (participation.ts)
+  const src = [...walk(join(BULMA, 'src/web')), ...walk(join(BULMA, 'src/lib'))]
+    .filter((f) => /\.(ts|tsx)$/.test(f) && !/\.test\./.test(f))
+    .map((f) => stripComments(read(f)))
+    .join('\n')
+  const ui = new Set([...src.matchAll(/(['"`])((?:(?!\1)[^\\\n]|\\.)+)\1/g)].map((m) => norm(m[2].replace(/\\(.)/g, '$1'))))
+  for (const [, run] of src.matchAll(/[>}]([^<>{}]+)(?=[<{])/g)) ui.add(norm(run))
+  // R5: Bulma's fixed demo data, the source of every name, amount and date in the pictures: site-src/bulma-demo.json, one
+  // entry per value with where it comes from (plan 39 R5)
+  // and values the site proposed count only once Bulma has checked them in its sandbox ("checked" no longer "pending")
+  const demo = JSON.parse(read('site-src/bulma-demo.json'))
+  if (!Array.isArray(demo.values)) fail('site-src/bulma-demo.json: no list of values')
+  const demoValues = (demo.values ?? []).map((v) => {
+    if (typeof v.value !== 'string' || !Object.hasOwn(demo.sources ?? {}, v.source))
+      fail(`site-src/bulma-demo.json: every value needs a source named under "sources" (${JSON.stringify(v)})`)
+    if (v.source === 'site-proposal' && /^pending/.test(demo.checked ?? 'pending'))
+      fail(`site-src/bulma-demo.json: ${v.value} is the site's proposal and Bulma has not checked it yet`)
+    return v.value
+  })
+  // the site's own words in the pictures: the panels' numbered labels and an empty days cell
+  const OWN_WORDS = new Set(['1 · The investor', '2 · The lead', '3 · The deal', '—'])
+  const leaves = (frag) =>
+    [...frag.replace(/<small>([\s\S]*?)<\/small>/g, '</x><x>$1</x><x>').matchAll(/>([^<>]+)</g)]
+      .map((m) => norm(plain(m[1])))
+      .filter(Boolean)
+      .flatMap((t) => (OWN_WORDS.has(t) ? [] : t.split(' · ')))
+  const scene = /<figure class="scene[^"]*"[\s\S]*?<figcaption/.exec(page)?.[0] ?? ''
+  if (!scene) fail('/bulma/: no hero picture')
+  const pictures = [...page.matchAll(illustrationPattern)]
+  if (pictures.map((m) => m[1]).join(',') !== 'setup,invite,pay,follow') fail('/bulma/: expected the setup, invite, pay and follow step pictures, in order')
+  const unbacked = new Set()
+  for (const frag of [scene, ...pictures.map((m) => m[0].replace(/aria-label="[^"]*"/, ''))])
+    for (const t of leaves(frag)) if (!ui.has(t) && !demoValues.includes(t)) unbacked.add(t)
+  if (unbacked.size)
+    fail(`/bulma/: ${unbacked.size} words in the pictures are neither Bulma on-screen text nor its demo data (R5): ${[...unbacked].join(' | ')}`)
+  // each demo value sits where it belongs: with its label or row, as many times as listed, and nowhere else (audit 2026-11-20 K3)
+  const pictureText = [scene, ...pictures.map((m) => m[0])]
+    .map((f) => plain(f.replace(/aria-label="[^"]*"/g, '').replace(/<[^>]+>/g, ' ')))
+    .join(' ')
+    .replace(/\s+/g, ' ')
+  const count = (hay, needle) => hay.split(needle).length - 1
+  for (const v of demo.values ?? []) {
+    if (!Array.isArray(v.shown)) continue
+    for (const place of new Set(v.shown))
+      if (count(pictureText, place) !== v.shown.filter((p) => p === place).length)
+        fail(`/bulma/: the pictures must show "${place}" ${v.shown.filter((p) => p === place).length} time(s)`)
+    const word = new RegExp(`(?<![\\w.,£-])${esc(v.value)}(?![\\w.,-]*\\d)`, 'g')
+    // single digits (days) are held by their row; panel numbers such as "1 · The investor" use them too
+    if (v.value.length > 2 && (pictureText.match(word) ?? []).length !== v.shown.length)
+      fail(`/bulma/: ${v.value} appears in the pictures outside its places (${v.shown.join('; ')})`)
+  }
+  // the pictures' descriptions for screen readers name no figure the picture does not show
+  const shown = [scene, ...pictures.map((m) => m[0])].map((f) => plain(f.replace(/aria-label="[^"]*"/g, ''))).join(' ')
+  const described = [...page.matchAll(/aria-label="([^"]*)"/g)].map((m) => m[1]).join(' ') + plain(/<figcaption[\s\S]*?<\/figcaption>/.exec(page)?.[0] ?? '')
+  for (const [n] of described.matchAll(/£?\d+(?:[.,]\d+)*/g))
+    if (!shown.includes(n)) fail(`/bulma/: a picture's description names ${n}, which the picture does not show`)
+  // why trust it: every figure is in the release's notes, and so is the sentence under a figure that is a word
+  const trust = /<section class="trust" id="trust"[\s\S]*?<\/section>/.exec(page)?.[0] ?? ''
+  const facts = [...trust.matchAll(/<dt>([^<]+)<\/dt>\s*<dd>([\s\S]*?)<\/dd>/g)].map((m) => [norm(plain(m[1])), norm(plain(m[2]))])
+  const notesText = norm(plain(bulmaNotes.replace(/\*\*|`/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')))
+  if (facts.length < 3 || facts.length > 4) fail(`/bulma/: why trust it has ${facts.length} figures, expected 3 or 4`)
+  for (const [figure, under] of facts)
+    if (/\d/.test(figure) ? !bulmaBacked(figure, under) : !notesText.includes(under))
+      fail(`/bulma/ trust figure ${figure}: no line of the v${bulmaVersion} section of Bulma's release notes has it with what it measures`)
+  if (!trust.includes(`<p class="trust__note">Figures from the v${bulmaVersion} release checks.</p>`))
+    fail(`/bulma/: the trust note must name the v${bulmaVersion} release checks`)
+  // Limits: each sentence is Bulma's own, from its README or English docs at the pin
+  // whole sentences only, so a fragment that drops a negation ("holds shares or runs a wallet.") does not pass
+  const own = new Set(
+    [join(BULMA, 'README.md'), ...walk(join(BULMA, 'docs/en')).filter((f) => f.endsWith('.md'))]
+      .map(read)
+      .join('\n')
+      .replace(/\*\*|`/g, '')
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .split('\n')
+      .map((l) => norm(plain(l.replace(/^\s*(?:[-*>#|]+|\d+\.)\s*/, '').replace(/\s*\|\s*/g, ' | '))))
+      .flatMap((l) => l.split(/(?<=[.!?])\s+|\s\|\s/))
+      .map(norm),
+  )
+  const limits = /<dl class="risks__list">[\s\S]*?<\/dl>/.exec(page)?.[0] ?? ''
+  const rows = [...limits.matchAll(/<dd>([\s\S]*?)<\/dd>/g)].map((m) => norm(plain(m[1])))
+  if (rows.length < 5 || rows.length > 6) fail(`/bulma/: Limits has ${rows.length} rows, expected 5 or 6`)
+  for (const row of rows) for (const t of row.split(/(?<=\.)\s+/)) if (!own.has(t)) fail(`/bulma/ Limits: "${t}" is not a sentence of Bulma's README or docs`)
+  // FAQ: only the current release and Apache-2.0 are numbers
+  // the entity answer quotes Bulma's investor guide (docs/en/use/investor-guide.md, section 4); its 25% is allowed only there (audit R2)
+  const entityPeople =
+    'A company or trust also lists its people: directors, anyone with a share over 25% or in control, and whoever acts for it. Each beneficial owner confirms their details through their own link.'
+  if (!read(join(BULMA, 'docs/en/use/investor-guide.md')).replace(/\s+/g, ' ').includes(entityPeople))
+    fail(`Bulma's investor guide no longer says: ${entityPeople}`)
+  faqOf('/bulma/', 'bfaq', [bulmaVersion, '2.0'], 12, true, { 'bfaq-entity': entityPeople })
+  // every other figure on the page is in this inventory
+  // numbering is left out by element (step eyebrows and the server list), not allowed everywhere; a figure such as
+  // "301 / 301" is allowed number by number
+  const allowed = new Set(['2.0', bulmaVersion, ...facts.flatMap(([f]) => [f, ...(f.match(/\d+(?:[.,]\d+)*/g) ?? [])])])
+  const rest = plain(
+    page
+      .replace(/<p class="eyebrow">Step [1-4] · /g, '<p class="eyebrow">')
+      .replace(/<span class="built__n">0[1-4]<\/span>/g, ' ')
+      .replace(illustrationPattern, ' ')
+      .replace(/<figure class="scene[\s\S]*?<\/figure>/, ' ')
+      .replace(/<section class="faq"[\s\S]*?<\/section>/, ' ')
+      .replace(/<head>[\s\S]*?<\/head>/, ' '),
+  )
+  for (const [n] of rest.matchAll(/£?\d+(?:[.,]\d+)*(?:m|bn|%)?/g)) if (!allowed.has(n)) fail(`/bulma/: figure ${n} is not in the inventory of backed figures`)
+  for (const [m] of plain(page).matchAll(
+    /\b(one|two|three|four|five|six|seven|eight|nine|ten|twelve|twenty|thirty|fifty|hundred)\s+(years?|months?|weeks?|days?|hours?|minutes?|per ?cent|times)\b/gi,
+  ))
+    fail(`/bulma/: "${m}" is a figure written out; figures need a backed number`)
+}
+
 // ---- K3 for the whole text: every figure on / and /trunks/ is in an inventory with its source ----
 // (quoted UI text is checked by K4; spelled-out amounts of time or shares are not allowed at all)
 {
@@ -734,7 +936,6 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
         .replace(/&#\d+;/g, ' '),
     ).matchAll(/£?\d+(?:[.,]\d+)*(?:m|bn|%)?/g)
   const shownText = JSON.stringify(snapshot ?? {})
-  const gotenScene = /<figure class="scene"[\s\S]*?<\/figure>/.exec(html['/goten/'])?.[0] ?? ''
   const numbering = ['01', '02', '03', '04', '05', '06', '1', '2', '3', '4']
   const names = {
     365: 'Microsoft 365',
@@ -760,19 +961,27 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
     fail(`/trunks/: figure ${n} is not in the inventory of backed figures`)
   }
   const gotenNotes = read(join(GOTEN, 'docs/RELEASE_NOTES.md'))
+  // Bulma's column shows a figure from its page's trust section, backed by its notes there (the /bulma/ checks)
+  const bulmaFacts = [
+    ...(/<section class="trust" id="trust"[\s\S]*?<\/section>/.exec(html['/bulma/'])?.[0] ?? '').matchAll(/<dt>([^<]*\d[^<]*)<\/dt>\s*<dd>([\s\S]*?)<\/dd>/g),
+  ].map((m) => [m[1], plain(m[2])])
+  const bulmaFigures = bulmaFacts.map(([f]) => f)
   const MODULE_PROOF = {
+    bulma: {
+      figure: bulmaFigures[0],
+      release: bulmaVersion,
+      latest: bulmaLatest ?? { version: `v${bulmaVersion}`, date: 'unknown' },
+    },
     // Goten's figure was measured on v1.4.0 and v1.4.1 says the calculations are unchanged, so the column says "measured on v1.4.0";
     // when a later release restates the figure, set release to it and "measured on" goes away
     goten: {
       figure: '1,800',
       release: '1.4.0',
-      backed: () => /agree with it on 1,800 generated cases/.test(releaseSection(gotenNotes, '1.4.0')),
       latest: releasesOf(gotenNotes)[0],
     },
     trunks: {
       figure: trunksTrust.high,
       release: trunksMeasuredVersion,
-      backed: () => Boolean(trunksTrust.high),
       latest: releasesOf(trunksNotesRaw)[0],
     },
   }
@@ -786,53 +995,83 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true) {
   }
   if (MODULE_PROOF.trunks.latest.version !== `v${trunksVersion}`) fail('Trunks: the newest release in CHANGELOG.md is not the package version')
   const modules = [...html['/'].matchAll(/<article class="module module--([a-z]+)"[^>]*>([\s\S]*?)<\/article>/g)]
-  if (modules.map((m) => m[1]).join(',') !== 'goten,trunks') fail('/: expected Goten and Trunks module columns')
+  if (modules.map((m) => m[1]).join(',') !== 'bulma,goten,trunks') fail('/: expected Bulma, Goten and Trunks module columns, in that order')
+  // plan 41: the overview shows each module, not its detail: its name leading to its page, its kind, who it is for, the release
+  // (plan 36 C2: the newest in its notes, with its date, leading to the changelog), where it runs, and its code. The figures
+  // and what each module does live on the module pages, where they are checked against the release notes
+  const CARD = {
+    bulma: ['SPV Workspace', 'For syndicate leads and invited investors.', 'Runs on your server', 'https://github.com/vegeta-labs/bulma'],
+    goten: ['Deal Calculations', 'For SPV and syndicate operations teams.', 'Runs in your browser', 'https://github.com/vegeta-labs/goten'],
+    trunks: ['Operations Inbox', 'For SPV and syndicate operations teams.', 'Runs on your server', 'https://github.com/vegeta-labs/trunks'],
+  }
   for (const [, mod, body] of modules) {
     const want = MODULE_PROOF[mod]
-    const shown = /<span class="module__figure">([^<]+)<\/span>/.exec(body)?.[1]
-    if (!want || shown !== want.figure) fail(`/: the ${mod} column shows ${shown}, not its backed figure ${want?.figure}`)
-    else if (!want.backed()) fail(`/: the ${mod} figure ${shown} is not in its release notes' v${want.release} section`)
-    if (!want) continue
-    // the source line names the current release and, where the figure was measured on an earlier one, that release
-    const name = mod === 'goten' ? 'Goten' : 'Trunks'
-    const source = `${name} ${want.latest.version} release checks` + (want.latest.version === `v${want.release}` ? '' : `; measured on v${want.release}`)
-    if (!plain(body).replace(/\s+/g, ' ').includes(source)) fail(`/: the ${mod} column must say "${source}"`)
-    // plan 36 C2: the release under the module's name is the newest in its notes, with that release's date, and leads to the changelog
-    if (!body.includes(`<p class="module__version"><a href="/changelog/">${want.latest.version} · ${want.latest.date}</a></p>`))
-      fail(`/: the ${mod} column must show ${want.latest.version} · ${want.latest.date} linked to the changelog`)
+    const [type, who, runs, code] = CARD[mod] ?? []
+    const name = mod[0].toUpperCase() + mod.slice(1)
+    const card = [
+      `<h3 class="module__name"><a href="/${mod}/">${name}</a></h3>`,
+      `<p class="module__type">${type}</p>`,
+      `<p class="module__version"><a href="/changelog/">${want?.latest.version} · ${want?.latest.date}</a></p>`,
+      `<p class="module__lede">${who}</p>`,
+      `<p class="module__runs">${runs}</p>`,
+      `<p class="fact__links"><a href="/${mod}/">How it works <span class="arrow" aria-hidden="true">→</span></a><a href="${code}">Code <span class="arrow" aria-hidden="true">→</span></a></p>`,
+    ].join('')
+    if (flatTags(body).trim() !== flatTags(card))
+      fail(
+        `/: the ${mod} column must be its name, kind, audience, ${want?.latest.version} · ${want?.latest.date} with where it runs, and its code, nothing else (plan 41)`,
+      )
   }
-  // plan 36 B1: a module in development shows its name, its state, one sentence and the feedback form: no figures, no other link
-  const inDev = [...html['/'].matchAll(/<aside class="modnext"[^>]*>([\s\S]*?)<\/aside>/g)]
-  if (inDev.length !== 1 || (html['/'].match(/modnext/g) ?? []).length !== (inDev[0][0].match(/modnext/g) ?? []).length)
-    fail('/: expected exactly one module in development, in <aside class="modnext">')
-  // its name appears only there and in its row of the lifecycle table, which says it is in development (plan 36 §12: once, under the name)
-  const bulmaRow = /<tr role="row">\s*<th scope="row" role="rowheader">Bulma[\s\S]*?<\/tr>/.exec(html['/'])?.[0] ?? ''
-  if (!flatTags(bulmaRow).includes('<span class="fits__state">In development</span>')) fail('/: the lifecycle table must mark Bulma as in development')
-  if (/\d/.test(plain(bulmaRow))) fail('/: the lifecycle row of a module in development shows no figures')
-  if ([...bulmaRow.matchAll(/<td\b[^>]*>/g)].some(([td]) => !/class="fits__next"/.test(td)) || !/<td\b/.test(bulmaRow))
-    fail('/: every cell in the lifecycle row of a module in development is marked as planned (fits__next)')
-  if (/\b(available|ready|live now|real deals?)\b/i.test(plain(bulmaRow))) fail('/: the lifecycle row of a module in development makes no claim of readiness')
-  if (/Bulma/.test(inDev.reduce((h, m) => h.replace(m[0], ''), html['/']).replace(bulmaRow, '')))
-    fail('/: a module in development is named only in its block and its lifecycle row')
-  for (const [, body] of inDev) {
-    if (!plain(body).includes('In development') || !plain(body).includes('Not released yet')) fail('/: a module in development must say so')
-    if (/\d/.test(plain(body))) fail('/: a module in development shows no figures')
-    if (/<(ul|ol|li|dl|table)\b/.test(body)) fail('/: a module in development has no list of features')
-    if (/\b(available|released and|ready|live|launch|real deals?)\b/i.test(plain(body).replace('Not released yet', '')))
-      fail('/: a module in development makes no claim of readiness')
-    const links = [...body.matchAll(/href="([^"]+)"/g)].map((m) => m[1])
-    if (links.length !== 1 || !/^https:\/\/docs\.google\.com\/forms\//.test(links[0])) fail('/: a module in development links only to the feedback form')
+  // plan 39: Bulma is released, so nothing on / says it is in development
+  if (/modnext|In development|Not released yet/.test(html['/'])) fail('/: a released module is not shown as in development')
+  // plan 41 (owner 2026-11-21): Where it fits is one bar per module across the four stages, each stage named for screen readers
+  // (the tag is shown on phones). The bars must match what each module has released; Bulma's closing is its one upcoming
+  // stage, a dashed bar that says Upcoming and nothing more (D5). Change a row here only when that module's release notes do
+  const FX_STAGES = ['Raise', 'Pay', 'Close', 'Exit']
+  const FX_BARS = [
+    'bulma||Raise:Deal set-up, invitations, commitments, signing|Pay:Payment instructions, money received',
+    'bulma|soon|Close:Closing<i>Upcoming</i>',
+    'goten||Pay:Payment reconciliation|Close:Closing allocation|Exit:Exit distribution',
+    'trunks||Raise:KYC documents, signing invitations|Pay:Payment queries, proofs of payment|Close:Withdrawals, closing confirmations|Exit:Distribution questions, tax certificates',
+  ]
+  const fits = /<section class="fx" id="fits"[\s\S]*?<\/section>/.exec(html['/'])?.[0] ?? ''
+  if (!fits) fail('/: Where it fits is missing (plan 41)')
+  if (/<small\b/.test(fits)) fail('/: a Where it fits bar carries a note; bars name what each module does, nothing more (plan 41)')
+  if (
+    FX_STAGES.map((n, i) => `<p class="fx__head" aria-hidden="true"><i>0${i + 1}</i>${n}</p>`).join() !==
+    [...fits.matchAll(/<p class="fx__head"[^>]*>[\s\S]*?<\/p>/g)].map((m) => flatTags(m[0])).join()
+  )
+    fail('/: Where it fits heads its columns Raise, Pay, Close, Exit (plan 41)')
+  const bars = [...fits.matchAll(/<p class="fx__bar fx__bar--(\w+)( fx__bar--soon)? fx__span--(\d)-(\d)">([\s\S]*?)<\/p>/g)]
+  const barText = bars.map(([, mod, soon, , , body]) => {
+    const flat = flatTags(body).trim()
+    const cells = [...flat.matchAll(/<span><b class="fx__tag sr-only">(\w+)<\/b>(.*?)<\/span>/g)]
+    if (flat !== cells.map((c) => c[0]).join('')) fail(`/: a ${mod} bar of Where it fits holds something other than its stages`)
+    return [mod, soon ? 'soon' : '', ...cells.map(([, stage, text]) => `${stage}:${text.trim()}`)].join('|')
+  })
+  if (barText.join('\n') !== FX_BARS.join('\n')) fail('/: the bars of Where it fits are not the released ones (plan 41)')
+  for (const [, mod, , from, to, body] of bars) {
+    const stages = [...body.matchAll(/fx__tag sr-only">(\w+)</g)].map((m) => FX_STAGES.indexOf(m[1]))
+    if (+from !== stages[0] + 1 || +to !== stages.at(-1) + 2 || stages.some((n, i) => n !== stages[0] + i))
+      fail(`/: a ${mod} bar of Where it fits does not span the stages it names (plan 41)`)
   }
+  if (/\d/.test(plain(fits.replace(/<p class="fx__head"[\s\S]*?<\/p>/g, '')))) fail('/: Where it fits shows no figures besides its stage numbers')
+  // each module's name comes before its bars, in the order of the bars, and nothing else is styled as a bar
+  const fxNames = { bulma: 'Bulma', goten: 'Goten', trunks: 'Trunks' }
+  const fxOrder = [...fits.matchAll(/<p class="fx__name fx__name--(\w+)">([^<]*)<\/p>|class="fx__bar fx__bar--(\w+)/g)].map((m) =>
+    m[1] ? `${m[1]}=${m[2]}` : m[3],
+  )
+  const wantOrder = FX_BARS.map((b) => b.split('|')[0]).flatMap((mod, i, all) => (all[i - 1] === mod ? [mod] : [`${mod}=${fxNames[mod]}`, mod]))
+  if (fxOrder.join() !== wantOrder.join() || (fits.match(/class="[^"]*\bfx__bar\b(?!-)/g) ?? []).length !== bars.length)
+    fail('/: Where it fits names each module before its bars, Bulma, Goten, Trunks (plan 41)')
   // the reel button's running time is checked against the film itself (plan 32)
   const withoutModules = modules.reduce((h, m) => h.replace(m[0], ''), html['/']).replace(/<span class="reel__t">\d+:\d\d<\/span>/, '')
   for (const [n] of figures(withoutModules)) {
     if (numbering.includes(n) || names[n]) continue
-    // Goten sample deal's figures in the hero panel: the same as the accepted /goten/ hero
-    if (plain(gotenScene).includes(n)) continue
     fail(`/: figure ${n} is not in the inventory of backed figures`)
   }
   const stamp = (r) => [r.version.slice(1), ...r.date.split('-')]
   const OWN = {
+    bulma: [MODULE_PROOF.bulma.figure, bulmaVersion, ...stamp(MODULE_PROOF.bulma.latest)],
     goten: ['1,800', MODULE_PROOF.goten.release, ...stamp(MODULE_PROOF.goten.latest)],
     trunks: [...trunksTrust.high.split(' / '), trunksVersion, trunksMeasuredVersion, ...stamp(MODULE_PROOF.trunks.latest)],
   }
@@ -899,6 +1138,7 @@ const ALLOWED_CLIPS = [
   join('img', 'valley-loop.mp4'),
   join('media', 'goten-film.mp4'),
   join('media', 'trunks-film.mp4'),
+  join('media', 'bulma-film.mp4'),
   join('media', 'vegeta-film-wide.mp4'),
   join('media', 'vegeta-film.mp4'),
   join('media', 'vegeta-loop.mp4'),
@@ -1020,7 +1260,8 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   const manifest = JSON.parse(read('site-src/blog-figures.json'))
   const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
   if (manifest.example !== sha('site-src/blog-example.json')) fail('blog: the figures were rendered from a different example (scripts/render-blog-figures.py)')
-  if (manifest.gotenRef !== read('goten.ref').trim() || manifest.trunksRef !== read('trunks.ref').trim())
+  // Bulma's figures show its screen words, so moving bulma.ref means rendering them again and checking the words
+  if (manifest.gotenRef !== read('goten.ref').trim() || manifest.trunksRef !== read('trunks.ref').trim() || manifest.bulmaRef !== read('bulma.ref').trim())
     fail('blog: the figures were rendered at other releases')
   const figureDir = join(SITE, 'media', 'blog')
   const figureFiles = readdirSync(figureDir)
@@ -1047,7 +1288,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     for (const phrase of phrases) if (!text.includes(phrase)) fail(`${url}: "${phrase}" missing`)
     if (/mailto:|@/.test(body)) fail(`${url}: no email address in the article`)
     // figures: exact descriptions, built from the example where they carry its figures
-    const seenFigures = [...body.matchAll(/\/media\/blog\/([a-z]+)\.(?:webp|mp4)/g)].map((m) => m[1])
+    const seenFigures = [...body.matchAll(/\/media\/blog\/([a-z-]+)\.(?:webp|mp4)/g)].map((m) => m[1])
     for (const [name, description] of Object.entries(figures)) {
       if (!seenFigures.includes(name)) fail(`${url}: figure ${name} missing`)
       const tag = new RegExp(`<(?:img|video)\\b[^>]*/media/blog/${name}\\.webp[^>]*>`).exec(body)?.[0] ?? ''
@@ -1065,12 +1306,14 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     }
     // the film: plays when asked, from its own part, with captions
     const video = /<video\b[^>]*\bdata-film\b[^>]*>/.exec(body)?.[0] ?? ''
-    if (!/\bcontrols\b/.test(video) || !/preload="none"/.test(video) || /\bautoplay\b/.test(video))
-      fail(`${url}: the film must have controls, preload none, no autoplay`)
-    if (!/\baria-label="[^"]+"/.test(video)) fail(`${url}: the film has no accessible name`)
-    if (!video.includes(`poster="/media/${film}-film-poster.jpg"`)) fail(`${url}: the film has the wrong poster`)
-    if (!body.includes(`<source src="/media/${film}-film.mp4" type="video/mp4"`)) fail(`${url}: the article plays the wrong film`)
-    if (!body.includes(`data-captions="/media/${film}-film.vtt"`)) fail(`${url}: the film has no captions`)
+    if (film) {
+      if (!/\bcontrols\b/.test(video) || !/preload="none"/.test(video) || /\bautoplay\b/.test(video))
+        fail(`${url}: the film must have controls, preload none, no autoplay`)
+      if (!/\baria-label="[^"]+"/.test(video)) fail(`${url}: the film has no accessible name`)
+      if (!video.includes(`poster="/media/${film}-film-poster.jpg"`)) fail(`${url}: the film has the wrong poster`)
+      if (!body.includes(`<source src="/media/${film}-film.mp4" type="video/mp4"`)) fail(`${url}: the article plays the wrong film`)
+      if (!body.includes(`data-captions="/media/${film}-film.vtt"`)) fail(`${url}: the film has no captions`)
+    } else if (video) fail(`${url}: a film is on the page but not in its check`)
     // what readers see is held to the same lists
     const seen = [
       text,
@@ -1115,8 +1358,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   if (x.proceeds !== x.exitCosts + g.exit.investorsTotal + g.exit.carry) fail('blog: the exit does not add up')
   const gotenText = article(BLOG_GOTEN, {
     title: 'The money work on an SPV, ready for a person to check',
-    summary:
-      'Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides.',
+    summary: 'What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides.',
     film: 'goten',
     numbers:
       '001 0.55 2,000 23,000 25,000 3 10,000 300 9,700 60 1,940 750 24,250 90,000 1,500 1,500.00 20 8 24,250.00 11,381.21 2,845.30 40,018.79 10,004.70 75,650.00 12,850.00 80 6,052'.split(
@@ -1181,8 +1423,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     fail('blog: closing with a task open is not the Trunks rule')
   article(BLOG_TRUNKS, {
     title: 'Every investor email, ready for a person',
-    summary:
-      'Much of the work of running an SPV or syndicate still happens by hand, in a shared mailbox. What Trunks prepares for each kind of email, and what a person still decides.',
+    summary: 'What Trunks prepares for each kind of email an SPV or syndicate receives, and what a person still decides.',
     film: 'trunks',
     numbers: `10,000.00 001 1,000.00 005 24 126 5.5 18 123 125 103 008 9 ${trunksVersion} ${trunksMeasuredVersion}`.split(' '),
     figures: {
@@ -1214,6 +1455,45 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     ],
   })
 
+  // Bulma (plan 39 S5): the story deal from set-up to payment instructions; the test figures are the release notes' own
+  const bulmaTests = [
+    ['1,130', 'unit and real-database tests'],
+    ['40', 'browser tests'],
+    ['185', 'test-plan cases'],
+    ['1,477', 'full mutation run'],
+    ['35,084', 'random and boundary cases'],
+  ]
+  for (const [n, what] of bulmaTests) if (!bulmaBacked(n, what)) fail(`${BLOG_BULMA}: ${n} ${what} is not in the v${bulmaVersion} release notes`)
+  article(BLOG_BULMA, {
+    title: 'Start a deal and bring your investors in',
+    summary:
+      'Set up and submit your deal for review. Once approved, go live, invite investors and follow their progress from commitment to payment instructions.',
+    film: 'bulma',
+    numbers: ['10,000', '19', ...bulmaTests.map(([n]) => n), bulmaVersion],
+    figures: {
+      'bulma-follow':
+        'Bulma investor list: Son Goku, to pay, waiting on the investor; Yamcha, to sign, waiting on the investor; Krillin, verifying, waiting on a reviewer; Tien, funded.',
+      'bulma-setup': 'Bulma deal for Senzu Labs: basics, company, terms, files and economics done, review not yet done. Nothing is missing. Submit for review.',
+      'bulma-invite':
+        'Bulma links: Default carry, no fee; Senzu lead fee, with a lead fee added on top of the commitment, which all four investors joined; and Co-investors, which is waiting for a reviewer.',
+      'bulma-pay':
+        'Bulma payment instructions: the amount to pay, how it is made up, the payment reference, the date to pay by, and the receiving account and who holds it. Download as PDF.',
+    },
+    phrases: [
+      'A reviewer at the operator approves it before any investor can see it',
+      'A reviewer cannot review a deal they lead, help run or earn carry on',
+      'An email invitation works only for the address it was sent to',
+      'Neither the link nor the email shows the company, the amounts or the terms',
+      "Bulma's own emails never include bank details",
+      'This first version does not handle the closing itself',
+      'it does not mark the money as received',
+      'A lead cannot mark a payment as received',
+      'Bulma does not move money, hold shares or run a wallet',
+      "It does not take on the operator's regulatory duties",
+      `Bulma v${bulmaVersion} runs on the operator's own server with Docker`,
+    ],
+  })
+
   // the list page links to exactly the published articles
   const listBody = /<main\b[\s\S]*<\/main>/.exec(html[BLOG_LIST])?.[0] ?? ''
   const listed = [...listBody.matchAll(/<li[^>]*>\s*<a href="([^"]+)"/g)].map((m) => m[1]).join(' ')
@@ -1239,7 +1519,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   }
   // both files are generated, so they must be exactly this text: a page missing, a foreign address or a Disallow all fail
   const SITE_URL = 'https://vegeta-ops.vercel.app'
-  const sitemapPages = ['/', '/goten/', '/trunks/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, ...EDU_URLS, ...DOCS]
+  const sitemapPages = ['/', '/bulma/', '/goten/', '/trunks/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, BLOG_BULMA, ...EDU_URLS, ...DOCS]
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>\n`
   if (!existsSync(join(SITE, 'sitemap.xml')) || read(join(SITE, 'sitemap.xml')) !== sitemap) fail('sitemap.xml is not exactly the list of pages')
   if (!existsSync(join(SITE, 'robots.txt')) || read(join(SITE, 'robots.txt')) !== `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`)
@@ -1250,10 +1530,13 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   const flatList = listBody.replace(/\s+/g, ' ')
   const featured = `<a class="blogfeature" href="${feat.href}" ?> ?<img src="${feat.card}"[^>]*> ?<span ?> ?<small ?>${feat.tag}</small ?> ?<strong ?>${feat.title} ?</strong ?> ?<em ?> ?${feat.summary} ?</em ?> ?</span ?> ?</a ?>`
   if (feat.href !== BLOG_GOTEN || !new RegExp(featured).test(flatList)) fail(`${BLOG_LIST}: the featured article is wrong`)
+  const cardOrder = [...flatList.matchAll(/<a class="blogfeature"[^>]*> ?<img[^>]*> ?<span ?> ?<small ?>([A-Za-z]+)<\/small/g)].map((m) => m[1]).join(',')
+  if (cardOrder !== 'Bulma,Goten,Trunks') fail(`${BLOG_LIST}: the module cards are ${cardOrder}, expected Bulma, Goten, Trunks (owner 2026-11-23)`)
   if (!html[BLOG_GOTEN].replace(/\s+/g, ' ').includes(`<p class="article__date">Updated ${EDUCATION.updated}</p>`)) fail(`${BLOG_GOTEN}: no update date`)
   for (const [url, picture] of [
     [BLOG_GOTEN, 'goten-share.jpg'],
     [BLOG_TRUNKS, 'trunks-share.jpg'],
+    [BLOG_BULMA, 'bulma-share.jpg'],
   ])
     if (
       !html[url].includes(`<meta property="og:image" content="https://vegeta-ops.vercel.app/media/${picture}" />`) ||
@@ -1264,11 +1547,21 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
 
   // the films and their captions: real files, in order, inside the film, placed clear of the film's own text, and scanned like a page.
   // Every block is read, so a malformed one fails instead of dropping out of the count. line:3% is the top of the picture: the film's text sits low
-  for (const [film, seconds, count] of [
-    ['goten', 36, 9],
-    ['trunks', 40, 15],
+  // An iPhone plays them inline only from a file that starts with its index (faststart), in H.264 at level 4.0 or lower, like the home reel.
+  // The Bulma film is 70 seconds, so it gets more room at the same bit rate. Its first caption is the invitation that opens it (plan v4)
+  for (const [film, seconds, count, mb] of [
+    ['goten', 36, 9, 8],
+    ['trunks', 40, 15, 8],
+    ['bulma', 71, 17, 12.5],
   ]) {
-    if (statSync(join(SITE, 'media', `${film}-film.mp4`)).size > 8e6) fail(`blog: the ${film} film is over 8 MB`)
+    const file = join(SITE, 'media', `${film}-film.mp4`)
+    if (statSync(file).size > mb * 1e6) fail(`blog: the ${film} film is over ${mb} MB`)
+    const head = readFileSync(file).subarray(0, 300000).toString('latin1')
+    const moov = head.indexOf('moov')
+    if (head.slice(4, 8) !== 'ftyp' || moov < 0 || (head.indexOf('mdat') >= 0 && head.indexOf('mdat') < moov))
+      fail(`blog: the ${film} film does not start with its index (faststart), so an iPhone cannot play it while it downloads`)
+    const avcC = head.indexOf('avcC', head.indexOf('stsd')) // then version, profile, compatibility, level
+    if (avcC < 0 || head.charCodeAt(avcC + 7) > 40) fail(`blog: the ${film} film is not H.264 at level 4.0 or lower`)
     const vtt = read(join(SITE, 'media', `${film}-film.vtt`))
     if (!vtt.startsWith('WEBVTT\n')) fail(`blog: the ${film} captions are not a WebVTT file`)
     const blocks = vtt
@@ -1290,7 +1583,8 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       last = to
     })
     for (const [re, what] of PRIVATE_TERMS) if (re.test(vtt)) fail(`blog: ${film} captions mention ${what}`)
-    if (/invited|calls that matter/i.test(vtt)) fail(`blog: ${film} captions carry the film's ending`)
+    const opening = film === 'bulma' && /You have been invited to look at\s+a private investment opportunity\.\s*$/.test(blocks[0]) ? blocks[0] : ''
+    if (/invited|calls that matter/i.test(vtt.replace(opening, ''))) fail(`blog: ${film} captions carry the film's ending`)
   }
 }
 
@@ -1331,18 +1625,39 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     if (!(f.seconds > 60)) fail(`reel: the ${name} has no readable length`)
   if (!(Math.abs(wide.seconds - upright.seconds) <= 0.2)) fail('reel: the two cuts differ in length')
   const home = html['/']
+  // plan 41: the open-source signal is shown, not announced: the hero leads to the code
+  const heroBox = /<section class="hero hero--overview"[\s\S]*?<\/section>/.exec(home)?.[0] ?? ''
+  if (!/<a class="btn btn--quiet" href="https:\/\/github\.com\/vegeta-labs">View on GitHub/.test(heroBox))
+    fail('/: the hero must link to the code on GitHub (plan 41)')
+  // the headline the owner approved on 2026-11-20, with the module pages'
+  // rotator: "Run your {word}" turns on its own line over a fixed "in-house."; the whole <h1> is pinned (Codex review 2026-11-20)
+  const heroH1 = (/<h1 class="hero__title">([\s\S]*?)<\/h1>/.exec(heroBox)?.[1] ?? '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/> </g, '><')
+    .trim()
+  const heroWant =
+    '<span class="sr-only">Your own SPV suite. Run your SPVs, syndicate and back office in-house.</span>' +
+    '<span class="hero__line" aria-hidden="true">Your own SPV suite.</span>' +
+    '<span class="hero__line rot" aria-hidden="true" data-rotator data-grey="rest" data-phrases="Run your:SPVs|Run your:syndicate|Run your:back office">' +
+    '<span class="rot__item is-on"><span>Run your</span><span class="rot__verb"> SPVs</span></span></span>' +
+    '<span class="hero__line" aria-hidden="true">in-house.</span>'
+  if (heroH1 !== heroWant)
+    fail('/: the hero must read "Your own SPV suite." / "Run your {SPVs / syndicate / back office}" / "in-house." with the module rotator (owner 2026-11-20)')
+  // what a reader sees or hears, plus every rotating phrase
+  const heroWords = (heroH1.replace(/<[^>]+>/g, ' ') + ' ' + (/data-phrases="([^"]*)"/.exec(heroH1)?.[1] ?? '')).replace(/\s+/g, ' ')
+  if (/Bulma|Goten|Trunks|open.?source|end to end|platform/i.test(heroWords))
+    fail('/: the hero headline names a module or says open-source, end to end or platform')
   const section = /<section class="reel" id="film"[^>]*>([\s\S]*?)<\/section>/.exec(home)?.[0] ?? ''
   if (!section) fail('/: the film reel is missing')
   else {
     const at = home.indexOf(section)
     if (
       at < home.indexOf('class="hero') ||
-      home
-        .slice(at + section.length)
-        .trimStart()
-        .indexOf('<section class="trust" id="modules"') !== 0
+      [...(/<main\b[\s\S]*<\/main>/.exec(home)?.[0] ?? '').matchAll(/<section\b[^>]*\sid="([^"]+)"/g)].map((m) => m[1]).join() !==
+        ['top', 'film', 'fits', 'modules', 'build', 'faq'].join()
     )
-      fail('/: the reel must sit between the hero and Modules')
+      fail('/: the page runs hero, film, Where it fits, Modules, Why trust Vegeta, FAQ, then the close (plan 41)')
     const time = /<span class="reel__t">(\d+):(\d\d)<\/span>/.exec(section)
     if (!time || +time[1] * 60 + +time[2] !== Math.round(wide.seconds))
       fail(`/: the reel button does not show the film's length (${Math.round(wide.seconds)} s)`)
@@ -1361,7 +1676,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     .trim()
     .split(/\n\s*\n/)
     .slice(1)
-  if (!vtt.startsWith('WEBVTT\n') || cues.length !== 28) fail("reel: the captions are not the film's 28 narration lines")
+  if (!vtt.startsWith('WEBVTT\n') || cues.length !== 31) fail("reel: the captions are not the film's 31 narration lines (Cut 17)")
   let last = 0
   cues.forEach((cue, i) => {
     const [number, timing, ...words] = cue.split('\n')
@@ -1375,14 +1690,14 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   // the narration runs to the brand line near the end, so the captions must too
   if (last < wide.seconds - 8) fail('reel: the captions stop before the narration does')
   for (const [re, what] of PRIVATE_TERMS) if (re.test(vtt)) fail(`reel: the captions mention ${what}`)
-  // the film shows Goten and Trunks as released at these commits; a new release means watching the film again before moving the ref
+  // the film shows Bulma, Goten and Trunks as released at these commits; a new release means watching the film again before moving the ref
   const claims = JSON.parse(read('site-src/film-claims.json'))
-  for (const ref of ['goten', 'trunks'])
+  for (const ref of ['bulma', 'goten', 'trunks'])
     if (claims[ref] !== read(`${ref}.ref`).trim())
       fail(
         `reel: ${ref}.ref moved from ${claims[ref]}, the release the film was checked against; re-check the film's claims and update site-src/film-claims.json`,
       )
-  if (!(claims.claims?.length > 0) || claims.claims.some((c) => !c.says || !/^(goten|trunks)$/.test(c.module) || !c.evidence))
+  if (!(claims.claims?.length > 0) || claims.claims.some((c) => !c.says || !/^(bulma|goten|trunks)$/.test(c.module) || !c.evidence))
     fail('site-src/film-claims.json: every claim needs what it says, its module and its evidence')
 }
 
@@ -1395,7 +1710,7 @@ if (vercel.headers.length !== 2 || JSON.stringify(vercel.headers[1]) !== JSON.st
   fail('vercel.json: expected the site-wide header rule and the Markdown type rule only')
 const csp = vercel.headers[0].headers.find((h) => h.key === 'Content-Security-Policy')?.value ?? ''
 // the demo uses relative paths: /trunks/demo without the slash must redirect, or its files would resolve one level up
-for (const r of ['/goten', '/trunks', '/trunks/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])
+for (const r of ['/bulma', '/goten', '/trunks', '/trunks/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])
   if (!(vercel.redirects ?? []).some((x) => x.source === r && x.destination === r + '/')) fail(`vercel.json: no redirect from ${r} to ${r}/`)
 const CSP =
   "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"

@@ -7,6 +7,7 @@
   "scripts": {
     "goten:fetch": "node scripts/fetch-goten.mjs",
     "trunks:fetch": "node scripts/fetch-trunks.mjs",
+    "bulma:fetch": "node scripts/fetch-bulma.mjs",
     "site:build": "rolldown site-src/site.js -f iife -m -o site/site.js",
     "site:share": "node scripts/render-share-card.mjs",
     "site:check": "node scripts/check-site.mjs",

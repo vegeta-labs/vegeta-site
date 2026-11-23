@@ -2,15 +2,123 @@
   "title": "Documentation",
   "heading": "Use and run each module.",
   "line": "Choose a module.",
-  "llms": "SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.",
+  "llms": "SPV and syndicate operations software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox.",
   "changelog": {
     "title": "Changelog",
     "heading": "Every release of each module.",
-    "lede": "What changed in each release of Goten and Trunks, newest first.",
-    "line": "Every release of Goten and Trunks, with a link to its full release notes.",
+    "lede": "What changed in each release of Bulma, Goten and Trunks, newest first.",
+    "line": "Every release of Bulma, Goten and Trunks, with a link to its full release notes.",
     "pageTitle": "All releases"
   },
   "products": [
+    {
+      "id": "bulma",
+      "name": "Bulma",
+      "role": "SPV Workspace",
+      "version": "v0.1.0",
+      "source": {
+        "repo": "https://github.com/vegeta-labs/bulma",
+        "ref": "e0166a67c51edebce77f91d0d53c208b292cdebb",
+        "notes": "docs/en/RELEASE_NOTES.md"
+      },
+      "groups": [
+        {
+          "label": "Use it",
+          "items": [
+            {
+              "title": "Overview",
+              "source": "docs/en/use/README.md",
+              "route": "/docs/bulma/"
+            },
+            {
+              "title": "Walk the sandbox",
+              "source": "docs/en/use/getting-started.md",
+              "route": "/docs/bulma/use/getting-started/"
+            },
+            {
+              "title": "Lead guide",
+              "source": "docs/en/use/lead-guide.md",
+              "route": "/docs/bulma/use/lead-guide/"
+            },
+            {
+              "title": "Investor guide",
+              "source": "docs/en/use/investor-guide.md",
+              "route": "/docs/bulma/use/investor-guide/"
+            }
+          ]
+        },
+        {
+          "label": "Run and build",
+          "items": [
+            {
+              "title": "Overview",
+              "source": "docs/en/README.md",
+              "route": "/docs/bulma/build/"
+            },
+            {
+              "title": "Run locally and deploy",
+              "source": "docs/en/run-and-deploy.md",
+              "route": "/docs/bulma/build/run-and-deploy/"
+            },
+            {
+              "title": "Configuration reference",
+              "source": "docs/en/configuration.md",
+              "route": "/docs/bulma/build/configuration/"
+            },
+            {
+              "title": "Operator guide",
+              "source": "docs/en/operator-guide.md",
+              "route": "/docs/bulma/build/operator-guide/"
+            },
+            {
+              "title": "What the real mode asks for",
+              "source": "docs/en/real-mode.md",
+              "route": "/docs/bulma/build/real-mode/"
+            },
+            {
+              "title": "Who does what",
+              "source": "docs/en/responsibilities.md",
+              "route": "/docs/bulma/build/responsibilities/"
+            },
+            {
+              "title": "Due-diligence note",
+              "source": "docs/en/due-diligence.md",
+              "route": "/docs/bulma/build/due-diligence/"
+            },
+            {
+              "title": "Upgrades and backups",
+              "source": "docs/en/upgrade-and-backup.md",
+              "route": "/docs/bulma/build/upgrade-and-backup/"
+            },
+            {
+              "title": "Architecture",
+              "source": "docs/en/architecture.md",
+              "route": "/docs/bulma/build/architecture/"
+            },
+            {
+              "title": "Verification",
+              "source": "docs/en/verification.md",
+              "route": "/docs/bulma/build/verification/"
+            },
+            {
+              "title": "Security model",
+              "source": "docs/en/security-model.md",
+              "route": "/docs/bulma/build/security-model/"
+            }
+          ]
+        },
+        {
+          "label": "Releases",
+          "items": [
+            {
+              "title": "Release notes",
+              "source": "docs/en/RELEASE_NOTES.md",
+              "route": "/docs/bulma/release-notes/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "goten",
       "name": "Goten",

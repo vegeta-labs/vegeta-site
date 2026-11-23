@@ -4,31 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>Vegeta: SPV &amp; Syndicate Operations Software</title>
+    <title>Vegeta: SPV &amp; Syndicate Software</title>
     <meta
       name="description"
-      content="Vegeta helps SPV and syndicate operations teams reconcile payments, calculate allocations and prepare investor replies. Open-source software with results for people to review."
+      content="Vegeta helps SPV and syndicate teams bring investors in, reconcile payments, calculate allocations and prepare investor replies. Open-source software."
     />
     <meta property="og:site_name" content="Vegeta" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Vegeta: SPV &amp; Syndicate Operations Software" />
+    <meta property="og:title" content="Vegeta: SPV &amp; Syndicate Software" />
     <meta
       property="og:description"
-      content="Vegeta helps SPV and syndicate operations teams reconcile payments, calculate allocations and prepare investor replies. Open-source software with results for people to review."
+      content="Vegeta helps SPV and syndicate teams bring investors in, reconcile payments, calculate allocations and prepare investor replies. Open-source software."
     />
     <meta property="og:url" content="https://vegeta-ops.vercel.app/" />
     <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Vegeta: SPV &amp; Syndicate Operations Software" />
+    <meta name="twitter:title" content="Vegeta: SPV &amp; Syndicate Software" />
     <meta
       name="twitter:description"
-      content="Vegeta helps SPV and syndicate operations teams reconcile payments, calculate allocations and prepare investor replies. Open-source software with results for people to review."
+      content="Vegeta helps SPV and syndicate teams bring investors in, reconcile payments, calculate allocations and prepare investor replies. Open-source software."
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
-    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
     <link rel="canonical" href="https://vegeta-ops.vercel.app/" />
     <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
@@ -49,9 +49,22 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/goten/">Goten</a>
-        <a href="/trunks/">Trunks</a>
-        <a href="/#build">Why trust it</a>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
         <a href="/docs/">Docs</a>
@@ -60,6 +73,9 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/" aria-current="page">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
           <li><a href="/goten/">Goten — Deal Calculations</a></li>
           <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
@@ -76,73 +92,18 @@
     <main id="main">
       <section class="hero hero--overview" id="top">
         <h1 class="hero__title">
-          <span class="sr-only"
-            >Less repetitive work. More capacity for the next deal. Reconcile payments, calculate allocations and prepare investor replies.</span
-          >
-          <span class="hero__line" aria-hidden="true">Less repetitive work.</span>
-          <span
-            class="hero__line rot"
-            aria-hidden="true"
-            data-rotator
-            data-grey="rest"
-            data-phrases="More capacity:for the next deal.|Clearer records:for reconciliation.|Checked amounts:for allocations.|Clearer figures:for exit waterfalls.|Prepared replies:for investor email."
-          >
-            <span class="rot__item is-on"><span>More capacity </span><span class="rot__verb">for the next deal.</span></span>
+          <span class="sr-only">Your own SPV suite. Run your SPVs, syndicate and back office in-house.</span>
+          <span class="hero__line" aria-hidden="true">Your own SPV suite.</span>
+          <span class="hero__line rot" aria-hidden="true" data-rotator data-grey="rest" data-phrases="Run your:SPVs|Run your:syndicate|Run your:back office">
+            <span class="rot__item is-on"><span>Run your</span><span class="rot__verb"> SPVs</span></span>
           </span>
+          <span class="hero__line" aria-hidden="true">in-house.</span>
         </h1>
-        <p class="hero__lede">Built for SPV and syndicate operations teams.</p>
+        <p class="hero__lede">Built for SPV and syndicate teams.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#modules">Explore the modules</a>
           <a class="btn btn--quiet" href="https://github.com/vegeta-labs">View on GitHub <span class="arrow" aria-hidden="true">→</span></a>
         </div>
-
-        <!-- One panel per module, set in type from each module's sample data: the Toolkit's sample deal (Test Plan §3) and
-             the Inbox demo's sample E0225 with its on-screen risk reasons (plan 14 R4); not screenshots -->
-        <figure class="scene scene--two" data-scene>
-          <div class="panel panel--left" data-step="1 2 3">
-            <p class="panel__eyebrow">Goten · Reconciliation</p>
-            <p class="panel__title">Bank statement</p>
-            <ul class="ledger">
-              <li>
-                <span class="ledger__who">A HART<small>NW-001</small></span
-                ><span class="ledger__amt">£10,000.00</span><span class="pill pill--ok">Matched automatically</span>
-              </li>
-              <li>
-                <span class="ledger__who">B OKAFOR<small>NW002 NORTHWIND</small></span
-                ><span class="ledger__amt">£5,000.00</span><span class="pill pill--ok">Matched automatically</span>
-              </li>
-              <li class="ledger__focus">
-                <span class="ledger__who">CHLOE MARTIN<small>no reference · suggested Chloe Martin, score 0.55 · confirmed by a person</small></span
-                ><span class="ledger__amt">£20,000.00</span
-                ><span class="pill pill--swap"
-                  ><span class="pill__before" aria-hidden="true">Needs review</span><span class="pill__after" aria-hidden="true">Confirmed by you</span
-                  ><span class="sr-only">Confirmed by you</span></span
-                >
-              </li>
-              <li>
-                <span class="ledger__who">D KIM<small>NW-004</small></span
-                ><span class="ledger__amt">£2,000.00</span><span class="pill pill--ok">Matched automatically</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="panel panel--right" data-step="4">
-            <p class="panel__eyebrow">Trunks · The check</p>
-            <p class="panel__title">Northwind Robotics - change of bank account</p>
-            <span class="pill pill--warn pill--lg">High risk</span>
-            <ul class="reasons">
-              <li>Display name matches a contact, address does not</li>
-              <li>Look-alike domain</li>
-              <li>First mail from this address, with an account number</li>
-            </ul>
-            <p class="panel__foot">Bank details are never applied from an email. The reply is a fixed acknowledgement.</p>
-          </div>
-          <figcaption class="sr-only">
-            The two modules with their sample data. Goten: bank receipts matched to investors, one suggested match confirmed by a person. Trunks: an email
-            asking to change a company&rsquo;s bank account, rated high risk by fixed rules (three of its reasons shown), answered only with a fixed
-            acknowledgement.
-          </figcaption>
-        </figure>
       </section>
 
       <section class="reel" id="film" data-tone="dark" data-reel aria-labelledby="film-h">
@@ -160,17 +121,55 @@
             aria-hidden="true"
             tabindex="-1"
           ></video>
-          <video data-captions="/media/vegeta-film.vtt" class="reel__film" playsinline preload="none" aria-label="Film: more deals, the same team"></video>
+          <video data-captions="/media/vegeta-film.vtt" class="reel__film" playsinline preload="none" aria-label="Film: one deal, raise to exit"></video>
           <p class="reel__cc" aria-hidden="true"></p>
           <div class="reel__ctl">
             <button class="reel__icon" type="button" data-reel-cc aria-pressed="false" aria-label="Captions">CC</button>
             <button class="reel__icon" type="button" data-reel-close aria-label="Close the film">&times;</button>
           </div>
           <div class="reel__over">
-            <h2 class="reel__title" id="film-h">More deals same team</h2>
+            <h2 class="reel__title" id="film-h">One deal raise to exit</h2>
             <a class="reel__btn" href="/media/vegeta-film-wide.mp4" data-reel-play
-              ><span class="reel__play" aria-hidden="true"></span>Watch the film <span class="reel__t">1:31</span></a
+              ><span class="reel__play" aria-hidden="true"></span>Watch the film <span class="reel__t">1:48</span></a
             >
+          </div>
+        </div>
+      </section>
+
+      <section class="fx" id="fits" aria-labelledby="fits-h">
+        <div class="fx__inner">
+          <div class="fx__copy">
+            <h2 class="eyebrow section-label" id="fits-h">Where it fits</h2>
+            <p class="fx__title">From the first invite<br />to the exit waterfall.</p>
+          </div>
+          <div class="fx__stage" data-reveal>
+            <div class="fx__paint"></div>
+            <div class="fx__win">
+              <p class="fx__head" aria-hidden="true"><i>01</i>Raise</p>
+              <p class="fx__head" aria-hidden="true"><i>02</i>Pay</p>
+              <p class="fx__head" aria-hidden="true"><i>03</i>Close</p>
+              <p class="fx__head" aria-hidden="true"><i>04</i>Exit</p>
+              <p class="fx__name fx__name--bulma">Bulma</p>
+              <p class="fx__bar fx__bar--bulma fx__span--1-3">
+                <span><b class="fx__tag sr-only">Raise</b> Deal set-up, invitations, commitments, signing</span
+                ><span><b class="fx__tag sr-only">Pay</b> Payment instructions, money received</span>
+              </p>
+              <p class="fx__bar fx__bar--bulma fx__bar--soon fx__span--3-4">
+                <span><b class="fx__tag sr-only">Close</b> Closing <i>Upcoming</i></span>
+              </p>
+              <p class="fx__name fx__name--goten">Goten</p>
+              <p class="fx__bar fx__bar--goten fx__span--2-5">
+                <span><b class="fx__tag sr-only">Pay</b> Payment reconciliation</span><span><b class="fx__tag sr-only">Close</b> Closing allocation</span
+                ><span><b class="fx__tag sr-only">Exit</b> Exit distribution</span>
+              </p>
+              <p class="fx__name fx__name--trunks">Trunks</p>
+              <p class="fx__bar fx__bar--trunks fx__span--1-5">
+                <span><b class="fx__tag sr-only">Raise</b> KYC documents, signing invitations</span
+                ><span><b class="fx__tag sr-only">Pay</b> Payment queries, proofs of payment</span
+                ><span><b class="fx__tag sr-only">Close</b> Withdrawals, closing confirmations</span
+                ><span><b class="fx__tag sr-only">Exit</b> Distribution questions, tax certificates</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -178,120 +177,43 @@
       <section class="trust" id="modules" data-tone="dark" aria-labelledby="modules-h">
         <div class="trust__inner">
           <h2 class="eyebrow section-label" id="modules-h">Modules</h2>
-          <div class="modules__grid">
+          <div class="modules__grid modules__grid--3">
+            <!-- Bulma's release and date follow its release notes at bulma.ref (plan 39 §5.5, checked by site:check) -->
+            <article class="module module--bulma" data-reveal>
+              <h3 class="module__name"><a href="/bulma/">Bulma</a></h3>
+              <p class="module__type">SPV Workspace</p>
+              <p class="module__version"><a href="/changelog/">v0.1.0 · 2026-11-21</a></p>
+              <p class="module__lede">For syndicate leads and invited investors.</p>
+              <p class="module__runs">Runs on your server</p>
+              <p class="fact__links">
+                <a href="/bulma/">How it works <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="https://github.com/vegeta-labs/bulma">Code <span class="arrow" aria-hidden="true">→</span></a>
+              </p>
+            </article>
             <article class="module module--goten" data-reveal>
-              <h3 class="module__name">Goten</h3>
+              <h3 class="module__name"><a href="/goten/">Goten</a></h3>
               <p class="module__type">Deal Calculations</p>
               <p class="module__version"><a href="/changelog/">v1.4.1 · 2026-11-20</a></p>
-              <p class="module__lede">Reconcile, allocate and distribute an SPV, to the penny.</p>
+              <p class="module__lede">For SPV and syndicate operations teams.</p>
               <p class="module__runs">Runs in your browser</p>
-              <ul class="module__caps">
-                <li>Bank receipts matched to investors, or explained</li>
-                <li>Closing allocation with fees, scale-back and refunds</li>
-                <li>Exit waterfall with carry, hurdle and catch-up</li>
-              </ul>
-              <div class="module__proof">
-                <span class="module__figure">1,800</span>
-                <p>
-                  generated cases where an independent Python implementation agrees field by field<small>Goten v1.4.1 release checks; measured on v1.4.0</small>
-                </p>
-              </div>
               <p class="fact__links">
-                <a href="https://vegeta-goten.vercel.app">Open the app <span class="arrow" aria-hidden="true">→</span></a>
                 <a href="/goten/">How it works <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="https://github.com/vegeta-labs/goten">Code <span class="arrow" aria-hidden="true">→</span></a>
               </p>
             </article>
             <article class="module module--trunks" data-reveal>
-              <h3 class="module__name">Trunks</h3>
+              <h3 class="module__name"><a href="/trunks/">Trunks</a></h3>
               <p class="module__type">Operations Inbox</p>
               <p class="module__version"><a href="/changelog/">v0.5.0 · 2026-11-12</a></p>
-              <p class="module__lede">Every deal email, ready for a person to review.</p>
+              <p class="module__lede">For SPV and syndicate operations teams.</p>
               <p class="module__runs">Runs on your server</p>
-              <ul class="module__caps">
-                <li>Sorted, and matched to your deals and investors where it can be</li>
-                <li>Risk set by fixed rules; the model can never lower it</li>
-                <li>A reply prepared from a template; a person sends it</li>
-              </ul>
-              <div class="module__proof">
-                <span class="module__figure">80 / 80</span>
-                <p>high-risk emails rated high, on emails development never read<small>Trunks v0.5.0 release checks; measured on v0.3.0</small></p>
-              </div>
               <p class="fact__links">
-                <a href="/trunks/demo/">See the demo <span class="arrow" aria-hidden="true">→</span></a>
                 <a href="/trunks/">How it works <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="https://github.com/vegeta-labs/trunks">Code <span class="arrow" aria-hidden="true">→</span></a>
               </p>
             </article>
           </div>
-          <!-- plan 36 B1, §11 F1: a module in development has its name, who it is for, the flow in one sentence and the feedback form; no figures -->
-          <aside class="modnext" aria-labelledby="bulma-h">
-            <div>
-              <h3 class="module__name modnext__name" id="bulma-h">Bulma</h3>
-              <p class="module__type">Deal Room</p>
-              <p class="module__runs modnext__state">In development</p>
-            </div>
-            <div>
-              <p class="module__lede modnext__for">For syndicate leads and the investors they invite.</p>
-              <p class="modnext__what">
-                The lead sets up a deal and invites investors by link. Each investor confirms eligibility, commits, signs and gets payment instructions; the
-                lead follows every payment and closes the deal, and each investor gets their documents. Follow-ons and exits are planned. Not released yet.
-              </p>
-              <p class="fact__links">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Bulma"
-                  >Tell us what you need <span class="arrow" aria-hidden="true">→</span></a
-                >
-              </p>
-            </div>
-          </aside>
-          <p class="trust__note">Each module is released only when it is built and tested.</p>
         </div>
-      </section>
-
-      <section class="built built--top" id="fits" aria-labelledby="fits-h">
-        <h2 class="eyebrow section-label" id="fits-h">Where it fits</h2>
-        <table class="fits" role="table">
-          <caption class="sr-only">
-            Where each module works in a deal
-          </caption>
-          <thead role="rowgroup">
-            <tr role="row">
-              <td role="cell" class="fits__corner"></td>
-              <th scope="col" role="columnheader">Raise</th>
-              <th scope="col" role="columnheader">Pay</th>
-              <th scope="col" role="columnheader">Close</th>
-              <th scope="col" role="columnheader">Exit</th>
-            </tr>
-          </thead>
-          <tbody role="rowgroup">
-            <tr role="row">
-              <th scope="row" role="rowheader">Bulma<span class="fits__state">In development</span></th>
-              <td role="cell" class="fits__next" data-stage="Raise">
-                Launch a deal, bring investors in<small>Invite links, eligibility, KYC, commitment, signing, payment instructions</small>
-              </td>
-              <td role="cell" class="fits__next" data-stage="Pay">Follow every payment<small>Reminders, who has paid, refunds owed, withdrawals</small></td>
-              <td role="cell" class="fits__next" data-stage="Close">
-                Close the deal<small>Closing steps, final amounts from Goten, signed documents, proof of investment</small>
-              </td>
-              <td role="cell" class="fits__next" data-stage="Exit">After the close<small>Follow-on rounds, conversions, exits</small></td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader">Goten</th>
-              <td role="cell" class="fits__gap"></td>
-              <td role="cell" class="fits__goten" data-stage="Pay">Reconcile receipts<small>Match the bank statement to commitments</small></td>
-              <td role="cell" class="fits__goten" data-stage="Close">Allocate the close<small>Fees, scale-back, refunds, the wire</small></td>
-              <td role="cell" class="fits__goten" data-stage="Exit">Distribute the exit<small>Carry, hurdle and catch-up, step by step</small></td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader">Trunks</th>
-              <td role="cell" class="fits__gap"></td>
-              <td role="cell" class="fits__trunks" colspan="3">
-                Every investor email, at every stage<small
-                  >Payment questions and confirmations, KYC files, withdrawals, closing and exit questions, changes of bank details</small
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </section>
 
       <section class="built" id="build" aria-labelledby="build-h">
@@ -305,7 +227,7 @@
           <li data-reveal>
             <span class="built__n">02</span>
             <h3>Your data, your choices</h3>
-            <p>Goten processes deal data in your browser. Trunks is self-hosted, with a choice of local or hosted models.</p>
+            <p>Goten processes deal data in your browser. Bulma and Trunks are self-hosted; Trunks with a choice of local or hosted models.</p>
           </li>
           <li data-reveal>
             <span class="built__n">03</span>
@@ -332,7 +254,8 @@
             <details class="faq__item" id="dfaq-what">
               <summary>What is Vegeta?</summary>
               <p>
-                Vegeta is open-source software for SPV and syndicate operations teams. Each module handles a specific part of the work.
+                Vegeta is open-source software for syndicate leads, the investors they invite and the teams that run SPVs. Each module handles a specific part
+                of the work. <a href="/bulma/">Bulma — SPV Workspace</a> takes invited investors from eligibility to payment instructions, on your own server.
                 <a href="/goten/">Goten — Deal Calculations</a> reconciles receipts, works out the closing allocation and splits an exit, in your browser.
                 <a href="/trunks/">Trunks — Operations Inbox</a> prepares each email in your operations mailbox for a person to review, on your own server.
               </p>
@@ -340,15 +263,16 @@
             <details class="faq__item" id="dfaq-free">
               <summary>Is it free?</summary>
               <p>
-                Yes. Both modules are open source under the Apache-2.0 licence. Goten needs no sign-up. For Trunks you pay only for your own server and, if you
-                use one, a hosted model.
+                Yes. All three modules are open source under the Apache-2.0 licence. Goten needs no sign-up. For Bulma and Trunks you pay only for your own
+                server and the providers you choose: email and identity checks for Bulma, a hosted model for Trunks if you use one.
               </p>
             </details>
             <details class="faq__item" id="dfaq-service">
               <summary>Is it a regulated service?</summary>
               <p>
-                No. Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you. A person checks every result
-                and makes every decision.
+                No. Vegeta is open-source software, not a regulated service. It does not hold money or give advice. In Goten and Trunks a person checks every
+                result and makes every decision. In Bulma, the rules the operator sets decide who can take each step, and a person at the operator decides each
+                identity check.
               </p>
             </details>
           </div>
@@ -361,7 +285,8 @@
               <p>
                 Goten: Your deal data is processed in your browser and never sent by this app. The hosting provider still receives normal page requests. Trunks:
                 it runs on your own server and sends only redacted text to the model provider you configure, or, with a local model, keeps the model traffic
-                inside your network. <a href="/trunks/#ifaq-sent">What is sent to the model</a>
+                inside your network (<a href="/trunks/#ifaq-sent">what is sent to the model</a>). Bulma: it runs on the operator&rsquo;s own server, which keeps
+                investors&rsquo; details and documents; if the operator uses Sumsub, Sumsub holds what it collects under the operator&rsquo;s contract.
               </p>
             </details>
             <details class="faq__item" id="dfaq-fit">
@@ -374,9 +299,10 @@
             <details class="faq__item" id="dfaq-tested">
               <summary>How is it tested?</summary>
               <p>
-                Each module page shows the figures from the release checks that measured them: <a href="/goten/#trust">Goten</a> and
-                <a href="/trunks/#trust">Trunks</a>. Both compare their rules with an independent Python implementation and use mutation checks. Trunks is also
-                measured on emails that development never read, with a real model, before each release that changes how emails are judged.
+                Each module page shows the figures from the release checks that measured them: <a href="/bulma/#trust">Bulma</a>,
+                <a href="/goten/#trust">Goten</a> and <a href="/trunks/#trust">Trunks</a>. All three compare their rules with an independent Python
+                implementation and use mutation checks. Trunks is also measured on emails that development never read, with a real model, before each release
+                that changes how emails are judged.
               </p>
             </details>
           </div>
@@ -397,11 +323,11 @@
             <source src="/img/valley-loop.mp4" type="video/mp4" />
           </video>
         </div>
-        <h2 class="cta__title" id="cta-h" data-reveal>Start with the sample data</h2>
-        <p class="cta__body" data-reveal>Fictional deals and people. Nothing to install.</p>
+        <h2 class="cta__title" id="cta-h" data-reveal>Start with the part of the deal you run.</h2>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://vegeta-goten.vercel.app">Take the Goten tour</a>
-          <a class="btn btn--quiet" href="/trunks/demo/">See the Trunks demo <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--primary" href="/bulma/">Bulma — SPV Workspace</a>
+          <a class="btn btn--primary" href="/goten/">Goten — Deal Calculations</a>
+          <a class="btn btn--primary" href="/trunks/">Trunks — Operations Inbox</a>
         </div>
       </section>
     </main>
@@ -411,15 +337,15 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
             <li><a href="/goten/">Goten — Deal Calculations</a></li>
-            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
             <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
-            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
           <h2 class="footer__h">Docs</h2>
           <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
             <li><a href="/changelog/">Changelog</a></li>
@@ -428,6 +354,7 @@
         <div>
           <h2 class="footer__h">Code</h2>
           <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
             <li><a href="/changelog/">Licence: Apache-2.0</a></li>
@@ -446,7 +373,7 @@
       <p class="footer__legal">
         This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
       </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

@@ -11,7 +11,7 @@ import { pathToFileURL } from 'node:url'
 import { Marked } from 'marked'
 
 const SITE_URL = 'https://vegeta-ops.vercel.app'
-const SHARE_ALT = 'Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.'
+const SHARE_ALT = 'Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox.'
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 function page({ header, footer }, title, summary, path, body, markdown) {

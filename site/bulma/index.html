@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Bulma — SPV Workspace | Vegeta</title>
+    <meta
+      name="description"
+      content="Bulma by Vegeta: an SPV workspace for syndicate leads and the investors they invite. Invitations, eligibility, commitments, identity checks, signing and payment instructions. Self-hosted and open source."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bulma — SPV Workspace | Vegeta" />
+    <meta
+      property="og:description"
+      content="Bulma by Vegeta: an SPV workspace for syndicate leads and the investors they invite. Invitations, eligibility, commitments, identity checks, signing and payment instructions. Self-hosted and open source."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/bulma/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bulma — SPV Workspace | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Bulma by Vegeta: an SPV workspace for syndicate leads and the investors they invite. Invitations, eligibility, commitments, identity checks, signing and payment instructions. Self-hosted and open source."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/bulma/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plex-mono-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body class="has-subnav">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/" aria-current="page">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/" aria-current="page">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <h1 class="hero__title">
+          <span class="sr-only">Bring investors in, follow every investor and every payment, from one SPV workspace.</span>
+          <span class="hero__line rot" aria-hidden="true" data-rotator data-phrases="Bring:investors in|Follow:every investor|Follow:every payment">
+            <span class="rot__item is-on"><span class="rot__verb">Bring</span> investors in</span>
+          </span>
+          <span class="hero__line" aria-hidden="true">from one SPV workspace.</span>
+        </h1>
+        <p class="hero__lede">For syndicate leads and the investors they invite.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://github.com/vegeta-labs/bulma">View the code</a>
+          <a class="btn btn--quiet" href="/docs/bulma/">Read the docs <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+
+        <!-- Hero illustration: three panels set in type from Bulma's demo data (site-src/bulma-demo.json, plan 39 R5) and screen wording (R6);
+             not screenshots. -->
+        <figure class="scene scene--deal scene--row" data-scene>
+          <div class="panel panel--rec" data-step="0">
+            <p class="panel__eyebrow">1 · The investor</p>
+            <p class="panel__title">Son Goku · Senzu Labs</p>
+            <ul class="ledger journey">
+              <li><span class="ledger__who">Eligibility</span><span class="pill">Done</span></li>
+              <li>
+                <span class="ledger__who">Commitment<small>£10,000.00</small></span
+                ><span class="pill">Done</span>
+              </li>
+              <li><span class="ledger__who">Identity check</span><span class="pill">Passed</span></li>
+              <li><span class="ledger__who">Signing</span><span class="pill">Done</span></li>
+              <li class="ledger__focus"><span class="ledger__who">Amount to pay in total</span><span class="ledger__amt">£10,200.00</span></li>
+            </ul>
+          </div>
+
+          <div class="panel panel--alloc" data-step="1">
+            <p class="panel__eyebrow">2 · The lead</p>
+            <p class="panel__title">Senzu Labs · Investor list</p>
+            <ul class="waits">
+              <li class="waits__head"><span></span><span>Status</span><span>Waiting on</span><span>Days at this step</span></li>
+              <li class="ledger__focus">
+                <span class="waits__name">Son Goku</span><span class="pill pill--plain">To pay</span><span class="waits__on">The investor</span
+                ><span class="waits__days">1</span>
+              </li>
+              <li>
+                <span class="waits__name">Yamcha</span><span class="pill pill--plain">To sign</span><span class="waits__on">The investor</span
+                ><span class="waits__days">4</span>
+              </li>
+              <li>
+                <span class="waits__name">Krillin</span><span class="pill pill--plain">Verifying</span><span class="waits__on">A reviewer</span
+                ><span class="waits__days">2</span>
+              </li>
+              <li>
+                <span class="waits__name">Tien</span><span class="pill">Funded</span><span class="waits__on">Nobody</span><span class="waits__days">3</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel panel--exit" data-step="2">
+            <p class="panel__eyebrow">3 · The deal</p>
+            <p class="panel__title">Senzu Labs · Deal</p>
+            <ul class="ledger sums">
+              <li><span class="ledger__who">Committed</span><span class="ledger__amt">£55,000.00</span></li>
+            </ul>
+            <div class="panel__total">
+              <span class="panel__label">Received</span>
+              <span class="panel__figure">£15,300.00</span>
+            </div>
+            <span class="bar sums__bar"><span class="bar__inv bar--received"></span></span>
+          </div>
+          <figcaption class="sr-only">
+            A sample deal, Senzu Labs, three ways: one investor's steps, all done but paying £10,200.00; the lead's list of investors, with each one's status,
+            who it is waiting on and for how many days; and the deal's money, £55,000.00 committed and £15,300.00 received.
+          </figcaption>
+        </figure>
+      </section>
+      <nav class="nav subnav" aria-label="Bulma" data-subnav>
+        <span class="nav__brand glass subnav__brand"
+          ><a href="/" aria-label="Vegeta home"
+            ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg></a
+          ><a class="subnav__name" href="#top">Bulma</a></span
+        >
+        <span class="nav__links glass" data-nav-links>
+          <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+          <a href="#how">How it works</a>
+          <a href="#trust">Why trust it</a>
+          <a href="#limits">Limits</a>
+          <a href="#faq">Bulma FAQ</a>
+          <a href="/docs/bulma/">Docs</a>
+        </span>
+        <span class="nav__end">
+          <a class="nav__cta glass" href="https://github.com/vegeta-labs/bulma">View the code</a>
+        </span>
+      </nav>
+
+      <section class="steps" id="how" aria-labelledby="how-h">
+        <h2 class="sr-only" id="how-h">How it works</h2>
+        <div class="steps__body" data-tone="dark">
+          <div class="deck deck--4" data-deck>
+            <div class="deck__stage">
+              <div class="deck__cards">
+                <article class="card" id="step-1" data-card data-tone="dark">
+                  <div class="card__text">
+                    <p class="eyebrow">Step 1 · Set up</p>
+                    <h3 class="card__title">The lead sets up the deal. The operator reviews it.</h3>
+                    <p class="card__body">Terms, memo and documents go to a reviewer. Nothing goes live until it is approved and the lead confirms.</p>
+                  </div>
+                  <div class="media media--sky">
+                    <div class="media__stage">
+                      <div class="media__glow" aria-hidden="true"></div>
+                      <div class="media__frame media__frame--illus">
+                        <div
+                          class="illus illus--setup"
+                          data-illus="setup"
+                          role="img"
+                          aria-label="A sample deal moves from draft, to the reviewer, to approved, to live."
+                        >
+                          <div aria-hidden="true">
+                            <div class="illus__head"><span class="illus__title">Senzu Labs</span><span class="illus__count">Deal</span></div>
+                            <ul class="illus__rows">
+                              <li class="illus__row ia ia--1"><span class="illus__who">Draft</span></li>
+                              <li class="illus__row ia ia--2"><span class="illus__who">With the reviewer</span></li>
+                              <li class="illus__row ia ia--3">
+                                <span class="illus__who">Approved, waiting for the lead to confirm</span>
+                              </li>
+                              <li class="illus__row ia ia--4"><span class="illus__who">Live</span></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- /illus -->
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article class="card" id="step-2" data-card data-tone="dark">
+                  <div class="card__text">
+                    <p class="eyebrow">Step 2 · Invite</p>
+                    <h3 class="card__title">Only invited investors see the deal.</h3>
+                    <p class="card__body">
+                      By link or by email. Each investor confirms eligibility, reads the deal and commits, as themselves or through a company or trust. Then an
+                      identity check, which a reviewer decides.
+                    </p>
+                  </div>
+                  <div class="media media--sky">
+                    <div class="media__stage">
+                      <div class="media__glow" aria-hidden="true"></div>
+                      <div class="media__frame media__frame--illus">
+                        <div
+                          class="illus illus--invite"
+                          data-illus="invite"
+                          role="img"
+                          aria-label="Three sample investors and their identity checks: two passed, one in review."
+                        >
+                          <div aria-hidden="true">
+                            <div class="illus__head"><span class="illus__title">Identity check</span></div>
+                            <ul class="illus__rows">
+                              <li class="illus__row ia ia--1">
+                                <span class="illus__who">Son Goku<small>Myself</small></span
+                                ><span class="pill pill--plain">Passed</span>
+                              </li>
+                              <li class="illus__row ia ia--2">
+                                <span class="illus__who">Yamcha<small>Myself</small></span
+                                ><span class="pill pill--plain">Passed</span>
+                              </li>
+                              <li class="illus__row ia ia--3">
+                                <span class="illus__who">Krillin<small>Myself</small></span
+                                ><span class="pill pill--plain">In review</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- /illus -->
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article class="card" id="step-3" data-card data-tone="dark">
+                  <div class="card__text">
+                    <p class="eyebrow">Step 3 · Sign</p>
+                    <h3 class="card__title">Sign, then see where to pay.</h3>
+                    <p class="card__body">
+                      The investor signs their own deal sheet. Payment instructions appear after signing: the amount, a reference and the account the operator
+                      named.
+                    </p>
+                  </div>
+                  <div class="media media--sky">
+                    <div class="media__stage">
+                      <div class="media__glow" aria-hidden="true"></div>
+                      <div class="media__frame media__frame--illus">
+                        <div
+                          class="illus illus--pay"
+                          data-illus="pay"
+                          role="img"
+                          aria-label="A sample investor's payment instructions after signing: the amount to pay, what has been received, the payment reference and the date to pay by."
+                        >
+                          <div aria-hidden="true">
+                            <div class="illus__head"><span class="illus__title">Payment details</span></div>
+                            <ul class="illus__rows">
+                              <li class="illus__row ia ia--1">
+                                <span class="illus__who">Amount to pay in total</span><span class="illus__amt">£10,200.00</span>
+                              </li>
+                              <li class="illus__row ia ia--2"><span class="illus__who">Received so far</span><span class="illus__amt">£0.00</span></li>
+                              <li class="illus__row ia ia--3">
+                                <span class="illus__who">Payment reference</span><span class="illus__amt mono">VGT-7KQ2MX</span>
+                              </li>
+                              <li class="illus__row ia ia--4"><span class="illus__who">Pay by</span><span class="illus__amt">2026-12-04</span></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- /illus -->
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article class="card" id="step-4" data-card data-tone="dark">
+                  <div class="card__text">
+                    <p class="eyebrow">Step 4 · Follow</p>
+                    <h3 class="card__title">The lead sees who is waiting on whom.</h3>
+                    <p class="card__body">
+                      Each investor&rsquo;s status, who it waits on and for how many days. Write to one investor, or to a group where the operator allows it.
+                      Propose a new amount or change someone&rsquo;s terms.
+                    </p>
+                  </div>
+                  <div class="media media--sky">
+                    <div class="media__stage">
+                      <div class="media__glow" aria-hidden="true"></div>
+                      <div class="media__frame media__frame--illus">
+                        <div
+                          class="illus illus--follow"
+                          data-illus="follow"
+                          role="img"
+                          aria-label="The lead's list of sample investors, filtered to those waiting on the investor."
+                        >
+                          <div aria-hidden="true">
+                            <div class="illus__head"><span class="illus__title">Waiting on</span><span class="illus__count">The investor</span></div>
+                            <ul class="illus__rows">
+                              <li class="illus__row ia ia--1">
+                                <span class="illus__who">Son Goku<small>To pay</small></span
+                                ><span class="illus__amt">£10,000.00</span>
+                              </li>
+                              <li class="illus__row ia ia--2">
+                                <span class="illus__who">Yamcha<small>To sign</small></span
+                                ><span class="illus__amt">£25,000.00</span>
+                              </li>
+                            </ul>
+                            <div class="illus__total ia ia--3"><span class="illus__label">Write to a group</span></div>
+                          </div>
+                        </div>
+                        <!-- /illus -->
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <ol class="deck__nav" aria-label="Steps">
+                <li>
+                  <a href="#step-1" data-deck-link
+                    >Set up<span class="deck__bar" aria-hidden="true"><span></span></span
+                  ></a>
+                </li>
+                <li>
+                  <a href="#step-2" data-deck-link
+                    >Invite<span class="deck__bar" aria-hidden="true"><span></span></span
+                  ></a>
+                </li>
+                <li>
+                  <a href="#step-3" data-deck-link
+                    >Sign<span class="deck__bar" aria-hidden="true"><span></span></span
+                  ></a>
+                </li>
+                <li>
+                  <a href="#step-4" data-deck-link
+                    >Follow<span class="deck__bar" aria-hidden="true"><span></span></span
+                  ></a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="trust" id="trust" data-tone="dark" aria-labelledby="trust-h">
+        <div class="trust__inner">
+          <h2 class="eyebrow section-label" id="trust-h">Why trust the figures</h2>
+          <dl class="facts">
+            <div class="fact" data-reveal>
+              <dt>Sandbox</dt>
+              <dd>A new instance starts as a sandbox with fictional data, and no email leaves it.</dd>
+            </div>
+            <div class="fact" data-reveal>
+              <dt>35,084</dt>
+              <dd>Random and boundary cases where a Python oracle, written separately from the code, matches.</dd>
+            </div>
+            <div class="fact" data-reveal>
+              <dt>1,130</dt>
+              <dd>Unit and real-database tests, all passing on the release branch.</dd>
+            </div>
+          </dl>
+          <p class="trust__note">Figures from the v0.1.0 release checks.</p>
+        </div>
+      </section>
+
+      <section class="roles" id="who" aria-labelledby="who-h">
+        <h2 class="eyebrow section-label" id="who-h">Lead, investor, operator</h2>
+        <div class="roles__group">
+          <h3 class="roles__h">For the lead</h3>
+          <ul class="roles__list">
+            <li>Set up a deal and send it for review.</li>
+            <li>Invite by link or by email; a link can carry its own terms where the operator allows it.</li>
+            <li>See each investor&rsquo;s status, who it waits on and for how many days.</li>
+            <li>Email investors, propose a new amount or change terms.</li>
+          </ul>
+        </div>
+        <div class="roles__group">
+          <h3 class="roles__h">For the investor</h3>
+          <ul class="roles__list">
+            <li>Confirm eligibility, then read the key terms, the memo and the documents.</li>
+            <li>Commit as yourself or through a company or trust, and pass an identity check.</li>
+            <li>Sign and get payment instructions.</li>
+            <li>Keep the signed deal sheet and any payment details still valid.</li>
+          </ul>
+        </div>
+        <div class="roles__group">
+          <h3 class="roles__h">Run by the operator</h3>
+          <ul class="roles__list">
+            <li>Reviews every deal before investors see it, and most changes to a live deal.</li>
+            <li>Reviews identity checks; a provider&rsquo;s result decides nothing by itself.</li>
+            <li>Sets eligibility steps and legal text in its own regime pack.</li>
+            <li>Records money received. Every change is in the audit log.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="privacy privacy--tight privacy--labelled" id="limits" aria-labelledby="limits-h">
+        <h2 class="eyebrow section-label" id="limits-h">Limits</h2>
+        <p class="privacy__title" data-reveal>It never moves money.</p>
+        <p class="privacy__body" data-reveal>
+          It shows investors where to pay. The money goes to an account the operator names, and the operator records what arrives.
+        </p>
+      </section>
+      <section class="risks" aria-label="What it does not do">
+        <dl class="risks__list">
+          <div>
+            <dt>Money and shares</dt>
+            <dd>Bulma never moves money, holds shares or runs a wallet.</dd>
+          </div>
+          <div>
+            <dt>Advice</dt>
+            <dd>It gives no investment, tax or legal advice, and it does not judge S/EIS eligibility or whether the operator meets its legal duties.</dd>
+          </div>
+          <div>
+            <dt>Who sees a deal</dt>
+            <dd>You can see a deal only if you were invited, and only after a few checks.</dd>
+          </div>
+          <div>
+            <dt>The real mode</dt>
+            <dd>
+              Switching to the real mode needs the operator&rsquo;s own regulatory arrangements and legal advice. A second admin approves the switch, and there
+              is no way back to the sandbox.
+            </dd>
+          </div>
+          <div>
+            <dt>Appointed representatives</dt>
+            <dd>An appointed representative cannot use this version.</dd>
+          </div>
+          <div>
+            <dt>The operator&rsquo;s duties</dt>
+            <dd>
+              This software does not take on the operator&rsquo;s regulatory duties: get your own legal advice first. Sanctions and PEP screening are outside
+              this software.
+            </dd>
+          </div>
+        </dl>
+        <p class="built__links">
+          <a href="/docs/bulma/build/responsibilities/">Who does what <span class="arrow" aria-hidden="true">→</span></a>
+        </p>
+      </section>
+
+      <section class="built" id="setup" aria-labelledby="setup-h">
+        <h2 class="eyebrow section-label" id="setup-h">Your server, your choices</h2>
+        <ol class="built__grid">
+          <li data-reveal>
+            <span class="built__n">01</span>
+            <h3>Your server</h3>
+            <p>Docker Compose: the app and its database on your own server. Apache-2.0.</p>
+          </li>
+          <li data-reveal>
+            <span class="built__n">02</span>
+            <h3>Identity checks</h3>
+            <p>Sumsub under your own contract, or a manual route without a face scan. A reviewer decides either way.</p>
+          </li>
+          <li data-reveal>
+            <span class="built__n">03</span>
+            <h3>Sign-in and roles</h3>
+            <p>
+              Admins, reviewers and approvers, with two-step sign-in. Leads and investors sign in with their own accounts. In the real mode, listed changes wait
+              for a second admin.
+            </p>
+          </li>
+          <li data-reveal>
+            <span class="built__n">04</span>
+            <h3>Your rules</h3>
+            <p>A regime pack holds the eligibility steps and legal text. Write your own before the real mode.</p>
+          </li>
+        </ol>
+        <p class="built__links">
+          <a href="/docs/bulma/build/run-and-deploy/">Run and deploy <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="/docs/bulma/build/real-mode/">The real mode <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="/docs/bulma/release-notes/">Release notes <span class="arrow" aria-hidden="true">→</span></a>
+        </p>
+      </section>
+
+      <!-- Answers checked against Bulma's user docs (R3) and release notes before merge -->
+      <section class="faq" id="faq" aria-labelledby="faq-h">
+        <h2 class="eyebrow section-label" id="faq-h">FAQ</h2>
+        <div class="faq__group">
+          <h3 class="faq__h">Is it for me?</h3>
+          <div class="faq__list">
+            <details class="faq__item" id="bfaq-who">
+              <summary>Who runs it?</summary>
+              <p>
+                An operator: a firm that runs SPV deals and installs it on its own server. Leads and investors use it in the browser, with an account the
+                operator&rsquo;s instance holds.
+              </p>
+            </details>
+            <details class="faq__item" id="bfaq-lead">
+              <summary>Can a lead use it without an operator?</summary>
+              <p>No. The operator reviews every deal before it goes live, and the real mode needs the operator&rsquo;s own regulatory status.</p>
+            </details>
+            <details class="faq__item" id="bfaq-deals">
+              <summary>Which deals does it support?</summary>
+              <p>UK bare trust SPVs: equity, convertible loan notes, SAFEs or advance subscription agreements in a company&rsquo;s round, or fund units.</p>
+            </details>
+          </div>
+        </div>
+        <div class="faq__group">
+          <h3 class="faq__h">For investors</h3>
+          <div class="faq__list">
+            <details class="faq__item" id="bfaq-steps">
+              <summary>What is an investor asked to do?</summary>
+              <p>
+                Create an account and complete the operator&rsquo;s eligibility steps, such as a statement, a short test and a risk warning. Then read the deal
+                and commit, pass an identity check, and sign. Payment instructions come after signing.
+              </p>
+            </details>
+            <details class="faq__item" id="bfaq-entity">
+              <summary>Can I invest through a company or trust?</summary>
+              <p>
+                Yes. You need proof of identity and address for whoever invests: you, or the company or trust. A company or trust also lists its people:
+                directors, anyone with a share over 25% or in control, and whoever acts for it. Each beneficial owner confirms their details through their own
+                link.
+              </p>
+            </details>
+            <details class="faq__item" id="bfaq-docs">
+              <summary>Who sees my documents?</summary>
+              <p>
+                The operator&rsquo;s reviewers, on the operator&rsquo;s own server. The lead sees how far the checks have got, not the documents. If the
+                operator uses Sumsub, Sumsub holds what it collects under the operator&rsquo;s contract.
+              </p>
+            </details>
+          </div>
+        </div>
+        <div class="faq__group">
+          <h3 class="faq__h">Running it</h3>
+          <div class="faq__list">
+            <details class="faq__item" id="bfaq-try">
+              <summary>How do I try it?</summary>
+              <p>With Docker Compose on your own machine. It starts as a sandbox, and no email leaves it.</p>
+            </details>
+            <details class="faq__item" id="bfaq-real">
+              <summary>What does the real mode need?</summary>
+              <p>
+                A regulatory status, the name of the operator&rsquo;s accountable person, your own regime pack with no placeholder text, two admins and a
+                reviewer who are three different people, at least one promotion approver, and payment instructions from a file. A second admin approves the
+                switch.
+              </p>
+            </details>
+            <details class="faq__item" id="bfaq-kyc">
+              <summary>Can I use my own identity-check provider?</summary>
+              <p>Sumsub is built in, under your own contract. The manual route works without any provider.</p>
+            </details>
+          </div>
+        </div>
+        <div class="faq__group">
+          <h3 class="faq__h">Risk and status</h3>
+          <div class="faq__list">
+            <details class="faq__item" id="bfaq-money">
+              <summary>Does it move money?</summary>
+              <p>
+                No. It shows the payment instructions the operator set. The money goes to an account the operator names, and the operator records what arrives.
+              </p>
+            </details>
+            <details class="faq__item" id="bfaq-tested">
+              <summary>How do you know it works?</summary>
+              <p>
+                The money rules are compared with an independent Python implementation on random cases, and the main flows are tested in a real browser. The
+                main figures are <a href="#trust">on this page</a>; the release notes give every result.
+              </p>
+            </details>
+            <details class="faq__item" id="bfaq-ready">
+              <summary>What state is it in?</summary>
+              <p>
+                It is version 0.1.0: only what is built and tested is described here, and the release notes list its limits. It starts as a sandbox with
+                fictional data, and no email leaves it; the real mode needs the operator&rsquo;s own email server, legal wording and payment details. Read
+                <a href="/docs/bulma/build/responsibilities/">who does what</a> before you run it for real.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-h">
+        <div class="cta__art" aria-hidden="true">
+          <video class="cta__video" data-ambient muted loop playsinline preload="none" tabindex="-1">
+            <source src="/img/valley-loop.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h2 class="cta__title" id="cta-h" data-reveal>Try it on your own machine</h2>
+        <p class="cta__body" data-reveal>Docker Compose, with fictional data to start.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://github.com/vegeta-labs/bulma">View the code</a>
+          <a class="btn btn--quiet" href="/docs/bulma/">Read the docs <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

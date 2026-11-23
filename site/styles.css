@@ -51,6 +51,7 @@
   --clay: #d98a68;
   --sand: #e9d8a6;
   --lilac: #b9a8d9;
+  --sky: #9fc3e0; /* Bulma's module colour (owner 2026-11-17: clay was too close to Goten's peach) */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -301,12 +302,199 @@ a:hover > .arrow {
 .nav.is-dark .nav__pill {
   background: rgba(255, 255, 255, 0.1);
 }
+/* plan 41 §3.1: the Investors and Operations menus, native <details> in the bar. With a mouse it opens on hover (owner 2026-11-20,
+   see the hover block below); on touch and from the keyboard on a click. The panel hangs under its own summary (the <details> is its positioned parent; the hover pill follows the <details>) on an opaque
+   ground (the bar's backdrop filter would show the page through a translucent one), and
+   menuClose in site.js closes it after a link or a click outside. While it is open the pill hides: its links sit in the
+   panel's own layout */
+.nav__mods {
+  position: relative;
+  display: flex;
+}
+.nav__mods > summary {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav__mods > summary::-webkit-details-marker {
+  display: none;
+}
+.nav__mods > summary::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+.nav__mods[open] > summary::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+.nav__mods[open] > summary,
+.nav__mods:has([aria-current='page']) > summary {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+.nav__panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  z-index: 2;
+  display: grid;
+  min-width: 250px;
+  padding: 8px;
+  border-radius: 18px;
+  background: var(--bg);
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 var(--glass-edge);
+  color: var(--text);
+}
+/* a bridge over the gap between a summary and its panel, so the pointer stays on the menu on its way down */
+.nav__panel::before {
+  content: '';
+  position: absolute;
+  inset: -14px 0 auto;
+  height: 14px;
+}
+.nav__links .nav__panel a {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+/* plan 41 (owner 2026-11-20): the module's name leads; what it is sits under it, smaller and quieter */
+.nav__panel a > span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+.nav.is-dark .nav__panel a > span {
+  color: var(--ink-muted);
+}
+/* a group's name in a menu, as the reference menus label theirs (Investors: SPVs) */
+.nav__label {
+  margin: 0;
+  padding: 10px 12px 2px;
+  color: var(--text);
+  font: 900 14px/1.4 var(--label-dot);
+  letter-spacing: 0.14em;
+  /* no uppercase: it would turn SPVs into SPVS */
+}
+.nav.is-dark .nav__label {
+  color: var(--ink-text);
+}
+.nav__panel [role='group'] {
+  display: grid;
+}
+.nav__panel a:hover {
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+}
+/* owner 2026-11-20: the menus move as on the reference site: with a mouse they open on hover, the panel easing down
+   4px from 98% and fading in (opacity 0.22s, transform 0.26s), and hide the same way when the pointer leaves; touch and
+   the keyboard open them with a click. On a mouse device the panel is always rendered (::details-content lifted) and
+   shows by its own opacity, so it can animate; browsers without ::details-content keep the plain click. Content shown
+   on hover cannot be closed with Escape without a script; recorded as an exception (handbook) */
+/* only where the browser has both ::details-content and :has(:focus-visible); elsewhere the menus stay the plain click
+   disclosure, so a browser that drops one of these selectors never hides an open panel (Codex 2026-11-21) */
+@supports selector(details::details-content) and selector(:has(:focus-visible)) {
+  @media (hover: hover) and (pointer: fine) {
+    .nav__mods::details-content {
+      content-visibility: visible;
+      display: contents;
+    }
+    .nav__mods .nav__panel {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-4px) scale(0.98);
+      transform-origin: top left;
+      transition:
+        opacity 0.22s var(--ease),
+        transform 0.26s var(--ease),
+        visibility 0s linear 0.26s;
+    }
+    /* shown while the pointer is on the menu, or while it is open and keyboard focus is inside it; a menu opened by a mouse
+       click hides when the pointer leaves, so two panels never show at once (review 2026-11-21) */
+    .nav__mods:hover .nav__panel,
+    .nav__mods[open]:has(:focus-visible) .nav__panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: none;
+      transition:
+        opacity 0.22s var(--ease),
+        transform 0.26s var(--ease),
+        visibility 0s;
+    }
+    .nav__mods:hover > summary {
+      background: color-mix(in srgb, var(--text) 8%, transparent);
+    }
+    .nav__mods[open]:not(:hover):not(:has(:focus-visible)):not(:has([aria-current='page'])) > summary {
+      background: none;
+    }
+    .nav__mods[open]:not(:hover):not(:has(:focus-visible)) > summary::after {
+      transform: translateY(-2px) rotate(45deg);
+    }
+    .nav.is-dark .nav__mods:hover > summary {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .nav__links:has(.nav__mods:hover) .nav__pill {
+      opacity: 0;
+      transition: none;
+    }
+    .nav__links:has(.nav__mods[open]):not(:has(.nav__mods:hover)):not(:has(.nav__mods :focus-visible)) .nav__pill {
+      opacity: 1;
+    }
+  }
+  /* reduced motion: no movement, the fade stays */
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+    .nav__mods .nav__panel {
+      transform: none;
+      transition:
+        opacity 0.22s var(--ease),
+        visibility 0s linear 0.22s;
+    }
+    .nav__mods:hover .nav__panel,
+    .nav__mods[open]:has(:focus-visible) .nav__panel {
+      transform: none;
+      transition:
+        opacity 0.22s var(--ease),
+        visibility 0s;
+    }
+  }
+}
+.nav__links:has(.nav__mods[open]) .nav__pill {
+  opacity: 0;
+  transition: none;
+}
+.nav.is-dark .nav__panel {
+  background: rgb(21, 22, 25);
+  color: var(--ink-text);
+}
+.nav.is-dark .nav__panel a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.nav.is-dark .nav__mods[open] > summary,
+.nav.is-dark .nav__mods:has([aria-current='page']) > summary {
+  background: rgba(255, 255, 255, 0.1);
+}
 /* nav labels never wrap; with four section links the capsules tighten up to 900px so they still fit at 761px */
 .nav a {
   white-space: nowrap;
 }
 @media (max-width: 900px) {
-  .nav__links a {
+  .nav__links a,
+  .nav__mods > summary {
     padding: 0 10px;
   }
   .nav__brand,
@@ -375,18 +563,6 @@ a:hover > .arrow {
 }
 .hero__line {
   display: block;
-}
-.hero--overview .rot {
-  color: var(--soft);
-}
-/* Keep the approved long phrases complete at the shared title size. */
-@media (max-width: 1800px) {
-  .hero--overview .rot {
-    height: 1.94em;
-  }
-  .hero--overview .rot__item > span {
-    display: block;
-  }
 }
 .rot {
   position: relative;
@@ -479,6 +655,7 @@ a:hover > .arrow {
 .hero__lede {
   max-width: 600px;
   margin: 28px auto 0;
+  text-wrap: balance;
   color: var(--muted);
   font-size: clamp(17px, 1.4vw, 19px);
   animation: rise-in 0.95s var(--ease-out) 0.35s both;
@@ -920,6 +1097,11 @@ a:hover > .arrow {
   background:
     radial-gradient(60% 70% at 25% 35%, var(--clay), transparent 70%), radial-gradient(55% 60% at 80% 30%, var(--lilac), transparent 70%),
     radial-gradient(60% 60% at 60% 100%, var(--peach), transparent 70%), #2f2633;
+}
+.media--sky .media__glow {
+  background:
+    radial-gradient(60% 70% at 25% 30%, var(--sky), transparent 70%), radial-gradient(55% 60% at 80% 40%, var(--sand), transparent 70%),
+    radial-gradient(60% 60% at 50% 100%, #6f93b8, transparent 70%), #232b36;
 }
 .media__glow {
   opacity: 0.7;
@@ -1545,6 +1727,11 @@ a:hover > .arrow {
     background: var(--bg);
     border-bottom: 1px solid var(--line);
     color: var(--text);
+    /* plan 41: the two group names made the list taller than a short phone screen, so it scrolls inside the screen */
+    max-height: calc(100vh - 60px);
+    max-height: calc(100dvh - 60px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav__menu li + li {
     border-top: 1px solid var(--line);
@@ -1568,20 +1755,6 @@ a:hover > .arrow {
   }
 }
 
-/* the overview hero: two panels, one per module */
-.scene--two .panel--left {
-  left: 6%;
-  top: 24px;
-  width: 42%;
-}
-.scene--two .panel--right {
-  right: 6%;
-  top: 24px;
-  width: 42%;
-}
-.scene--two {
-  height: 440px;
-}
 /* a risk that needs a person: the amber of the hero's "Review" state */
 .pill--warn {
   background: #fbf1dc;
@@ -1612,6 +1785,12 @@ a:hover > .arrow {
 .built--top {
   padding-top: var(--gap-section);
   /* its own top space puts the label about 140px down when a link lands on it */
+  scroll-margin-top: 0;
+}
+/* plan 41: Why trust Vegeta now follows the dark Modules band, so it opens with a section's gap like Where it fits */
+.trust + .built {
+  padding-top: var(--gap-section);
+  /* its own top space puts the label at the gap when a link lands on it, as on Where it fits */
   scroll-margin-top: 0;
 }
 /* module rows on the overview: the trust figures' type, with plain links on the dark band */
@@ -1738,16 +1917,6 @@ a:hover > .arrow {
   .risks__list > div {
     grid-template-columns: 1fr;
     gap: 6px;
-  }
-}
-@media (max-width: 1080px) {
-  .scene--two {
-    height: auto;
-  }
-  .scene--two .panel--left,
-  .scene--two .panel--right {
-    inset: auto;
-    width: auto;
   }
 }
 @media (max-width: 760px) {
@@ -2952,6 +3121,16 @@ html:not(.js) .subnav {
   line-height: 0.95;
   letter-spacing: -0.04em;
 }
+/* plan 41: on the overview the module's name leads to its page */
+.module__name a {
+  color: inherit;
+  text-decoration: none;
+}
+.module__name a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
+}
 .module__type {
   margin: 12px 0 0;
   color: var(--ink-text);
@@ -2965,52 +3144,13 @@ html:not(.js) .subnav {
   font-size: 20px;
   line-height: 1.4;
 }
-.module__caps {
-  margin: 28px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.module__caps li {
-  padding: 11px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(246, 248, 243, 0.85);
-  font-size: 16px;
-}
-.module__proof {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: end;
-  gap: 20px;
-  margin: 32px 0 0;
-}
-.module__figure {
-  font-size: clamp(40px, 4.4vw, 60px);
-  font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
 @supports (background-clip: text) or (-webkit-background-clip: text) {
-  .module__name,
-  .module__figure {
+  .module__name {
     background: linear-gradient(180deg, #f6f8f3 25%, #8f938b 110%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-}
-.module__proof p {
-  margin: 0;
-  color: rgba(246, 248, 243, 0.72);
-  font-size: 15px;
-  line-height: 1.4;
-}
-.module__proof small {
-  display: block;
-  margin-top: 4px;
-  color: rgba(246, 248, 243, 0.5);
-  font: 400 11px/1.4 var(--mono);
 }
 @media (max-width: 900px) {
   .modules__grid {
@@ -3102,110 +3242,6 @@ html:not(.js) .subnav {
 }
 .article p.article__ask a {
   color: var(--text);
-}
-/* where each module fits in a deal: stages across, one band per module (the module colours, plan 13 N23) */
-.fits {
-  width: calc(100% + 16px);
-  /* the outer border spacing is pulled back on all sides, so the section's bottom gap is measured from the last row */
-  margin: 24px -8px -8px;
-  border-collapse: separate;
-  border-spacing: 8px;
-  table-layout: fixed;
-}
-.fits th,
-.fits td {
-  padding: 16px 18px;
-  text-align: left;
-  vertical-align: top;
-}
-.fits thead th {
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font: 500 12px/1.4 var(--mono);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.fits__corner,
-.fits tbody th {
-  width: 9em;
-  padding-left: 0;
-  font-size: 18px;
-  font-weight: 500;
-}
-.fits td {
-  border-radius: 0;
-  font-size: 16px;
-  line-height: 1.45;
-}
-.fits__goten {
-  background: color-mix(in srgb, #f3c7a3 45%, transparent);
-}
-.fits__trunks {
-  background: color-mix(in srgb, #cfe0b8 55%, transparent);
-}
-.fits__next {
-  background: color-mix(in srgb, var(--lilac) 22%, transparent);
-  outline: 1px dashed color-mix(in srgb, var(--lilac) 80%, var(--text));
-  outline-offset: -1px;
-}
-.fits__state {
-  display: block;
-  margin-top: 10px;
-  color: var(--muted);
-  font: 500 11px/1.4 var(--mono);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.fits td small {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 14px;
-}
-@media (prefers-color-scheme: dark) {
-  .fits__goten {
-    background: color-mix(in srgb, #6b4630 70%, transparent);
-  }
-  .fits__trunks {
-    background: color-mix(in srgb, #3e4d33 80%, transparent);
-  }
-}
-@media (max-width: 760px) {
-  .fits,
-  .fits thead,
-  .fits tbody,
-  .fits tr,
-  .fits th,
-  .fits td {
-    display: block;
-  }
-  .fits thead {
-    display: none;
-  }
-  .fits {
-    margin-bottom: 0;
-    border-spacing: 0;
-  }
-  .fits tbody th {
-    width: auto;
-    padding: 20px 0 8px;
-  }
-  .fits td {
-    margin-top: 8px;
-  }
-  .fits .fits__gap {
-    display: none;
-  }
-  .fits td[data-stage]::before {
-    content: attr(data-stage);
-    display: block;
-    margin-bottom: 4px;
-    color: var(--muted);
-    font: 500 11px/1.4 var(--mono);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
 }
 
 /* ---- plan 14 R5: use cases as a three-column grid ---- */
@@ -4080,6 +4116,9 @@ html:not(.js) .subnav {
 .article__module--trunks strong::before {
   background: var(--sage);
 }
+.article__module--bulma strong::before {
+  background: var(--sky);
+}
 .article .article__next {
   padding-top: 0;
   border-top: 0;
@@ -4354,6 +4393,17 @@ html:not(.js) .subnav {
     radial-gradient(60% 70% at 25% 30%, var(--sage), transparent 70%), radial-gradient(55% 60% at 80% 40%, var(--sand), transparent 70%),
     radial-gradient(60% 60% at 50% 100%, #7fa27a, transparent 70%), #27332a;
 }
+/* plan 39: Bulma's card is the third, in its module colour, sky; three cards share one row from 901px */
+.blogband .module:nth-child(3) .blogfeature::before {
+  background:
+    radial-gradient(60% 70% at 25% 30%, var(--sky), transparent 70%), radial-gradient(55% 60% at 80% 40%, var(--sand), transparent 70%),
+    radial-gradient(60% 60% at 50% 100%, #7f9fba, transparent 70%), #25303a;
+}
+@media (min-width: 901px) {
+  .blogband .blogband__three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 .blogband .blogfeature::after {
   background: url('img/grain.svg');
   mix-blend-mode: overlay;
@@ -4392,11 +4442,9 @@ html:not(.js) .subnav {
 .blogindex__lede {
   margin-top: 14px;
 }
-/* stacked hero panels (1080px and below) end above the film's dark band with the room Goten and Trunks leave (plan 38 A2) */
-@media (max-width: 1080px) {
-  .hero--overview {
-    padding-bottom: 88px;
-  }
+/* plan 41: the overview's hero has no panels; its buttons end a section's gap above the film's dark band */
+.hero--overview {
+  padding-bottom: var(--gap-section);
 }
 /* phones: the list pages and articles start where the home, Goten and Trunks pages do, 47px under the nav (plan 38, 2026-11-16) */
 @media (max-width: 760px) {
@@ -4464,8 +4512,10 @@ html:not(.js) .subnav {
   background: var(--band);
   color: #f6f8f3;
 }
-.reel + .trust .trust__inner {
-  padding-top: calc(var(--gap-section) - var(--reel-in));
+/* plan 41: Where it fits (a light section) follows the film, so the dark band closes under the circle with the space it
+   leaves above it */
+.reel {
+  padding-bottom: calc(var(--reel-top) - var(--reel-in));
 }
 .reel__frame {
   position: relative;
@@ -4673,5 +4723,522 @@ html:not(.js) .subnav {
   .reel__over,
   .reel__btn {
     transition: none;
+  }
+}
+
+/* ---- plan 39: Bulma — SPV Workspace. Its module colour is sky (owner 2026-11-17); in the hero it marks only the "waiting on" column ---- */
+.pill--plain {
+  background: #f0f2ec;
+  color: #3f433b;
+}
+/* the deal's money: committed, then received as the panel's one big figure, then the bar (received against committed) */
+.sums li {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.sums__bar {
+  margin-top: 14px;
+}
+/* "Days at this step" is Bulma's own column name: two lines at most, never three */
+.waits .waits__head > :last-child {
+  white-space: normal;
+  letter-spacing: 0.04em;
+}
+.waits li {
+  display: grid;
+  /* rem, not em: the header row has a smaller font, and its columns must line up with the rows */
+  grid-template-columns: minmax(0, 1fr) 4rem 5.4rem 4.2rem;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 0;
+  border-top: 1px solid #eceee8;
+}
+.waits .waits__head {
+  padding: 0 0 6px;
+  border-top: 0;
+  color: #5f6359;
+  font: 500 10px/1.2 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.waits__name {
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.waits .pill {
+  justify-self: start;
+}
+.waits__on {
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.waits__on::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--sky);
+}
+/* phones: the status sits under the name */
+@media (max-width: 440px) {
+  .waits li {
+    grid-template-columns: minmax(0, 1fr) 5.4rem 4.2rem;
+    row-gap: 4px;
+  }
+  .waits__name {
+    grid-column: 1;
+  }
+  .waits .pill {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .waits__on {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  .waits__days {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+  .waits .waits__head > :nth-child(2) {
+    display: none;
+  }
+}
+.waits__days,
+.waits__head > :last-child {
+  text-align: right;
+  white-space: normal;
+  font-variant-numeric: tabular-nums;
+}
+.bar--received {
+  /* paid-in commitments over commitments, one basis (fees left out): Tien's £15,000.00 of £55,000.00 = 27.3% (audit C17) */
+  width: 27.3%;
+  animation-delay: 1.62s !important;
+}
+@media (prefers-color-scheme: dark) {
+  .pill--plain {
+    background: #2a2b2f;
+    color: #c9cbc4;
+  }
+  .waits li {
+    border-color: #2c2d31;
+  }
+  .waits .waits__head {
+    color: #a3a3a3;
+  }
+}
+/* Bulma and Goten heroes (owner 2026-11-21): three views side by side, equal width and height, top-aligned, no overlap and no
+   arrows (they are not steps). The lit panel keeps its shadow but does not rise, so the tops stay level. Bulma's centre panel
+   is a little wider for its four columns. */
+.scene--row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 24px;
+  max-width: 1180px;
+  height: auto;
+}
+.scene--deal {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) minmax(0, 1fr);
+}
+/* Goten: the bank statement needs name, amount and status on one line, so its panel is wider, and below 1240px the three
+   panels stack rather than squeeze */
+.scene--recon {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+@media (max-width: 1239px) {
+  .scene--recon {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 480px;
+  }
+}
+.scene--row .panel.is-lit {
+  translate: none;
+}
+.scene--row .panel {
+  position: relative;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0;
+}
+@media (max-width: 1080px) {
+  .scene--row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 440px;
+  }
+}
+/* who does what: a group name on the left, one line per task on the right, under the FAQ's hairlines */
+.roles {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--gap-section) var(--gutter);
+}
+.roles__group {
+  display: grid;
+  margin-top: 24px;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.roles .roles__group + .roles__group {
+  margin-top: 56px;
+}
+.roles__h {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.roles__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.roles__list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 18px;
+  line-height: 1.45;
+}
+.roles__list li:first-child {
+  padding-top: 0;
+}
+.roles + .privacy {
+  padding-top: 0;
+}
+@media (max-width: 900px) {
+  .roles__group {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .roles__list li {
+    font-size: 17px;
+  }
+}
+/* three modules on the overview: from 901 to 1200px the first spans the row and the other two share the next */
+.modules__grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.modules__grid--3 .module {
+  padding: 44px 32px 8px 0;
+}
+.modules__grid--3 .module + .module {
+  padding: 44px 32px 8px 32px;
+}
+.modules__grid--3 .module:last-child {
+  padding-right: 0;
+}
+.module--bulma .module__runs::before {
+  background: var(--sky);
+}
+@media (max-width: 900px) {
+  .modules__grid--3 {
+    grid-template-columns: 1fr;
+  }
+  .modules__grid--3 .module,
+  .modules__grid--3 .module + .module,
+  .modules__grid--3 .module:last-child {
+    padding: 36px 0 8px;
+  }
+}
+/* plan 41: the home close has no line under its title, so its buttons keep the title's distance */
+.cta__title + .hero__actions {
+  margin-top: 36px;
+}
+
+/* where it fits (plan 41; owner 2026-11-21): one glass window over the film's painting, blurred; one bar per module across the stages it
+   works in, in the module colours. The edge dissolves in 2px grain like the blog pictures (scripts/render-blog-masks.py) */
+.fx__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--gap-section) var(--gutter);
+}
+.fx__title {
+  margin: 10px 0 0;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+.fx__stage {
+  position: relative;
+  margin: 40px 0 0;
+  padding: 40px;
+  -webkit-mask: url('img/dissolve-wide.webp') 0 0 / 100% 100%;
+  mask: url('img/dissolve-wide.webp') 0 0 / 100% 100%;
+}
+.fx__paint {
+  position: absolute;
+  inset: 0;
+  background: url('img/fits-field.webp') center / cover;
+}
+.fx__paint::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('img/print-grain.svg') 0 0 / 360px 360px; /* the print grid, same size and strength as the closing painting */
+  filter: contrast(1.4);
+  opacity: 0.34;
+  mix-blend-mode: overlay;
+}
+.fx__win {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 10px 0;
+  padding: 22px 24px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.4));
+  -webkit-backdrop-filter: blur(14px) saturate(1.4); /* the site's glass (nav, chips) */
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+  color: var(--ink);
+}
+.fx__head:first-of-type {
+  grid-column: 2; /* the first column holds the module names */
+}
+.fx__head {
+  margin: 0 0 4px;
+  padding-left: 14px;
+  font: 900 16px/1 var(--label-dot);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.fx__head i {
+  margin-right: 8px;
+  color: rgba(21, 22, 25, 0.76);
+  font: 500 11px/1 var(--mono);
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+.fx__name {
+  grid-column: 1;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.fx__name::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  vertical-align: 0.1em;
+  background: #5f93bf;
+}
+.fx__name--goten::before {
+  background: #d4824f;
+}
+.fx__name--trunks::before {
+  background: #7fa363;
+}
+.fx__bar {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  min-height: 58px;
+  margin: 0 3px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #fff 70%, var(--c));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 6px 16px -10px rgba(21, 22, 25, 0.35);
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+.fx__bar span {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+}
+.fx__bar span + span {
+  border-left: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+}
+.fx__bar--bulma {
+  --c: var(--sky);
+}
+.fx__bar--goten {
+  --c: var(--peach);
+}
+.fx__bar--trunks {
+  --c: var(--sage);
+}
+.fx__bar--soon {
+  border: 1px dashed rgba(21, 22, 25, 0.35);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: none;
+  color: rgba(21, 22, 25, 0.7);
+}
+.fx__bar--soon span {
+  display: block;
+  padding-top: 12px;
+}
+.fx__bar i {
+  display: block;
+  margin-top: 5px;
+  font: 500 10.5px/1 var(--mono);
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.fx__span--1-3 {
+  grid-column: 2 / 4;
+}
+.fx__span--3-4 {
+  grid-column: 4 / 5;
+}
+.fx__span--2-5 {
+  grid-column: 3 / 6;
+}
+.fx__span--1-5 {
+  grid-column: 2 / 6;
+}
+@media (prefers-color-scheme: dark) {
+  .fx__paint {
+    filter: brightness(0.85) saturate(1.1);
+  }
+  .fx__win {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: linear-gradient(170deg, rgba(20, 20, 20, 0.42), rgba(20, 20, 20, 0.22));
+    color: #f6f8f3;
+  }
+  .fx__head i {
+    color: rgba(246, 248, 243, 0.8);
+  }
+  .fx__bar {
+    background: color-mix(in srgb, #1a1a1a 78%, var(--c));
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  }
+  .fx__bar--soon {
+    border-color: rgba(246, 248, 243, 0.3);
+    background: rgba(20, 20, 20, 0.35);
+    color: rgba(246, 248, 243, 0.88);
+  }
+}
+/* phones: the stages run down; each module keeps its bar, one stage per line */
+@media (max-width: 900px) {
+  .fx__stage {
+    padding: 32px 18px;
+    -webkit-mask-image: url('img/dissolve-tall.webp');
+    mask-image: url('img/dissolve-tall.webp');
+  }
+  .fx__paint {
+    background-image: url('img/fits-field-tall.webp');
+  }
+  .fx__win {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px;
+  }
+  .fx__head {
+    display: none;
+  }
+  .fx__name {
+    margin-top: 10px;
+  }
+  .fx__bar,
+  .fx__span--1-3,
+  .fx__span--3-4,
+  .fx__span--2-5,
+  .fx__span--1-5 {
+    grid-column: 1;
+    grid-auto-flow: row;
+    margin: 0;
+  }
+  .fx__tag {
+    position: static;
+    flex: none;
+    width: 4.6em;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    color: rgba(21, 22, 25, 0.76);
+    font: 500 11px/1.6 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .fx__bar--soon span {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .fx__bar--soon i {
+    margin-left: 4.6em;
+    flex-basis: 100%;
+  }
+  .fx__bar span + span {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  }
+}
+@media (max-width: 900px) and (prefers-color-scheme: dark) {
+  .fx__tag {
+    color: rgba(246, 248, 243, 0.8);
+  }
+}
+/* where it fits, entrance (wide screens, motion allowed): the window settles in, then each module's bar grows from its first stage to its last, Bulma, Goten, Trunks; once only (the site's [data-reveal]) */
+.js .fx__stage[data-reveal] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .js .fx__stage[data-reveal] .fx__win {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.6s var(--ease-out),
+      transform 0.8s var(--ease-out);
+  }
+  .js .fx__stage[data-reveal] .fx__bar {
+    clip-path: inset(-12px 100% -24px -12px); /* the open edges leave room for the bar's shadow */
+    transition: clip-path 0.6s var(--ease-out);
+  }
+  .js .fx__stage[data-reveal] .fx__name {
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-out);
+  }
+  .js .fx__stage[data-reveal].is-in .fx__win {
+    opacity: 1;
+    transform: none;
+  }
+  .js .fx__stage[data-reveal].is-in .fx__bar {
+    clip-path: inset(-12px -12px -24px -12px);
+  }
+  .js .fx__stage[data-reveal].is-in .fx__name {
+    opacity: 1;
+  }
+  .js .fx__stage.is-in .fx__name--bulma,
+  .js .fx__stage.is-in .fx__bar--bulma {
+    transition-delay: 0.2s;
+  }
+  .js .fx__stage.is-in .fx__bar--soon {
+    transition-delay: 0.75s;
+  }
+  .js .fx__stage.is-in .fx__name--goten,
+  .js .fx__stage.is-in .fx__bar--goten {
+    transition-delay: 0.35s;
+  }
+  .js .fx__stage.is-in .fx__name--trunks,
+  .js .fx__stage.is-in .fx__bar--trunks {
+    transition-delay: 0.5s;
   }
 }

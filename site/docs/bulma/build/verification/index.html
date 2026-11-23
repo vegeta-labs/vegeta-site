@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Verification | Vegeta</title>
+    <meta
+      name="description"
+      content="Bulma is checked in several independent ways: unit and database tests, browser tests, an independent Python oracle for the money rules, deliberate code breakages, and a set of source checks. This page says what each one does and how to run it."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Verification | Vegeta" />
+    <meta
+      property="og:description"
+      content="Bulma is checked in several independent ways: unit and database tests, browser tests, an independent Python oracle for the money rules, deliberate code breakages, and a set of source checks. This page says what each one does and how to run it."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/verification/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Verification | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Bulma is checked in several independent ways: unit and database tests, browser tests, an independent Python oracle for the money rules, deliberate code breakages, and a set of source checks. This page says what each one does and how to run it."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/verification/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build/verification.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/" aria-current="page">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/" aria-current="page">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Verification</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Bulma is checked in several independent ways: unit and database tests, browser tests, an independent Python oracle for the money rules, deliberate
+              code breakages, and a set of source checks. This page says what each one does and how to run it.
+            </p>
+            <p>
+              All commands run from the repository root after <code>npm ci</code>. Test results for a version are in the
+              <a href="/docs/bulma/release-notes/">release notes</a>.
+            </p>
+            <h2 id="set-up">Set up<a class="docs__anchor" href="#set-up" aria-label="Link to this section">#</a></h2>
+            <p>The tests need Node.js, <code>python3</code> for the oracle, and a Postgres 16 server for the database tests:</p>
+            <pre tabindex="0"><code>docker run -d --name bulma-pg -e POSTGRES_PASSWORD=postgres -p 55433:5432 postgres:16
+npm ci
+npx playwright install --with-deps chromium</code></pre>
+            <p>
+              The tests connect to <code>postgres://postgres:postgres@localhost:55433/postgres</code> unless <code>TEST_DATABASE_URL</code> says otherwise. Each
+              test file creates its own fresh, migrated database there, with the same database roles as a real instance.
+            </p>
+            <h2 id="test-names">Test names<a class="docs__anchor" href="#test-names" aria-label="Link to this section">#</a></h2>
+            <p>
+              Every test name starts with the ID of the test-plan case it covers, such as <code>TC-AUTHZ-07</code> or <code>E2E-01</code>. The test plan, the
+              written requirements and the list of names that must not be published are kept in the development repository, not in this public one; each
+              test-plan case ends with the milestone it is due at. In the public repository the three checks that read them, <code>check:requirements</code>,
+              <code>check:identity</code> and the due-case step of <code>coverage:check</code>, print &quot;skipped&quot; and pass. Every test still runs except
+              one, which needs the private list and is skipped.
+            </p>
+            <h2 id="quick-checks">Quick checks<a class="docs__anchor" href="#quick-checks" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run typecheck   # TypeScript, no output files
+npm run lint        # oxlint on src, scripts and e2e; warnings fail</code></pre>
+            <h2 id="unit-and-database-tests">
+              Unit and database tests<a class="docs__anchor" href="#unit-and-database-tests" aria-label="Link to this section">#</a>
+            </h2>
+            <pre tabindex="0"><code>npm test</code></pre>
+            <p>
+              Runs Vitest on <code>src/**/*.test.ts</code> and <code>scripts/**/*.test.ts</code>. This covers the pure rules in <code>src/lib/</code>, the
+              server routes against a real Postgres database, the PDFs, the check scripts themselves, and the comparison with the Python oracle (below).
+            </p>
+            <h2 id="browser-tests">Browser tests<a class="docs__anchor" href="#browser-tests" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run e2e</code></pre>
+            <p>
+              Runs Playwright in Chromium. It first makes a production build, then starts a real server (<code>e2e/serve.ts</code>) on a fresh database with the
+              production content security policy, so a page that breaks the policy fails a test. Some tests also run at phone size. The sandbox test records
+              every request the browser makes and fails if any goes to another host.
+            </p>
+            <h2 id="test-plan-coverage">Test-plan coverage<a class="docs__anchor" href="#test-plan-coverage" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run coverage:check</code></pre>
+            <p>
+              Runs the unit tests and the browser tests, then <code>scripts/check-coverage.mjs</code>, which reads both JSON reports. In the development
+              repository it fails unless every case due at the current milestone ran and passed; in the public repository it runs the tests (one is skipped, as
+              above) and skips the due-case step. It reads the test results, not the source, so a test that exists but did not run does not count.
+            </p>
+            <h2 id="the-independent-oracle">
+              The independent oracle<a class="docs__anchor" href="#the-independent-oracle" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              <code>scripts/oracle/</code> is a separate implementation of the money rules in Python, using only the standard library and exact arithmetic
+              (integers and fractions, no floating point). It is written from the written rules alone (the requirements and test plan kept in the development
+              repository, and <code>scripts/oracle/SCHEMA.md</code>), never from the TypeScript, and it shares no code with it. Its input and output format is
+              in <code>SCHEMA.md</code>.
+            </p>
+            <pre tabindex="0"><code>npm run oracle:selfcheck</code></pre>
+            <p>Checks the oracle against values worked out by hand from the rules.</p>
+            <p>
+              <code>npm test</code> then runs <code>src/lib/oracle.test.ts</code>, which generates cases from a fixed seed, plus boundaries near a half and near
+              each limit, and compares the TypeScript with the oracle. It covers the platform fee, the amount to pay, commitment checks and estimates, the lead
+              fee, scale-back and money sequences, and bank statement matching.
+            </p>
+            <p>To stay useful, the oracle must only ever be changed from the rules.</p>
+            <h2 id="mutation-check">Mutation check<a class="docs__anchor" href="#mutation-check" aria-label="Link to this section">#</a></h2>
+            <pre tabindex="0"><code>npm run mutation</code></pre>
+            <p>
+              <code>scripts/mutation-check.mjs</code> holds a list of deliberate breakages (&quot;mutants&quot;). Each one names a file, a piece of code that
+              must occur in it exactly once, the broken version, what it breaks, and the test command that should catch it. For each mutant the script:
+            </p>
+            <ol>
+              <li>writes the broken version into the source file;</li>
+              <li>runs the tests, stopping at the first failure;</li>
+              <li>writes the original file back, even if the run fails.</li>
+            </ol>
+            <p>
+              A mutant is <strong>caught</strong> if the tests fail, and <strong>SURVIVED</strong> if they pass. Before it starts, every test suite it uses must
+              pass unmutated; that run&#39;s time sets each mutant&#39;s limit at three times the normal time plus a minute. A mutant still running then counts
+              as caught and is marked <strong>TIMEOUT</strong>, to be looked at. A mutant whose original code is no longer in its file is reported as
+              <strong>MISSING</strong> and counts as a failure, not a pass. The run fails if anything survived or went missing.
+            </p>
+            <p>
+              <strong>This command edits source files while it runs.</strong> Do not run it alongside anything else that reads or changes the source, such as an
+              editor saving files, a second test run or a review tool. If the run is killed, a mutant can be left in a file: check
+              <code>git status</code> afterwards.
+            </p>
+            <p>Options:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--check-only</code></td>
+                    <td>Only checks that every mutant&#39;s original code is still in its file, exactly once. Takes seconds and runs no tests.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--since=&lt;ref&gt;</code></td>
+                    <td>
+                      Runs only the mutants whose result can have changed since that commit: new mutants, mutants near a changed line, and mutants whose tests
+                      or test harness lost or changed a line. Run <code>--check-only</code> for the rest.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>--list</code></td>
+                    <td>Lists the mutants <code>--since</code> selects (or all of them), without running them. <code>MUTANTS_MATCH</code> is not applied.</td>
+                  </tr>
+                  <tr>
+                    <td><code>MUTANTS_MATCH=&lt;text&gt;</code></td>
+                    <td>Environment variable: runs only the mutants whose file or description contains the text.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="source-checks">Source checks<a class="docs__anchor" href="#source-checks" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>What it checks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>npm run check:routes</code></td>
+                    <td>
+                      Builds the server without a database and lists every route with its gate. Fails if a route names no gate or is public without being on the
+                      public list.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>npm run check:outbound</code></td>
+                    <td>
+                      No telemetry and no request to the project: searches the source in <code>src/</code> for known network calls and outside host names; only
+                      the adapter files and the browser&#39;s API client may make such calls, no source file may name an outside host except the KYC
+                      adapter&#39;s, and no known analytics package is a dependency. It does not inspect the code of dependencies.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>npm run check:migrations</code></td>
+                    <td>
+                      Migration files that exist on the base commit have not been changed or removed. Takes the base as an argument; without one it compares
+                      with the previous commit.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>npm run check:requirements</code></td>
+                    <td>Every requirement appears in the test plan. Development repository only; skipped in the public one.</td>
+                  </tr>
+                  <tr>
+                    <td><code>npm run check:licences</code></td>
+                    <td>Every dependency has an allowed licence, or a listed exception with its reason.</td>
+                  </tr>
+                  <tr>
+                    <td><code>npm run check:tokens</code></td>
+                    <td><code>src/web/tokens.css</code> still matches the design tokens shared with the other Vegeta tools (by SHA-256).</td>
+                  </tr>
+                  <tr>
+                    <td><code>npm run check:identity</code></td>
+                    <td>
+                      Every file that is published names nothing that must not be published. Development repository only (the list of names is private); skipped
+                      in the public one.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="continuous-integration">
+              Continuous integration<a class="docs__anchor" href="#continuous-integration" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              <code>.github/workflows/ci.yml</code> runs the quick checks and every source check (the migration check on pull requests),
+              <code>npm audit</code> for high-severity issues in application dependencies, the oracle self-check and <code>npm run coverage:check</code>, then
+              builds the image and starts it with the steps in the README. It does not run the mutation check, which is run by hand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

@@ -37,27 +37,29 @@ const REDUCED = { viewport: { width: 1440, height: 900 }, colorScheme: 'light', 
 const hero = ['hero', async () => {}]
 
 // / (overview)
+// plan 41: the overview has no hero panels; Where it fits follows the film; the Modules menu open, on light and on dark
+const menuOpen = ['menu', async (p) => p.click('.nav__mods > summary')]
 const home = [
   hero,
-  ['show', at('[data-scene]')],
   // plan 32: the reel at rest, filled under the pointer, and spread into the playing film
   ['reel', at('#film')],
   ['reel-hover', async (p) => p.hover('[data-reel-play]')],
   ['reel-open', async (p) => (await p.click('[data-reel-play]'), p.waitForTimeout(2200))],
-  ['modules', at('#modules')],
   ['fits', at('#fits')],
-  ['build', at('#build')],
+  ['modules', at('#modules')],
+  ['menu-dark', async (p) => p.click('.nav__mods > summary')],
+  ['build', async (p) => (await p.click('body', { position: { x: 4, y: 400 } }), at('#build')(p))],
   ['faq', at('#faq')],
   ['footer', bottom],
 ]
 await run('home-light', '/', DESK, home)
-await run('home-dark', '/', DARK, home.slice(0, 3))
-await run('home-short', '/', SHORT, home.slice(0, 2))
+await run('home-dark', '/', DARK, [...home.slice(0, 2), menuOpen])
+await run('home-short', '/', SHORT, [hero, menuOpen])
 await run('home-reduced', '/', REDUCED, [
   ['reel', at('#film')],
   ['reel-open', async (p) => (await p.click('[data-reel-play]'), p.waitForTimeout(1200))],
 ])
-await run('home-tablet', '/', { viewport: { width: 834, height: 1194 }, colorScheme: 'light' }, [['reel', at('#film')]])
+await run('home-tablet', '/', { viewport: { width: 834, height: 1194 }, colorScheme: 'light' }, [hero, menuOpen, ['reel', at('#film')]])
 await run('home-nojs', '/', { ...DESK, javaScriptEnabled: false }, [['reel', at('#film')]])
 // the reel without WebGL: the still, and the film in a plain player in the same place
 {
@@ -75,8 +77,8 @@ await run('home-nojs', '/', { ...DESK, javaScriptEnabled: false }, [['reel', at(
 }
 await run('home-phone', '/', PHONE, [
   hero,
-  ['scene', at('[data-scene]')],
   ['reel', at('#film')],
+  ['fits', at('#fits')],
   ['modules', at('#modules')],
   ['menu', async (p) => p.click('.nav__menu > summary')],
 ])
@@ -125,6 +127,7 @@ await run('oldlink', '/#faq-import', DESK, [['lands', async () => {}]])
 for (const [name, path] of [
   ['goten', '/blog/from-bank-statement-to-exit/'],
   ['trunks', '/blog/every-investor-email/'],
+  ['bulma', '/blog/from-deal-to-payment/'],
 ]) {
   const steps = [hero, ['film', at('.article__media')], ['figure', at('figure:nth-of-type(2)')], ['footer', bottom]]
   await run(`blog-${name}-light`, path, DESK, steps)

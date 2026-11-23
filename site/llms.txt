@@ -1,6 +1,31 @@
 # Vegeta
 
-> SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox.
+> SPV and syndicate operations software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox.
+
+## Bulma v0.1.0: Use it
+
+- [Overview](https://vegeta-ops.vercel.app/docs/bulma.md)
+- [Walk the sandbox](https://vegeta-ops.vercel.app/docs/bulma/use/getting-started.md)
+- [Lead guide](https://vegeta-ops.vercel.app/docs/bulma/use/lead-guide.md)
+- [Investor guide](https://vegeta-ops.vercel.app/docs/bulma/use/investor-guide.md)
+
+## Bulma v0.1.0: Run and build
+
+- [Overview](https://vegeta-ops.vercel.app/docs/bulma/build.md)
+- [Run locally and deploy](https://vegeta-ops.vercel.app/docs/bulma/build/run-and-deploy.md)
+- [Configuration reference](https://vegeta-ops.vercel.app/docs/bulma/build/configuration.md)
+- [Operator guide](https://vegeta-ops.vercel.app/docs/bulma/build/operator-guide.md)
+- [What the real mode asks for](https://vegeta-ops.vercel.app/docs/bulma/build/real-mode.md)
+- [Who does what](https://vegeta-ops.vercel.app/docs/bulma/build/responsibilities.md)
+- [Due-diligence note](https://vegeta-ops.vercel.app/docs/bulma/build/due-diligence.md)
+- [Upgrades and backups](https://vegeta-ops.vercel.app/docs/bulma/build/upgrade-and-backup.md)
+- [Architecture](https://vegeta-ops.vercel.app/docs/bulma/build/architecture.md)
+- [Verification](https://vegeta-ops.vercel.app/docs/bulma/build/verification.md)
+- [Security model](https://vegeta-ops.vercel.app/docs/bulma/build/security-model.md)
+
+## Bulma v0.1.0: Releases
+
+- [Release notes](https://vegeta-ops.vercel.app/docs/bulma/release-notes.md)
 
 ## Goten v1.4.1: Use it
 

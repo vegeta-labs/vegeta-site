@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Walk the sandbox | Vegeta</title>
+    <meta
+      name="description"
+      content="Take one fictional deal from a new instance to payment instructions, playing the operator, the lead and an investor in turn. Everything stays in the sandbox: no email leaves, no money moves and the payment details are a fixed fictional account."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Walk the sandbox | Vegeta" />
+    <meta
+      property="og:description"
+      content="Take one fictional deal from a new instance to payment instructions, playing the operator, the lead and an investor in turn. Everything stays in the sandbox: no email leaves, no money moves and the payment details are a fixed fictional account."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/use/getting-started/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Walk the sandbox | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Take one fictional deal from a new instance to payment instructions, playing the operator, the lead and an investor in turn. Everything stays in the sandbox: no email leaves, no money moves and the payment details are a fixed fictional account."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/use/getting-started/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/use/getting-started.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/" aria-current="page">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/" aria-current="page">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Walk the sandbox</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Take one fictional deal from a new instance to payment instructions, playing the operator, the lead and an investor in turn. Everything stays in
+              the sandbox: no email leaves, no money moves and the payment details are a fixed fictional account.
+            </p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>
+                A running instance in the sandbox, the mode every new instance starts in. To start one, follow
+                <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md#try-it">Try it</a>. On the computer that
+                runs it, the address is http://127.0.0.1:8080.
+              </li>
+              <li>The first admin&#39;s email and the password in <code>secrets/initial_admin_password</code>.</li>
+              <li>An authenticator app on your phone. Staff roles need two-step sign-in.</li>
+              <li>
+                Three small PDF, PNG or JPEG files of your own for the investor&#39;s proof documents, and one PDF for the deal&#39;s legal documents. Any
+                content will do: use nothing real.
+              </li>
+            </ul>
+            <p>
+              You play three people, one at a time, in the same browser. Click <strong>Sign out</strong> at the top of the page whenever you switch. The names
+              and figures below are suggestions; use made-up details everywhere.
+            </p>
+            <p>Bulma is software, not a regulated service. The legal texts and questions shipped with it are placeholders.</p>
+            <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
+            <h3 id="1-sign-in-as-the-admin">
+              1. Sign in as the admin<a class="docs__anchor" href="#1-sign-in-as-the-admin" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>
+                Open the instance. Every page shows
+                <strong>Sandbox: fictional data only. No email leaves this instance and nothing here is a real offer.</strong>
+              </li>
+              <li>Sign in with the first admin&#39;s email and password.</li>
+              <li>
+                Under <strong>Choose a new password</strong>, fill in <strong>Current password</strong> and <strong>New password</strong> (12 characters or
+                more), then click <strong>Save</strong>.
+              </li>
+              <li>
+                Under <strong>Set up two-step sign-in</strong>, type <strong>Your password</strong> and click <strong>Start</strong>. Scan the code with your
+                authenticator app, type the <strong>Code from the app</strong> and click <strong>Confirm</strong>.
+              </li>
+              <li>Keep the recovery codes and click <strong>I have kept them</strong>.</li>
+            </ol>
+            <p>Next time you sign in as the admin, Bulma also asks for the <strong>Code from your authenticator, or a recovery code</strong>.</p>
+            <h3 id="2-get-the-instance-ready">
+              2. Get the instance ready<a class="docs__anchor" href="#2-get-the-instance-ready" aria-label="Link to this section">#</a>
+            </h3>
+            <p>You are on <strong>Home</strong>, which holds the admin sections.</p>
+            <ol>
+              <li>Under <strong>Instance mode</strong>, check that the mode is <strong>Sandbox</strong>.</li>
+              <li>
+                Under <strong>People and roles</strong>, tick <strong>reviewer</strong> on your own row. <strong>Deal review</strong> appears in the menu. In
+                the sandbox the change takes effect at once.
+              </li>
+              <li>
+                Under <strong>Platform fee</strong>, leave the five fields at 0 and click <strong>Save a new version</strong>. The section now says
+                <strong>Version 1: 0 bps, minimum 0, maximum 0 (minor units).</strong> A deal cannot be submitted until a fee is set, and a fee of 0 is allowed.
+              </li>
+            </ol>
+            <p>Click <strong>Sign out</strong>.</p>
+            <h3 id="3-create-the-leads-account">
+              3. Create the lead&#39;s account<a class="docs__anchor" href="#3-create-the-leads-account" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>
+                Click <strong>Create an account</strong>. Fill in <strong>First name</strong>, <strong>Last name</strong>, <strong>Email</strong> and
+                <strong>Password (12+ characters)</strong>, then click <strong>Create account</strong>.
+              </li>
+              <li>The page says <strong>Check your email</strong>. No email leaves the sandbox, so click <strong>Open the link here</strong>.</li>
+              <li>
+                Type <strong>The password you chose when you registered</strong> and click <strong>Confirm</strong>. Then click
+                <strong>Continue to sign in</strong> and sign in.
+              </li>
+              <li>
+                On <strong>Home</strong>, under <strong>Who you invest as</strong>, leave <strong>Type</strong> as <strong>Myself</strong>. Fill in
+                <strong>Full name</strong>, <strong>Address</strong>, <strong>Tax residence</strong> and <strong>Tax ID</strong>, and click
+                <strong>Add</strong>. A deal needs this entity as its lead entity.
+              </li>
+            </ol>
+            <h3 id="4-set-up-the-deal">4. Set up the deal<a class="docs__anchor" href="#4-set-up-the-deal" aria-label="Link to this section">#</a></h3>
+            <p>
+              Open <strong>Deals</strong> and click <strong>Start a deal</strong>. Each section is saved as you type, and its button shows
+              <strong>to finish</strong> or <strong>✓ done</strong>. Fill in:
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Section</th>
+                    <th>Fields</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Basics</strong></td>
+                    <td>
+                      <strong>Legal structure</strong>: <strong>UK bare trust</strong>. <strong>Deal type</strong>: <strong>Primary</strong>.
+                      <strong>Deal name</strong>: Seedling Round. Choose <strong>A new one</strong>, give a <strong>Syndicate name</strong> and choose your
+                      entity as <strong>Lead entity</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Company</strong></td>
+                    <td>
+                      <strong>Legal name</strong>: Seedling Ltd. <strong>Contact name</strong>, <strong>Contact email</strong> and
+                      <strong>Jurisdiction</strong>: anything fictional.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Terms</strong></td>
+                    <td>
+                      <strong>Currency</strong>: <strong>GBP</strong>. <strong>Instrument</strong>: <strong>Equity</strong>. <strong>Share price</strong>:
+                      0.015. <strong>Pre-money valuation</strong>: 5,000,000. <strong>SPV allocation</strong>: 300,000. <strong>Default voter</strong>:
+                      <strong>The lead</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Files</strong></td>
+                    <td>Under <strong>Investment agreement and legal documents</strong>, use <strong>Add files</strong> to add your PDF.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Economics</strong></td>
+                    <td>
+                      <strong>Default carry (%)</strong>: 20. Click <strong>Add a recipient</strong>, set <strong>Type</strong> to <strong>A person</strong>,
+                      fill in <strong>First name</strong>, <strong>Last name</strong> and <strong>Email</strong>, and set
+                      <strong>Share of the carry (%)</strong> to 100. <strong>Who pays the platform fee</strong>: <strong>The investors, in proportion</strong>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Review</strong></td>
+                    <td>Under <strong>Before you submit</strong>, tick the box about board and shareholder approval.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Still in <strong>Review</strong>, click <strong>Submit for review</strong>. The deal&#39;s status is now <strong>With the reviewer</strong>. Click
+              <strong>Sign out</strong>.
+            </p>
+            <p>The <a href="/docs/bulma/use/lead-guide/#2-set-up-the-deal">Lead guide</a> explains every field.</p>
+            <h3 id="5-approve-the-deal">5. Approve the deal<a class="docs__anchor" href="#5-approve-the-deal" aria-label="Link to this section">#</a></h3>
+            <ol>
+              <li>Sign in as the admin.</li>
+              <li>Open <strong>Deal review</strong>. Under <strong>Deals waiting for review</strong>, click <strong>Seedling Round</strong>.</li>
+              <li>Under <strong>Your decision</strong>, click <strong>Approve</strong>.</li>
+            </ol>
+            <p>Click <strong>Sign out</strong>.</p>
+            <h3 id="6-go-live-and-copy-a-link">
+              6. Go live and copy a link<a class="docs__anchor" href="#6-go-live-and-copy-a-link" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>
+                Sign in as the lead and open <strong>Deals</strong>, then the deal. Its status is <strong>Approved, waiting for the lead to confirm</strong>.
+              </li>
+              <li>Tick <strong>I confirm this deal should go live</strong> and click <strong>Go live</strong>. The status changes to <strong>Live</strong>.</li>
+              <li>
+                On the <strong>Investors</strong> card, under <strong>Links</strong>, find <strong>Default carry, no fee</strong> (not
+                <strong>No carry, no fee</strong>) and click <strong>Show link</strong>.
+              </li>
+              <li>
+                Copy the link that appears and keep it. In the default setup it is only a path starting with <code>/invite</code>: put the instance address in
+                front, for example <code>http://127.0.0.1:8080/invite?token=…</code>.
+              </li>
+            </ol>
+            <p>Click <strong>Sign out</strong>.</p>
+            <h3 id="7-open-the-invitation-as-an-investor">
+              7. Open the invitation as an investor<a class="docs__anchor" href="#7-open-the-invitation-as-an-investor" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>Open the link you copied. The page shows <strong>You have been invited</strong> and an invitation reference, but nothing about the deal.</li>
+              <li>
+                Click <strong>Sign in or create an account</strong>, and create a new account as in step 3. Your browser remembers the invitation and adds it to
+                the account.
+              </li>
+              <li>
+                On <strong>Home</strong>, the <strong>Eligibility</strong> card lists your steps. Under <strong>Which describes you?</strong>, choose
+                <strong>High net worth</strong>. Answer <strong>Yes</strong> to the income question and type 100,000 under
+                <strong>Income, to the nearest £10,000</strong>; answer <strong>No</strong> to the net assets question. Type your name under
+                <strong>Your full name, as your signature</strong> and click <strong>Sign</strong>.
+              </li>
+              <li>
+                Click <strong>Start the assessment</strong>. In the template pack the right answer to every question is <strong>Placeholder option A</strong>.
+                Choose it each time and click <strong>Send answers</strong>.
+              </li>
+              <li>Read the risk warning and click <strong>I have read this</strong>. The card says <strong>You have finished these steps.</strong></li>
+            </ol>
+            <p>
+              Under <strong>Your deals</strong>, <strong>Seedling Round</strong> is now a link. The
+              <a href="/docs/bulma/use/investor-guide/#3-eligibility">Investor guide</a> explains the other answers.
+            </p>
+            <h3 id="8-send-your-identity-for-review">
+              8. Send your identity for review<a class="docs__anchor" href="#8-send-your-identity-for-review" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>Under <strong>Who you invest as</strong>, add an entity of the type <strong>Myself</strong>, as the lead did in step 3.</li>
+              <li>
+                On the entity, add a file for <strong>Identity proof</strong>, <strong>Address proof</strong> and <strong>Source of wealth</strong>. Leave the
+                bank account fields empty.
+              </li>
+              <li>
+                Tick <strong>This information is true</strong> and click <strong>Send for review, no face scan</strong>. The status changes to
+                <strong>In review</strong>.
+              </li>
+            </ol>
+            <p>Click <strong>Sign out</strong>.</p>
+            <h3 id="9-pass-the-identity-check">
+              9. Pass the identity check<a class="docs__anchor" href="#9-pass-the-identity-check" aria-label="Link to this section">#</a>
+            </h3>
+            <ol>
+              <li>Sign in as the admin.</li>
+              <li>
+                On <strong>Home</strong>, under <strong>Identity checks waiting</strong>, find the investor&#39;s entity and click
+                <strong>Open the case</strong>. You can open each file.
+              </li>
+              <li>Click <strong>Pass the documents</strong>.</li>
+            </ol>
+            <p>Click <strong>Sign out</strong>.</p>
+            <h3 id="10-commit-sign-and-see-the-payment-details">
+              10. Commit, sign and see the payment details<a
+                class="docs__anchor"
+                href="#10-commit-sign-and-see-the-payment-details"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h3>
+            <ol>
+              <li>Sign in as the investor. The entity&#39;s status is <strong>Passed</strong>.</li>
+              <li>Under <strong>Your deals</strong>, click <strong>Seedling Round</strong>. The deal page starts with the risk warning.</li>
+              <li>Under <strong>Invest</strong>, type 10,000 as the <strong>Amount</strong> and click <strong>Show what I would pay</strong>.</li>
+              <li>
+                Choose your entity under <strong>Who is investing</strong> and click <strong>Commit £10,000.00</strong>. The status is <strong>To sign</strong>.
+              </li>
+              <li>
+                Click <strong>Deal sheet</strong>. Tick <strong>I have read this document and agree to sign it.</strong>, fill in
+                <strong>Type your full name to sign</strong> and click <strong>Sign</strong>.
+              </li>
+            </ol>
+            <p>
+              The payment details open. They show <strong>Still to pay: £10,000.00</strong>, your <strong>Payment reference</strong> and
+              <strong>How the amount is made up</strong>. Under <strong>Receiving account</strong> is the sandbox&#39;s fictional account: Fictional Sandbox
+              Account, sort code 00-00-00, account number 00000000, holder Fictional Holder Ltd. Do not send money to it.
+            </p>
+            <p>
+              Click <strong>I have paid</strong>. The page now says <strong>You said you have paid. The operator records money when it arrives.</strong> This
+              tells the lead; it is not a receipt.
+            </p>
+            <h2 id="when-you-are-finished">
+              When you are finished<a class="docs__anchor" href="#when-you-are-finished" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>To see what the sandbox would have emailed, sign in as the admin and open <strong>Sandbox outbox</strong> on <strong>Home</strong>.</li>
+              <li>
+                Recording the money that arrives is the operator&#39;s work: see <a href="/docs/bulma/build/operator-guide/#money">Money</a> in the operator
+                guide.
+              </li>
+              <li>
+                To learn each role properly, go on to the <a href="/docs/bulma/use/lead-guide/">Lead guide</a> and the
+                <a href="/docs/bulma/use/investor-guide/">Investor guide</a>.
+              </li>
+            </ul>
+            <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>What you see</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>The operator has not set the platform fee yet. A deal cannot be submitted until it is set.</strong></td>
+                    <td>Sign in as the admin and save a fee, as in step 2.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Add an investing entity on your home page first.</strong></td>
+                    <td>The lead needs an entity on <strong>Home</strong> before choosing a <strong>Lead entity</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Deal review</strong> is not in the menu</td>
+                    <td>Tick <strong>reviewer</strong> for the admin under <strong>People and roles</strong>, as in step 2.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>This link does not work. Ask whoever sent it for a new one.</strong></td>
+                    <td>Go back to step 6 and copy the link again. Check that it was not turned off.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>You can sign once your identity check has passed.</strong></td>
+                    <td>The admin has not passed the investor&#39;s identity check yet. Do step 9.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Lead guide: set up a deal, invite investors, follow up | Vegeta</title>
+    <meta
+      name="description"
+      content="A lead is anyone with an account who starts a deal. There is no separate lead account: the same account can also invest. The operator's reviewer checks every deal before it goes live."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lead guide: set up a deal, invite investors, follow up | Vegeta" />
+    <meta
+      property="og:description"
+      content="A lead is anyone with an account who starts a deal. There is no separate lead account: the same account can also invest. The operator's reviewer checks every deal before it goes live."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/use/lead-guide/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lead guide: set up a deal, invite investors, follow up | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="A lead is anyone with an account who starts a deal. There is no separate lead account: the same account can also invest. The operator's reviewer checks every deal before it goes live."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/use/lead-guide/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/use/lead-guide.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/" aria-current="page">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/" aria-current="page">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Lead guide: set up a deal, invite investors, follow up</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              A lead is anyone with an account who starts a deal. There is no separate lead account: the same account can also invest. The operator&#39;s
+              reviewer checks every deal before it goes live.
+            </p>
+            <h2 id="what-you-need">What you need<a class="docs__anchor" href="#what-you-need" aria-label="Link to this section">#</a></h2>
+            <ul>
+              <li>An account with a confirmed email address.</li>
+              <li>
+                An investing entity, added on <strong>Home</strong> under <strong>Who you invest as</strong>. A syndicate needs one as its
+                <strong>Lead entity</strong>.
+              </li>
+              <li>
+                The operator must have set a platform fee. Until then, <strong>Economics</strong> says
+                <strong>The operator has not set the platform fee yet. A deal cannot be submitted until it is set.</strong>
+              </li>
+            </ul>
+            <h2 id="1-create-a-syndicate">1. Create a syndicate<a class="docs__anchor" href="#1-create-a-syndicate" aria-label="Link to this section">#</a></h2>
+            <p>
+              Open <strong>Syndicates</strong> and fill in <strong>Create a syndicate</strong>: <strong>Name</strong> and <strong>Lead entity</strong>, then
+              <strong>Create the syndicate</strong>. You become its admin. You can also create one inside a deal: in <strong>Basics</strong>, choose
+              <strong>A new one</strong>. It is created only when you submit the deal.
+            </p>
+            <p>
+              On the syndicate page, <strong>Invite people</strong> makes a member link: <strong>Deal member: sees only deals they are added to</strong> or
+              <strong>Admin: sees every deal</strong>. The link is shown once: copy it yourself. <strong>Stop this link</strong> turns it off.
+            </p>
+            <h2 id="2-set-up-the-deal">2. Set up the deal<a class="docs__anchor" href="#2-set-up-the-deal" aria-label="Link to this section">#</a></h2>
+            <p>
+              Open <strong>Deals</strong> and click <strong>Start a deal</strong>. The deal has six sections, which you can fill in any order. Each is saved as
+              you type and shows <strong>✓ done</strong> or <strong>to finish</strong>.
+            </p>
+            <ul>
+              <li><strong>Basics</strong>: legal structure, deal type, <strong>Deal name</strong> (investors see it) and the syndicate.</li>
+              <li>
+                <strong>Company</strong>: legal name, website, contact name and email, jurisdiction. The contact is sent a link for the company&#39;s documents
+                once you submit.
+              </li>
+              <li>
+                <strong>Terms</strong>: currency (nothing is converted), SEIS or EIS, round, instrument, price or valuation, <strong>SPV allocation</strong>,
+                <strong>Minimum commitment</strong>, <strong>Minimum raise</strong>, dates, <strong>Default voter</strong> and <strong>Custom terms</strong>.
+                Ticking SEIS or EIS records what you say: the software does not judge whether the company qualifies. The <strong>Payment deadline</strong> only
+                sets when payment reminders stop: nothing else happens on that day. <strong>When the allocation is full</strong> is
+                <strong>Tell me and keep accepting</strong> or <strong>Stop and start a waiting list</strong>.
+              </li>
+              <li>
+                <strong>Files</strong>: an optional <strong>Memo</strong> and <strong>Pitch deck</strong> (a PDF up to 10 MB, or a link), and at least one
+                investment agreement or legal document (PDF or Word). Files are virus-scanned. An external deck link is not behind the eligibility steps.
+              </li>
+              <li>
+                <strong>Economics</strong>: <strong>Default carry (%)</strong>, <strong>Who receives the carry</strong> (shares must add up to 100%) and
+                <strong>Who pays the platform fee</strong>. The final investment amount is exact only at closing.
+              </li>
+              <li>
+                <strong>Review</strong>: a summary, <strong>Still to do</strong>, and the <strong>Before you submit</strong> confirmation about board and
+                shareholder approval.
+              </li>
+            </ul>
+            <p>Click <strong>Submit for review</strong>. To add a co-lead or member from the syndicate, use <strong>People on this deal</strong>.</p>
+            <h2 id="3-the-company-check">3. The company check<a class="docs__anchor" href="#3-the-company-check" aria-label="Link to this section">#</a></h2>
+            <p>
+              When you submit, the company contact gets a link to upload the company&#39;s documents without an account. The link works for 14 days unless the
+              operator changed it. Your <strong>Company check</strong> card shows its status: <strong>Waiting for the company</strong>,
+              <strong>Sent, waiting for a reviewer</strong>, <strong>Passed</strong> or <strong>Sent back to the company</strong>. You see how far it has got,
+              not the documents.
+            </p>
+            <p><strong>Remind the company</strong> sends a new link; the old one stops working. Without a pass the deal can raise money, but cannot close.</p>
+            <h2 id="4-review-and-going-live">
+              4. Review and going live<a class="docs__anchor" href="#4-review-and-going-live" aria-label="Link to this section">#</a>
+            </h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Draft</strong></td>
+                    <td>You are still writing it.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>With the reviewer</strong></td>
+                    <td>Submitted. <strong>Withdraw from review</strong> takes it back to Draft.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Changes asked for</strong></td>
+                    <td>Read the reason, change the deal, then <strong>Send back for review</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Not accepted</strong></td>
+                    <td>Refused. This is final.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Approved, waiting for the lead to confirm</strong></td>
+                    <td>Tick <strong>I confirm this deal should go live</strong> and click <strong>Go live</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Live</strong></td>
+                    <td>Investors can be invited. Changes now go through <strong>Change this deal</strong> (see section 9).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Editing a deal that is with the reviewer or approved starts the review again. If you do not confirm an approved deal in time (30 days unless the
+              operator changed it), it goes back to Draft. On a real instance, and in the sandbox if the operator turned it on, an approver at the operator must
+              also record that the content is approved before you can go live.
+            </p>
+            <h2 id="5-invite-investors">5. Invite investors<a class="docs__anchor" href="#5-invite-investors" aria-label="Link to this section">#</a></h2>
+            <p>
+              All of this is on the deal&#39;s <strong>Investors</strong> card. You can build the expected list before going live; links and invitations need a
+              Live deal.
+            </p>
+            <p>
+              <strong>Whom you may invite.</strong> If the operator has written whom leads may invite, read it, tick
+              <strong>I have read this text (version</strong> N**) and will invite only the people it allows** and click <strong>Confirm</strong>. Until you do,
+              you cannot add people to the list or send an invitation. When the operator changes the text, you confirm again.
+            </p>
+            <p>
+              <strong>Links.</strong> Going live makes a default link with the deal&#39;s carry and no fee, and, where the operator allows links with their own
+              terms, a second one with no carry and no fee. There is no second link when the deal&#39;s carry is already 0, or when the operator&#39;s rules ask
+              for a reviewer&#39;s approval of different terms. If the operator allows only invitations to a named address, these links carry terms for your
+              email invitations and cannot be opened by anyone. <strong>New terms</strong> makes a link with its own carry and cash fee, if the operator allows
+              it; say why they differ and confirm they are not an incentive. Terms cannot be changed once saved, and some need a reviewer&#39;s approval before
+              the link works. <strong>Show link</strong> shows a link anyone can open, for you to copy by hand. <strong>Turn off</strong> stops it: people bound
+              to it who have not committed lose the invitation. Links do not expire and have no use limit; a deal can have up to 500 in use.
+            </p>
+            <p>
+              <strong>Invite by email.</strong> Give an address and the terms, then <strong>Send invitation</strong>. The email holds no details of the deal,
+              and only an account that confirmed that address can use it.
+            </p>
+            <p>
+              <strong>Expected investors.</strong> Paste rows (name, email, expected amount, terms label, note) and click <strong>Add to the list</strong>.
+              Expected amounts are what you typed, not commitments. To invite several people at once, pick terms for each row, click
+              <strong>Check before sending</strong>, then the <strong>Send</strong> button, which shows how many will go. <strong>Send again</strong> replaces
+              an earlier email invitation.
+            </p>
+            <p>Under the links, a reminder counts the people invited by country. It never blocks anything. Do not promote the deal publicly.</p>
+            <h2 id="6-follow-up">6. Follow up<a class="docs__anchor" href="#6-follow-up" aria-label="Link to this section">#</a></h2>
+            <p>Each person on your expected list shows a status:</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Not responded</strong></td>
+                    <td>Not invited yet.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Invited</strong></td>
+                    <td>Invited, nothing more yet.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Verifying</strong></td>
+                    <td>Committed; their identity check has not passed yet.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>To sign</strong></td>
+                    <td>Committed and checked; deal sheet not signed.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>To pay</strong></td>
+                    <td>Signed; payment details are available to them.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Payment sent</strong></td>
+                    <td>They said they have paid. This is not a receipt.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Part paid</strong> / <strong>Funded</strong> / <strong>Funded · refund due</strong></td>
+                    <td>What the operator has recorded as received.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Declined</strong></td>
+                    <td>They said they will not invest.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Reconfirm terms</strong> / <strong>Confirm amount</strong></td>
+                    <td>They must answer changed terms or a new amount you proposed (section 7).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>With the operator</strong></td>
+                    <td>The operator is handling something about them. You are not told what.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>No longer taking part</strong></td>
+                    <td>Their invitation ended.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>People who came through a link but are not on your list show only as counts on that link.</p>
+            <ul>
+              <li>
+                <strong>Messages from investors</strong> shows what investors sent with <strong>Ask the lead</strong>. To answer, write to them under
+                <strong>Messages to investors</strong> (section 8).
+              </li>
+              <li><strong>Preview the default deal sheet</strong> shows the operator&#39;s deal sheet filled in for this deal. You cannot edit it.</li>
+              <li><strong>Download the list</strong> exports your expected investors, only if the operator allows leads to export.</li>
+            </ul>
+            <h2 id="7-the-investor-list">7. The investor list<a class="docs__anchor" href="#7-the-investor-list" aria-label="Link to this section">#</a></h2>
+            <p>
+              Once the deal is live, <strong>Investor list</strong> shows everyone who committed, with figures for the deal: <strong>Committed</strong>,
+              <strong>Received</strong>, <strong>Refund due</strong>, <strong>Refunded</strong>, <strong>With the operator</strong>,
+              <strong>Lead fees</strong> and <strong>Usable for the deal</strong>. Filter by <strong>Status</strong> and by <strong>Waiting on</strong> (<strong
+                >The investor</strong
+              >, <strong>A reviewer</strong>, <strong>The lead</strong> or <strong>Nobody</strong>). Each row shows <strong>Waiting on</strong>,
+              <strong>Days at this step</strong>, the commitment, what was received, the lead fee and the carry. <strong>Download this list (CSV)</strong> works
+              only if the operator allows leads to export.
+            </p>
+            <p>
+              Besides the statuses in section 6, the list can show <strong>Waitlisted</strong>, <strong>Removed</strong>, <strong>Withdrawn</strong> and
+              <strong>Cancelled</strong>. <strong>no answer by the deadline</strong> means someone did not answer changed terms in time.
+            </p>
+            <p><strong>Actions for</strong> a person opens what you can do for them. A button you cannot use says why under it.</p>
+            <ul>
+              <li><strong>Email</strong>: write to this one person (section 8).</li>
+              <li><strong>Signed documents</strong>: what they signed, version by version.</li>
+              <li>
+                <strong>Remove</strong>: only while no money has arrived from them. If they said they have paid, first check with the operator where the money
+                is and tick the box that says so. Your reason is kept in the record and not sent to them. They are told their commitment ended; if they had
+                payment details, those stop being valid and the mail tells them not to pay.
+              </li>
+              <li>
+                <strong>Record a withdrawal</strong>: once money has arrived. Paste their written consent and tick
+                <strong>They asked in writing to withdraw</strong>, then <strong>Send to a reviewer</strong>. If a reviewer accepts, their commitment ends and
+                the operator puts their refund on its list.
+              </li>
+              <li><strong>Change their link</strong>: give someone who has not committed other terms. Once they commit, their terms are fixed.</li>
+              <li>
+                <strong>Propose a new amount</strong>: only while no money has arrived and they have not said they paid. They answer on their deal page; nothing
+                changes until they accept. If they do not answer in time (set by the operator, in working days), the proposal ends and their commitment stays as
+                it was.
+              </li>
+              <li>
+                <strong>Change their terms</strong>: new carry or cash fee for one committed person, with one sentence they read. A reviewer decides; if
+                approved, they are asked to reconfirm. While it waits, no other change to this deal can be sent.
+              </li>
+            </ul>
+            <p>
+              <strong>Waiting list.</strong> If you chose <strong>Stop and start a waiting list</strong>, the <strong>Closing and cancelling</strong> card shows
+              the room left in the deal and who is waiting. <strong>Let them in</strong> lets one person commit. Investors join and leave the list on the deal
+              page.
+            </p>
+            <h2 id="8-messages-to-investors">
+              8. Messages to investors<a class="docs__anchor" href="#8-messages-to-investors" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Under <strong>Messages to investors</strong>, write to a group (filter by status, <strong>Waiting on</strong> and whether they committed) or to
+              one person, with <strong>Subject</strong> and <strong>Message</strong>, then <strong>Save the message</strong>. A message is a promotion: it opens
+              with the risk warning and reaches only people who may see the deal today. Anyone else still taking part gets a notice with only a link to sign in.
+              Replies go to your own email address.
+            </p>
+            <p>
+              If the message needs approval, an approver at the operator approves it first; changing it needs a new approval. Then click <strong>Send</strong>.
+              The result says how many it went to and who was left out and why. <strong>Messages sent through this site</strong> keeps what was sent. Sending to
+              many people at once works only if the operator turned it on.
+            </p>
+            <h2 id="9-change-a-live-deal">9. Change a live deal<a class="docs__anchor" href="#9-change-a-live-deal" aria-label="Link to this section">#</a></h2>
+            <p>
+              Click <strong>Change this deal</strong>, edit the sections, write <strong>What changes and why, in one sentence (investors read it)</strong> and
+              click <strong>Send this change</strong>. <strong>Stop without sending</strong> drops it.
+            </p>
+            <ul>
+              <li>
+                A new target close date, payment deadline or choice for <strong>When the allocation is full</strong> is in force at once, and investors who
+                committed are told.
+              </li>
+              <li>
+                Every other change goes to a reviewer. Changes to what investors get, such as a higher price, the carry or the fees, always need reconfirming;
+                for the rest the reviewer decides whether investors are only told or must reconfirm. Where the operator asks for content approval, an approver
+                then approves it. Nothing changes for investors until then.
+              </li>
+              <li>The currency cannot change once anyone has committed.</li>
+            </ul>
+            <p>
+              <strong>Changes after launch</strong> lists each change and its state: <strong>Waiting for a reviewer</strong>,
+              <strong>Reviewed, waiting for approval</strong>, <strong>In force</strong>, <strong>Returned to you</strong> or <strong>Taken back</strong>.
+              <strong>Take back this change</strong> works while it waits. Only one change can wait at a time.
+            </p>
+            <p>
+              When investors must reconfirm, they agree or decline by a deadline in working days. Silence is not agreement. If someone does not answer in time
+              and no money has arrived from them, you can remove them; if money has arrived, a reviewer decides.
+            </p>
+            <h2 id="10-closing-and-cancelling">
+              10. Closing and cancelling<a class="docs__anchor" href="#10-closing-and-cancelling" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              The <strong>Closing and cancelling</strong> card shows what is committed against the minimum raise, and <strong>SPV allocation</strong>,
+              <strong>Received</strong>, <strong>Lead fees</strong> and <strong>Estimated investment, before the platform fee</strong>.
+            </p>
+            <p>
+              <strong>Ask to close.</strong> Under <strong>Before you can ask to close:</strong> the card lists what is missing. This includes your own identity
+              check, the company check and the identity checks of the people who control the company, so start them early. When nothing is, tick the box and
+              click <strong>Ask to close</strong>. Links stop taking new commitments, proposed amounts not yet answered end, and nobody more is let in from the
+              waiting list. <strong>Take back the request to close</strong> reopens the deal.
+            </p>
+            <p>
+              <strong>Cancel the deal.</strong> <strong>Ask to cancel the deal</strong> shows what happens and any note from the operator on fees. Add a reason
+              if you like and click <strong>Send the request to cancel</strong>. A reviewer must confirm it. Then every commitment ends, payment details stop
+              being valid, investors are told not to pay, and money already received is refunded by the operator.
+            </p>
+            <h2 id="what-you-cannot-do-yet">
+              What you cannot do yet<a class="docs__anchor" href="#what-you-cannot-do-yet" aria-label="Link to this section">#</a>
+            </h2>
+            <ul>
+              <li>Close a deal. Asking to close stops new commitments, but no version yet takes the deal on from there to completion.</li>
+            </ul>
+            <p>Recording money and refunds is the operator&#39;s job, not the lead&#39;s.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

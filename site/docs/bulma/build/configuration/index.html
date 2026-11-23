@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Configuration reference | Vegeta</title>
+    <meta
+      name="description"
+      content="Bulma is configured by environment variables, secret files and a few JSON files. Most settings are made in the app by an admin; this page covers what the server reads when it starts."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Configuration reference | Vegeta" />
+    <meta
+      property="og:description"
+      content="Bulma is configured by environment variables, secret files and a few JSON files. Most settings are made in the app by an admin; this page covers what the server reads when it starts."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/bulma/build/configuration/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Configuration reference | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Bulma is configured by environment variables, secret files and a few JSON files. Most settings are made in the app by an admin; this page covers what the server reads when it starts."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/bulma/build/configuration/" />
+    <link rel="alternate" type="text/markdown" href="/docs/bulma/build/configuration.md" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/docs/" aria-current="page">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/" aria-current="page">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="docs">
+        <nav class="docs__side" aria-label="Bulma docs">
+          <p class="docs__group">Use it</p>
+          <ul>
+            <li><a href="/docs/bulma/">Overview</a></li>
+            <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+            <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+            <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+          </ul>
+          <p class="docs__group">Run and build</p>
+          <ul>
+            <li><a href="/docs/bulma/build/">Overview</a></li>
+            <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+            <li><a href="/docs/bulma/build/configuration/" aria-current="page">Configuration reference</a></li>
+            <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+            <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+            <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+            <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+            <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+            <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+            <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+            <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+          </ul>
+          <p class="docs__group">Releases</p>
+          <ul>
+            <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+          </ul>
+        </nav>
+        <div class="docs__main">
+          <details class="docs__menu">
+            <summary>Bulma docs</summary>
+            <nav aria-label="Bulma docs">
+              <p class="docs__group">Use it</p>
+              <ul>
+                <li><a href="/docs/bulma/">Overview</a></li>
+                <li><a href="/docs/bulma/use/getting-started/">Walk the sandbox</a></li>
+                <li><a href="/docs/bulma/use/lead-guide/">Lead guide</a></li>
+                <li><a href="/docs/bulma/use/investor-guide/">Investor guide</a></li>
+              </ul>
+              <p class="docs__group">Run and build</p>
+              <ul>
+                <li><a href="/docs/bulma/build/">Overview</a></li>
+                <li><a href="/docs/bulma/build/run-and-deploy/">Run locally and deploy</a></li>
+                <li><a href="/docs/bulma/build/configuration/" aria-current="page">Configuration reference</a></li>
+                <li><a href="/docs/bulma/build/operator-guide/">Operator guide</a></li>
+                <li><a href="/docs/bulma/build/real-mode/">What the real mode asks for</a></li>
+                <li><a href="/docs/bulma/build/responsibilities/">Who does what</a></li>
+                <li><a href="/docs/bulma/build/due-diligence/">Due-diligence note</a></li>
+                <li><a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a></li>
+                <li><a href="/docs/bulma/build/architecture/">Architecture</a></li>
+                <li><a href="/docs/bulma/build/verification/">Verification</a></li>
+                <li><a href="/docs/bulma/build/security-model/">Security model</a></li>
+              </ul>
+              <p class="docs__group">Releases</p>
+              <ul>
+                <li><a href="/docs/bulma/release-notes/">Release notes</a></li>
+              </ul>
+            </nav>
+          </details>
+          <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
+          <h1 class="docs__title">Configuration reference</h1>
+          <p class="docs__version">v0.1.0</p>
+          <div class="docs__body">
+            <p>
+              Bulma is configured by environment variables, secret files and a few JSON files. Most settings are made in the app by an admin; this page covers
+              what the server reads when it starts.
+            </p>
+            <p>General rules:</p>
+            <ul>
+              <li>
+                <strong>Secrets come from files.</strong> A setting ending in <code>_FILE</code> holds the path of a file, and the server reads the value from
+                that file. A trailing line break is ignored. Compose mounts the files in <code>secrets</code> under <code>/run/secrets/</code>.
+              </li>
+              <li>
+                <strong>With Compose, settings go in <code>.env</code>.</strong> Compose reads it on every command and passes the settings below to the
+                services. Paths in <code>.env</code> for the <code>_FILE</code> settings are paths inside the container.
+              </li>
+              <li>
+                <strong>The sandbox ignores the real services.</strong> In the sandbox the server uses fakes for mail, identity checks, signing, file storage
+                and virus scanning, whatever is configured. Settings marked <em>real mode</em> below only take effect after the switch, but they are read and
+                checked at every start: an unreadable file or a partial setting stops the start in the sandbox too.
+              </li>
+              <li><strong>Most wrong or missing settings stop the start</strong>, with a message that names the setting.</li>
+            </ul>
+            <h2 id="settings-for-compose">Settings for Compose<a class="docs__anchor" href="#settings-for-compose" aria-label="Link to this section">#</a></h2>
+            <p>These are read by <code>docker-compose.yml</code>, not by the server.</p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Default</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>BULMA_UID</code>, <code>BULMA_GID</code></td>
+                    <td><code>10001</code></td>
+                    <td>
+                      The user and group the containers run as. Set them to your own (<code>id -u</code>, <code>id -g</code>), so the app can read the secret
+                      files that only you can read.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>BULMA_VERSION</code></td>
+                    <td><code>local</code></td>
+                    <td>The tag of the image <code>bulma-deal-room</code> that the services use.</td>
+                  </tr>
+                  <tr>
+                    <td><code>COMPOSE_FILE</code></td>
+                    <td><code>docker-compose.yml</code></td>
+                    <td>
+                      Docker Compose&#39;s own setting. Set it to <code>docker-compose.yml:deploy/compose.real.yml</code> to add the real-mode extras: see
+                      <a href="/docs/bulma/build/real-mode/#the-payment-instructions-file">the payment instructions file</a>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="database">Database<a class="docs__anchor" href="#database" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Default</th>
+                    <th>Required</th>
+                    <th>Read by</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>DATABASE_HOST</code></td>
+                    <td><code>db</code></td>
+                    <td>no</td>
+                    <td>all commands</td>
+                    <td>Host of the PostgreSQL server.</td>
+                  </tr>
+                  <tr>
+                    <td><code>DATABASE_PORT</code></td>
+                    <td><code>5432</code></td>
+                    <td>no</td>
+                    <td>all commands</td>
+                    <td>Its port. Compose does not pass it.</td>
+                  </tr>
+                  <tr>
+                    <td><code>DATABASE_NAME</code></td>
+                    <td><code>bulma</code></td>
+                    <td>no</td>
+                    <td>all commands</td>
+                    <td>The database.</td>
+                  </tr>
+                  <tr>
+                    <td><code>POSTGRES_PASSWORD_FILE</code></td>
+                    <td>none</td>
+                    <td>for <code>migrate</code></td>
+                    <td><code>migrate</code></td>
+                    <td>Password of the <code>postgres</code> user. Migrations run as this user and create the two roles below.</td>
+                  </tr>
+                  <tr>
+                    <td><code>BULMA_APP_DB_PASSWORD_FILE</code></td>
+                    <td>none</td>
+                    <td>yes</td>
+                    <td><code>migrate</code>, <code>serve</code>, <code>audit</code></td>
+                    <td>Password of the <code>bulma_app</code> role, which the app uses.</td>
+                  </tr>
+                  <tr>
+                    <td><code>BULMA_MAINTENANCE_DB_PASSWORD_FILE</code></td>
+                    <td>none</td>
+                    <td>for <code>migrate</code> and <code>maintain</code></td>
+                    <td><code>migrate</code>, <code>maintain</code></td>
+                    <td>Password of the <code>bulma_maintenance</code> role, which only the expiry job uses.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="keys">Keys<a class="docs__anchor" href="#keys" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Default</th>
+                    <th>Required</th>
+                    <th>Read by</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>BULMA_MASTER_KEYS_FILE</code></td>
+                    <td>none</td>
+                    <td>yes</td>
+                    <td><code>serve</code>, <code>audit</code></td>
+                    <td>The master keys that encrypt stored data, as <code>id:&lt;base64&gt;</code>, several separated by commas. Each key is 32 bytes.</td>
+                  </tr>
+                  <tr>
+                    <td><code>BULMA_ACTIVE_KEY</code></td>
+                    <td>the last key in the list</td>
+                    <td>no</td>
+                    <td><code>serve</code>, <code>audit</code></td>
+                    <td>The id of the master key used for new data. Compose does not pass it.</td>
+                  </tr>
+                  <tr>
+                    <td><code>BULMA_HMAC_KEY_FILE</code></td>
+                    <td>none</td>
+                    <td>yes</td>
+                    <td><code>serve</code>, <code>audit</code>, <code>maintain</code></td>
+                    <td>The key that signs the audit log, in base64, at least 32 bytes. The expiry job gets this key and no master key.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <code>init-secrets</code> writes one master key with the id <code>k1</code>, and the HMAC key. Without these keys a backup cannot be verified or
+              read: see <a href="/docs/bulma/build/upgrade-and-backup/">Upgrades and backups</a>.
+            </p>
+            <h2 id="the-app">The app<a class="docs__anchor" href="#the-app" aria-label="Link to this section">#</a></h2>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Default</th>
+                    <th>Required</th>
+                    <th>Mode</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>INITIAL_ADMIN_EMAIL</code></td>
+                    <td>none</td>
+                    <td>on the first start</td>
+                    <td>both</td>
+                    <td>Email of the first admin. Used only while the database has no account.</td>
+                  </tr>
+                  <tr>
+                    <td><code>INITIAL_ADMIN_PASSWORD_FILE</code></td>
+                    <td>none</td>
+                    <td>on the first start</td>
+                    <td>both</td>
+                    <td>That admin&#39;s password. <code>init-secrets</code> writes it to <code>secrets/initial_admin_password</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>INSECURE_COOKIES</code></td>
+                    <td>not set</td>
+                    <td>no</td>
+                    <td>both</td>
+                    <td><code>1</code> lets the session cookie work over plain <code>http://</code>. Only for a trial on your own machine.</td>
+                  </tr>
+                  <tr>
+                    <td><code>TRUST_PROXY</code></td>
+                    <td>not set</td>
+                    <td>behind a proxy</td>
+                    <td>both</td>
+                    <td>
+                      The address or CIDR of your HTTPS proxy, several separated by commas, for example <code>172.30.0.1</code>. The app then takes the
+                      visitor&#39;s address from the proxy. Host names are refused. If it is not set and <code>INSECURE_COOKIES</code> is not <code>1</code>,
+                      the app warns at start.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>PUBLIC_URL</code></td>
+                    <td>not set</td>
+                    <td>in the real mode</td>
+                    <td>real</td>
+                    <td>The address people reach the app on. Links in mail are built from it. The real mode does not start without it.</td>
+                  </tr>
+                  <tr>
+                    <td><code>PORT</code></td>
+                    <td><code>8080</code></td>
+                    <td>no</td>
+                    <td>both</td>
+                    <td>The port the server listens on. Compose does not pass it, and its health check and published port expect 8080.</td>
+                  </tr>
+                  <tr>
+                    <td><code>WEB_ROOT</code></td>
+                    <td><code>dist/web</code></td>
+                    <td>no</td>
+                    <td>both</td>
+                    <td>The folder of the built web app.</td>
+                  </tr>
+                  <tr>
+                    <td><code>STORAGE_DIR</code></td>
+                    <td>not set for <code>serve</code>; <code>/var/lib/bulma/files</code> for <code>maintain</code></td>
+                    <td>in the real mode</td>
+                    <td>real</td>
+                    <td>
+                      Where uploaded files are kept, encrypted. Compose sets <code>/var/lib/bulma/files</code>, on the <code>files</code> volume. In the
+                      sandbox, files are held in memory, up to 256 MiB, and lost on restart.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>PAYMENT_INSTRUCTIONS_FILE</code></td>
+                    <td>not set</td>
+                    <td>to switch to the real mode</td>
+                    <td>both</td>
+                    <td>
+                      The JSON file with your payment instructions. See
+                      <a href="/docs/bulma/build/real-mode/#the-payment-instructions-file">the payment instructions file</a>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2 id="outside-services-real-mode">
+              Outside services (real mode)<a class="docs__anchor" href="#outside-services-real-mode" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              The server connects to nothing else and has no telemetry; <code>npm run check:outbound</code> searches the source for network calls and outside
+              hosts outside the adapters (see <a href="/docs/bulma/build/verification/#source-checks">Verification</a>). Compose passes the paths of the files
+              below but mounts none of them: mount each file as a secret for the <code>app</code> service, for instance in <code>deploy/compose.real.yml</code>.
+              Compose does not pass <code>CLAMD_PORT</code>.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Default</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>SMTP_SETTINGS_FILE</code></td>
+                    <td>not set</td>
+                    <td>
+                      A JSON file <code>{host, port, secure, user?, from}</code> for your SMTP server. Without it, steps that send a link are refused in the
+                      real mode. See <a href="/docs/bulma/build/real-mode/#sending-mail">sending mail</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>SMTP_PASSWORD_FILE</code></td>
+                    <td>not set</td>
+                    <td>The SMTP password, in its own file. Set without <code>SMTP_SETTINGS_FILE</code>, it stops the start.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>SUMSUB_APP_TOKEN_FILE</code>, <code>SUMSUB_SECRET_KEY_FILE</code>, <code>SUMSUB_WEBHOOK_SECRET_FILE</code>,
+                      <code>SUMSUB_LEVEL_NAME</code>
+                    </td>
+                    <td>not set</td>
+                    <td>
+                      The Sumsub identity check. Set all four or none: a partial setting stops the start. <code>SUMSUB_LEVEL_NAME</code> is the value itself,
+                      not a file. See <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>CLAMD_HOST</code></td>
+                    <td>not set</td>
+                    <td>
+                      Host of a ClamAV daemon that scans uploads. <code>deploy/compose.real.yml</code> sets it to its <code>clamav</code> service. Without it,
+                      the real mode refuses every upload.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>CLAMD_PORT</code></td>
+                    <td><code>3310</code></td>
+                    <td>Its port.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>In the real mode, an outside service that is not configured is refused when it is first needed, with a message naming it.</p>
+            <h2 id="regime-packs">Regime packs<a class="docs__anchor" href="#regime-packs" aria-label="Link to this section">#</a></h2>
+            <p>
+              A regime pack holds the steps an investor goes through, the thresholds, the assessment questions and the legal texts. The packs shipped with the
+              software are in <code>packs/</code>: <code>uk-fpo-template</code> (the default for a new instance) and <code>uk-cobs-template</code>. Their texts
+              are placeholders, not legal text, and no lawyer has reviewed them.
+            </p>
+            <ul>
+              <li>
+                <strong>Shipped packs are loaded at every start.</strong> A new version is added. A stored version whose file changed stops the start, so do not
+                edit the files in <code>packs/</code>.
+              </li>
+              <li>
+                <strong>Add your own pack in the app.</strong> An admin pastes the JSON under <strong>Regime packs</strong> on <strong>Home</strong> and clicks
+                <strong>Check and add</strong>. It is checked against the pack format, and a pack that does not load is refused with the reasons. Then
+                <strong>Ask to activate</strong>.
+              </li>
+              <li>
+                <strong>Give it its own name.</strong> A <code>key</code> of the form <code>uk-...-template</code> is kept for shipped packs and refused. A key
+                is lower-case letters, digits and <code>-</code>, starting with a letter. The <code>regime</code> is <code>uk-fpo</code> or
+                <code>uk-cobs</code>, and a pack cannot change regime between versions.
+              </li>
+              <li>
+                <strong>The real mode needs your own active pack</strong> with no placeholder text left: see
+                <a href="/docs/bulma/build/real-mode/">What the real mode asks for</a>.
+              </li>
+            </ul>
+            <p>Start from a copy of a shipped <code>pack.json</code>. The format is checked by <code>src/lib/regimePack.ts</code>.</p>
+            <h2 id="commands">Commands<a class="docs__anchor" href="#commands" aria-label="Link to this section">#</a></h2>
+            <p>
+              The image runs <code>node --experimental-strip-types src/main.ts</code> with one of these commands. Compose runs <code>migrate</code>,
+              <code>serve</code> and <code>maintain</code> as services.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>init-secrets &lt;dir&gt;</code></td>
+                    <td>Writes the six secret files to <code>&lt;dir&gt;</code>, keeping any that exist.</td>
+                  </tr>
+                  <tr>
+                    <td><code>migrate [--roles-only]</code></td>
+                    <td>Runs the migrations, which only go forward. <code>--roles-only</code> creates the database roles only, for a restore.</td>
+                  </tr>
+                  <tr>
+                    <td><code>serve</code></td>
+                    <td>Starts the app.</td>
+                  </tr>
+                  <tr>
+                    <td><code>maintain [--once]</code></td>
+                    <td>The expiry job: removes personal data whose retention has ended, at start and then once a day. <code>--once</code> runs one round.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>audit verify</code>, <code>audit head</code>, <code>audit check-head &lt;seq&gt; &lt;hash&gt;</code>, <code>audit export</code>
+                    </td>
+                    <td>Checks the audit log, prints its head, compares it with a saved head, or writes the whole log to standard output.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">
+        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
+      </p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

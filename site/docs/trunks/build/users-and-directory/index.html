@@ -24,7 +24,7 @@ Compose test exactly as written here (test plan TC-OPS-08)."
     <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Users and directory | Vegeta" />
     <meta
@@ -34,7 +34,7 @@ with curl, from a terminal on any machine that can reach the app. The commands o
 Compose test exactly as written here (test plan TC-OPS-08)."
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
-    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate operations software. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
     <link rel="canonical" href="https://vegeta-ops.vercel.app/docs/trunks/build/users-and-directory/" />
     <link rel="alternate" type="text/markdown" href="/docs/trunks/build/users-and-directory.md" />
     <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
@@ -54,9 +54,22 @@ Compose test exactly as written here (test plan TC-OPS-08)."
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/goten/">Goten</a>
-        <a href="/trunks/">Trunks</a>
-        <a href="/#build">Why trust it</a>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
         <a href="/docs/" aria-current="page">Docs</a>
@@ -65,6 +78,9 @@ Compose test exactly as written here (test plan TC-OPS-08)."
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
           <li><a href="/goten/">Goten — Deal Calculations</a></li>
           <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
@@ -481,15 +497,15 @@ rm trunks-cookies.txt</code></pre>
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
             <li><a href="/goten/">Goten — Deal Calculations</a></li>
-            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
             <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
-            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
           <h2 class="footer__h">Docs</h2>
           <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
             <li><a href="/changelog/">Changelog</a></li>
@@ -498,6 +514,7 @@ rm trunks-cookies.txt</code></pre>
         <div>
           <h2 class="footer__h">Code</h2>
           <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
             <li><a href="/changelog/">Licence: Apache-2.0</a></li>
@@ -516,7 +533,7 @@ rm trunks-cookies.txt</code></pre>
       <p class="footer__legal">
         This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
       </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

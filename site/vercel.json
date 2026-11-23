@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/bulma",
+      "destination": "/bulma/",
+      "permanent": true
+    },
+    {
       "source": "/goten",
       "destination": "/goten/",
       "permanent": true
@@ -28,6 +33,11 @@
     {
       "source": "/blog/every-investor-email",
       "destination": "/blog/every-investor-email/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/from-deal-to-payment",
+      "destination": "/blog/from-deal-to-payment/",
       "permanent": true
     },
     {
@@ -493,6 +503,86 @@
     {
       "source": "/inbox/demo/",
       "destination": "/trunks/demo/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma",
+      "destination": "/docs/bulma/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/use/getting-started",
+      "destination": "/docs/bulma/use/getting-started/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/use/lead-guide",
+      "destination": "/docs/bulma/use/lead-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/use/investor-guide",
+      "destination": "/docs/bulma/use/investor-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build",
+      "destination": "/docs/bulma/build/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/run-and-deploy",
+      "destination": "/docs/bulma/build/run-and-deploy/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/configuration",
+      "destination": "/docs/bulma/build/configuration/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/operator-guide",
+      "destination": "/docs/bulma/build/operator-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/real-mode",
+      "destination": "/docs/bulma/build/real-mode/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/responsibilities",
+      "destination": "/docs/bulma/build/responsibilities/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/due-diligence",
+      "destination": "/docs/bulma/build/due-diligence/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/upgrade-and-backup",
+      "destination": "/docs/bulma/build/upgrade-and-backup/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/architecture",
+      "destination": "/docs/bulma/build/architecture/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/verification",
+      "destination": "/docs/bulma/build/verification/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/build/security-model",
+      "destination": "/docs/bulma/build/security-model/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/bulma/release-notes",
+      "destination": "/docs/bulma/release-notes/",
       "permanent": true
     }
   ],

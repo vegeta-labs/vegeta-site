@@ -7,14 +7,14 @@
     <title>The money work on an SPV, ready for a person to check | Vegeta</title>
     <meta
       name="description"
-      content="Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides."
+      content="What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides."
     />
     <meta property="og:site_name" content="Vegeta" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="The money work on an SPV, ready for a person to check | Vegeta" />
     <meta
       property="og:description"
-      content="Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides."
+      content="What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides."
     />
     <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/from-bank-statement-to-exit/" />
     <meta property="og:image" content="https://vegeta-ops.vercel.app/media/goten-share.jpg" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="The money work on an SPV, ready for a person to check | Vegeta" />
     <meta
       name="twitter:description"
-      content="Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still decides."
+      content="What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides."
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/goten-share.jpg" />
     <meta name="twitter:image:alt" content="The money work on an SPV, ready for a person to check" />
@@ -46,9 +46,22 @@
       >
       <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
         <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
-        <a href="/goten/">Goten</a>
-        <a href="/trunks/">Trunks</a>
-        <a href="/#build">Why trust it</a>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/" aria-current="page">Blog</a>
         <a href="/docs/">Docs</a>
@@ -57,6 +70,9 @@
         <summary>Menu</summary>
         <ul>
           <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
           <li><a href="/goten/">Goten — Deal Calculations</a></li>
           <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
           <li><a href="/#build">Why trust it</a></li>
@@ -77,8 +93,7 @@
             <p class="article__kicker"><a href="/blog/">Goten</a></p>
             <h1 class="article__title">The money work on an SPV, ready for a person to check</h1>
             <p class="article__lede">
-              Much of the money work on an SPV still happens by hand. What Goten prepares at each step, from bank statement to exit, and what a person still
-              decides.
+              What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides.
             </p>
             <p class="article__date">Updated 7 November 2026</p>
           </div>
@@ -100,9 +115,7 @@
         </header>
         <h2>The same work on every deal</h2>
         <p>
-          Much of the money work on an SPV or syndicate still happens by hand, in spreadsheets and email. Someone reads the bank statement line by line and
-          matches each payment to an investor. They chase whoever is short. At the close they work out each investor&rsquo;s investment, fees and refund, and
-          the amount to wire to the company. At the exit they work out who gets what.
+          The money work on an SPV or syndicate is the same on every deal. Each line of the bank statement has to be matched to an investor, and whoever is short chased. At the close, each investor&rsquo;s investment, fees and refund are worked out, with the amount to wire to the company. At the exit, who gets what.
         </p>
         <p>None of that is hard. It comes back on every deal, and the reconciliation grows with the number of investors.</p>
         <h2>Where it goes wrong</h2>
@@ -421,15 +434,15 @@
         <div>
           <h2 class="footer__h">Modules</h2>
           <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
             <li><a href="/goten/">Goten — Deal Calculations</a></li>
-            <li><a href="https://vegeta-goten.vercel.app">Open Goten</a></li>
             <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
-            <li><a href="/trunks/demo/">Trunks demo</a></li>
           </ul>
         </div>
         <div>
           <h2 class="footer__h">Docs</h2>
           <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
             <li><a href="/docs/goten/">Goten docs</a></li>
             <li><a href="/docs/trunks/">Trunks docs</a></li>
             <li><a href="/changelog/">Changelog</a></li>
@@ -438,6 +451,7 @@
         <div>
           <h2 class="footer__h">Code</h2>
           <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
             <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
             <li><a href="/changelog/">Licence: Apache-2.0</a></li>
@@ -456,7 +470,7 @@
       <p class="footer__legal">
         This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
       </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money, give advice or act for you.</p>
+      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://vegeta-ops.vercel.app/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/bulma/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/goten/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/trunks/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/</loc></url>
@@ -10,6 +11,7 @@
   <url><loc>https://vegeta-ops.vercel.app/blog/uk-rules/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/from-bank-statement-to-exit/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/every-investor-email/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/blog/from-deal-to-payment/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/what-an-spv-is/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/bare-trust-nominee/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/uk-nominee-or-delaware-lp/</loc></url>
@@ -56,6 +58,22 @@
   <url><loc>https://vegeta-ops.vercel.app/blog/uk-carried-interest-tax/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/blog/nsi-act-and-spvs/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/use/getting-started/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/use/lead-guide/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/use/investor-guide/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/run-and-deploy/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/configuration/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/operator-guide/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/real-mode/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/responsibilities/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/due-diligence/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/upgrade-and-backup/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/architecture/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/verification/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/build/security-model/</loc></url>
+  <url><loc>https://vegeta-ops.vercel.app/docs/bulma/release-notes/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/goten/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/goten/use/getting-started/</loc></url>
   <url><loc>https://vegeta-ops.vercel.app/docs/goten/use/import-csv/</loc></url>
