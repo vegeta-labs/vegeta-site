@@ -1,0 +1,131 @@
+{
+  "about": "Demos page, Trunks scenes (brief v3.1, Trunks feature list v2). Drawn only from the locked static demo the site serves at /trunks/demo/ (trunks-demo.lock). Each scene opens a fresh browser at the fixed clock (the package's build time, so list and case pages agree on due states) in Europe/London, opens its case or list, runs its steps, then serialises its panel. Demo-only wording (the top bar, About this demo, the fixed-times note, Recorded transfer) is never drawn: the scenes file leaves those lines out. Read by scripts/demos-extract-trunks.mjs. A step [\"hide\", text] takes a demo-only label out of the page before the panel is read (only labels the Trunks session confirmed are demo-only: presentation.ts).",
+  "clock": "2026-11-12T15:40:33Z",
+  "timezone": "Europe/London",
+  "scenes": {
+    "T1": {
+      "open": "",
+      "steps": [
+        ["select", "Risk", "High"],
+        ["select", "Queue", "Compliance"],
+        ["wait", "6 of 31 cases"]
+      ],
+      "panel": {
+        "selector": "main > section"
+      },
+      "head": "main > section h2"
+    },
+    "T2": {
+      "open": "E0001",
+      "steps": [],
+      "panel": {
+        "selectors": ["article > dl.facts", "article > section.case-summary"]
+      },
+      "head": "#case-title"
+    },
+    "T3": {
+      "open": "E0264",
+      "steps": [],
+      "panel": {
+        "selectors": ["h3:text-is(\"Hidden text in the HTML\") + *"]
+      },
+      "head": "h3:text-is(\"Hidden text in the HTML\")"
+    },
+    "T4": {
+      "open": "E0045",
+      "steps": [["hide", "Recorded transfer: completed"]],
+      "panel": {
+        "selectors": [".case-main > h3:text-is(\"Attachments\") + *"]
+      },
+      "head": ".case-main > h3:text-is(\"Attachments\")"
+    },
+    "T5": {
+      "open": "E0232",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Email type\"))"
+      },
+      "head": "section > h3:text-is(\"Email type\")"
+    },
+    "T6": {
+      "open": "E0287",
+      "steps": [["open", "Details extracted by rules"]],
+      "panel": {
+        "selectors": [".case-main > h3:text-is(\"Key details\") ~ :is(dl, p, details)"]
+      },
+      "head": ".case-main > h3:text-is(\"Key details\")"
+    },
+    "T7": {
+      "open": "E0001",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Related records\"))"
+      },
+      "head": "section > h3:text-is(\"Related records\")"
+    },
+    "T8": {
+      "open": "E0225",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Risk\"))"
+      },
+      "head": "section > h3:text-is(\"Risk\")"
+    },
+    "T9": {
+      "open": "E0225",
+      "steps": [["open", "All signals (9)"]],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Signals\"))"
+      },
+      "head": "section > h3:text-is(\"Signals\")"
+    },
+    "T10": {
+      "open": "E0225",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Check the bank details request\"))"
+      },
+      "head": "section > h3:text-is(\"Check the bank details request\")"
+    },
+    "T11": {
+      "open": "E1012",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Email type\"))"
+      },
+      "head": "section > h3:text-is(\"Email type\")"
+    },
+    "T12": {
+      "open": "E0001",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Reply\"))"
+      },
+      "head": "section > h3:text-is(\"Reply\")"
+    },
+    "T13": {
+      "open": "E0225",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Reply\"))"
+      },
+      "head": "section > h3:text-is(\"Reply\")"
+    },
+    "T14": {
+      "open": "E0001",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Queue and owner\"))"
+      },
+      "head": "section > h3:text-is(\"Queue and owner\")"
+    },
+    "T15": {
+      "open": "E0053",
+      "steps": [],
+      "panel": {
+        "selector": "section:has(> h3:text-is(\"Suggested next steps\"))"
+      },
+      "head": "section > h3:text-is(\"Suggested next steps\")"
+    }
+  }
+}

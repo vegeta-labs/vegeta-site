@@ -1,0 +1,339 @@
+{
+  "about": "Demos page, Goten scenes (brief v3 §2.4, §2.7, §6.1). Each scene starts from a fresh browser profile at the fixed clock, runs its prelude and steps, then serialises its panel and its heading. The state names what the steps do and is drawn under the scene. Read by scripts/demos-extract-goten.mjs.",
+  "clock": "2026-10-16T12:00:00+01:00",
+  "timezone": "Europe/London",
+  "prelude": {
+    "loaded": [
+      ["click", "I understand"],
+      ["click", "Load sample deal"]
+    ],
+    "review": [
+      ["click", "I understand"],
+      ["click", "Load sample deal"],
+      ["click", "Confirm Chloe Martin"],
+      ["click", "Confirm Elena Rossi"],
+      ["click", "Confirm Kavya Iyer"],
+      ["click", "Mark t11 as not part of this deal"],
+      ["click", "Mark t14 as not part of this deal"],
+      ["wait", "Nothing to review."]
+    ],
+    "handoff": [
+      ["click", "I understand"],
+      ["click", "Load sample deal"],
+      ["click", "Confirm Chloe Martin"],
+      ["click", "Confirm Elena Rossi"],
+      ["click", "Confirm Kavya Iyer"],
+      ["click", "Mark t11 as not part of this deal"],
+      ["click", "Mark t14 as not part of this deal"],
+      ["wait", "Nothing to review."],
+      ["click", "Hand off to allocation"]
+    ],
+    "both": [
+      ["click", "I understand"],
+      ["click", "Load sample deal"],
+      ["click", "Confirm Chloe Martin"],
+      ["click", "Confirm Elena Rossi"],
+      ["click", "Confirm Kavya Iyer"],
+      ["click", "Mark t11 as not part of this deal"],
+      ["click", "Mark t14 as not part of this deal"],
+      ["wait", "Nothing to review."],
+      ["click", "Hand off to allocation"],
+      ["click", "Hand off to exit distribution"]
+    ]
+  },
+  "scenes": {
+    "G1": {
+      "state": "Sample deal, as loaded.",
+      "prelude": "loaded",
+      "steps": [
+        [
+          "click",
+          {
+            "tab": "Deal settings"
+          }
+        ]
+      ],
+      "panel": {
+        "selector": "section:has(#deal-h)"
+      }
+    },
+    "G2": {
+      "state": "An import file made from the sample, with one bad amount.",
+      "prelude": "loaded",
+      "steps": [
+        ["open", "Investors (12)"],
+        ["open", "Import investors (replaces the list)"],
+        [
+          "paste",
+          {
+            "label": "Paste CSV text (first line is the header)"
+          },
+          "investor_id,name,email,reference,cash_due,scheme\nc01,Amelia Hart,,NW-001,\"1,23\",SEIS"
+        ],
+        ["click", "Import pasted text"]
+      ],
+      "panel": {
+        "selectors": ["details.import[open] > summary", "div.errors[role=alert]"]
+      }
+    },
+    "G3": {
+      "state": "Sample deal, as loaded.",
+      "prelude": "loaded",
+      "steps": [],
+      "panel": {
+        "selector": "[data-testid=rec-totals]"
+      },
+      "head": "h3:has-text('Summary')"
+    },
+    "G4": {
+      "state": "Sample deal, as loaded.",
+      "prelude": "loaded",
+      "steps": [],
+      "panel": {
+        "selector": "table[aria-label='Bank line status']"
+      },
+      "head": "h4:text-is('Bank lines')"
+    },
+    "G5": {
+      "state": "Sample deal, as loaded.",
+      "prelude": "loaded",
+      "steps": [],
+      "panel": {
+        "selector": "ul[aria-label='Review queue']"
+      },
+      "head": "h4:has-text('Needs your review')"
+    },
+    "G6": {
+      "state": "Sample deal, after the review.",
+      "prelude": "review",
+      "steps": [],
+      "panel": {
+        "selector": "table[aria-label='Bank line status']"
+      },
+      "head": "h4:text-is('Bank lines')"
+    },
+    "G7": {
+      "state": "Sample deal, after the review, then Copy message for David Kim.",
+      "prelude": "review",
+      "steps": [
+        ["click", "Copy message for David Kim"],
+        ["wait", "Copied. Send it yourself from your usual email."]
+      ],
+      "panel": {
+        "selector": "table[aria-label='Investor payment status']"
+      },
+      "head": "h4:text-is('Investors')"
+    },
+    "G8": {
+      "state": "Sample deal, after the review, then Lucas Meyer marked withdrawn.",
+      "prelude": "review",
+      "steps": [
+        ["click", "Mark Lucas Meyer withdrawn"],
+        [
+          "check",
+          {
+            "label": "Written consent from the investor received"
+          }
+        ],
+        ["click", "Confirm withdrawal"]
+      ],
+      "panel": {
+        "selectors": ["[data-testid=rec-totals]", "[data-testid=withdrawn-summary]"]
+      },
+      "head": "h3:has-text('Summary')"
+    },
+    "G9": {
+      "state": "Sample deal, after the review, minimum commitment 970 and the hand-off, with the platform fee's new payer set to Company (preview, not yet applied).",
+      "prelude": "review",
+      "steps": [
+        [
+          "click",
+          {
+            "tab": "Deal settings"
+          }
+        ],
+        [
+          "fill",
+          {
+            "label": "Minimum commitment"
+          },
+          "970"
+        ],
+        [
+          "click",
+          {
+            "tab": "Reconciliation"
+          }
+        ],
+        ["click", "Hand off to allocation"],
+        [
+          "select",
+          {
+            "label": "New payer"
+          },
+          "Company"
+        ]
+      ],
+      "panel": {
+        "selector": "section.fee-payer"
+      }
+    },
+    "G10": {
+      "state": "Sample deal, after the review and the hand-off to allocation.",
+      "prelude": "handoff",
+      "steps": [],
+      "panel": {
+        "selector": "[data-testid=alloc-totals]"
+      },
+      "head": "h3:text-is('Result')"
+    },
+    "G11": {
+      "state": "Sample deal, after the review and the hand-off to allocation.",
+      "prelude": "handoff",
+      "steps": [],
+      "panel": {
+        "selector": "table[aria-label='Fees']"
+      },
+      "head": "h3:text-is('Fees')"
+    },
+    "G12": {
+      "state": "Sample deal, after the review and the hand-off to allocation.",
+      "prelude": "handoff",
+      "steps": [],
+      "panel": {
+        "selector": "table[aria-label='Allocation result']"
+      },
+      "head": "h4:text-is('Per investor')"
+    },
+    "G13": {
+      "state": "Sample deal, after the review and the hand-off, then a £80,000 round cap.",
+      "prelude": "handoff",
+      "steps": [
+        [
+          "fill",
+          {
+            "label": "Round cap"
+          },
+          "80000"
+        ]
+      ],
+      "panel": {
+        "selector": "[data-testid=blockers]"
+      }
+    },
+    "G14": {
+      "state": "Sample deal, after the review and the hand-off to allocation.",
+      "prelude": "handoff",
+      "steps": [],
+      "panel": {
+        "selector": "[data-testid=confirmation]"
+      },
+      "head": "h3:text-is('Closing confirmation')"
+    },
+    "G15": {
+      "state": "Sample deal, after both hand-offs.",
+      "prelude": "both",
+      "steps": [],
+      "panel": {
+        "selector": "table[aria-label='Waterfall steps']"
+      },
+      "head": "h4:text-is('Step by step')"
+    },
+    "G16": {
+      "state": "Sample deal, after both hand-offs, then carry type Tiered.",
+      "prelude": "both",
+      "steps": [
+        [
+          "check",
+          {
+            "selector": "input[name=carryMode] >> nth=1"
+          }
+        ]
+      ],
+      "panel": {
+        "selectors": ["fieldset.choice", "table[aria-label='Carry tiers']"]
+      }
+    },
+    "G17": {
+      "state": "Sample deal, after both hand-offs, then £80,000 of proceeds.",
+      "prelude": "both",
+      "steps": [
+        [
+          "fill",
+          {
+            "label": "Exit proceeds"
+          },
+          "80000"
+        ]
+      ],
+      "panel": {
+        "selector": "table[aria-label='Distribution per investor']"
+      },
+      "head": "h4:text-is('Per investor')"
+    },
+    "G18": {
+      "state": "Sample deal, after the review and the hand-off to allocation.",
+      "prelude": "handoff",
+      "steps": [],
+      "panel": {
+        "selector": "section[aria-label=Checks]"
+      }
+    },
+    "G19": {
+      "state": "Sample deal, after the review and the hand-off to allocation.",
+      "prelude": "handoff",
+      "steps": [
+        [
+          "click",
+          {
+            "tab": "Activity log"
+          }
+        ]
+      ],
+      "panel": {
+        "selector": "table[aria-label='Activity log']"
+      },
+      "head": "#log-h"
+    },
+    "G20": {
+      "state": "During the guided tour.",
+      "steps": [
+        ["click", "I understand — take the 3-minute tour"],
+        [
+          "click",
+          {
+            "selector": "[data-testid=tour-card] button:text-is('Next')"
+          }
+        ],
+        [
+          "click",
+          {
+            "selector": "[data-testid=tour-card] button:text-is('Do this for me')"
+          }
+        ],
+        [
+          "click",
+          {
+            "selector": "[data-testid=tour-card] button:text-is('Next')"
+          }
+        ],
+        [
+          "click",
+          {
+            "selector": "[data-testid=tour-card] button:text-is('Do this for me')"
+          }
+        ],
+        [
+          "click",
+          {
+            "selector": "[data-testid=tour-card] button:text-is('Next')"
+          }
+        ],
+        ["wait", "Step 4 of 12"]
+      ],
+      "panel": {
+        "selector": "[data-testid=tour-card]"
+      }
+    }
+  }
+}

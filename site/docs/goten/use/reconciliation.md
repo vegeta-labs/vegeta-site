@@ -1,6 +1,6 @@
 # Reconciliation: match receipts and chase the rest
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/reconciliation.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/use/reconciliation.md
 
 Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the deal.
 
@@ -58,13 +58,24 @@ Bank line statuses:
 | **Skipped: not a receipt**            | A payment out or a zero amount.                                                                     |
 | **After the as-of date: not counted** | Dated after the as-of date. Change the as-of date when you want it counted.                         |
 
-Investor statuses: **Paid in full**, **Underpaid**, **Overpaid**, **Not paid** and **Withdrawn**.
+Investor statuses: **Paid in full**, **Underpaid**, **Overpaid**, **Not paid**, **Withdrawn**, **Withdrawn (imported)**, **Closed — refund only** and **Check refunds**.
+
+## Refunds already made, and refund-only investors
+
+If you have already refunded part of someone's money, or a refund is on its way, put the total in the investor list's `refunded` column (or the **Refunded** cell). Received amounts, the chase list and the hand-off then use the net amount: what was booked less what was refunded. The bank lines themselves do not change. If the refunds are more than was booked, the investor shows **Check refunds**, is not chased, and the hand-off is refused until you correct it.
+
+The `refund_only` column marks someone whose money all goes back: **withdrawn** (they pulled out) or **closed** (another final state, for example failed identity checks). Their receipts are still matched, but they are not chased or carried into the allocation, and all their net money is listed under **To refund**. The status shows **Withdrawn (imported)** or **Closed — refund only**, and **Set by the refund-only flag** replaces the withdraw button. No consent tick is needed: the system that set the flag records why.
+
+Clearing the flag brings them back as before, with two exceptions. If you had marked them withdrawn by hand before the flag was set, that withdrawal applies again: click **Undo withdrawal** if they are in. And if a fee payer change was active and covered them, setting the flag voided their adjustment for good: after clearing it, their line shows as not covered and the hand-off waits until you **Reverse** the change and redo it.
+
+To see and edit these columns on the page, tick **Show own terms, refunds and refund-only flags**.
 
 Summary figures:
 
 - **Receipts in scope** counts money in up to the as-of date.
 - **Booked to investors** plus **Not booked** always equals **Receipts in scope**.
-- **To refund** lists over-payments and everything paid by withdrawn investors.
+- **To refund** lists over-payments, everything paid by withdrawn investors, and everything paid by anyone flagged refund only, each with its reason.
+- **Withdrawn or refund only** counts the investors whose money all goes back.
 
 ## The hand-off
 
@@ -74,13 +85,13 @@ The hand-off is a snapshot. If you change reconciliation afterwards, **2. Alloca
 
 ## When it goes wrong
 
-| What you see                                                               | What it means and what to do                                                                                                                                                                                 |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Your earlier decision no longer matches the data, so it was set aside.** | You edited the bank line or the investor after deciding. Decide again, or click **Clear old decision**. Changing the value back does not restore the decision.                                               |
-| **Possible duplicate import** on a line                                    | Two lines with no transaction ID have the same date, amount, payer and reference. Neither is booked automatically. If only one is real, delete the other or mark it **Not part of this deal**.               |
+| What you see                                                               | What it means and what to do                                                                                                                                                                                     |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Your earlier decision no longer matches the data, so it was set aside.** | You edited the bank line or the investor after deciding. Decide again, or click **Clear old decision**. Changing the value back does not restore the decision.                                                   |
+| **Possible duplicate import** on a line                                    | Two lines with no transaction ID have the same date, amount, payer and reference. Neither is booked automatically. If only one is real, delete the other or mark it **Not part of this deal**.                   |
 | **Needs review: unmatched for N days**                                     | A reminder that the receipt has been unmatched longer than your setting. It is not a regulatory deadline and not an instruction to move money. A line you have marked **Not part of this deal** does not get it. |
-| **Input errors — no results until these are fixed**                        | A value in a table cannot be read. The message names the row and field. No figures appear and the exports wait until it is fixed.                                                                            |
-| **Hand-off disabled: Review the 3 suggested matches first.**               | Decide everything under **Needs your review** first.                                                                                                                                                         |
-| **Updating after your edit — the figures below are from before it.**       | Goten waits until you stop typing. Press Enter or leave the field to update now.                                                                                                                             |
+| **Input errors — no results until these are fixed**                        | A value in a table cannot be read. The message names the row and field. No figures appear and the exports wait until it is fixed.                                                                                |
+| **Hand-off disabled: Review the 3 suggested matches first.**               | Decide everything under **Needs your review** first.                                                                                                                                                             |
+| **Updating after your edit — the figures below are from before it.**       | Goten waits until you stop typing. Press Enter or leave the field to update now.                                                                                                                                 |
 
 Where a withdrawn investor or a fee payer change is involved, see [Withdrawing an investor and changing who pays a fee](https://vegeta-ops.vercel.app/docs/goten/use/withdrawal-and-fee-payer.md).

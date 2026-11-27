@@ -12,7 +12,7 @@
     "site:share": "node scripts/render-share-card.mjs",
     "site:check": "node scripts/check-site.mjs",
     "site:preview": "node scripts/site-preview.mjs 4181",
-    "lint": "oxlint --deny-warnings --ignore-pattern site/site.js --ignore-pattern site/trunks/demo --ignore-pattern vendor",
+    "lint": "oxlint --deny-warnings --ignore-pattern site/site.js --ignore-pattern site/trunks/demo --ignore-pattern site/bulma/demo --ignore-pattern vendor",
     "docs:fetch": "node scripts/fetch-docs.mjs"
   },
   "devDependencies": {

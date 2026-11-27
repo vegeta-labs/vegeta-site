@@ -1,0 +1,583 @@
+{
+  "about": "Demos page, Goten (brief v3 §5, §6). Rows are line indexes into site-src/demos-goten.json; cols pick table cells; narrowHide drops cells below 900px. Copy: each sentence is [text, covers]. Built by scripts/build-demos.mjs, checked by check-site.",
+  "product": {
+    "name": "Goten",
+    "full": "Goten — Deal Calculations",
+    "app": "https://vegeta-goten.vercel.app",
+    "id": "goten",
+    "run": "/docs/goten/build/"
+  },
+  "needs": [
+    {
+      "id": "set-up",
+      "nav": "Set up",
+      "title": "Set up the deal and bring in your lists",
+      "path": "[[Load sample deal]], then [[Deal settings]]. For an import, open [[Import investors (replaces the list)]] on [[1. Reconciliation]].",
+      "scenes": [
+        {
+          "id": "G1",
+          "title": "Set the deal up once",
+          "head": {
+            "line": 1
+          },
+          "rows": [2, 3, 4, 5, 6, 7, 8, 9],
+          "focus": {
+            "row": 7
+          },
+          "covers": {
+            "2": "A1",
+            "4": "A1",
+            "8": "A3"
+          },
+          "copy": [
+            ["The as-of date decides which receipts count: anything dated later is not counted.", "A2"],
+            [
+              "Currency, the minimum commitment, how investor fees are taken and your initials for each log entry are set once here and used in the steps that follow.",
+              "A3 A4 A6"
+            ]
+          ],
+          "alt": "Deal settings for the sample deal: name, currency GBP, as-of date 2026-10-16, minimum commitment 1000.00.",
+          "more": true
+        },
+        {
+          "id": "G2",
+          "title": "One bad cell, nothing imported",
+          "head": {
+            "line": 0
+          },
+          "rows": [1, 2],
+          "focus": {
+            "row": 2
+          },
+          "covers": {
+            "0": "B1",
+            "2": "B3"
+          },
+          "copy": [
+            ["An unreadable amount refuses the whole file; the error names its row and column.", ""],
+            ["Paste or choose a CSV file; statements replace or append, and other currencies are refused.", "B1 B2 B4"],
+            ["Re-importing investors says first what it would undo; up to 500 investors and 2,000 bank lines.", "B5 B6"]
+          ],
+          "alt": "An investor import refused: Nothing was imported, because the cash_due in row 2, 1,23, is not an amount.",
+          "sources": [
+            {
+              "file": "docs/en/use/import-csv.md",
+              "quote": "up to 500 investors, 2,000 bank lines and 500 holdings per deal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "match",
+      "nav": "Match",
+      "title": "Match every receipt to an investor",
+      "path": "[[Load sample deal]], then [[1. Reconciliation]]. Confirm the three suggestions and mark the other two lines [[Not part of this deal]] to reach the last scene.",
+      "scenes": [
+        {
+          "id": "G3",
+          "title": "Nine receipts book themselves",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4],
+          "focus": {
+            "row": 1
+          },
+          "covers": {
+            "0": "C1"
+          },
+          "copy": [
+            ["Nine receipts were booked because each bank reference contains exactly one investor's payment reference.", "C1"],
+            ["The other £48,840.00 waits for you.", ""]
+          ],
+          "alt": "Reconciliation summary: £114,840.00 of receipts in scope, £66,000.00 booked to investors, £48,840.00 not booked, 3 waiting for review, £124,000.00 cash due.",
+          "sources": [
+            {
+              "file": "docs/en/use/getting-started.md",
+              "quote": "Nine receipts were booked automatically"
+            },
+            {
+              "file": "docs/en/use/reconciliation.md",
+              "quote": "contains exactly one investor's payment reference"
+            }
+          ]
+        },
+        {
+          "id": "G4",
+          "title": "A longer reference is not a match",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 11, 14],
+          "cols": [2, 3, 4, 5],
+          "narrowHide": [5],
+          "focus": {
+            "row": 14
+          },
+          "covers": {
+            "11": "C5"
+          },
+          "copy": [
+            ["NW-0019 looks like NW-001, but it is a different reference, so it is never booked to Amelia Hart.", "C2"],
+            ["A receipt unmatched for longer than your setting gets a reminder; it is not a deadline.", "C5 A5"]
+          ],
+          "alt": "Bank lines: A HART and B OKAFOR matched automatically; WESTBRIDGE SUPPLIES not matched, flagged as unmatched for 13 days; SAM PATEL with reference NW-0019 not matched."
+        },
+        {
+          "id": "G5",
+          "title": "A near-match still waits for you",
+          "head": {
+            "extracted": true
+          },
+          "rows": [6, 7, 8],
+          "focus": {
+            "row": 7
+          },
+          "covers": {
+            "7": "C3 C9"
+          },
+          "copy": [
+            ["Kavya Iyer's £7,500.00 came in as NW 11: 0.25 for a near reference, 0.30 for the name, 0.25 for the amount.", "C3"],
+            ["Nothing is booked until you confirm it.", ""],
+            ["Copy query asks about the date and amount only — never the payer, reference or transaction ID.", "C9"]
+          ],
+          "alt": "A receipt waiting for review: £7,500.00 from K IYER with reference NW 11, suggested for Kavya Iyer with score 0.80 because the reference nearly matches and the payer name and amount match.",
+          "sources": [
+            {
+              "file": "docs/en/use/how-the-numbers-work.md",
+              "quote": "0.25 for a near reference, 0.30 for the payer name and 0.25 for the amount"
+            }
+          ]
+        },
+        {
+          "id": "G6",
+          "title": "Every bank line says how it was decided",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 3, 11, 15, 16],
+          "cols": [2, 4, 5, 6],
+          "narrowHide": [5],
+          "focus": {
+            "row": 11
+          },
+          "covers": {
+            "0": "C4"
+          },
+          "copy": [
+            ["After the review each line has a status, and Undo takes a decision back.", "C4"],
+            ["Editing a line or an investor sets earlier decisions aside, and a possible duplicate import is never booked on its own.", "C6 C5"]
+          ],
+          "alt": "Bank lines after the review: matched automatically, confirmed by you, not part of this deal, skipped as not a receipt, and after the as-of date so not counted."
+        }
+      ]
+    },
+    {
+      "id": "chase",
+      "nav": "Chase",
+      "title": "Chase who has not paid",
+      "path": "As above, then [[Copy message]] next to David Kim.",
+      "scenes": [
+        {
+          "id": "G7",
+          "title": "The chase email, ready to send",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 3, 4, 8, 10],
+          "cols": [0, 2, 3, 4, 5, 6],
+          "narrowHide": [2, 3],
+          "focus": {
+            "row": 4
+          },
+          "covers": {
+            "0": "C7",
+            "4": "C8"
+          },
+          "copy": [
+            ["Copy message puts a chase email for David Kim, £500.00 short, on your clipboard to send yourself.", "C8"],
+            ["If the browser blocks it, the text is shown to copy by hand.", "C8"],
+            ["Export chase list CSV gives everyone short or unpaid in one file.", "C8"]
+          ],
+          "alt": "Investor payment status: Chloe Martin paid in full; David Kim underpaid by £500.00, with his chase message copied; Hugo Bernard overpaid by £5,000.00; James Whitfield not paid.",
+          "stack": true,
+          "sources": [
+            {
+              "file": "docs/en/use/reconciliation.md",
+              "quote": "gives everyone on the chase list in one file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "before-closing",
+      "nav": "Before closing",
+      "title": "Handle changes before closing",
+      "path": "[[Take the tour]], click [[Allocation]] at the top of the tour card, then [[Exit tour]]. [[Mark withdrawn]] is on [[1. Reconciliation]]. For the fee change, take the tour again, set [[Minimum commitment]] to 970 in [[Deal settings]], then pick a [[New payer]] under [[Change who pays a fee]] on [[2. Allocation]].",
+      "scenes": [
+        {
+          "id": "G8",
+          "title": "A withdrawal moves money to refunds",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5],
+          "focus": {
+            "row": 5
+          },
+          "covers": {
+            "5": "D1"
+          },
+          "copy": [
+            ["With written consent, Lucas Meyer is marked withdrawn: his £3,000.00 is listed to refund and he is no longer chased.", "D1"],
+            ["Undo withdrawal reverses it.", ""]
+          ],
+          "alt": "Reconciliation summary after a withdrawal: cash due excluding withdrawn £121,000.00, and Withdrawn: 1 investor, £3,000.00 to refund."
+        },
+        {
+          "id": "G9",
+          "title": "Move a fee, keep every investment",
+          "head": {
+            "line": 0
+          },
+          "rows": [2, 3, 4, 5, 6, 7, 15, 19, 21, 24, 25],
+          "stack": true,
+          "focus": {
+            "row": 24
+          },
+          "covers": {
+            "24": "D2"
+          },
+          "copy": [
+            [
+              "Moving the 3% platform fee to the company keeps each investment and lowers cash due by £3,720.00; whoever paid the old amount is listed for a refund.",
+              "D2"
+            ],
+            ["It needs consent, can be reversed, and locks the currency; later edits void it or prompt a re-check.", "D2"]
+          ],
+          "alt": "Change who pays a fee: the platform fee moves from investors to the company; Amelia Hart's cash due falls from £10,000.00 to £9,700.00 with the same investment; the button reads Apply: 0 top-ups totalling £0.00, 12 refunds totalling £3,720.00.",
+          "sources": [
+            {
+              "file": "docs/en/use/getting-started.md",
+              "quote": "platform fee (3%, paid by investors)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "nav": "Close",
+      "title": "Close the round",
+      "path": "[[Take the tour]], click [[Allocation]] at the top of the tour card, then [[Exit tour]]. For the blocker, set [[Round cap]] to 80000.",
+      "scenes": [
+        {
+          "id": "G10",
+          "title": "Know the wire before you close",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5],
+          "focus": {
+            "row": 5
+          },
+          "covers": {
+            "0": "E3"
+          },
+          "copy": [
+            ["The company pays Legal & admin out of the wire, so £98,895.00 goes to the company.", "E3"],
+            ["The round has a £2.4137 share price and a £150,000 cap.", "E1"],
+            ["The hand-off is a snapshot: change reconciliation later and this page says it is out of date.", "C10"]
+          ],
+          "alt": "Allocation result: cash received £103,500.00, total invested £100,395.00, investor fees £3,105.00, refunds £0.00, company-paid fees £1,500.00, wire to company £98,895.00.",
+          "sources": [
+            {
+              "file": "docs/en/use/getting-started.md",
+              "quote": "The share price (£2.4137), round cap (£150,000)"
+            }
+          ]
+        },
+        {
+          "id": "G11",
+          "narrowHide": [2],
+          "title": "Every fee has a payer",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2],
+          "cols": [0, 1, 2, 3],
+          "focus": {
+            "row": 2
+          },
+          "covers": {
+            "0": "E2"
+          },
+          "copy": [
+            ["Investors, the company or the lead can pay a fee, as a percentage or a fixed amount.", "E2"],
+            ["Company fees come off the wire; the lead's are invoiced and do not reduce it.", "E2"]
+          ],
+          "alt": "Fees: Platform fee paid by investors, percentage, 3; Legal & admin paid by the company, fixed total, 1500.00."
+        },
+        {
+          "id": "G12",
+          "title": "Whole shares for S/EIS",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 3, 10],
+          "cols": [0, 1, 3, 4, 7, 8],
+          "narrowHide": [1, 3, 4],
+          "focus": {
+            "row": 1,
+            "col": 7
+          },
+          "covers": {
+            "0": "E4",
+            "1": "E6"
+          },
+          "copy": [
+            ["Investors hold fractions through the nominee, but relief is per whole share: £1.76 of Amelia Hart's investment is not claimable.", "E6 A7"],
+            ["Goten estimates; it does not judge eligibility.", ""]
+          ],
+          "alt": "Allocation per investor: Amelia Hart invests £9,700.00 for 4018.726436 shares, of which 4,018 shares or £9,698.24 are S/EIS claimable and £1.76 is not; James Whitfield is out, no money received."
+        },
+        {
+          "id": "G13",
+          "title": "A blocker names who is affected",
+          "head": {
+            "line": 0
+          },
+          "rows": [1],
+          "focus": {
+            "row": 1
+          },
+          "covers": {
+            "1": "E5"
+          },
+          "copy": [
+            ["With a £80,000 cap everyone is scaled back, Isla Campbell falls below the £1,000 minimum, and the deal cannot close.", "E5"],
+            ["Copy and export wait until it is resolved.", ""]
+          ],
+          "alt": "Can't close yet: after scale-back, Isla Campbell falls below the minimum commitment.",
+          "sources": [
+            {
+              "file": "docs/en/use/closing-allocation.md",
+              "quote": "a cap of £80,000 scales everyone back and stops the close, because Isla Campbell falls below the £1,000 minimum"
+            }
+          ]
+        },
+        {
+          "id": "G14",
+          "title": "A summary the lead confirms",
+          "head": {
+            "extracted": true
+          },
+          "pre": true,
+          "rows": [0, 1, 2, 4, 5, 6, 7, 8, 9, 11, 12, 21, 25, 26],
+          "focus": {
+            "row": 26
+          },
+          "covers": {
+            "0": "E7"
+          },
+          "copy": [
+            ["Copy closing confirmation gives the lead totals, fees and each investor; Hugo Bernard's over-payment is listed separately.", "E7"],
+            ["If an investor with a listed refund is edited by hand after the hand-off, you choose Keep refund or Remove refund first.", "E4"],
+            ["Then Hand off to exit distribution.", "E8"]
+          ],
+          "alt": "The closing confirmation for the lead: totals, fees, the wire to the company of £98,895.00, each investor, and over-payments to refund, Hugo Bernard £5,000.00."
+        }
+      ]
+    },
+    {
+      "id": "exit",
+      "nav": "Exit",
+      "title": "Split the exit, step by step",
+      "path": "[[Take the tour]], click [[Exit]] at the top of the tour card, then [[Exit tour]]. Choose [[Tiered by return multiple]] under [[Carry]], or set [[Exit proceeds]] to 80000 for the loss.",
+      "scenes": [
+        {
+          "id": "G15",
+          "title": "Carry is exactly 20% of the profit",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5, 6],
+          "why": true,
+          "focus": {
+            "row": 6,
+            "col": 2
+          },
+          "covers": {
+            "0": "F2"
+          },
+          "copy": [
+            ["A £390,000 exit after 6 years with £4,500 of costs: investors get their money and an 8% hurdle first, then the lead catches up.", "F1"],
+            ["The lead's £57,021.00 is 20% of the £285,105.00 profit; Export holdings CSV and Export distribution CSV save the figures.", "F2 F6"]
+          ],
+          "alt": "The exit waterfall step by step: exit costs, return of capital £100,395.00, preferred return £58,919.25, lead catch-up £14,729.81, carried interest split; in total £328,479.00 to investors and £57,021.00 to the lead.",
+          "sources": [
+            {
+              "file": "docs/en/use/getting-started.md",
+              "quote": "£390,000 of proceeds, £4,500 of costs, 6 years held, 20% carry, an 8% hurdle"
+            },
+            {
+              "file": "docs/en/use/exit-distribution.md",
+              "quote": "Carry comes to exactly 20% of the £285,105.00 profit."
+            }
+          ]
+        },
+        {
+          "id": "G16",
+          "title": "Or carry in tiers by return multiple",
+          "head": {
+            "line": 0
+          },
+          "rows": [1, 2, 3, 4],
+          "focus": {
+            "row": 4,
+            "col": 1
+          },
+          "covers": {
+            "2": "F3"
+          },
+          "copy": [
+            ["Tiered carry has no hurdle or catch-up: each rate applies only to the profit inside its band.", "F3"],
+            ["The last band has no ceiling, and Add tier adds a band above it.", ""]
+          ],
+          "alt": "Carry set to tiered by return multiple: one tier, up to multiple no ceiling, and an empty carry rate."
+        },
+        {
+          "id": "G17",
+          "title": "A loss is not an error",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3],
+          "cols": [0, 1, 3, 4, 5],
+          "narrowHide": [1, 4],
+          "focus": {
+            "row": 1,
+            "col": 5
+          },
+          "covers": {
+            "0": "F4"
+          },
+          "copy": [
+            ["With £80,000 of proceeds investors share £75,500.00, 0.75x, and there is no carry.", "F5"],
+            ["If costs are more than the proceeds, Goten shows the shortfall and distributes nothing.", "F5"]
+          ],
+          "alt": "Distribution per investor when the exit makes a loss: Amelia Hart invested £9,700.00 and receives £7,294.69, a multiple of 0.75x.",
+          "sources": [
+            {
+              "file": "docs/en/use/exit-distribution.md",
+              "quote": "With £80,000 of proceeds in the sample, investors get £75,500.00 between them, 0.75x."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "records",
+      "nav": "Records",
+      "title": "Trust the figures, keep the record",
+      "path": "[[Load sample deal]], confirm the three suggestions, mark the other two lines [[Not part of this deal]], [[Hand off to allocation]], then open [[Activity log]].",
+      "scenes": [
+        {
+          "id": "G18",
+          "title": "Every result checks itself",
+          "head": {
+            "line": 0
+          },
+          "rows": [1, 5, 10, 11, 13],
+          "focus": {
+            "row": 1
+          },
+          "covers": {
+            "1": "G1"
+          },
+          "copy": [
+            ["A failed self-check hides the figures, a blocker holds export and hand-off, needs-review waits for you, and a reminder stops nothing.", "G1"],
+            ["Money is whole pence, and v1.5.0 passed 551 unit tests and 272 of 272 due test-plan cases.", "G2 G3"]
+          ],
+          "alt": "Allocation checks, all passing: for every investor, cash received equals invested plus platform fee share plus fees plus refund; no refund is negative; the wire plus company-paid fees equals total invested; at least one investor is in; nobody falls below the minimum.",
+          "sources": [
+            {
+              "file": "docs/RELEASE_NOTES.md",
+              "quote": "## v1.5.0"
+            },
+            {
+              "file": "docs/RELEASE_NOTES.md",
+              "quote": "551 unit tests, 272 of 272 due test-plan cases"
+            }
+          ]
+        },
+        {
+          "id": "G19",
+          "tinyHide": [6],
+          "title": "Every decision, on the record",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 4, 7],
+          "cols": [3, 4, 6, 7],
+          "narrowHide": [7],
+          "focus": {
+            "row": 1
+          },
+          "covers": {
+            "0": "G4"
+          },
+          "copy": [
+            ["Investor and bank imports, decisions, hand-offs, copied messages, withdrawals and fee changes are logged, newest first.", "G4"],
+            ["The ledger, chase list, allocation, distribution and log export as CSV; the deal stays in this browser.", "G5 G6"],
+            ["If the browser cannot save, the page says so.", "G7"]
+          ],
+          "alt": "The activity log, newest first: the hand-off to allocation, a line marked not part of this deal, Kavya Iyer's receipt confirmed, and the sample loaded."
+        }
+      ]
+    },
+    {
+      "id": "learn",
+      "nav": "Learn",
+      "title": "Learn it on the sample",
+      "path": "On first open, choose [[I understand — take the 3-minute tour]]; later, [[Take the tour]] in the sidebar. [[Load sample deal]] brings the sample back, [[Clear all data]] empties the page, and [[Send feedback]] is in the footer.",
+      "pathCovers": "H2 H6",
+      "scenes": [
+        {
+          "id": "G20",
+          "title": "A 3-minute tour on the sample",
+          "head": null,
+          "rows": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          "tour": true,
+          "focus": {
+            "row": 4
+          },
+          "covers": {
+            "3": "H1"
+          },
+          "copy": [
+            ["Twelve steps walk the sample from receipts to exit; Do this for me can act for you.", "H1"],
+            ["Key terms have a ? explanation.", "H4"],
+            ["Choose System, Light or Dark; printing is always black on white.", "H5"]
+          ],
+          "alt": "The guided tour at step 4 of 12: Typo, NW 11 instead of NW-011; the score is high, 0.80, but it is still your decision. Confirm Kavya.",
+          "sources": [
+            {
+              "file": "docs/en/use/getting-started.md",
+              "quote": "walks the same deal in 12 steps"
+            },
+            {
+              "file": "README.md",
+              "quote": "take the 3-minute tour"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notDrawn": {
+    "H3": "the app says it is not investment, tax or legal advice; the site says that once, on /policy/ (plan 43)"
+  }
+}

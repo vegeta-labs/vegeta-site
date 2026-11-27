@@ -19,6 +19,8 @@
 // - seven step illustrations match their pinned sample data; obsolete clips are rejected
 // - the headers file carries the expected CSP
 import { checkIllustrations, illustrationPattern } from './check-illustrations.mjs'
+import { checkDemos } from './check-demos.mjs'
+import { PRODUCTS as DEMO_MODULES } from './build-demos.mjs'
 import { computeExample, INPUT as EXAMPLE_INPUT } from './blog-example.mjs'
 import { digest, labelsIn } from './education-digest.mjs'
 import { NOT_FOUND, releasesOf, renderDocs } from './build-docs.mjs'
@@ -89,6 +91,7 @@ const DOCS_SPEC = JSON.parse(read('site-src/docs.json'))
 const DOCS_ITEMS = DOCS_SPEC.products.flatMap((p) => p.groups.flatMap((g) => g.items.filter((i) => i.route).map((i) => ({ ...i, product: p }))))
 // plan 36 C1: /changelog/ is built by the same script from the same pins, so it is checked with the docs pages
 const CHANGELOG = '/changelog/'
+const POLICY = '/policy/'
 const DOCS = ['/docs/', ...DOCS_ITEMS.map((i) => i.route), CHANGELOG]
 for (const url of DOCS)
   if (!(url === CHANGELOG || /^\/docs\/([a-z0-9-]+\/)*$/.test(url)) || !existsSync(join(SITE, url, 'index.html'))) {
@@ -101,6 +104,11 @@ const PAGES = {
   '/bulma/': 'bulma/index.html',
   '/goten/': 'goten/index.html',
   '/trunks/': 'trunks/index.html',
+  // plan 42 Demos: a hub and one page per module (checked in scripts/check-demos.mjs)
+  '/demos/': 'demos/index.html',
+  ...Object.fromEntries(DEMO_MODULES.map((m) => [`/demos/${m}/`, `demos/${m}/index.html`])),
+  // plan 43: the one page for the notices the other pages no longer repeat
+  [POLICY]: 'policy/index.html',
   ...Object.fromEntries([...BLOGS, ...DOCS].map((url) => [url, url.slice(1) + 'index.html'])),
   // what Vercel serves for an address that does not exist (plan 36 D7): held to the same markup, nav and footer rules
   [NOT_FOUND]: NOT_FOUND.slice(1),
@@ -209,6 +217,12 @@ try {
 } catch (error) {
   fail(`cannot validate illustration sources: ${error.message}`)
 }
+// plan 42 Demos page: the Goten scenes against the text extracted from the app at goten.ref
+try {
+  checkDemos({ pages: Object.fromEntries(Object.entries(html).filter(([u]) => u.startsWith('/demos/'))), goten: GOTEN, trunks: TRUNKS, bulma: BULMA, fail })
+} catch (error) {
+  fail(`cannot check the Demos page: ${error.message}`)
+}
 
 // K6, K11: what no page may say
 const NO_CLAIMS = [
@@ -259,7 +273,22 @@ for (const [url, h] of Object.entries(html)) {
     }
     if (!path.startsWith('/')) fail(at(`local reference ${ref} must start with / (pages live at different depths)`))
     if (path.endsWith('/')) {
-      if (!['/', '/bulma/', '/goten/', '/trunks/', '/trunks/demo/', ...BLOGS, ...DOCS].includes(path)) fail(at(`link to an unknown page ${path}`))
+      if (
+        ![
+          '/',
+          '/bulma/',
+          '/goten/',
+          '/trunks/',
+          '/trunks/demo/',
+          '/bulma/demo/',
+          '/demos/',
+          ...DEMO_MODULES.map((m) => `/demos/${m}/`),
+          POLICY,
+          ...BLOGS,
+          ...DOCS,
+        ].includes(path)
+      )
+        fail(at(`link to an unknown page ${path}`))
       if (!hash) continue
       if (path === '/trunks/demo/') {
         const id = /^case=(.+)$/.exec(hash)?.[1]
@@ -356,11 +385,11 @@ if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not l
 
   for (const [url, h] of headers) {
     // every page of the blog marks Blog (plan 29), every docs page Docs (plan 30), the other pages themselves
-    const current = BLOGS.includes(url) ? BLOG_LIST : DOCS.includes(url) ? '/docs/' : url
+    const current = BLOGS.includes(url) ? BLOG_LIST : DOCS.includes(url) ? '/docs/' : url.startsWith('/demos/') ? '/demos/' : url
     const marked = [...h.matchAll(/<a\b[^>]*>/g)].filter((m) => /\saria-current=/.test(m[0])).map((m) => /\shref="([^"]+)"/.exec(m[0])?.[1] ?? '?')
-    // the not-found page is no page of the nav: it marks nothing
-    if (url === NOT_FOUND) {
-      if (marked.length) fail(`${url}: the not-found page marks ${marked.join(', ')} as the current page`)
+    // the not-found page and /policy/ (reached from the footer, plan 43) are no pages of the nav: they mark nothing
+    if (url === NOT_FOUND || url === POLICY) {
+      if (marked.length) fail(`${url}: marks ${marked.join(', ')} as the current page, but it is no page of the nav`)
       continue
     }
     if (!marked.length || marked.some((m) => m !== current)) fail(`${url}: the global nav marks ${marked.join(', ') || 'nothing'} as the current page`)
@@ -441,10 +470,11 @@ for (const sheet of ['styles.css', 'docs.css']) {
 }
 
 // ---- Plan 30: /docs/. Every page in docs.json is built from its product's public repo at the docs pin, says that version, and
-// lists the same sidebar; only docs pages load docs.css; source links on GitHub point at the pinned commit. ----
+// lists the same sidebar; only docs pages (and /demos/, which shows the docs index's module cards) load docs.css; source links on GitHub point at the pinned commit. ----
 {
   const sheet = '<link rel="stylesheet" href="/docs.css" />'
-  for (const [url, h] of Object.entries(html)) if (h.includes(sheet) !== (DOCS.includes(url) || url === NOT_FOUND)) fail(`${url}: docs.css on the wrong pages`)
+  for (const [url, h] of Object.entries(html))
+    if (h.includes(sheet) !== (DOCS.includes(url) || url === NOT_FOUND || url === '/demos/')) fail(`${url}: docs.css on the wrong pages`)
   for (const p of DOCS_SPEC.products) {
     const items = p.groups.flatMap((g) => g.items)
     if (!items.some((i) => i.route)) continue
@@ -532,11 +562,13 @@ for (const sheet of ['styles.css', 'docs.css']) {
   const index = html['/docs/']
   for (const p of DOCS_SPEC.products) {
     const home = p.groups.flatMap((g) => g.items).find((i) => i.route)
-    if (home ? !flatTags(index).includes(`<a class="docs-card" href="${home.route}">`) : !index.includes(`<div class="docs-card docs-card--off">`))
-      fail(`/docs/: no card for ${p.name}`)
-    // plan 36 D6: the card is the one way in; it names the sidebar groups, and nothing under it repeats them as links
+    // the card is the one way in (scripts/hub-cards.mjs): a link to the module's first docs page, its miniature naming each
+    // sidebar group, and nothing under it repeats them as links
+    const card = /<a class="docs-card hub-card hub-card--doc docs-card--([a-z]+)" href="([^"]+)"[\s\S]*?<\/a>/g
+    const mine = [...flatTags(index).matchAll(card)].find((m) => m[1] === p.id)
+    if (!home || !mine || mine[2] !== home.route) fail(`/docs/: no card for ${p.name}`)
     const groups = p.groups.filter((g) => g.items.some((i) => i.route)).map((g) => esc(g.label))
-    if (!flatTags(index).includes(`<span class="docs-card__groups">${groups.join(' · ')}</span>`)) fail(`/docs/: the ${p.name} card must name its docs groups`)
+    for (const g of groups) if (!mine?.[0].includes(`<span class="hub-side__l">${g}</span>`)) fail(`/docs/: the ${p.name} card must name its docs groups`)
   }
 }
 
@@ -546,12 +578,37 @@ const sentence = (name) => new RegExp(`${name}\\s*=\\s*\\n?\\s*'([^']+)'`).exec(
 const PRIVACY = sentence('PRIVACY_TEXT')
 const DISCLAIMER = sentence('DISCLAIMER_TEXT')
 if (!PRIVACY || !DISCLAIMER) fail("cannot read PRIVACY_TEXT / DISCLAIMER_TEXT from Goten's src/config.ts")
-const footerText = plain([...footers][0] ?? '')
-if (!footerText.includes(DISCLAIMER ?? '\0')) fail('footer does not carry DISCLAIMER_TEXT word for word')
-if (!footerText.includes('Not affiliated with any platform')) fail('footer: "Not affiliated with any platform" missing')
-if (!footerText.includes('Vegeta is open-source software, not a regulated service.')) fail('footer: the software statement (N28) is missing')
-const privacyBody = plain(/<p class="privacy__body"[^>]*>([\s\S]*?)<\/p>/.exec(html['/goten/'])?.[1] ?? '').trim()
-if (privacyBody !== PRIVACY) fail('/goten/: the privacy section does not carry PRIVACY_TEXT word for word')
+// plan 43 (owner 2026-11-24): the notices live on /policy/ only, word for word, and every footer leads there
+{
+  const policy = plain(/<main[\s\S]*<\/main>/.exec(html[POLICY])?.[0] ?? '')
+  for (const [what, words] of [
+    ['DISCLAIMER_TEXT', DISCLAIMER],
+    ['PRIVACY_TEXT', PRIVACY],
+    ['the platform statement', 'Not affiliated with any platform.'],
+    ['the software statement (N28)', 'Vegeta is open-source software, not a regulated service. It does not hold money or give advice.'],
+  ])
+    if (!policy.includes(words ?? '\0')) fail(`${POLICY}: ${what} is not there word for word`)
+  if (!/<a href="\/policy\/">Policy<\/a>/.test([...footers][0] ?? '')) fail('the footer must link /policy/')
+  // no page says its examples are fictional: /policy/ says it once (the docs pages and the demo package are the products' own
+  // text). What a reader sees or a link preview shows counts: the page body, the title, the descriptions and image alt text;
+  // text only for screen readers (sr-only) does not (plan 43 §2.3)
+  for (const [url, h] of Object.entries(html)) {
+    if (url === POLICY || DOCS.includes(url)) continue
+    // the whole body (not only <main>), less any element whose classes include sr-only (none of them nests its own tag)
+    const body = (/<body[\s\S]*<\/body>/.exec(h)?.[0] ?? '')
+      .replace(/<script[\s\S]*?<\/script>/g, ' ')
+      .replace(/<(\w+)\b[^>]*\bclass="[^"]*\bsr-only\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, ' ')
+    const meta = [
+      ...h.matchAll(
+        /<title>([^<]*)<\/title>|<meta\s+(?:name|property)="(?:description|og:description|og:title|twitter:title|twitter:description)"\s+content="([^"]*)"|\salt="([^"]*)"/g,
+      ),
+    ]
+      .map((m) => m.slice(1).join(' '))
+      .join(' ')
+    const seen = plain(body)
+    if (/fictional/i.test(seen + ' ' + meta)) fail(`${url}: says "fictional" (plan 43: that is said once, on ${POLICY})`)
+  }
+}
 
 // FAQ structure (handbook §4.5): every question has its own id with the page's prefix, a summary and its answer; numbers
 // only from a short fixed list per page (counts and figures live in the trust sections, backed by release notes)
@@ -597,7 +654,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
   }
   // trust figures (P9): each must be backed by the release notes
   const notes = read(join(GOTEN, 'docs/RELEASE_NOTES.md'))
-  // the page names the release whose checks measured all three (v1.4.0, 2026-11-12); a later release may keep them only
+  // the page names the release whose checks measured all three (v1.5.0, 2026-11-26); a later release may keep them only
   // while it says the calculations are unchanged (same rule as the overview's "measured on")
   const measuredGoten = /<p class="trust__note">Figures from the (v[\d.]+) release checks\.<\/p>/.exec(html['/goten/'])?.[1] ?? ''
   const gotenReleases = releasesOf(notes).map((r) => r.version)
@@ -607,9 +664,9 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
       fail(`/goten/: Goten ${v} does not say the calculations are unchanged, so figures from ${measuredGoten} cannot stand for it`)
   const measuredNotes = releaseSection(notes, measuredGoten.slice(1))
   const figures = [
-    ['1,800', /agree with it on 1,800 generated cases/],
-    ['301 / 301', /301 of 301 deliberate code breakages caught/],
-    ['210 / 210', /all 210 test-plan cases due\b[^.;]*\bran and passed/],
+    ['3,000', /\b3,000 generated cases agreeing with it\b/],
+    ['337 / 337', /\b337 of 337 mutants caught\b/],
+    ['272 / 272', /\b272 of 272 due test-plan cases\b/],
   ]
   for (const [shown, backed] of figures) {
     if (!html['/goten/'].includes(`<dt>${shown}</dt>`)) fail(`/goten/ trust figure ${shown} not on the page as expected`)
@@ -877,7 +934,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
   const notesText = norm(plain(bulmaNotes.replace(/\*\*|`/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')))
   if (facts.length < 3 || facts.length > 4) fail(`/bulma/: why trust it has ${facts.length} figures, expected 3 or 4`)
   for (const [figure, under] of facts)
-    if (/\d/.test(figure) ? !bulmaBacked(figure, under) : !notesText.includes(under))
+    // plan 43: a sentence may leave out the notes' "with fictional data" (said once on /policy/), and nothing else
+    if (/\d/.test(figure) ? !bulmaBacked(figure, under) : ![notesText, notesText.replace(/ with fictional data/g, '')].some((t) => t.includes(under)))
       fail(`/bulma/ trust figure ${figure}: no line of the v${bulmaVersion} section of Bulma's release notes has it with what it measures`)
   if (!trust.includes(`<p class="trust__note">Figures from the v${bulmaVersion} release checks.</p>`))
     fail(`/bulma/: the trust note must name the v${bulmaVersion} release checks`)
@@ -972,11 +1030,11 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
       release: bulmaVersion,
       latest: bulmaLatest ?? { version: `v${bulmaVersion}`, date: 'unknown' },
     },
-    // Goten's figure was measured on v1.4.0 and v1.4.1 says the calculations are unchanged, so the column says "measured on v1.4.0";
-    // when a later release restates the figure, set release to it and "measured on" goes away
+    // Goten's figure is restated by v1.5.0 (its calculations changed, so nothing older can stand for it);
+    // if a later release only says the calculations are unchanged, keep release here and the column says "measured on"
     goten: {
-      figure: '1,800',
-      release: '1.4.0',
+      figure: '3,000',
+      release: '1.5.0',
       latest: releasesOf(gotenNotes)[0],
     },
     trunks: {
@@ -1014,7 +1072,8 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
       `<p class="module__version"><a href="/changelog/">${want?.latest.version} · ${want?.latest.date}</a></p>`,
       `<p class="module__lede">${who}</p>`,
       `<p class="module__runs">${runs}</p>`,
-      `<p class="fact__links"><a href="/${mod}/">How it works <span class="arrow" aria-hidden="true">→</span></a><a href="${code}">Code <span class="arrow" aria-hidden="true">→</span></a></p>`,
+      // plan 42 D2: a module drawn on /demos/ also leads to its demo
+      `<p class="fact__links"><a href="/${mod}/">How it works <span class="arrow" aria-hidden="true">→</span></a>${DEMO_MODULES.includes(mod) ? `<a href="/demos/${mod}/">See the demo <span class="arrow" aria-hidden="true">→</span></a>` : ''}<a href="${code}">Code <span class="arrow" aria-hidden="true">→</span></a></p>`,
     ].join('')
     if (flatTags(body).trim() !== flatTags(card))
       fail(
@@ -1072,7 +1131,7 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
   const stamp = (r) => [r.version.slice(1), ...r.date.split('-')]
   const OWN = {
     bulma: [MODULE_PROOF.bulma.figure, bulmaVersion, ...stamp(MODULE_PROOF.bulma.latest)],
-    goten: ['1,800', MODULE_PROOF.goten.release, ...stamp(MODULE_PROOF.goten.latest)],
+    goten: ['3,000', MODULE_PROOF.goten.release, ...stamp(MODULE_PROOF.goten.latest)],
     trunks: [...trunksTrust.high.split(' / '), trunksVersion, trunksMeasuredVersion, ...stamp(MODULE_PROOF.trunks.latest)],
   }
   for (const [, mod, body] of modules)
@@ -1085,41 +1144,47 @@ function faqOf(url, prefix, numbers, count, oneParagraph = true, quoted = {}) {
       fail(`${url}: "${m}" is a figure written out; figures need a backed number`)
 }
 
-// ---- K7, K8: /trunks/demo/ is exactly the locked package ----
-{
+// ---- K7, K8: /trunks/demo/ and /bulma/demo/ are exactly their locked packages ----
+// A Bulma pack built from a development commit (bulma-demo.lock "dev": true, scripts/bulma-demo.mjs) is accepted here so the
+// Demos page can be built against it; the public snapshot refuses it
+const checkPack = (mod, DEMO) => {
   const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex')
-  const lock = JSON.parse(read('trunks-demo.lock'))
-  const ref = read('trunks.ref').trim()
-  if (lock.commit !== ref) fail(`trunks-demo.lock is for ${lock.commit}, trunks.ref is ${ref}`)
+  const lock = JSON.parse(read(`${mod}-demo.lock`))
+  const ref = read(`${mod}.ref`).trim()
+  if (lock.commit !== ref && !lock.dev) fail(`${mod}-demo.lock is for ${lock.commit}, ${mod}.ref is ${ref}`)
   const files = walk(DEMO)
     .map((f) => relative(DEMO, f))
     .sort()
   const want = [...Object.keys(lock.files), 'MANIFEST.sha256'].sort()
-  for (const e of readdirSync(join(SITE, 'trunks'))) if (e.startsWith('.')) fail(`site/trunks/${e}: a hidden file or directory would be published`)
-  if (files.join('|') !== want.join('|')) fail(`/trunks/demo/: files differ from trunks-demo.lock (${files.length} vs ${want.length})`)
+  for (const e of readdirSync(join(SITE, mod))) if (e.startsWith('.')) fail(`site/${mod}/${e}: a hidden file or directory would be published`)
+  if (files.join('|') !== want.join('|')) fail(`/${mod}/demo/: files differ from ${mod}-demo.lock (${files.length} vs ${want.length})`)
   for (const [f, h] of Object.entries(lock.files))
-    if (existsSync(join(DEMO, f)) && sha(join(DEMO, f)) !== h) fail(`/trunks/demo/${f} differs from trunks-demo.lock`)
+    if (existsSync(join(DEMO, f)) && sha(join(DEMO, f)) !== h) fail(`/${mod}/demo/${f} differs from ${mod}-demo.lock`)
   if (existsSync(join(DEMO, 'MANIFEST.sha256')) && sha(join(DEMO, 'MANIFEST.sha256')) !== lock.manifest_sha256)
-    fail('/trunks/demo/MANIFEST.sha256 differs from trunks-demo.lock')
+    fail(`/${mod}/demo/MANIFEST.sha256 differs from ${mod}-demo.lock`)
   const info = JSON.parse(read(join(DEMO, 'snapshot-info.json')))
-  if (info.commit !== ref || info.version !== lock.version) fail('/trunks/demo/snapshot-info.json does not match trunks.ref and the lock')
+  if ((info.commit !== ref && !lock.dev) || info.commit !== lock.commit || info.version !== lock.version)
+    fail(`/${mod}/demo/snapshot-info.json does not match ${mod}.ref and the lock`)
   const index = read(join(DEMO, 'index.html'))
-  if (!/<meta name="robots" content="noindex"/.test(index)) fail('/trunks/demo/: index.html has no noindex')
+  if (!/<meta name="robots" content="noindex"/.test(index)) fail(`/${mod}/demo/: index.html has no noindex`)
   for (const [, attrs, body] of index.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi))
-    if (body.trim() || !/\bsrc="\.\/[^"]+"/.test(attrs)) fail('/trunks/demo/: a script that is inline or not from the demo directory')
-  if (/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(index)) fail('/trunks/demo/: inline style or event handler in index.html')
+    if (body.trim() || !/\bsrc="\.\/[^"]+"/.test(attrs)) fail(`/${mod}/demo/: a script that is inline or not from the demo directory`)
+  if (/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(index)) fail(`/${mod}/demo/: inline style or event handler in index.html`)
   const snap = read(join(DEMO, 'data/snapshot.js'))
   for (const [email] of snap.matchAll(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g))
-    if (!/\.example$/.test(email)) fail(`/trunks/demo/ snapshot: e-mail address ${email} is not .example`)
+    if (!/\.(example|invalid)$/.test(email)) fail(`/${mod}/demo/ snapshot: e-mail address ${email} is not .example or .invalid (reserved names)`)
   for (const [re, what] of [
     [/Bearer\s+[\w-]/, 'a bearer token'],
     [/sk-ant-|-----BEGIN [A-Z ]*PRIVATE KEY/, 'a key'],
-    [/"csrf":"[^"]/, 'a CSRF token'],
+    [/"csrf":"(?!demo-csrf-\d+")[^"]/, 'a CSRF token'], // Bulma's pack carries placeholders demo-csrf-N
     [/"(password|passwordHash|secret|token)":"[^"]/i, 'a credential'],
     ...PRIVATE_TERMS,
   ])
-    if (re.test(snap)) fail(`/trunks/demo/ snapshot contains ${what}`)
+    if (re.test(snap)) fail(`/${mod}/demo/ snapshot contains ${what}`)
 }
+checkPack('trunks', DEMO)
+if (existsSync('bulma-demo.lock')) checkPack('bulma', join(SITE, 'bulma/demo'))
+else if (existsSync(join(SITE, 'bulma/demo'))) fail('site/bulma/demo/ exists without bulma-demo.lock (install it with scripts/bulma-demo.mjs)')
 
 // the served script is the current build, and small
 const dir = mkdtempSync(join(tmpdir(), 'site-check-'))
@@ -1356,7 +1421,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   if (g.duplicate.includes('auto')) fail('blog: Goten now books a suspected duplicate automatically')
   if (g.exit.capital !== g.close.totals.invested) fail('blog: exit capital is not the amount invested')
   if (x.proceeds !== x.exitCosts + g.exit.investorsTotal + g.exit.carry) fail('blog: the exit does not add up')
-  const gotenText = article(BLOG_GOTEN, {
+  article(BLOG_GOTEN, {
     title: 'The money work on an SPV, ready for a person to check',
     summary: 'What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides.',
     film: 'goten',
@@ -1395,11 +1460,10 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       ...g.exit.steps.map((st, i) => [stepNames[i], st.toInvestors ? gbp2(st.toInvestors) : '', st.toLead ? gbp2(st.toLead) : ''].filter(Boolean).join(' ')),
       `Total ${gbp2(g.exit.investorsTotal)} ${gbp2(g.exit.carry)}`,
       `Piccolo's ${gbp(row('Piccolo').invested)} comes back as ${gbp(g.exit.rows.find((r) => r.name === 'Piccolo').distribution)}`,
-      'one investment and one exit, with the same terms for every investor',
+      'one investment and one exit. Each investor can have their own carry rate; the hurdle, catch-up and years held are the same for the whole deal',
       'Your deal data is processed in your browser and never sent by this app',
     ],
   })
-  if (/fictional/i.test(gotenText)) fail(`${BLOG_GOTEN}: says fictional`)
 
   // Trunks: every figure and quoted reply is held to the release notes and the default templates at trunks.ref
   const templates = read(join(TRUNKS, 'config/default/templates.yaml'))
@@ -1446,7 +1510,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       'It has no connection to your bank and cannot stop a payment',
       'An approver or admin can still close a case with its task open, giving a reason',
       'a taken-over mailbox would pass',
-      'One run with one model, Claude Opus 5.5, on 126 fictional emails that development never read',
+      'One run with one model, Claude Opus 5.5, on 126 test emails that development never read',
       `measured on v${trunksMeasuredVersion}`,
       'rated high in 18 of 18',
       'linked correctly in 123 of 125',
@@ -1457,10 +1521,10 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
 
   // Bulma (plan 39 S5): the story deal from set-up to payment instructions; the test figures are the release notes' own
   const bulmaTests = [
-    ['1,130', 'unit and real-database tests'],
-    ['40', 'browser tests'],
-    ['185', 'test-plan cases'],
-    ['1,477', 'full mutation run'],
+    ['1,246', 'unit and real-database tests'],
+    ['41', 'browser tests'],
+    ['201', 'test-plan cases'],
+    ['1,878', 'full mutation run'],
     ['35,084', 'random and boundary cases'],
   ]
   for (const [n, what] of bulmaTests) if (!bulmaBacked(n, what)) fail(`${BLOG_BULMA}: ${n} ${what} is not in the v${bulmaVersion} release notes`)
@@ -1519,7 +1583,22 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
   }
   // both files are generated, so they must be exactly this text: a page missing, a foreign address or a Disallow all fail
   const SITE_URL = 'https://vegeta-ops.vercel.app'
-  const sitemapPages = ['/', '/bulma/', '/goten/', '/trunks/', BLOG_LIST, ...BLOG_TOPICS, BLOG_GOTEN, BLOG_TRUNKS, BLOG_BULMA, ...EDU_URLS, ...DOCS]
+  const sitemapPages = [
+    '/',
+    '/bulma/',
+    '/goten/',
+    '/trunks/',
+    '/demos/',
+    ...DEMO_MODULES.map((m) => `/demos/${m}/`),
+    BLOG_LIST,
+    ...BLOG_TOPICS,
+    BLOG_GOTEN,
+    BLOG_TRUNKS,
+    BLOG_BULMA,
+    ...EDU_URLS,
+    POLICY,
+    ...DOCS,
+  ]
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>\n`
   if (!existsSync(join(SITE, 'sitemap.xml')) || read(join(SITE, 'sitemap.xml')) !== sitemap) fail('sitemap.xml is not exactly the list of pages')
   if (!existsSync(join(SITE, 'robots.txt')) || read(join(SITE, 'robots.txt')) !== `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`)
@@ -1710,7 +1789,14 @@ if (vercel.headers.length !== 2 || JSON.stringify(vercel.headers[1]) !== JSON.st
   fail('vercel.json: expected the site-wide header rule and the Markdown type rule only')
 const csp = vercel.headers[0].headers.find((h) => h.key === 'Content-Security-Policy')?.value ?? ''
 // the demo uses relative paths: /trunks/demo without the slash must redirect, or its files would resolve one level up
-for (const r of ['/bulma', '/goten', '/trunks', '/trunks/demo', ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1))])
+for (const r of [
+  '/bulma',
+  '/goten',
+  '/trunks',
+  '/trunks/demo',
+  ...(existsSync('bulma-demo.lock') ? ['/bulma/demo'] : []),
+  ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1)),
+])
   if (!(vercel.redirects ?? []).some((x) => x.source === r && x.destination === r + '/')) fail(`vercel.json: no redirect from ${r} to ${r}/`)
 const CSP =
   "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"

@@ -60,6 +60,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -74,6 +75,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -142,7 +144,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">How the numbers work</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.</p>
             <h2 id="general-rules">General rules<a class="docs__anchor" href="#general-rules" aria-label="Link to this section">#</a></h2>
@@ -201,7 +203,11 @@
               mark it not part of this deal. In the sample, Kavya Iyer&#39;s receipt with the reference NW 11 scores 0.80: 0.25 for a near reference, 0.30 for
               the payer name and 0.25 for the amount.
             </p>
-            <p><strong>Received</strong> is the sum of the receipts booked to an investor. <strong>Difference</strong> is received minus cash due.</p>
+            <p>
+              <strong>Received</strong> is the sum of the receipts booked to an investor, less anything in their <code>refunded</code> column (refunds already
+              made or on their way). <strong>Booked to investors</strong> in the summary is the gross total, before those refunds.
+              <strong>Difference</strong> is received minus cash due.
+            </p>
             <h2 id="closing-allocation">Closing allocation<a class="docs__anchor" href="#closing-allocation" aria-label="Link to this section">#</a></h2>
             <p>
               <strong>What an investor can invest</strong> is rounded down to the penny, from the cash they sent, any percentage fee rate and any fixed fee per
@@ -220,6 +226,10 @@
               <strong>If the total is over the round cap</strong>, the cap is split between investors in proportion to what each could invest. If that puts
               anyone below the minimum, the deal cannot close.
             </p>
+            <p>
+              <strong>An investor with their own fee terms</strong> uses their own fee mode and their own single fee in all of the above, instead of the
+              deal&#39;s investor-paid fees. A fixed own fee works like a fixed fee per investor.
+            </p>
             <p><strong>Each percentage fee</strong> is worked out on its own and rounded half-up.</p>
             <ul>
               <li>Deducted: amount invested × fee rate ÷ (100% − total fee rate).</li>
@@ -228,6 +238,14 @@
             <p>
               <strong>The refund</strong> is received − invested − fees. If separate rounding of several fees would make it negative, the investment drops by a
               penny at a time until it is not. An investor who ends up investing nothing is out.
+            </p>
+            <p>In these formulas, &quot;amount invested&quot; means the amount before any pro-rata platform fee.</p>
+            <p>
+              <strong>The pro-rata platform fee</strong>, if there is one, comes last. It is the rate × the total of everyone&#39;s amount, rounded half-up,
+              kept between the minimum and the maximum, plus the add-on rate × the part of the total above the add-on threshold, rounded half-up. When investors
+              pay it, each one&#39;s share is in proportion to their amount, rounded down to the penny, and the pennies left over go one each to the largest
+              remainders, an equal remainder to the investor higher in the list. Each investor&#39;s share then comes off what they invest. Their cash due, fees
+              and refund do not change. When the lead or the company pays, nobody&#39;s amount invested changes.
             </p>
             <p>Anyone out pays no fees and gets everything back.</p>
             <p>
@@ -269,9 +287,11 @@
               × amount invested, rounded half-up to the penny, and each band&#39;s carry is rounded half-up.
             </p>
             <p>
-              <strong>Between investors</strong>, the total to investors is split in proportion to the amount each invested, not what they wired, so entry fees
-              do not skew it. The pro-rata rule above applies. <strong>Multiple</strong> is distribution ÷ amount invested, rounded half-up to two decimals, and
-              does not count entry fees.
+              <strong>Between investors</strong>, when everyone has the same carry rate, the total to investors is split in proportion to the amount each
+              invested, not what they wired, so entry fees do not skew it. When carry rates differ, the proceeds after exit costs are split this way first and
+              each investor&#39;s own waterfall is worked out on their share: see
+              <a href="/docs/goten/use/exit-distribution/#personal-carry">Personal carry</a>. The pro-rata rule above applies. <strong>Multiple</strong> is
+              distribution ÷ amount invested, rounded half-up to two decimals, and does not count entry fees.
             </p>
             <h2 id="changing-who-pays-a-fee">
               Changing who pays a fee<a class="docs__anchor" href="#changing-who-pays-a-fee" aria-label="Link to this section">#</a>
@@ -358,13 +378,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

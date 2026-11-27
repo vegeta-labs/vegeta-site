@@ -1,0 +1,347 @@
+{
+  "format": "bulma-evidence-pack/1",
+  "limits": [
+    "What this pack can and cannot show.",
+    "It lists what this site returned to this person, what was sent to them through the site, and what they clicked, typed or signed here. It cannot tell whether they read any of it or understood it.",
+    "A deal page is listed when the site returned it to their account. That is all it records.",
+    "Replies, and anything said outside the site (calls, meetings, other email), are not in this pack.",
+    "Each text is given in full with two hashes: the one recorded when it was shown and the one of the text kept today. When they differ, the text kept today is not the one shown.",
+    "Answers to the assessment questions are not included, only the results."
+  ],
+  "generated_at": "2026-11-02T10:01:00.443Z",
+  "software_version": "0.2.0",
+  "person": {
+    "id": "2938725f-2477-4b59-b140-77d6df92fed8",
+    "name": "Son Goku",
+    "email": "goku@run-b4f9aacb.demo.invalid"
+  },
+  "deal": {
+    "id": "e7abd1cb-75c9-4794-a245-8aa642303782",
+    "code": "TKW7E6",
+    "name": "Senzu Labs round"
+  },
+  "sections": [
+    {
+      "key": "statements",
+      "title": "Eligibility statements",
+      "note": null,
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.516Z",
+          "what": "Eligibility statement made",
+          "fields": {
+            "regime": "uk-fpo",
+            "category": "high_net_worth",
+            "qualifies": true,
+            "answers": "{\"category\":\"high_net_worth\",\"high_net_worth\":{\"income\":{\"yes\":true,\"amount_minor\":\"10000000\"},\"net_assets\":{\"yes\":false}}}",
+            "signed_name": "Son Goku",
+            "signed_on": "2026-11-01",
+            "expires_at": "2027-11-01T09:00:00.514Z",
+            "statement_sha256": "1dd80850a4de4c1230f7c4cad3facdfcd1008d4782788f44fcb8314ff7e14316",
+            "sign_in_method": "password",
+            "text_key": "statement_high_net_worth",
+            "text_version": 1
+          },
+          "shown": {
+            "hashed_as": "sha256 of the text as UTF-8",
+            "sha256_recorded": "d606da836987eb3508ad4d0173e30907c4892aa7721c1d3af11bcf3b5e0e0e2a",
+            "sha256_now": "d606da836987eb3508ad4d0173e30907c4892aa7721c1d3af11bcf3b5e0e0e2a",
+            "matches": true,
+            "text": "**PLACEHOLDER** PLACEHOLDER. NOT LEGAL TEXT. The operator and its lawyers must replace this before the real mode. (statement_high_net_worth)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "warnings",
+      "title": "Risk warnings and the choice made on each",
+      "note": null,
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.535Z",
+          "what": "Risk warning shown",
+          "fields": {
+            "choice": "continue",
+            "name_filled_in": null,
+            "text_key": "promotion_warning/high_net_worth",
+            "text_version": 1
+          },
+          "shown": {
+            "hashed_as": "sha256 of the text as UTF-8",
+            "sha256_recorded": "0d0e55eb8775f2a89b7242daeb7c889108df4056102019c452a70a81db3ab252",
+            "sha256_now": "0d0e55eb8775f2a89b7242daeb7c889108df4056102019c452a70a81db3ab252",
+            "matches": true,
+            "text": "Sample warning for the demo deal. Not legal text: the operator and its lawyers write the real one."
+          }
+        }
+      ]
+    },
+    {
+      "key": "cooling_off",
+      "title": "Cooling-off period",
+      "note": null,
+      "items": []
+    },
+    {
+      "key": "assessment",
+      "title": "Appropriateness assessment results",
+      "note": "Results only; the questions asked and the answers given are not included.",
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.524Z",
+          "what": "Assessment attempt",
+          "fields": {
+            "result": "passed",
+            "answered_at": "2026-11-01T09:00:00.524Z",
+            "next_try_from": null
+          }
+        }
+      ]
+    },
+    {
+      "key": "kyc",
+      "title": "Identity check decisions",
+      "note": null,
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.635Z",
+          "what": "Identity check of an individual",
+          "fields": {
+            "details_version": 1,
+            "status": "approved",
+            "decided_at": "2026-11-01T09:00:00.670Z",
+            "reason_given": null,
+            "valid_until": "2029-11-01",
+            "biometric_consent_at": null
+          }
+        }
+      ]
+    },
+    {
+      "key": "deal_versions",
+      "title": "Deal page versions returned to this account, and their approval records",
+      "note": "This is the operator's internal record that the content was approved. It is not the statutory approval of a financial promotion.",
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.618Z",
+          "what": "Deal page version 2 returned to this account",
+          "fields": {
+            "version": 2,
+            "version_kind": "approved",
+            "version_made": "2026-10-28T10:00:01.058Z",
+            "times_returned": 2,
+            "last_returned": "2026-11-02T09:59:59.981Z",
+            "content_approvals": 0
+          },
+          "shown": {
+            "hashed_as": "sha256 of the value as JSON with keys sorted, no spaces",
+            "sha256_recorded": "3d2b215c9dff91e5a655e442636f52bbde8e9430aea76599a58ada70c010264f",
+            "sha256_now": "3d2b215c9dff91e5a655e442636f52bbde8e9430aea76599a58ada70c010264f",
+            "matches": true,
+            "value": {
+              "files": {
+                "documents": [
+                  {
+                    "sha256": "44bdd2e39fb4d67fccd26d92700f24754c18ef22cea0aba042e2a6a0dc8386c0",
+                    "requirement": "legal",
+                    "display_name": "sample-subscription-terms.pdf"
+                  }
+                ]
+              },
+              "terms": {
+                "voter": "lead",
+                "currency": "GBP",
+                "instrument": "equity",
+                "target_close": "2027-01-26",
+                "pre_money_minor": "400000000",
+                "allocation_minor": "25000000",
+                "share_price_micros": "1500000",
+                "min_commitment_minor": "100000"
+              },
+              "basics": {
+                "name": "Senzu Labs round",
+                "deal_type": "primary",
+                "structure": "uk_bare_trust",
+                "syndicate": {
+                  "id": "2836b14b-b2b9-45c4-b20e-4423db13015a",
+                  "mode": "existing"
+                }
+              },
+              "company": {
+                "address": "1 Sample Street, Fictional Town",
+                "legal_name": "Senzu Labs Ltd",
+                "jurisdiction": "England and Wales",
+                "contact_version": "d112acc2-de52-4e50-8e98-cbf8963de86b",
+                "registration_number": "SAMPLE-00000000"
+              },
+              "economics": {
+                "fee_payer": "lead",
+                "recipients": [
+                  {
+                    "kind": "person",
+                    "share_bps": 10000,
+                    "person_version": "0e187f0f-46d4-4b6f-8386-5c41babca516"
+                  }
+                ],
+                "default_carry_bps": 2000
+              },
+              "platform_fee": {
+                "rate_bps": 500,
+                "max_minor": "2500000",
+                "min_minor": "50000",
+                "surcharge_bps": 0,
+                "surcharge_threshold_minor": "0"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "link_terms",
+      "title": "Invitation and link terms",
+      "note": null,
+      "items": [
+        {
+          "at": "2026-10-28T10:00:01.226Z",
+          "what": "Invitation through a link",
+          "fields": {
+            "state": "active",
+            "ended_at": null,
+            "link": "open",
+            "default_terms": false,
+            "carry_bps": 2000,
+            "lead_fee": "percent",
+            "lead_fee_bps": 200,
+            "lead_fee_minor": null,
+            "lead_fee_mode": "on_top",
+            "terms_approved_at": null,
+            "terms_fixed_at": "2026-11-01T09:00:00.600Z",
+            "terms_fixed": "{\"fee_bps\":200,\"link_id\":\"6698e0db-89c2-4b73-970e-2305f82bb527\",\"fee_kind\":\"percent\",\"fee_mode\":\"on_top\",\"carry_bps\":2000,\"fee_minor\":null}"
+          }
+        }
+      ]
+    },
+    {
+      "key": "instructions",
+      "title": "Payment instructions issued and confirmed",
+      "note": null,
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.715Z",
+          "what": "Payment instruction issued",
+          "fields": {
+            "reference": "BU-U69KBJ",
+            "amount_due_minor": "1020000",
+            "currency": null,
+            "instruction_version": "sandbox example",
+            "account_holder": null,
+            "holder_capacity": null,
+            "holder_frn": null,
+            "holder_says_client_money": null,
+            "refund_days": null,
+            "account_details_sha256": "4b8bdf03b9495b8771a8c4bdeb3e3b613c19bac0326381d5bf72ae70ff141121",
+            "terms_version": 1,
+            "deal_version": 2,
+            "voided_at": null,
+            "void_reason": null
+          }
+        }
+      ]
+    },
+    {
+      "key": "signatures",
+      "title": "Signatures",
+      "note": null,
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.701Z",
+          "what": "Deal sheet signed",
+          "fields": {
+            "reference": "BU-U69KBJ",
+            "signature": "688582d1-e966-4dbf-85dd-8f869237de34",
+            "signed_name": "Son Goku",
+            "method": "click",
+            "sign_in_method": "password",
+            "ip": "127.0.44.10",
+            "deed_status": null,
+            "document_date": null,
+            "template_version": 1,
+            "terms_version": 1,
+            "details_version": 1,
+            "replaced_at": null
+          },
+          "shown": {
+            "hashed_as": "sha256 of the text as UTF-8",
+            "sha256_recorded": "b7ecebd916240ae0030cfc28e8be5cf8af43c31ff291936c677ce6710f043110",
+            "sha256_now": "b7ecebd916240ae0030cfc28e8be5cf8af43c31ff291936c677ce6710f043110",
+            "matches": true,
+            "text": "Sample warning for the demo deal. Not legal text: the operator and its lawyers write the real one.\nSent by: Sample sender for the demo deal. Not legal text.\n\nPLACEHOLDER DEAL SHEET. The operator replaces this text before real use.\n\nDeal: TKW7E6\nCompany: Senzu Labs Ltd\nInstrument: equity\nInvestor: Son Goku\nInvesting as: Son Goku\nFee terms: 2.00% added on top of the commitment\nInvestment part (before the platform fee): £10,000.00\nLead fee: £200.00\nTotal commitment: the amount to pay: £10,200.00\nCarry: 20.00%\nPayment reference: BU-U69KBJ\nDate: 2026-11-01"
+          }
+        }
+      ]
+    },
+    {
+      "key": "reconfirmations",
+      "title": "Reconfirmations",
+      "note": null,
+      "items": []
+    },
+    {
+      "key": "messages",
+      "title": "Messages from the lead sent through the site",
+      "note": "Only messages sent through this site are kept here. Replies, and anything said outside the site, are not. This is the operator's internal record that the content was approved. It is not the statutory approval of a financial promotion.",
+      "items": []
+    },
+    {
+      "key": "mails",
+      "title": "Other email sent by the site",
+      "note": "The site keeps the subject and when each email was sent, not its text, except for messages from the lead above.",
+      "items": [
+        {
+          "at": "2026-11-01T09:00:00.607Z",
+          "what": "Email sent: Your commitment has been recorded (deal TKW7E6)",
+          "fields": {
+            "kind": "account",
+            "wording": "fixed wording",
+            "mode": "sandbox",
+            "about_this_deal": true
+          }
+        },
+        {
+          "at": "2026-11-01T09:00:00.670Z",
+          "what": "Email sent: Identity check passed",
+          "fields": {
+            "kind": "account",
+            "wording": "fixed wording",
+            "mode": "sandbox",
+            "about_this_deal": false
+          }
+        }
+      ]
+    },
+    {
+      "key": "versions",
+      "title": "Rule pack and software versions",
+      "note": null,
+      "items": [
+        {
+          "at": null,
+          "what": "Rule pack uk-fpo-demo-template version 1",
+          "fields": {
+            "regime": "uk-fpo",
+            "content_sha256": "5c7146a5bca30ad631ed51c458dae92711b4bcfd81a75bc1f34c1a256774f515"
+          }
+        },
+        {
+          "at": "2026-10-28T10:00:01.209Z",
+          "what": "Software version 0.2.0 in use for this person's actions",
+          "fields": {
+            "until": "2026-11-02T10:00:39.534Z"
+          }
+        }
+      ]
+    }
+  ],
+  "mismatches": 0
+}

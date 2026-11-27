@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,7 +150,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Withdrawing an investor and changing who pays a fee</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>
               Both of these are for before closing. Goten records each one beside your investor list, so your list is never rewritten and each can be undone.
@@ -228,8 +230,17 @@
                 A hand-off from reconciliation that is up to date, with no edits to the investor list since. Otherwise the panel says
                 <strong>Not available</strong> and why.
               </li>
+              <li>
+                Everyone in the allocation on the deal&#39;s default fee terms. If anyone it would cover has their own fee terms, the panel says
+                <strong
+                  >Not available: Some investors have their own fee terms. Changing who pays a deal fee is only available when everyone is on the deal&#39;s
+                  default terms.</strong
+                >
+                A carry rate alone does not count. Someone who has withdrawn or is flagged refund only is not covered.
+              </li>
               <li>Consent from the new payer, if it is investors or the company. Moving a fee to the lead needs no consent.</li>
             </ul>
+            <p>The pro-rata platform fee is not moved here: change its <strong>Paid by</strong> setting instead. That changes no one&#39;s cash due.</p>
             <h3 id="steps-1">Steps<a class="docs__anchor" href="#steps-1" aria-label="Link to this section">#</a></h3>
             <ol>
               <li>Open <strong>2. Allocation</strong> and go to <strong>Change who pays a fee</strong>.</li>
@@ -325,6 +336,13 @@
                     <td>Hand off again, which replaces your edits.</td>
                   </tr>
                   <tr>
+                    <td><strong>Reverse the fee payer change first</strong> next to an investor&#39;s own fee terms</td>
+                    <td>
+                      While a change is active, the own fee terms of the people it covers cannot be edited. <strong>Reverse</strong> the change first. If an
+                      investor list import gives own fee terms to someone it covers, the whole change is voided instead.
+                    </td>
+                  </tr>
+                  <tr>
                     <td><strong>The fee payer change (…) no longer applies — redo it.</strong></td>
                     <td>
                       The fee&#39;s rate, payer or type was edited, the fee was deleted, or the fee basis changed. The whole change is void for good; changing
@@ -392,13 +410,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

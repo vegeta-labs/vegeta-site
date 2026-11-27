@@ -1,6 +1,6 @@
 # Withdrawing an investor and changing who pays a fee
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/withdrawal-and-fee-payer.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/use/withdrawal-and-fee-payer.md
 
 Both of these are for before closing. Goten records each one beside your investor list, so your list is never rewritten and each can be undone.
 
@@ -51,7 +51,10 @@ Only percentage fees can move. Change fixed fees by hand in the **Fees** table.
 ### What you need
 
 - A hand-off from reconciliation that is up to date, with no edits to the investor list since. Otherwise the panel says **Not available** and why.
+- Everyone in the allocation on the deal's default fee terms. If anyone it would cover has their own fee terms, the panel says **Not available: Some investors have their own fee terms. Changing who pays a deal fee is only available when everyone is on the deal's default terms.** A carry rate alone does not count. Someone who has withdrawn or is flagged refund only is not covered.
 - Consent from the new payer, if it is investors or the company. Moving a fee to the lead needs no consent.
+
+The pro-rata platform fee is not moved here: change its **Paid by** setting instead. That changes no one's cash due.
 
 ### Steps
 
@@ -83,15 +86,16 @@ While a change is active, **Currency** in **Deal settings** cannot be changed.
 
 ### When it goes wrong
 
-| What you see                                                                                | What it means and what to do                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Isla Campbell would fall below the minimum commitment**                                   | In the sample, moving the fee away from investors takes her cash due to £970.00, under the £1,000 minimum, so the change is blocked. Lower the **Minimum commitment** in **Deal settings**. |
-| **The round is over the cap — resolve the scale-back first**                                | The change is worked out on what investors are due, and scale-back would mix into it. Raise the cap first.                                                                                  |
-| **Not available: The allocation is out of date. Hand off from reconciliation again first.** | Hand off again, then come back.                                                                                                                                                             |
-| **Not available: The investor table was edited after the hand-off.**                        | Hand off again, which replaces your edits.                                                                                                                                                  |
-| **The fee payer change (…) no longer applies — redo it.**                                   | The fee's rate, payer or type was edited, the fee was deleted, or the fee basis changed. The whole change is void for good; changing the value back does not restore it.                    |
-| **This fee payer change no longer applies — redo it** on one investor                       | Their ID or reference changed, or their cash due was edited by hand. **Reverse** the change and redo it.                                                                                    |
-| **Not covered by the active fee payer change — reverse and redo**                           | An investor was added or restored after the change was applied. Hand-off stays disabled until you **Reverse** it and redo it.                                                               |
-| **Allocation settings changed since this fee payer change — any problems are listed here**  | You changed the minimum, cap, share price or another fee. The change still stands. Any problems are listed under the banner.                                                                |
+| What you see                                                                                | What it means and what to do                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Isla Campbell would fall below the minimum commitment**                                   | In the sample, moving the fee away from investors takes her cash due to £970.00, under the £1,000 minimum, so the change is blocked. Lower the **Minimum commitment** in **Deal settings**.                                  |
+| **The round is over the cap — resolve the scale-back first**                                | The change is worked out on what investors are due, and scale-back would mix into it. Raise the cap first.                                                                                                                   |
+| **Not available: The allocation is out of date. Hand off from reconciliation again first.** | Hand off again, then come back.                                                                                                                                                                                              |
+| **Not available: The investor table was edited after the hand-off.**                        | Hand off again, which replaces your edits.                                                                                                                                                                                   |
+| **Reverse the fee payer change first** next to an investor's own fee terms                  | While a change is active, the own fee terms of the people it covers cannot be edited. **Reverse** the change first. If an investor list import gives own fee terms to someone it covers, the whole change is voided instead. |
+| **The fee payer change (…) no longer applies — redo it.**                                   | The fee's rate, payer or type was edited, the fee was deleted, or the fee basis changed. The whole change is void for good; changing the value back does not restore it.                                                     |
+| **This fee payer change no longer applies — redo it** on one investor                       | Their ID or reference changed, or their cash due was edited by hand. **Reverse** the change and redo it.                                                                                                                     |
+| **Not covered by the active fee payer change — reverse and redo**                           | An investor was added or restored after the change was applied. Hand-off stays disabled until you **Reverse** it and redo it.                                                                                                |
+| **Allocation settings changed since this fee payer change — any problems are listed here**  | You changed the minimum, cap, share price or another fee. The change still stands. Any problems are listed under the banner.                                                                                                 |
 
 If you need to change how much someone owes for any other reason, edit **Cash due** in the investor list before you apply a change. See [How the numbers work](https://vegeta-ops.vercel.app/docs/goten/use/how-the-numbers-work.md#changing-who-pays-a-fee) for the calculation.

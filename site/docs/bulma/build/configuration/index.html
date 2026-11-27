@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -150,7 +152,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
           <h1 class="docs__title">Configuration reference</h1>
-          <p class="docs__version">v0.1.0</p>
+          <p class="docs__version">v0.2.0</p>
           <div class="docs__body">
             <p>
               Bulma is configured by environment variables, secret files and a few JSON files. Most settings are made in the app by an admin; this page covers
@@ -375,6 +377,26 @@
                     <td>The folder of the built web app.</td>
                   </tr>
                   <tr>
+                    <td><code>BULMA_DEMO_DEAL</code></td>
+                    <td>not set</td>
+                    <td>no</td>
+                    <td>sandbox</td>
+                    <td>
+                      <code>1</code> adds the demo deal when the app starts, the same as <strong>Add demo deal</strong> on the admin&#39;s
+                      <strong>Home</strong>. Added only once; in the real mode it is ignored and the log says why. Compose does not pass it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>BULMA_DEMO_SIGN_INS_FILE</code></td>
+                    <td><code>bulma-demo-sign-ins.txt</code></td>
+                    <td>no</td>
+                    <td>sandbox</td>
+                    <td>
+                      Where <code>BULMA_DEMO_DEAL</code> writes the demo sign-ins, readable only by the user the app runs as. The log names the file, never a
+                      password.
+                    </td>
+                  </tr>
+                  <tr>
                     <td><code>STORAGE_DIR</code></td>
                     <td>not set for <code>serve</code>; <code>/var/lib/bulma/files</code> for <code>maintain</code></td>
                     <td>in the real mode</td>
@@ -563,13 +585,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

@@ -1,6 +1,6 @@
 # Upgrades and backups
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/upgrade-and-backup.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/upgrade-and-backup.md
 
 Run these from the folder holding `.env` and `secrets`. Compose reads `.env` on every command, so no setting has to be exported first. Back up `.env` too.
 

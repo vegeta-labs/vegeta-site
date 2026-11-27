@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Goten demo | Vegeta</title>
+    <meta name="description" content="See Goten at work, feature by feature, then try it live." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Goten demo | Vegeta" />
+    <meta property="og:description" content="See Goten at work, feature by feature, then try it live." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/demos/goten/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Goten demo | Vegeta" />
+    <meta name="twitter:description" content="See Goten at work, feature by feature, then try it live." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/demos/goten/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plex-mono-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Site handbook §6: one self-hosted script (built from site-src/site.js by npm run site:build), loaded first so motion can hide content before the first paint. The page is complete without it. -->
+    <script src="/site.js"></script>
+  </head>
+  <body class="has-subnav">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/demos/" aria-current="page">Demos</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/" aria-current="page">Demos</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main" class="demos">
+      <div class="blogindex__intro demos__intro" id="top">
+        <p class="eyebrow section-label"><a href="/demos/">Demos</a></p>
+        <h1 class="blogindex__title">Goten — Deal Calculations</h1>
+      </div>
+      <nav class="blogchips demos__chips" aria-label="Module demos">
+        <a href="/demos/bulma/">Bulma</a>
+        <a href="/demos/goten/" aria-current="page">Goten</a>
+        <a href="/demos/trunks/">Trunks</a>
+      </nav>
+      <nav class="dm-toc" aria-label="Goten demo sections">
+        <a href="#goten-set-up">Set up</a>
+        <a href="#goten-match">Match</a>
+        <a href="#goten-chase">Chase</a>
+        <a href="#goten-before-closing">Before closing</a>
+        <a href="#goten-close">Close</a>
+        <a href="#goten-exit">Exit</a>
+        <a href="#goten-records">Records</a>
+        <a href="#goten-learn">Learn</a>
+      </nav>
+      <nav class="nav subnav" aria-label="Goten demo" data-subnav>
+        <span class="nav__brand glass subnav__brand"
+          ><a href="/" aria-label="Vegeta home"
+            ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg></a
+          ><a class="subnav__name" href="#top">Goten</a></span
+        >
+        <span class="nav__links glass" data-nav-links>
+          <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+          <a href="#goten-set-up">Set up</a>
+          <a href="#goten-match">Match</a>
+          <a href="#goten-chase">Chase</a>
+          <a href="#goten-before-closing">Before closing</a>
+          <a href="#goten-close">Close</a>
+          <a href="#goten-exit">Exit</a>
+          <a href="#goten-records">Records</a>
+          <a href="#goten-learn">Learn</a>
+        </span>
+        <span class="nav__end"><a class="nav__cta glass" href="https://vegeta-goten.vercel.app">Open Goten</a></span>
+      </nav>
+      <section class="demos__product demos__product--goten" id="goten" aria-label="Goten demos">
+        <section class="dm-need" id="goten-set-up" aria-labelledby="goten-set-up-h">
+          <h2 class="dm-need__title" id="goten-set-up-h">Set up the deal and bring in your lists</h2>
+          <article class="dm-scene" id="goten-g1" aria-labelledby="goten-g1-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g1-h">Set the deal up once</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="A2">The as-of date decides which receipts count: anything dated later is not counted.</span>
+                <span class="dm-more" data-covers="A3 A4 A6"
+                  >Currency, the minimum commitment, how investor fees are taken and your initials for each log entry are set once here and used in the steps
+                  that follow.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Deal settings for the sample deal: name, currency GBP, as-of date 2026-10-16, minimum commitment 1000.00. Highlighted: 2026-10-16."
+              data-demo="goten/G1"
+              data-state="Sample deal, as loaded."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-l="1">Deal settings</span></p>
+                <p class="dm-p" data-l="2" data-covers="A1">Deal name</p>
+                <p class="dm-p" data-l="3"><span class="dm-field">Northwind Robotics — Seed SPV</span></p>
+                <p class="dm-p" data-l="4" data-covers="A1">Currency</p>
+                <p class="dm-p" data-l="5"><span class="dm-field">GBP</span></p>
+                <p class="dm-p" data-l="6">As-of date (YYYY-MM-DD or DD/MM/YYYY)</p>
+                <p class="dm-p dm-focus" data-l="7"><span class="dm-field">2026-10-16</span></p>
+                <p class="dm-p" data-l="8" data-covers="A3">Minimum commitment (£, blank = none)</p>
+                <p class="dm-p" data-l="9"><span class="dm-field">1000.00</span></p>
+                <span class="dm-pre-gap"></span>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g2" aria-labelledby="goten-g2-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g2-h">One bad cell, nothing imported</h3>
+              <p class="dm-copy">
+                <span class="dm-lead">An unreadable amount refuses the whole file; the error names its row and column.</span>
+                <span class="dm-more" data-covers="B1 B2 B4">Paste or choose a CSV file; statements replace or append, and other currencies are refused.</span>
+                <span class="dm-more" data-covers="B5 B6">Re-importing investors says first what it would undo; up to 500 investors and 2,000 bank lines.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="An investor import refused: Nothing was imported, because the cash_due in row 2, 1,23, is not an amount. Highlighted: row 2, cash_due: 1,23 is not an amount (use 1234.56 or 1,234.56)."
+              data-demo="goten/G2"
+              data-state="An import file made from the sample, with one bad amount."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-l="0" data-covers="B1">Import investors (replaces the list)</span></p>
+                <p class="dm-p" data-l="1">Nothing was imported</p>
+                <p class="dm-p dm-focus" data-l="2" data-covers="B3">row 2, cash_due: &quot;1,23&quot; is not an amount (use 1234.56 or 1,234.56)</p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              ><span class="dm-ui">Load sample deal</span>, then <span class="dm-ui">Deal settings</span>. For an import, open
+              <span class="dm-ui">Import investors (replaces the list)</span> on <span class="dm-ui">1. Reconciliation</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="goten-match" aria-labelledby="goten-match-h">
+          <h2 class="dm-need__title" id="goten-match-h">Match every receipt to an investor</h2>
+          <article class="dm-scene" id="goten-g3" aria-labelledby="goten-g3-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g3-h">Nine receipts book themselves</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="C1"
+                  >Nine receipts were booked because each bank reference contains exactly one investor's payment reference.</span
+                >
+                <span class="dm-more">The other £48,840.00 waits for you.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Reconciliation summary: £114,840.00 of receipts in scope, £66,000.00 booked to investors, £48,840.00 not booked, 3 waiting for review, £124,000.00 cash due. Highlighted: Booked to investors, £66,000.00."
+              data-demo="goten/G3"
+              data-state="Sample deal, as loaded."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Summary</span></p>
+                <div class="dm-kv" data-l="0" data-covers="C1"><span>Receipts in scope</span><span class="dm-nw">£114,840.00</span></div>
+                <div class="dm-kv dm-focus" data-l="1"><span>Booked to investors</span><span class="dm-nw">£66,000.00</span></div>
+                <div class="dm-kv" data-l="2"><span>Not booked</span><span class="dm-nw">£48,840.00</span></div>
+                <div class="dm-kv" data-l="3"><span>Waiting for review</span><span class="dm-nw">3</span></div>
+                <div class="dm-kv" data-l="4"><span>Cash due</span><span class="dm-nw">£124,000.00</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g4" aria-labelledby="goten-g4-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g4-h">A longer reference is not a match</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="C2">NW-0019 looks like NW-001, but it is a different reference, so it is never booked to Amelia Hart.</span>
+                <span class="dm-more" data-covers="C5 A5">A receipt unmatched for longer than your setting gets a reminder; it is not a deadline.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Bank lines: A HART and B OKAFOR matched automatically; WESTBRIDGE SUPPLIES not matched, flagged as unmatched for 13 days; SAM PATEL with reference NW-0019 not matched. Highlighted: SAM PATEL, NW-0019, Not matched."
+              data-demo="goten/G4"
+              data-state="Sample deal, as loaded."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Bank lines</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0">
+                    <span class="dm-td dm-name" data-c="2">Payer</span><span class="dm-td" data-c="3">Reference</span
+                    ><span class="dm-td" data-c="4">Status</span><span class="dm-td" data-c="5" data-nh="1">Investor</span>
+                  </div>
+                  <div class="dm-tr" data-l="1">
+                    <span class="dm-td dm-name" data-c="2">A HART</span><span class="dm-td" data-c="3">NW-001</span
+                    ><span class="dm-td" data-c="4"><span class="dm-pill">Matched automatically</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1">Amelia Hart</span>
+                  </div>
+                  <div class="dm-tr" data-l="2">
+                    <span class="dm-td dm-name" data-c="2">B OKAFOR</span><span class="dm-td" data-c="3">NW002 NORTHWIND</span
+                    ><span class="dm-td" data-c="4"><span class="dm-pill">Matched automatically</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1">Ben Okafor</span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr" data-l="11" data-covers="C5">
+                    <span class="dm-td dm-name" data-c="2">WESTBRIDGE SUPPLIES</span><span class="dm-td" data-c="3">INV 4471</span
+                    ><span class="dm-td" data-c="4"
+                      ><span class="dm-pill">Not matched</span> <span class="dm-pill">Needs review: unmatched for 13 days</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1"></span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr dm-focus" data-l="14">
+                    <span class="dm-td dm-name" data-c="2">SAM PATEL</span><span class="dm-td" data-c="3">NW-0019</span
+                    ><span class="dm-td" data-c="4"><span class="dm-pill">Not matched</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1"></span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g5" aria-labelledby="goten-g5-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g5-h">A near-match still waits for you</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="C3"
+                  >Kavya Iyer's £7,500.00 came in as NW 11: 0.25 for a near reference, 0.30 for the name, 0.25 for the amount.</span
+                >
+                <span class="dm-more">Nothing is booked until you confirm it.</span>
+                <span class="dm-more" data-covers="C9">Copy query asks about the date and amount only — never the payer, reference or transaction ID.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="A receipt waiting for review: £7,500.00 from K IYER with reference NW 11, suggested for Kavya Iyer with score 0.80 because the reference nearly matches and the payer name and amount match. Highlighted: Confirm Kavya Iyer score 0.80 — reference nearly matches, payer name matches, amount matches Copy query."
+              data-demo="goten/G5"
+              data-state="Sample deal, as loaded."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Needs your review · 3</span></p>
+                <p class="dm-p" data-l="6">£7,500.00 on 2026-10-14 from K IYER, reference “NW 11”(t12)</p>
+                <p class="dm-p dm-focus" data-l="7" data-covers="C3 C9">
+                  <span class="dm-ub">Confirm Kavya Iyer</span> score 0.80 — reference nearly matches, payer name matches, amount matches
+                  <span class="dm-ub">Copy query</span>
+                </p>
+                <p class="dm-p" data-l="8">
+                  <span class="dm-grp"><span class="dm-field">Assign to…</span> <span class="dm-ub">Not part of this deal</span></span>
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g6" aria-labelledby="goten-g6-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g6-h">Every bank line says how it was decided</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="C4">After the review each line has a status, and Undo takes a decision back.</span>
+                <span class="dm-more" data-covers="C6 C5"
+                  >Editing a line or an investor sets earlier decisions aside, and a possible duplicate import is never booked on its own.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Bank lines after the review: matched automatically, confirmed by you, not part of this deal, skipped as not a receipt, and after the as-of date so not counted. Highlighted: WESTBRIDGE SUPPLIES, Not part of this deal, Undo."
+              data-demo="goten/G6"
+              data-state="Sample deal, after the review."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Bank lines</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="C4">
+                    <span class="dm-td dm-name" data-c="2">Payer</span><span class="dm-td" data-c="4">Status</span
+                    ><span class="dm-td" data-c="5" data-nh="1">Investor</span><span class="dm-td" data-c="6"></span>
+                  </div>
+                  <div class="dm-tr" data-l="1">
+                    <span class="dm-td dm-name" data-c="2">A HART</span><span class="dm-td" data-c="4"><span class="dm-pill">Matched automatically</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1">Amelia Hart</span><span class="dm-td" data-c="6"></span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr" data-l="3">
+                    <span class="dm-td dm-name" data-c="2">CHLOE MARTIN</span><span class="dm-td" data-c="4"><span class="dm-pill">Confirmed by you</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1">Chloe Martin</span><span class="dm-td" data-c="6"><span class="dm-ub">Undo</span></span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr dm-focus" data-l="11">
+                    <span class="dm-td dm-name" data-c="2">WESTBRIDGE SUPPLIES</span
+                    ><span class="dm-td" data-c="4"><span class="dm-pill">Not part of this deal</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1"></span><span class="dm-td" data-c="6"><span class="dm-ub">Undo</span></span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr" data-l="15">
+                    <span class="dm-td dm-name" data-c="2">BANK CHARGE</span
+                    ><span class="dm-td" data-c="4"><span class="dm-pill">Skipped: not a receipt</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1"></span><span class="dm-td" data-c="6"></span>
+                  </div>
+                  <div class="dm-tr" data-l="16">
+                    <span class="dm-td dm-name" data-c="2">J WHITFIELD</span
+                    ><span class="dm-td" data-c="4"><span class="dm-pill">After the as-of date: not counted</span></span
+                    ><span class="dm-td" data-c="5" data-nh="1"></span><span class="dm-td" data-c="6"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              ><span class="dm-ui">Load sample deal</span>, then <span class="dm-ui">1. Reconciliation</span>. Confirm the three suggestions and mark the other
+              two lines <span class="dm-ui">Not part of this deal</span> to reach the last scene.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="goten-chase" aria-labelledby="goten-chase-h">
+          <h2 class="dm-need__title" id="goten-chase-h">Chase who has not paid</h2>
+          <article class="dm-scene" id="goten-g7" aria-labelledby="goten-g7-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g7-h">The chase email, ready to send</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="C8">Copy message puts a chase email for David Kim, £500.00 short, on your clipboard to send yourself.</span>
+                <span class="dm-more" data-covers="C8">If the browser blocks it, the text is shown to copy by hand.</span>
+                <span class="dm-more" data-covers="C8">Export chase list CSV gives everyone short or unpaid in one file.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card dm-card--stack"
+              role="img"
+              aria-label="Investor payment status: Chloe Martin paid in full; David Kim underpaid by £500.00, with his chase message copied; Hugo Bernard overpaid by £5,000.00; James Whitfield not paid. Highlighted: David Kim, £2,500.00, £2,000.00, -£500.00, Underpaid, Copy message Copied. Send it yourself from your usual email."
+              data-demo="goten/G7"
+              data-state="Sample deal, after the review, then Copy message for David Kim."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Investors</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="C7">
+                    <span class="dm-td dm-name" data-c="0">Name</span><span class="dm-td" data-c="2" data-nh="1">Cash due</span
+                    ><span class="dm-td" data-c="3" data-nh="1">Received</span><span class="dm-td" data-c="4">Difference</span
+                    ><span class="dm-td" data-c="5">Status</span><span class="dm-td" data-c="6">Chase</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="3">
+                    <span class="dm-td dm-name" data-c="0">Chloe Martin</span
+                    ><span class="dm-td dm-nw" data-c="2" data-label="Cash due" data-nh="1">£20,000.00</span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="Received" data-nh="1">£20,000.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">£0.00</span
+                    ><span class="dm-td" data-c="5" data-label="Status"><span class="dm-pill">Paid in full</span></span
+                    ><span class="dm-td" data-c="6" data-label="Chase"></span>
+                  </div>
+                  <div class="dm-tr dm-focus" data-l="4" data-covers="C8">
+                    <span class="dm-td dm-name" data-c="0">David Kim</span
+                    ><span class="dm-td dm-nw" data-c="2" data-label="Cash due" data-nh="1">£2,500.00</span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="Received" data-nh="1">£2,000.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">-£500.00</span
+                    ><span class="dm-td" data-c="5" data-label="Status"><span class="dm-pill">Underpaid</span></span
+                    ><span class="dm-td" data-c="6" data-label="Chase"
+                      ><span class="dm-ub">Copy message</span> Copied. Send it yourself from your usual email.</span
+                    >
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="8">
+                    <span class="dm-td dm-name" data-c="0">Hugo Bernard</span
+                    ><span class="dm-td dm-nw" data-c="2" data-label="Cash due" data-nh="1">£5,000.00</span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="Received" data-nh="1">£10,000.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">+£5,000.00</span
+                    ><span class="dm-td" data-c="5" data-label="Status"><span class="dm-pill">Overpaid</span></span
+                    ><span class="dm-td" data-c="6" data-label="Chase"></span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="10">
+                    <span class="dm-td dm-name" data-c="0">James Whitfield</span
+                    ><span class="dm-td dm-nw" data-c="2" data-label="Cash due" data-nh="1">£20,000.00</span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="Received" data-nh="1">£0.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">-£20,000.00</span
+                    ><span class="dm-td" data-c="5" data-label="Status"><span class="dm-pill">Not paid</span></span
+                    ><span class="dm-td" data-c="6" data-label="Chase"><span class="dm-ub">Copy message</span></span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path">As above, then <span class="dm-ui">Copy message</span> next to David Kim.</span>
+          </p>
+        </section>
+        <section class="dm-need" id="goten-before-closing" aria-labelledby="goten-before-closing-h">
+          <h2 class="dm-need__title" id="goten-before-closing-h">Handle changes before closing</h2>
+          <article class="dm-scene" id="goten-g8" aria-labelledby="goten-g8-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g8-h">A withdrawal moves money to refunds</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="D1"
+                  >With written consent, Lucas Meyer is marked withdrawn: his £3,000.00 is listed to refund and he is no longer chased.</span
+                >
+                <span class="dm-more">Undo withdrawal reverses it.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Reconciliation summary after a withdrawal: cash due excluding withdrawn £121,000.00, and Withdrawn: 1 investor, £3,000.00 to refund. Highlighted: Withdrawn: 1 investor, £3,000.00 to refund."
+              data-demo="goten/G8"
+              data-state="Sample deal, after the review, then Lucas Meyer marked withdrawn."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Summary</span></p>
+                <div class="dm-kv" data-l="0"><span>Receipts in scope</span><span class="dm-nw">£114,840.00</span></div>
+                <div class="dm-kv" data-l="1"><span>Booked to investors</span><span class="dm-nw">£108,500.00</span></div>
+                <div class="dm-kv" data-l="2"><span>Not booked</span><span class="dm-nw">£6,340.00</span></div>
+                <div class="dm-kv" data-l="3"><span>Waiting for review</span><span class="dm-nw">0</span></div>
+                <div class="dm-kv" data-l="4"><span>Cash due (excluding withdrawn)</span><span class="dm-nw">£121,000.00</span></div>
+                <p class="dm-p dm-focus" data-l="5" data-covers="D1">Withdrawn: 1 investor, £3,000.00 to refund</p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g9" aria-labelledby="goten-g9-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g9-h">Move a fee, keep every investment</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="D2"
+                  >Moving the 3% platform fee to the company keeps each investment and lowers cash due by £3,720.00; whoever paid the old amount is listed for a
+                  refund.</span
+                >
+                <span class="dm-more" data-covers="D2"
+                  >It needs consent, can be reversed, and locks the currency; later edits void it or prompt a re-check.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card dm-card--stack"
+              role="img"
+              aria-label="Change who pays a fee: the platform fee moves from investors to the company; Amelia Hart's cash due falls from £10,000.00 to £9,700.00 with the same investment; the button reads Apply: 0 top-ups totalling £0.00, 12 refunds totalling £3,720.00. Highlighted: Apply: 0 top-ups totalling £0.00 · 12 refunds totalling £3,720.00."
+              data-demo="goten/G9"
+              data-state="Sample deal, after the review, minimum commitment 970 and the hand-off, with the platform fee's new payer set to Company (preview, not yet applied)."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-l="0">Change who pays a fee</span></p>
+                <p class="dm-p" data-l="2">Fee</p>
+                <p class="dm-p" data-l="3"><span class="dm-field">Platform fee — paid by investors</span></p>
+                <p class="dm-p" data-l="4">New payer</p>
+                <p class="dm-p" data-l="5"><span class="dm-field">Company</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="6">
+                    <span class="dm-td dm-name" data-c="0">Investor</span><span class="dm-td" data-c="1">Cash due now</span
+                    ><span class="dm-td" data-c="2">Investment kept</span><span class="dm-td" data-c="3">New cash due</span
+                    ><span class="dm-td" data-c="4">Difference</span>
+                  </div>
+                  <div class="dm-tr" data-l="7">
+                    <span class="dm-td dm-name" data-c="0">Amelia Hart</span><span class="dm-td dm-nw" data-c="1" data-label="Cash due now">£10,000.00</span
+                    ><span class="dm-td dm-nw" data-c="2" data-label="Investment kept">£9,700.00</span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="New cash due">£9,700.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">-£300.00</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="15">
+                    <span class="dm-td dm-name" data-c="0">Isla Campbell</span><span class="dm-td dm-nw" data-c="1" data-label="Cash due now">£1,000.00</span
+                    ><span class="dm-td dm-nw" data-c="2" data-label="Investment kept">£970.00</span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="New cash due">£970.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">-£30.00</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="19">
+                    <span class="dm-td dm-name" data-c="0">Total</span><span class="dm-td dm-nw" data-c="1" data-label="Cash due now">£124,000.00</span
+                    ><span class="dm-td" data-c="2" data-label="Investment kept"></span
+                    ><span class="dm-td dm-nw" data-c="3" data-label="New cash due">£120,280.00</span
+                    ><span class="dm-td dm-nw" data-c="4" data-label="Difference">-£3,720.00</span>
+                  </div>
+                </div>
+                <p class="dm-p" data-l="21">The company’s consent needed — it pays by invoice or from the wire</p>
+                <p class="dm-p dm-focus" data-l="24" data-covers="D2">
+                  <span class="dm-ub">Apply: 0 top-ups totalling £0.00 · 12 refunds totalling £3,720.00</span>
+                </p>
+                <p class="dm-p" data-l="25">Tick “Consent evidence received” to apply.</p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              ><span class="dm-ui">Take the tour</span>, click <span class="dm-ui">Allocation</span> at the top of the tour card, then
+              <span class="dm-ui">Exit tour</span>. <span class="dm-ui">Mark withdrawn</span> is on <span class="dm-ui">1. Reconciliation</span>. For the fee
+              change, take the tour again, set <span class="dm-ui">Minimum commitment</span> to 970 in <span class="dm-ui">Deal settings</span>, then pick a
+              <span class="dm-ui">New payer</span> under <span class="dm-ui">Change who pays a fee</span> on <span class="dm-ui">2. Allocation</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="goten-close" aria-labelledby="goten-close-h">
+          <h2 class="dm-need__title" id="goten-close-h">Close the round</h2>
+          <article class="dm-scene" id="goten-g10" aria-labelledby="goten-g10-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g10-h">Know the wire before you close</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="E3">The company pays Legal &amp; admin out of the wire, so £98,895.00 goes to the company.</span>
+                <span class="dm-more" data-covers="E1">The round has a £2.4137 share price and a £150,000 cap.</span>
+                <span class="dm-more" data-covers="C10">The hand-off is a snapshot: change reconciliation later and this page says it is out of date.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Allocation result: cash received £103,500.00, total invested £100,395.00, investor fees £3,105.00, refunds £0.00, company-paid fees £1,500.00, wire to company £98,895.00. Highlighted: Wire to company, £98,895.00."
+              data-demo="goten/G10"
+              data-state="Sample deal, after the review and the hand-off to allocation."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Result</span></p>
+                <div class="dm-kv" data-l="0" data-covers="E3"><span>Cash received</span><span class="dm-nw">£103,500.00</span></div>
+                <div class="dm-kv" data-l="1"><span>Total invested</span><span class="dm-nw">£100,395.00</span></div>
+                <div class="dm-kv" data-l="2"><span>Investor fees</span><span class="dm-nw">£3,105.00</span></div>
+                <div class="dm-kv" data-l="3"><span>Refunds</span><span class="dm-nw">£0.00</span></div>
+                <div class="dm-kv" data-l="4"><span>Company-paid fees</span><span class="dm-nw">£1,500.00</span></div>
+                <div class="dm-kv dm-focus" data-l="5"><span>Wire to company</span><span class="dm-nw">£98,895.00</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g11" aria-labelledby="goten-g11-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g11-h">Every fee has a payer</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="E2">Investors, the company or the lead can pay a fee, as a percentage or a fixed amount.</span>
+                <span class="dm-more" data-covers="E2">Company fees come off the wire; the lead's are invoiced and do not reduce it.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Fees: Platform fee paid by investors, percentage, 3; Legal &amp; admin paid by the company, fixed total, 1500.00. Highlighted: Legal &amp; admin, Company, Fixed total, 1500.00."
+              data-demo="goten/G11"
+              data-state="Sample deal, after the review and the hand-off to allocation."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Fees</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="E2">
+                    <span class="dm-td dm-name" data-c="0">Name</span><span class="dm-td" data-c="1">Paid by</span
+                    ><span class="dm-td" data-c="2" data-nh="1">Type</span><span class="dm-td" data-c="3">Rate (%) or amount (£)</span>
+                  </div>
+                  <div class="dm-tr" data-l="1">
+                    <span class="dm-td dm-name" data-c="0"><span class="dm-field">Platform fee</span></span
+                    ><span class="dm-td" data-c="1"><span class="dm-field">Investors</span></span
+                    ><span class="dm-td" data-c="2" data-nh="1"><span class="dm-field">Percentage</span></span
+                    ><span class="dm-td dm-nw" data-c="3"><span class="dm-field">3</span></span>
+                  </div>
+                  <div class="dm-tr dm-focus" data-l="2">
+                    <span class="dm-td dm-name" data-c="0"><span class="dm-field">Legal &amp; admin</span></span
+                    ><span class="dm-td" data-c="1"><span class="dm-field">Company</span></span
+                    ><span class="dm-td" data-c="2" data-nh="1"><span class="dm-field">Fixed total</span></span
+                    ><span class="dm-td dm-nw" data-c="3"><span class="dm-field">1500.00</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g12" aria-labelledby="goten-g12-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g12-h">Whole shares for S/EIS</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="E6 A7"
+                  >Investors hold fractions through the nominee, but relief is per whole share: £1.76 of Amelia Hart's investment is not claimable.</span
+                >
+                <span class="dm-more">Goten estimates; it does not judge eligibility.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Allocation per investor: Amelia Hart invests £9,700.00 for 4018.726436 shares, of which 4,018 shares or £9,698.24 are S/EIS claimable and £1.76 is not; James Whitfield is out, no money received. Highlighted: 4,018 shares / £9,698.24· not claimable £1.76."
+              data-demo="goten/G12"
+              data-state="Sample deal, after the review and the hand-off to allocation."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Per investor</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="E4">
+                    <span class="dm-td dm-name" data-c="0">Name</span><span class="dm-td" data-c="1" data-nh="1">Scheme</span
+                    ><span class="dm-td" data-c="3" data-nh="1">Invested</span><span class="dm-td" data-c="4" data-nh="1">Shares</span
+                    ><span class="dm-td" data-c="7">S/EIS claimable (est.)</span><span class="dm-td" data-c="8">Status</span>
+                  </div>
+                  <div class="dm-tr" data-l="1" data-covers="E6">
+                    <span class="dm-td dm-name" data-c="0">Amelia Hart</span><span class="dm-td" data-c="1" data-nh="1">SEIS</span
+                    ><span class="dm-td dm-nw" data-c="3" data-nh="1">£9,700.00</span><span class="dm-td dm-nw" data-c="4" data-nh="1">4018.726436</span
+                    ><span class="dm-td dm-focus" data-c="7">4,018 shares / £9,698.24· not claimable £1.76</span><span class="dm-td" data-c="8">Allocated</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="3">
+                    <span class="dm-td dm-name" data-c="0">Chloe Martin</span><span class="dm-td" data-c="1" data-nh="1">none</span
+                    ><span class="dm-td dm-nw" data-c="3" data-nh="1">£19,400.00</span><span class="dm-td dm-nw" data-c="4" data-nh="1">8037.452873</span
+                    ><span class="dm-td" data-c="7"></span><span class="dm-td" data-c="8">Allocated</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                  <div class="dm-tr" data-l="10">
+                    <span class="dm-td dm-name" data-c="0">James Whitfield</span><span class="dm-td" data-c="1" data-nh="1">EIS</span
+                    ><span class="dm-td dm-nw" data-c="3" data-nh="1">£0.00</span><span class="dm-td" data-c="4" data-nh="1">—</span
+                    ><span class="dm-td" data-c="7"></span><span class="dm-td" data-c="8">Out: No money received</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span
+                    ><span class="dm-td"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g13" aria-labelledby="goten-g13-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g13-h">A blocker names who is affected</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="E5"
+                  >With a £80,000 cap everyone is scaled back, Isla Campbell falls below the £1,000 minimum, and the deal cannot close.</span
+                >
+                <span class="dm-more">Copy and export wait until it is resolved.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Can't close yet: after scale-back, Isla Campbell falls below the minimum commitment. Highlighted: After scale-back, these investors fall below the minimum commitment: Isla Campbell."
+              data-demo="goten/G13"
+              data-state="Sample deal, after the review and the hand-off, then a £80,000 round cap."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-l="0">Can't close yet</span></p>
+                <p class="dm-p dm-focus" data-l="1" data-covers="E5">After scale-back, these investors fall below the minimum commitment: Isla Campbell</p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g14" aria-labelledby="goten-g14-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g14-h">A summary the lead confirms</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="E7"
+                  >Copy closing confirmation gives the lead totals, fees and each investor; Hugo Bernard's over-payment is listed separately.</span
+                >
+                <span class="dm-more" data-covers="E4"
+                  >If an investor with a listed refund is edited by hand after the hand-off, you choose Keep refund or Remove refund first.</span
+                >
+                <span class="dm-more" data-covers="E8">Then Hand off to exit distribution.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="The closing confirmation for the lead: totals, fees, the wire to the company of £98,895.00, each investor, and over-payments to refund, Hugo Bernard £5,000.00. Highlighted: - Hugo Bernard: £5,000.00."
+              data-demo="goten/G14"
+              data-state="Sample deal, after the review and the hand-off to allocation."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Closing confirmation</span></p>
+                <div class="dm-pre">
+                  <span class="dm-pre-l" data-l="0" data-covers="E7">Closing confirmation — Northwind Robotics — Seed SPV</span>
+                  <span class="dm-pre-l" data-l="1">Currency: GBP</span>
+                  <span class="dm-pre-l" data-l="2">Share price: £2.4137 (nominee SPV; fractional shares allowed)</span>
+                  <span class="dm-pre-l" data-l="4">Cash received: £103,500.00</span>
+                  <span class="dm-pre-l" data-l="5">Total invested: £100,395.00</span>
+                  <span class="dm-pre-l" data-l="6">Platform fee (paid by investors): £3,105.00</span>
+                  <span class="dm-pre-l" data-l="7">Legal &amp; admin (paid by company): £1,500.00</span>
+                  <span class="dm-pre-l" data-l="8">Refunds: £0.00</span>
+                  <span class="dm-pre-l" data-l="9">Wire to company: £98,895.00</span>
+                  <span class="dm-pre-l" data-l="11">Per investor:</span>
+                  <span class="dm-pre-l" data-l="12">- Amelia Hart: invests £9,700.00, fees £300.00, refund £0.00</span>
+                  <span class="dm-pre-gap"></span>
+                  <span class="dm-pre-l" data-l="21">- James Whitfield: not in this close, refund £0.00</span>
+                  <span class="dm-pre-gap"></span>
+                  <span class="dm-pre-l" data-l="25">Over-payments to refund (not part of the allocation):</span>
+                  <span class="dm-pre-l dm-focus" data-l="26">- Hugo Bernard: £5,000.00</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              ><span class="dm-ui">Take the tour</span>, click <span class="dm-ui">Allocation</span> at the top of the tour card, then
+              <span class="dm-ui">Exit tour</span>. For the blocker, set <span class="dm-ui">Round cap</span> to 80000.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="goten-exit" aria-labelledby="goten-exit-h">
+          <h2 class="dm-need__title" id="goten-exit-h">Split the exit, step by step</h2>
+          <article class="dm-scene" id="goten-g15" aria-labelledby="goten-g15-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g15-h">Carry is exactly 20% of the profit</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="F1"
+                  >A £390,000 exit after 6 years with £4,500 of costs: investors get their money and an 8% hurdle first, then the lead catches up.</span
+                >
+                <span class="dm-more" data-covers="F2 F6"
+                  >The lead's £57,021.00 is 20% of the £285,105.00 profit; Export holdings CSV and Export distribution CSV save the figures.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card dm-card--why"
+              role="img"
+              aria-label="The exit waterfall step by step: exit costs, return of capital £100,395.00, preferred return £58,919.25, lead catch-up £14,729.81, carried interest split; in total £328,479.00 to investors and £57,021.00 to the lead. Highlighted: £57,021.00."
+              data-demo="goten/G15"
+              data-state="Sample deal, after both hand-offs."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Step by step</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="F2">
+                    <span class="dm-td dm-name" data-c="0">Step</span><span class="dm-td" data-c="1">To investors</span
+                    ><span class="dm-td" data-c="2">To the lead</span><span class="dm-td" data-c="3">Why</span>
+                  </div>
+                  <div class="dm-tr" data-l="1">
+                    <span class="dm-td dm-name" data-c="0">Exit costs</span><span class="dm-td" data-c="1">—</span><span class="dm-td" data-c="2">—</span
+                    ><span class="dm-td" data-c="3">£4,500.00 is paid first, before anyone else.</span>
+                  </div>
+                  <div class="dm-tr" data-l="2">
+                    <span class="dm-td dm-name" data-c="0">Return of capital</span><span class="dm-td dm-nw" data-c="1">£100,395.00</span
+                    ><span class="dm-td dm-nw" data-c="2">£0.00</span
+                    ><span class="dm-td" data-c="3">Investors get back what they invested before any carry is paid.</span>
+                  </div>
+                  <div class="dm-tr" data-l="3">
+                    <span class="dm-td dm-name" data-c="0">Preferred return (hurdle)</span><span class="dm-td dm-nw" data-c="1">£58,919.25</span
+                    ><span class="dm-td dm-nw" data-c="2">£0.00</span
+                    ><span class="dm-td" data-c="3">8% a year, compounding over 6 years on capital, paid to investors before any carry.</span>
+                  </div>
+                  <div class="dm-tr" data-l="4">
+                    <span class="dm-td dm-name" data-c="0">Lead catch-up</span><span class="dm-td dm-nw" data-c="1">£0.00</span
+                    ><span class="dm-td dm-nw" data-c="2">£14,729.81</span
+                    ><span class="dm-td" data-c="3">The lead takes 100% of the next distributions until it holds 20% of all profit paid so far.</span>
+                  </div>
+                  <div class="dm-tr" data-l="5">
+                    <span class="dm-td dm-name" data-c="0">Carried interest split</span><span class="dm-td dm-nw" data-c="1">£169,164.75</span
+                    ><span class="dm-td dm-nw" data-c="2">£42,291.19</span
+                    ><span class="dm-td" data-c="3">Remaining profit: 80% to investors, 20% to the lead.</span>
+                  </div>
+                  <div class="dm-tr" data-l="6">
+                    <span class="dm-td dm-name" data-c="0">Total</span><span class="dm-td dm-nw" data-c="1">£328,479.00</span
+                    ><span class="dm-td dm-nw dm-focus" data-c="2">£57,021.00</span><span class="dm-td" data-c="3"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g16" aria-labelledby="goten-g16-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g16-h">Or carry in tiers by return multiple</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="F3">Tiered carry has no hurdle or catch-up: each rate applies only to the profit inside its band.</span>
+                <span class="dm-more">The last band has no ceiling, and Add tier adds a band above it.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Carry set to tiered by return multiple: one tier, up to multiple no ceiling, and an empty carry rate. Highlighted: no ceiling."
+              data-demo="goten/G16"
+              data-state="Sample deal, after both hand-offs, then carry type Tiered."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-l="0">Carry</span></p>
+                <p class="dm-p" data-l="1"><span class="dm-box"></span>Fixed rate, with an optional hurdle and catch-up</p>
+                <p class="dm-p" data-l="2" data-covers="F3"><span class="dm-box is-on"></span>Tiered by return multiple (no hurdle or catch-up)</p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="3">
+                    <span class="dm-td dm-name" data-c="0">Tier</span><span class="dm-td" data-c="1">Up to multiple (before carry, after exit costs)</span
+                    ><span class="dm-td" data-c="2">Carry % in this band</span><span class="dm-td" data-c="3"></span>
+                  </div>
+                  <div class="dm-tr" data-l="4">
+                    <span class="dm-td dm-nw" data-c="0">1</span><span class="dm-td dm-focus" data-c="1">no ceiling</span
+                    ><span class="dm-td" data-c="2"><span class="dm-field"></span></span><span class="dm-td" data-c="3"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g17" aria-labelledby="goten-g17-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g17-h">A loss is not an error</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="F5">With £80,000 of proceeds investors share £75,500.00, 0.75x, and there is no carry.</span>
+                <span class="dm-more" data-covers="F5">If costs are more than the proceeds, Goten shows the shortfall and distributes nothing.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Distribution per investor when the exit makes a loss: Amelia Hart invested £9,700.00 and receives £7,294.69, a multiple of 0.75x. Highlighted: 0.75x."
+              data-demo="goten/G17"
+              data-state="Sample deal, after both hand-offs, then £80,000 of proceeds."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Per investor</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="F4">
+                    <span class="dm-td dm-name" data-c="0">Name</span><span class="dm-td" data-c="1" data-nh="1">Amount invested</span
+                    ><span class="dm-td" data-c="3">Distribution</span><span class="dm-td" data-c="4" data-nh="1">Profit or loss</span
+                    ><span class="dm-td" data-c="5">Multiple</span>
+                  </div>
+                  <div class="dm-tr" data-l="1">
+                    <span class="dm-td dm-name" data-c="0">Amelia Hart</span><span class="dm-td dm-nw" data-c="1" data-nh="1">£9,700.00</span
+                    ><span class="dm-td dm-nw" data-c="3">£7,294.69</span><span class="dm-td dm-nw" data-c="4" data-nh="1">-£2,405.31</span
+                    ><span class="dm-td dm-nw dm-focus" data-c="5">0.75x</span>
+                  </div>
+                  <div class="dm-tr" data-l="2">
+                    <span class="dm-td dm-name" data-c="0">Ben Okafor</span><span class="dm-td dm-nw" data-c="1" data-nh="1">£4,850.00</span
+                    ><span class="dm-td dm-nw" data-c="3">£3,647.34</span><span class="dm-td dm-nw" data-c="4" data-nh="1">-£1,202.66</span
+                    ><span class="dm-td dm-nw" data-c="5">0.75x</span>
+                  </div>
+                  <div class="dm-tr" data-l="3">
+                    <span class="dm-td dm-name" data-c="0">Chloe Martin</span><span class="dm-td dm-nw" data-c="1" data-nh="1">£19,400.00</span
+                    ><span class="dm-td dm-nw" data-c="3">£14,589.37</span><span class="dm-td dm-nw" data-c="4" data-nh="1">-£4,810.63</span
+                    ><span class="dm-td dm-nw" data-c="5">0.75x</span>
+                  </div>
+                  <div class="dm-tr dm-gap">
+                    <span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              ><span class="dm-ui">Take the tour</span>, click <span class="dm-ui">Exit</span> at the top of the tour card, then
+              <span class="dm-ui">Exit tour</span>. Choose <span class="dm-ui">Tiered by return multiple</span> under <span class="dm-ui">Carry</span>, or set
+              <span class="dm-ui">Exit proceeds</span> to 80000 for the loss.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="goten-records" aria-labelledby="goten-records-h">
+          <h2 class="dm-need__title" id="goten-records-h">Trust the figures, keep the record</h2>
+          <article class="dm-scene" id="goten-g18" aria-labelledby="goten-g18-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g18-h">Every result checks itself</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="G1"
+                  >A failed self-check hides the figures, a blocker holds export and hand-off, needs-review waits for you, and a reminder stops nothing.</span
+                >
+                <span class="dm-more" data-covers="G2 G3">Money is whole pence, and v1.5.0 passed 551 unit tests and 272 of 272 due test-plan cases.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Allocation checks, all passing: for every investor, cash received equals invested plus platform fee share plus fees plus refund; no refund is negative; the wire plus company-paid fees equals total invested; at least one investor is in; nobody falls below the minimum. Highlighted: ✓ Self-check For every investor, cash received = invested + platform fee share + fees + refund."
+              data-demo="goten/G18"
+              data-state="Sample deal, after the review and the hand-off to allocation."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-l="0">Checks</span></p>
+                <p class="dm-p dm-focus" data-l="1" data-covers="G1">
+                  <span class="dm-pill">✓</span> Self-check For every investor, cash received = invested + platform fee share + fees + refund
+                </p>
+                <p class="dm-p" data-l="5"><span class="dm-pill">✓</span> Self-check No refund is negative</p>
+                <p class="dm-p" data-l="10"><span class="dm-pill">✓</span> Self-check Wire to company + company-paid fees = total invested</p>
+                <p class="dm-p" data-l="11"><span class="dm-pill">✓</span> Blocker At least one investor is in the allocation</p>
+                <p class="dm-p" data-l="13"><span class="dm-pill">✓</span> Blocker Nobody falls below the minimum after scale-back</p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="goten-g19" aria-labelledby="goten-g19-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g19-h">Every decision, on the record</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="G4"
+                  >Investor and bank imports, decisions, hand-offs, copied messages, withdrawals and fee changes are logged, newest first.</span
+                >
+                <span class="dm-more" data-covers="G5 G6"
+                  >The ledger, chase list, allocation, distribution and log export as CSV; the deal stays in this browser.</span
+                >
+                <span class="dm-more" data-covers="G7">If the browser cannot save, the page says so.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="The activity log, newest first: the hand-off to allocation, a line marked not part of this deal, Kavya Iyer's receipt confirmed, and the sample loaded. Highlighted: handoff_allocation, 103,500.00 GBP, snapshot v7 · 12 investors."
+              data-demo="goten/G19"
+              data-state="Sample deal, after the review and the hand-off to allocation."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Activity log</span></p>
+                <div class="dm-table">
+                  <div class="dm-tr dm-th" data-l="0" data-covers="G4">
+                    <span class="dm-td dm-name" data-c="3">Event</span><span class="dm-td" data-c="4">Investor</span
+                    ><span class="dm-td" data-c="6" data-nh="2">Amount</span><span class="dm-td" data-c="7" data-nh="1">Detail</span>
+                  </div>
+                  <div class="dm-tr dm-focus" data-l="1">
+                    <span class="dm-td dm-name" data-c="3">handoff_allocation</span><span class="dm-td" data-c="4"></span
+                    ><span class="dm-td" data-c="6" data-nh="2">103,500.00 GBP</span
+                    ><span class="dm-td" data-c="7" data-nh="1">snapshot v7 · 12 investors</span>
+                  </div>
+                  <div class="dm-tr" data-l="2">
+                    <span class="dm-td dm-name" data-c="3">not_in_deal</span><span class="dm-td" data-c="4"></span
+                    ><span class="dm-td" data-c="6" data-nh="2">4,000.00 GBP</span
+                    ><span class="dm-td" data-c="7" data-nh="1">Not matched → Not part of this deal</span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr" data-l="4">
+                    <span class="dm-td dm-name" data-c="3">confirm</span><span class="dm-td" data-c="4">Kavya Iyer</span
+                    ><span class="dm-td" data-c="6" data-nh="2">7,500.00 GBP</span
+                    ><span class="dm-td" data-c="7" data-nh="1">Needs review → Confirmed by you</span>
+                  </div>
+                  <div class="dm-tr dm-gap"><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span><span class="dm-td"></span></div>
+                  <div class="dm-tr" data-l="7">
+                    <span class="dm-td dm-name" data-c="3">sample_loaded</span><span class="dm-td" data-c="4"></span
+                    ><span class="dm-td" data-c="6" data-nh="2"></span><span class="dm-td" data-c="7" data-nh="1">sample deal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              ><span class="dm-ui">Load sample deal</span>, confirm the three suggestions, mark the other two lines
+              <span class="dm-ui">Not part of this deal</span>, <span class="dm-ui">Hand off to allocation</span>, then open
+              <span class="dm-ui">Activity log</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="goten-learn" aria-labelledby="goten-learn-h">
+          <h2 class="dm-need__title" id="goten-learn-h">Learn it on the sample</h2>
+          <article class="dm-scene" id="goten-g20" aria-labelledby="goten-g20-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="goten-g20-h">A 3-minute tour on the sample</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="H1">Twelve steps walk the sample from receipts to exit; Do this for me can act for you.</span>
+                <span class="dm-more" data-covers="H4">Key terms have a ? explanation.</span>
+                <span class="dm-more" data-covers="H5">Choose System, Light or Dark; printing is always black on white.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card dm-card--tour"
+              role="img"
+              aria-label="The guided tour at step 4 of 12: Typo, NW 11 instead of NW-011; the score is high, 0.80, but it is still your decision. Confirm Kavya. Highlighted: Typo: 'NW 11' instead of NW-011. The score is high (score 0.80), but it is still your decision."
+              data-demo="goten/G20"
+              data-state="During the guided tour."
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <div class="dm-chips">
+                  <p class="dm-chip" data-l="0"><span class="dm-ub">Reconciliation</span></p>
+                  <p class="dm-chip" data-l="1"><span class="dm-ub">Allocation</span></p>
+                  <p class="dm-chip" data-l="2"><span class="dm-ub">Exit</span></p>
+                </div>
+                <p class="dm-step" data-l="3" data-covers="H1">Step 4 of 12</p>
+                <p class="dm-p dm-focus" data-l="4">Typo: 'NW 11' instead of NW-011. The score is high (score 0.80), but it is still your decision.</p>
+                <p class="dm-p" data-l="5">Confirm Kavya.</p>
+                <div class="dm-btns">
+                  <p class="dm-btn" data-l="6"><span class="dm-ub">Back</span></p>
+                  <p class="dm-btn" data-l="7"><span class="dm-ub">Do this for me</span></p>
+                  <p class="dm-btn" data-l="8"><span class="dm-ub">Take me to it</span></p>
+                  <p class="dm-btn" data-l="9"><span class="dm-ub">Exit tour</span></p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="https://vegeta-goten.vercel.app">Try it in Goten <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path" data-covers="H2 H6"
+              >On first open, choose <span class="dm-ui">I understand — take the 3-minute tour</span>; later, <span class="dm-ui">Take the tour</span> in the
+              sidebar. <span class="dm-ui">Load sample deal</span> brings the sample back, <span class="dm-ui">Clear all data</span> empties the page, and
+              <span class="dm-ui">Send feedback</span> is in the footer.</span
+            >
+          </p>
+        </section>
+        <p class="dm-end">
+          <a class="btn btn--primary" href="https://vegeta-goten.vercel.app">Open Goten</a>
+          <a class="btn btn--quiet" href="/docs/goten/build/">Run it on your own machine <span class="arrow" aria-hidden="true">→</span></a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

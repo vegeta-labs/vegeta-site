@@ -56,6 +56,14 @@ jobs:
         run: npm run goten:fetch
         env:
           GOTEN_REF: main
+      - name: Demos page, Goten scenes against Goten's latest main (extracted from the running app and compared)
+        id: demos
+        continue-on-error: true
+        run: |
+          npx playwright install --with-deps chromium
+          node scripts/demos-extract-goten.mjs
+        env:
+          DEMOS_COMPARE: '1'
       - name: Public Trunks at its latest main
         run: npm run trunks:fetch
         env:
@@ -72,6 +80,6 @@ jobs:
           GOTEN_DIR: vendor/goten
           TRUNKS_DIR: vendor/trunks
           BULMA_DIR: vendor/bulma
-      - name: Fail when the site is behind a release, or the release check failed
-        if: steps.releases.outcome == 'failure'
+      - name: Fail when the site is behind a release, the release check failed, or Goten's latest main draws other Demos words
+        if: steps.releases.outcome == 'failure' || steps.demos.outcome == 'failure'
         run: exit 1

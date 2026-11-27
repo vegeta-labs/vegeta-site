@@ -1,6 +1,6 @@
 # How the numbers work
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/how-the-numbers-work.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/use/how-the-numbers-work.md
 
 These are the rules Goten uses, in plain language. The examples come from the built-in Northwind Robotics deal.
 
@@ -27,7 +27,7 @@ For everything else, each investor gets a score between 0 and 1, built from:
 
 Only investors with a score of 0.30 or more are shown, and at most three. If nobody reaches 0.30, no suggestion is shown: the receipt shows **Not matched** (or **Needs review** if an earlier decision on it was set aside) and waits for a person to assign it or mark it not part of this deal. In the sample, Kavya Iyer's receipt with the reference NW 11 scores 0.80: 0.25 for a near reference, 0.30 for the payer name and 0.25 for the amount.
 
-**Received** is the sum of the receipts booked to an investor. **Difference** is received minus cash due.
+**Received** is the sum of the receipts booked to an investor, less anything in their `refunded` column (refunds already made or on their way). **Booked to investors** in the summary is the gross total, before those refunds. **Difference** is received minus cash due.
 
 ## Closing allocation
 
@@ -42,12 +42,18 @@ In the sample, Amelia received £10,000.00 with a 3% fee deducted, so she invest
 
 **If the total is over the round cap**, the cap is split between investors in proportion to what each could invest. If that puts anyone below the minimum, the deal cannot close.
 
+**An investor with their own fee terms** uses their own fee mode and their own single fee in all of the above, instead of the deal's investor-paid fees. A fixed own fee works like a fixed fee per investor.
+
 **Each percentage fee** is worked out on its own and rounded half-up.
 
 - Deducted: amount invested × fee rate ÷ (100% − total fee rate).
 - On top: amount invested × fee rate.
 
 **The refund** is received − invested − fees. If separate rounding of several fees would make it negative, the investment drops by a penny at a time until it is not. An investor who ends up investing nothing is out.
+
+In these formulas, "amount invested" means the amount before any pro-rata platform fee.
+
+**The pro-rata platform fee**, if there is one, comes last. It is the rate × the total of everyone's amount, rounded half-up, kept between the minimum and the maximum, plus the add-on rate × the part of the total above the add-on threshold, rounded half-up. When investors pay it, each one's share is in proportion to their amount, rounded down to the penny, and the pennies left over go one each to the largest remainders, an equal remainder to the investor higher in the list. Each investor's share then comes off what they invest. Their cash due, fees and refund do not change. When the lead or the company pays, nobody's amount invested changes.
 
 Anyone out pays no fees and gets everything back.
 
@@ -71,7 +77,7 @@ In the sample, the hurdle is £100,395.00 × (1.08⁶ − 1) = £58,919.25. The 
 
 **Tiered carry** has no hurdle or catch-up. Each band's rate applies only to the profit inside it. Band edges are (multiple − 1) × amount invested, rounded half-up to the penny, and each band's carry is rounded half-up.
 
-**Between investors**, the total to investors is split in proportion to the amount each invested, not what they wired, so entry fees do not skew it. The pro-rata rule above applies. **Multiple** is distribution ÷ amount invested, rounded half-up to two decimals, and does not count entry fees.
+**Between investors**, when everyone has the same carry rate, the total to investors is split in proportion to the amount each invested, not what they wired, so entry fees do not skew it. When carry rates differ, the proceeds after exit costs are split this way first and each investor's own waterfall is worked out on their share: see [Personal carry](https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution.md#personal-carry). The pro-rata rule above applies. **Multiple** is distribution ÷ amount invested, rounded half-up to two decimals, and does not count entry fees.
 
 ## Changing who pays a fee
 

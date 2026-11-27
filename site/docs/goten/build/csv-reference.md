@@ -1,6 +1,6 @@
 # CSV reference
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/build/csv-reference.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/build/csv-reference.md
 
 Everything here comes from `src/lib/csv.ts`, `src/lib/money.ts`, `src/lib/validate.ts`, `src/lib/reconcile.ts` and `src/lib/exports.ts`. Sample files for each import are in `fixtures/`. For operations staff, see [Prepare and import your CSV files](https://vegeta-ops.vercel.app/docs/goten/use/import-csv.md).
 
@@ -23,14 +23,20 @@ Header names are compared after lower-casing and trimming, with any currency lab
 
 ### Investor list
 
-| Column        | Required | Aliases                                                 | Format                                                                                                                                        |
-| ------------- | -------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `investor_id` | No       | `id`, `investor id`                                     | Up to 40 characters, unique when not blank. Generated if blank.                                                                               |
-| `name`        | Yes      | `investor name`, `investor`, `full name`                | Up to 120 characters.                                                                                                                         |
-| `email`       | No       | none                                                    | One `@` with text either side and no spaces, up to 200 characters.                                                                            |
-| `reference`   | Yes      | `payment reference`, `ref`                              | 1 to 3 segments of `A–Z a–z 0–9`, joined by exactly one of space `-` `/` `_` `.`, 3 to 20 characters once normalised. Unique once normalised. |
-| `cash_due`    | Yes      | `cash due`, `amount due`, `expected`, `expected amount` | Amount, greater than 0.                                                                                                                       |
-| `scheme`      | No       | `tax scheme`, `seis/eis`                                | `none`, `SEIS` or `EIS`, any case. Blank means `none`.                                                                                        |
+| Column          | Required | Aliases                                                 | Format                                                                                                                                                                                                                         |
+| --------------- | -------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `investor_id`   | No       | `id`, `investor id`                                     | Up to 40 characters, unique when not blank. Generated if blank.                                                                                                                                                                |
+| `name`          | Yes      | `investor name`, `investor`, `full name`                | Up to 256 characters.                                                                                                                                                                                                          |
+| `email`         | No       | none                                                    | One `@` with text either side and no spaces, up to 200 characters.                                                                                                                                                             |
+| `reference`     | Yes      | `payment reference`, `ref`                              | 1 to 3 segments of `A–Z a–z 0–9`, joined by exactly one of space `-` `/` `_` `.`, 3 to 20 characters once normalised. Unique once normalised.                                                                                  |
+| `cash_due`      | Yes      | `cash due`, `amount due`, `expected`, `expected amount` | Amount, greater than 0. Includes fees charged to the investor, except the pro-rata platform fee.                                                                                                                               |
+| `scheme`        | No       | `tax scheme`, `seis/eis`                                | `none`, `SEIS` or `EIS`, any case. Blank means `none`.                                                                                                                                                                         |
+| `own_fee_mode`  | No       | `own fee mode`                                          | `on_top` (also `on top`, `added`) or `deducted` (also `from wire`), any case. Required when `own_fee_rate` or `own_fee_fixed` is given. Gives the investor their own fee terms (PRD C-ALL-0).                                  |
+| `own_fee_rate`  | No       | `own fee rate`                                          | Percent. Below 100% with `deducted`. Not together with `own_fee_fixed`.                                                                                                                                                        |
+| `own_fee_fixed` | No       | `own fixed fee`                                         | Amount, greater than 0.                                                                                                                                                                                                        |
+| `carry`         | No       | `carry %`                                               | Percent: the investor's own carry rate at exit. With a fixed carry rate, blank means the deal's carry and 0 means none; with tiered carry the tier table decides, and every carry must be blank or all the same (PRD C-DIS-8). |
+| `refunded`      | No       | `refunded amount`                                       | Amount, 0 or more: refunded or in transit. Received amounts are net of it (PRD C-REC-4).                                                                                                                                       |
+| `refund_only`   | No       | `refund only`                                           | `withdrawn`, `closed` or blank, any case; `yes` is read as `closed` (PRD C-REC-9).                                                                                                                                             |
 
 Normalising a reference removes separators and upper-cases `a–z`, so `nw 001` and `NW-001` are the same reference.
 
@@ -48,21 +54,23 @@ Importing with **Replace** clears decisions. **Append** ignores a row whose tran
 
 ### Allocation investors
 
-| Column        | Required | Aliases                                  | Format                |
-| ------------- | -------- | ---------------------------------------- | --------------------- |
-| `investor_id` | No       | `id`, `investor id`                      | As above.             |
-| `name`        | Yes      | `investor name`, `investor`, `full name` | Up to 120 characters. |
-| `received`    | Yes      | `cash received`, `amount received`       | Amount, 0 or more.    |
-| `scheme`      | No       | `tax scheme`, `seis/eis`                 | As above.             |
+| Column                                                   | Required | Aliases                                  | Format                |
+| -------------------------------------------------------- | -------- | ---------------------------------------- | --------------------- |
+| `investor_id`                                            | No       | `id`, `investor id`                      | As above.             |
+| `name`                                                   | Yes      | `investor name`, `investor`, `full name` | Up to 256 characters. |
+| `received`                                               | Yes      | `cash received`, `amount received`       | Amount, 0 or more.    |
+| `scheme`                                                 | No       | `tax scheme`, `seis/eis`                 | As above.             |
+| `own_fee_mode`, `own_fee_rate`, `own_fee_fixed`, `carry` | No       | As above.                                | As above.             |
 
 ### Holdings
 
-| Column        | Required | Aliases                                  | Format                                                                                                      |
-| ------------- | -------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `investor_id` | No       | `id`, `investor id`                      | As above.                                                                                                   |
-| `name`        | Yes      | `investor name`, `investor`, `full name` | Up to 120 characters.                                                                                       |
-| `capital`     | Yes      | `invested`, `amount invested`            | Amount, greater than 0. The amount invested, excluding fees.                                                |
-| `share_price` | No       | `price per share`, `price`               | Share price, the same on every row. A blank on one row while others have a value is an error. Display only. |
+| Column        | Required | Aliases                                  | Format                                                                                                                                                                                                                 |
+| ------------- | -------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `investor_id` | No       | `id`, `investor id`                      | As above.                                                                                                                                                                                                              |
+| `name`        | Yes      | `investor name`, `investor`, `full name` | Up to 256 characters.                                                                                                                                                                                                  |
+| `capital`     | Yes      | `invested`, `amount invested`            | Amount, greater than 0. The amount invested, excluding fees.                                                                                                                                                           |
+| `share_price` | No       | `price per share`, `price`               | Share price, the same on every row. A blank on one row while others have a value is an error. Display only.                                                                                                            |
+| `carry`       | No       | `carry %`                                | Percent: the investor's own carry rate. With a fixed carry rate, blank means the deal's carry and 0 means none; with tiered carry the tier table decides, and every carry must be blank or all the same (PRD C-DIS-8). |
 
 `shares_display`, which the holdings export adds, is ignored on import.
 
@@ -113,21 +121,24 @@ Changing a deal's currency in **Deal settings** never converts amounts.
 
 Every export ends with a `currency` column. It holds the deal's current ISO code, except in the activity log, where each row keeps the currency at the time of that event. Amounts are plain decimals without separators, except in the activity log.
 
-| File                     | Columns                                                                                                                                                                                                              |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ledger_<CUR>.csv`       | `transaction_id`, `date`, `amount`, `payer`, `reference`, `status`, `investor_id`, `investor_name`, `decided_by`, `withdrawn_on`, `currency`                                                                         |
-| `chase_list_<CUR>.csv`   | `investor_id`, `name`, `email`, `committed`, `received`, `difference`, `status`, `committed_original`, `committed_adjustment`, `message`, `currency`                                                                 |
-| `allocation_<CUR>.csv`   | `investor_id`, `name`, `scheme`, `received`, `invested`, `units`, one `fee_<fee name>` per investor-paid fee, `fees_total`, `refund`, `seis_eis_claimable_shares`, `seis_eis_claimable_amount`, `status`, `currency` |
-| `distribution_<CUR>.csv` | `investor_id`, `name`, `capital`, `shares_display`, `distribution`, `profit`, `multiple_excl_entry_fees`, `currency`                                                                                                 |
-| `holdings_<CUR>.csv`     | `investor_id`, `name`, `capital`, `shares_display`, `share_price`, `currency`                                                                                                                                        |
-| `activity_log_<CUR>.csv` | `seq`, `time`, `initials`, `event`, `investor_id`, `investor_name`, `transaction_id`, `amount`, `detail`, `currency`                                                                                                 |
+| File                     | Columns                                                                                                                                                                                                                                                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ledger_<CUR>.csv`       | `transaction_id`, `date`, `amount`, `payer`, `reference`, `status`, `investor_id`, `investor_name`, `decided_by`, `withdrawn_on`, `currency`                                                                                                                                                              |
+| `chase_list_<CUR>.csv`   | `investor_id`, `name`, `email`, `committed`, `received`, `difference`, `status`, `committed_original`, `committed_adjustment`, `message`, `refunded`, `currency`                                                                                                                                          |
+| `allocation_<CUR>.csv`   | `investor_id`, `name`, `scheme`, `received`, `invested`, `units`, one `fee_<fee name>` per investor-paid fee, `fees_total`, `refund`, `seis_eis_claimable_shares`, `seis_eis_claimable_amount`, `status`, `own_fee_mode`, `own_fee_rate`, `own_fee_fixed`, `own_fee`, `carry`, `platform_fee`, `currency` |
+| `distribution_<CUR>.csv` | `investor_id`, `name`, `capital`, `shares_display`, `distribution`, `profit`, `multiple_excl_entry_fees`, `carry`, `currency`                                                                                                                                                                             |
+| `holdings_<CUR>.csv`     | `investor_id`, `name`, `capital`, `shares_display`, `share_price`, `carry`, `currency`                                                                                                                                                                                                                    |
+| `carry_payees_<CUR>.csv` | `payee`, `share`, `amount`, `currency`. Without a payee list, one row `Lead`.                                                                                                                                                                                                                             |
+| `activity_log_<CUR>.csv` | `seq`, `time`, `initials`, `event`, `investor_id`, `investor_name`, `transaction_id`, `amount`, `detail`, `currency`                                                                                                                                                                                      |
 
 Status values:
 
 - Ledger: `auto`, `confirmed`, `suggested`, `unmatched`, `rejected`, `skipped`, `future`. `decided_by` is `auto`, `person` or blank.
 - Chase list: `partial`, `outstanding`. `committed` is the cash due after any fee payer change; `committed_original` and `committed_adjustment` are filled only when it differs from the list.
 - Allocation: `allocated`, `scaled-back`, or for investors out of the close `no-funds`, `fees-exceed-receipt`, `below-minimum`, `zero-investment`.
+- Chase list: `received` is net of `refunded` (PRD C-REC-4).
+- New columns since v1.5.0 are blank for a deal that does not use the new inputs. `distribution.carry` is filled only in fixed mode when some holding has its own carry. Share cells (`units`, `shares_display`) are blank for a convertible or fund units.
 
-Activity log events: `import`, `confirm`, `assign`, `not_in_deal`, `undo`, `decision_voided`, `withdrawn`, `withdrawal_undone`, `withdrawal_voided`, `handoff_allocation`, `handoff_exit`, `fee_payer_changed`, `fee_payer_change_reversed`, `fee_payer_change_voided`, `adjustment_voided`, `log_exported`, `message_copied`, `sample_loaded`. The `amount` column uses thousands separators and no symbol. A `truncated` row with an empty `seq` appears first if entries were removed.
+Activity log events: `import`, `confirm`, `assign`, `not_in_deal`, `undo`, `decision_voided`, `withdrawn`, `withdrawal_undone`, `withdrawal_voided`, `handoff_allocation`, `handoff_exit`, `fee_payer_changed`, `fee_payer_change_reversed`, `fee_payer_change_voided`, `adjustment_voided`, `platform_fee_payer_changed`, `handoff_request_imported`, `handoff_result_exported`, `log_exported`, `message_copied`, `sample_loaded`. The `amount` column uses thousands separators and no symbol. A `truncated` row with an empty `seq` appears first if entries were removed.
 
 Formula safety: text cells beginning with `=`, `+`, `-`, `@`, a tab, a carriage return or an apostrophe get a leading `'`. Numeric columns the app generates are written as they are. Import removes exactly one such apostrophe, so exported text comes back unchanged. Only the four formats at the top of this page can be imported.

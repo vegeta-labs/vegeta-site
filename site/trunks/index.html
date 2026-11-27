@@ -65,6 +65,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -79,6 +80,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/">Docs</a></li>
         </ul>
       </details>
@@ -103,7 +105,7 @@
         </h1>
         <p class="hero__lede">An operations inbox for SPV and syndicate teams.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="/trunks/demo/">See the demo</a>
+          <a class="btn btn--primary" href="/demos/trunks/">See the demo</a>
           <a class="btn btn--quiet" href="https://github.com/vegeta-labs/trunks">View the code <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
@@ -455,7 +457,7 @@
             </div>
           </dl>
           <p class="trust__note">
-            v0.5.0 release checks: 126 held-out fictional emails, one run with a real model (Claude Opus 5.5) by an independent runner.<br />
+            v0.5.0 release checks: 126 held-out test emails, one run with a real model (Claude Opus 5.5) by an independent runner.<br />
             Measured on v0.3.0; carried forward unchanged. A person still reviews every Case and reply.
           </p>
         </div>
@@ -675,8 +677,8 @@
               <summary>How do I install it?</summary>
               <p>
                 With Docker Compose on your own server: separate containers for the app, maintenance, the database, the virus scanner and a sandboxed attachment
-                parser. The <a href="/docs/trunks/build/quickstart/">quick start</a> walks through it, and the demo runs on your own machine with fictional data
-                and no outbound connections.
+                parser. The <a href="/docs/trunks/build/quickstart/">quick start</a> walks through it, and the demo runs on your own machine with no outbound
+                connections.
               </p>
             </details>
             <details class="faq__item" id="ifaq-mailbox">
@@ -765,9 +767,9 @@
             <details class="faq__item" id="ifaq-accuracy">
               <summary>How do you know it works?</summary>
               <p>
-                The rules are compared with an independent Python implementation, and mutation checks test the tests. Fictional test emails were written by
-                independent agents that saw only the requirements: a development set, run in CI on recorded model replies, and a separate held-out set that
-                development never read, newly written for v0.3.0 and run once with a real model. The results are
+                The rules are compared with an independent Python implementation, and mutation checks test the tests. Test emails were written by independent
+                agents that saw only the requirements: a development set, run in CI on recorded model replies, and a separate held-out set that development
+                never read, newly written for v0.3.0 and run once with a real model. The results are
                 <a href="#trust">on this page</a> and in the release notes.
               </p>
             </details>
@@ -795,7 +797,6 @@
           </video>
         </div>
         <h2 class="cta__title" id="cta-h" data-reveal>See it work on sample emails</h2>
-        <p class="cta__body" data-reveal>Fictional deals, people and emails. Nothing to install.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="/trunks/demo/">See the demo</a>
           <a class="btn btn--quiet" href="https://github.com/vegeta-labs/trunks">View the code <span class="arrow" aria-hidden="true">→</span></a>
@@ -839,13 +840,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

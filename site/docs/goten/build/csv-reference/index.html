@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,7 +150,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">CSV reference</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>
               Everything here comes from <code>src/lib/csv.ts</code>, <code>src/lib/money.ts</code>, <code>src/lib/validate.ts</code>,
@@ -199,7 +201,7 @@
                     <td><code>name</code></td>
                     <td>Yes</td>
                     <td><code>investor name</code>, <code>investor</code>, <code>full name</code></td>
-                    <td>Up to 120 characters.</td>
+                    <td>Up to 256 characters.</td>
                   </tr>
                   <tr>
                     <td><code>email</code></td>
@@ -220,13 +222,55 @@
                     <td><code>cash_due</code></td>
                     <td>Yes</td>
                     <td><code>cash due</code>, <code>amount due</code>, <code>expected</code>, <code>expected amount</code></td>
-                    <td>Amount, greater than 0.</td>
+                    <td>Amount, greater than 0. Includes fees charged to the investor, except the pro-rata platform fee.</td>
                   </tr>
                   <tr>
                     <td><code>scheme</code></td>
                     <td>No</td>
                     <td><code>tax scheme</code>, <code>seis/eis</code></td>
                     <td><code>none</code>, <code>SEIS</code> or <code>EIS</code>, any case. Blank means <code>none</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>own_fee_mode</code></td>
+                    <td>No</td>
+                    <td><code>own fee mode</code></td>
+                    <td>
+                      <code>on_top</code> (also <code>on top</code>, <code>added</code>) or <code>deducted</code> (also <code>from wire</code>), any case.
+                      Required when <code>own_fee_rate</code> or <code>own_fee_fixed</code> is given. Gives the investor their own fee terms (PRD C-ALL-0).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>own_fee_rate</code></td>
+                    <td>No</td>
+                    <td><code>own fee rate</code></td>
+                    <td>Percent. Below 100% with <code>deducted</code>. Not together with <code>own_fee_fixed</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>own_fee_fixed</code></td>
+                    <td>No</td>
+                    <td><code>own fixed fee</code></td>
+                    <td>Amount, greater than 0.</td>
+                  </tr>
+                  <tr>
+                    <td><code>carry</code></td>
+                    <td>No</td>
+                    <td><code>carry %</code></td>
+                    <td>
+                      Percent: the investor&#39;s own carry rate at exit. With a fixed carry rate, blank means the deal&#39;s carry and 0 means none; with
+                      tiered carry the tier table decides, and every carry must be blank or all the same (PRD C-DIS-8).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>refunded</code></td>
+                    <td>No</td>
+                    <td><code>refunded amount</code></td>
+                    <td>Amount, 0 or more: refunded or in transit. Received amounts are net of it (PRD C-REC-4).</td>
+                  </tr>
+                  <tr>
+                    <td><code>refund_only</code></td>
+                    <td>No</td>
+                    <td><code>refund only</code></td>
+                    <td><code>withdrawn</code>, <code>closed</code> or blank, any case; <code>yes</code> is read as <code>closed</code> (PRD C-REC-9).</td>
                   </tr>
                 </tbody>
               </table>
@@ -307,7 +351,7 @@
                     <td><code>name</code></td>
                     <td>Yes</td>
                     <td><code>investor name</code>, <code>investor</code>, <code>full name</code></td>
-                    <td>Up to 120 characters.</td>
+                    <td>Up to 256 characters.</td>
                   </tr>
                   <tr>
                     <td><code>received</code></td>
@@ -319,6 +363,12 @@
                     <td><code>scheme</code></td>
                     <td>No</td>
                     <td><code>tax scheme</code>, <code>seis/eis</code></td>
+                    <td>As above.</td>
+                  </tr>
+                  <tr>
+                    <td><code>own_fee_mode</code>, <code>own_fee_rate</code>, <code>own_fee_fixed</code>, <code>carry</code></td>
+                    <td>No</td>
+                    <td>As above.</td>
                     <td>As above.</td>
                   </tr>
                 </tbody>
@@ -346,7 +396,7 @@
                     <td><code>name</code></td>
                     <td>Yes</td>
                     <td><code>investor name</code>, <code>investor</code>, <code>full name</code></td>
-                    <td>Up to 120 characters.</td>
+                    <td>Up to 256 characters.</td>
                   </tr>
                   <tr>
                     <td><code>capital</code></td>
@@ -359,6 +409,15 @@
                     <td>No</td>
                     <td><code>price per share</code>, <code>price</code></td>
                     <td>Share price, the same on every row. A blank on one row while others have a value is an error. Display only.</td>
+                  </tr>
+                  <tr>
+                    <td><code>carry</code></td>
+                    <td>No</td>
+                    <td><code>carry %</code></td>
+                    <td>
+                      Percent: the investor&#39;s own carry rate. With a fixed carry rate, blank means the deal&#39;s carry and 0 means none; with tiered carry
+                      the tier table decides, and every carry must be blank or all the same (PRD C-DIS-8).
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -503,7 +562,8 @@
                     <td><code>chase_list_&lt;CUR&gt;.csv</code></td>
                     <td>
                       <code>investor_id</code>, <code>name</code>, <code>email</code>, <code>committed</code>, <code>received</code>, <code>difference</code>,
-                      <code>status</code>, <code>committed_original</code>, <code>committed_adjustment</code>, <code>message</code>, <code>currency</code>
+                      <code>status</code>, <code>committed_original</code>, <code>committed_adjustment</code>, <code>message</code>, <code>refunded</code>,
+                      <code>currency</code>
                     </td>
                   </tr>
                   <tr>
@@ -511,21 +571,29 @@
                     <td>
                       <code>investor_id</code>, <code>name</code>, <code>scheme</code>, <code>received</code>, <code>invested</code>, <code>units</code>, one
                       <code>fee_&lt;fee name&gt;</code> per investor-paid fee, <code>fees_total</code>, <code>refund</code>,
-                      <code>seis_eis_claimable_shares</code>, <code>seis_eis_claimable_amount</code>, <code>status</code>, <code>currency</code>
+                      <code>seis_eis_claimable_shares</code>, <code>seis_eis_claimable_amount</code>, <code>status</code>, <code>own_fee_mode</code>,
+                      <code>own_fee_rate</code>, <code>own_fee_fixed</code>, <code>own_fee</code>, <code>carry</code>, <code>platform_fee</code>,
+                      <code>currency</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>distribution_&lt;CUR&gt;.csv</code></td>
                     <td>
                       <code>investor_id</code>, <code>name</code>, <code>capital</code>, <code>shares_display</code>, <code>distribution</code>,
-                      <code>profit</code>, <code>multiple_excl_entry_fees</code>, <code>currency</code>
+                      <code>profit</code>, <code>multiple_excl_entry_fees</code>, <code>carry</code>, <code>currency</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>holdings_&lt;CUR&gt;.csv</code></td>
                     <td>
                       <code>investor_id</code>, <code>name</code>, <code>capital</code>, <code>shares_display</code>, <code>share_price</code>,
-                      <code>currency</code>
+                      <code>carry</code>, <code>currency</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>carry_payees_&lt;CUR&gt;.csv</code></td>
+                    <td>
+                      <code>payee</code>, <code>share</code>, <code>amount</code>, <code>currency</code>. Without a payee list, one row <code>Lead</code>.
                     </td>
                   </tr>
                   <tr>
@@ -552,12 +620,18 @@
                 Allocation: <code>allocated</code>, <code>scaled-back</code>, or for investors out of the close <code>no-funds</code>,
                 <code>fees-exceed-receipt</code>, <code>below-minimum</code>, <code>zero-investment</code>.
               </li>
+              <li>Chase list: <code>received</code> is net of <code>refunded</code> (PRD C-REC-4).</li>
+              <li>
+                New columns since v1.5.0 are blank for a deal that does not use the new inputs. <code>distribution.carry</code> is filled only in fixed mode
+                when some holding has its own carry. Share cells (<code>units</code>, <code>shares_display</code>) are blank for a convertible or fund units.
+              </li>
             </ul>
             <p>
               Activity log events: <code>import</code>, <code>confirm</code>, <code>assign</code>, <code>not_in_deal</code>, <code>undo</code>,
               <code>decision_voided</code>, <code>withdrawn</code>, <code>withdrawal_undone</code>, <code>withdrawal_voided</code>,
               <code>handoff_allocation</code>, <code>handoff_exit</code>, <code>fee_payer_changed</code>, <code>fee_payer_change_reversed</code>,
-              <code>fee_payer_change_voided</code>, <code>adjustment_voided</code>, <code>log_exported</code>, <code>message_copied</code>,
+              <code>fee_payer_change_voided</code>, <code>adjustment_voided</code>, <code>platform_fee_payer_changed</code>,
+              <code>handoff_request_imported</code>, <code>handoff_result_exported</code>, <code>log_exported</code>, <code>message_copied</code>,
               <code>sample_loaded</code>. The <code>amount</code> column uses thousands separators and no symbol. A <code>truncated</code> row with an empty
               <code>seq</code> appears first if entries were removed.
             </p>
@@ -606,13 +680,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

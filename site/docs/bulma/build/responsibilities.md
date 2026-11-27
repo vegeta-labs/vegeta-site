@@ -1,6 +1,6 @@
 # Who does what
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/responsibilities.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/responsibilities.md
 
 This software leaves most compliance work with the operator. "Nobody" means this version has no control for it at all. If you run this for real, that gap is yours to fill.
 

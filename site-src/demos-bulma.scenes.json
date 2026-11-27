@@ -1,0 +1,417 @@
+{
+  "about": "Demos page, Bulma (Bulma feature list v2, checked by the Bulma demo session). Rows are line indexes into site-src/demos-bulma.json (the static demo's own text); sandbox, demo-only and placeholder lines are never chosen. Copy: each sentence is [text, features it covers]. notDrawn lists the features of groups A–J that neither a panel nor the copy shows, and why; groups K–L (running an instance, trust and limits) have no screen in the demo and are left to /bulma/ and the docs. Built by scripts/build-demos.mjs, checked by check-site.",
+  "product": {
+    "id": "bulma",
+    "name": "Bulma",
+    "full": "Bulma — SPV Workspace",
+    "app": "/bulma/demo/",
+    "run": "/docs/bulma/build/run-and-deploy/"
+  },
+  "notDrawn": {
+    "A1": "no separate lead account: one line on /bulma/",
+    "A3": "syndicate member links: a page the demo does not open",
+    "A8": "file uploads and the virus scan: not in the read-only demo",
+    "A11": "the platform-fee notice shows only when the operator has none set",
+    "A12": "adding a co-lead: not in the read-only demo",
+    "A13": "copy, delete and restore a draft: not in the read-only demo",
+    "A14": "joining a syndicate by link: a page the demo does not open",
+    "B3": "content approval before going live, in the real mode only",
+    "C7": "pasting and sending to expected investors: not in the read-only demo",
+    "D3": "waitlisted, removed and withdrawn rows: none in the demo deal",
+    "D15": "the list download depends on the operator's setting",
+    "E5": "the waiting list: the demo deal is not full",
+    "F2": "invitation memory in the browser and expired links: not in the read-only demo",
+    "F3": "creating an account: not in the read-only demo",
+    "F8": "a cooling-off period, under some operators' rules only",
+    "F9": "account settings: left to the docs",
+    "F10": "password reset: not in the read-only demo",
+    "G7": "a full deal and its waiting list: the demo deal is not full",
+    "G11": "the risk summary depends on the operator's rules pack",
+    "H4": "downloading documents: left to the docs",
+    "H10": "a changed receiving account: none in the demo deal",
+    "H11": "the full list of investor states: left to the docs",
+    "H12": "reconfirming changed terms: none in the demo deal",
+    "H13": "a proposed new amount: none in the demo deal",
+    "H14": "leaving a deal and refunds: left to the docs",
+    "H15": "emails: the demo sends none",
+    "H16": "complaints: left to the docs",
+    "H17": "what to ask the bank when a payment seems stuck: a sentence on the payment page left to the docs",
+    "I3": "content approval: no approver view in the demo",
+    "I5": "bank accounts and statements waiting: none in the demo deal",
+    "I6": "link terms waiting for approval: none in the demo deal",
+    "I7": "changes to review: none in the demo deal",
+    "I8": "cancellation and withdrawal decisions: none in the demo deal",
+    "I9": "messages waiting for approval: no approver view in the demo",
+    "I10": "pausing deals: not in the read-only demo",
+    "J2": "bank statement import: not in the read-only demo",
+    "J5": "money held after a refused identity check: none in the demo deal",
+    "J6": "payments to check: none in the demo deal",
+    "J7": "money after a participation ended: none in the demo deal",
+    "J8": "the Goten roster and ledger: not in the read-only demo",
+    "J9": "how Bulma and Goten count differently: left to the docs",
+    "J10": "listing money that came in by hand: not in the read-only demo",
+    "A6": "the Company part's fields: left to the docs",
+    "D10": "messages from investors: left to the docs",
+    "D13": "the deal sheet preview: left to the docs",
+    "D14": "seeing the deal as an investor: the demo's investor view shows it",
+    "E2": "which changes take effect at once: left to the docs",
+    "E4": "reconfirmation deadlines: none in the demo deal",
+    "H2": "how long a pass lasts: left to the docs",
+    "J4": "refunds: none in the demo deal",
+    "J1": "recording money received: not in the read-only demo",
+    "J3": "money not yet assigned: none in the demo deal",
+    "E1": "changes to a live deal: none in the demo deal",
+    "E3": "changes to a live deal: none in the demo deal"
+  },
+  "needs": [
+    {
+      "id": "setup",
+      "nav": "Set up",
+      "title": "Set up a deal in six parts",
+      "path": "In the [[Lead (Bulma Briefs)]] view, open [[Dragon Radar round]], then [[Kame House round]].",
+      "scenes": [
+        {
+          "id": "A4",
+          "title": "Each part saved as you go",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26],
+          "inline": [
+            [0, 1],
+            [2, 3],
+            [4, 5],
+            [6, 7],
+            [8, 9],
+            [10, 11]
+          ],
+          "focus": {
+            "row": 12
+          },
+          "covers": {
+            "0": "A4",
+            "13": "A5",
+            "20": "A2"
+          },
+          "copy": [
+            ["Basics, Company, Terms, Files, Economics and Review are filled in any order and saved as you go.", "A4 A5"],
+            ["Terms record the instrument, price, allocation and minimums; Economics sets carry and who pays the platform fee.", "A7 A9"],
+            ["Review lists what is left before Submit for review.", "A10"]
+          ],
+          "alt": "Draft deal Dragon Radar round: Basics and Company done, Terms, Files, Economics and Review to finish; saved; Basics: legal structure UK bare trust, deal type Primary, deal name Dragon Radar round, syndicate one I manage, Capsule Angels."
+        },
+        {
+          "id": "B1",
+          "title": "Where the deal stands",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4],
+          "focus": {
+            "row": 0
+          },
+          "covers": {
+            "0": "B1",
+            "3": "B6"
+          },
+          "copy": [
+            ["A deal moves from Draft to With the reviewer, then Approved and Live, and History keeps each event.", "B1 B6"],
+            ["Once approved, the lead confirms it goes live; a change during review goes back to the reviewer.", "B2"]
+          ],
+          "alt": "Kame House round, with the reviewer, reference BE8R4E; a reviewer usually reads a deal within 5 days; Withdraw from review; history: submitted for review on 28/10/2026, 10:00:01."
+        }
+      ]
+    },
+    {
+      "id": "checks",
+      "nav": "Checks",
+      "title": "Collect company documents and review the deal",
+      "path": "In the [[Lead (Bulma Briefs)]] view, open [[Kame House round]]; in the reviewer view, open it from [[Deals waiting for review]].",
+      "scenes": [
+        {
+          "id": "B5",
+          "title": "The company sends its own documents",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4],
+          "focus": {
+            "row": 0
+          },
+          "covers": {
+            "0": "B4",
+            "1": "B5",
+            "4": "B7"
+          },
+          "copy": [
+            ["The company's contact uploads its documents through a link, with no account; the lead sees only how far it has got.", "B4 B5"],
+            ["The lead can remind the company or record another contact, and without a pass the deal can raise money but cannot close.", "B7"]
+          ],
+          "alt": "Company check: waiting for the company, documents received 0; the company's link works until 11/11/2026; the documents go only to the reviewer; Remind the company; Record another contact."
+        },
+        {
+          "id": "I1",
+          "title": "A reviewer decides whether to approve",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5, 6],
+          "focus": {
+            "row": 4
+          },
+          "covers": {
+            "4": "I1"
+          },
+          "copy": [
+            ["The reviewer approves, asks for changes or refuses for good, with a reason the lead sees and a note the lead does not.", "I1"],
+            ["They also pass or send back the company check, and never review a deal they take part in.", "I2"]
+          ],
+          "alt": "Your decision: a reason shown to the lead, an internal note never shown to the lead, and Approve, Ask for changes or Refuse.",
+          "wells": [1, 3]
+        }
+      ]
+    },
+    {
+      "id": "invite",
+      "nav": "Invite",
+      "title": "Invite investors on their own terms",
+      "path": "In the [[Lead (Bulma Briefs)]] view, open [[Senzu Labs round]] and go to [[Links]]; then switch to the [[Investor (Son Goku)]] view.",
+      "scenes": [
+        {
+          "id": "C1",
+          "title": "A link for each set of terms",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 4, 7, 8, 9, 10],
+          "focus": {
+            "row": 7
+          },
+          "covers": {
+            "7": "C1",
+            "0": "C4",
+            "10": "C8"
+          },
+          "copy": [
+            [
+              "Going live makes a default-carry link and, where the operator allows, a no-carry link; New terms adds a link with its own carry, cash fee and reason.",
+              "C2 C3"
+            ],
+            ["Invite by email sends no deal details.", "C6"],
+            ["First, the lead confirms whom they may invite.", "C5"]
+          ],
+          "alt": "Links, 3 of 500 in use: No carry, no fee, carry 0.00%; Default carry, no fee, carry 20.00%; Senzu lead fee, carry 20.00%, 2.00% added on top of the commitment, 4 invited, 4 committed. People invited by country are reminders only."
+        },
+        {
+          "id": "F1",
+          "title": "An invitation shows nothing of the deal",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 3, 8],
+          "focus": {
+            "row": 0
+          },
+          "covers": {
+            "0": "F1"
+          },
+          "copy": [
+            ["The invitation shows a reference and the steps, and the deal appears only after an account and the eligibility steps.", "F1 F4"],
+            ["Those are a statement, an assessment and the risk warning, as the operator's rules set.", "F5 F6 F7"]
+          ],
+          "alt": "You have been invited: invitation reference TKW7E6; the details are shown once you have an account and have completed a few checks; 8 steps in all, roughly 35 minutes, then up to 2 days for the operator's checks."
+        }
+      ]
+    },
+    {
+      "id": "invest",
+      "nav": "Invest",
+      "title": "See the terms, then the exact amount",
+      "path": "In the [[Investor (Son Goku)]] view, open [[Senzu Labs round]], then [[Show what I would pay]].",
+      "scenes": [
+        {
+          "id": "G2",
+          "title": "The terms on your own link",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+          "focus": {
+            "row": 7
+          },
+          "covers": {
+            "0": "G2",
+            "6": "G1"
+          },
+          "copy": [
+            ["Each investor sees the key terms with the carry and lead fee of their own link.", "G1 G2"],
+            ["A company or trust can invest too, with a refund account in its own name; Ask the lead sends a question.", "G9 G10 G8"]
+          ],
+          "alt": "Key terms: equity, pre-money valuation £4,000,000.00, allocation £250,000.00, minimum commitment £1,000.00, target close 2027-01-26, the lead votes; carry on your terms 20.00%, lead fee 2.00% added on top of the commitment; platform fee 5.00%, at least £500.00, at most £25,000.00, paid by the lead."
+        },
+        {
+          "id": "G4",
+          "title": "What you would pay, to the penny",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 3, 4, 5, 6, 7, 12],
+          "focus": {
+            "row": 5
+          },
+          "covers": {
+            "5": "G4",
+            "3": "G3"
+          },
+          "copy": [
+            ["Show what I would pay works out the commitment and the lead fee; only the total to pay is exact.", "G4 G3"],
+            [
+              "Each commitment has its own payment reference. The amount can change while the deal is live, but paying more needs your agreement again.",
+              "G5 G6"
+            ]
+          ],
+          "alt": "Invest £10,000.00: investment part £10,000.00, lead fee £200.00, total commitment £10,200.00; this is the total you commit to; the platform fee is not taken from investors in this deal; Commit £10,200.00."
+        }
+      ]
+    },
+    {
+      "id": "pay",
+      "nav": "Pay",
+      "title": "Pay using the operator's account details",
+      "path": "In the [[Investor (Son Goku)]] view, open [[Senzu Labs round]], then [[Payment details]].",
+      "scenes": [
+        {
+          "id": "H5",
+          "title": "One amount, one reference",
+          "head": {
+            "extracted": true
+          },
+          "rows": [8, 9, 10, 11, 12, 13, 14, 15, 26, 27, 28, 29, 30, 33],
+          "focus": {
+            "row": 11
+          },
+          "covers": {
+            "8": "H5",
+            "26": "H7",
+            "33": "H8"
+          },
+          "copy": [
+            ["Payment details show the amount still to pay, how it is made up and the payment reference, for the account the operator set up.", "H5 H6"],
+            ["I have paid tells the lead; the operator records the money when it arrives.", "H8"],
+            ["A wrong reference can be reported here.", "H9"]
+          ],
+          "alt": "Still to pay £10,200.00: amount to pay in total £10,200.00, received so far £0.00, payment reference BU-U69KBJ; made up of investment £10,000.00 and lead fee £200.00; the software does not receive money; type the details from this page, pay from the investor's own account in GBP; I have paid."
+        }
+      ]
+    },
+    {
+      "id": "follow",
+      "nav": "Follow",
+      "title": "Follow every investor",
+      "path": "In the [[Lead (Bulma Briefs)]] view, open [[Senzu Labs round]] and go to [[Investor list]].",
+      "scenes": [
+        {
+          "id": "D1",
+          "title": "Who is waiting on whom",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 5, 6, 11, 12, 14, 15, 31, 32, 34, 35],
+          "focus": {
+            "row": 34
+          },
+          "covers": {
+            "0": "D2",
+            "14": "D1"
+          },
+          "copy": [
+            ["Each investor shows their step, who it waits on and for how many days, under the deal's money.", "D1 D2 C9"],
+            ["Actions for each person cover email, removal, a withdrawal, a new amount or new terms.", "D4 D5 D6 D7 D8 D9"]
+          ],
+          "alt": "Investor list: committed £55,000.00, received £15,300.00, lead fees £300.00, usable for the deal £15,000.00. Son Goku to pay, waiting on the investor, 1 day at this step; Krillin verifying, waiting on a reviewer, 2 days.",
+          "more": true
+        },
+        {
+          "id": "D11",
+          "title": "Write to a group",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 18],
+          "focus": {
+            "row": 7
+          },
+          "covers": {
+            "0": "D11",
+            "16": "D12"
+          },
+          "copy": [
+            ["Choose recipients by status, who they are waiting on and whether they have committed, or write to a single person.", "D11"],
+            ["Where approval is needed an approver signs it off first, and messages sent through the site are kept here.", "D12"]
+          ],
+          "alt": "Messages to investors: write to a group by status, waiting on and committed; 4 people in this group; still to do a step: Son Goku, Yamcha; Save the message; messages sent through this site: none yet."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "nav": "Close",
+      "title": "Prepare to close or cancel a deal",
+      "path": "In the [[Lead (Bulma Briefs)]] view, open [[Senzu Labs round]] and go to [[Closing and cancelling]].",
+      "scenes": [
+        {
+          "id": "E6",
+          "title": "What is still missing before closing",
+          "head": {
+            "extracted": true
+          },
+          "rows": [1, 2, 3, 4, 5, 7, 8, 9, 10, 11],
+          "focus": {
+            "row": 8
+          },
+          "covers": {
+            "1": "E6",
+            "8": "E7",
+            "11": "E8"
+          },
+          "copy": [
+            ["Closing lists what is still missing before the lead can ask to close; asking stops new commitments.", "E6 E7"],
+            ["The closing task list and final amounts come in a later version.", "E9"],
+            ["A cancellation, once a reviewer confirms it, ends every commitment.", "E8"]
+          ],
+          "alt": "Closing: committed so far £55,000.00, SPV allocation £250,000.00, received £15,300.00, lead fees £300.00, estimated investment before the platform fee £15,000.00; before asking to close, the company has not confirmed the deal and the lead has not passed identity checks; Ask to cancel the deal."
+        }
+      ]
+    },
+    {
+      "id": "operator",
+      "nav": "Operator",
+      "title": "The operator reviews identity checks",
+      "path": "In the reviewer view, open [[Identity checks waiting]].",
+      "scenes": [
+        {
+          "id": "I4",
+          "title": "Open an identity check for review",
+          "head": {
+            "extracted": true
+          },
+          "rows": [0],
+          "focus": {
+            "row": 0
+          },
+          "covers": {
+            "0": "I4"
+          },
+          "copy": [
+            ["Before signing, each person must pass an identity check.", "H3"],
+            [
+              "The operator's reviewer opens the case and passes it, sends it back or refuses it for good; a provider's result alone cannot refuse anyone.",
+              "I4 H1"
+            ]
+          ],
+          "alt": "Identity checks waiting: Krillin, individual, for Krillin; Open the case."
+        }
+      ]
+    }
+  ]
+}

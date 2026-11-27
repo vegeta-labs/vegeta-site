@@ -1,8 +1,41 @@
 # Goten — Deal Calculations — release notes
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/RELEASE_NOTES.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/RELEASE_NOTES.md
 
 Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it.
+
+## v1.5.1 (2026-11-26): Fields no longer zoom the page on an iPhone, and the new drop-down menus match the others
+
+From the first check on a real iPhone (Safari). On a touch screen, every field and drop-down menu now uses text of at least 16 pixels, so tapping a field no longer makes iOS zoom the page and leave it zoomed with the figures cut off at the right (R-X-04; E2E-07 in `e2e/phone.spec.ts`). The drop-down menus added in v1.5.0 (instrument, who pays the platform fee, own fee mode, refund only) now have the same height and arrow spacing as the other menus. Every figure on the phone matched the expected sample results.
+
+Calculations, rounding, import and export formats and saved data are unchanged.
+
+Counts at release: 551 unit tests, 272 of 272 due test-plan cases, 41 end-to-end tests covering 14 of 14 planned end-to-end cases (one new phone test), no mutant near the changed lines (style and class changes only; the full run of 336 was at v1.5.0), the Python oracle's self-check 282 of 282.
+
+## v1.5.0 (2026-11-26): Each investor can have their own fee and carry, with a pro-rata platform fee and an allocation hand-off file
+
+Requirements v0.9 (decision 16). Everything below is optional: a deal that uses none of it gives the same results, exports and saved figures as v1.4.2 (checked by keeping the v1.4.2 engines in the tests and comparing 3,000 random deals field by field).
+
+- **Own fee terms per investor** (R-REC-13, C-ALL-0): an investor can have their own fee mode (on top of the investment or deducted from the wire) and one fee (a rate or a fixed amount), in place of the deal's investor-paid fees. Import them with the optional `own_fee_mode`, `own_fee_rate` and `own_fee_fixed` columns, or set them on the investor table. While a fee payer change is active, the people it covers cannot have their terms changed (reverse it first); terms added by import void it. Tests TC-J-02 to TC-J-07, TC-J-16 to TC-J-19, TC-J-29.
+- **Pro-rata platform fee** (R-ALL-13, C-ALL-9b): a rate on the total invested, with an optional minimum, maximum and add-on rate above a threshold, paid by the investors (split pro rata by largest remainder), the lead or the company. Cash due no longer includes it. Tests TC-J-08 to TC-J-14, TC-J-17, TC-J-50, TC-J-53, TC-J-55, TC-J-57, TC-J-58, TC-J-60, TC-J-61.
+- **Refunds and refund-only flags** (R-REC-14, C-REC-4, C-REC-9): an optional `refunded` column makes received amounts net of refunds; `refund_only` (`withdrawn` or `closed`) moves an investor's money to refunds and out of the allocation. Tests TC-J-20 to TC-J-28, TC-J-32.
+- **Instruments** (R-DEAL-06, C-ALL-5): convertible and fund-unit rounds have no share price and no share counts; exports leave the share cells blank. Tests TC-J-15, TC-J-30.
+- **Allocation hand-off file** (R-ALL-14, C-ALL-12): import a JSON request with every allocation input and export the result for the same request; any input edited after the import disables the export. Format `docs/formats/allocation-handoff-v1.md` (canonical JSON with a SHA-256 hash, shared test vectors). Nothing is sent anywhere. Tests TC-J-41 to TC-J-49, TC-J-51, TC-J-52, TC-J-56, TC-J-59, E2E-13.
+- **Personal carry at exit** (R-DIS-08, R-DIS-09, C-DIS-8, C-DIS-9): each holding can carry its own rate; when rates differ, proceeds are split by amount invested and each investor's waterfall is worked out on their share, shown in a per-investor table. Carry can be split between named payees, with a payees CSV. Tests TC-J-33 to TC-J-40, TC-J-54, TC-J-62, E2E-12.
+
+Saved data moves to schema 3; data saved by v1.4.x is read and converted with the new fields empty. Names can now be up to 256 characters. The reconciliation refund list names a refund-only flag as "Refund only".
+
+Counts at release: 551 unit tests, 272 of 272 due test-plan cases, 40 end-to-end tests covering 14 of 14 planned end-to-end cases, the Python oracle's self-check 282 of 282 and 3,000 generated cases agreeing with it, 337 of 337 mutants caught (the full run of 336 on the merged milestone, and 1 added with a release check fix).
+
+## v1.4.2 (2026-11-24): The sample deal is no longer labelled as fictional in the app
+
+The app no longer says "fictional" on its own pages. The sample deal is now called **Northwind Robotics — Seed SPV** (it was "… (fictional sample)"), so chase messages and confirmations copied from the sample carry the shorter name. Loading the sample logs "sample deal". The first-visit card, the empty reconciliation page and the guided tour now say "sample" where they said "fictional". The disclaimer (not investment, tax or legal advice; not affiliated with any platform) is unchanged.
+
+Calculations, rounding, import and export formats and saved data are unchanged. A sample saved by an earlier version keeps its old name until the sample is loaded again.
+
+For contributors: `node scripts/mutation-check.mjs --since=main` runs only the mutants a change can affect (new mutants and those within 3 lines of a changed line), and `npm run mutation:patterns` checks in seconds that every mutant's pattern occurs exactly once (it runs in CI). Stopping a run puts the source back.
+
+Counts at release: 466 unit tests, 210 of 210 due test-plan cases, 37 end-to-end tests covering 12 of 12 planned end-to-end cases, 4 of 4 affected mutants caught (the full mutation run is weekly), the Python oracle's self-check 180 of 180.
 
 ## v1.4.1 (2026-11-20): The reconciliation hint now says a receipt may have no suggested investor
 

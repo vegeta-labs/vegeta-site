@@ -1,10 +1,10 @@
 # Security model
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/security-model.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/security-model.md
 
 This page describes what Bulma does to limit harm, and where its limits are. It does not replace your own security assessment, and nothing in it means an instance meets the operator's legal duties or is safe by itself.
 
-To report a vulnerability, see [SECURITY.md](https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/SECURITY.md). Which controls are the software's and which are yours is in [who does what](https://vegeta-ops.vercel.app/docs/bulma/build/responsibilities.md).
+To report a vulnerability, see [SECURITY.md](https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/SECURITY.md). Which controls are the software's and which are yours is in [who does what](https://vegeta-ops.vercel.app/docs/bulma/build/responsibilities.md).
 
 ## What it never does
 
@@ -23,7 +23,7 @@ To report a vulnerability, see [SECURITY.md](https://github.com/vegeta-labs/bulm
 | Ending sessions | Changing the password or turning on two-step sign-in raises the account's credential version, which ends older sessions. Disabling an account deletes its sessions. Links issued before a credential change stop working. |
 | CSRF | Every request that is not a `GET` must carry a token derived from the session, compared in constant time. |
 
-Behind a reverse proxy, set `TRUST_PROXY` to the proxy's address. Without it every visitor shares one address, and ten failed sign-ins lock out everyone: see [Try it](https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md#try-it).
+Behind a reverse proxy, set `TRUST_PROXY` to the proxy's address. Without it every visitor shares one address, and ten failed sign-ins lock out everyone: see [Try it](https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/README.md#try-it).
 
 ## Roles and access
 

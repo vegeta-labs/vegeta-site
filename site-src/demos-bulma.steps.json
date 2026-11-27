@@ -1,0 +1,146 @@
+{
+  "about": "Demos page, Bulma scenes (Bulma feature list v2). Drawn only from the locked static demo the site serves at /bulma/demo/ (bulma-demo.lock). Each scene opens a fresh browser at the package's clock in Europe/London, opens its page by name (BULMA_DEMO.pages), runs its steps, then serialises its panel: a heading and what follows it up to the next heading of the same or a higher level. Demo-only and sandbox wording is never drawn: the scenes file leaves those lines out. Read by scripts/demos-extract-bulma.mjs. Each scene names its page by number and by what the pack says it shows (pages[].what); the extractor refuses a mismatch, so a renumbered export cannot read the wrong page.",
+  "timezone": "Europe/London",
+  "scenes": {
+    "B1": {
+      "page": "1",
+      "what": "Kame House Ltd with the reviewer",
+      "panel": [
+        {
+          "from": "Kame House round"
+        }
+      ],
+      "head": "Kame House round"
+    },
+    "A4": {
+      "page": "3",
+      "what": "Dragon Radar Ltd draft",
+      "panel": [
+        {
+          "selector": "main section.card nav.sections"
+        },
+        {
+          "from": "Basics",
+          "level": 2
+        }
+      ],
+      "head": "Basics"
+    },
+    "B5": {
+      "page": "1",
+      "what": "Kame House Ltd with the reviewer",
+      "panel": [
+        {
+          "from": "Company check"
+        }
+      ],
+      "head": "Company check"
+    },
+    "I1": {
+      "page": "2",
+      "what": "Kame House Ltd review",
+      "panel": [
+        {
+          "from": "Your decision"
+        }
+      ],
+      "head": "Your decision"
+    },
+    "C1": {
+      "page": "4",
+      "what": "Senzu Labs live: investors, links",
+      "panel": [
+        {
+          "from": "Links"
+        }
+      ],
+      "head": "Links"
+    },
+    "E6": {
+      "page": "4",
+      "what": "Senzu Labs live: investors, links",
+      "panel": [
+        {
+          "from": "Closing and cancelling"
+        }
+      ],
+      "head": "Closing and cancelling"
+    },
+    "D1": {
+      "page": "4",
+      "what": "Senzu Labs live: investors, links",
+      "panel": [
+        {
+          "from": "Investor list"
+        }
+      ],
+      "head": "Investor list"
+    },
+    "D11": {
+      "page": "4",
+      "what": "Senzu Labs live: investors, links",
+      "panel": [
+        {
+          "from": "Messages to investors"
+        }
+      ],
+      "head": "Messages to investors"
+    },
+    "F1": {
+      "page": "5",
+      "what": "the invitation",
+      "panel": [
+        {
+          "from": "You have been invited",
+          "level": 1
+        }
+      ],
+      "head": "You have been invited"
+    },
+    "G2": {
+      "page": "6",
+      "what": "Senzu Labs as Goku sees it: key terms",
+      "panel": [
+        {
+          "from": "Key terms"
+        }
+      ],
+      "head": "Key terms"
+    },
+    "G4": {
+      "page": "7",
+      "what": "Senzu Labs as Goku sees it: Show what I would pay",
+      "steps": [
+        ["fill", "Amount (GBP)", "10000"],
+        ["click", "Show what I would pay"],
+        ["wait", "Commit £10,200.00"]
+      ],
+      "panel": [
+        {
+          "from": "Invest"
+        }
+      ],
+      "head": "Invest"
+    },
+    "H5": {
+      "page": "8",
+      "what": "the payment step",
+      "panel": [
+        {
+          "from": "Son Goku To pay"
+        }
+      ],
+      "head": "Son Goku To pay"
+    },
+    "I4": {
+      "page": "home-reviewer",
+      "what": "reviewer home",
+      "panel": [
+        {
+          "from": "Identity checks waiting"
+        }
+      ],
+      "head": "Identity checks waiting"
+    }
+  }
+}

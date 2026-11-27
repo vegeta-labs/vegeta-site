@@ -1,6 +1,6 @@
 {
   "film": "Vegeta Cut 17 (wide web cut: same words; design repo d03eec0, line 4 re-take)",
-  "goten": "91879ea4a952dff0bc3b297ee346bb645f81aa83",
+  "goten": "ad7873e61594d4b77b9974d3076a0f2cc9b7057d",
   "trunks": "f8a0d5530947606ecf8fc1a99305490fe63fb85a",
   "claims": [
     {
@@ -96,7 +96,7 @@
     {
       "says": "Film figures computed by the pinned Goten engines",
       "module": "goten",
-      "evidence": "vegeta-labs/vegeta-design@1349f3a films/cut_17/data/cut17_fixture.json:3 (gotenRef 91879ea = goten.ref)"
+      "evidence": "vegeta-labs/vegeta-design@1349f3a films/cut_17/data/cut17_fixture.json:3 (gotenRef 91879ea; re-run on v1.5.0 e113c56 with the same inputs on 2026-11-26: every figure identical, only a new empty platformFee field)"
     },
     {
       "says": "Links each email to the deal, the investor and the contact in your directory (the ledger: see the next claim)",
@@ -164,5 +164,5 @@
       "evidence": "vendor/trunks/src/web/CaseE3.tsx:517"
     }
   ],
-  "bulma": "e0166a67c51edebce77f91d0d53c208b292cdebb"
+  "bulma": "0eac4d1c8e969aa7bf876540873df26b7b6c5379"
 }

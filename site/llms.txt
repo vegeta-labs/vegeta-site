@@ -2,14 +2,14 @@
 
 > SPV and syndicate operations software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox.
 
-## Bulma v0.1.0: Use it
+## Bulma v0.2.0: Use it
 
 - [Overview](https://vegeta-ops.vercel.app/docs/bulma.md)
 - [Walk the sandbox](https://vegeta-ops.vercel.app/docs/bulma/use/getting-started.md)
 - [Lead guide](https://vegeta-ops.vercel.app/docs/bulma/use/lead-guide.md)
 - [Investor guide](https://vegeta-ops.vercel.app/docs/bulma/use/investor-guide.md)
 
-## Bulma v0.1.0: Run and build
+## Bulma v0.2.0: Run and build
 
 - [Overview](https://vegeta-ops.vercel.app/docs/bulma/build.md)
 - [Run locally and deploy](https://vegeta-ops.vercel.app/docs/bulma/build/run-and-deploy.md)
@@ -23,11 +23,11 @@
 - [Verification](https://vegeta-ops.vercel.app/docs/bulma/build/verification.md)
 - [Security model](https://vegeta-ops.vercel.app/docs/bulma/build/security-model.md)
 
-## Bulma v0.1.0: Releases
+## Bulma v0.2.0: Releases
 
 - [Release notes](https://vegeta-ops.vercel.app/docs/bulma/release-notes.md)
 
-## Goten v1.4.1: Use it
+## Goten v1.5.1: Use it
 
 - [Overview](https://vegeta-ops.vercel.app/docs/goten.md)
 - [Walk the sample deal](https://vegeta-ops.vercel.app/docs/goten/use/getting-started.md)
@@ -39,7 +39,7 @@
 - [Exports and records](https://vegeta-ops.vercel.app/docs/goten/use/exports-and-records.md)
 - [How the numbers work](https://vegeta-ops.vercel.app/docs/goten/use/how-the-numbers-work.md)
 
-## Goten v1.4.1: Run and build
+## Goten v1.5.1: Run and build
 
 - [Overview](https://vegeta-ops.vercel.app/docs/goten/build.md)
 - [Run locally and deploy](https://vegeta-ops.vercel.app/docs/goten/build/run-and-deploy.md)
@@ -47,7 +47,7 @@
 - [Architecture](https://vegeta-ops.vercel.app/docs/goten/build/architecture.md)
 - [Verification](https://vegeta-ops.vercel.app/docs/goten/build/verification.md)
 
-## Goten v1.4.1: Releases
+## Goten v1.5.1: Releases
 
 - [Release notes](https://vegeta-ops.vercel.app/docs/goten/release-notes.md)
 

@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -150,7 +152,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
           <h1 class="docs__title">Walk the sandbox</h1>
-          <p class="docs__version">v0.1.0</p>
+          <p class="docs__version">v0.2.0</p>
           <div class="docs__body">
             <p>
               Take one fictional deal from a new instance to payment instructions, playing the operator, the lead and an investor in turn. Everything stays in
@@ -160,7 +162,7 @@
             <ul>
               <li>
                 A running instance in the sandbox, the mode every new instance starts in. To start one, follow
-                <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md#try-it">Try it</a>. On the computer that
+                <a href="https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/README.md#try-it">Try it</a>. On the computer that
                 runs it, the address is http://127.0.0.1:8080.
               </li>
               <li>The first admin&#39;s email and the password in <code>secrets/initial_admin_password</code>.</li>
@@ -412,6 +414,23 @@
                 <a href="/docs/bulma/use/investor-guide/">Investor guide</a>.
               </li>
             </ul>
+            <h2 id="a-ready-made-demo-deal">
+              A ready-made demo deal<a class="docs__anchor" href="#a-ready-made-demo-deal" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              To look around without doing every step yourself, add the demo deal. Sign in as the admin and, on <strong>Home</strong>, click
+              <strong>Add demo deal</strong> under <strong>Demo deal</strong>. After a few seconds the page lists a fictional lead and four investors with their
+              emails and passwords. <strong>These passwords are shown only now</strong>: copy them before you leave the page.
+            </p>
+            <p>
+              Sign in as any of them. The lead has three deals: one live, one waiting for review and one draft. On the live deal the four investors are at
+              different steps: one still verifying, one to sign, one to pay and one funded. Everything in it is made up and uses sample legal text.
+            </p>
+            <p>
+              The demo deal exists only in the sandbox, and it can be added once. When the instance switches to the real mode, its accounts stop working and its
+              deals and people are hidden. To add it when the app starts instead, see <code>BULMA_DEMO_DEAL</code> in
+              <a href="/docs/bulma/build/configuration/#the-app">Configuration</a>.
+            </p>
             <h2 id="when-it-goes-wrong">When it goes wrong<a class="docs__anchor" href="#when-it-goes-wrong" aria-label="Link to this section">#</a></h2>
             <div class="docs__table" tabindex="0">
               <table>
@@ -485,13 +504,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

@@ -1,6 +1,6 @@
 # Run locally and deploy your own copy
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/run-and-deploy.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/run-and-deploy.md
 
 This page starts a Bulma instance with Docker Compose, sets up a machine for development, and explains how to deploy and check your own copy. A new instance is always a sandbox, with fictional data and no email leaving it.
 

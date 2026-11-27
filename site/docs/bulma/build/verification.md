@@ -1,6 +1,6 @@
 # Verification
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/verification.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/verification.md
 
 Bulma is checked in several independent ways: unit and database tests, browser tests, an independent Python oracle for the money rules, deliberate code breakages, and a set of source checks. This page says what each one does and how to run it.
 

@@ -1,6 +1,6 @@
 # Prepare and import your CSV files
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/import-csv.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/use/import-csv.md
 
 Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step.
 
@@ -45,14 +45,20 @@ Blank rows are skipped. Columns Goten does not know are ignored and named in the
 
 Required columns are in bold.
 
-| Column        | Meaning                                                                                                                                                                                                        |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| investor_id   | Your ID for the investor. Filled in for you if blank, with a new ID at every import. Keep your own IDs if you may import the list again.                                                                       |
-| **name**      | The investor's name.                                                                                                                                                                                           |
-| email         | Used in the chase list. Must be a valid address if given.                                                                                                                                                      |
-| **reference** | The payment reference you give the investor. 1 to 3 parts of English letters and digits, separated by a space or one of - / \_ . and 3 to 20 letters and digits in total. Must be different for each investor. |
-| **cash_due**  | Everything the investor should wire, **including any fees charged to them**.                                                                                                                                   |
-| scheme        | none, SEIS or EIS.                                                                                                                                                                                             |
+| Column        | Meaning                                                                                                                                                                                                                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| investor_id   | Your ID for the investor. Filled in for you if blank, with a new ID at every import. Keep your own IDs if you may import the list again.                                                                                                                                                         |
+| **name**      | The investor's name.                                                                                                                                                                                                                                                                             |
+| email         | Used in the chase list. Must be a valid address if given.                                                                                                                                                                                                                                        |
+| **reference** | The payment reference you give the investor. 1 to 3 parts of English letters and digits, separated by a space or one of - / \_ . and 3 to 20 letters and digits in total. Must be different for each investor.                                                                                   |
+| **cash_due**  | Everything the investor should wire, **including any fees charged to them**, except the pro-rata platform fee, which is taken from the investment at closing.                                                                                                                                    |
+| scheme        | none, SEIS or EIS.                                                                                                                                                                                                                                                                               |
+| own_fee_mode  | Optional. on_top or deducted: this investor's own fee terms replace the deal's investor-paid fees (see [Closing allocation](https://vegeta-ops.vercel.app/docs/goten/use/closing-allocation.md#an-investors-own-fee-terms)). Required if a rate or fixed fee is given.                                                                        |
+| own_fee_rate  | Optional. The investor's own fee as a percentage. Below 100% when deducted.                                                                                                                                                                                                                      |
+| own_fee_fixed | Optional. The investor's own fee as a fixed amount, above 0. Fill in a rate or a fixed fee, not both.                                                                                                                                                                                            |
+| carry         | Optional. The investor's own carry rate at exit, such as 20 or 20%. With a fixed carry rate, blank means the deal's carry and 0 means none; with tiered carry the tier table decides, and every carry must be blank or all the same (see [Personal carry](https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution.md#personal-carry)). |
+| refunded      | Optional. What has already been refunded to the investor, or is on its way. Received amounts use the net figure.                                                                                                                                                                                 |
+| refund_only   | Optional. withdrawn or closed: all of the investor's money goes back and they are not carried into the allocation. See [Reconciliation](https://vegeta-ops.vercel.app/docs/goten/use/reconciliation.md#refunds-already-made-and-refund-only-investors).                                                                                       |
 
 Example, shown as a sheet:
 
@@ -84,16 +90,19 @@ For when you are not coming from reconciliation.
 | **received** | The cash actually received from this investor. |
 | scheme       | none, SEIS or EIS.                             |
 
+It also takes the optional `own_fee_mode`, `own_fee_rate`, `own_fee_fixed` and `carry` columns, with the same meaning as in the investor list.
+
 ### Holdings
 
 For when you are not coming from the allocation.
 
-| Column      | Meaning                                                                                   |
-| ----------- | ----------------------------------------------------------------------------------------- |
-| investor_id | Filled in for you if blank.                                                               |
-| **name**    | The investor's name.                                                                      |
-| **capital** | The amount invested, **excluding fees**. The split between investors follows this figure. |
-| share_price | Optional, the same on every row. Only used to show shares.                                |
+| Column      | Meaning                                                                                                                                                                                                                                                               |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| investor_id | Filled in for you if blank.                                                                                                                                                                                                                                           |
+| **name**    | The investor's name.                                                                                                                                                                                                                                                  |
+| **capital** | The amount invested, **excluding fees**. The split between investors follows this figure.                                                                                                                                                                             |
+| share_price | Optional, the same on every row. Only used to show shares.                                                                                                                                                                                                            |
+| carry       | Optional. The investor's own carry rate. With a fixed carry rate, blank means the deal's carry and 0 means none; with tiered carry the tier table decides, and every carry must be blank or all the same (see [Personal carry](https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution.md#personal-carry)). |
 
 A column called cost, paid or wired is refused unless a capital column is also present, because those can include fees. A holdings file exported from Goten can be imported back unchanged.
 

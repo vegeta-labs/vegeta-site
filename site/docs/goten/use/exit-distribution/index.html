@@ -7,14 +7,14 @@
     <title>Exit distribution | Vegeta</title>
     <meta
       name="description"
-      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor."
+      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit. Each investor can have their own carry rate (see Personal carry); the hurdle, catch-up and years held are the same for the whole deal."
     />
     <meta property="og:site_name" content="Vegeta" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Exit distribution | Vegeta" />
     <meta
       property="og:description"
-      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor."
+      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit. Each investor can have their own carry rate (see Personal carry); the hurdle, catch-up and years held are the same for the whole deal."
     />
     <meta property="og:url" content="https://vegeta-ops.vercel.app/docs/goten/use/exit-distribution/" />
     <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Exit distribution | Vegeta" />
     <meta
       name="twitter:description"
-      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with the same terms for every investor."
+      content="The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit. Each investor can have their own carry rate (see Personal carry); the hurdle, catch-up and years held are the same for the whole deal."
     />
     <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
     <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,11 +150,12 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Exit distribution</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>
-              The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit, with
-              the same terms for every investor.
+              The exit page splits sale proceeds between investors and the lead, and shows each step of the split. It handles one investment and one exit. Each
+              investor can have their own carry rate (see <a href="#personal-carry">Personal carry</a>); the hurdle, catch-up and years held are the same for
+              the whole deal.
             </p>
             <h2 id="the-terms-in-plain-words">
               The terms, in plain words<a class="docs__anchor" href="#the-terms-in-plain-words" aria-label="Link to this section">#</a>
@@ -254,10 +257,41 @@
             </div>
             <p>Carry comes to exactly 20% of the £285,105.00 profit. Each step shows why under <strong>Why</strong>.</p>
             <p>
-              Investors share their total in proportion to the amount each invested. <strong>Per investor</strong> shows the amount invested, shares,
-              <strong>Distribution</strong>, <strong>Profit or loss</strong> and <strong>Multiple</strong>. The multiple is distribution divided by amount
-              invested and does not count entry fees.
+              When everyone has the same carry, investors share their total in proportion to the amount each invested. <strong>Per investor</strong> shows the
+              amount invested, shares, <strong>Distribution</strong>, <strong>Profit or loss</strong> and <strong>Multiple</strong>. The multiple is
+              distribution divided by amount invested and does not count entry fees.
             </p>
+            <h2 id="personal-carry">Personal carry<a class="docs__anchor" href="#personal-carry" aria-label="Link to this section">#</a></h2>
+            <p>
+              Each holding can have its own carry rate, in the holding&#39;s <strong>carry</strong> cell or the <code>carry</code> column of an investor list or
+              holdings file. With a fixed rate, a blank cell means the deal&#39;s <strong>Carry %</strong>, and 0 means no carry for that investor. Carry rates
+              come with each investor from reconciliation through the allocation to the exit.
+            </p>
+            <p>If every holding ends up with the same rate, the split is worked out exactly as before, with that rate. If the rates differ:</p>
+            <ul>
+              <li>The proceeds after exit costs are first split by amount invested.</li>
+              <li>
+                Each investor&#39;s carry is then worked out on their own share, with the deal&#39;s hurdle, catch-up and years held.
+                <strong>Each investor&#39;s own waterfall</strong> shows each one&#39;s <strong>Carry rate</strong>, <strong>Share of proceeds</strong>,
+                <strong>Capital back</strong>, <strong>Hurdle</strong>, <strong>Catch-up to lead</strong>, <strong>Carry</strong> and
+                <strong>To investor</strong>.
+              </li>
+              <li>Multiples can then differ between investors, because each pays carry at their own rate.</li>
+              <li>
+                Tiered carry uses the tier table for everyone. Either leave every holding&#39;s carry blank, or fill in the same rate for all; then the page
+                notes that the tier table is used instead. If some are blank and some filled you see
+                <strong>Fill in every investor&#39;s carry, or none, for tiered carry</strong>, and if the filled rates differ,
+                <strong>Tiered carry needs the same carry for every investor</strong>. Use a fixed rate, or make the rates the same.
+              </li>
+            </ul>
+            <h2 id="carry-payees">Carry payees<a class="docs__anchor" href="#carry-payees" aria-label="Link to this section">#</a></h2>
+            <p>
+              Under <strong>Carry payees</strong>, click <strong>Add payee</strong> to split the carry between named people, each with a
+              <strong>Share (%)</strong>. The shares must add up to 100%. Each payee&#39;s amount is rounded to the penny; any pennies left over go to the
+              largest remainders, and an equal remainder goes to the payee higher in the list. With no list, the lead receives all the carry. When there is
+              carry, each payee&#39;s amount is listed under the waterfall, and <strong>Export carry payees CSV</strong> saves them.
+            </p>
+            <h2 id="losses">Losses<a class="docs__anchor" href="#losses" aria-label="Link to this section">#</a></h2>
             <p>
               If proceeds after costs are less than the amount invested, investors take a loss and there is no carry. A loss is not an error. With £80,000 of
               proceeds in the sample, investors get £75,500.00 between them, 0.75x.
@@ -339,13 +373,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

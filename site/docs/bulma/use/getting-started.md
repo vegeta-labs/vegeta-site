@@ -1,12 +1,12 @@
 # Walk the sandbox
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/use/getting-started.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/use/getting-started.md
 
 Take one fictional deal from a new instance to payment instructions, playing the operator, the lead and an investor in turn. Everything stays in the sandbox: no email leaves, no money moves and the payment details are a fixed fictional account.
 
 ## What you need
 
-- A running instance in the sandbox, the mode every new instance starts in. To start one, follow [Try it](https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md#try-it). On the computer that runs it, the address is http://127.0.0.1:8080.
+- A running instance in the sandbox, the mode every new instance starts in. To start one, follow [Try it](https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/README.md#try-it). On the computer that runs it, the address is http://127.0.0.1:8080.
 - The first admin's email and the password in `secrets/initial_admin_password`.
 - An authenticator app on your phone. Staff roles need two-step sign-in.
 - Three small PDF, PNG or JPEG files of your own for the investor's proof documents, and one PDF for the deal's legal documents. Any content will do: use nothing real.
@@ -121,6 +121,14 @@ Click **I have paid**. The page now says **You said you have paid. The operator 
 - To see what the sandbox would have emailed, sign in as the admin and open **Sandbox outbox** on **Home**.
 - Recording the money that arrives is the operator's work: see [Money](https://vegeta-ops.vercel.app/docs/bulma/build/operator-guide.md#money) in the operator guide.
 - To learn each role properly, go on to the [Lead guide](https://vegeta-ops.vercel.app/docs/bulma/use/lead-guide.md) and the [Investor guide](https://vegeta-ops.vercel.app/docs/bulma/use/investor-guide.md).
+
+## A ready-made demo deal
+
+To look around without doing every step yourself, add the demo deal. Sign in as the admin and, on **Home**, click **Add demo deal** under **Demo deal**. After a few seconds the page lists a fictional lead and four investors with their emails and passwords. **These passwords are shown only now**: copy them before you leave the page.
+
+Sign in as any of them. The lead has three deals: one live, one waiting for review and one draft. On the live deal the four investors are at different steps: one still verifying, one to sign, one to pay and one funded. Everything in it is made up and uses sample legal text.
+
+The demo deal exists only in the sandbox, and it can be added once. When the instance switches to the real mode, its accounts stop working and its deals and people are hidden. To add it when the app starts instead, see `BULMA_DEMO_DEAL` in [Configuration](https://vegeta-ops.vercel.app/docs/bulma/build/configuration.md#the-app).
 
 ## When it goes wrong
 

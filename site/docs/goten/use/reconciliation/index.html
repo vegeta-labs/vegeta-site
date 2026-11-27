@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,7 +150,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Reconciliation: match receipts and chase the rest</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>
               Reconciliation compares your bank statement with your investor list, so you know who has paid, who is short and which receipts are not part of the
@@ -261,14 +263,46 @@
               </table>
             </div>
             <p>
-              Investor statuses: <strong>Paid in full</strong>, <strong>Underpaid</strong>, <strong>Overpaid</strong>, <strong>Not paid</strong> and
-              <strong>Withdrawn</strong>.
+              Investor statuses: <strong>Paid in full</strong>, <strong>Underpaid</strong>, <strong>Overpaid</strong>, <strong>Not paid</strong>,
+              <strong>Withdrawn</strong>, <strong>Withdrawn (imported)</strong>, <strong>Closed — refund only</strong> and <strong>Check refunds</strong>.
             </p>
+            <h2 id="refunds-already-made-and-refund-only-investors">
+              Refunds already made, and refund-only investors<a
+                class="docs__anchor"
+                href="#refunds-already-made-and-refund-only-investors"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              If you have already refunded part of someone&#39;s money, or a refund is on its way, put the total in the investor list&#39;s
+              <code>refunded</code> column (or the <strong>Refunded</strong> cell). Received amounts, the chase list and the hand-off then use the net amount:
+              what was booked less what was refunded. The bank lines themselves do not change. If the refunds are more than was booked, the investor shows
+              <strong>Check refunds</strong>, is not chased, and the hand-off is refused until you correct it.
+            </p>
+            <p>
+              The <code>refund_only</code> column marks someone whose money all goes back: <strong>withdrawn</strong> (they pulled out) or
+              <strong>closed</strong> (another final state, for example failed identity checks). Their receipts are still matched, but they are not chased or
+              carried into the allocation, and all their net money is listed under <strong>To refund</strong>. The status shows
+              <strong>Withdrawn (imported)</strong> or <strong>Closed — refund only</strong>, and <strong>Set by the refund-only flag</strong> replaces the
+              withdraw button. No consent tick is needed: the system that set the flag records why.
+            </p>
+            <p>
+              Clearing the flag brings them back as before, with two exceptions. If you had marked them withdrawn by hand before the flag was set, that
+              withdrawal applies again: click <strong>Undo withdrawal</strong> if they are in. And if a fee payer change was active and covered them, setting
+              the flag voided their adjustment for good: after clearing it, their line shows as not covered and the hand-off waits until you
+              <strong>Reverse</strong> the change and redo it.
+            </p>
+            <p>To see and edit these columns on the page, tick <strong>Show own terms, refunds and refund-only flags</strong>.</p>
             <p>Summary figures:</p>
             <ul>
               <li><strong>Receipts in scope</strong> counts money in up to the as-of date.</li>
               <li><strong>Booked to investors</strong> plus <strong>Not booked</strong> always equals <strong>Receipts in scope</strong>.</li>
-              <li><strong>To refund</strong> lists over-payments and everything paid by withdrawn investors.</li>
+              <li>
+                <strong>To refund</strong> lists over-payments, everything paid by withdrawn investors, and everything paid by anyone flagged refund only, each
+                with its reason.
+              </li>
+              <li><strong>Withdrawn or refund only</strong> counts the investors whose money all goes back.</li>
             </ul>
             <h2 id="the-hand-off">The hand-off<a class="docs__anchor" href="#the-hand-off" aria-label="Link to this section">#</a></h2>
             <p>
@@ -371,13 +405,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

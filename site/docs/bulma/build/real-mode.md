@@ -1,6 +1,6 @@
 # What the real mode asks for
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/real-mode.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/real-mode.md
 
 The instance stays a sandbox until all of this is in place. The switch page lists what is still missing. A second admin approves the switch, and there is no way back to the sandbox. Everything done in the sandbox stops counting at that moment: statements, assessments, warnings, waiting periods, identity checks, investing entities and their files. People without a role confirm their address again. The rows stay until retention removes them. This software does not take on the operator's regulatory duties: get your own legal advice first.
 

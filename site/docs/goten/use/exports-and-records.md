@@ -1,6 +1,6 @@
 # Exports, the activity log and where your data is stored
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/exports-and-records.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/use/exports-and-records.md
 
 ## Exports
 
@@ -12,22 +12,25 @@ Each button saves a CSV file to your computer. Nothing is uploaded. File names e
 | **Export chase list CSV**   | 1. Reconciliation    | chase_list   | Each investor who is short or unpaid, with the chase text.           | There are input errors.                                                              |
 | **Export allocation CSV**   | 2. Allocation        | allocation   | One row per investor: invested, shares, each fee, refund, status.    | There are input errors or blockers, a refund is flagged, or the page is out of date. |
 | **Export holdings CSV**     | 3. Exit distribution | holdings     | Each holding. It can be imported again unchanged.                    | The holdings table has an error, or the page is out of date.                         |
-| **Export distribution CSV** | 3. Exit distribution | distribution | One row per investor: distribution, profit, multiple.                | There are input errors or a shortfall, or the page is out of date.                   |
+| **Export distribution CSV** | 3. Exit distribution | distribution | One row per investor: distribution, profit, multiple, carry rate.    | There are input errors or a shortfall, or the page is out of date.                   |
+| **Export carry payees CSV** | 3. Exit distribution | carry_payees | Each carry payee: share and amount.                                  | The same as the distribution export.                                                 |
 | **Export activity log CSV** | Activity log         | activity_log | Every log entry, oldest first.                                       | The log is empty.                                                                    |
 
 **Copy closing confirmation** copies the summary for the lead, and waits for the same things as the allocation export.
 
+The allocation export includes each investor's own fee terms, carry rate and platform fee share, and the holdings and distribution exports the carry rate; for a convertible or fund units the share cells are blank. **Export result** on the allocation page saves a JSON result file for an imported hand-off request (see [Closing allocation](https://vegeta-ops.vercel.app/docs/goten/use/closing-allocation.md#the-allocation-hand-off-file)); it is not a CSV and cannot be imported back.
+
 All of these except **Export activity log CSV** also wait while you are part-way through editing a cell: press Enter or click out of the field first.
 
-A page marked **out of date** holds back its copy and exports until you hand off again: **Copy closing confirmation** and **Export allocation CSV** on the allocation page, **Export holdings CSV** and **Export distribution CSV** on the exit page.
+A page marked **out of date** holds back its copy and exports until you hand off again: **Copy closing confirmation** and **Export allocation CSV** on the allocation page, **Export holdings CSV**, **Export distribution CSV** and **Export carry payees CSV** on the exit page.
 
 Every export has a currency column as its last column. In text columns, a cell starting with = + - or @ is saved with a leading apostrophe, so that a spreadsheet does not treat it as a formula. Goten removes the apostrophe if you import the file again.
 
-Only the investor list, bank statement, allocation investors and holdings can be imported. There is no export that restores a whole deal, and decisions, withdrawals, fee payer changes and the activity log cannot be imported.
+Only the investor list, bank statement, allocation investors and holdings can be imported, plus an allocation hand-off request on the allocation page. There is no export that restores a whole deal, and decisions, withdrawals, fee payer changes and the activity log cannot be imported.
 
 ## The activity log
 
-**Activity log** lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a receipt, voided decisions, hand-offs, copied chase messages and queries, withdrawals, fee payer changes, loading the sample, and exports of the log itself. Not logged: importing allocation investors or holdings, the other five exports, **Copy closing confirmation**, and editing a table cell, unless the edit voids a decision.
+**Activity log** lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a receipt, voided decisions, hand-offs, copied chase messages and queries, withdrawals, fee payer changes, changes to who pays the pro-rata platform fee, hand-off request imports and result exports, loading the sample, and exports of the log itself. Not logged: importing allocation investors or holdings, the other six exports, **Copy closing confirmation**, and editing a table cell, unless the edit voids a decision.
 
 Set **Your initials** in **Deal settings** to have them added to each entry.
 
@@ -46,7 +49,7 @@ That has practical effects:
 - Anyone who can use this browser profile can see it. On a shared computer, clear the data when you finish.
 - Goten holds one deal at a time. **Load sample deal** replaces it, after asking if there is anything to lose.
 - A private window can lose the data when it closes.
-- Each web address keeps its own data. Since v1.4.0 Goten saves your data differently, so a deal saved by v1.3.1 or earlier, or at the app's earlier address, does not appear: the app opens empty, with the theme following your device and the tour at its start. If you run your own copy, export what you need before you upgrade it.
+- Each web address keeps its own data. Since v1.4.0 Goten saves your data differently, so a deal saved by v1.3.1 or earlier, or at the app's earlier address, does not appear: the app opens empty, with the theme following your device and the tour at its start. A deal saved by v1.4.x opens in v1.5.0 with the new fields empty; v1.4.x cannot open a deal saved by v1.5.0. If you run your own copy, export what you need before you upgrade it.
 
 If the browser cannot save, Goten tells you at the top of the page:
 

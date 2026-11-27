@@ -1,0 +1,5 @@
+name,entity,status,waiting_on,days_at_step,currency,commitment,received,lead_fee,carry_percent
+Son Goku,Son Goku,To pay,investor,1,GBP,10000.00,0.00,0.00,20.00
+Yamcha,Yamcha,To sign,investor,4,GBP,25000.00,0.00,0.00,20.00
+Krillin,Krillin,Verifying,reviewer,2,GBP,5000.00,0.00,0.00,20.00
+Tien,Tien,Funded,,3,GBP,15000.00,15300.00,300.00,20.00

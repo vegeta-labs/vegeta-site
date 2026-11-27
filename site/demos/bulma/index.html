@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Bulma demo | Vegeta</title>
+    <meta name="description" content="See Bulma at work, feature by feature, then try it live." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bulma demo | Vegeta" />
+    <meta property="og:description" content="See Bulma at work, feature by feature, then try it live." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/demos/bulma/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bulma demo | Vegeta" />
+    <meta name="twitter:description" content="See Bulma at work, feature by feature, then try it live." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/demos/bulma/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plex-mono-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Site handbook §6: one self-hosted script (built from site-src/site.js by npm run site:build), loaded first so motion can hide content before the first paint. The page is complete without it. -->
+    <script src="/site.js"></script>
+  </head>
+  <body class="has-subnav">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/demos/" aria-current="page">Demos</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/" aria-current="page">Demos</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main" class="demos">
+      <div class="blogindex__intro demos__intro" id="top">
+        <p class="eyebrow section-label"><a href="/demos/">Demos</a></p>
+        <h1 class="blogindex__title">Bulma — SPV Workspace</h1>
+      </div>
+      <nav class="blogchips demos__chips" aria-label="Module demos">
+        <a href="/demos/bulma/" aria-current="page">Bulma</a>
+        <a href="/demos/goten/">Goten</a>
+        <a href="/demos/trunks/">Trunks</a>
+      </nav>
+      <nav class="dm-toc" aria-label="Bulma demo sections">
+        <a href="#bulma-setup">Set up</a>
+        <a href="#bulma-checks">Checks</a>
+        <a href="#bulma-invite">Invite</a>
+        <a href="#bulma-invest">Invest</a>
+        <a href="#bulma-pay">Pay</a>
+        <a href="#bulma-follow">Follow</a>
+        <a href="#bulma-close">Close</a>
+        <a href="#bulma-operator">Operator</a>
+      </nav>
+      <nav class="nav subnav" aria-label="Bulma demo" data-subnav>
+        <span class="nav__brand glass subnav__brand"
+          ><a href="/" aria-label="Vegeta home"
+            ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg></a
+          ><a class="subnav__name" href="#top">Bulma</a></span
+        >
+        <span class="nav__links glass" data-nav-links>
+          <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+          <a href="#bulma-setup">Set up</a>
+          <a href="#bulma-checks">Checks</a>
+          <a href="#bulma-invite">Invite</a>
+          <a href="#bulma-invest">Invest</a>
+          <a href="#bulma-pay">Pay</a>
+          <a href="#bulma-follow">Follow</a>
+          <a href="#bulma-close">Close</a>
+          <a href="#bulma-operator">Operator</a>
+        </span>
+        <span class="nav__end"><a class="nav__cta glass" href="/bulma/demo/">Open Bulma</a></span>
+      </nav>
+      <section class="demos__product demos__product--bulma" id="bulma" aria-label="Bulma demos">
+        <section class="dm-need" id="bulma-setup" aria-labelledby="bulma-setup-h">
+          <h2 class="dm-need__title" id="bulma-setup-h">Set up a deal in six parts</h2>
+          <article class="dm-scene" id="bulma-a4" aria-labelledby="bulma-a4-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-a4-h">Each part saved as you go</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="A4 A5"
+                  >Basics, Company, Terms, Files, Economics and Review are filled in any order and saved as you go.</span
+                >
+                <span class="dm-more" data-covers="A7 A9"
+                  >Terms record the instrument, price, allocation and minimums; Economics sets carry and who pays the platform fee.</span
+                >
+                <span class="dm-more" data-covers="A10">Review lists what is left before Submit for review.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Draft deal Dragon Radar round: Basics and Company done, Terms, Files, Economics and Review to finish; saved; Basics: legal structure UK bare trust, deal type Primary, deal name Dragon Radar round, syndicate one I manage, Capsule Angels. Highlighted: Saved."
+              data-demo="bulma/A4"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Basics</span></p>
+                <p class="dm-tags"><span class="dm-tg" data-l="0" data-covers="A4">Basics</span> <span class="dm-tg" data-l="1">✓ done</span></p>
+                <p class="dm-tags"><span class="dm-tg" data-l="2">Company</span> <span class="dm-tg" data-l="3">✓ done</span></p>
+                <p class="dm-tags"><span class="dm-tg" data-l="4">Terms</span> <span class="dm-tg" data-l="5">to finish</span></p>
+                <p class="dm-tags"><span class="dm-tg" data-l="6">Files</span> <span class="dm-tg" data-l="7">to finish</span></p>
+                <p class="dm-tags"><span class="dm-tg" data-l="8">Economics</span> <span class="dm-tg" data-l="9">to finish</span></p>
+                <p class="dm-tags"><span class="dm-tg" data-l="10">Review</span> <span class="dm-tg" data-l="11">to finish</span></p>
+                <p class="dm-p dm-focus" data-l="12">Saved.</p>
+                <p class="dm-p" data-l="13" data-covers="A5">Legal structure *</p>
+                <p class="dm-p" data-l="14"><span class="dm-field">UK bare trust</span></p>
+                <p class="dm-p" data-l="15">Deal type *</p>
+                <p class="dm-p" data-l="16"><span class="dm-field">Primary</span></p>
+                <p class="dm-p" data-l="17">Deal name *</p>
+                <p class="dm-p" data-l="18"><span class="dm-field">Dragon Radar round</span></p>
+                <p class="dm-p" data-l="19">Investors see this name.</p>
+                <p class="dm-p" data-l="20" data-covers="A2">Syndicate *</p>
+                <p class="dm-p" data-l="21"><span class="dm-box is-on"></span></p>
+                <p class="dm-p" data-l="22">One I manage</p>
+                <p class="dm-p" data-l="23"><span class="dm-box"></span></p>
+                <p class="dm-p" data-l="24">A new one</p>
+                <p class="dm-p" data-l="26"><span class="dm-field">Capsule Angels</span></p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="bulma-b1" aria-labelledby="bulma-b1-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-b1-h">Where the deal stands</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="B1 B6"
+                  >A deal moves from Draft to With the reviewer, then Approved and Live, and History keeps each event.</span
+                >
+                <span class="dm-more" data-covers="B2">Once approved, the lead confirms it goes live; a change during review goes back to the reviewer.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Kame House round, with the reviewer, reference BE8R4E; a reviewer usually reads a deal within 5 days; Withdraw from review; history: submitted for review on 28/10/2026, 10:00:01. Highlighted: With the reviewer Reference BE8R4E."
+              data-demo="bulma/B1"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Kame House round</span></p>
+                <p class="dm-p dm-focus" data-l="0" data-covers="B1"><span class="dm-pill">With the reviewer</span> Reference BE8R4E</p>
+                <p class="dm-p" data-l="1">A reviewer usually reads a deal within 5 days.</p>
+                <p class="dm-p" data-l="2"><span class="dm-ub">Withdraw from review</span></p>
+                <p class="dm-p" data-l="3" data-covers="B6">History</p>
+                <p class="dm-p" data-l="4">28/10/2026, 10:00:01: Submitted for review</p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Lead (Bulma Briefs)</span> view, open <span class="dm-ui">Dragon Radar round</span>, then
+              <span class="dm-ui">Kame House round</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-checks" aria-labelledby="bulma-checks-h">
+          <h2 class="dm-need__title" id="bulma-checks-h">Collect company documents and review the deal</h2>
+          <article class="dm-scene" id="bulma-b5" aria-labelledby="bulma-b5-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-b5-h">The company sends its own documents</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="B4 B5"
+                  >The company's contact uploads its documents through a link, with no account; the lead sees only how far it has got.</span
+                >
+                <span class="dm-more" data-covers="B7"
+                  >The lead can remind the company or record another contact, and without a pass the deal can raise money but cannot close.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Company check: waiting for the company, documents received 0; the company's link works until 11/11/2026; the documents go only to the reviewer; Remind the company; Record another contact. Highlighted: Waiting for the company Documents received: 0."
+              data-demo="bulma/B5"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Company check</span></p>
+                <p class="dm-p dm-focus" data-l="0" data-covers="B4"><span class="dm-pill">Waiting for the company</span> Documents received: 0.</p>
+                <p class="dm-p" data-l="1" data-covers="B5">The company's link works until 11/11/2026.</p>
+                <p class="dm-p" data-l="2">
+                  You see how far this has got. The documents themselves go only to the reviewer. Without a pass the deal can raise money, but cannot close.
+                </p>
+                <p class="dm-p" data-l="3"><span class="dm-ub">Remind the company</span></p>
+                <p class="dm-p" data-l="4" data-covers="B7">Record another contact</p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="bulma-i1" aria-labelledby="bulma-i1-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-i1-h">A reviewer decides whether to approve</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="I1"
+                  >The reviewer approves, asks for changes or refuses for good, with a reason the lead sees and a note the lead does not.</span
+                >
+                <span class="dm-more" data-covers="I2">They also pass or send back the company check, and never review a deal they take part in.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Your decision: a reason shown to the lead, an internal note never shown to the lead, and Approve, Ask for changes or Refuse. Highlighted: Approve."
+              data-demo="bulma/I1"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Your decision</span></p>
+                <p class="dm-p" data-l="0">Reason, shown to the lead (needed to ask for changes or to refuse)</p>
+                <p class="dm-p" data-l="1"><span class="dm-field dm-field--well"></span></p>
+                <p class="dm-p" data-l="2">Internal note, never shown to the lead</p>
+                <p class="dm-p" data-l="3"><span class="dm-field dm-field--well"></span></p>
+                <p class="dm-p dm-focus" data-l="4" data-covers="I1"><span class="dm-ub">Approve</span></p>
+                <p class="dm-p" data-l="5"><span class="dm-ub">Ask for changes</span></p>
+                <p class="dm-p" data-l="6"><span class="dm-ub">Refuse</span></p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Lead (Bulma Briefs)</span> view, open <span class="dm-ui">Kame House round</span>; in the reviewer view, open it from
+              <span class="dm-ui">Deals waiting for review</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-invite" aria-labelledby="bulma-invite-h">
+          <h2 class="dm-need__title" id="bulma-invite-h">Invite investors on their own terms</h2>
+          <article class="dm-scene" id="bulma-c1" aria-labelledby="bulma-c1-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-c1-h">A link for each set of terms</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="C2 C3"
+                  >Going live makes a default-carry link and, where the operator allows, a no-carry link; New terms adds a link with its own carry, cash fee and
+                  reason.</span
+                >
+                <span class="dm-more" data-covers="C6">Invite by email sends no deal details.</span>
+                <span class="dm-more" data-covers="C5">First, the lead confirms whom they may invite.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Links, 3 of 500 in use: No carry, no fee, carry 0.00%; Default carry, no fee, carry 20.00%; Senzu lead fee, carry 20.00%, 2.00% added on top of the commitment, 4 invited, 4 committed. People invited by country are reminders only. Highlighted: Senzu lead fee: carry 20.00%, 2.00% added on top of the commitment · 4 invited, 4 committed, 0 opened and not yet signed in."
+              data-demo="bulma/C1"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Links</span></p>
+                <p class="dm-p" data-l="0" data-covers="C4">3 of 500 links in use. Copy a link by hand from where it is shown.</p>
+                <p class="dm-p" data-l="1">No carry, no fee: carry 0.00%, No fee · 0 invited, 0 committed, 0 opened and not yet signed in</p>
+                <p class="dm-p" data-l="4">Default carry, no fee: carry 20.00%, No fee · 0 invited, 0 committed, 0 opened and not yet signed in</p>
+                <p class="dm-p dm-focus" data-l="7" data-covers="C1">
+                  Senzu lead fee: carry 20.00%, 2.00% added on top of the commitment · 4 invited, 4 committed, 0 opened and not yet signed in
+                </p>
+                <p class="dm-p" data-l="8"><span class="dm-ub">Show link</span></p>
+                <p class="dm-p" data-l="9"><span class="dm-ub">Turn off</span></p>
+                <p class="dm-p" data-l="10" data-covers="C8">
+                  People invited: UK 0, other EEA 0, elsewhere 0, country not given 4. These are reminders only. Do not promote this deal publicly.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="bulma-f1" aria-labelledby="bulma-f1-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-f1-h">An invitation shows nothing of the deal</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="F1 F4"
+                  >The invitation shows a reference and the steps, and the deal appears only after an account and the eligibility steps.</span
+                >
+                <span class="dm-more" data-covers="F5 F6 F7">Those are a statement, an assessment and the risk warning, as the operator's rules set.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="You have been invited: invitation reference TKW7E6; the details are shown once you have an account and have completed a few checks; 8 steps in all, roughly 35 minutes, then up to 2 days for the operator's checks. Highlighted: Invitation reference TKW7E6. The details are shown once you have an account and have completed a few checks."
+              data-demo="bulma/F1"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">You have been invited</span></p>
+                <p class="dm-p dm-focus" data-l="0" data-covers="F1">
+                  Invitation reference TKW7E6. The details are shown once you have an account and have completed a few checks.
+                </p>
+                <p class="dm-p" data-l="1">Before you start</p>
+                <p class="dm-p" data-l="3">
+                  8 steps in all. Roughly 35 minutes of your time, then up to 2 days for the operator's checks. These are estimates.
+                </p>
+                <p class="dm-p" data-l="8">This page holds no details of any investment.</p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Lead (Bulma Briefs)</span> view, open <span class="dm-ui">Senzu Labs round</span> and go to
+              <span class="dm-ui">Links</span>; then switch to the <span class="dm-ui">Investor (Son Goku)</span> view.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-invest" aria-labelledby="bulma-invest-h">
+          <h2 class="dm-need__title" id="bulma-invest-h">See the terms, then the exact amount</h2>
+          <article class="dm-scene" id="bulma-g2" aria-labelledby="bulma-g2-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-g2-h">The terms on your own link</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="G1 G2">Each investor sees the key terms with the carry and lead fee of their own link.</span>
+                <span class="dm-more" data-covers="G9 G10 G8"
+                  >A company or trust can invest too, with a refund account in its own name; Ask the lead sends a question.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Key terms: equity, pre-money valuation £4,000,000.00, allocation £250,000.00, minimum commitment £1,000.00, target close 2027-01-26, the lead votes; carry on your terms 20.00%, lead fee 2.00% added on top of the commitment; platform fee 5.00%, at least £500.00, at most £25,000.00, paid by the lead. Highlighted: Lead fee on your terms, 2.00% added on top of the commitment."
+              data-demo="bulma/G2"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Key terms</span></p>
+                <div class="dm-kv" data-l="0" data-covers="G2"><span>Instrument</span><span>Equity</span></div>
+                <div class="dm-kv" data-l="1"><span>Pre-money valuation</span><span class="dm-nw">£4,000,000.00</span></div>
+                <div class="dm-kv" data-l="2"><span>Allocation for this deal</span><span class="dm-nw">£250,000.00</span></div>
+                <div class="dm-kv" data-l="3"><span>Minimum commitment</span><span class="dm-nw">£1,000.00</span></div>
+                <div class="dm-kv" data-l="4"><span>Target close</span><span>2027-01-26</span></div>
+                <div class="dm-kv" data-l="5"><span>Who votes</span><span>The lead</span></div>
+                <div class="dm-kv" data-l="6" data-covers="G1"><span>Carry on your terms</span><span>20.00%</span></div>
+                <div class="dm-kv dm-focus" data-l="7"><span>Lead fee on your terms</span><span>2.00% added on top of the commitment</span></div>
+                <div class="dm-kv" data-l="8"><span>Platform fee</span><span>5.00%, at least £500.00, at most £25,000.00. Paid by: The lead</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="bulma-g4" aria-labelledby="bulma-g4-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-g4-h">What you would pay, to the penny</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="G4 G3"
+                  >Show what I would pay works out the commitment and the lead fee; only the total to pay is exact.</span
+                >
+                <span class="dm-more" data-covers="G5 G6"
+                  >Each commitment has its own payment reference. The amount can change while the deal is live, but paying more needs your agreement
+                  again.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Invest £10,000.00: investment part £10,000.00, lead fee £200.00, total commitment £10,200.00; this is the total you commit to; the platform fee is not taken from investors in this deal; Commit £10,200.00. Highlighted: Total commitment: the amount to pay, £10,200.00."
+              data-demo="bulma/G4"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Invest</span></p>
+                <p class="dm-p" data-l="0">Amount (GBP)Minimum £1,000.00</p>
+                <p class="dm-p" data-l="1"><span class="dm-field">10000</span></p>
+                <div class="dm-kv" data-l="3" data-covers="G3"><span>Investment part (before the platform fee)</span><span class="dm-nw">£10,000.00</span></div>
+                <div class="dm-kv" data-l="4"><span>Lead fee</span><span class="dm-nw">£200.00</span></div>
+                <div class="dm-kv dm-focus" data-l="5" data-covers="G4">
+                  <span>Total commitment: the amount to pay</span><span class="dm-nw">£10,200.00</span>
+                </div>
+                <p class="dm-p" data-l="6">This is the total you commit to. You will not be asked to add to it; paying more needs your agreement again.</p>
+                <p class="dm-p" data-l="7">The platform fee is not taken from investors in this deal.</p>
+                <p class="dm-p" data-l="12"><span class="dm-ub">Commit £10,200.00</span></p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Investor (Son Goku)</span> view, open <span class="dm-ui">Senzu Labs round</span>, then
+              <span class="dm-ui">Show what I would pay</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-pay" aria-labelledby="bulma-pay-h">
+          <h2 class="dm-need__title" id="bulma-pay-h">Pay using the operator's account details</h2>
+          <article class="dm-scene" id="bulma-h5" aria-labelledby="bulma-h5-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-h5-h">One amount, one reference</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="H5 H6"
+                  >Payment details show the amount still to pay, how it is made up and the payment reference, for the account the operator set up.</span
+                >
+                <span class="dm-more" data-covers="H8">I have paid tells the lead; the operator records the money when it arrives.</span>
+                <span class="dm-more" data-covers="H9">A wrong reference can be reported here.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Still to pay £10,200.00: amount to pay in total £10,200.00, received so far £0.00, payment reference BU-U69KBJ; made up of investment £10,000.00 and lead fee £200.00; the software does not receive money; type the details from this page, pay from the investor's own account in GBP; I have paid. Highlighted: Payment reference, BU-U69KBJ."
+              data-demo="bulma/H5"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Son Goku To pay</span></p>
+                <p class="dm-p" data-l="8" data-covers="H5">Still to pay: £10,200.00</p>
+                <div class="dm-kv" data-l="9"><span>Amount to pay in total</span><span class="dm-nw">£10,200.00</span></div>
+                <div class="dm-kv" data-l="10"><span>Received so far</span><span class="dm-nw">£0.00</span></div>
+                <div class="dm-kv dm-focus" data-l="11"><span>Payment reference</span><span>BU-U69KBJ</span></div>
+                <p class="dm-p" data-l="12">How the amount is made up</p>
+                <div class="dm-kv" data-l="13"><span>Investment part (before the platform fee)</span><span class="dm-nw">£10,000.00</span></div>
+                <div class="dm-kv" data-l="14"><span>Lead fee</span><span class="dm-nw">£200.00</span></div>
+                <div class="dm-kv" data-l="15"><span>Total commitment: the amount to pay</span><span class="dm-nw">£10,200.00</span></div>
+                <p class="dm-p" data-l="26" data-covers="H7">This software does not receive money. Pay only to the account shown, which the operator set up.</p>
+                <p class="dm-p" data-l="27">Do not use a payee saved earlier; type the details from this page.</p>
+                <p class="dm-p" data-l="28">Pay from an account in the name of the investing person or entity.</p>
+                <p class="dm-p" data-l="29">Account changes are never sent by email. Do not act on one.</p>
+                <p class="dm-p" data-l="30">Pay in GBP only. Cryptocurrency is not accepted.</p>
+                <p class="dm-p" data-l="33" data-covers="H8"><span class="dm-ub">I have paid</span></p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Investor (Son Goku)</span> view, open <span class="dm-ui">Senzu Labs round</span>, then
+              <span class="dm-ui">Payment details</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-follow" aria-labelledby="bulma-follow-h">
+          <h2 class="dm-need__title" id="bulma-follow-h">Follow every investor</h2>
+          <article class="dm-scene" id="bulma-d1" aria-labelledby="bulma-d1-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-d1-h">Who is waiting on whom</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="D1 D2 C9"
+                  >Each investor shows their step, who it waits on and for how many days, under the deal's money.</span
+                >
+                <span class="dm-more" data-covers="D4 D5 D6 D7 D8 D9"
+                  >Actions for each person cover email, removal, a withdrawal, a new amount or new terms.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Investor list: committed £55,000.00, received £15,300.00, lead fees £300.00, usable for the deal £15,000.00. Son Goku to pay, waiting on the investor, 1 day at this step; Krillin verifying, waiting on a reviewer, 2 days. Highlighted: Waiting on, A reviewer."
+              data-demo="bulma/D1"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Investor list</span></p>
+                <div class="dm-kv" data-l="0" data-covers="D2"><span>Committed</span><span class="dm-nw">£55,000.00</span></div>
+                <div class="dm-kv" data-l="1"><span>Received</span><span class="dm-nw">£15,300.00</span></div>
+                <div class="dm-kv" data-l="5"><span>Lead fees</span><span class="dm-nw">£300.00</span></div>
+                <div class="dm-kv" data-l="6"><span>Usable for the deal</span><span class="dm-nw">£15,000.00</span></div>
+                <p class="dm-p" data-l="11">Son Goku</p>
+                <p class="dm-p" data-l="12">To pay</p>
+                <div class="dm-kv" data-l="14" data-covers="D1"><span>Waiting on</span><span>The investor</span></div>
+                <div class="dm-kv" data-l="15"><span>Days at this step</span><span class="dm-nw">1</span></div>
+                <p class="dm-p" data-l="31">Krillin</p>
+                <p class="dm-p" data-l="32">Verifying</p>
+                <div class="dm-kv dm-focus" data-l="34"><span>Waiting on</span><span>A reviewer</span></div>
+                <div class="dm-kv" data-l="35"><span>Days at this step</span><span class="dm-nw">2</span></div>
+                <span class="dm-pre-gap"></span>
+              </div>
+            </div>
+          </article>
+          <article class="dm-scene" id="bulma-d11" aria-labelledby="bulma-d11-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-d11-h">Write to a group</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="D11"
+                  >Choose recipients by status, who they are waiting on and whether they have committed, or write to a single person.</span
+                >
+                <span class="dm-more" data-covers="D12"
+                  >Where approval is needed an approver signs it off first, and messages sent through the site are kept here.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Messages to investors: write to a group by status, waiting on and committed; 4 people in this group; still to do a step: Son Goku, Yamcha; Save the message; messages sent through this site: none yet. Highlighted: 4 people are in this group. Whether each gets the message is decided when it is sent."
+              data-demo="bulma/D11"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Messages to investors</span></p>
+                <p class="dm-p" data-l="0" data-covers="D11">Write to a group</p>
+                <p class="dm-p" data-l="1">Status</p>
+                <p class="dm-p" data-l="2"><span class="dm-field">Any</span></p>
+                <p class="dm-p" data-l="3">Waiting on</p>
+                <p class="dm-p" data-l="4"><span class="dm-field">Anyone</span></p>
+                <p class="dm-p" data-l="5">Committed</p>
+                <p class="dm-p" data-l="6"><span class="dm-field">Either</span></p>
+                <p class="dm-p dm-focus" data-l="7">4 people are in this group. Whether each gets the message is decided when it is sent.</p>
+                <p class="dm-p" data-l="8">Still to do a step (to copy into the message if you wish):</p>
+                <p class="dm-p" data-l="9">Son Goku, Yamcha</p>
+                <p class="dm-p" data-l="15"><span class="dm-ub">Save the message</span></p>
+                <p class="dm-p" data-l="16" data-covers="D12">Messages sent through this site</p>
+                <p class="dm-p" data-l="18">None yet.</p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Lead (Bulma Briefs)</span> view, open <span class="dm-ui">Senzu Labs round</span> and go to
+              <span class="dm-ui">Investor list</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-close" aria-labelledby="bulma-close-h">
+          <h2 class="dm-need__title" id="bulma-close-h">Prepare to close or cancel a deal</h2>
+          <article class="dm-scene" id="bulma-e6" aria-labelledby="bulma-e6-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-e6-h">What is still missing before closing</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="E6 E7"
+                  >Closing lists what is still missing before the lead can ask to close; asking stops new commitments.</span
+                >
+                <span class="dm-more" data-covers="E9">The closing task list and final amounts come in a later version.</span>
+                <span class="dm-more" data-covers="E8">A cancellation, once a reviewer confirms it, ends every commitment.</span>
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Closing: committed so far £55,000.00, SPV allocation £250,000.00, received £15,300.00, lead fees £300.00, estimated investment before the platform fee £15,000.00; before asking to close, the company has not confirmed the deal and the lead has not passed identity checks; Ask to cancel the deal. Highlighted: The company has not confirmed the deal."
+              data-demo="bulma/E6"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Closing and cancelling</span></p>
+                <p class="dm-p" data-l="1" data-covers="E6">Committed so far: £55,000.00</p>
+                <div class="dm-kv" data-l="2"><span>SPV allocation</span><span class="dm-nw">£250,000.00</span></div>
+                <div class="dm-kv" data-l="3"><span>Received</span><span class="dm-nw">£15,300.00</span></div>
+                <div class="dm-kv" data-l="4"><span>Lead fees</span><span class="dm-nw">£300.00</span></div>
+                <div class="dm-kv" data-l="5"><span>Estimated investment, before the platform fee</span><span class="dm-nw">£15,000.00</span></div>
+                <p class="dm-p" data-l="7">Before you can ask to close:</p>
+                <p class="dm-p dm-focus" data-l="8" data-covers="E7">The company has not confirmed the deal.</p>
+                <p class="dm-p" data-l="9">The lead has not passed identity checks.</p>
+                <p class="dm-p" data-l="10">Cancel the deal</p>
+                <p class="dm-p" data-l="11" data-covers="E8"><span class="dm-ub">Ask to cancel the deal</span></p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path"
+              >In the <span class="dm-ui">Lead (Bulma Briefs)</span> view, open <span class="dm-ui">Senzu Labs round</span> and go to
+              <span class="dm-ui">Closing and cancelling</span>.</span
+            >
+          </p>
+        </section>
+        <section class="dm-need" id="bulma-operator" aria-labelledby="bulma-operator-h">
+          <h2 class="dm-need__title" id="bulma-operator-h">The operator reviews identity checks</h2>
+          <article class="dm-scene" id="bulma-i4" aria-labelledby="bulma-i4-h">
+            <div class="dm-text">
+              <h3 class="dm-title" id="bulma-i4-h">Open an identity check for review</h3>
+              <p class="dm-copy">
+                <span class="dm-lead" data-covers="H3">Before signing, each person must pass an identity check.</span>
+                <span class="dm-more" data-covers="I4 H1"
+                  >The operator's reviewer opens the case and passes it, sends it back or refuses it for good; a provider's result alone cannot refuse
+                  anyone.</span
+                >
+              </p>
+            </div>
+            <div
+              class="dm-card"
+              role="img"
+              aria-label="Identity checks waiting: Krillin, individual, for Krillin; Open the case. Highlighted: Krillin, individual, for Krillin Open the case."
+              data-demo="bulma/I4"
+            >
+              <div class="dm-card__in" aria-hidden="true">
+                <p class="dm-card__head"><span data-head="1">Identity checks waiting</span></p>
+                <p class="dm-p dm-focus" data-l="0" data-covers="I4">Krillin, individual, for Krillin <span class="dm-ub">Open the case</span></p>
+              </div>
+            </div>
+          </article>
+          <p class="dm-try">
+            <a href="/bulma/demo/">Try it in Bulma <span class="arrow" aria-hidden="true">→</span></a
+            ><span class="dm-try__path">In the reviewer view, open <span class="dm-ui">Identity checks waiting</span>.</span>
+          </p>
+        </section>
+        <p class="dm-end">
+          <a class="btn btn--primary" href="/bulma/demo/">Open Bulma</a>
+          <a class="btn btn--quiet" href="/docs/bulma/build/run-and-deploy/">Run it on your own machine <span class="arrow" aria-hidden="true">→</span></a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

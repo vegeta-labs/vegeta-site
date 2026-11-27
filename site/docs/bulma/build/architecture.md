@@ -1,6 +1,6 @@
 # Architecture
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/architecture.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/architecture.md
 
 Bulma is one Node.js and TypeScript application: a Fastify server with a PostgreSQL database, and a React interface built with Vite and served by the same process. This page describes how the code is laid out, how a request is handled and where the business rules live.
 

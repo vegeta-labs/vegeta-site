@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/">Docs</a></li>
         </ul>
       </details>
@@ -99,7 +101,7 @@
         </h1>
         <p class="hero__lede">A free browser tool for SPV and syndicate deal operations.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://vegeta-goten.vercel.app">Take the 3-minute tour</a>
+          <a class="btn btn--primary" href="/demos/goten/">See the demo</a>
           <a class="btn btn--quiet" href="https://vegeta-goten.vercel.app">Open the app <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
@@ -388,27 +390,20 @@
               <dd>Whole pence or cents and integer maths, no floating point.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>1,800</dt>
+              <dt>3,000</dt>
               <dd>Generated cases where an independent Python implementation agrees field by field.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>301 / 301</dt>
+              <dt>337 / 337</dt>
               <dd>Deliberate code breakages caught by the tests.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>210 / 210</dt>
+              <dt>272 / 272</dt>
               <dd>Planned test cases due, all run and passing.</dd>
             </div>
           </dl>
-          <p class="trust__note">Figures from the v1.4.0 release checks.</p>
+          <p class="trust__note">Figures from the v1.5.0 release checks.</p>
         </div>
-      </section>
-
-      <section class="privacy" aria-labelledby="privacy-h">
-        <h2 class="privacy__title" id="privacy-h" data-reveal>Your deal data stays in your browser</h2>
-        <p class="privacy__body" data-reveal>
-          Your deal data is processed in your browser and never sent by this app. The hosting provider still receives normal page requests.
-        </p>
       </section>
 
       <section class="built" id="built" aria-labelledby="built-h">
@@ -458,8 +453,8 @@
               <p>
                 It does not move money, connect to a bank or send emails. It does not produce legal documents, run KYC or AML checks, or file anything with a
                 regulator or tax authority. It does not decide S/EIS eligibility, and it is not tax, legal or investment advice. It does not convert currencies.
-                The exit split covers one investment and one exit with the same terms for every investor: no staged capital calls, earlier distributions,
-                management fees, VAT or individual carry terms.
+                The exit split covers one investment and one exit. Each investor can have their own carry rate; the hurdle, catch-up and years held are the same
+                for the whole deal. Not covered: staged capital calls, earlier distributions, management fees or VAT.
               </p>
             </details>
             <details class="faq__item" id="faq-structure">
@@ -556,17 +551,23 @@
               <summary>Who pays the fees, and can that change?</summary>
               <p>
                 Investors (a percentage, taken from the payment or added on top, or a fixed amount each), the company (taken from the wire) or the lead
-                (invoiced). Before closing you can move a percentage fee to a different payer: the app previews each investor&rsquo;s top-up or refund and the
-                consent needed, and the change can be reversed in one step. It needs the allocation carried in from reconciliation, up to date and not edited
-                since; the preview blocks a change while the round is over its cap, or one that would take an investor below the minimum. In the docs:
+                (invoiced). An investor can have their own fee terms in place of the deal&rsquo;s investor-paid fees, and an optional platform fee on the total
+                invested can be paid by the investors (split pro rata), the lead or the company. Before closing you can move a percentage fee to a different
+                payer: the app previews each investor&rsquo;s top-up or refund and the consent needed, and the change can be reversed in one step. It needs the
+                allocation carried in from reconciliation, up to date and not edited since; the preview blocks a change while the round is over its cap, or one
+                that would take an investor below the minimum. In the docs:
+                <a href="/docs/goten/use/closing-allocation/#an-investors-own-fee-terms">own fee terms</a>,
+                <a href="/docs/goten/use/closing-allocation/#the-pro-rata-platform-fee">the platform fee</a> and
                 <a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawals and fee payers</a>.
               </p>
             </details>
             <details class="faq__item" id="faq-carry">
               <summary>What carry terms are supported?</summary>
               <p>
-                Fixed carry with an optional hurdle (compounded yearly) and catch-up, or tiered carry by return multiple, each tier at its own rate. Exit costs
-                come off first, then capital is returned, then profit is split. Each step shows what went to investors and to the lead, and why.
+                Fixed carry with an optional hurdle (compounded yearly) and catch-up, or tiered carry by return multiple, each tier at its own rate. Each
+                investor can have their own carry rate (tiered carry needs the same carry for everyone); the hurdle, catch-up and years held are the same for
+                the whole deal. Exit costs come off first, then capital is returned, then profit is split. Each step shows what went to investors and to the
+                lead, and why. In the docs: <a href="/docs/goten/use/exit-distribution/#personal-carry">Personal carry</a>.
               </p>
             </details>
           </div>
@@ -647,13 +648,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

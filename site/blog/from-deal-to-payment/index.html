@@ -64,6 +64,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/" aria-current="page">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -78,6 +79,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/">Docs</a></li>
         </ul>
       </details>
@@ -177,8 +179,8 @@
         <p>An investor cannot sign until the identity check passes, and Bulma sees where each investor is.</p>
         <h2>Setting up the deal</h2>
         <p>
-          In this example, she is taking an SPV into Senzu Labs. She fills in the deal in six parts: the basics, the company, the terms, the files, the
-          economics and a review. She can move between them in any order; the review lists what is still missing.
+          She is taking an SPV into Senzu Labs. She fills in the deal in six parts: the basics, the company, the terms, the files, the economics and a review.
+          She can move between them in any order; the review lists what is still missing.
         </p>
         <p>
           She submits it. A reviewer at the operator approves it, sends it back with a reason, or rejects it. A reviewer cannot review a deal they lead, help
@@ -279,20 +281,20 @@
         </p>
         <h2>Where it runs</h2>
         <p>
-          Bulma runs on the operator&rsquo;s own server, with Docker. It starts as a sandbox with fictional data, and no email leaves it. The real mode needs
-          the operator&rsquo;s own email server settings, its legal wording, payment instructions from a file, and at least three different people: two admins
-          and a reviewer, with someone named to approve promotions. Identity checks use the operator&rsquo;s own Sumsub contract or manual checks. A second
-          admin approves the switch, and there is no way back.
+          Bulma runs on the operator&rsquo;s own server, with Docker. It starts as a sandbox, and no email leaves it. The real mode needs the operator&rsquo;s
+          own email server settings, its legal wording, payment instructions from a file, and at least three different people: two admins and a reviewer, with
+          someone named to approve promotions. Identity checks use the operator&rsquo;s own Sumsub contract or manual checks. A second admin approves the
+          switch, and there is no way back.
         </p>
         <h2>How it was tested</h2>
         <p>
-          Checked on the release branch, run locally: 1,130 of 1,130 unit and real-database tests and 40 of 40 browser tests passed, and all 185 test-plan cases
-          due in this release have a passing test. A full mutation run broke the code on purpose 1,477 times, and the tests caught every one. A Python oracle,
+          Checked on the release branch, run locally: 1,246 of 1,246 unit and real-database tests and 41 of 41 browser tests passed, and all 201 test-plan cases
+          due in this release have a passing test. A full mutation run broke the code on purpose 1,878 times, and the tests caught every one. A Python oracle,
           written separately from the code, matched on 35,084 of 35,084 random and boundary cases.
           <a href="/docs/bulma/release-notes/">The release notes</a> have the details.
         </p>
         <h2>Try it</h2>
-        <p>Bulma v0.1.0 runs on the operator&rsquo;s own server with Docker. <a href="/docs/bulma/">Read the docs</a>.</p>
+        <p>Bulma v0.2.0 runs on the operator&rsquo;s own server with Docker. <a href="/docs/bulma/">Read the docs</a>.</p>
         <p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Bulma"
             >Send feedback</a
@@ -347,13 +349,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

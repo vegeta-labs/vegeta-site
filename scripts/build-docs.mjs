@@ -7,6 +7,7 @@
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, posix } from 'node:path'
+import { docHubCards } from './hub-cards.mjs'
 import { pathToFileURL } from 'node:url'
 import { Marked } from 'marked'
 
@@ -294,15 +295,8 @@ ${html}
 
   for (const [file, route, hash] of pageAnchors) if (!idsByRoute.get(route)?.has(hash)) throw new Error(`${file}: no heading for ${route}#${hash}`)
 
-  // each card is the one way into a module's docs; inside it, the names of the sidebar groups say what the docs hold
-  const cards = spec.products
-    .map((p) => {
-      const groups = p.groups.filter((g) => g.items.some((i) => i.route)).map((g) => esc(g.label))
-      const inner = `<strong>${esc(p.name)}</strong><span>${esc(p.role)}</span><span class="docs-card__groups">${groups.join(' · ')}</span><small>${esc(p.version)}</small>`
-      const home = p.groups.flatMap((g) => g.items).find((i) => i.route)
-      return home ? `          <a class="docs-card" href="${home.route}">${inner}</a>` : `          <div class="docs-card docs-card--off">${inner}</div>`
-    })
-    .join('\n')
+  // each card is the one way into a module's docs: a miniature docs page with the module's real group labels (scripts/hub-cards.mjs)
+  const cards = docHubCards(spec)
   write(
     '/docs/',
     page(

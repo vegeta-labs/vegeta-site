@@ -1680,11 +1680,6 @@ a:hover > .arrow {
 .footer a:hover {
   color: var(--ink-text);
 }
-.footer__legal {
-  margin: 56px 0 0;
-  color: var(--ink-muted);
-  font-size: 13px;
-}
 
 /* ---- several pages (plan 13 §14): the phone menu, two-panel hero, module rows, use cases, security list ---- */
 /* phones only: a native <details> menu (no script needed) under the top bar; site.js closes it after a link is followed */
@@ -3386,11 +3381,6 @@ html:not(.js) .subnav {
   color: var(--muted);
   font: 400 12px/1.4 var(--mono);
 }
-.footer__note {
-  margin: 8px 0 0;
-  color: var(--ink-muted);
-  font-size: 13px;
-}
 
 /* ---- entrances ---- */
 .js [data-reveal] {
@@ -4915,6 +4905,13 @@ html:not(.js) .subnav {
 }
 .roles + .privacy {
   padding-top: 0;
+  /* like .built + .privacy: the page nav's Limits link lands the label below the bar */
+  scroll-margin-top: 140px;
+}
+@media (max-width: 760px) {
+  .roles + .privacy {
+    scroll-margin-top: 84px;
+  }
 }
 @media (max-width: 900px) {
   .roles__group {
@@ -5240,5 +5237,919 @@ html:not(.js) .subnav {
   .js .fx__stage.is-in .fx__name--trunks,
   .js .fx__stage.is-in .fx__bar--trunks {
     transition-delay: 0.5s;
+  }
+}
+
+/* Demos page (plan 42, brief v3). Code-drawn scenes: one Goten panel per card, the text extracted from the real app.
+   One emphasis device only: the focus row or cell keeps full text colour and gets a 4px bar and a 2px outline in
+   --focus-goten; everything else in the card uses --muted. No motion. */
+:root {
+  --focus-bulma: #2f5f86;
+  --focus-goten: #a3532a;
+  --focus-trunks: #4d6b3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --focus-bulma: #a9cdea;
+    --focus-goten: #f0b88f;
+    --focus-trunks: #b5d39c;
+  }
+}
+/* each module draws its focus and its needs' bar in its own colour */
+.demos__product--bulma {
+  --focus: var(--focus-bulma);
+  --mark: var(--sky);
+}
+.demos__product--goten {
+  --focus: var(--focus-goten);
+  --mark: var(--peach);
+}
+.demos__product--trunks {
+  --focus: var(--focus-trunks);
+  --mark: var(--sage);
+}
+/* Demos layout (designer review 2026-11-24, owner approved): one grid (text 1 : panel 2, 64px apart), one vertical scale
+   (20 / 48 / 80 / 160), text and panel on one line, each need closed by a full-width try-it row whose hairline separates needs */
+.demos {
+  padding: 0 var(--gutter) 160px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* the opening is the blog list's (eyebrow, title, chips), left-aligned in the page column */
+.demos .blogindex__intro {
+  max-width: none;
+  padding-right: 0;
+  padding-left: 0;
+}
+.demos .blogchips {
+  justify-content: flex-start;
+  margin: 32px 0 0;
+}
+/* a module page: title, chips, section links, one hairline under them (not the list pages' rule under the title) */
+.demos .blogindex__intro:has(+ .demos__chips)::after {
+  display: none;
+}
+.demos__product {
+  margin-top: 96px;
+  scroll-margin-top: 96px;
+}
+.dm-head__title {
+  font-size: var(--t-h2);
+  margin: 0;
+}
+/* a module demo page: its section links under a rule; once the global nav has gone, the page nav (as on the module pages) */
+.dm-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 16px 0 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.dm-toc a {
+  color: var(--muted);
+  font-size: 15px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.dm-toc a:hover {
+  color: var(--text);
+}
+/* without the script the section links above already do the page nav's job */
+html:not(.js) .demos .subnav {
+  display: none;
+}
+.demos .blogindex__intro .eyebrow a {
+  color: inherit;
+  text-decoration: none;
+}
+.dm-need {
+  scroll-margin-top: 96px;
+}
+.dm-need + .dm-need {
+  margin-top: 160px;
+}
+/* the bar hangs in the gutter, so the heading's text starts on the column edge like everything else */
+.dm-need__title {
+  font-size: var(--t-h2);
+  margin: 0 0 48px -17px;
+  padding-left: 14px;
+  border-left: 3px solid var(--mark);
+}
+.dm-scene {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: 56px;
+  align-items: start;
+  margin-top: 80px;
+  scroll-margin-top: 96px;
+}
+@media (max-width: 1099px) {
+  .dm-td[data-nh='1'] {
+    display: none;
+  }
+}
+/* 900–1099px (ratio review 2026-11-24, owner approved): side by side the copy runs 32–37 characters a line and the tables
+   wrap, so text sits above its panel from here down; the copy keeps a readable measure */
+@media (max-width: 1099px) {
+  .dm-scene {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+  .dm-copy {
+    max-width: 32em;
+  }
+  .dm-try {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4px;
+  }
+  .dm-try__path {
+    grid-column: 1;
+  }
+}
+.dm-need__title + .dm-scene {
+  margin-top: 0;
+}
+/* the text and its panel start on the same line and scroll together (owner 2026-11-24: a pinned, then pushed text read oddly) */
+/* the scene title starts level with the panel's top edge (owner 2026-11-24) */
+.dm-text {
+  padding-top: 0;
+}
+.dm-title {
+  font-size: 21px;
+  line-height: 1.25;
+  margin: 0;
+}
+.dm-copy {
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 12px 0 0;
+}
+.dm-more {
+  color: var(--muted);
+}
+/* the try-it row closes a need: a hairline, the link under the text column, the steps under the panel's left edge */
+.dm-try {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: 56px;
+  margin: 48px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.dm-try a {
+  align-self: start;
+  color: var(--text);
+  font-weight: 600;
+}
+.dm-try__path {
+  grid-column: 2;
+}
+.dm-end {
+  margin: 160px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* the scene card: one layer, Goten's panel drawn in the site's type */
+.dm-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(20, 22, 32, 0.04),
+    0 8px 24px rgba(20, 22, 32, 0.05);
+  padding: 20px 22px 22px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+  overflow: hidden;
+}
+.dm-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 14px;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+}
+.dm-p {
+  margin: 6px 0 0;
+  padding: 2px 8px;
+}
+.dm-field {
+  display: inline-block;
+  max-width: 100%;
+  min-width: 64px;
+  min-height: 1.6em;
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.dm-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+.dm-box.is-on {
+  background: radial-gradient(currentColor 0 3px, transparent 3.5px);
+}
+.dm-kv {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.dm-kv > :last-child,
+.dm-td {
+  font-variant-numeric: tabular-nums;
+}
+/* a long value (a reference, a reminder) wraps under its label's line instead of running out of the card */
+.dm-kv > :last-child {
+  min-width: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.dm-table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.dm-tr {
+  display: table-row;
+}
+.dm-td {
+  display: table-cell;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.dm-nw {
+  white-space: nowrap;
+}
+@media (min-width: 1100px) {
+  .dm-name {
+    white-space: nowrap;
+  }
+}
+.dm-pill {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+  font-size: 12.5px;
+}
+.dm-ub {
+  display: inline-block;
+  padding: 1px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 12.5px;
+  margin: 2px 4px 2px 0;
+}
+/* a button in a table cell keeps its words together (Undo, Copy message); a long one in a line still wraps */
+.dm-td .dm-ub {
+  white-space: nowrap;
+}
+.dm-grp {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.dm-gap .dm-td {
+  height: 10px;
+  padding: 0;
+  border-bottom: 1px dashed var(--line);
+}
+.dm-pre-gap {
+  display: block;
+  height: 8px;
+  margin: 4px 8px;
+  border-bottom: 1px dashed var(--line);
+}
+.dm-ui {
+  color: var(--text);
+  font-weight: 500;
+}
+.dm-th .dm-td {
+  font-size: 12px;
+  font-weight: 600;
+}
+.dm-pre {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.dm-pre-l {
+  display: block;
+  padding: 1px 8px;
+  white-space: pre-wrap;
+}
+.dm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dm-chip {
+  margin: 0;
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+}
+.dm-step {
+  margin: 14px 0 0;
+  font-size: 12px;
+}
+.dm-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.dm-btn {
+  margin: 0;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* the one emphasis (brief §4): full text colour, a 4px bar and a 2px outline. Drawn as real borders, on the cells
+   of a table row, so it takes its own space and never covers the text (a shadow or a row outline is painted
+   differently by each browser). */
+.dm-focus {
+  color: var(--text);
+  border: 2px solid var(--focus);
+  border-left-width: 4px;
+  border-radius: 6px;
+  padding-left: 10px;
+}
+.dm-tr.dm-focus {
+  border: 0;
+}
+.dm-tr.dm-focus > .dm-td,
+.dm-td.dm-focus {
+  border-top: 2px solid var(--focus);
+  border-bottom: 2px solid var(--focus);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.dm-tr.dm-focus > .dm-td:first-child,
+.dm-td.dm-focus {
+  border-left: 4px solid var(--focus);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding-left: 10px;
+}
+.dm-tr.dm-focus > .dm-td:last-child,
+.dm-td.dm-focus {
+  border-right: 2px solid var(--focus);
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding-right: 6px;
+}
+/* the right edge moves left when the last column is hidden at narrower widths */
+@media (max-width: 1099px) {
+  .dm-card:not(.dm-card--why, .dm-card--stack) .dm-tr.dm-focus > .dm-td:has(+ .dm-td[data-nh='1']:last-child) {
+    border-right: 2px solid var(--focus);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
+@media (max-width: 360px) {
+  .dm-card:not(.dm-card--why, .dm-card--stack) .dm-tr.dm-focus > .dm-td:has(+ .dm-td[data-nh]:last-child),
+  .dm-card:not(.dm-card--why, .dm-card--stack) .dm-tr.dm-focus > .dm-td:has(+ .dm-td[data-nh] + .dm-td[data-nh]:last-child) {
+    border-right: 2px solid var(--focus);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
+
+/* the exit waterfall: the reason under the step name on a phone, as Goten does */
+@media (max-width: 899px) {
+  .demos__product {
+    margin-top: 56px;
+  }
+  .dm-need + .dm-need {
+    margin-top: 96px;
+  }
+  .demos .blogchips {
+    justify-content: flex-start;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 8px 0;
+  }
+  .dm-need__title {
+    margin: 0 0 24px;
+    padding-left: 12px;
+  }
+  .dm-scene {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+    margin-top: 56px;
+  }
+  .dm-text {
+    padding-top: 0;
+  }
+  .dm-card {
+    padding: 16px 14px 18px;
+    font-size: 13px;
+  }
+  .dm-field {
+    min-width: 0;
+  }
+  .dm-card--why .dm-table,
+  .dm-card--stack .dm-table,
+  .dm-card--why .dm-tr,
+  .dm-card--stack .dm-tr {
+    display: block;
+  }
+  .dm-card--why .dm-tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    border-bottom: 1px solid var(--line);
+  }
+  .dm-card--why .dm-td {
+    display: block;
+    border: 0;
+  }
+  .dm-card--why .dm-td[data-c='3'] {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-top: 0;
+  }
+  .dm-card--why .dm-th .dm-td[data-c='3'],
+  .dm-card--stack .dm-th {
+    display: none;
+  }
+  .dm-card--stack .dm-tr {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .dm-card--stack .dm-td {
+    display: block;
+    border: 0;
+    padding: 1px 8px;
+  }
+  .dm-card--stack .dm-td:empty {
+    display: none;
+  }
+  .dm-card--stack .dm-td[data-label]:not([data-label=''])::before {
+    content: attr(data-label) ': ';
+  }
+  .dm-card--why .dm-tr.dm-focus,
+  .dm-card--stack .dm-tr.dm-focus {
+    border: 2px solid var(--focus);
+    border-left-width: 4px;
+    border-radius: 6px;
+  }
+  .dm-card--why .dm-tr.dm-focus > .dm-td,
+  .dm-card--stack .dm-tr.dm-focus > .dm-td {
+    border: 0;
+    border-radius: 0;
+  }
+  .dm-card--why .dm-td.dm-focus,
+  .dm-card--stack .dm-td.dm-focus {
+    border: 2px solid var(--focus);
+    border-left-width: 4px;
+    border-radius: 6px;
+  }
+  .dm-try {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4px;
+    margin-top: 32px;
+  }
+  .dm-try__path {
+    grid-column: 1;
+  }
+  .dm-end {
+    margin-top: 96px;
+  }
+}
+
+@media (max-width: 360px) {
+  .dm-td[data-nh='2'] {
+    display: none;
+  }
+  .dm-card {
+    padding: 14px 8px 16px;
+  }
+  .dm-td {
+    padding: 6px 4px;
+  }
+  .dm-td:not(.dm-nw) {
+    overflow-wrap: break-word;
+  }
+  .dm-pill,
+  .dm-ub {
+    padding: 1px 6px;
+  }
+}
+
+/* Plan 43: /policy/ holds the notices the pages no longer repeat (examples, data, advice), short sections in the list pages' column */
+.policy {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px var(--gutter) 120px;
+}
+.policy section {
+  max-width: 720px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+.policy section:first-child {
+  border-top: 0;
+}
+.policy h2 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  line-height: 1.25;
+}
+.policy p {
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.policy a {
+  color: var(--text);
+}
+/* a run of a module's own tags on one line */
+.dm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 0;
+  padding: 2px 8px;
+}
+.dm-tg {
+  padding: 1px 9px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+  font-size: 12.5px;
+}
+.dm-field.dm-field--well {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+.dm-tg.dm-focus {
+  padding-left: 7px;
+}
+
+/* Demos cards as dark app windows (owner 2026-11-24: app-window yes, pastel tints no; dark windows with the module colour as light,
+   both site modes). Designer prototype proto2, merged as is. */
+/* Demos cards, prototype 2 "graphite window, module light" (2026-11-24, owner: dark windows, module colour as light only).
+   Borrows: the blog figures' graphite window (ink #f4f4f0, soft #b2b5b2, dim #8a8d8a), the site's dark bands.
+   The card is a dark app window in both site modes. The module colour never fills anything: it is the light around the
+   window (a far glow under it), a thin highlight along the top edge and a faint wash in the title bar. Inside, the focus
+   outline is the only element drawn in full module colour.
+   Cheap on 35 cards: box-shadows and gradients only; no backdrop-filter, no filter, no images, no motion. */
+
+/* the window's own tokens: the site's names, re-pointed inside the card, so every inner rule follows */
+.dm-card {
+  --text: #f4f4f0; /* ink */
+  --muted: #b2b5b2; /* soft: body text in the window */
+  --soft: #8a8d8a; /* dim: column labels, the bar's title */
+  --line: rgba(255, 255, 255, 0.085);
+  --paper: #1a1b1e; /* the window */
+  --dm-bar: #222326; /* the title bar */
+  --dm-well: #121315; /* fields and the monospace sheet: set into the window */
+  --dm-raise: rgba(255, 255, 255, 0.055); /* buttons, pills */
+  --dm-edge: rgba(255, 255, 255, 0.07); /* inner hairline */
+  --dm-glow: var(--mark);
+  --dm-light: 60%; /* strength of the module light under the window */
+  --dm-wash: 16%; /* strength of the module wash in the bar */
+  --dm-spill: 8%; /* the bar's light spilling onto the top of the window */
+}
+.demos__product--bulma .dm-card {
+  --focus: #a9cdea;
+  --dm-glow: #7fb3dc;
+}
+.demos__product--goten .dm-card {
+  --focus: #f2ba90;
+  --dm-glow: #f0a476; /* the module colour, a little more saturated, so the light reads as colour, not as a tint */
+}
+.demos__product--trunks .dm-card {
+  --focus: #b9d79f;
+  --dm-glow: #98c873;
+}
+@media (prefers-color-scheme: dark) {
+  .dm-card {
+    --paper: #1f2023; /* a step above the page (#161616), so the window separates */
+    --dm-bar: #27282c;
+    --dm-well: #161719;
+    --dm-edge: rgba(255, 255, 255, 0.09);
+    --dm-light: 16%;
+    --dm-wash: 12%;
+    --dm-spill: 5%;
+  }
+}
+
+/* the window */
+.dm-card {
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: radial-gradient(60% 160px at 28% 40px, color-mix(in srgb, var(--mark) var(--dm-spill), transparent), transparent), var(--paper);
+  color: var(--muted);
+  box-shadow:
+    inset 0 0 0 1px var(--dm-edge),
+    0 0 0 1px rgba(14, 15, 17, 0.9),
+    0 1px 2px rgba(14, 15, 17, 0.16),
+    0 14px 30px -14px rgba(14, 15, 17, 0.45),
+    0 34px 56px -30px color-mix(in srgb, var(--dm-glow) var(--dm-light), transparent),
+    0 50px 120px -50px color-mix(in srgb, var(--dm-glow) calc(var(--dm-light) * 0.6), transparent);
+}
+@media (prefers-color-scheme: dark) {
+  .dm-card {
+    box-shadow:
+      inset 0 0 0 1px var(--dm-edge),
+      0 0 0 1px rgba(0, 0, 0, 0.5),
+      0 12px 28px -14px rgba(0, 0, 0, 0.6),
+      0 -10px 36px -24px color-mix(in srgb, var(--dm-glow) calc(var(--dm-light) * 1.4), transparent),
+      0 34px 70px -36px color-mix(in srgb, var(--dm-glow) var(--dm-light), transparent);
+  }
+}
+.dm-card__in {
+  padding: 0 22px 20px;
+}
+
+/* the title bar: a mono label after three quiet window dots; the module's light along its top edge and in one corner.
+   A card without a title (the tour) still gets the bar, drawn empty. */
+.dm-card__head,
+.dm-card__in:not(:has(> .dm-card__head))::before {
+  display: block;
+  margin: 0 -22px 12px;
+  padding: 12px 22px 11px 76px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 14px 14px 0 0;
+  background:
+    linear-gradient(90deg, transparent 6%, var(--mark) 32%, transparent 70%) top / 100% 1px no-repeat,
+    radial-gradient(circle, rgba(255, 255, 255, 0.17) 0 3.5px, transparent 4px) 22px 50% / 9px 9px no-repeat,
+    radial-gradient(circle, rgba(255, 255, 255, 0.17) 0 3.5px, transparent 4px) 37px 50% / 9px 9px no-repeat,
+    radial-gradient(circle, rgba(255, 255, 255, 0.17) 0 3.5px, transparent 4px) 52px 50% / 9px 9px no-repeat,
+    radial-gradient(90% 220% at 22% 0%, color-mix(in srgb, var(--mark) var(--dm-wash), transparent), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent),
+    var(--dm-bar);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.035);
+  color: #a9aca8;
+  font: 500 11px/1.4 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.dm-card__in:not(:has(> .dm-card__head))::before {
+  content: '';
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+/* rows and tables */
+.dm-kv {
+  padding: 8px 8px;
+}
+.dm-th .dm-td {
+  padding-top: 4px;
+  padding-bottom: 8px;
+  color: var(--soft);
+  font: 500 10.5px/1.3 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.dm-gap .dm-td,
+.dm-pre-gap {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+/* fields: an input well set into the window */
+.dm-field {
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: var(--dm-well);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: #dedfdb;
+}
+.dm-p:has(> .dm-field) {
+  margin-top: 4px;
+}
+
+/* pills and tags: neutral, a lighter step of graphite */
+.dm-pill,
+.dm-tg {
+  padding: 2px 9px;
+  border-radius: 8px; /* not a capsule: a long status wraps to two lines */
+  background: var(--dm-raise);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  color: #c4c7c3;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* buttons: a raised dark app button */
+.dm-ub {
+  padding: 2px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 1px 1px rgba(0, 0, 0, 0.3);
+  color: #dedfdb;
+  font-weight: 500;
+}
+/* tour bits: the chip and the button frame hand their border to the button inside */
+.dm-chip,
+.dm-btn {
+  padding: 0;
+  border: 0;
+}
+.dm-chip .dm-ub {
+  margin: 0;
+  border-radius: 999px;
+  font-size: 12px;
+}
+.dm-btn .dm-ub {
+  margin: 0;
+  padding: 5px 12px;
+  font-size: 13px;
+}
+.dm-step {
+  color: var(--soft);
+  font: 500 10.5px/1.3 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* monospace text: a sheet set into the window */
+.dm-pre {
+  margin: 4px 0 0;
+  padding: 10px 4px;
+  border-radius: 10px;
+  background: var(--dm-well);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* the one emphasis: the module's bright colour, with a faint light of the same colour inside it */
+.dm-focus,
+.dm-tr.dm-focus > .dm-td {
+  background-color: color-mix(in srgb, var(--focus) 7%, transparent);
+}
+.dm-tr.dm-focus {
+  background: none;
+}
+
+/* phone */
+@media (max-width: 899px) {
+  /* the why/stack rows become blocks: the light goes on the row, not on each cell */
+  .dm-card--why .dm-tr.dm-focus,
+  .dm-card--stack .dm-tr.dm-focus {
+    background-color: color-mix(in srgb, var(--focus) 7%, transparent);
+  }
+  .dm-card--why .dm-tr.dm-focus > .dm-td,
+  .dm-card--stack .dm-tr.dm-focus > .dm-td {
+    background: none;
+  }
+  .dm-card {
+    padding: 0;
+    border-radius: 12px;
+  }
+  .dm-card__in {
+    padding: 0 14px 16px;
+  }
+  .dm-card__head,
+  .dm-card__in:not(:has(> .dm-card__head))::before {
+    margin: 0 -14px 10px;
+    padding: 10px 14px 9px 60px;
+    border-radius: 12px 12px 0 0;
+    background-position:
+      top,
+      14px 50%,
+      27px 50%,
+      40px 50%,
+      0 0,
+      0 0,
+      0 0;
+    background-size:
+      100% 1px,
+      8px 8px,
+      8px 8px,
+      8px 8px,
+      auto,
+      auto,
+      auto;
+    font-size: 10.5px;
+  }
+  .dm-card__in:not(:has(> .dm-card__head))::before {
+    height: 34px;
+    margin-bottom: 14px;
+  }
+  .dm-card {
+    box-shadow:
+      inset 0 0 0 1px var(--dm-edge),
+      0 0 0 1px rgba(14, 15, 17, 0.9),
+      0 12px 26px -14px rgba(14, 15, 17, 0.45),
+      0 28px 50px -26px color-mix(in srgb, var(--dm-glow) var(--dm-light), transparent);
+  }
+}
+@media (max-width: 899px) and (prefers-color-scheme: dark) {
+  .dm-card {
+    box-shadow:
+      inset 0 0 0 1px var(--dm-edge),
+      0 0 0 1px rgba(0, 0, 0, 0.55),
+      0 14px 30px -14px rgba(0, 0, 0, 0.7),
+      0 28px 56px -28px color-mix(in srgb, var(--dm-glow) var(--dm-light), transparent);
+  }
+}
+@media (max-width: 360px) {
+  .dm-card {
+    padding: 0;
+  }
+  .dm-card__in {
+    padding: 0 8px 14px;
+  }
+  .dm-card__head,
+  .dm-card__in:not(:has(> .dm-card__head))::before {
+    margin: 0 -8px 8px;
+    padding: 9px 8px 8px 54px;
+    background-position:
+      top,
+      10px 50%,
+      23px 50%,
+      36px 50%,
+      0 0,
+      0 0,
+      0 0;
+  }
+}
+
+/* print: no window, no light; the site's plain ruled panel in black on white */
+@media print {
+  .dm-card {
+    --text: #000;
+    --muted: #333;
+    --soft: #555;
+    --line: #ccc;
+    --paper: #fff;
+    background: #fff;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  .dm-card__head,
+  .dm-card__in:not(:has(> .dm-card__head))::before,
+  .dm-field,
+  .dm-pre,
+  .dm-pill,
+  .dm-tg,
+  .dm-ub,
+  .dm-focus,
+  .dm-tr.dm-focus > .dm-td {
+    background: none;
+    box-shadow: none;
+    color: inherit;
+  }
+  .demos__product .dm-card {
+    --focus: #000;
+  }
+  .dm-card__head {
+    padding-left: 22px;
+    border-bottom-color: #ccc;
+  }
+  .dm-card__in:not(:has(> .dm-card__head))::before {
+    display: none;
+  }
+}
+
+/* a module demo page's page nav has more section links than a module page's: from 1099px down they scroll sideways, as on a phone */
+@media (max-width: 1099px) {
+  .demos .subnav .nav__links {
+    display: flex;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask: linear-gradient(90deg, #000 85%, transparent);
+    mask: linear-gradient(90deg, #000 85%, transparent);
+    padding-right: 40px;
+  }
+  .demos .subnav .nav__links::-webkit-scrollbar {
+    display: none;
   }
 }

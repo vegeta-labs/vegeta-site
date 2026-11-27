@@ -65,6 +65,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -79,6 +80,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/">Docs</a></li>
         </ul>
       </details>
@@ -98,8 +100,8 @@
         </h1>
         <p class="hero__lede">For syndicate leads and the investors they invite.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://github.com/vegeta-labs/bulma">View the code</a>
-          <a class="btn btn--quiet" href="/docs/bulma/">Read the docs <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--primary" href="/demos/bulma/">See the demo</a>
+          <a class="btn btn--quiet" href="https://github.com/vegeta-labs/bulma">View the code <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
         <!-- Hero illustration: three panels set in type from Bulma's demo data (site-src/bulma-demo.json, plan 39 R5) and screen wording (R6);
@@ -177,7 +179,7 @@
           <a href="/docs/bulma/">Docs</a>
         </span>
         <span class="nav__end">
-          <a class="nav__cta glass" href="https://github.com/vegeta-labs/bulma">View the code</a>
+          <a class="nav__cta glass" href="/bulma/demo/">See the demo</a>
         </span>
       </nav>
 
@@ -279,7 +281,7 @@
                           class="illus illus--pay"
                           data-illus="pay"
                           role="img"
-                          aria-label="A sample investor's payment instructions after signing: the amount to pay, what has been received, the payment reference and the date to pay by."
+                          aria-label="A sample investor's payment instructions after signing: the amount to pay, what has been received, the payment reference and the lead fee."
                         >
                           <div aria-hidden="true">
                             <div class="illus__head"><span class="illus__title">Payment details</span></div>
@@ -289,9 +291,9 @@
                               </li>
                               <li class="illus__row ia ia--2"><span class="illus__who">Received so far</span><span class="illus__amt">£0.00</span></li>
                               <li class="illus__row ia ia--3">
-                                <span class="illus__who">Payment reference</span><span class="illus__amt mono">VGT-7KQ2MX</span>
+                                <span class="illus__who">Payment reference</span><span class="illus__amt mono">BU-U69KBJ</span>
                               </li>
-                              <li class="illus__row ia ia--4"><span class="illus__who">Pay by</span><span class="illus__amt">2026-12-04</span></li>
+                              <li class="illus__row ia ia--4"><span class="illus__who">Lead fee</span><span class="illus__amt">£200.00</span></li>
                             </ul>
                           </div>
                         </div>
@@ -371,19 +373,19 @@
           <h2 class="eyebrow section-label" id="trust-h">Why trust the figures</h2>
           <dl class="facts">
             <div class="fact" data-reveal>
-              <dt>Sandbox</dt>
-              <dd>A new instance starts as a sandbox with fictional data, and no email leaves it.</dd>
+              <dt>1,878</dt>
+              <dd>Deliberate code breakages in a full mutation run, every one caught.</dd>
             </div>
             <div class="fact" data-reveal>
               <dt>35,084</dt>
               <dd>Random and boundary cases where a Python oracle, written separately from the code, matches.</dd>
             </div>
             <div class="fact" data-reveal>
-              <dt>1,130</dt>
+              <dt>1,246</dt>
               <dd>Unit and real-database tests, all passing on the release branch.</dd>
             </div>
           </dl>
-          <p class="trust__note">Figures from the v0.1.0 release checks.</p>
+          <p class="trust__note">Figures from the v0.2.0 release checks.</p>
         </div>
       </section>
 
@@ -587,8 +589,8 @@
             <details class="faq__item" id="bfaq-ready">
               <summary>What state is it in?</summary>
               <p>
-                It is version 0.1.0: only what is built and tested is described here, and the release notes list its limits. It starts as a sandbox with
-                fictional data, and no email leaves it; the real mode needs the operator&rsquo;s own email server, legal wording and payment details. Read
+                It is version 0.2.0: only what is built and tested is described here, and the release notes list its limits. It starts as a sandbox, and no
+                email leaves it; the real mode needs the operator&rsquo;s own email server, legal wording and payment details. Read
                 <a href="/docs/bulma/build/responsibilities/">who does what</a> before you run it for real.
               </p>
             </details>
@@ -602,11 +604,11 @@
             <source src="/img/valley-loop.mp4" type="video/mp4" />
           </video>
         </div>
-        <h2 class="cta__title" id="cta-h" data-reveal>Try it on your own machine</h2>
-        <p class="cta__body" data-reveal>Docker Compose, with fictional data to start.</p>
+        <h2 class="cta__title" id="cta-h" data-reveal>See it work on a demo deal</h2>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://github.com/vegeta-labs/bulma">View the code</a>
-          <a class="btn btn--quiet" href="/docs/bulma/">Read the docs <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--primary" href="/bulma/demo/">See the demo</a>
+          <a class="btn btn--quiet" href="https://github.com/vegeta-labs/bulma">View the code <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--quiet" href="/blog/from-deal-to-payment/">Read the walkthrough <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </section>
     </main>
@@ -646,13 +648,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

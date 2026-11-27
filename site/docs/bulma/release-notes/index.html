@@ -57,6 +57,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -71,6 +72,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -108,6 +110,11 @@
             <li>
               <a href="/docs/bulma/release-notes/" aria-current="page">Release notes</a>
               <ul class="docs__sub">
+                <li>
+                  <a href="#v020-2026-11-27-a-ready-made-demo-deal-for-the-sandbox-and-a-static-demo-of-it-to-look-at-without-installing-anything"
+                    >v0.2.0 <span>2026-11-27</span></a
+                  >
+                </li>
                 <li>
                   <a href="#v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default"
                     >v0.1.0 <span>2026-11-21</span></a
@@ -148,6 +155,11 @@
                   <a href="/docs/bulma/release-notes/" aria-current="page">Release notes</a>
                   <ul class="docs__sub">
                     <li>
+                      <a href="#v020-2026-11-27-a-ready-made-demo-deal-for-the-sandbox-and-a-static-demo-of-it-to-look-at-without-installing-anything"
+                        >v0.2.0 <span>2026-11-27</span></a
+                      >
+                    </li>
+                    <li>
                       <a href="#v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default"
                         >v0.1.0 <span>2026-11-21</span></a
                       >
@@ -159,14 +171,68 @@
           </details>
           <p class="docs__kicker"><a href="/docs/bulma/">Bulma</a></p>
           <h1 class="docs__title">Bulma — SPV Workspace — release notes</h1>
-          <p class="docs__version">v0.1.0</p>
+          <p class="docs__version">v0.2.0</p>
           <div class="docs__body">
             <p>
               Only what is built, tested and in the tagged version is listed. Format:
-              <a href="https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/release-notes-template.md"
+              <a href="https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/release-notes-template.md"
                 >release notes template</a
               >.
             </p>
+            <h2 id="v020-2026-11-27-a-ready-made-demo-deal-for-the-sandbox-and-a-static-demo-of-it-to-look-at-without-installing-anything">
+              v0.2.0 (2026-11-27): A ready-made demo deal for the sandbox, and a static demo of it to look at without installing anything<a
+                class="docs__anchor"
+                href="#v020-2026-11-27-a-ready-made-demo-deal-for-the-sandbox-and-a-static-demo-of-it-to-look-at-without-installing-anything"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              In the sandbox, an admin can add a demo deal with one click: a fictional lead with three deals and four investors at different steps, so there is
+              something to look at straight away. The same scenario, recorded on a fixed date, is also published as a static demo pack that opens in a browser
+              with no server.
+            </p>
+            <p>Also in this version:</p>
+            <ul>
+              <li>
+                The demo deal: <strong>Add demo deal</strong> on the admin&#39;s <strong>Home</strong>, or <code>BULMA_DEMO_DEAL=1</code> when the app starts.
+                The sign-ins are shown once, or written to a file only the app&#39;s user can read. The demo accounts are never admins or approvers; the demo
+                reviewer that approves the demo deal is retired as soon as it is added. Demo and ordinary people, deals, syndicates, companies and money never
+                mix. When the instance switches to the real mode, the demo accounts stop working and the demo records are hidden. See
+                <a href="/docs/bulma/use/getting-started/#a-ready-made-demo-deal">Walk the sandbox</a>.
+              </li>
+              <li>
+                The static demo pack <code>bulma-demo-v0.2.0.tar.gz</code>: the investor&#39;s, the lead&#39;s and the reviewer&#39;s view of the demo deal,
+                with its PDFs and CSV files, as recorded on 2 November 2026. It sends nothing anywhere and stores nothing; buttons that would change something
+                say that this is a demo.
+              </li>
+            </ul>
+            <h3 id="gates">Gates<a class="docs__anchor" href="#gates" aria-label="Link to this section">#</a></h3>
+            <ul>
+              <li>
+                The reminder about how many people a deal has reached now also counts people who have passed it or whose invitation was withdrawn: they have
+                received the promotion. It is still only a reminder.
+              </li>
+              <li>
+                An eligibility retake recognises a question by its wording, not by its number, so the same question under a new number is not asked again. If
+                the question bank has too few questions left that the person has not seen, the retake does not start and says why. A test already given and not
+                finished is shown as it was given.
+              </li>
+              <li>Only an admin can add the demo deal, only in the sandbox and only once. Who can see or do what on ordinary deals is unchanged.</li>
+            </ul>
+            <h3 id="warnings">Warnings<a class="docs__anchor" href="#warnings" aria-label="Link to this section">#</a></h3>
+            <p>No change for ordinary deals. The demo deal uses its own demo regime pack, whose warnings are sample text that says it is not legal text.</p>
+            <h3 id="calculations">Calculations<a class="docs__anchor" href="#calculations" aria-label="Link to this section">#</a></h3>
+            <p>No change. If no platform fee has been set when the demo deal is added, it sets a sample one so the demo can run.</p>
+            <h3 id="other-changes">Other changes<a class="docs__anchor" href="#other-changes" aria-label="Link to this section">#</a></h3>
+            <p>Checked on the release branch on 2026-11-27, run locally:</p>
+            <ul>
+              <li>Unit and real-database tests: 1,246 of 1,246 pass.</li>
+              <li>Browser tests: 41 of 41 pass, and 6 of 6 on the static demo pack.</li>
+              <li>Test-plan cases due by this version: 201 of 201 have a passing test.</li>
+              <li>Deliberate code breakages (full mutation run): 1,878 of 1,878 caught.</li>
+              <li>Python oracle, written separately from the code: 35,084 of 35,084 random and boundary cases match.</li>
+            </ul>
             <h2 id="v010-2026-11-21-run-an-spv-deal-from-set-up-to-money-received-refunds-and-a-request-to-close-in-a-sandbox-by-default">
               v0.1.0 (2026-11-21): Run an SPV deal from set-up to money received, refunds and a request to close, in a sandbox by default<a
                 class="docs__anchor"
@@ -211,22 +277,22 @@
               handed to Goten yet. Only reconciliation is handed over: the roster goes to Goten and Goten&#39;s ledger is read back. Bulma&#39;s matching is its
               own code, not Goten&#39;s; the differences are listed in the <a href="/docs/bulma/build/operator-guide/">Operator guide</a>.
             </p>
-            <h3 id="gates">Gates<a class="docs__anchor" href="#gates" aria-label="Link to this section">#</a></h3>
+            <h3 id="gates-1">Gates<a class="docs__anchor" href="#gates-1" aria-label="Link to this section">#</a></h3>
             <p>
               First version: who can see or do what is described in the <a href="/docs/bulma/use/lead-guide/">Lead guide</a>, the
               <a href="/docs/bulma/use/investor-guide/">Investor guide</a> and the <a href="/docs/bulma/build/operator-guide/">Operator guide</a>.
             </p>
-            <h3 id="warnings">Warnings<a class="docs__anchor" href="#warnings" aria-label="Link to this section">#</a></h3>
+            <h3 id="warnings-1">Warnings<a class="docs__anchor" href="#warnings-1" aria-label="Link to this section">#</a></h3>
             <p>
               First version: warning texts come from the operator&#39;s regime pack. The packs shipped with the software hold placeholder text, and the real
               mode refuses placeholders.
             </p>
-            <h3 id="calculations">Calculations<a class="docs__anchor" href="#calculations" aria-label="Link to this section">#</a></h3>
+            <h3 id="calculations-1">Calculations<a class="docs__anchor" href="#calculations-1" aria-label="Link to this section">#</a></h3>
             <p>
               First version: amounts are integer minor units and rates are basis points. Only the amount to pay is exact; investment amounts and fees are shown
               as estimates, because they are settled at closing, which this version does not do.
             </p>
-            <h3 id="other-changes">Other changes<a class="docs__anchor" href="#other-changes" aria-label="Link to this section">#</a></h3>
+            <h3 id="other-changes-1">Other changes<a class="docs__anchor" href="#other-changes-1" aria-label="Link to this section">#</a></h3>
             <p>Checked on the release branch on 2026-11-20, run locally:</p>
             <ul>
               <li>Unit and real-database tests: 1,130 of 1,130 pass.</li>
@@ -280,13 +346,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,7 +150,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Prepare and import your CSV files</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>Goten takes four kinds of CSV file. Most deals need only the first two: the rest of the data carries over from step to step.</p>
             <div class="docs__table" tabindex="0">
@@ -283,11 +285,49 @@
                   </tr>
                   <tr>
                     <td><strong>cash_due</strong></td>
-                    <td>Everything the investor should wire, <strong>including any fees charged to them</strong>.</td>
+                    <td>
+                      Everything the investor should wire, <strong>including any fees charged to them</strong>, except the pro-rata platform fee, which is taken
+                      from the investment at closing.
+                    </td>
                   </tr>
                   <tr>
                     <td>scheme</td>
                     <td>none, SEIS or EIS.</td>
+                  </tr>
+                  <tr>
+                    <td>own_fee_mode</td>
+                    <td>
+                      Optional. on_top or deducted: this investor&#39;s own fee terms replace the deal&#39;s investor-paid fees (see
+                      <a href="/docs/goten/use/closing-allocation/#an-investors-own-fee-terms">Closing allocation</a>). Required if a rate or fixed fee is
+                      given.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>own_fee_rate</td>
+                    <td>Optional. The investor&#39;s own fee as a percentage. Below 100% when deducted.</td>
+                  </tr>
+                  <tr>
+                    <td>own_fee_fixed</td>
+                    <td>Optional. The investor&#39;s own fee as a fixed amount, above 0. Fill in a rate or a fixed fee, not both.</td>
+                  </tr>
+                  <tr>
+                    <td>carry</td>
+                    <td>
+                      Optional. The investor&#39;s own carry rate at exit, such as 20 or 20%. With a fixed carry rate, blank means the deal&#39;s carry and 0
+                      means none; with tiered carry the tier table decides, and every carry must be blank or all the same (see
+                      <a href="/docs/goten/use/exit-distribution/#personal-carry">Personal carry</a>).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>refunded</td>
+                    <td>Optional. What has already been refunded to the investor, or is on its way. Received amounts use the net figure.</td>
+                  </tr>
+                  <tr>
+                    <td>refund_only</td>
+                    <td>
+                      Optional. withdrawn or closed: all of the investor&#39;s money goes back and they are not carried into the allocation. See
+                      <a href="/docs/goten/use/reconciliation/#refunds-already-made-and-refund-only-investors">Reconciliation</a>.
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -392,6 +432,10 @@
                 </tbody>
               </table>
             </div>
+            <p>
+              It also takes the optional <code>own_fee_mode</code>, <code>own_fee_rate</code>, <code>own_fee_fixed</code> and <code>carry</code> columns, with
+              the same meaning as in the investor list.
+            </p>
             <h3 id="holdings">Holdings<a class="docs__anchor" href="#holdings" aria-label="Link to this section">#</a></h3>
             <p>For when you are not coming from the allocation.</p>
             <div class="docs__table" tabindex="0">
@@ -418,6 +462,14 @@
                   <tr>
                     <td>share_price</td>
                     <td>Optional, the same on every row. Only used to show shares.</td>
+                  </tr>
+                  <tr>
+                    <td>carry</td>
+                    <td>
+                      Optional. The investor&#39;s own carry rate. With a fixed carry rate, blank means the deal&#39;s carry and 0 means none; with tiered carry
+                      the tier table decides, and every carry must be blank or all the same (see
+                      <a href="/docs/goten/use/exit-distribution/#personal-carry">Personal carry</a>).
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -563,13 +615,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

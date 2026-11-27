@@ -162,7 +162,9 @@ for (const [name, path] of DOCS) {
 for (const [path, vp] of [
   ['/trunks/', DESK],
   ['/goten/', DESK],
+  ['/bulma/', DESK],
   ['/trunks/', PHONE],
+  ['/bulma/', PHONE],
 ]) {
   const p = await b.newPage(vp)
   await p.goto(BASE + path)
@@ -187,7 +189,19 @@ for (const [path, vp] of [
 
 // page width at phone sizes, and the nav never wraps from 761 to 1200 px
 const p = await b.newPage()
-for (const path of ['/', '/goten/', '/trunks/', '/trunks/demo/', '/docs/', '/docs/goten/build/csv-reference/']) {
+for (const path of [
+  '/',
+  '/goten/',
+  '/trunks/',
+  '/bulma/',
+  '/trunks/demo/',
+  '/bulma/demo/',
+  '/demos/',
+  '/demos/bulma/',
+  '/policy/',
+  '/docs/',
+  '/docs/goten/build/csv-reference/',
+]) {
   for (const w of [320, 375, 390, 768]) {
     await p.setViewportSize({ width: w, height: 800 })
     await p.goto(BASE + path)
@@ -195,7 +209,7 @@ for (const path of ['/', '/goten/', '/trunks/', '/trunks/demo/', '/docs/', '/doc
     const docW = await p.evaluate(() => document.documentElement.scrollWidth)
     if (docW > w) errs.push(`${path} at ${w}px: page is ${docW}px wide`)
   }
-  if (path === '/trunks/demo/') continue
+  if (path.endsWith('/demo/')) continue
   const wrapped = []
   for (let w = 761; w <= 1200; w++) {
     await p.setViewportSize({ width: w, height: 800 })

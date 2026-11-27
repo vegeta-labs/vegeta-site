@@ -1,8 +1,8 @@
 {
-  "example": "d3c05a165bdf4480077256ba2bbcc5adf4299e66dfaca9c9e7dbe94e20c4dd9d",
-  "gotenRef": "91879ea4a952dff0bc3b297ee346bb645f81aa83",
+  "example": "3713f493d483e49090decaadbc6d6be6e7aba6848aeae253f259492df2afc224",
+  "gotenRef": "ad7873e61594d4b77b9974d3076a0f2cc9b7057d",
   "trunksRef": "f8a0d5530947606ecf8fc1a99305490fe63fb85a",
-  "bulmaRef": "e0166a67c51edebce77f91d0d53c208b292cdebb",
+  "bulmaRef": "0eac4d1c8e969aa7bf876540873df26b7b6c5379",
   "files": {
     "bulma-follow.webp": "0f4cab8d829622c5fe273906b7a0d0f748ce3b34749e407301c30f55a867ae63",
     "bulma-invite.webp": "f70ce407261bfff4f36c562d1f9d3f5c98a4f44816bff0121b20a3a1bfebf25a",

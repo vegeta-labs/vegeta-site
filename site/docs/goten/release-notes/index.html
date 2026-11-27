@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -116,6 +118,19 @@
             <li>
               <a href="/docs/goten/release-notes/" aria-current="page">Release notes</a>
               <ul class="docs__sub">
+                <li>
+                  <a href="#v151-2026-11-26-fields-no-longer-zoom-the-page-on-an-iphone-and-the-new-drop-down-menus-match-the-others"
+                    >v1.5.1 <span>2026-11-26</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#v150-2026-11-26-each-investor-can-have-their-own-fee-and-carry-with-a-pro-rata-platform-fee-and-an-allocation-hand-off-file"
+                    >v1.5.0 <span>2026-11-26</span></a
+                  >
+                </li>
+                <li>
+                  <a href="#v142-2026-11-24-the-sample-deal-is-no-longer-labelled-as-fictional-in-the-app">v1.4.2 <span>2026-11-24</span></a>
+                </li>
                 <li>
                   <a href="#v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor">v1.4.1 <span>2026-11-20</span></a>
                 </li>
@@ -191,6 +206,19 @@
                   <a href="/docs/goten/release-notes/" aria-current="page">Release notes</a>
                   <ul class="docs__sub">
                     <li>
+                      <a href="#v151-2026-11-26-fields-no-longer-zoom-the-page-on-an-iphone-and-the-new-drop-down-menus-match-the-others"
+                        >v1.5.1 <span>2026-11-26</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#v150-2026-11-26-each-investor-can-have-their-own-fee-and-carry-with-a-pro-rata-platform-fee-and-an-allocation-hand-off-file"
+                        >v1.5.0 <span>2026-11-26</span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#v142-2026-11-24-the-sample-deal-is-no-longer-labelled-as-fictional-in-the-app">v1.4.2 <span>2026-11-24</span></a>
+                    </li>
+                    <li>
                       <a href="#v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor">v1.4.1 <span>2026-11-20</span></a>
                     </li>
                     <li>
@@ -238,9 +266,110 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Goten — Deal Calculations — release notes</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>Rule P9: only what is implemented, tested and deployed is listed. Each line names the requirement and the tests that cover it.</p>
+            <h2 id="v151-2026-11-26-fields-no-longer-zoom-the-page-on-an-iphone-and-the-new-drop-down-menus-match-the-others">
+              v1.5.1 (2026-11-26): Fields no longer zoom the page on an iPhone, and the new drop-down menus match the others<a
+                class="docs__anchor"
+                href="#v151-2026-11-26-fields-no-longer-zoom-the-page-on-an-iphone-and-the-new-drop-down-menus-match-the-others"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              From the first check on a real iPhone (Safari). On a touch screen, every field and drop-down menu now uses text of at least 16 pixels, so tapping
+              a field no longer makes iOS zoom the page and leave it zoomed with the figures cut off at the right (R-X-04; E2E-07 in
+              <code>e2e/phone.spec.ts</code>). The drop-down menus added in v1.5.0 (instrument, who pays the platform fee, own fee mode, refund only) now have
+              the same height and arrow spacing as the other menus. Every figure on the phone matched the expected sample results.
+            </p>
+            <p>Calculations, rounding, import and export formats and saved data are unchanged.</p>
+            <p>
+              Counts at release: 551 unit tests, 272 of 272 due test-plan cases, 41 end-to-end tests covering 14 of 14 planned end-to-end cases (one new phone
+              test), no mutant near the changed lines (style and class changes only; the full run of 336 was at v1.5.0), the Python oracle&#39;s self-check 282
+              of 282.
+            </p>
+            <h2 id="v150-2026-11-26-each-investor-can-have-their-own-fee-and-carry-with-a-pro-rata-platform-fee-and-an-allocation-hand-off-file">
+              v1.5.0 (2026-11-26): Each investor can have their own fee and carry, with a pro-rata platform fee and an allocation hand-off file<a
+                class="docs__anchor"
+                href="#v150-2026-11-26-each-investor-can-have-their-own-fee-and-carry-with-a-pro-rata-platform-fee-and-an-allocation-hand-off-file"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              Requirements v0.9 (decision 16). Everything below is optional: a deal that uses none of it gives the same results, exports and saved figures as
+              v1.4.2 (checked by keeping the v1.4.2 engines in the tests and comparing 3,000 random deals field by field).
+            </p>
+            <ul>
+              <li>
+                <strong>Own fee terms per investor</strong> (R-REC-13, C-ALL-0): an investor can have their own fee mode (on top of the investment or deducted
+                from the wire) and one fee (a rate or a fixed amount), in place of the deal&#39;s investor-paid fees. Import them with the optional
+                <code>own_fee_mode</code>, <code>own_fee_rate</code> and <code>own_fee_fixed</code> columns, or set them on the investor table. While a fee
+                payer change is active, the people it covers cannot have their terms changed (reverse it first); terms added by import void it. Tests TC-J-02 to
+                TC-J-07, TC-J-16 to TC-J-19, TC-J-29.
+              </li>
+              <li>
+                <strong>Pro-rata platform fee</strong> (R-ALL-13, C-ALL-9b): a rate on the total invested, with an optional minimum, maximum and add-on rate
+                above a threshold, paid by the investors (split pro rata by largest remainder), the lead or the company. Cash due no longer includes it. Tests
+                TC-J-08 to TC-J-14, TC-J-17, TC-J-50, TC-J-53, TC-J-55, TC-J-57, TC-J-58, TC-J-60, TC-J-61.
+              </li>
+              <li>
+                <strong>Refunds and refund-only flags</strong> (R-REC-14, C-REC-4, C-REC-9): an optional <code>refunded</code> column makes received amounts net
+                of refunds; <code>refund_only</code> (<code>withdrawn</code> or <code>closed</code>) moves an investor&#39;s money to refunds and out of the
+                allocation. Tests TC-J-20 to TC-J-28, TC-J-32.
+              </li>
+              <li>
+                <strong>Instruments</strong> (R-DEAL-06, C-ALL-5): convertible and fund-unit rounds have no share price and no share counts; exports leave the
+                share cells blank. Tests TC-J-15, TC-J-30.
+              </li>
+              <li>
+                <strong>Allocation hand-off file</strong> (R-ALL-14, C-ALL-12): import a JSON request with every allocation input and export the result for the
+                same request; any input edited after the import disables the export. Format <code>docs/formats/allocation-handoff-v1.md</code> (canonical JSON
+                with a SHA-256 hash, shared test vectors). Nothing is sent anywhere. Tests TC-J-41 to TC-J-49, TC-J-51, TC-J-52, TC-J-56, TC-J-59, E2E-13.
+              </li>
+              <li>
+                <strong>Personal carry at exit</strong> (R-DIS-08, R-DIS-09, C-DIS-8, C-DIS-9): each holding can carry its own rate; when rates differ, proceeds
+                are split by amount invested and each investor&#39;s waterfall is worked out on their share, shown in a per-investor table. Carry can be split
+                between named payees, with a payees CSV. Tests TC-J-33 to TC-J-40, TC-J-54, TC-J-62, E2E-12.
+              </li>
+            </ul>
+            <p>
+              Saved data moves to schema 3; data saved by v1.4.x is read and converted with the new fields empty. Names can now be up to 256 characters. The
+              reconciliation refund list names a refund-only flag as &quot;Refund only&quot;.
+            </p>
+            <p>
+              Counts at release: 551 unit tests, 272 of 272 due test-plan cases, 40 end-to-end tests covering 14 of 14 planned end-to-end cases, the Python
+              oracle&#39;s self-check 282 of 282 and 3,000 generated cases agreeing with it, 337 of 337 mutants caught (the full run of 336 on the merged
+              milestone, and 1 added with a release check fix).
+            </p>
+            <h2 id="v142-2026-11-24-the-sample-deal-is-no-longer-labelled-as-fictional-in-the-app">
+              v1.4.2 (2026-11-24): The sample deal is no longer labelled as fictional in the app<a
+                class="docs__anchor"
+                href="#v142-2026-11-24-the-sample-deal-is-no-longer-labelled-as-fictional-in-the-app"
+                aria-label="Link to this section"
+                >#</a
+              >
+            </h2>
+            <p>
+              The app no longer says &quot;fictional&quot; on its own pages. The sample deal is now called <strong>Northwind Robotics — Seed SPV</strong> (it
+              was &quot;… (fictional sample)&quot;), so chase messages and confirmations copied from the sample carry the shorter name. Loading the sample logs
+              &quot;sample deal&quot;. The first-visit card, the empty reconciliation page and the guided tour now say &quot;sample&quot; where they said
+              &quot;fictional&quot;. The disclaimer (not investment, tax or legal advice; not affiliated with any platform) is unchanged.
+            </p>
+            <p>
+              Calculations, rounding, import and export formats and saved data are unchanged. A sample saved by an earlier version keeps its old name until the
+              sample is loaded again.
+            </p>
+            <p>
+              For contributors: <code>node scripts/mutation-check.mjs --since=main</code> runs only the mutants a change can affect (new mutants and those
+              within 3 lines of a changed line), and <code>npm run mutation:patterns</code> checks in seconds that every mutant&#39;s pattern occurs exactly
+              once (it runs in CI). Stopping a run puts the source back.
+            </p>
+            <p>
+              Counts at release: 466 unit tests, 210 of 210 due test-plan cases, 37 end-to-end tests covering 12 of 12 planned end-to-end cases, 4 of 4 affected
+              mutants caught (the full mutation run is weekly), the Python oracle&#39;s self-check 180 of 180.
+            </p>
             <h2 id="v141-2026-11-20-the-reconciliation-hint-now-says-a-receipt-may-have-no-suggested-investor">
               v1.4.1 (2026-11-20): The reconciliation hint now says a receipt may have no suggested investor<a
                 class="docs__anchor"
@@ -720,13 +849,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

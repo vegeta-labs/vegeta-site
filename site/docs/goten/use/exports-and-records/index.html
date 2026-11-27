@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,7 +150,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Exports, the activity log and where your data is stored</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <h2 id="exports">Exports<a class="docs__anchor" href="#exports" aria-label="Link to this section">#</a></h2>
             <p>Each button saves a CSV file to your computer. Nothing is uploaded. File names end with the deal&#39;s currency, for example ledger_GBP.csv.</p>
@@ -196,8 +198,15 @@
                     <td><strong>Export distribution CSV</strong></td>
                     <td>3. Exit distribution</td>
                     <td>distribution</td>
-                    <td>One row per investor: distribution, profit, multiple.</td>
+                    <td>One row per investor: distribution, profit, multiple, carry rate.</td>
                     <td>There are input errors or a shortfall, or the page is out of date.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Export carry payees CSV</strong></td>
+                    <td>3. Exit distribution</td>
+                    <td>carry_payees</td>
+                    <td>Each carry payee: share and amount.</td>
+                    <td>The same as the distribution export.</td>
                   </tr>
                   <tr>
                     <td><strong>Export activity log CSV</strong></td>
@@ -211,28 +220,34 @@
             </div>
             <p><strong>Copy closing confirmation</strong> copies the summary for the lead, and waits for the same things as the allocation export.</p>
             <p>
+              The allocation export includes each investor&#39;s own fee terms, carry rate and platform fee share, and the holdings and distribution exports the
+              carry rate; for a convertible or fund units the share cells are blank. <strong>Export result</strong> on the allocation page saves a JSON result
+              file for an imported hand-off request (see <a href="/docs/goten/use/closing-allocation/#the-allocation-hand-off-file">Closing allocation</a>); it
+              is not a CSV and cannot be imported back.
+            </p>
+            <p>
               All of these except <strong>Export activity log CSV</strong> also wait while you are part-way through editing a cell: press Enter or click out of
               the field first.
             </p>
             <p>
               A page marked <strong>out of date</strong> holds back its copy and exports until you hand off again:
               <strong>Copy closing confirmation</strong> and <strong>Export allocation CSV</strong> on the allocation page,
-              <strong>Export holdings CSV</strong> and <strong>Export distribution CSV</strong> on the exit page.
+              <strong>Export holdings CSV</strong>, <strong>Export distribution CSV</strong> and <strong>Export carry payees CSV</strong> on the exit page.
             </p>
             <p>
               Every export has a currency column as its last column. In text columns, a cell starting with = + - or @ is saved with a leading apostrophe, so
               that a spreadsheet does not treat it as a formula. Goten removes the apostrophe if you import the file again.
             </p>
             <p>
-              Only the investor list, bank statement, allocation investors and holdings can be imported. There is no export that restores a whole deal, and
-              decisions, withdrawals, fee payer changes and the activity log cannot be imported.
+              Only the investor list, bank statement, allocation investors and holdings can be imported, plus an allocation hand-off request on the allocation
+              page. There is no export that restores a whole deal, and decisions, withdrawals, fee payer changes and the activity log cannot be imported.
             </p>
             <h2 id="the-activity-log">The activity log<a class="docs__anchor" href="#the-activity-log" aria-label="Link to this section">#</a></h2>
             <p>
               <strong>Activity log</strong> lists what happened on the deal, newest first: investor list and bank statement imports, every decision on a
-              receipt, voided decisions, hand-offs, copied chase messages and queries, withdrawals, fee payer changes, loading the sample, and exports of the
-              log itself. Not logged: importing allocation investors or holdings, the other five exports, <strong>Copy closing confirmation</strong>, and
-              editing a table cell, unless the edit voids a decision.
+              receipt, voided decisions, hand-offs, copied chase messages and queries, withdrawals, fee payer changes, changes to who pays the pro-rata platform
+              fee, hand-off request imports and result exports, loading the sample, and exports of the log itself. Not logged: importing allocation investors or
+              holdings, the other six exports, <strong>Copy closing confirmation</strong>, and editing a table cell, unless the edit voids a decision.
             </p>
             <p>Set <strong>Your initials</strong> in <strong>Deal settings</strong> to have them added to each entry.</p>
             <p>
@@ -258,8 +273,9 @@
               <li>A private window can lose the data when it closes.</li>
               <li>
                 Each web address keeps its own data. Since v1.4.0 Goten saves your data differently, so a deal saved by v1.3.1 or earlier, or at the app&#39;s
-                earlier address, does not appear: the app opens empty, with the theme following your device and the tour at its start. If you run your own copy,
-                export what you need before you upgrade it.
+                earlier address, does not appear: the app opens empty, with the theme following your device and the tour at its start. A deal saved by v1.4.x
+                opens in v1.5.0 with the new fields empty; v1.4.x cannot open a deal saved by v1.5.0. If you run your own copy, export what you need before you
+                upgrade it.
               </li>
             </ul>
             <p>If the browser cannot save, Goten tells you at the top of the page:</p>
@@ -339,13 +355,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

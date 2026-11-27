@@ -1,6 +1,6 @@
 # Investor guide: from an invitation to payment instructions
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/use/investor-guide.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/use/investor-guide.md
 
 You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator who runs the instance, so yours may differ a little from this page.
 

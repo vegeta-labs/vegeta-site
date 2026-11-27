@@ -1,6 +1,6 @@
 # Run and build Bulma
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/README.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/README.md
 
 Bulma — SPV Workspace is self-hosted software for one operator running SPV deals: a Fastify server and a PostgreSQL database, with a React app served by the same server, shipped as one Docker image. These pages are for operators who run an instance and for developers, including anyone working with an AI coding agent.
 
@@ -42,4 +42,4 @@ When you work with an AI coding agent:
 - Have the agent run the checks in [Verification](https://vegeta-ops.vercel.app/docs/bulma/build/verification.md) before you rely on a change.
 - Keep business rules and money calculations in `src/lib/`, in whole numbers, as described in [Architecture](https://vegeta-ops.vercel.app/docs/bulma/build/architecture.md). Keep the Python oracle in `scripts/oracle/` independent: if a rule changes, rewrite it from the written requirements, not from the TypeScript.
 
-Closing a deal is not built yet. See the [README](https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/README.md) for what is done so far.
+Closing a deal is not built yet. See the [README](https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/README.md) for what is done so far.

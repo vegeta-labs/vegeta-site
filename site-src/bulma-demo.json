@@ -3,7 +3,8 @@
   "sources": {
     "bulma-r5": "Bulma's demo data, decided 2026-11-18 by the owner with the Bulma session: investors Son Goku, Yamcha, Krillin, Tien; £10,200.00 = £10,000.00 + lead fee £200.00; reference VGT-7KQ2MX; pay by 2026-12-04",
     "story": "The article figures' story (owner 2026-11-18: the blog and its pictures tell one story): company Senzu Labs; the investor list Goku To pay 1 day, Yamcha To sign 4 days, Krillin Verifying 2 days, Tien Funded 3 days",
-    "site-proposal": "Proposed by the site 2026-11-19: Yamcha commits £25,000.00, Tien £15,000.00; every investor joined on a link with a 2% lead fee added on top (a lead fee needs its own link: Bulma's Default link has none, bulma-f5 2026-11-20). Checked by the site against Bulma 3906d39 instead of a sandbox run (owner decision 2026-11-20; Bulma's owner dropped the sandbox walk-through): src/lib/money.ts leadMetrics adds commitments to Committed and whole receipts, fee included, to Received"
+    "site-proposal": "Proposed by the site 2026-11-19: Yamcha commits £25,000.00, Tien £15,000.00; every investor joined on a link with a 2% lead fee added on top (a lead fee needs its own link: Bulma's Default link has none, bulma-f5 2026-11-20). Checked by the site against Bulma 3906d39 instead of a sandbox run (owner decision 2026-11-20; Bulma's owner dropped the sandbox walk-through): src/lib/money.ts leadMetrics adds commitments to Committed and whole receipts, fee included, to Received",
+    "bulma-pack": "Bulma's static demo pack v0.2.0 (bulma-demo.lock, commit 0eac4d1, recorded at 2026-11-02 10:00 UTC; owner 2026-11-24: the payment picture's reference and date follow the pack): Goku's payment reference BU-U69KBJ (random per export, re-read after each new pack); the payment step shows no pay-by date, so the picture's fourth row is the lead fee, as the pack's How the amount is made up"
   },
   "checked": "checked by the site against Bulma 3906d39 code (owner decision 2026-11-20), not in a sandbox: Committed = sum of commitments (money.ts leadMetrics); Received = whole receipts including the lead fee (money.ts figures); 2% on top of £10,000.00 = £200.00 and of £15,000.00 = £300.00",
   "values": [
@@ -40,16 +41,16 @@
       "shown": ["Amount to pay in total £10,200.00", "Amount to pay in total £10,200.00"]
     },
     {
-      "value": "VGT-7KQ2MX",
-      "source": "bulma-r5",
-      "what": "Goku's payment reference",
-      "shown": ["Payment reference VGT-7KQ2MX"]
+      "value": "BU-U69KBJ",
+      "source": "bulma-pack",
+      "what": "Goku's payment reference in the demo pack",
+      "shown": ["Payment reference BU-U69KBJ"]
     },
     {
-      "value": "2026-12-04",
-      "source": "bulma-r5",
-      "what": "Goku's pay-by date",
-      "shown": ["Pay by 2026-12-04"]
+      "value": "£200.00",
+      "source": "bulma-pack",
+      "what": "Goku's lead fee in the demo pack's How the amount is made up",
+      "shown": ["Lead fee £200.00"]
     },
     {
       "value": "£0.00",

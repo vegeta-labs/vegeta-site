@@ -43,7 +43,7 @@ const field = (b, at, len) =>
     .replace(/\0[\s\S]*$/, '')
 const safe = (path) => path && !path.startsWith('/') && !path.split('/').includes('..')
 let next = null
-for (let at = 0; at + 512 <= tar.length; ) {
+for (let at = 0; at + 512 <= tar.length;) {
   const h = tar.subarray(at, at + 512)
   if (h.every((x) => x === 0)) break
   const type = String.fromCharCode(h[156] || 48)

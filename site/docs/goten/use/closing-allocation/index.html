@@ -66,6 +66,7 @@
         </details>
         <a href="/#faq">FAQ</a>
         <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
         <a href="/docs/" aria-current="page">Docs</a>
       </nav>
       <details class="nav__menu" data-menu>
@@ -80,6 +81,7 @@
           <li><a href="/#build">Why trust it</a></li>
           <li><a href="/#faq">FAQ</a></li>
           <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
           <li><a href="/docs/" aria-current="page">Docs</a></li>
         </ul>
       </details>
@@ -148,7 +150,7 @@
           </details>
           <p class="docs__kicker"><a href="/docs/goten/">Goten</a></p>
           <h1 class="docs__title">Closing allocation</h1>
-          <p class="docs__version">v1.4.1</p>
+          <p class="docs__version">v1.5.1</p>
           <div class="docs__body">
             <p>
               The allocation works out what each investor invests, pays in fees and gets back, what is wired to the company, and whether the deal can close.
@@ -159,17 +161,22 @@
                 Investors with the cash received from each. Hand them off from <a href="/docs/goten/use/reconciliation/">Reconciliation</a>, or import them in
                 the section <strong>Investors</strong> (see <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>).
               </li>
-              <li>The <strong>Share price (£ per share)</strong> for the round.</li>
-              <li>Your fees, and who pays each one.</li>
+              <li>The <strong>Instrument</strong>, and for equity the <strong>Share price (£ per share)</strong> for the round.</li>
+              <li>Your fees, and who pays each one. Any investor&#39;s own fee terms come with them from the investor list.</li>
+              <li>If there is one, the <strong>Pro-rata platform fee</strong>.</li>
               <li><strong>Minimum commitment</strong> and <strong>Investor percentage fees</strong> set in <strong>Deal settings</strong>.</li>
             </ul>
             <h2 id="steps">Steps<a class="docs__anchor" href="#steps" aria-label="Link to this section">#</a></h2>
             <ol>
               <li>Open <strong>2. Allocation</strong>.</li>
-              <li>Under <strong>Round</strong>, enter the share price. Enter the round cap if there is one; blank means no cap.</li>
+              <li>
+                Under <strong>Round</strong>, choose the <strong>Instrument</strong> and, for equity, enter the share price. Enter the round cap if there is
+                one; blank means no cap.
+              </li>
               <li>
                 Under <strong>Fees</strong>, click <strong>Add fee</strong> for each fee and fill in its row: name, <strong>Paid by</strong>,
-                <strong>Type</strong>, and the rate or amount.
+                <strong>Type</strong>, and the rate or amount. For a platform fee worked out on the total raised, click
+                <strong>Add a pro-rata platform fee</strong> instead (see below).
               </li>
               <li>Read <strong>Result</strong> and <strong>Checks</strong>.</li>
               <li>
@@ -216,6 +223,101 @@
               To move a percentage fee to a different payer before closing, use <strong>Change who pays a fee</strong>: see
               <a href="/docs/goten/use/withdrawal-and-fee-payer/">Withdrawing an investor and changing who pays a fee</a>.
             </p>
+            <h2 id="an-investors-own-fee-terms">
+              An investor&#39;s own fee terms<a class="docs__anchor" href="#an-investors-own-fee-terms" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              An investor can have their own fee terms instead of the deal&#39;s: a fee mode, <strong>On top</strong> or
+              <strong>Deducted from the wire</strong>, and at most one fee, either a rate or a fixed amount. Set them in the investor list with the
+              <code>own_fee_mode</code>, <code>own_fee_rate</code> and <code>own_fee_fixed</code> columns (see
+              <a href="/docs/goten/use/import-csv/">Prepare and import your CSV files</a>), or in the investor tables: tick
+              <strong>Show own terms, refunds and refund-only flags</strong> on the reconciliation page, or <strong>Show own terms</strong> on the allocation
+              page, to see the columns. <strong>Deal default</strong> means the deal&#39;s terms.
+            </p>
+            <p>
+              For someone with their own fee terms, none of the investor-paid fees in <strong>Fees</strong> is charged. They pay only their own fee, shown as
+              <strong>own fee</strong> in the closing confirmation and in the allocation export. A fee mode with no rate and no fixed amount means they pay no
+              investor fee at all. Company-paid and lead-paid fees, and the pro-rata platform fee, are not affected by own terms.
+            </p>
+            <p>
+              A rate deducted from the wire must be less than 100%. While a fee payer change is active, the own fee terms of the people it covers cannot be
+              changed: reverse the change first.
+            </p>
+            <h2 id="the-pro-rata-platform-fee">
+              The pro-rata platform fee<a class="docs__anchor" href="#the-pro-rata-platform-fee" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Click <strong>Add a pro-rata platform fee</strong> for a fee worked out on the total everyone invests, rather than per investor. It is separate
+              from any fee you add under <strong>Fees</strong>, even one named &quot;Platform fee&quot;.
+            </p>
+            <div class="docs__table" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Field</th>
+                    <th>Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Rate (%)</strong></td>
+                    <td>The rate on the total.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Minimum (£)</strong></td>
+                    <td>The fee is at least this. Blank or 0 means no minimum.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Maximum (£, blank = no cap)</strong></td>
+                    <td>Caps the rate part, after the minimum. 0 caps it at nothing. The add-on comes on top and is not capped.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Add-on above (£, blank = none)</strong> and <strong>Add-on rate (%)</strong></td>
+                    <td>An extra rate on the part of the total above this amount.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Paid by</strong></td>
+                    <td><strong>Investors, pro rata</strong>, <strong>The lead (invoice)</strong> or <strong>The company (from the wire)</strong>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The total it is worked out on is everyone&#39;s amount after fees, the minimum and scale-back. When investors pay, each one&#39;s share is in
+              proportion to that amount, rounded to the penny; any pennies left over go to the largest remainders, and an equal remainder goes to the investor
+              higher in the list. Their share comes out of what they invest; nobody&#39;s cash due changes. The page reminds you:
+              <strong>This changes each investor&#39;s amount invested. Get their consent as your process requires.</strong> If the lead or the company pays,
+              investors&#39; amounts do not change.
+            </p>
+            <p>To share one fixed amount between investors in proportion to what they invest, set the rate to 0 and the minimum and maximum to that amount.</p>
+            <p>With investors paying, if the fee would take all of someone&#39;s amount, the deal cannot close and they are named.</p>
+            <h2 id="instruments">Instruments<a class="docs__anchor" href="#instruments" aria-label="Link to this section">#</a></h2>
+            <p>
+              Choose <strong>Equity (shares)</strong>, <strong>Convertible (no shares yet)</strong> or <strong>Fund units (no shares)</strong>. Only equity has
+              a share price and share counts. For the other two there is no share price field (choosing them clears it): the allocation splits amounts only,
+              shows no share counts or S/EIS estimate, and leaves the share cells blank in exports.
+            </p>
+            <h2 id="the-allocation-hand-off-file">
+              The allocation hand-off file<a class="docs__anchor" href="#the-allocation-hand-off-file" aria-label="Link to this section">#</a>
+            </h2>
+            <p>
+              Another tool, such as Bulma, can send the allocation as a file. Under <strong>Allocation hand-off (JSON)</strong>, choose the file with
+              <strong>Import hand-off request</strong>. It replaces every allocation input: investors, fees, minimum, share price, cap, instrument and platform
+              fee. The page then lists what the request sent, including anyone <strong>Not in this allocation</strong>. Refunds outside the allocation, such as
+              over-payments or money from people not in it, are not part of the request or the result: the sending tool keeps track of them.
+            </p>
+            <p>
+              Click <strong>Export result</strong> to save the result file for the same request, and give it back to the tool that sent it.
+              <strong>Export result</strong> works even when the deal cannot close: the file then gives only the reasons and the investors concerned, so the
+              sender knows what to fix. An allocation imported from a request is not tied to reconciliation: it does not go out of date when reconciliation
+              changes, and <strong>Change who pays a fee</strong> is not available for it. If you change any allocation input or the currency after the import,
+              the export is disabled, because the sender only accepts a result for the inputs it sent: import the request again. A request that cannot be read,
+              has an unknown field, or is in a different currency from the deal is refused, with the reasons, and <strong>Nothing was imported</strong>. The
+              file is read and written on your computer only; nothing is sent anywhere. The format is in
+              <a href="https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/formats/allocation-handoff-v1.md"
+                >docs/formats/allocation-handoff-v1.md</a
+              >.
+            </p>
             <h2 id="what-you-should-see">What you should see<a class="docs__anchor" href="#what-you-should-see" aria-label="Link to this section">#</a></h2>
             <p>
               Using the sample deal, <strong>Result</strong> shows <strong>Cash received</strong> £103,500.00, <strong>Total invested</strong> £100,395.00,
@@ -260,8 +362,10 @@
               </table>
             </div>
             <p>
-              The <strong>Refunds</strong> figure covers refunds within the allocation. Over-payments and withdrawn investors&#39; money are listed separately
-              under <strong>Refunds outside the allocation (not carried into it)</strong>, and appear at the end of the closing confirmation.
+              The <strong>Refunds</strong> figure covers refunds within the allocation. After a hand-off from reconciliation, over-payments, withdrawn
+              investors&#39; money and anyone flagged refund only are listed separately under
+              <strong>Refunds outside the allocation (not carried into it)</strong>, and appear at the end of the closing confirmation. After a hand-off request
+              import there is no such list: money outside the allocation stays with the tool that sent the request.
             </p>
             <h2 id="the-cap-and-scale-back">
               The cap and scale-back<a class="docs__anchor" href="#the-cap-and-scale-back" aria-label="Link to this section">#</a>
@@ -295,8 +399,8 @@
                   <tr>
                     <td><strong>Can&#39;t close yet</strong></td>
                     <td>
-                      A blocker: no investor can be allocated, company-paid fees exceed the amount raised, or scale-back left someone below the minimum. The
-                      reasons are listed. Copy and export wait.
+                      A blocker: no investor can be allocated, company-paid fees exceed the amount raised, scale-back left someone below the minimum, or the
+                      pro-rata platform fee would take all of someone&#39;s amount. The reasons are listed. Copy and export wait.
                     </td>
                   </tr>
                   <tr>
@@ -371,13 +475,10 @@
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
           </ul>
         </div>
       </div>
-      <p class="footer__legal">
-        This is not investment, tax or legal advice. Check every result yourself before you rely on it. Not affiliated with any platform.
-      </p>
-      <p class="footer__note">Vegeta is open-source software, not a regulated service. It does not hold money or give advice.</p>
       <p class="footer__mark" aria-hidden="true">Vegeta</p>
     </footer>
   </body>

@@ -1,8 +1,35 @@
 # Bulma — SPV Workspace — release notes
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/RELEASE_NOTES.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/RELEASE_NOTES.md
 
-Only what is built, tested and in the tagged version is listed. Format: [release notes template](https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/release-notes-template.md).
+Only what is built, tested and in the tagged version is listed. Format: [release notes template](https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/release-notes-template.md).
+
+## v0.2.0 (2026-11-27): A ready-made demo deal for the sandbox, and a static demo of it to look at without installing anything
+
+In the sandbox, an admin can add a demo deal with one click: a fictional lead with three deals and four investors at different steps, so there is something to look at straight away. The same scenario, recorded on a fixed date, is also published as a static demo pack that opens in a browser with no server.
+
+Also in this version:
+- The demo deal: **Add demo deal** on the admin's **Home**, or `BULMA_DEMO_DEAL=1` when the app starts. The sign-ins are shown once, or written to a file only the app's user can read. The demo accounts are never admins or approvers; the demo reviewer that approves the demo deal is retired as soon as it is added. Demo and ordinary people, deals, syndicates, companies and money never mix. When the instance switches to the real mode, the demo accounts stop working and the demo records are hidden. See [Walk the sandbox](https://vegeta-ops.vercel.app/docs/bulma/use/getting-started.md#a-ready-made-demo-deal).
+- The static demo pack `bulma-demo-v0.2.0.tar.gz`: the investor's, the lead's and the reviewer's view of the demo deal, with its PDFs and CSV files, as recorded on 2 November 2026. It sends nothing anywhere and stores nothing; buttons that would change something say that this is a demo.
+
+### Gates
+- The reminder about how many people a deal has reached now also counts people who have passed it or whose invitation was withdrawn: they have received the promotion. It is still only a reminder.
+- An eligibility retake recognises a question by its wording, not by its number, so the same question under a new number is not asked again. If the question bank has too few questions left that the person has not seen, the retake does not start and says why. A test already given and not finished is shown as it was given.
+- Only an admin can add the demo deal, only in the sandbox and only once. Who can see or do what on ordinary deals is unchanged.
+
+### Warnings
+No change for ordinary deals. The demo deal uses its own demo regime pack, whose warnings are sample text that says it is not legal text.
+
+### Calculations
+No change. If no platform fee has been set when the demo deal is added, it sets a sample one so the demo can run.
+
+### Other changes
+Checked on the release branch on 2026-11-27, run locally:
+- Unit and real-database tests: 1,246 of 1,246 pass.
+- Browser tests: 41 of 41 pass, and 6 of 6 on the static demo pack.
+- Test-plan cases due by this version: 201 of 201 have a passing test.
+- Deliberate code breakages (full mutation run): 1,878 of 1,878 caught.
+- Python oracle, written separately from the code: 35,084 of 35,084 random and boundary cases match.
 
 ## v0.1.0 (2026-11-21): Run an SPV deal from set-up to money received, refunds and a request to close, in a sandbox by default
 

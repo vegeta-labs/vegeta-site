@@ -1,6 +1,6 @@
 # Use Goten
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/use/README.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/use/README.md
 
 Goten is the deal calculations module of Vegeta. It takes one SPV or syndicate deal through three steps in your browser: payment reconciliation, closing allocation and exit distribution.
 
@@ -32,7 +32,7 @@ Goten calculates and explains. People decide and act.
 
 - It does not move money, connect to a bank or send email. Messages are copied for you to send yourself.
 - A deal has one currency. Amounts are never converted.
-- A deal has one investment and one exit, with the same terms for every investor.
+- A deal has one investment and one exit. Each investor can have their own fee terms and carry rate; the hurdle, catch-up and years held are the same for the whole deal. Staged capital calls, earlier distributions and management fees are not covered.
 - Every deal is a nominee SPV: the SPV holds the shares as nominee under a bare trust, and investors hold a beneficial interest, which can be a fraction of a share.
 - Withdrawals and fee payer changes are for before closing only.
 - It does not decide SEIS or EIS eligibility. Schemes are labels you enter.

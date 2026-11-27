@@ -1,12 +1,12 @@
 # Verification
 
-> Goten v1.4.1. Source: https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/build/verification.md
+> Goten v1.5.1. Source: https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/build/verification.md
 
 Goten's calculations are checked in several independent ways. All the commands below run from the repository root after `npm install`. CI on the public repository runs everything except the benchmarks on every pull request and on every push to `main` and `release`; the full mutation run is a separate weekly job.
 
 The counts each check reports grow as tests are added. The figures for the current release are at the end of its entry in the [release notes](https://vegeta-ops.vercel.app/docs/goten/release-notes.md); the output of each command should match them on that release's own commit; later commits may have more.
 
-The [test plan](https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/docs/en/04_TEST_PLAN.md) lists every case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
+The [test plan](https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/docs/en/04_TEST_PLAN.md) lists every case with a hand-worked sample deal. The commands read the test IDs in test names and report by them.
 
 ## Quick checks
 
@@ -36,7 +36,7 @@ Runs the unit tests and then `scripts/check-coverage.mjs`, which reads the JSON 
 
 ## The independent oracle
 
-`scripts/oracle/` is a separate Python implementation written from the written rules alone, using only the standard library. It does not share code with the TypeScript. Its case format is in [SCHEMA](https://github.com/vegeta-labs/goten/blob/91879ea4a952dff0bc3b297ee346bb645f81aa83/scripts/oracle/SCHEMA.md).
+`scripts/oracle/` is a separate Python implementation written from the written rules alone, using only the standard library. It does not share code with the TypeScript. Its case format is in [SCHEMA](https://github.com/vegeta-labs/goten/blob/ad7873e61594d4b77b9974d3076a0f2cc9b7057d/scripts/oracle/SCHEMA.md).
 
 ```bash
 npm run oracle:selfcheck

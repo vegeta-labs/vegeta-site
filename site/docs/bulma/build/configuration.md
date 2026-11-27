@@ -1,6 +1,6 @@
 # Configuration reference
 
-> Bulma v0.1.0. Source: https://github.com/vegeta-labs/bulma/blob/e0166a67c51edebce77f91d0d53c208b292cdebb/docs/en/configuration.md
+> Bulma v0.2.0. Source: https://github.com/vegeta-labs/bulma/blob/0eac4d1c8e969aa7bf876540873df26b7b6c5379/docs/en/configuration.md
 
 Bulma is configured by environment variables, secret files and a few JSON files. Most settings are made in the app by an admin; this page covers what the server reads when it starts.
 
@@ -53,6 +53,8 @@ These are read by `docker-compose.yml`, not by the server.
 | `PUBLIC_URL` | not set | in the real mode | real | The address people reach the app on. Links in mail are built from it. The real mode does not start without it. |
 | `PORT` | `8080` | no | both | The port the server listens on. Compose does not pass it, and its health check and published port expect 8080. |
 | `WEB_ROOT` | `dist/web` | no | both | The folder of the built web app. |
+| `BULMA_DEMO_DEAL` | not set | no | sandbox | `1` adds the demo deal when the app starts, the same as **Add demo deal** on the admin's **Home**. Added only once; in the real mode it is ignored and the log says why. Compose does not pass it. |
+| `BULMA_DEMO_SIGN_INS_FILE` | `bulma-demo-sign-ins.txt` | no | sandbox | Where `BULMA_DEMO_DEAL` writes the demo sign-ins, readable only by the user the app runs as. The log names the file, never a password. |
 | `STORAGE_DIR` | not set for `serve`; `/var/lib/bulma/files` for `maintain` | in the real mode | real | Where uploaded files are kept, encrypted. Compose sets `/var/lib/bulma/files`, on the `files` volume. In the sandbox, files are held in memory, up to 256 MiB, and lost on restart. |
 | `PAYMENT_INSTRUCTIONS_FILE` | not set | to switch to the real mode | both | The JSON file with your payment instructions. See [the payment instructions file](https://vegeta-ops.vercel.app/docs/bulma/build/real-mode.md#the-payment-instructions-file). |
 
