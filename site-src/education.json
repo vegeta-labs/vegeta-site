@@ -583,6 +583,390 @@
       "next": ["bare-trust-nominee", "before-your-first-angel-cheque"]
     },
     {
+      "slug": "second-close",
+      "category": "1-operations",
+      "hero": {
+        "art": "E46_longer_bench",
+        "top": 230,
+        "card": 380,
+        "scene": "In a lakeside office the boulder pulls an extension leaf out of the end of a long bench while the blue lead, a clipboard in one hand, keeps a row of parcels in place on it.",
+        "panel": {
+          "title": "A second close adds shares. It does not re-cut the first."
+        }
+      },
+      "figures": [
+        {
+          "alt": "One line on the register for the nominee, made up of four investors' share counts.",
+          "panel": {
+            "title": "The nominee's line: 75,000 shares",
+            "stack": [
+              ["Goku", "30,000", 0.4],
+              ["Piccolo", "20,000", 0.2667],
+              ["Krillin", "15,000", 0.2],
+              ["Tien", "10,000", 0.1333]
+            ]
+          },
+          "art": "F96_one_tag_four_crates_v2",
+          "before": "Do late investors pay the same price?",
+          "full": true
+        },
+        {
+          "alt": "Three deadlines for the company, each counted from the allotment.",
+          "panel": {
+            "title": "Three deadlines from the allotment",
+            "rows": [
+              ["Register the allotment", "Within two months"],
+              ["Return of allotment, SH01", "Within one month"],
+              ["Share certificate ready", "Within two months"]
+            ]
+          },
+          "art": "F97_slips_on_a_line",
+          "before": "What to tell the first investors",
+          "full": true
+        }
+      ],
+      "next": ["bare-trust-nominee", "seis-eis-through-a-syndicate"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "investor-onboarding-records",
+      "category": "1-operations",
+      "hero": {
+        "art": "E47_five_hourglasses",
+        "top": 260,
+        "card": 310,
+        "scene": "At night the paper-stack clerk sits on a stool with his chin in his hand, watching five hourglasses on a cabinet of five drawers, each with a different amount of sand left to run.",
+        "panel": {
+          "title": "Five records, five owners, five end dates."
+        }
+      },
+      "figures": [
+        {
+          "alt": "When the five years for due diligence records start and end.",
+          "panel": {
+            "title": "The clock starts at the end",
+            "timeline": ["Passports uploaded", "Relationship ends, 30 June 2031", "Kept until the end of June 2036"]
+          },
+          "art": "F98_hourglass_at_the_door",
+          "before": "The records with no fixed period",
+          "full": true
+        },
+        {
+          "alt": "What a one-page schedule lists for each record of each investor.",
+          "panel": {
+            "title": "For each investor and each record",
+            "paper": true,
+            "points": ["Where it is stored", "Who is responsible", "The event that starts its clock", "The deletion date"]
+          },
+          "art": "F99_one_page_one_stray_folder",
+          "full": true,
+          "para": "Bulma, Vegeta"
+        }
+      ],
+      "next": ["bank-detail-change-requests", "syndicate-lead-fca-permission"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "bank-detail-change-requests",
+      "category": "1-operations",
+      "hero": {
+        "art": "E48_phone_not_inbox",
+        "top": 150,
+        "card": 300,
+        "scene": "At a desk by the lake the blue lead reaches for the telephone with one hand and holds a letter at arm's length with another, a pen in a third and the fourth flat on an open register.",
+        "panel": {
+          "title": "Never settle a change of account from the inbox."
+        }
+      },
+      "figures": [
+        {
+          "alt": "Four signals in an email that asks to change bank details.",
+          "panel": {
+            "title": "Four signals, none of them proof",
+            "points": ["A sender that is nearly right", "Changed details", "Pressure, and a reason not to phone", "An attachment offered as proof"]
+          },
+          "art": "F100_two_seals",
+          "before": "The call back, and what to write down",
+          "full": true
+        },
+        {
+          "alt": "How much of a £120,000 payment to a false account the reimbursement rules can return.",
+          "panel": {
+            "title": "Of £120,000 sent to the false account",
+            "stack": [
+              ["Comes back, at most", "£85,000", 0.7083],
+              ["Does not, at least", "£35,000", 0.2917]
+            ]
+          },
+          "art": "F101_net_too_small",
+          "before": "If the money has already gone",
+          "full": true
+        }
+      ],
+      "next": ["tracing-spv-cash", "investor-onboarding-records"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "winding-up-an-spv",
+      "category": "1-operations",
+      "hero": {
+        "art": "E49_last_box_out_v3",
+        "top": 110,
+        "card": 290,
+        "scene": "In an emptied room at dusk the paper-stack clerk carries the last box through the open door while the blue lead stands by the bare shelves with a key, a broom and a dustpan, one hand on the light switch.",
+        "panel": {
+          "title": "Empty the vehicle before you end it."
+        }
+      },
+      "figures": [
+        {
+          "alt": "The two payments that make up the whole distribution.",
+          "panel": {
+            "title": "£965,500 distributed in two payments",
+            "stack": [
+              ["First payment", "£884,000", 0.9156],
+              ["Second, a year later", "£81,500", 0.0844]
+            ]
+          },
+          "art": "F102_pouches_and_locked_box",
+          "before": "Shape one: a nominee and a bare trust",
+          "full": true
+        },
+        {
+          "alt": "The escrow money a company would lose if it were struck off too early.",
+          "panel": {
+            "title": "Struck off before the escrow ended",
+            "big": [["£80,000", "The right to it would be the Crown's"]]
+          },
+          "art": "F103_coin_left_in_the_drawer",
+          "before": "Tax depends on the route",
+          "full": true
+        }
+      ],
+      "next": ["carry-on-an-spv-exit", "keeping-your-own-records"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "keeping-your-own-records",
+      "category": "1-operations",
+      "hero": {
+        "art": "E50_trunk_of_folders",
+        "top": 250,
+        "card": 350,
+        "scene": "At night in a storeroom the blue lead kneels at an old open trunk of tied bundles of folders, holding up a lantern, reading an opened letter and lifting one bundle out.",
+        "panel": {
+          "title": "The question arrives years later. The answer is in your files."
+        }
+      },
+      "figures": [
+        {
+          "alt": "The five records a lead keeps a copy of.",
+          "panel": {
+            "title": "The five records",
+            "points": ["Investor list", "Bank lines matched", "Allocation", "Each distribution", "Decision log"]
+          },
+          "art": "F104_five_things_on_the_table",
+          "before": "A format that survives",
+          "full": true
+        },
+        {
+          "alt": "What the money Goku wired became: shares and a fee.",
+          "panel": {
+            "title": "Goku wired £120,000",
+            "stack": [
+              ["Bought 58,800 shares", "£117,600", 0.98],
+              ["The 2% fee", "£2,400", 0.02]
+            ]
+          },
+          "art": "F105_two_slips_one_sheet",
+          "full": true,
+          "para": "Goten, Vegeta"
+        }
+      ],
+      "next": ["tracing-spv-cash", "winding-up-an-spv"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "side-letters",
+      "category": "1-operations",
+      "hero": {
+        "art": "E52_one_letter_three_trays",
+        "top": 200,
+        "card": 340,
+        "scene": "The blue lead holds up one small letter; three coloured threads run from it to three trays along the desk.",
+        "panel": {
+          "title": "A side letter works only if it reaches every calculation."
+        }
+      },
+      "figures": [
+        {
+          "alt": "Each promise in the side letters and when it is used.",
+          "art": "F108_four_bookmarks",
+          "before": "What the letter changes in the figures",
+          "full": true,
+          "panel": {
+            "title": "One line per promise",
+            "paper": true,
+            "rows": [
+              ["No deal fee", "At closing"],
+              ["Carry of 10%", "Every distribution"],
+              ["Quarterly report", "Each quarter"],
+              ["Terms no worse", "Each new letter"]
+            ]
+          }
+        },
+        {
+          "alt": "What Goku is paid at exit with his letter and if it is missed.",
+          "art": "F109_two_purses",
+          "before": "Promises about other investors",
+          "full": true,
+          "panel": {
+            "title": "Goku's exit at three times the money",
+            "compare": {
+              "heads": ["With the letter", "Letter missed"],
+              "rows": [
+                ["Carry", "£20,000", "£40,000"],
+                ["Paid to Goku", "£280,000", "£260,000"]
+              ]
+            }
+          }
+        }
+      ],
+      "next": ["carry-on-an-spv-exit", "closing-book"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "spv-costs",
+      "category": "1-operations",
+      "hero": {
+        "art": "E53_topping_up_the_lamp",
+        "top": 60,
+        "card": 140,
+        "scene": "In the evening office the green checker tops up an oil lamp, one eye on the oil level and one on the can.",
+        "panel": {
+          "title": "An SPV costs money every year until it is closed."
+        }
+      },
+      "figures": [
+        {
+          "alt": "Four ways to pay an SPV's costs and what each does to the amounts.",
+          "art": "F110_four_coins_four_dishes",
+          "before": "The money for later years",
+          "full": true,
+          "panel": {
+            "title": "Who pays the costs",
+            "rows": [
+              ["On top", "£102,000 wired, £100,000 in"],
+              ["Taken out", "£100,000 wired, £98,000 in"],
+              ["Company pays", "It receives £392,000"],
+              ["Lead pays", "Bulma covers them"]
+            ]
+          }
+        },
+        {
+          "alt": "How the reserve for running costs changes over the years.",
+          "art": "F111_seven_jars",
+          "before": "How to show it to investors",
+          "full": true,
+          "panel": {
+            "title": "The reserve for later years",
+            "timeline": ["£5,550 after set-up", "£4,900 end of year one", "£1,950 left, sold in year four"]
+          }
+        }
+      ],
+      "next": ["tracing-spv-cash", "winding-up-an-spv"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "investor-updates",
+      "category": "1-operations",
+      "hero": {
+        "art": "E54_letter_from_the_folder",
+        "top": 150,
+        "card": 340,
+        "scene": "The green checker writes a letter at a desk, one eye on the open folder in its other hand and one on the page.",
+        "panel": {
+          "title": "Tie every figure to the record it came from."
+        }
+      },
+      "figures": [
+        {
+          "alt": "The shares held for each investor adding up to the nominee's holding.",
+          "art": "F112_balance_one_and_many",
+          "before": "Tax certificates are a sequence, not a date",
+          "full": true,
+          "panel": {
+            "title": "200,000 shares on the register",
+            "stack": [
+              ["Goku", "50,000", 0.25],
+              ["Piccolo", "40,000", 0.2],
+              ["Krillin", "30,000", 0.15],
+              ["Tien", "25,000", 0.125],
+              ["Four others", "55,000", 0.275]
+            ]
+          }
+        },
+        {
+          "alt": "The steps before an EIS certificate reaches an investor.",
+          "art": "F113_stepping_stones",
+          "before": "An update is not an offer",
+          "full": true,
+          "panel": {
+            "title": "The steps before a certificate arrives",
+            "timeline": ["Shares issued, 10 March 2026", "Statement filed, 14 October", "HMRC authorises the company", "Certificates to investors"]
+          }
+        }
+      ],
+      "next": ["five-questions-spv-investors-ask", "bank-detail-change-requests"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "capital-call-notice",
+      "category": "1-operations",
+      "hero": {
+        "art": "E55_reading_the_notice",
+        "top": 150,
+        "card": 330,
+        "scene": "The blue lead holds up a one-page notice, touches its brow with another hand and holds a pen in a third, a dish of coins on the desk; the rest of the team looks on.",
+        "panel": {
+          "title": "Every line on a call notice is there so you can check it."
+        }
+      },
+      "figures": [
+        {
+          "alt": "Piccolo's commitment split into what was called before, this notice and what is left.",
+          "art": "F114_measuring_jug",
+          "before": "Investors who joined later",
+          "full": true,
+          "panel": {
+            "title": "Piccolo's £200,000 commitment",
+            "stack": [
+              ["Called before", "£60,000", 0.3],
+              ["This notice", "£28,000", 0.14],
+              ["Undrawn", "£112,000", 0.56]
+            ]
+          }
+        },
+        {
+          "alt": "A call of £100,000 split equally three ways, one penny short.",
+          "art": "F115_the_odd_penny",
+          "full": true,
+          "panel": {
+            "title": "£100,000 across three equal commitments",
+            "big": [
+              ["£33,333.33", "Each investor"],
+              ["£99,999.99", "In total"],
+              ["1p", "Short"]
+            ],
+            "bigSize": 48
+          },
+          "para": "The second check"
+        }
+      ],
+      "next": ["committing-to-a-venture-fund", "first-fund-first-close"],
+      "updated": "27 November 2026"
+    },
+    {
       "slug": "spv-or-fund-for-investors",
       "category": "2-investors",
       "hero": {
@@ -2201,6 +2585,94 @@
         }
       ],
       "next": ["bare-trust-nominee", "uk-nominee-or-delaware-lp"]
+    },
+    {
+      "slug": "companies-house-identity-verification",
+      "category": "4-uk-rules",
+      "hero": {
+        "art": "E51_token_at_the_hatch",
+        "top": 200,
+        "card": 340,
+        "scene": "In a hall by the lake the blue lead holds a token up to an empty counter hatch, with a folder, a cup and a badge in the other hands, while the boulder waits with both hands on a striped barrier.",
+        "panel": {
+          "title": "Directors and PSCs verify. Not every investor does."
+        }
+      },
+      "figures": [
+        {
+          "alt": "Three dates in the roll-out of identity verification.",
+          "panel": {
+            "title": "Where the dates stand",
+            "timeline": ["Rule starts, 18 November 2025", "Transition year ends, 17 November 2026", "Checks on filers, no earlier than November 2027"]
+          },
+          "art": "F106_marker_posts_v2",
+          "before": "Two routes, one personal code",
+          "full": true
+        },
+        {
+          "alt": "Which of four investors hold more than 25% of the shares of the SPV.",
+          "panel": {
+            "title": "More than 25% of the shares",
+            "split": [
+              {
+                "head": "PSCs of the SPV",
+                "lines": ["Goku 40%", "Piccolo 30%"]
+              },
+              {
+                "head": "Not PSCs",
+                "lines": ["Krillin 20%", "Tien 10%"]
+              }
+            ]
+          },
+          "art": "F107_notched_rod_v2",
+          "before": "If someone does not verify",
+          "full": true
+        }
+      ],
+      "next": ["bare-trust-nominee", "syndicate-lead-fca-permission"],
+      "updated": "27 November 2026"
+    },
+    {
+      "slug": "who-may-be-shown-a-deal",
+      "category": "4-uk-rules",
+      "hero": {
+        "art": "E56_six_cards_one_stamp",
+        "top": 150,
+        "card": 330,
+        "scene": "Behind a glass counter the rock approver slides one of six cards into a tray while the green checker holds a stamp.",
+        "panel": {
+          "title": "Each person on the list needs their own exemption."
+        }
+      },
+      "figures": [
+        {
+          "alt": "How the Order sorts a message by the way it is sent.",
+          "art": "F116_phone_and_envelope",
+          "before": "Bulma&#39;s list",
+          "full": true,
+          "panel": {
+            "title": "How the message is sent",
+            "rows": [
+              ["Email or letter", "Non-real time"],
+              ["A call they asked for", "Solicited real time"],
+              ["A call nobody asked for", "Unsolicited real time"]
+            ]
+          }
+        },
+        {
+          "alt": "What to keep for each message sent.",
+          "art": "F117_card_index",
+          "para": "In Bulma, Vegeta",
+          "full": true,
+          "panel": {
+            "title": "For each send",
+            "paper": true,
+            "points": ["Who received it", "The exemption relied on", "The evidence and its date", "A copy of what was sent"]
+          }
+        }
+      ],
+      "next": ["syndicate-lead-fca-permission", "professional-client-explained"],
+      "updated": "27 November 2026"
     }
   ],
   "alsoFeatured": [

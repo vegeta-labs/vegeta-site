@@ -26,6 +26,10 @@ jobs:
         run: npm run docs:fetch
       - name: Website checks (CSP markup, links, docs pages against the docs pin, app sentences, P9 figures, demo package hashes, script build and size, source-backed illustrations)
         run: npm run site:check
+      - name: Redis for the explore limiter test
+        run: sudo apt-get install -y -qq redis-server
+      - name: Explore function tests (plan 44, including the limiter script on a real Redis)
+        run: npm run test:explore
       - name: Illustration source guard hostile copies
         if: hashFiles('scripts/check-illustrations.test.mjs') != ''
         run: node --test scripts/check-illustrations.test.mjs

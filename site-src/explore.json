@@ -1,0 +1,415 @@
+{
+  "_note": "Plan 44 (redesign 2026-11-27): /explore/ catalog. Every entry is placed once: in a module, in Learn (built from site-src/education.json by category) or in Project. Titles and descriptions come from each page head; entries with title/text quote the source page verbatim; keys are hidden search words. Run node scripts/build-explore.mjs after any page changes. Roles: starter questions by who is asking; each answer is a fixed path of 2–4 catalog entries (no AI request), shown like an AI answer.",
+  "entries": {
+    "home": {
+      "url": "/"
+    },
+    "bulma": {
+      "url": "/bulma/",
+      "keys": "KYC identity onboarding invite invitation commitment subscription eligibility signing"
+    },
+    "goten": {
+      "url": "/goten/",
+      "keys": "allocation distribution payout proceeds reconcile reconciliation pro rata bank statement split exit carry"
+    },
+    "trunks": {
+      "url": "/trunks/",
+      "keys": "inbox mailbox email triage reply classify"
+    },
+    "trunks-demo": {
+      "url": "/trunks/demo/",
+      "title": "See the demo",
+      "text": ["See it work on sample emails"],
+      "source": "/trunks/"
+    },
+    "demos": {
+      "url": "/demos/"
+    },
+    "demos-goten": {
+      "url": "/demos/goten/"
+    },
+    "demos-trunks": {
+      "url": "/demos/trunks/"
+    },
+    "docs": {
+      "url": "/docs/"
+    },
+    "docs-bulma": {
+      "url": "/docs/bulma/"
+    },
+    "docs-goten": {
+      "url": "/docs/goten/"
+    },
+    "docs-trunks": {
+      "url": "/docs/trunks/"
+    },
+    "changelog": {
+      "url": "/changelog/"
+    },
+    "faq": {
+      "url": "/#faq",
+      "title": "FAQ",
+      "text": ["About Vegeta", "Data and trust"],
+      "source": "/"
+    },
+    "policy": {
+      "url": "/policy/"
+    },
+    "blog": {
+      "url": "/blog/"
+    },
+    "feedback": {
+      "form": {},
+      "title": "Feedback",
+      "text": ["Tell us what you need"],
+      "source": "/"
+    },
+    "cat-operations": {
+      "url": "/blog/operations/"
+    },
+    "cat-investors": {
+      "url": "/blog/investors/"
+    },
+    "cat-leads": {
+      "url": "/blog/leads/"
+    },
+    "cat-uk-rules": {
+      "url": "/blog/uk-rules/"
+    },
+    "from-deal-to-payment": {
+      "url": "/blog/from-deal-to-payment/"
+    },
+    "from-bank-statement-to-exit": {
+      "url": "/blog/from-bank-statement-to-exit/"
+    },
+    "every-investor-email": {
+      "url": "/blog/every-investor-email/"
+    },
+    "what-an-spv-is": {
+      "url": "/blog/what-an-spv-is/"
+    },
+    "bare-trust-nominee": {
+      "url": "/blog/bare-trust-nominee/"
+    },
+    "uk-nominee-or-delaware-lp": {
+      "url": "/blog/uk-nominee-or-delaware-lp/"
+    },
+    "tracing-spv-cash": {
+      "url": "/blog/tracing-spv-cash/"
+    },
+    "closing-book": {
+      "url": "/blog/closing-book/"
+    },
+    "following-one-cheque": {
+      "url": "/blog/following-one-cheque/"
+    },
+    "carry-on-an-spv-exit": {
+      "url": "/blog/carry-on-an-spv-exit/"
+    },
+    "five-questions-spv-investors-ask": {
+      "url": "/blog/five-questions-spv-investors-ask/"
+    },
+    "dpi-rvpi-tvpi": {
+      "url": "/blog/dpi-rvpi-tvpi/"
+    },
+    "seis-eis-through-a-syndicate": {
+      "url": "/blog/seis-eis-through-a-syndicate/"
+    },
+    "spv-or-fund-for-investors": {
+      "url": "/blog/spv-or-fund-for-investors/"
+    },
+    "what-fund-fees-really-cost": {
+      "url": "/blog/what-fund-fees-really-cost/"
+    },
+    "committing-to-a-venture-fund": {
+      "url": "/blog/committing-to-a-venture-fund/"
+    },
+    "ways-to-own-a-private-company": {
+      "url": "/blog/ways-to-own-a-private-company/"
+    },
+    "before-your-first-angel-cheque": {
+      "url": "/blog/before-your-first-angel-cheque/"
+    },
+    "angel-investing-with-a-day-job": {
+      "url": "/blog/angel-investing-with-a-day-job/"
+    },
+    "what-an-early-stage-cheque-buys": {
+      "url": "/blog/what-an-early-stage-cheque-buys/"
+    },
+    "late-stage-price-to-proceeds": {
+      "url": "/blog/late-stage-price-to-proceeds/"
+    },
+    "buying-a-stake-second-hand": {
+      "url": "/blog/buying-a-stake-second-hand/"
+    },
+    "from-ipo-to-distribution": {
+      "url": "/blog/from-ipo-to-distribution/"
+    },
+    "public-market-equivalent": {
+      "url": "/blog/public-market-equivalent/"
+    },
+    "reading-a-track-record": {
+      "url": "/blog/reading-a-track-record/"
+    },
+    "portfolio-headlines": {
+      "url": "/blog/portfolio-headlines/"
+    },
+    "how-a-fund-of-funds-works": {
+      "url": "/blog/how-a-fund-of-funds-works/"
+    },
+    "rolling-funds": {
+      "url": "/blog/rolling-funds/"
+    },
+    "independent-sponsor-deals": {
+      "url": "/blog/independent-sponsor-deals/"
+    },
+    "fund-or-deal-by-deal-economics": {
+      "url": "/blog/fund-or-deal-by-deal-economics/"
+    },
+    "one-person-investment-firm": {
+      "url": "/blog/one-person-investment-firm/"
+    },
+    "first-fund-first-close": {
+      "url": "/blog/first-fund-first-close/"
+    },
+    "how-big-must-a-winner-be": {
+      "url": "/blog/how-big-must-a-winner-be/"
+    },
+    "follow-on-reserves": {
+      "url": "/blog/follow-on-reserves/"
+    },
+    "investment-thesis": {
+      "url": "/blog/investment-thesis/"
+    },
+    "deal-sourcing-log": {
+      "url": "/blog/deal-sourcing-log/"
+    },
+    "scout-agreement": {
+      "url": "/blog/scout-agreement/"
+    },
+    "assessing-founders": {
+      "url": "/blog/assessing-founders/"
+    },
+    "network-effects-test": {
+      "url": "/blog/network-effects-test/"
+    },
+    "accelerator-backed-rounds": {
+      "url": "/blog/accelerator-backed-rounds/"
+    },
+    "venture-studio-spinouts": {
+      "url": "/blog/venture-studio-spinouts/"
+    },
+    "science-claim-diligence": {
+      "url": "/blog/science-claim-diligence/"
+    },
+    "bridge-round-spv": {
+      "url": "/blog/bridge-round-spv/"
+    },
+    "testing-a-fund-administrator": {
+      "url": "/blog/testing-a-fund-administrator/"
+    },
+    "syndicate-lead-fca-permission": {
+      "url": "/blog/syndicate-lead-fca-permission/"
+    },
+    "professional-client-explained": {
+      "url": "/blog/professional-client-explained/"
+    },
+    "uk-carried-interest-tax": {
+      "url": "/blog/uk-carried-interest-tax/"
+    },
+    "nsi-act-and-spvs": {
+      "url": "/blog/nsi-act-and-spvs/"
+    },
+    "second-close": {
+      "url": "/blog/second-close/"
+    },
+    "investor-onboarding-records": {
+      "url": "/blog/investor-onboarding-records/"
+    },
+    "bank-detail-change-requests": {
+      "url": "/blog/bank-detail-change-requests/"
+    },
+    "winding-up-an-spv": {
+      "url": "/blog/winding-up-an-spv/"
+    },
+    "keeping-your-own-records": {
+      "url": "/blog/keeping-your-own-records/"
+    },
+    "companies-house-identity-verification": {
+      "url": "/blog/companies-house-identity-verification/"
+    },
+    "demos-bulma": {
+      "url": "/demos/bulma/"
+    },
+    "bulma-demo": {
+      "url": "/bulma/demo/",
+      "title": "See the demo",
+      "text": ["See it work on a demo deal"],
+      "source": "/bulma/"
+    },
+    "bulma-investors": {
+      "url": "/docs/bulma/use/investor-guide/"
+    },
+    "side-letters": {
+      "url": "/blog/side-letters/",
+      "keys": "most favoured fee"
+    },
+    "spv-costs": {
+      "url": "/blog/spv-costs/",
+      "keys": "set up annual accounts fee"
+    },
+    "investor-updates": {
+      "url": "/blog/investor-updates/",
+      "keys": "annual accounts tax certificate holdings"
+    },
+    "capital-call-notice": {
+      "url": "/blog/capital-call-notice/",
+      "keys": "management fee undrawn commitment"
+    },
+    "who-may-be-shown-a-deal": {
+      "url": "/blog/who-may-be-shown-a-deal/",
+      "keys": "high net worth sophisticated self certified professional investor exemption financial promotion"
+    }
+  },
+  "modules": [
+    {
+      "name": "Bulma",
+      "need": "Raise a deal and bring investors in",
+      "rows": [
+        ["bulma", "page"],
+        ["docs-bulma", "docs"],
+        ["bulma-investors", "docs"],
+        ["demos-bulma", "demo"],
+        ["bulma-demo", "try"],
+        ["from-deal-to-payment", "story"]
+      ]
+    },
+    {
+      "name": "Goten",
+      "need": "Calculate allocations and payouts",
+      "rows": [
+        ["goten", "page"],
+        ["docs-goten", "docs"],
+        ["demos-goten", "demo"],
+        ["from-bank-statement-to-exit", "story"]
+      ]
+    },
+    {
+      "name": "Trunks",
+      "need": "Handle investor email",
+      "rows": [
+        ["trunks", "page"],
+        ["docs-trunks", "docs"],
+        ["demos-trunks", "demo"],
+        ["trunks-demo", "try"],
+        ["every-investor-email", "story"]
+      ]
+    }
+  ],
+  "project": ["home", "faq", "blog", "docs", "demos", "changelog", "policy", "feedback"],
+  "roles": [
+    {
+      "id": "lead",
+      "name": "I lead deals",
+      "situations": [
+        {
+          "id": "first-spv",
+          "q": "How do I set up my first SPV?",
+          "path": ["what-an-spv-is", "demos-bulma", "bulma-demo", "docs-bulma"]
+        },
+        {
+          "id": "invite",
+          "q": "How do I bring investors into a deal?",
+          "path": ["from-deal-to-payment", "demos-bulma", "bulma-demo", "investor-onboarding-records"]
+        },
+        {
+          "id": "closing",
+          "q": "How are allocations worked out at closing?",
+          "path": ["following-one-cheque", "demos-goten", "goten", "docs-goten"]
+        },
+        {
+          "id": "exit",
+          "q": "An exit landed. How do I pay investors?",
+          "path": ["carry-on-an-spv-exit", "demos-goten", "goten", "winding-up-an-spv"]
+        },
+        {
+          "id": "fund",
+          "q": "When does a fund make more sense than deal by deal?",
+          "path": ["fund-or-deal-by-deal-economics", "first-fund-first-close", "one-person-investment-firm"]
+        },
+        {
+          "id": "uk-rules",
+          "q": "Which UK rules cover running a syndicate?",
+          "path": ["syndicate-lead-fca-permission", "who-may-be-shown-a-deal", "professional-client-explained"]
+        }
+      ]
+    },
+    {
+      "id": "investor",
+      "name": "I invest",
+      "situations": [
+        {
+          "id": "invited",
+          "q": "I’ve been invited to a deal. What happens next?",
+          "path": ["bulma-investors", "what-an-spv-is", "demos-bulma", "five-questions-spv-investors-ask"]
+        },
+        {
+          "id": "spv-or-fund",
+          "q": "How does investing through an SPV differ from a fund?",
+          "path": ["spv-or-fund-for-investors", "what-fund-fees-really-cost", "committing-to-a-venture-fund"]
+        },
+        {
+          "id": "first-angel",
+          "q": "What should I know before my first angel cheque?",
+          "path": ["before-your-first-angel-cheque", "angel-investing-with-a-day-job", "what-an-early-stage-cheque-buys", "seis-eis-through-a-syndicate"]
+        },
+        {
+          "id": "payout",
+          "q": "A company I’m in exited. When do I get paid?",
+          "path": ["carry-on-an-spv-exit", "from-ipo-to-distribution", "following-one-cheque"]
+        },
+        {
+          "id": "statements",
+          "q": "How do I read a fund statement or a capital call?",
+          "path": ["dpi-rvpi-tvpi", "capital-call-notice", "reading-a-track-record"]
+        }
+      ]
+    },
+    {
+      "id": "ops",
+      "name": "I run operations",
+      "situations": [
+        {
+          "id": "payments",
+          "q": "How do I match investor payments to the investor list?",
+          "path": ["tracing-spv-cash", "demos-goten", "goten", "docs-goten"]
+        },
+        {
+          "id": "inbox",
+          "q": "How do I keep up with investor emails?",
+          "path": ["every-investor-email", "demos-trunks", "trunks-demo", "docs-trunks"]
+        },
+        {
+          "id": "bank-details",
+          "q": "An email asks to change bank details. What now?",
+          "path": ["bank-detail-change-requests", "demos-trunks", "trunks-demo"]
+        },
+        {
+          "id": "records",
+          "q": "Which records must be right at closing?",
+          "path": ["closing-book", "investor-onboarding-records", "side-letters", "keeping-your-own-records"]
+        },
+        {
+          "id": "wind-up",
+          "q": "How is an SPV paid out and closed after an exit?",
+          "path": ["winding-up-an-spv", "demos-goten", "carry-on-an-spv-exit"]
+        }
+      ]
+    }
+  ],
+  "featured": {
+    "id": "carry",
+    "q": "How is carry worked out on an exit?",
+    "path": ["carry-on-an-spv-exit#the-basic-calculation", "demos-goten", "goten", "from-bank-statement-to-exit"]
+  }
+}

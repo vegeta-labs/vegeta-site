@@ -1,0 +1,1883 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Explore | Vegeta</title>
+    <meta name="description" content="Ask about SPVs, syndicates and funds, and get the pages of this site that answer it." />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Explore | Vegeta" />
+    <meta property="og:description" content="Ask about SPVs, syndicates and funds, and get the pages of this site that answer it." />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/explore/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Explore | Vegeta" />
+    <meta name="twitter:description" content="Ask about SPVs, syndicates and funds, and get the pages of this site that answer it." />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/img/vegeta-share.jpg" />
+    <meta name="twitter:image:alt" content="Vegeta — SPV and syndicate software. Bulma: SPV Workspace. Goten: Deal Calculations. Trunks: Operations Inbox." />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/explore/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+    <script src="/explore.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/demos/">Demos</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <div class="blogindex__intro">
+        <p class="eyebrow section-label">Explore</p>
+        <h1 class="blogindex__title" id="ex-h">Ask anything about SPVs, syndicates and funds.</h1>
+        <p class="explore__lede">Answers come from the articles and module pages of this site.</p>
+      </div>
+      <div class="explore" data-ex>
+        <section class="explore__ask" aria-labelledby="ex-h" data-explore hidden>
+          <form class="explore__form" role="search" data-explore-form>
+            <span class="explore__ai" aria-hidden="true">✦</span>
+            <label class="sr-only" for="ex-q">Your question</label>
+            <div class="explore__in">
+              <div class="explore__ghost" aria-hidden="true" data-ghost></div>
+              <textarea
+                id="ex-q"
+                name="q"
+                rows="2"
+                maxlength="300"
+                autocomplete="off"
+                enterkeyhint="send"
+                placeholder="How is carry worked out on an exit?"
+              ></textarea>
+            </div>
+            <span class="explore__count" aria-live="polite" data-count></span>
+            <button type="submit" class="explore__go" aria-label="Ask">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+            </button>
+          </form>
+          <ul class="explore__rows explore__hints" aria-label="Suggestions" data-hints></ul>
+          <p class="sr-only" aria-live="polite" data-explore-status></p>
+        </section>
+        <div class="explore__answers">
+          <section class="explore__ans explore__ans--ai" tabindex="-1" aria-labelledby="ex-aq" data-ai hidden>
+            <p class="explore__q" id="ex-aq"><span class="explore__ai" title="Picked by AI from this site’s pages">✦</span> <span data-aq></span></p>
+            <ol class="explore__rows explore__path" data-explore-list></ol>
+            <div class="explore__out">
+              <div class="explore__state" data-state="suitability" hidden>
+                <p>Vegeta can&rsquo;t tell you what suits your situation.</p>
+                <ol class="explore__rows explore__path">
+                  <li>
+                    <a href="/policy/"
+                      ><span class="explore__k">Page</span> <span class="explore__t">Policy</span
+                      ><span class="explore__d">The examples on this site, where each module keeps your data, and what Vegeta is not.</span></a
+                    >
+                  </li>
+                  <li>
+                    <a href="/blog/"
+                      ><span class="explore__k">Page</span> <span class="explore__t">Blog</span
+                      ><span class="explore__d">How SPV and syndicate operations actually work.</span></a
+                    >
+                  </li>
+                </ol>
+              </div>
+              <div class="explore__state" data-state="none" hidden><p>Nothing on this site matches that.</p></div>
+              <div class="explore__state" data-state="paused" hidden><p>AI unavailable right now. Try a question below.</p></div>
+              <div class="explore__state" data-state="limit" hidden><p>Too many questions right now. Try again in a minute.</p></div>
+              <div class="explore__state" data-state="daily" hidden><p>No more questions today. Try one below.</p></div>
+              <div class="explore__state" data-state="invalid" hidden><p>Type a few words.</p></div>
+            </div>
+          </section>
+          <section class="explore__ans" id="ask-carry" tabindex="-1" aria-labelledby="ask-carry-q" data-ans>
+            <p class="explore__q" id="ask-carry-q">How is carry worked out on an exit?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/carry-on-an-spv-exit/?from=explore#the-basic-calculation"
+                  ><span class="explore__k">Read</span> <span class="explore__t">How carry is worked out when an SPV exits</span
+                  ><span class="explore__d"
+                    >Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted
+                    together.</span
+                  ><span class="explore__sh">§ The basic calculation</span></a
+                >
+              </li>
+              <li>
+                <a href="/demos/goten/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Goten · </span>Feature tour</span
+                  ><span class="explore__d">See Goten at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/goten/"
+                  ><span class="explore__k">Module</span> <span class="explore__t"><span class="explore__m">Goten · </span>Overview</span
+                  ><span class="explore__d"
+                    >Goten by Vegeta: reconcile payments, calculate closing allocations and exit distributions for SPV and syndicate deals. Free, open-source
+                    software that runs in your browser.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/from-bank-statement-to-exit/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t"><span class="explore__m">Goten · </span>The money work on an SPV, ready for a person to check</span
+                  ><span class="explore__d"
+                    >What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="lead-first-spv" tabindex="-1" aria-labelledby="lead-first-spv-q" data-ans>
+            <p class="explore__q" id="lead-first-spv-q">How do I set up my first SPV?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/what-an-spv-is/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">What an SPV is, and what it leaves you holding</span
+                  ><span class="explore__d"
+                    >An SPV is defined by its purpose rather than by a legal form, so the useful question is what your money turns into at each step.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/bulma/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Feature tour</span
+                  ><span class="explore__d">See Bulma at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/bulma/demo/"
+                  ><span class="explore__k">Try it</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Live demo</span
+                  ><span class="explore__d">See it work on a demo deal</span></a
+                >
+              </li>
+              <li>
+                <a href="/docs/bulma/"
+                  ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Bulma docs</span
+                  ><span class="explore__d"
+                    >Bulma is the SPV Workspace module of Vegeta. A lead sets up an SPV deal, a reviewer at the operator checks it, and investors are invited by
+                    link or email. Investors confirm their eligibility, commit, pass an identity check, sign a deal sheet and get payment instructions.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="lead-invite" tabindex="-1" aria-labelledby="lead-invite-q" data-ans>
+            <p class="explore__q" id="lead-invite-q">How do I bring investors into a deal?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/from-deal-to-payment/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t"><span class="explore__m">Bulma · </span>Start a deal and bring your investors in</span
+                  ><span class="explore__d"
+                    >Set up and submit your deal for review. Once approved, go live, invite investors and follow their progress from commitment to payment
+                    instructions.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/bulma/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Feature tour</span
+                  ><span class="explore__d">See Bulma at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/bulma/demo/"
+                  ><span class="explore__k">Try it</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Live demo</span
+                  ><span class="explore__d">See it work on a demo deal</span></a
+                >
+              </li>
+              <li>
+                <a href="/blog/investor-onboarding-records/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Investor onboarding records: what to keep, who keeps it, and when it goes</span
+                  ><span class="explore__d"
+                    >Onboarding a syndicate investor leaves five kinds of record behind, and each has its own owner, its own purpose and its own end date.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="lead-closing" tabindex="-1" aria-labelledby="lead-closing-q" data-ans>
+            <p class="explore__q" id="lead-closing-q">How are allocations worked out at closing?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/following-one-cheque/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Following one cheque from closing to exit</span
+                  ><span class="explore__d">How a £12m purchase and a £22m sale turn into one investor's 1.79x, and which documents explain each step.</span></a
+                >
+              </li>
+              <li>
+                <a href="/demos/goten/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Goten · </span>Feature tour</span
+                  ><span class="explore__d">See Goten at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/goten/"
+                  ><span class="explore__k">Module</span> <span class="explore__t"><span class="explore__m">Goten · </span>Overview</span
+                  ><span class="explore__d"
+                    >Goten by Vegeta: reconcile payments, calculate closing allocations and exit distributions for SPV and syndicate deals. Free, open-source
+                    software that runs in your browser.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/docs/goten/"
+                  ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Goten · </span>Goten docs</span
+                  ><span class="explore__d"
+                    >Goten is the deal calculations module of Vegeta. It takes one SPV or syndicate deal through three steps in your browser: payment
+                    reconciliation, closing allocation and exit distribution.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="lead-exit" tabindex="-1" aria-labelledby="lead-exit-q" data-ans>
+            <p class="explore__q" id="lead-exit-q">An exit landed. How do I pay investors?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/carry-on-an-spv-exit/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">How carry is worked out when an SPV exits</span
+                  ><span class="explore__d"
+                    >Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted
+                    together.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/goten/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Goten · </span>Feature tour</span
+                  ><span class="explore__d">See Goten at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/goten/"
+                  ><span class="explore__k">Module</span> <span class="explore__t"><span class="explore__m">Goten · </span>Overview</span
+                  ><span class="explore__d"
+                    >Goten by Vegeta: reconcile payments, calculate closing allocations and exit distributions for SPV and syndicate deals. Free, open-source
+                    software that runs in your browser.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/winding-up-an-spv/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">After the exit: paying out and closing a UK SPV</span
+                  ><span class="explore__d"
+                    >Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to
+                    close.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="lead-fund" tabindex="-1" aria-labelledby="lead-fund-q" data-ans>
+            <p class="explore__q" id="lead-fund-q">When does a fund make more sense than deal by deal?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/fund-or-deal-by-deal-economics/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Raising a fund or staying deal by deal: the sums for a lead</span
+                  ><span class="explore__d"
+                    >Fee income, carry and the long tail of vehicles work very differently in the two models. A lead should run the numbers before picking
+                    one.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/first-fund-first-close/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Budget a first fund at its first close, not its target</span
+                  ><span class="explore__d"
+                    >A first-time fund runs on the money that has actually closed, and a smaller figure changes the budget, the portfolio and the
+                    strategy.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/one-person-investment-firm/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t">Running a one-person investment firm: what to settle before the first close</span
+                  ><span class="explore__d"
+                    >“Solo GP” describes who makes the decisions, not who does the work, and a one-person firm stands or falls on how the rest gets done.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="lead-uk-rules" tabindex="-1" aria-labelledby="lead-uk-rules-q" data-ans>
+            <p class="explore__q" id="lead-uk-rules-q">Which UK rules cover running a syndicate?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/syndicate-lead-fca-permission/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Does a UK syndicate lead need FCA permission? Three separate questions</span
+                  ><span class="explore__d"
+                    >Arranging a deal, running a vehicle and sending out a deal memo each sit under different UK rules, and being clear on one tells you nothing
+                    about the others.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/who-may-be-shown-a-deal/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t">Who may be shown a deal: UK financial promotion exemptions, person by person</span
+                  ><span class="explore__d"
+                    >Whether a lead may send a deal to someone depends on who that person is, how the message reaches them and what it says, and each exemption
+                    sets its own conditions.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/professional-client-explained/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t">Professional, high net worth, sophisticated: three UK labels that do different jobs</span
+                  ><span class="explore__d"
+                    >Being able to receive a private deal memo does not make someone a professional client, and signing to become one gives up protections worth
+                    reading about first.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="investor-invited" tabindex="-1" aria-labelledby="investor-invited-q" data-ans>
+            <p class="explore__q" id="investor-invited-q">I’ve been invited to a deal. What happens next?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/docs/bulma/use/investor-guide/"
+                  ><span class="explore__k">Docs</span>
+                  <span class="explore__t"><span class="explore__m">Bulma · </span>Investor guide: from an invitation to payment instructions</span
+                  ><span class="explore__d"
+                    >You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator who
+                    runs the instance, so yours may differ a little from this page.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/what-an-spv-is/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">What an SPV is, and what it leaves you holding</span
+                  ><span class="explore__d"
+                    >An SPV is defined by its purpose rather than by a legal form, so the useful question is what your money turns into at each step.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/bulma/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Feature tour</span
+                  ><span class="explore__d">See Bulma at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/blog/five-questions-spv-investors-ask/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t">The five questions SPV investors keep asking, and how to answer them before they do</span
+                  ><span class="explore__d"
+                    >Most investor email after closing comes down to the same five questions, so build your reporting around answering them.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="investor-spv-or-fund" tabindex="-1" aria-labelledby="investor-spv-or-fund-q" data-ans>
+            <p class="explore__q" id="investor-spv-or-fund-q">How does investing through an SPV differ from a fund?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/spv-or-fund-for-investors/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">SPV or fund: what the same £100,000 does in each</span
+                  ><span class="explore__d"
+                    >A side-by-side look at how one investor's money moves through a single-deal vehicle and through a fund, from signature to payout.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/what-fund-fees-really-cost/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Two and twenty, followed through a fund's whole life</span
+                  ><span class="explore__d"
+                    >A fund's headline terms tell you little about what investors pay or how the manager gets paid. The fee schedule and the waterfall tell
+                    you.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/committing-to-a-venture-fund/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Committing to a venture fund: the promise behind the first payment</span
+                  ><span class="explore__d"
+                    >A fund commitment is a promise to hand over money on demand for years, so plan for the whole figure rather than the first call.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="investor-first-angel" tabindex="-1" aria-labelledby="investor-first-angel-q" data-ans>
+            <p class="explore__q" id="investor-first-angel-q">What should I know before my first angel cheque?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/before-your-first-angel-cheque/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Before your first angel cheque: size the portfolio, not the deal</span
+                  ><span class="explore__d"
+                    >Angel returns are lopsided enough that the number of investments you can afford matters as much as your choice of the first one.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/angel-investing-with-a-day-job/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Angel investing with a day job: three questions to clear first</span
+                  ><span class="explore__d"
+                    >Your job is why founders want you and also where your conflicts come from, so sort out what you know, what you control and what you have
+                    promised before you invest.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/what-an-early-stage-cheque-buys/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t">What an early-stage cheque buys: a percentage, some months and one question</span
+                  ><span class="explore__d"
+                    >Pre-seed, seed and Series A are loose labels, so judge an early deal by your stake after dilution, the runway it pays for and what that
+                    runway will prove.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/seis-eis-through-a-syndicate/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t">SEIS and EIS through a syndicate: what the relief is worth and when it arrives</span
+                  ><span class="explore__d"
+                    >UK tax relief can change the worst case on an early-stage investment, but it comes off a tax bill, it depends on paperwork the investor
+                    does not control, and it can be withdrawn for three years.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="investor-payout" tabindex="-1" aria-labelledby="investor-payout-q" data-ans>
+            <p class="explore__q" id="investor-payout-q">A company I’m in exited. When do I get paid?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/carry-on-an-spv-exit/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">How carry is worked out when an SPV exits</span
+                  ><span class="explore__d"
+                    >Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted
+                    together.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/from-ipo-to-distribution/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">From IPO to distribution: why a listing day is not a payout</span
+                  ><span class="explore__d"
+                    >Between a company listing and investors getting paid sit lock-ups, resale rules, sale decisions and the waterfall, and each can change the
+                    figure.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/following-one-cheque/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Following one cheque from closing to exit</span
+                  ><span class="explore__d">How a £12m purchase and a £22m sale turn into one investor's 1.79x, and which documents explain each step.</span></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="investor-statements" tabindex="-1" aria-labelledby="investor-statements-q" data-ans>
+            <p class="explore__q" id="investor-statements-q">How do I read a fund statement or a capital call?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/dpi-rvpi-tvpi/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">DPI, RVPI and TVPI: reading the numbers on a fund statement</span
+                  ><span class="explore__d"
+                    >Three ratios split a fund's reported return into money already received and value that is still only an estimate.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/capital-call-notice/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Reading a capital call notice, line by line</span
+                  ><span class="explore__d"
+                    >A capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so they
+                    can check it before they pay.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/reading-a-track-record/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">What a fund's track record can and cannot tell you</span
+                  ><span class="explore__d"
+                    >Past returns in venture carry real information, but only if you look at what was known when the decision was made.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="ops-payments" tabindex="-1" aria-labelledby="ops-payments-q" data-ans>
+            <p class="explore__q" id="ops-payments-q">How do I match investor payments to the investor list?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/tracing-spv-cash/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Where an SPV's money actually is</span
+                  ><span class="explore__d"
+                    >A bank balance, a ledger and a legal entitlement are three separate things. Most cash problems in a closing come from treating them as
+                    one.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/goten/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Goten · </span>Feature tour</span
+                  ><span class="explore__d">See Goten at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/goten/"
+                  ><span class="explore__k">Module</span> <span class="explore__t"><span class="explore__m">Goten · </span>Overview</span
+                  ><span class="explore__d"
+                    >Goten by Vegeta: reconcile payments, calculate closing allocations and exit distributions for SPV and syndicate deals. Free, open-source
+                    software that runs in your browser.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/docs/goten/"
+                  ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Goten · </span>Goten docs</span
+                  ><span class="explore__d"
+                    >Goten is the deal calculations module of Vegeta. It takes one SPV or syndicate deal through three steps in your browser: payment
+                    reconciliation, closing allocation and exit distribution.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="ops-inbox" tabindex="-1" aria-labelledby="ops-inbox-q" data-ans>
+            <p class="explore__q" id="ops-inbox-q">How do I keep up with investor emails?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/every-investor-email/?from=explore"
+                  ><span class="explore__k">Read</span>
+                  <span class="explore__t"><span class="explore__m">Trunks · </span>Every investor email, ready for a person</span
+                  ><span class="explore__d">What Trunks prepares for each kind of email an SPV or syndicate receives, and what a person still decides.</span></a
+                >
+              </li>
+              <li>
+                <a href="/demos/trunks/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Feature tour</span
+                  ><span class="explore__d">See Trunks at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/trunks/demo/"
+                  ><span class="explore__k">Try it</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Live demo</span
+                  ><span class="explore__d">See it work on sample emails</span></a
+                >
+              </li>
+              <li>
+                <a href="/docs/trunks/"
+                  ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Trunks docs</span
+                  ><span class="explore__d"
+                    >Trunks is the operations inbox of Vegeta. For each email that arrives in a shared operations mailbox, it picks a category, pulls out the
+                    key facts, links the email to deals and people, flags risk and prepares a reply. You check the reply, copy it and send it from your own mail
+                    client.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="ops-bank-details" tabindex="-1" aria-labelledby="ops-bank-details-q" data-ans>
+            <p class="explore__q" id="ops-bank-details-q">An email asks to change bank details. What now?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/bank-detail-change-requests/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">When an email asks you to change bank details</span
+                  ><span class="explore__d"
+                    >A request to pay a different account should never be settled from the inbox, and the UK rules that refund scam victims cover less of a
+                    syndicate's money than people assume.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/trunks/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Feature tour</span
+                  ><span class="explore__d">See Trunks at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/trunks/demo/"
+                  ><span class="explore__k">Try it</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Live demo</span
+                  ><span class="explore__d">See it work on sample emails</span></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="ops-records" tabindex="-1" aria-labelledby="ops-records-q" data-ans>
+            <p class="explore__q" id="ops-records-q">Which records must be right at closing?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/closing-book/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">The closing book: what to tell a founder when they ask how much you have</span
+                  ><span class="explore__d"
+                    >A single total hides the only thing a founder needs to know, which is how much of the money will actually arrive and when.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/investor-onboarding-records/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Investor onboarding records: what to keep, who keeps it, and when it goes</span
+                  ><span class="explore__d"
+                    >Onboarding a syndicate investor leaves five kinds of record behind, and each has its own owner, its own purpose and its own end date.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/side-letters/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">Side letters: keeping track of what one investor was promised</span
+                  ><span class="explore__d"
+                    >A side letter changes the terms for one investor, and it only works if the change reaches every calculation and every message that uses
+                    those terms.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/blog/keeping-your-own-records/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">The five records a syndicate lead should hold their own copy of</span
+                  ><span class="explore__d"
+                    >Whatever system or provider runs the deal, the questions about it arrive years later and are addressed to the lead, so the answers need to
+                    sit in files the lead holds.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+          <section class="explore__ans" id="ops-wind-up" tabindex="-1" aria-labelledby="ops-wind-up-q" data-ans>
+            <p class="explore__q" id="ops-wind-up-q">How is an SPV paid out and closed after an exit?</p>
+            <ol class="explore__rows explore__path">
+              <li>
+                <a href="/blog/winding-up-an-spv/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">After the exit: paying out and closing a UK SPV</span
+                  ><span class="explore__d"
+                    >Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to
+                    close.</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="/demos/goten/"
+                  ><span class="explore__k">See it</span> <span class="explore__t"><span class="explore__m">Goten · </span>Feature tour</span
+                  ><span class="explore__d">See Goten at work, feature by feature, then try it live.</span></a
+                >
+              </li>
+              <li>
+                <a href="/blog/carry-on-an-spv-exit/?from=explore"
+                  ><span class="explore__k">Read</span> <span class="explore__t">How carry is worked out when an SPV exits</span
+                  ><span class="explore__d"
+                    >Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted
+                    together.</span
+                  ></a
+                >
+              </li>
+            </ol>
+          </section>
+        </div>
+        <section class="explore__start" aria-labelledby="ex-start-h" data-start>
+          <h2 class="eyebrow section-label" id="ex-start-h">Start with a question</h2>
+          <div class="explore__tabs" role="group" aria-label="Who you are" hidden>
+            <button type="button" aria-pressed="true" data-tab="lead">I lead deals</button>
+            <button type="button" aria-pressed="false" data-tab="investor">I invest</button>
+            <button type="button" aria-pressed="false" data-tab="ops">I run operations</button>
+          </div>
+          <div class="explore__role" data-role="lead">
+            <h3>I lead deals</h3>
+            <ul class="explore__qs">
+              <li><a href="#lead-first-spv" data-q="lead-first-spv">How do I set up my first SPV?</a></li>
+              <li><a href="#lead-invite" data-q="lead-invite">How do I bring investors into a deal?</a></li>
+              <li><a href="#lead-closing" data-q="lead-closing">How are allocations worked out at closing?</a></li>
+              <li><a href="#lead-exit" data-q="lead-exit">An exit landed. How do I pay investors?</a></li>
+              <li><a href="#lead-fund" data-q="lead-fund">When does a fund make more sense than deal by deal?</a></li>
+              <li><a href="#lead-uk-rules" data-q="lead-uk-rules">Which UK rules cover running a syndicate?</a></li>
+            </ul>
+          </div>
+          <div class="explore__role" data-role="investor">
+            <h3>I invest</h3>
+            <ul class="explore__qs">
+              <li><a href="#investor-invited" data-q="investor-invited">I’ve been invited to a deal. What happens next?</a></li>
+              <li><a href="#investor-spv-or-fund" data-q="investor-spv-or-fund">How does investing through an SPV differ from a fund?</a></li>
+              <li><a href="#investor-first-angel" data-q="investor-first-angel">What should I know before my first angel cheque?</a></li>
+              <li><a href="#investor-payout" data-q="investor-payout">A company I’m in exited. When do I get paid?</a></li>
+              <li><a href="#investor-statements" data-q="investor-statements">How do I read a fund statement or a capital call?</a></li>
+            </ul>
+          </div>
+          <div class="explore__role" data-role="ops">
+            <h3>I run operations</h3>
+            <ul class="explore__qs">
+              <li><a href="#ops-payments" data-q="ops-payments">How do I match investor payments to the investor list?</a></li>
+              <li><a href="#ops-inbox" data-q="ops-inbox">How do I keep up with investor emails?</a></li>
+              <li><a href="#ops-bank-details" data-q="ops-bank-details">An email asks to change bank details. What now?</a></li>
+              <li><a href="#ops-records" data-q="ops-records">Which records must be right at closing?</a></li>
+              <li><a href="#ops-wind-up" data-q="ops-wind-up">How is an SPV paid out and closed after an exit?</a></li>
+            </ul>
+          </div>
+        </section>
+        <section class="explore__sec" aria-labelledby="ex-mod-h">
+          <h2 class="eyebrow section-label" id="ex-mod-h">All pages · Modules</h2>
+          <div class="explore__mods">
+            <div class="explore__mod">
+              <h3>Bulma</h3>
+              <p>Raise a deal and bring investors in</p>
+              <ul class="explore__rows">
+                <li
+                  data-x="bulma"
+                  data-g="Module"
+                  data-s="bulma overview bulma — spv workspace bulma by vegeta: an spv workspace for syndicate leads and the investors they invite. invitations, eligibility, commitments, identity checks, signing and payment instructions. self-hosted and open source. kyc identity onboarding invite invitation commitment subscription eligibility signing"
+                >
+                  <a href="/bulma/"
+                    ><span class="explore__k">Page</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Overview</span
+                    ><span class="explore__d"
+                      >Bulma by Vegeta: an SPV workspace for syndicate leads and the investors they invite. Invitations, eligibility, commitments, identity
+                      checks, signing and payment instructions. Self-hosted and open source.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="docs-bulma"
+                  data-g="Docs"
+                  data-s="bulma bulma docs use bulma bulma is the spv workspace module of vegeta. a lead sets up an spv deal, a reviewer at the operator checks it, and investors are invited by link or email. investors confirm their eligibility, commit, pass an identity check, sign a deal sheet and get payment instructions. "
+                >
+                  <a href="/docs/bulma/"
+                    ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Bulma docs</span
+                    ><span class="explore__d"
+                      >Bulma is the SPV Workspace module of Vegeta. A lead sets up an SPV deal, a reviewer at the operator checks it, and investors are invited
+                      by link or email. Investors confirm their eligibility, commit, pass an identity check, sign a deal sheet and get payment
+                      instructions.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="bulma-investors"
+                  data-g="Docs"
+                  data-s="bulma investor guide: from an invitation to payment instructions investor guide: from an invitation to payment instructions you can see a deal only if you were invited, and only after a few checks. the exact steps, warnings and wording come from the operator who runs the instance, so yours may differ a little from this page. "
+                >
+                  <a href="/docs/bulma/use/investor-guide/"
+                    ><span class="explore__k">Docs</span>
+                    <span class="explore__t"><span class="explore__m">Bulma · </span>Investor guide: from an invitation to payment instructions</span
+                    ><span class="explore__d"
+                      >You can see a deal only if you were invited, and only after a few checks. The exact steps, warnings and wording come from the operator
+                      who runs the instance, so yours may differ a little from this page.</span
+                    ></a
+                  >
+                </li>
+                <li data-x="demos-bulma" data-g="See it" data-s="bulma feature tour bulma demo see bulma at work, feature by feature, then try it live. ">
+                  <a href="/demos/bulma/"
+                    ><span class="explore__k">Demo</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Feature tour</span
+                    ><span class="explore__d">See Bulma at work, feature by feature, then try it live.</span></a
+                  >
+                </li>
+                <li data-x="bulma-demo" data-g="Try it" data-s="bulma live demo see the demo see it work on a demo deal ">
+                  <a href="/bulma/demo/"
+                    ><span class="explore__k">Try</span> <span class="explore__t"><span class="explore__m">Bulma · </span>Live demo</span
+                    ><span class="explore__d">See it work on a demo deal</span></a
+                  >
+                </li>
+                <li
+                  data-x="from-deal-to-payment"
+                  data-g="Read"
+                  data-s="bulma start a deal and bring your investors in start a deal and bring your investors in set up and submit your deal for review. once approved, go live, invite investors and follow their progress from commitment to payment instructions. "
+                  data-h="before-the-money Before the money|what-bulma-spv-workspace-does What Bulma — SPV Workspace does|setting-up-the-deal Setting up the deal|inviting-investors Inviting investors|what-goku-sees-before-he-pays What Goku sees before he pays|following-every-investor Following every investor|what-a-person-still-does What a person still does|where-it-runs Where it runs|how-it-was-tested How it was tested|try-it Try it"
+                >
+                  <a href="/blog/from-deal-to-payment/?from=explore"
+                    ><span class="explore__k">Story</span>
+                    <span class="explore__t"><span class="explore__m">Bulma · </span>Start a deal and bring your investors in</span
+                    ><span class="explore__d"
+                      >Set up and submit your deal for review. Once approved, go live, invite investors and follow their progress from commitment to payment
+                      instructions.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="explore__mod">
+              <h3>Goten</h3>
+              <p>Calculate allocations and payouts</p>
+              <ul class="explore__rows">
+                <li
+                  data-x="goten"
+                  data-g="Module"
+                  data-s="goten overview goten — deal calculations goten by vegeta: reconcile payments, calculate closing allocations and exit distributions for spv and syndicate deals. free, open-source software that runs in your browser. allocation distribution payout proceeds reconcile reconciliation pro rata bank statement split exit carry"
+                >
+                  <a href="/goten/"
+                    ><span class="explore__k">Page</span> <span class="explore__t"><span class="explore__m">Goten · </span>Overview</span
+                    ><span class="explore__d"
+                      >Goten by Vegeta: reconcile payments, calculate closing allocations and exit distributions for SPV and syndicate deals. Free, open-source
+                      software that runs in your browser.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="docs-goten"
+                  data-g="Docs"
+                  data-s="goten goten docs use goten goten is the deal calculations module of vegeta. it takes one spv or syndicate deal through three steps in your browser: payment reconciliation, closing allocation and exit distribution. "
+                >
+                  <a href="/docs/goten/"
+                    ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Goten · </span>Goten docs</span
+                    ><span class="explore__d"
+                      >Goten is the deal calculations module of Vegeta. It takes one SPV or syndicate deal through three steps in your browser: payment
+                      reconciliation, closing allocation and exit distribution.</span
+                    ></a
+                  >
+                </li>
+                <li data-x="demos-goten" data-g="See it" data-s="goten feature tour goten demo see goten at work, feature by feature, then try it live. ">
+                  <a href="/demos/goten/"
+                    ><span class="explore__k">Demo</span> <span class="explore__t"><span class="explore__m">Goten · </span>Feature tour</span
+                    ><span class="explore__d">See Goten at work, feature by feature, then try it live.</span></a
+                  >
+                </li>
+                <li
+                  data-x="from-bank-statement-to-exit"
+                  data-g="Read"
+                  data-s="goten the money work on an spv, ready for a person to check the money work on an spv, ready for a person to check what goten prepares at each step of the money work on an spv, from bank statement to exit, and what a person still decides. "
+                  data-h="the-same-work-on-every-deal The same work on every deal|where-it-goes-wrong Where it goes wrong|what-goten-prepares What Goten prepares|one-deal-worked-through One deal, worked through|what-your-team-gets What your team gets|what-a-person-still-does What a person still does|where-the-data-is Where the data is|how-it-is-checked How it is checked|try-it Try it"
+                >
+                  <a href="/blog/from-bank-statement-to-exit/?from=explore"
+                    ><span class="explore__k">Story</span>
+                    <span class="explore__t"><span class="explore__m">Goten · </span>The money work on an SPV, ready for a person to check</span
+                    ><span class="explore__d"
+                      >What Goten prepares at each step of the money work on an SPV, from bank statement to exit, and what a person still decides.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="explore__mod">
+              <h3>Trunks</h3>
+              <p>Handle investor email</p>
+              <ul class="explore__rows">
+                <li
+                  data-x="trunks"
+                  data-g="Module"
+                  data-s="trunks overview trunks — operations inbox trunks by vegeta: classify investor emails, connect imported deal records, flag risks and prepare template replies for human review. self-hosted, open-source operations software. inbox mailbox email triage reply classify"
+                >
+                  <a href="/trunks/"
+                    ><span class="explore__k">Page</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Overview</span
+                    ><span class="explore__d"
+                      >Trunks by Vegeta: classify investor emails, connect imported deal records, flag risks and prepare template replies for human review.
+                      Self-hosted, open-source operations software.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="docs-trunks"
+                  data-g="Docs"
+                  data-s="trunks trunks docs use trunks trunks is the operations inbox of vegeta. for each email that arrives in a shared operations mailbox, it picks a category, pulls out the key facts, links the email to deals and people, flags risk and prepares a reply. you check the reply, copy it and send it from your own mail client. "
+                >
+                  <a href="/docs/trunks/"
+                    ><span class="explore__k">Docs</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Trunks docs</span
+                    ><span class="explore__d"
+                      >Trunks is the operations inbox of Vegeta. For each email that arrives in a shared operations mailbox, it picks a category, pulls out the
+                      key facts, links the email to deals and people, flags risk and prepares a reply. You check the reply, copy it and send it from your own
+                      mail client.</span
+                    ></a
+                  >
+                </li>
+                <li data-x="demos-trunks" data-g="See it" data-s="trunks feature tour trunks demo see trunks at work, feature by feature, then try it live. ">
+                  <a href="/demos/trunks/"
+                    ><span class="explore__k">Demo</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Feature tour</span
+                    ><span class="explore__d">See Trunks at work, feature by feature, then try it live.</span></a
+                  >
+                </li>
+                <li data-x="trunks-demo" data-g="Try it" data-s="trunks live demo see the demo see it work on sample emails ">
+                  <a href="/trunks/demo/"
+                    ><span class="explore__k">Try</span> <span class="explore__t"><span class="explore__m">Trunks · </span>Live demo</span
+                    ><span class="explore__d">See it work on sample emails</span></a
+                  >
+                </li>
+                <li
+                  data-x="every-investor-email"
+                  data-g="Read"
+                  data-s="trunks every investor email, ready for a person every investor email, ready for a person what trunks prepares for each kind of email an spv or syndicate receives, and what a person still decides. "
+                  data-h="one-mailbox-every-kind-of-request One mailbox, every kind of request|what-trunks-does-with-every-email What Trunks does with every email|what-it-prepares What it prepares|did-my-payment-arrive “Did my payment arrive?”|an-mt103-for-a-payment-you-cannot-see An MT103 for a payment you cannot see|a-new-bank-account A new bank account|what-your-team-gets What your team gets|what-a-person-still-does What a person still does|where-it-runs Where it runs|how-it-was-tested How it was tested|try-it Try it"
+                >
+                  <a href="/blog/every-investor-email/?from=explore"
+                    ><span class="explore__k">Story</span>
+                    <span class="explore__t"><span class="explore__m">Trunks · </span>Every investor email, ready for a person</span
+                    ><span class="explore__d"
+                      >What Trunks prepares for each kind of email an SPV or syndicate receives, and what a person still decides.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="explore__sec" aria-labelledby="ex-learn-h">
+          <h2 class="eyebrow section-label" id="ex-learn-h">Learn</h2>
+          <div class="explore__learn">
+            <details class="explore__topic" id="t-operations">
+              <summary>Operations <span>19</span></summary>
+              <ul class="explore__rows">
+                <li data-x="cat-operations" data-g="Topic" data-s=" operations operations what happens to the money and the records in an spv. ">
+                  <a href="/blog/operations/"
+                    ><span class="explore__k">Topic</span> <span class="explore__t">Operations</span
+                    ><span class="explore__d">What happens to the money and the records in an SPV.</span></a
+                  >
+                </li>
+                <li
+                  data-x="what-an-spv-is"
+                  data-g="Read"
+                  data-s=" what an spv is, and what it leaves you holding what an spv is, and what it leaves you holding an spv is defined by its purpose rather than by a legal form, so the useful question is what your money turns into at each step. "
+                  data-h="following-the-money-through-one-deal Following the money through one deal|pooling-is-not-diversifying Pooling is not diversifying|new-shares-or-existing-shares New shares or existing shares|whether-the-form-affects-your-tax-relief Whether the form affects your tax relief|whether-it-counts-as-a-fund Whether it counts as a fund|four-things-to-find-on-the-first-read Four things to find on the first read"
+                >
+                  <a href="/blog/what-an-spv-is/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">What an SPV is, and what it leaves you holding</span
+                    ><span class="explore__d"
+                      >An SPV is defined by its purpose rather than by a legal form, so the useful question is what your money turns into at each step.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="bare-trust-nominee"
+                  data-g="Read"
+                  data-s=" bare trusts: one name on the register, many owners behind it bare trusts: one name on the register, many owners behind it how a uk nominee holding works, what the law treats you as owning, and the parts that are decided by the documents instead of by the label. "
+                  data-h="two-kinds-of-ownership Two kinds of ownership|tax-follows-the-beneficiary Tax follows the beneficiary|registration Registration|who-can-sell Who can sell|what-a-bare-trust-does-not-do What a bare trust does not do|for-the-lead-s-file For the lead's file"
+                >
+                  <a href="/blog/bare-trust-nominee/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Bare trusts: one name on the register, many owners behind it</span
+                    ><span class="explore__d"
+                      >How a UK nominee holding works, what the law treats you as owning, and the parts that are decided by the documents instead of by the
+                      label.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="uk-nominee-or-delaware-lp"
+                  data-g="Read"
+                  data-s=" uk nominee or delaware partnership: start with the investor list uk nominee or delaware partnership: start with the investor list for a lead deciding where to set up a vehicle: the names on your investor list, more than the location of the company, usually narrow the choice. "
+                  data-h="what-each-form-gives-an-investor What each form gives an investor|uk-tax-relief-can-settle-it UK tax relief can settle it|us-partnership-reporting US partnership reporting|us-offering-and-investor-count-rules US offering and investor-count rules|where-the-sponsor-sits Where the sponsor sits|who-decides-at-exit Who decides at exit|when-the-list-is-mixed When the list is mixed"
+                >
+                  <a href="/blog/uk-nominee-or-delaware-lp/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">UK nominee or Delaware partnership: start with the investor list</span
+                    ><span class="explore__d"
+                      >For a lead deciding where to set up a vehicle: the names on your investor list, more than the location of the company, usually narrow the
+                      choice.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="tracing-spv-cash"
+                  data-g="Read"
+                  data-s=" where an spv's money actually is where an spv's money actually is a bank balance, a ledger and a legal entitlement are three separate things. most cash problems in a closing come from treating them as one. "
+                  data-h="a-shortfall-made-of-three-separate-problems A shortfall made of three separate problems|the-account-and-the-ledger The account and the ledger|four-questions-for-each-stage Four questions for each stage|what-deposit-protection-covers What deposit protection covers|after-closing After closing"
+                >
+                  <a href="/blog/tracing-spv-cash/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Where an SPV's money actually is</span
+                    ><span class="explore__d"
+                      >A bank balance, a ledger and a legal entitlement are three separate things. Most cash problems in a closing come from treating them as
+                      one.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="closing-book"
+                  data-g="Read"
+                  data-s=" the closing book: what to tell a founder when they ask how much you have the closing book: what to tell a founder when they ask how much you have a single total hides the only thing a founder needs to know, which is how much of the money will actually arrive and when. "
+                  data-h="sort-the-money-by-what-has-happened Sort the money by what has happened|the-target-is-bigger-than-the-allocation The target is bigger than the allocation|when-there-is-too-little When there is too little|when-there-is-too-much When there is too much|set-your-dates-backwards Set your dates backwards"
+                >
+                  <a href="/blog/closing-book/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">The closing book: what to tell a founder when they ask how much you have</span
+                    ><span class="explore__d"
+                      >A single total hides the only thing a founder needs to know, which is how much of the money will actually arrive and when.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="following-one-cheque"
+                  data-g="Read"
+                  data-s=" following one cheque from closing to exit following one cheque from closing to exit how a £12m purchase and a £22m sale turn into one investor's 1.79x, and which documents explain each step. "
+                  data-h="the-price-is-one-line-of-the-budget The price is one line of the budget|a-percentage-of-a-percentage A percentage of a percentage|from-sale-price-to-equity From sale price to equity|from-equity-to-the-investor From equity to the investor|what-to-ask-for-before-closing What to ask for before closing"
+                >
+                  <a href="/blog/following-one-cheque/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Following one cheque from closing to exit</span
+                    ><span class="explore__d"
+                      >How a £12m purchase and a £22m sale turn into one investor's 1.79x, and which documents explain each step.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="carry-on-an-spv-exit"
+                  data-g="Read"
+                  data-s=" how carry is worked out when an spv exits how carry is worked out when an spv exits carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted together. "
+                  data-h="the-basic-calculation The basic calculation|what-comes-back-first What comes back first|hurdles-and-catch-up Hurdles and catch-up|whether-losses-elsewhere-count Whether losses elsewhere count|what-to-pin-down-before-closing What to pin down before closing"
+                >
+                  <a href="/blog/carry-on-an-spv-exit/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">How carry is worked out when an SPV exits</span
+                    ><span class="explore__d"
+                      >Carry is a percentage of profit, but the result depends on what counts as profit, what gets paid first, and which deals are counted
+                      together.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="five-questions-spv-investors-ask"
+                  data-g="Read"
+                  data-s=" the five questions spv investors keep asking, and how to answer them before they do the five questions spv investors keep asking, and how to answer them before they do most investor email after closing comes down to the same five questions, so build your reporting around answering them. "
+                  data-h="what-do-i-actually-own What do I actually own?|what-s-it-worth What's it worth?|do-i-need-to-do-anything Do I need to do anything?|why-haven-t-i-heard-anything Why haven't I heard anything?|when-do-i-get-my-money-and-what-do-i-tell-my-accountant When do I get my money, and what do I tell my accountant?"
+                >
+                  <a href="/blog/five-questions-spv-investors-ask/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">The five questions SPV investors keep asking, and how to answer them before they do</span
+                    ><span class="explore__d"
+                      >Most investor email after closing comes down to the same five questions, so build your reporting around answering them.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="dpi-rvpi-tvpi"
+                  data-g="Read"
+                  data-s=" dpi, rvpi and tvpi: reading the numbers on a fund statement dpi, rvpi and tvpi: reading the numbers on a fund statement three ratios split a fund's reported return into money already received and value that is still only an estimate. "
+                  data-h="the-three-ratios The three ratios|what-moves-each-number What moves each number|what-counts-as-a-distribution What counts as a distribution|reading-the-residual-value Reading the residual value|same-words-different-basis Same words, different basis|multiples-ignore-time Multiples ignore time|the-same-ratios-on-a-single-deal-spv The same ratios on a single-deal SPV"
+                >
+                  <a href="/blog/dpi-rvpi-tvpi/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">DPI, RVPI and TVPI: reading the numbers on a fund statement</span
+                    ><span class="explore__d"
+                      >Three ratios split a fund's reported return into money already received and value that is still only an estimate.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="seis-eis-through-a-syndicate"
+                  data-g="Read"
+                  data-s=" seis and eis through a syndicate: what the relief is worth and when it arrives seis and eis through a syndicate: what the relief is worth and when it arrives uk tax relief can change the worst case on an early-stage investment, but it comes off a tax bill, it depends on paperwork the investor does not control, and it can be withdrawn for three years. "
+                  data-h="the-relief-reduces-tax-you-already-owe The relief reduces tax you already owe|the-company-s-situation-decides-the-scheme The company's situation decides the scheme|what-the-worst-case-looks-like What the worst case looks like|why-the-certificate-takes-months Why the certificate takes months|what-the-spv-changes What the SPV changes|what-can-undo-the-relief What can undo the relief"
+                >
+                  <a href="/blog/seis-eis-through-a-syndicate/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">SEIS and EIS through a syndicate: what the relief is worth and when it arrives</span
+                    ><span class="explore__d"
+                      >UK tax relief can change the worst case on an early-stage investment, but it comes off a tax bill, it depends on paperwork the investor
+                      does not control, and it can be withdrawn for three years.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="second-close"
+                  data-g="Read"
+                  data-s=" a second close: letting investors in after the shares have been issued a second close: letting investors in after the shares have been issued in a uk nominee spv a later close is a new share issue with its own date, price and paperwork, and the work is in keeping the investor schedule equal to the company's register. "
+                  data-h="what-a-second-close-is-here What a second close is here|the-register-and-the-schedule The register and the schedule|do-late-investors-pay-the-same-price Do late investors pay the same price?|what-must-be-settled-before-the-shares-are-issued What must be settled before the shares are issued|the-dates-to-write-down The dates to write down|what-to-tell-the-first-investors What to tell the first investors"
+                >
+                  <a href="/blog/second-close/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">A second close: letting investors in after the shares have been issued</span
+                    ><span class="explore__d"
+                      >In a UK nominee SPV a later close is a new share issue with its own date, price and paperwork, and the work is in keeping the investor
+                      schedule equal to the company's register.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="investor-onboarding-records"
+                  data-g="Read"
+                  data-s=" investor onboarding records: what to keep, who keeps it, and when it goes investor onboarding records: what to keep, who keeps it, and when it goes onboarding a syndicate investor leaves five kinds of record behind, and each has its own owner, its own purpose and its own end date. "
+                  data-h="five-records-five-purposes Five records, five purposes|who-the-money-laundering-regulations-apply-to Who the Money Laundering Regulations apply to|how-long-the-firm-keeps-due-diligence-records How long the firm keeps due diligence records|the-records-with-no-fixed-period The records with no fixed period|what-a-pass-replaces-and-what-it-does-not What a pass replaces, and what it does not|a-one-page-schedule A one-page schedule"
+                >
+                  <a href="/blog/investor-onboarding-records/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Investor onboarding records: what to keep, who keeps it, and when it goes</span
+                    ><span class="explore__d"
+                      >Onboarding a syndicate investor leaves five kinds of record behind, and each has its own owner, its own purpose and its own end
+                      date.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="bank-detail-change-requests"
+                  data-g="Read"
+                  data-s=" when an email asks you to change bank details when an email asks you to change bank details a request to pay a different account should never be settled from the inbox, and the uk rules that refund scam victims cover less of a syndicate's money than people assume. "
+                  data-h="the-investor-who-has-moved-banks The investor who has moved banks|four-signals-none-of-them-proof Four signals, none of them proof|the-call-back-and-what-to-write-down The call back, and what to write down|what-the-name-check-does-and-does-not-do What the name check does and does not do|what-the-reimbursement-rules-cover What the reimbursement rules cover|if-the-money-has-already-gone If the money has already gone"
+                >
+                  <a href="/blog/bank-detail-change-requests/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">When an email asks you to change bank details</span
+                    ><span class="explore__d"
+                      >A request to pay a different account should never be settled from the inbox, and the UK rules that refund scam victims cover less of a
+                      syndicate's money than people assume.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="winding-up-an-spv"
+                  data-g="Read"
+                  data-s=" after the exit: paying out and closing a uk spv after the exit: paying out and closing a uk spv paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to close. "
+                  data-h="the-last-distribution-is-rarely-the-first-one The last distribution is rarely the first one|shape-one-a-nominee-and-a-bare-trust Shape one: a nominee and a bare trust|shape-two-the-spv-is-a-company Shape two: the SPV is a company|empty-the-company-first Empty the company first|tax-depends-on-the-route Tax depends on the route|what-to-keep-and-for-how-long What to keep, and for how long"
+                >
+                  <a href="/blog/winding-up-an-spv/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">After the exit: paying out and closing a UK SPV</span
+                    ><span class="explore__d"
+                      >Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to
+                      close.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="keeping-your-own-records"
+                  data-g="Read"
+                  data-s=" the five records a syndicate lead should hold their own copy of the five records a syndicate lead should hold their own copy of whatever system or provider runs the deal, the questions about it arrive years later and are addressed to the lead, so the answers need to sit in files the lead holds. "
+                  data-h="why-the-questions-come-late Why the questions come late|the-five-records The five records|a-format-that-survives A format that survives|when-to-export-and-where-copies-live When to export, and where copies live|answering-goku-five-years-on Answering Goku, five years on"
+                >
+                  <a href="/blog/keeping-your-own-records/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">The five records a syndicate lead should hold their own copy of</span
+                    ><span class="explore__d"
+                      >Whatever system or provider runs the deal, the questions about it arrive years later and are addressed to the lead, so the answers need
+                      to sit in files the lead holds.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="side-letters"
+                  data-g="Read"
+                  data-s=" side letters: keeping track of what one investor was promised side letters: keeping track of what one investor was promised a side letter changes the terms for one investor, and it only works if the change reaches every calculation and every message that uses those terms. most favoured fee"
+                  data-h="what-a-side-letter-is What a side letter is|one-register-one-line-per-promise One register, one line per promise|what-the-letter-changes-in-the-figures What the letter changes in the figures|promises-about-other-investors Promises about other investors|where-the-rules-take-an-interest Where the rules take an interest|when-the-letter-stops-mattering When the letter stops mattering"
+                >
+                  <a href="/blog/side-letters/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Side letters: keeping track of what one investor was promised</span
+                    ><span class="explore__d"
+                      >A side letter changes the terms for one investor, and it only works if the change reaches every calculation and every message that uses
+                      those terms.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="spv-costs"
+                  data-g="Read"
+                  data-s=" spv costs: who pays for the vehicle, and how to show it spv costs: who pays for the vehicle, and how to show it an spv costs money to set up and keeps costing money every year until it is closed, so decide at the start who pays each cost and where the money for the later years will sit. set up annual accounts fee"
+                  data-h="two-kinds-of-cost Two kinds of cost|four-ways-to-pay Four ways to pay|the-money-for-later-years The money for later years|how-to-show-it-to-investors How to show it to investors"
+                >
+                  <a href="/blog/spv-costs/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">SPV costs: who pays for the vehicle, and how to show it</span
+                    ><span class="explore__d"
+                      >An SPV costs money to set up and keeps costing money every year until it is closed, so decide at the start who pays each cost and where
+                      the money for the later years will sit.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="investor-updates"
+                  data-g="Read"
+                  data-s=" investor updates after closing: where each figure comes from investor updates after closing: where each figure comes from an update is only as good as the records behind it, so before it goes out, tie every figure in it to the record it came from. annual accounts tax certificate holdings"
+                  data-h="why-the-information-comes-through-the-lead Why the information comes through the lead|a-source-for-every-figure A source for every figure|check-the-holdings-before-anything-else Check the holdings before anything else|tax-certificates-are-a-sequence-not-a-date Tax certificates are a sequence, not a date|an-update-is-not-an-offer An update is not an offer|what-comes-back What comes back"
+                >
+                  <a href="/blog/investor-updates/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Investor updates after closing: where each figure comes from</span
+                    ><span class="explore__d"
+                      >An update is only as good as the records behind it, so before it goes out, tie every figure in it to the record it came from.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="capital-call-notice"
+                  data-g="Read"
+                  data-s=" reading a capital call notice, line by line reading a capital call notice, line by line a capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so they can check it before they pay. management fee undrawn commitment"
+                  data-h="why-a-fund-sends-notices-at-all Why a fund sends notices at all|the-notice-line-by-line The notice, line by line|investors-who-joined-later Investors who joined later|the-same-notice-from-the-other-side The same notice from the other side"
+                >
+                  <a href="/blog/capital-call-notice/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Reading a capital call notice, line by line</span
+                    ><span class="explore__d"
+                      >A capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so
+                      they can check it before they pay.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </details>
+            <details class="explore__topic" id="t-investors">
+              <summary>For investors <span>16</span></summary>
+              <ul class="explore__rows">
+                <li data-x="cat-investors" data-g="Topic" data-s=" for investors for investors what you are buying and what it really costs. ">
+                  <a href="/blog/investors/"
+                    ><span class="explore__k">Topic</span> <span class="explore__t">For investors</span
+                    ><span class="explore__d">What you are buying and what it really costs.</span></a
+                  >
+                </li>
+                <li
+                  data-x="spv-or-fund-for-investors"
+                  data-g="Read"
+                  data-s=" spv or fund: what the same £100,000 does in each spv or fund: what the same £100,000 does in each a side-by-side look at how one investor's money moves through a single-deal vehicle and through a fund, from signature to payout. "
+                  data-h="on-the-day-he-signs On the day he signs|when-the-cash-leaves When the cash leaves|how-much-gets-invested How much gets invested|what-can-go-wrong What can go wrong|who-makes-the-later-decisions Who makes the later decisions|when-to-get-out When to get out|how-to-choose-between-them How to choose between them"
+                >
+                  <a href="/blog/spv-or-fund-for-investors/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">SPV or fund: what the same £100,000 does in each</span
+                    ><span class="explore__d"
+                      >A side-by-side look at how one investor's money moves through a single-deal vehicle and through a fund, from signature to payout.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="what-fund-fees-really-cost"
+                  data-g="Read"
+                  data-s=" two and twenty, followed through a fund's whole life two and twenty, followed through a fund's whole life a fund's headline terms tell you little about what investors pay or how the manager gets paid. the fee schedule and the waterfall tell you. "
+                  data-h="two-kinds-of-money-for-two-different-purposes Two kinds of money, for two different purposes|the-rate-means-little-without-the-base The rate means little without the base|costs-outside-the-fee Costs outside the fee|from-gross-to-net From gross to net|the-same-questions-smaller The same questions, smaller"
+                >
+                  <a href="/blog/what-fund-fees-really-cost/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Two and twenty, followed through a fund's whole life</span
+                    ><span class="explore__d"
+                      >A fund's headline terms tell you little about what investors pay or how the manager gets paid. The fee schedule and the waterfall tell
+                      you.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="committing-to-a-venture-fund"
+                  data-g="Read"
+                  data-s=" committing to a venture fund: the promise behind the first payment committing to a venture fund: the promise behind the first payment a fund commitment is a promise to hand over money on demand for years, so plan for the whole figure rather than the first call. "
+                  data-h="what-you-have-promised What you have promised|how-long-you-are-in How long you are in|a-commitment-on-a-timeline A commitment on a timeline|what-reaches-companies What reaches companies|who-actually-holds-the-interest Who actually holds the interest|questions-worth-asking-before-you-sign Questions worth asking before you sign|after-you-are-in After you are in"
+                >
+                  <a href="/blog/committing-to-a-venture-fund/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Committing to a venture fund: the promise behind the first payment</span
+                    ><span class="explore__d"
+                      >A fund commitment is a promise to hand over money on demand for years, so plan for the whole figure rather than the first call.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="ways-to-own-a-private-company"
+                  data-g="Read"
+                  data-s=" seven ways to hold a private company, and whose name is on the register seven ways to hold a private company, and whose name is on the register the route you take decides what you own, who votes, who can sell and what it costs, even when the company underneath is the same. "
+                  data-h="the-routes-side-by-side The routes side by side|what-a-layer-costs What a layer costs|being-allowed-in Being allowed in|selling-before-an-exit Selling before an exit|listed-vehicles-liquidity-with-a-different-risk Listed vehicles: liquidity with a different risk|private-equity-is-not-one-strategy Private equity is not one strategy|before-you-pick Before you pick"
+                >
+                  <a href="/blog/ways-to-own-a-private-company/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Seven ways to hold a private company, and whose name is on the register</span
+                    ><span class="explore__d"
+                      >The route you take decides what you own, who votes, who can sell and what it costs, even when the company underneath is the same.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="before-your-first-angel-cheque"
+                  data-g="Read"
+                  data-s=" before your first angel cheque: size the portfolio, not the deal before your first angel cheque: size the portfolio, not the deal angel returns are lopsided enough that the number of investments you can afford matters as much as your choice of the first one. "
+                  data-h="what-the-data-looks-like What the data looks like|why-the-count-matters Why the count matters|working-out-a-cheque Working out a cheque|are-you-allowed-in Are you allowed in?|uk-tax-relief-changes-the-sum-not-the-risk UK tax relief changes the sum, not the risk|read-one-document-of-each-kind Read one document of each kind|keep-the-paper Keep the paper"
+                >
+                  <a href="/blog/before-your-first-angel-cheque/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Before your first angel cheque: size the portfolio, not the deal</span
+                    ><span class="explore__d"
+                      >Angel returns are lopsided enough that the number of investments you can afford matters as much as your choice of the first one.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="angel-investing-with-a-day-job"
+                  data-g="Read"
+                  data-s=" angel investing with a day job: three questions to clear first angel investing with a day job: three questions to clear first your job is why founders want you and also where your conflicts come from, so sort out what you know, what you control and what you have promised before you invest. "
+                  data-h="what-do-i-know-because-of-my-job What do I know because of my job?|what-can-i-influence What can I influence?|what-have-i-promised What have I promised?|a-record-that-takes-ten-minutes A record that takes ten minutes"
+                >
+                  <a href="/blog/angel-investing-with-a-day-job/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Angel investing with a day job: three questions to clear first</span
+                    ><span class="explore__d"
+                      >Your job is why founders want you and also where your conflicts come from, so sort out what you know, what you control and what you have
+                      promised before you invest.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="what-an-early-stage-cheque-buys"
+                  data-g="Read"
+                  data-s=" what an early-stage cheque buys: a percentage, some months and one question what an early-stage cheque buys: a percentage, some months and one question pre-seed, seed and series a are loose labels, so judge an early deal by your stake after dilution, the runway it pays for and what that runway will prove. "
+                  data-h="first-the-percentage-you-end-up-with First: the percentage you end up with|if-the-instrument-is-not-a-share If the instrument is not a share|second-the-months-the-money-pays-for Second: the months the money pays for|third-the-question-that-money-will-answer Third: the question that money will answer|what-is-different-in-an-spv What is different in an SPV"
+                >
+                  <a href="/blog/what-an-early-stage-cheque-buys/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">What an early-stage cheque buys: a percentage, some months and one question</span
+                    ><span class="explore__d"
+                      >Pre-seed, seed and Series A are loose labels, so judge an early deal by your stake after dilution, the runway it pays for and what that
+                      runway will prove.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="late-stage-price-to-proceeds"
+                  data-g="Read"
+                  data-s=" late-stage deals: from headline valuation to the cash you receive late-stage deals: from headline valuation to the cash you receive a big valuation describes one class of share at one date, so work out what your own shares would receive at several sale prices before calling a price cheap. "
+                  data-h="a-worked-discount A worked discount|time-changes-the-answer Time changes the answer|is-the-reference-price-any-good Is the reference price any good?|where-the-money-goes-and-what-the-business-needs Where the money goes, and what the business needs|how-the-stake-is-held How the stake is held|a-listing-does-not-settle-it A listing does not settle it"
+                >
+                  <a href="/blog/late-stage-price-to-proceeds/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Late-stage deals: from headline valuation to the cash you receive</span
+                    ><span class="explore__d"
+                      >A big valuation describes one class of share at one date, so work out what your own shares would receive at several sale prices before
+                      calling a price cheap.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="buying-a-stake-second-hand"
+                  data-g="Read"
+                  data-s=" buying a venture stake second-hand: the price is the easy part buying a venture stake second-hand: the price is the easy part a secondary hands you someone else's position, so budget for what comes with it, and look past the discount to what you are really taking on. "
+                  data-h="the-sum-most-buyers-underestimate The sum most buyers underestimate|what-a-discount-does-not-tell-you What a discount does not tell you|two-different-purchases Two different purchases|who-has-to-say-yes Who has to say yes|tax-at-closing Tax at closing|when-the-manager-is-on-both-sides When the manager is on both sides"
+                >
+                  <a href="/blog/buying-a-stake-second-hand/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Buying a venture stake second-hand: the price is the easy part</span
+                    ><span class="explore__d"
+                      >A secondary hands you someone else's position, so budget for what comes with it, and look past the discount to what you are really taking
+                      on.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="from-ipo-to-distribution"
+                  data-g="Read"
+                  data-s=" from ipo to distribution: why a listing day is not a payout from ipo to distribution: why a listing day is not a payout between a company listing and investors getting paid sit lock-ups, resale rules, sale decisions and the waterfall, and each can change the figure. "
+                  data-h="the-number-members-will-actually-receive The number members will actually receive|tell-members-this-at-the-listing Tell members this at the listing|the-dates-you-cannot-sell-before The dates you cannot sell before|a-free-date-is-not-clearance A free date is not clearance|cash-or-shares Cash or shares"
+                >
+                  <a href="/blog/from-ipo-to-distribution/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">From IPO to distribution: why a listing day is not a payout</span
+                    ><span class="explore__d"
+                      >Between a company listing and investors getting paid sit lock-ups, resale rules, sale decisions and the waterfall, and each can change
+                      the figure.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="public-market-equivalent"
+                  data-g="Read"
+                  data-s=" did it beat the market? how a public market equivalent works did it beat the market? how a public market equivalent works a multiple shows that an investment made money. a public market equivalent shows whether the same cash, on the same dates, would have done better in an index. "
+                  data-h="the-kaplan-schoar-calculation The Kaplan-Schoar calculation|an-example-with-uneven-cash-flows An example with uneven cash flows|the-method-works-for-one-deal The method works for one deal|choosing-the-benchmark-changes-the-answer Choosing the benchmark changes the answer|read-the-benchmark-s-construction-too Read the benchmark's construction too|what-pme-does-not-measure What PME does not measure"
+                >
+                  <a href="/blog/public-market-equivalent/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Did it beat the market? How a public market equivalent works</span
+                    ><span class="explore__d"
+                      >A multiple shows that an investment made money. A public market equivalent shows whether the same cash, on the same dates, would have
+                      done better in an index.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="reading-a-track-record"
+                  data-g="Read"
+                  data-s=" what a fund's track record can and cannot tell you what a fund's track record can and cannot tell you past returns in venture carry real information, but only if you look at what was known when the decision was made. "
+                  data-h="what-the-research-found What the research found|why-the-timing-changes-the-picture Why the timing changes the picture|what-might-be-producing-the-repeat What might be producing the repeat|questions-for-any-record Questions for any record|applying-this-to-a-syndicate-lead Applying this to a syndicate lead"
+                >
+                  <a href="/blog/reading-a-track-record/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">What a fund's track record can and cannot tell you</span
+                    ><span class="explore__d"
+                      >Past returns in venture carry real information, but only if you look at what was known when the decision was made.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="portfolio-headlines"
+                  data-g="Read"
+                  data-s=" what a portfolio headline does not tell you what a portfolio headline does not tell you a large number in a press release can be true and still say little about what any investor in any fund has received. "
+                  data-h="climbing-down-from-the-company-to-the-fund Climbing down from the company to the fund|growth-in-an-aggregate-is-not-a-return Growth in an aggregate is not a return|the-three-ratios-that-describe-a-fund The three ratios that describe a fund|distributions-are-not-always-cash Distributions are not always cash|where-the-rules-step-in Where the rules step in"
+                >
+                  <a href="/blog/portfolio-headlines/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">What a portfolio headline does not tell you</span
+                    ><span class="explore__d"
+                      >A large number in a press release can be true and still say little about what any investor in any fund has received.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="how-a-fund-of-funds-works"
+                  data-g="Read"
+                  data-s=" how a venture fund of funds works, from both sides of the table how a venture fund of funds works, from both sides of the table a fund of funds trades an extra layer of cost for selection and access, which changes the sums for its investors and the conversation for the managers it backs. "
+                  data-h="what-the-layer-costs What the layer costs|what-the-extra-cost-can-buy What the extra cost can buy|what-an-investor-should-check What an investor should check|what-a-manager-should-expect What a manager should expect|what-it-will-ask-for-after-closing What it will ask for after closing"
+                >
+                  <a href="/blog/how-a-fund-of-funds-works/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">How a venture fund of funds works, from both sides of the table</span
+                    ><span class="explore__d"
+                      >A fund of funds trades an extra layer of cost for selection and access, which changes the sums for its investors and the conversation for
+                      the managers it backs.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="rolling-funds"
+                  data-g="Read"
+                  data-s=" rolling funds: a subscription that adds exposure, not liquidity rolling funds: a subscription that adds exposure, not liquidity a rolling fund takes money each quarter, but what you own and when you can leave work very differently from a monthly subscription. "
+                  data-h="you-own-a-set-of-quarters You own a set of quarters|stopping-is-not-leaving Stopping is not leaving|how-the-carry-can-change-the-outcome How the carry can change the outcome|marketing-is-allowed-but-not-to-everyone Marketing is allowed, but not to everyone|what-it-asks-of-a-manager What it asks of a manager"
+                >
+                  <a href="/blog/rolling-funds/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Rolling funds: a subscription that adds exposure, not liquidity</span
+                    ><span class="explore__d"
+                      >A rolling fund takes money each quarter, but what you own and when you can leave work very differently from a monthly subscription.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="independent-sponsor-deals"
+                  data-g="Read"
+                  data-s=" investing with an independent sponsor: follow the fees and the carry investing with an independent sponsor: follow the fees and the carry independent sponsors raise equity one acquisition at a time, and the same deal can pay the sponsor three different ways. "
+                  data-h="what-deals-look-like What deals look like|where-the-money-goes-on-day-one Where the money goes on day one|the-fee-that-continues-every-year The fee that continues every year|who-gets-what-at-exit Who gets what at exit|things-to-settle-before-you-wire Things to settle before you wire"
+                >
+                  <a href="/blog/independent-sponsor-deals/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Investing with an independent sponsor: follow the fees and the carry</span
+                    ><span class="explore__d"
+                      >Independent sponsors raise equity one acquisition at a time, and the same deal can pay the sponsor three different ways.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </details>
+            <details class="explore__topic" id="t-leads">
+              <summary>Leads and GPs <span>15</span></summary>
+              <ul class="explore__rows">
+                <li data-x="cat-leads" data-g="Topic" data-s=" leads and gps leads and gps running a syndicate or a first fund. ">
+                  <a href="/blog/leads/"
+                    ><span class="explore__k">Topic</span> <span class="explore__t">Leads and GPs</span
+                    ><span class="explore__d">Running a syndicate or a first fund.</span></a
+                  >
+                </li>
+                <li
+                  data-x="fund-or-deal-by-deal-economics"
+                  data-g="Read"
+                  data-s=" raising a fund or staying deal by deal: the sums for a lead raising a fund or staying deal by deal: the sums for a lead fee income, carry and the long tail of vehicles work very differently in the two models. a lead should run the numbers before picking one. "
+                  data-h="what-covers-the-costs What covers the costs|what-the-fee-does-to-the-fund What the fee does to the fund|carry-works-differently-too Carry works differently too|the-vehicles-that-do-not-go-away The vehicles that do not go away|what-else-changes What else changes|the-test-before-she-decides The test before she decides"
+                >
+                  <a href="/blog/fund-or-deal-by-deal-economics/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Raising a fund or staying deal by deal: the sums for a lead</span
+                    ><span class="explore__d"
+                      >Fee income, carry and the long tail of vehicles work very differently in the two models. A lead should run the numbers before picking
+                      one.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="one-person-investment-firm"
+                  data-g="Read"
+                  data-s=" running a one-person investment firm: what to settle before the first close running a one-person investment firm: what to settle before the first close “solo gp” describes who makes the decisions, not who does the work, and a one-person firm stands or falls on how the rest gets done. "
+                  data-h="which-money-is-whose Which money is whose?|how-many-deals-pay-for-the-firm How many deals pay for the firm?|what-permission-does-the-work-need What permission does the work need?|who-checks-you Who checks you?|what-happens-if-you-disappear-for-a-month What happens if you disappear for a month?|does-this-have-to-become-a-fund Does this have to become a fund?"
+                >
+                  <a href="/blog/one-person-investment-firm/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Running a one-person investment firm: what to settle before the first close</span
+                    ><span class="explore__d"
+                      >“Solo GP” describes who makes the decisions, not who does the work, and a one-person firm stands or falls on how the rest gets
+                      done.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="first-fund-first-close"
+                  data-g="Read"
+                  data-s=" budget a first fund at its first close, not its target budget a first fund at its first close, not its target a first-time fund runs on the money that has actually closed, and a smaller figure changes the budget, the portfolio and the strategy. "
+                  data-h="why-the-first-close-comes-in-small Why the first close comes in small|the-budget The budget|the-portfolio The portfolio|plan-for-the-closes-in-between Plan for the closes in between|set-a-floor-before-you-need-one Set a floor before you need one"
+                >
+                  <a href="/blog/first-fund-first-close/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Budget a first fund at its first close, not its target</span
+                    ><span class="explore__d"
+                      >A first-time fund runs on the money that has actually closed, and a smaller figure changes the budget, the portfolio and the
+                      strategy.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="how-big-must-a-winner-be"
+                  data-g="Read"
+                  data-s=" how big must a winner be? sizing a venture portfolio how big must a winner be? sizing a venture portfolio a few companies produce most venture returns, so a portfolio has to be built to catch one and to own enough of it to matter. "
+                  data-h="how-skewed-outcomes-are How skewed outcomes are|start-with-the-money-that-can-buy-shares Start with the money that can buy shares|two-questions-in-opposite-directions Two questions, in opposite directions|work-back-from-ownership Work back from ownership|independence-is-the-weak-assumption Independence is the weak assumption|people-are-part-of-the-budget People are part of the budget|a-test-for-any-plan A test for any plan"
+                >
+                  <a href="/blog/how-big-must-a-winner-be/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">How big must a winner be? Sizing a venture portfolio</span
+                    ><span class="explore__d"
+                      >A few companies produce most venture returns, so a portfolio has to be built to catch one and to own enough of it to matter.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="follow-on-reserves"
+                  data-g="Read"
+                  data-s=" follow-on reserves: what the next cheque has to earn follow-on reserves: what the next cheque has to earn a follow-on should be judged at today's price, on what the new money will return, and not on how well the first cheque has done. "
+                  data-h="the-blended-multiple-flatters-the-follow-on The blended multiple flatters the follow-on|compare-it-with-the-alternative Compare it with the alternative|what-the-money-is-for What the money is for|building-the-number-from-the-bottom Building the number from the bottom|when-there-is-no-reserve When there is no reserve"
+                >
+                  <a href="/blog/follow-on-reserves/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Follow-on reserves: what the next cheque has to earn</span
+                    ><span class="explore__d"
+                      >A follow-on should be judged at today's price, on what the new money will return, and not on how well the first cheque has done.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="investment-thesis"
+                  data-g="Read"
+                  data-s=" write an investment thesis you could lose an argument with write an investment thesis you could lose an argument with a thesis earns its place when it rejects companies you would otherwise have liked, and when it can later be shown to be wrong. "
+                  data-h="what-the-sentence-has-to-carry What the sentence has to carry|a-thesis-gives-you-no-authority A thesis gives you no authority|when-your-view-is-unpopular When your view is unpopular|price-the-follow-on-as-a-stranger Price the follow-on as a stranger|keep-it-dated Keep it dated|before-you-publish-it Before you publish it"
+                >
+                  <a href="/blog/investment-thesis/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Write an investment thesis you could lose an argument with</span
+                    ><span class="explore__d"
+                      >A thesis earns its place when it rejects companies you would otherwise have liked, and when it can later be shown to be wrong.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="deal-sourcing-log"
+                  data-g="Read"
+                  data-s=" where your deals really come from: a sourcing log for syndicate leads where your deals really come from: a sourcing log for syndicate leads a short log tells a syndicate lead which relationships produce investable deals, and where the rest fall away. "
+                  data-h="the-base-rate-is-sobering The base rate is sobering|what-to-record What to record|a-year-of-it A year of it|why-deals-stop Why deals stop|looking-back-without-flattering-yourself Looking back without flattering yourself|what-to-do-with-it What to do with it"
+                >
+                  <a href="/blog/deal-sourcing-log/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Where your deals really come from: a sourcing log for syndicate leads</span
+                    ><span class="explore__d"
+                      >A short log tells a syndicate lead which relationships produce investable deals, and where the rest fall away.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="scout-agreement"
+                  data-g="Read"
+                  data-s=" reading a venture scout agreement before your first introduction reading a venture scout agreement before your first introduction “scout” has no fixed legal meaning, so the agreement decides what you earn, what you may say and what you may do when the firm says no. "
+                  data-h="work-out-the-money-with-real-numbers Work out the money with real numbers|decide-who-found-the-company Decide who found the company|be-exact-with-founders Be exact with founders|when-the-firm-passes-and-you-still-like-it When the firm passes and you still like it|scouting-doesn-t-entitle-you-to-raise-money Scouting doesn't entitle you to raise money"
+                >
+                  <a href="/blog/scout-agreement/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Reading a venture scout agreement before your first introduction</span
+                    ><span class="explore__d"
+                      >“Scout” has no fixed legal meaning, so the agreement decides what you earn, what you may say and what you may do when the firm says
+                      no.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="assessing-founders"
+                  data-g="Read"
+                  data-s=" assessing founders with evidence instead of charm assessing founders with evidence instead of charm investors say the team matters most, but the checks that actually reveal a team are records, predictions and specific references. "
+                  data-h="what-research-supports What research supports|read-the-budget-as-a-list-of-people Read the budget as a list of people|compare-old-predictions-with-what-happened Compare old predictions with what happened|check-what-the-co-founders-have-actually-agreed Check what the co-founders have actually agreed|make-reference-calls-specific Make reference calls specific|write-it-so-someone-can-disagree Write it so someone can disagree"
+                >
+                  <a href="/blog/assessing-founders/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Assessing founders with evidence instead of charm</span
+                    ><span class="explore__d"
+                      >Investors say the team matters most, but the checks that actually reveal a team are records, predictions and specific references.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="network-effects-test"
+                  data-g="Read"
+                  data-s=" how to test a network-effects claim in a pitch deck how to test a network-effects claim in a pitch deck if half the users vanished tomorrow, would the rest be worse off? that question separates a network effect from ordinary growth. "
+                  data-h="the-removal-test The removal test|which-kind-is-being-claimed Which kind is being claimed|find-the-network-that-actually-matters Find the network that actually matters|what-to-ask-for What to ask for|what-to-write-down What to write down"
+                >
+                  <a href="/blog/network-effects-test/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">How to test a network-effects claim in a pitch deck</span
+                    ><span class="explore__d"
+                      >If half the users vanished tomorrow, would the rest be worse off? That question separates a network effect from ordinary growth.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="accelerator-backed-rounds"
+                  data-g="Read"
+                  data-s=" investing alongside an accelerator: what the badge changes investing alongside an accelerator: what the badge changes an accelerator's stake may be bigger than the headline, its effect on the company is hard to measure, and its rights may reach your allocation. "
+                  data-h="the-headline-percentage-is-rarely-the-whole-stake The headline percentage is rarely the whole stake|rights-that-reach-your-allocation Rights that reach your allocation|selection-or-effect Selection or effect?|demo-day-isn-t-diligence Demo day isn't diligence"
+                >
+                  <a href="/blog/accelerator-backed-rounds/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Investing alongside an accelerator: what the badge changes</span
+                    ><span class="explore__d"
+                      >An accelerator's stake may be bigger than the headline, its effect on the company is hard to measure, and its rights may reach your
+                      allocation.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="venture-studio-spinouts"
+                  data-g="Read"
+                  data-s=" backing a venture studio spinout: what to check that a normal startup doesn't need backing a venture studio spinout: what to check that a normal startup doesn't need when a company is built by a studio, the questions are who owns what, who pays whom and who is really running the business. "
+                  data-h="run-the-cap-table-two-rounds-forward Run the cap table two rounds forward|check-that-the-company-owns-what-it-sells Check that the company owns what it sells|price-the-shared-services Price the shared services|find-out-who-is-really-in-charge Find out who is really in charge|which-entity-takes-your-money Which entity takes your money|how-to-read-a-studio-s-record How to read a studio's record"
+                >
+                  <a href="/blog/venture-studio-spinouts/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Backing a venture studio spinout: what to check that a normal startup doesn't need</span
+                    ><span class="explore__d"
+                      >When a company is built by a studio, the questions are who owns what, who pays whom and who is really running the business.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="science-claim-diligence"
+                  data-g="Read"
+                  data-s=" checking a science claim you cannot judge yourself checking a science claim you cannot judge yourself a syndicate lead does not need to out-think the founder on the science. the job is to find the one claim the price rests on and pay someone to try to break it. "
+                  data-h="do-the-commercial-arithmetic-first Do the commercial arithmetic first|buy-a-narrow-answer Buy a narrow answer|treat-readiness-levels-as-vocabulary Treat readiness levels as vocabulary|sort-out-the-spv-practicalities-early Sort out the SPV practicalities early"
+                >
+                  <a href="/blog/science-claim-diligence/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Checking a science claim you cannot judge yourself</span
+                    ><span class="explore__d"
+                      >A syndicate lead does not need to out-think the founder on the science. The job is to find the one claim the price rests on and pay
+                      someone to try to break it.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="bridge-round-spv"
+                  data-g="Read"
+                  data-s=" when a portfolio company asks the spv for more money when a portfolio company asks the spv for more money a bridge request is a new investment decision with its own arithmetic. an spv that has already spent its money also has a practical problem to solve before it can say yes. "
+                  data-h="how-long-the-cash-really-lasts How long the cash really lasts|find-out-what-actually-changed Find out what actually changed|value-the-new-cheque-on-its-own Value the new cheque on its own|can-the-spv-do-anything Can the SPV do anything?|keep-the-valuation-question-separate Keep the valuation question separate"
+                >
+                  <a href="/blog/bridge-round-spv/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">When a portfolio company asks the SPV for more money</span
+                    ><span class="explore__d"
+                      >A bridge request is a new investment decision with its own arithmetic. An SPV that has already spent its money also has a practical
+                      problem to solve before it can say yes.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="testing-a-fund-administrator"
+                  data-g="Read"
+                  data-s=" how to test a fund administrator or system before you sign how to test a fund administrator or system before you sign sales demos show the deal that goes right, so bring the one that went wrong, then ask what would happen if you had to leave. "
+                  data-h="decide-what-you-are-buying Decide what you are buying|bring-your-worst-deal Bring your worst deal|questions-that-sort-people-from-slides Questions that sort people from slides|run-a-handover-drill Run a handover drill|put-the-exit-in-the-contract Put the exit in the contract|check-any-claim-of-regulatory-status Check any claim of regulatory status"
+                >
+                  <a href="/blog/testing-a-fund-administrator/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">How to test a fund administrator or system before you sign</span
+                    ><span class="explore__d"
+                      >Sales demos show the deal that goes right, so bring the one that went wrong, then ask what would happen if you had to leave.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </details>
+            <details class="explore__topic" id="t-uk-rules">
+              <summary>UK rules <span>6</span></summary>
+              <ul class="explore__rows">
+                <li data-x="cat-uk-rules" data-g="Topic" data-s=" uk rules uk rules the uk rules that shape a deal. ">
+                  <a href="/blog/uk-rules/"
+                    ><span class="explore__k">Topic</span> <span class="explore__t">UK rules</span
+                    ><span class="explore__d">The UK rules that shape a deal.</span></a
+                  >
+                </li>
+                <li
+                  data-x="syndicate-lead-fca-permission"
+                  data-g="Read"
+                  data-s=" does a uk syndicate lead need fca permission? three separate questions does a uk syndicate lead need fca permission? three separate questions arranging a deal, running a vehicle and sending out a deal memo each sit under different uk rules, and being clear on one tells you nothing about the others. "
+                  data-h="question-one-are-you-arranging-deals-as-a-business Question one: are you arranging deals as a business?|question-two-is-the-vehicle-a-collective-investment-scheme Question two: is the vehicle a collective investment scheme?|question-three-who-can-you-send-the-memo-to Question three: who can you send the memo to?|if-the-answer-to-question-one-is-yes If the answer to question one is yes"
+                >
+                  <a href="/blog/syndicate-lead-fca-permission/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Does a UK syndicate lead need FCA permission? Three separate questions</span
+                    ><span class="explore__d"
+                      >Arranging a deal, running a vehicle and sending out a deal memo each sit under different UK rules, and being clear on one tells you
+                      nothing about the others.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="professional-client-explained"
+                  data-g="Read"
+                  data-s=" professional, high net worth, sophisticated: three uk labels that do different jobs professional, high net worth, sophisticated: three uk labels that do different jobs being able to receive a private deal memo does not make someone a professional client, and signing to become one gives up protections worth reading about first. "
+                  data-h="two-ways-to-be-professional Two ways to be professional|how-an-individual-opts-up How an individual opts up|what-changes-after-opting-up What changes after opting up|the-tests-may-change The tests may change"
+                >
+                  <a href="/blog/professional-client-explained/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Professional, high net worth, sophisticated: three UK labels that do different jobs</span
+                    ><span class="explore__d"
+                      >Being able to receive a private deal memo does not make someone a professional client, and signing to become one gives up protections
+                      worth reading about first.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="uk-carried-interest-tax"
+                  data-g="Read"
+                  data-s=" how the uk taxes carried interest since april 2026 how the uk taxes carried interest since april 2026 uk carry now falls within income tax, and how much of it gets the lower effective rate depends on how long the investments were held. "
+                  data-h="the-72-5-rule The 72.5% rule|the-holding-period-table The holding-period table|why-a-single-company-spv-is-exposed Why a single-company SPV is exposed|does-it-apply-to-your-vehicle Does it apply to your vehicle?|details-that-catch-people-out Details that catch people out"
+                >
+                  <a href="/blog/uk-carried-interest-tax/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">How the UK taxes carried interest since April 2026</span
+                    ><span class="explore__d"
+                      >UK carry now falls within income tax, and how much of it gets the lower effective rate depends on how long the investments were
+                      held.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="nsi-act-and-spvs"
+                  data-g="Read"
+                  data-s=" uk national security screening and the spv uk national security screening and the spv an spv can trigger a mandatory filing under the uk's national security and investment act, and putting a nominee or a holding company in the middle does not settle the question. "
+                  data-h="two-questions-decide-whether-a-filing-is-mandatory Two questions decide whether a filing is mandatory|where-the-spv-changes-the-analysis Where the SPV changes the analysis|what-happens-if-a-filing-is-missed What happens if a filing is missed|build-it-into-the-timetable Build it into the timetable"
+                >
+                  <a href="/blog/nsi-act-and-spvs/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">UK national security screening and the SPV</span
+                    ><span class="explore__d"
+                      >An SPV can trigger a mandatory filing under the UK's National Security and Investment Act, and putting a nominee or a holding company in
+                      the middle does not settle the question.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="companies-house-identity-verification"
+                  data-g="Read"
+                  data-s=" companies house identity checks and the syndicate spv companies house identity checks and the syndicate spv who has to verify their identity when a syndicate's spv or nominee is a uk company, what applies now that the transition year has ended, and what the check leaves untouched. "
+                  data-h="who-has-to-verify Who has to verify|where-the-dates-stand-in-late-november-2026 Where the dates stand in late November 2026|two-routes-one-personal-code Two routes, one personal code|a-worked-example A worked example|if-someone-does-not-verify If someone does not verify|what-the-check-does-not-do What the check does not do|what-to-record-for-each-deal What to record for each deal"
+                >
+                  <a href="/blog/companies-house-identity-verification/?from=explore"
+                    ><span class="explore__k">Article</span> <span class="explore__t">Companies House identity checks and the syndicate SPV</span
+                    ><span class="explore__d"
+                      >Who has to verify their identity when a syndicate's SPV or nominee is a UK company, what applies now that the transition year has ended,
+                      and what the check leaves untouched.</span
+                    ></a
+                  >
+                </li>
+                <li
+                  data-x="who-may-be-shown-a-deal"
+                  data-g="Read"
+                  data-s=" who may be shown a deal: uk financial promotion exemptions, person by person who may be shown a deal: uk financial promotion exemptions, person by person whether a lead may send a deal to someone depends on who that person is, how the message reaches them and what it says, and each exemption sets its own conditions. high net worth sophisticated self certified professional investor exemption financial promotion"
+                  data-h="how-the-message-is-sent-matters How the message is sent matters|bulma-s-list Bulma's list|two-more-routes Two more routes|what-does-not-fit What does not fit|keep-the-record-per-message Keep the record per message"
+                >
+                  <a href="/blog/who-may-be-shown-a-deal/?from=explore"
+                    ><span class="explore__k">Article</span>
+                    <span class="explore__t">Who may be shown a deal: UK financial promotion exemptions, person by person</span
+                    ><span class="explore__d"
+                      >Whether a lead may send a deal to someone depends on who that person is, how the message reaches them and what it says, and each
+                      exemption sets its own conditions.</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </details>
+          </div>
+        </section>
+        <section class="explore__sec" aria-labelledby="ex-proj-h">
+          <h2 class="eyebrow section-label" id="ex-proj-h">Project</h2>
+          <ul class="explore__rows explore__proj">
+            <li
+              data-x="home"
+              data-g="Page"
+              data-s=" home vegeta: spv &amp; syndicate software vegeta helps spv and syndicate teams bring investors in, reconcile payments, calculate allocations and prepare investor replies. open-source software. "
+            >
+              <a href="/"
+                ><span class="explore__k">Page</span> <span class="explore__t">Home</span
+                ><span class="explore__d"
+                  >Vegeta helps SPV and syndicate teams bring investors in, reconcile payments, calculate allocations and prepare investor replies. Open-source
+                  software.</span
+                ></a
+              >
+            </li>
+            <li data-x="faq" data-g="Page" data-s=" faq faq about vegeta · data and trust ">
+              <a href="/#faq"
+                ><span class="explore__k">Page</span> <span class="explore__t">FAQ</span><span class="explore__d">About Vegeta · Data and trust</span></a
+              >
+            </li>
+            <li data-x="blog" data-g="Page" data-s=" blog blog how spv and syndicate operations actually work. ">
+              <a href="/blog/"
+                ><span class="explore__k">Page</span> <span class="explore__t">Blog</span
+                ><span class="explore__d">How SPV and syndicate operations actually work.</span></a
+              >
+            </li>
+            <li data-x="docs" data-g="Page" data-s=" docs documentation choose a module. ">
+              <a href="/docs/"><span class="explore__k">Page</span> <span class="explore__t">Docs</span><span class="explore__d">Choose a module.</span></a>
+            </li>
+            <li data-x="demos" data-g="Page" data-s=" demos demos see each vegeta module at work, feature by feature, then try it live. ">
+              <a href="/demos/"
+                ><span class="explore__k">Page</span> <span class="explore__t">Demos</span
+                ><span class="explore__d">See each Vegeta module at work, feature by feature, then try it live.</span></a
+              >
+            </li>
+            <li
+              data-x="changelog"
+              data-g="Page"
+              data-s=" changelog all releases every release of bulma, goten and trunks, with a link to its full release notes. "
+            >
+              <a href="/changelog/"
+                ><span class="explore__k">Page</span> <span class="explore__t">Changelog</span
+                ><span class="explore__d">Every release of Bulma, Goten and Trunks, with a link to its full release notes.</span></a
+              >
+            </li>
+            <li data-x="policy" data-g="Page" data-s=" policy policy the examples on this site, where each module keeps your data, and what vegeta is not. ">
+              <a href="/policy/"
+                ><span class="explore__k">Page</span> <span class="explore__t">Policy</span
+                ><span class="explore__d">The examples on this site, where each module keeps your data, and what Vegeta is not.</span></a
+              >
+            </li>
+            <li data-x="feedback" data-g="Form" data-s=" feedback feedback tell us what you need ">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform"
+                ><span class="explore__k">Form</span> <span class="explore__t">Feedback</span><span class="explore__d">Tell us what you need</span></a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/explore/">Explore</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

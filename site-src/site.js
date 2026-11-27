@@ -35,7 +35,26 @@ doc.addEventListener('DOMContentLoaded', () => {
   captions()
   reel()
   docsSide()
+  wayBack()
 })
+
+/** An article's way to Explore (owner 2026-11-27): under the date, "Explore". Opened from /explore/ (?from=explore) it reads "← Explore" and
+ * goes back in the tab's history, so Explore comes back where it was (scroll, answer, open lists); a new tab, with nothing to go back to, opens it. */
+function wayBack() {
+  const a = doc.querySelector('[data-back]')
+  if (!a || !/[?&]from=explore\b/.test(location.search)) return
+  a.textContent = '← Explore'
+  a.addEventListener('click', (e) => {
+    // back only when this tab came here from Explore (it notes the article it opens; Codex 2026-11-27), else the link itself
+    let mine = false
+    try {
+      mine = sessionStorage.getItem('explore') === location.pathname
+    } catch {}
+    if (!mine) return
+    e.preventDefault()
+    history.back()
+  })
+}
 
 /** The blog's film: Chromium ignores a click on the picture while nothing is loaded (preload="none"), so start it here. Its own controls do the rest. */
 function film() {

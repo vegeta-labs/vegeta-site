@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Reading a capital call notice, line by line | Vegeta</title>
+    <meta
+      name="description"
+      content="A capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so they can check it before they pay."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Reading a capital call notice, line by line | Vegeta" />
+    <meta
+      property="og:description"
+      content="A capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so they can check it before they pay."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/capital-call-notice/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/capital-call-notice-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Reading a capital call notice, line by line" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reading a capital call notice, line by line | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="A capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so they can check it before they pay."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/blog/edu/capital-call-notice-share.jpg" />
+    <meta name="twitter:image:alt" content="Reading a capital call notice, line by line" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/capital-call-notice/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+        <a href="/demos/">Demos</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/">Blog</a><span aria-hidden="true"> / </span><a href="/blog/operations/">Operations</a></p>
+            <h1 class="article__title">Reading a capital call notice, line by line</h1>
+            <p class="article__lede">
+              A capital call notice should let the investor rebuild the amount asked for from their own commitment, and every line on it is there so they can
+              check it before they pay.
+            </p>
+            <p class="article__date">Updated 27 November 2026</p>
+            <p class="article__way"><a href="/explore/" data-back>Explore</a></p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-ambient
+              muted
+              loop
+              playsinline
+              preload="none"
+              width="904"
+              height="946"
+              tabindex="-1"
+              poster="/media/blog/edu/capital-call-notice.webp"
+              aria-label="The blue lead holds up a one-page notice, touches its brow with another hand and holds a pen in a third, a dish of coins on the desk; the rest of the team looks on. Every line on a call notice is there so you can check it."
+            >
+              <source src="/media/blog/edu/capital-call-notice.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </header>
+        <p>
+          Bulma has raised her first fund: £5,000,000 of commitments, invested over several years. Piccolo committed £200,000, which is 4% of the fund. He has
+          paid two calls so far. A third notice has arrived asking for £28,000 by the end of the month. Before he pays, he should be able to tell from the
+          notice alone why the figure is £28,000 and not something else.
+        </p>
+        <h2 id="why-a-fund-sends-notices-at-all">Why a fund sends notices at all</h2>
+        <p>
+          A fund does not take the whole commitment on day one. Investors promise an amount, and the manager
+          <a href="/blog/committing-to-a-venture-fund/">draws it in instalments as investments and costs come up</a>. Each draw is a capital call, and the
+          notice is the document that asks for it. The fund&#39;s agreement sets the rules: how much notice investors get, what a notice must contain, and what
+          happens if someone pays late.
+        </p>
+        <p>
+          A deal-by-deal SPV usually works differently. Investors pay once, before closing, and the payment instructions they get then are, in effect, the only
+          call. The lines below still apply to those instructions, but most of them matter only when there is a commitment that has not yet been drawn.
+        </p>
+        <h2 id="the-notice-line-by-line">The notice, line by line</h2>
+        <p>
+          <strong>Who and which.</strong> The fund, the investor, the notice number and its date. A numbered sequence lets the investor see at once if a notice
+          is missing.
+        </p>
+        <p>
+          <strong>Amount due and due date.</strong> The single figure to pay and the day it must arrive. Check that the date gives at least the notice period
+          the agreement promises.
+        </p>
+        <p><strong>What the money is for.</strong> This is the line that lets an investor check the figure. Piccolo&#39;s notice splits it three ways.</p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th>Purpose</th>
+                <th>Whole fund</th>
+                <th>Piccolo, 4%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Investment in Senzu Labs</td>
+                <td>£600,000</td>
+                <td>£24,000</td>
+              </tr>
+              <tr>
+                <td>Management fee, half-year</td>
+                <td>£50,000</td>
+                <td>£2,000</td>
+              </tr>
+              <tr>
+                <td>Fund expenses</td>
+                <td>£50,000</td>
+                <td>£2,000</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>£700,000</td>
+                <td>£28,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The fee line can be checked independently. If the agreement charges 2% a year on commitments, Piccolo&#39;s fee is £200,000 × 2% = £4,000 a year, or
+          £2,000 for a half-year. The fund-level figure follows the same way: £5,000,000 × 2% ÷ 2 = £50,000. If the notice showed £2,500, the question to ask is
+          what base or period it was worked out on. The expenses line is harder to check from the notice, so the agreement&#39;s list of what the fund may
+          charge as expenses is worth having open.
+        </p>
+        <p><strong>Commitment summary.</strong> What Piccolo has promised, what has been drawn and what is left.</p>
+        <div class="article__table">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Commitment</td>
+                <td>£200,000</td>
+              </tr>
+              <tr>
+                <td>Called before this notice</td>
+                <td>£60,000</td>
+              </tr>
+              <tr>
+                <td>This notice</td>
+                <td>£28,000</td>
+              </tr>
+              <tr>
+                <td>Called to date</td>
+                <td>£88,000</td>
+              </tr>
+              <tr>
+                <td>Undrawn after this notice</td>
+                <td>£112,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The two calls before this one took £60,000, which is 30% of his commitment, so he should expect the fund to have called £1,500,000, 30% of its
+          commitments, across everyone, if every call has been pro rata and nobody joined at a later close. If some earlier distributions can be
+          <a href="/blog/committing-to-a-venture-fund/">called again</a>, the notice should say whether this call draws on them, because that changes the
+          undrawn figure.
+        </p>
+        <p>
+          <strong>Payment details.</strong> The account and the reference to quote. These should match the last notice. If they have changed, treat the change
+          as the <a href="/blog/bank-detail-change-requests/">riskiest line on the page</a> and confirm it by calling a number you already hold, not one in the
+          notice.
+        </p>
+        <p>
+          <strong>What happens if payment is late.</strong> The agreement&#39;s default clause, sometimes repeated on the notice. Under some agreements a late
+          payer can lose part or all of their interest in the fund or be made to sell it, and the clause is worth reading before the first call rather than
+          after a missed one.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/capital-call-notice-1.webp"
+            aria-label="Piccolo's commitment split into what was called before, this notice and what is left. Piccolo's £200,000 commitment. Called before: £60,000. This notice: £28,000. Undrawn: £112,000."
+          >
+            <source src="/media/blog/edu/capital-call-notice-1.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2 id="investors-who-joined-later">Investors who joined later</h2>
+        <p>
+          A fund that holds more than one close often sends its later investors a first notice that is larger than everyone else&#39;s. It asks them for their
+          share of the calls they missed, often with an extra amount that works like interest, so that
+          <a href="/blog/first-fund-first-close/">early and late investors end up level</a>. That notice should show the catch-up separately from the current
+          call, with the rate and the period used.
+        </p>
+        <h2 id="the-same-notice-from-the-other-side">The same notice from the other side</h2>
+        <p>
+          The person preparing the notices has a different check: the investors&#39; amounts must add up to the fund total. Rounding can break that. A call of
+          £100,000 across three equal commitments is £33,333.33 each, a penny short. Decide the rounding rule in advance, apply it the same way every time, and
+          state on the notice where the penny went.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/capital-call-notice-2.webp"
+            aria-label="A call of £100,000 split equally three ways, one penny short. £100,000 across three equal commitments. Each investor £33,333.33. In total £99,999.99. Short 1p."
+          >
+            <source src="/media/blog/edu/capital-call-notice-2.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <p>
+          The second check is that each notice agrees with the record of what that investor has already paid. A notice that says &quot;called before this
+          notice: £60,000&quot; when the bank shows £58,000 received means either a payment has not been matched or an investor is in arrears, and the notice
+          should not go out until someone knows which.
+        </p>
+        <p>
+          The
+          <a href="https://ilpa.org/industry-guidance/templates-standards-model-documents/ilpa-templates-hub/ilpa-capital-call-distribution-template/"
+            >Institutional Limited Partners Association</a
+          >, an association of institutional fund investors, publishes a standard template for these notices. It released an updated version in 2025, meant for
+          funds launched from 2027, or from 2026 for funds that also use its new performance template. A small fund does not need the full template, but its
+          lines are a useful checklist of what investors expect to see.
+        </p>
+        <p>
+          Goten, Vegeta&#39;s deal calculations module, matches bank receipts to investor commitments for a deal paid in one go and drafts chase texts for
+          anyone who is short. Staged capital calls are outside what it covers.
+        </p>
+
+        <p class="article__ask">
+          Not answered here?
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform"
+            >Tell us what you need&nbsp;<span class="arrow" aria-hidden="true">→</span></a
+          >
+        </p>
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/committing-to-a-venture-fund/"
+            ><img src="/media/blog/edu/committing-to-a-venture-fund-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Committing to a venture fund: the promise behind the first payment</span
+            ></a
+          >
+          <a href="/blog/first-fund-first-close/"
+            ><img src="/media/blog/edu/first-fund-first-close-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Budget a first fund at its first close, not its target</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/explore/">Explore</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

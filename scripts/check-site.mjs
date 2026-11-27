@@ -25,6 +25,7 @@ import { computeExample, INPUT as EXAMPLE_INPUT } from './blog-example.mjs'
 import { digest, labelsIn } from './education-digest.mjs'
 import { NOT_FOUND, releasesOf, renderDocs } from './build-docs.mjs'
 import { FEEDBACK_FORM, FORM_URLS, ROLE_OF_CATEGORY, formUrl } from './feedback-form.mjs'
+import { renderExplore } from './build-explore.mjs'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs'
@@ -33,6 +34,14 @@ import { join, relative } from 'node:path'
 import { gzipSync } from 'node:zlib'
 import { runInNewContext } from 'node:vm'
 
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+// a date a reader sees, like 7 November 2026: a real calendar day, no leading zero
+const isDate = (s) => {
+  const m = typeof s === 'string' && /^([1-9]|[12]\d|3[01]) ([A-Z][a-z]+) (20\d\d)$/.exec(s)
+  if (!m || !MONTHS.includes(m[2])) return false
+  const d = new Date(Date.UTC(+m[3], MONTHS.indexOf(m[2]), +m[1]))
+  return d.getUTCDate() === +m[1]
+}
 const SITE = 'site'
 // The apps' sentences, labels and release notes come from the public repos, checked out at the commits in goten.ref,
 // trunks.ref and bulma.ref (CI does this; locally: npm run goten:fetch && npm run trunks:fetch && npm run bulma:fetch).
@@ -81,7 +90,7 @@ const EDUCATION = JSON.parse(read('site-src/education.json'))
 const EDU_URLS = EDUCATION.articles.map((a) => `/blog/${a.slug}/`)
 // the education articles cite primary and authoritative sources: only these hosts, over https
 const EDU_SOURCES =
-  /^https:\/\/(www\.legislation\.gov\.uk|www\.gov\.uk|handbook\.fca\.org\.uk|api-handbook\.fca\.org\.uk|www\.fca\.org\.uk|ilpa\.org|www\.investor\.gov|www\.sec\.gov|www\.nber\.org|conference\.nber\.org|www\.ycombinator\.com|www\.law\.cornell\.edu|delcode\.delaware\.gov|rodneywhitecenter\.wharton\.upenn\.edu|nvca\.org|www\.prarulebook\.co\.uk|www\.irs\.gov|www\.fscs\.org\.uk|www\.cambridgeassociates\.com|econpapers\.repec\.org|ideas\.repec\.org|www\.theaic\.co\.uk|www\.privateequityvaluation\.com|www\.nasa\.gov|www\.jstor\.org|www\.bakerdonelson\.com|www\.angelcapitalassociation\.org|media\.mcguirewoods\.com|eprints\.lse\.ac\.uk|academic\.oup\.com)\//
+  /^https:\/\/(www\.legislation\.gov\.uk|www\.gov\.uk|handbook\.fca\.org\.uk|api-handbook\.fca\.org\.uk|www\.fca\.org\.uk|ilpa\.org|www\.investor\.gov|www\.sec\.gov|www\.nber\.org|conference\.nber\.org|www\.ycombinator\.com|www\.law\.cornell\.edu|delcode\.delaware\.gov|rodneywhitecenter\.wharton\.upenn\.edu|nvca\.org|www\.prarulebook\.co\.uk|www\.irs\.gov|www\.fscs\.org\.uk|www\.cambridgeassociates\.com|econpapers\.repec\.org|ideas\.repec\.org|www\.theaic\.co\.uk|www\.privateequityvaluation\.com|www\.nasa\.gov|www\.jstor\.org|www\.bakerdonelson\.com|www\.angelcapitalassociation\.org|media\.mcguirewoods\.com|eprints\.lse\.ac\.uk|academic\.oup\.com|ico\.org\.uk|www\.psr\.org\.uk|www\.ncsc\.gov\.uk|www\.business\.gov\.uk|www\.wearepay\.uk|www\.ukfinance\.org\.uk)\//
 const BLOG_TOPICS = EDUCATION.categories.map((c) => `/blog/${c.anchor}/`)
 const BLOG_TRUNKS = '/blog/every-investor-email/'
 const BLOG_BULMA = '/blog/from-deal-to-payment/'
@@ -92,6 +101,8 @@ const DOCS_ITEMS = DOCS_SPEC.products.flatMap((p) => p.groups.flatMap((g) => g.i
 // plan 36 C1: /changelog/ is built by the same script from the same pins, so it is checked with the docs pages
 const CHANGELOG = '/changelog/'
 const POLICY = '/policy/'
+// plan 44: the catalog of the site's pages, with a suggestion box
+const EXPLORE = '/explore/'
 const DOCS = ['/docs/', ...DOCS_ITEMS.map((i) => i.route), CHANGELOG]
 for (const url of DOCS)
   if (!(url === CHANGELOG || /^\/docs\/([a-z0-9-]+\/)*$/.test(url)) || !existsSync(join(SITE, url, 'index.html'))) {
@@ -109,6 +120,7 @@ const PAGES = {
   ...Object.fromEntries(DEMO_MODULES.map((m) => [`/demos/${m}/`, `demos/${m}/index.html`])),
   // plan 43: the one page for the notices the other pages no longer repeat
   [POLICY]: 'policy/index.html',
+  [EXPLORE]: 'explore/index.html',
   ...Object.fromEntries([...BLOGS, ...DOCS].map((url) => [url, url.slice(1) + 'index.html'])),
   // what Vercel serves for an address that does not exist (plan 36 D7): held to the same markup, nav and footer rules
   [NOT_FOUND]: NOT_FOUND.slice(1),
@@ -249,8 +261,14 @@ const footers = new Set()
 for (const [url, h] of Object.entries(html)) {
   const at = (m) => `${url}: ${m}`
   const scripts = [...h.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)]
-  if ((h.match(/<script\b/gi) ?? []).length !== 1 || scripts.length !== 1 || !/\bsrc="\/site\.js"/.test(scripts[0][1]) || scripts[0][2].trim())
-    fail(at('page must have exactly one <script src="/site.js"></script> and no inline script'))
+  // /explore/ alone also loads its own script, after site.js (plan 44 §4)
+  const wantScripts = url === EXPLORE ? ['/site.js', '/explore.js'] : ['/site.js']
+  if (
+    (h.match(/<script\b/gi) ?? []).length !== wantScripts.length ||
+    scripts.length !== wantScripts.length ||
+    scripts.some(([, attrs, body], i) => !new RegExp(`\\bsrc="${wantScripts[i].replace('.', '\\.')}"`).test(attrs) || body.trim())
+  )
+    fail(at(`page must have exactly ${wantScripts.map((s) => `<script src="${s}">`).join(' then ')} and no inline script`))
   // an iPhone will not play a video whose page lists a caption track; captions go in data-captions and site.js adds the track (2026-11-11)
   if (/<track\b/i.test(h)) fail(at('a <track> in the page stops the video playing on iPhones: use data-captions on the <video>'))
   if (/\sstyle\s*=/i.test(h)) fail(at('page has a style attribute'))
@@ -266,7 +284,15 @@ for (const [url, h] of Object.entries(html)) {
       if (!FORM_URLS.includes(ref) && !EXTERNAL.test(ref) && !(EDU_URLS.includes(url) && EDU_SOURCES.test(ref))) fail(at(`unexpected external link: ${ref}`))
       continue
     }
-    const [path, hash] = ref.split('#')
+    let [path, hash] = ref.split('#')
+    // plan 44 (owner 2026-11-27): /explore/ marks the articles it opens with ?from=explore[:situation], so they can offer the way back
+    const from = /\?from=explore(?::([a-z0-9-]+))?$/.exec(path ?? '')
+    if (from) {
+      if (url !== EXPLORE || !EDU_URLS.concat(BLOG_GOTEN, BLOG_TRUNKS, BLOG_BULMA).includes(path.slice(0, from.index)))
+        fail(at(`${ref}: only /explore/ marks its links, and only to articles`))
+      else if (from[1] && !ids.includes(from[1])) fail(at(`${ref}: no situation ${from[1]} on /explore/`))
+      path = path.slice(0, from.index)
+    }
     if (!path) {
       if (!ids.includes(hash)) fail(at(`anchor #${hash} has no target`))
       continue
@@ -284,6 +310,7 @@ for (const [url, h] of Object.entries(html)) {
           '/demos/',
           ...DEMO_MODULES.map((m) => `/demos/${m}/`),
           POLICY,
+          EXPLORE,
           ...BLOGS,
           ...DOCS,
         ].includes(path)
@@ -388,7 +415,7 @@ if (/\/releases\/tag\//.test([...footers][0] ?? '')) fail('the footer must not l
     const current = BLOGS.includes(url) ? BLOG_LIST : DOCS.includes(url) ? '/docs/' : url.startsWith('/demos/') ? '/demos/' : url
     const marked = [...h.matchAll(/<a\b[^>]*>/g)].filter((m) => /\saria-current=/.test(m[0])).map((m) => /\shref="([^"]+)"/.exec(m[0])?.[1] ?? '?')
     // the not-found page and /policy/ (reached from the footer, plan 43) are no pages of the nav: they mark nothing
-    if (url === NOT_FOUND || url === POLICY) {
+    if (url === NOT_FOUND || url === POLICY || url === EXPLORE) {
       if (marked.length) fail(`${url}: marks ${marked.join(', ')} as the current page, but it is no page of the nav`)
       continue
     }
@@ -586,9 +613,17 @@ if (!PRIVACY || !DISCLAIMER) fail("cannot read PRIVACY_TEXT / DISCLAIMER_TEXT fr
     ['PRIVACY_TEXT', PRIVACY],
     ['the platform statement', 'Not affiliated with any platform.'],
     ['the software statement (N28)', 'Vegeta is open-source software, not a regulated service. It does not hold money or give advice.'],
+    // plan 44 §5: where the Explore text goes, that it is kept nowhere here, and that the suggestions are not advice
+    ['the Explore data statement', 'This site does not store or log it, and asks the gateway to use only providers that do not train on it.'],
+    [
+      'the Explore count statement',
+      'the site counts requests by a keyed hash of your IP address; the count for the minute is deleted after a minute and the count for the day after 26 hours.',
+    ],
+    ['the Explore advice statement', 'The suggestions are links to pages of this site, not advice about your situation.'],
   ])
     if (!policy.includes(words ?? '\0')) fail(`${POLICY}: ${what} is not there word for word`)
   if (!/<a href="\/policy\/">Policy<\/a>/.test([...footers][0] ?? '')) fail('the footer must link /policy/')
+  if (!/<a href="\/explore\/">Explore<\/a>/.test([...footers][0] ?? '')) fail('the footer must link /explore/ (plan 44)')
   // no page says its examples are fictional: /policy/ says it once (the docs pages and the demo package are the products' own
   // text). What a reader sees or a link preview shows counts: the page body, the title, the descriptions and image alt text;
   // text only for screen readers (sr-only) does not (plan 43 §2.3)
@@ -1195,7 +1230,46 @@ try {
   rmSync(dir, { recursive: true, force: true })
 }
 const gz = gzipSync(readFileSync(join(SITE, 'site.js'))).length
-if (gz > 6144) fail(`site/site.js is ${gz} bytes gzip, over 6 KB`)
+// 6 KB until 2026-11-27; plan 44 adds the articles' way back (owner: return to where you came from), so 6.25 KB
+if (gz > 6400) fail(`site/site.js is ${gz} bytes gzip, over 6.25 KB`)
+
+// plan 44: /explore/ and the function's catalog are what scripts/build-explore.mjs makes; its script is the current build, ≤ 3 KB gzip
+{
+  let built
+  try {
+    built = renderExplore({ site: SITE })
+  } catch (e) {
+    fail(`/explore/: ${e.message}`)
+  }
+  if (built) {
+    const bare = (h) => h.replace(/\s+/g, '')
+    if (bare(html[EXPLORE]) !== bare(built.html))
+      fail(`${EXPLORE}: not what scripts/build-explore.mjs makes (run it after the other generators, then Prettier)`)
+    if (!existsSync(join(SITE, 'api/_catalog.mjs')) || read(join(SITE, 'api/_catalog.mjs')) !== built.catalog)
+      fail('site/api/_catalog.mjs: not what scripts/build-explore.mjs makes')
+  }
+  // owner 2026-11-27: every blog page (index, topics, product stories, articles) is in the catalog, so a new article cannot be left out;
+  // form entries render as form links whatever their url says (Codex 2026-11-27), and urls are compared as written: the catalog uses canonical addresses
+  const listed = new Set(
+    Object.values(JSON.parse(read('site-src/explore.json')).entries)
+      .filter((e) => !e.form)
+      .map((e) => e.url),
+  )
+  // redesign R5: and every module page, demo and docs landing page (the module column rows)
+  const MODULE_PAGES = ['/bulma/', '/goten/', '/trunks/', '/bulma/demo/', '/trunks/demo/', '/demos/', ...DEMO_MODULES.map((m) => `/demos/${m}/`), '/docs/']
+  for (const url of [...BLOGS, ...MODULE_PAGES, ...DOCS_SPEC.products.map((p) => `/docs/${p.id}/`)])
+    if (!listed.has(url)) fail(`site-src/explore.json: ${url} is not in the Explore catalog`)
+  const out = mkdtempSync(join(tmpdir(), 'site-check-'))
+  try {
+    execFileSync('npx', ['--no-install', 'rolldown', 'site-src/explore.js', '-f', 'iife', '-m', '-o', join(out, 'explore.js')], { stdio: 'pipe' })
+    if (read(join(out, 'explore.js')) !== read(join(SITE, 'explore.js')))
+      fail('site/explore.js is not the current build of site-src/explore.js (run npm run site:build)')
+  } finally {
+    rmSync(out, { recursive: true, force: true })
+  }
+  const egz = gzipSync(readFileSync(join(SITE, 'explore.js'))).length
+  if (egz > 3072) fail(`site/explore.js is ${egz} bytes gzip, over 3 KB`)
+}
 
 // R14: step cards are set in type; obsolete video assets must not return. Allowed: the closing section's loop, the film, the blog's figure loops.
 const BLOG_LOOPS = ['reconciliation', 'closing', 'exit', 'inbox', 'verification']
@@ -1274,9 +1348,10 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
       const inner = `<figure class="article__media article__media--wide"> ?<video data-ambient muted loop playsinline preload="none" width="904" height="702" tabindex="-1" poster="/media/blog/edu/${n}\\.webp" aria-label="[^"]{20,}" ?> ?<source src="/media/blog/edu/${n}\\.mp4" type="video/mp4" ?/> ?</video> ?</figure>`
       if (!new RegExp(inner).test(body)) fail(`${url}: figure ${n} is missing or broken`)
     }
+    if (!isDate(a.updated ?? EDUCATION.updated)) fail(`${url}: the update date is not a real day written like 7 November 2026`)
     if (
-      !body.includes(`<p class="article__date"> Updated ${EDUCATION.updated} </p>`) &&
-      !body.includes(`<p class="article__date">Updated ${EDUCATION.updated}</p>`)
+      !body.includes(`<p class="article__date"> Updated ${a.updated ?? EDUCATION.updated} </p>`) &&
+      !body.includes(`<p class="article__date">Updated ${a.updated ?? EDUCATION.updated}</p>`)
     )
       fail(`${url}: no update date`)
     if (!new RegExp(`<h1 class="article__title"> ?${escapeRe(want.title)} ?</h1>`).test(body)) fail(`${url}: the heading changed`)
@@ -1597,6 +1672,7 @@ if (clips.length) fail('obsolete step clips remain: ' + clips.map((f) => relativ
     BLOG_BULMA,
     ...EDU_URLS,
     POLICY,
+    EXPLORE,
     ...DOCS,
   ]
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>\n`
@@ -1794,12 +1870,13 @@ for (const r of [
   '/goten',
   '/trunks',
   '/trunks/demo',
+  '/explore',
   ...(existsSync('bulma-demo.lock') ? ['/bulma/demo'] : []),
   ...[...BLOGS, ...DOCS].map((url) => url.slice(0, -1)),
 ])
   if (!(vercel.redirects ?? []).some((x) => x.source === r && x.destination === r + '/')) fail(`vercel.json: no redirect from ${r} to ${r}/`)
 const CSP =
-  "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"
+  "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"
 if (csp !== CSP) fail(`CSP is not the approved policy: ${csp}`)
 
 if (problems.length) {

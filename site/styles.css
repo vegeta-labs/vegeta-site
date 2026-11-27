@@ -4085,6 +4085,42 @@ html:not(.js) .subnav {
 .article__date {
   font: 400 12px/1.4 var(--mono);
 }
+/* plan 44 (owner 2026-11-27): the article's way back, over the title in plain type so it reads as a link: "← Blog", or "← Explore" when
+   opened from Explore (site.js); under the date, a jump to Keep reading */
+.article .article__kicker {
+  color: var(--muted);
+}
+.article .article__kicker a {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+}
+.article .article__kicker a:hover {
+  text-decoration-color: currentColor;
+}
+.article__way {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 10px 0 0;
+  font: 400 12px/1.4 var(--mono);
+}
+.article__way a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+.article__way a:hover {
+  text-decoration-color: currentColor;
+}
 .article .article__module {
   gap: 2px 14px;
   padding: 18px 0;
@@ -5788,6 +5824,569 @@ html:not(.js) .demos .subnav {
 }
 .policy a {
   color: var(--text);
+}
+/* /explore/ (plan 44; redesign 2026-11-27): one search panel (the page's only emphasis) over a map where each page sits once:
+   three module columns, Learn topics folded, one Project line. Rows are a kind tag and a name; a result row also names its module */
+.explore {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vh, 56px) var(--gutter) 120px;
+}
+.explore.is-js {
+  padding-top: 0;
+}
+/* the panel follows the title straight away; the first section's hairline is the rule under the head (also with the script off) */
+.blogindex__intro:has(+ .explore)::after {
+  display: none;
+}
+/* rethink 2026-11-27 (visual pass, plan §9): ask the whole site. One column of 760 px under the head: the field (the page's one
+   emphasis), the answer under it, the starter questions, then the map. Rhythm: head→field 32, field→answer 28, answer→questions 56,
+   questions→map 72. Without the script the questions are links and the answer shown is the :target */
+.explore__lede {
+  margin: 12px 0 0;
+  font-size: var(--t-lede);
+  color: var(--muted);
+}
+.explore__ask {
+  max-width: 760px;
+  margin: 32px 0 0;
+  scroll-margin-top: 96px;
+}
+/* the field: a rounded box two lines high that grows with the text (about eight lines, then it scrolls); the text on top, the send
+   button at the foot on the right, the count (from 240 of 300 characters) at the foot on the left. The box's edge shows focus */
+.explore__form {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 4px 12px;
+  padding: 18px 12px 12px 20px;
+  border-radius: 24px;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.1),
+    0 6px 20px rgba(20, 22, 32, 0.06);
+  overflow: hidden;
+  cursor: text;
+}
+.explore__form:focus-within {
+  box-shadow:
+    0 0 0 2px var(--text),
+    0 6px 20px rgba(20, 22, 32, 0.06);
+}
+.explore__ai {
+  align-self: start;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--muted);
+}
+.explore__in {
+  position: relative;
+  grid-column: 2 / 4;
+  align-self: start;
+  min-width: 0;
+}
+/* the grey completion sits under the field in the same type, so its words line up with what is typed */
+.explore__ghost {
+  position: absolute;
+  inset: 0 8px 0 0;
+  font-size: 18px;
+  line-height: 28px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+.explore__ghost > span:first-child {
+  color: transparent;
+}
+.explore__rest {
+  color: var(--muted);
+}
+.is-js .explore__form textarea::placeholder {
+  color: transparent;
+}
+.explore__form textarea {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 56px;
+  max-height: 228px;
+  margin: 0;
+  padding: 0 8px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 18px;
+  line-height: 28px;
+  overflow-wrap: anywhere;
+  resize: none;
+  field-sizing: content;
+  overflow-y: auto;
+}
+.explore__form textarea:focus {
+  outline: none;
+}
+.explore__form textarea::placeholder {
+  color: var(--muted);
+}
+.explore__count {
+  grid-column: 1 / 3;
+  align-self: center;
+  font: 400 12px/1.4 var(--mono);
+  color: var(--muted);
+}
+.explore__count.is-full {
+  color: var(--text);
+  font-weight: 600;
+}
+.explore__go {
+  grid-column: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--btn);
+  color: var(--btn-text);
+  cursor: pointer;
+}
+.explore__go:hover {
+  background: var(--btn-hover);
+}
+.explore__go:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+.explore__go[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+.explore__go svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* waiting for the model: a thin bar runs along the field's foot and the answer shows a placeholder */
+.explore:has(.is-busy) .explore__form::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  height: 2px;
+  background: var(--text);
+  animation: explore-bar 1.2s var(--ease-out) infinite;
+}
+@keyframes explore-bar {
+  from {
+    translate: -100% 0;
+  }
+  to {
+    translate: 340% 0;
+  }
+}
+/* suggestions while typing: names only, quieter than an answer */
+.explore__hints:has(li) {
+  margin-top: 8px;
+  padding: 2px 20px;
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px rgba(21, 22, 25, 0.06);
+}
+.explore__hints .explore__d {
+  display: none;
+}
+.explore__hints a.explore__hq {
+  display: flex;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.explore__hints a.explore__hq::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--muted);
+}
+.explore__answers {
+  max-width: 760px;
+}
+.explore__ans {
+  margin: 28px 0 0;
+  outline: none;
+  /* opened from the address (#question), the field stays in view above it */
+  scroll-margin-top: 220px;
+}
+.explore__ans[hidden],
+.explore:not(.is-js) .explore__ans:not(:target) {
+  display: none;
+}
+/* the question as asked, on the right like a message */
+.explore__q {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  width: fit-content;
+  max-width: 85%;
+  margin: 0 0 12px auto;
+  padding: 10px 16px;
+  border-radius: 18px;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-size: 16px;
+  line-height: 1.4;
+}
+.explore__q .explore__ai {
+  line-height: inherit;
+  color: inherit;
+  opacity: 0.7;
+}
+/* the answer: a card of numbered steps; each step is its tag over the name, the page's own description, and the section if one was picked */
+.explore__path {
+  counter-reset: step;
+}
+.explore__path li {
+  counter-increment: step;
+}
+.explore__ans .explore__path {
+  padding: 4px 24px;
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 1px rgba(21, 22, 25, 0.06),
+    0 1px 2px rgba(20, 22, 32, 0.06);
+}
+.explore__ans .explore__path:empty {
+  display: none;
+}
+.explore__rows.explore__path a {
+  grid-template-columns: 28px 1fr;
+  gap: 2px 8px;
+  align-items: baseline;
+  padding: 16px 0;
+}
+.explore__path a::before {
+  content: counter(step);
+  grid-row: 1 / span 4;
+  font: 500 15px/1.4 var(--mono);
+  color: var(--muted);
+}
+.explore__path a > * {
+  grid-column: 2;
+}
+.explore__path .explore__k {
+  font-size: 11px;
+}
+.explore__path .explore__t {
+  font-size: 17px;
+}
+.explore__path .explore__d {
+  display: -webkit-box;
+  margin-top: 2px;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.explore__sh {
+  margin-top: 6px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+.explore__ans--ai.is-busy::after {
+  content: '';
+  display: block;
+  height: 120px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--line), transparent, var(--line));
+  background-size: 200% 100%;
+  animation: explore-wait 1.4s linear infinite;
+}
+@keyframes explore-wait {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore:has(.is-busy) .explore__form::after {
+    animation: none;
+    width: 100%;
+    opacity: 0.4;
+  }
+  .explore__ans--ai.is-busy::after {
+    animation: none;
+  }
+}
+.explore__out:has(.explore__state:not([hidden])) {
+  margin-top: 4px;
+}
+.explore__out p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+/* the starter questions: who you are, then one question per row; the arrow moves on hover */
+.explore__start {
+  max-width: 760px;
+  margin: 56px 0 72px;
+}
+.explore:not(.is-js) .explore__start {
+  margin-top: 0;
+}
+.explore__start > h2 {
+  margin: 0 0 16px;
+}
+.explore__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.explore__tabs button {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.explore__tabs button:hover {
+  border-color: var(--text);
+}
+.explore__tabs button[aria-pressed='true'] {
+  border-color: var(--btn);
+  background: var(--btn);
+  color: var(--btn-text);
+}
+.explore__role > h3 {
+  margin: 24px 0 4px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.is-js .explore__role > h3 {
+  display: none;
+}
+.explore__qs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.explore__qs a {
+  display: flex;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.explore__qs a::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--muted);
+  transition: translate 0.2s var(--ease-out);
+}
+.explore__qs a:hover::after {
+  translate: 4px 0;
+  color: var(--text);
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore__qs a::after {
+    transition: none;
+  }
+}
+@media (max-width: 760px) {
+  .explore__form {
+    padding: 14px 10px 10px 16px;
+    border-radius: 20px;
+  }
+  .explore__form textarea,
+  .explore__ghost {
+    font-size: 17px;
+  }
+  .explore__ans .explore__path {
+    padding: 2px 16px;
+  }
+  .explore__rows.explore__path a {
+    grid-template-columns: 22px 1fr;
+  }
+  .explore__qs a {
+    font-size: 16px;
+  }
+}
+/* a step shows its page's own description; the map below shows names only */
+.explore__d {
+  display: none;
+}
+.explore__sec {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.explore__sec > h2 {
+  margin: 0 0 20px;
+}
+.explore__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.explore__rows a {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+.explore__rows li:first-child a {
+  border-top: 0;
+}
+.explore__rows a:hover .explore__t {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.explore__k {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.explore__t {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+/* the map says the module by its column; a copied row in the results says it in words */
+.explore__sec .explore__m {
+  display: none;
+}
+.explore__m {
+  color: var(--muted);
+}
+.explore__mods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.explore__mod h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.explore__mod > p {
+  margin: 4px 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--muted);
+}
+.explore__learn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 28px;
+  align-items: start;
+}
+.explore__topic {
+  border-top: 1px solid var(--line);
+}
+.explore__topic summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+.explore__topic summary::-webkit-details-marker {
+  display: none;
+}
+.explore__topic summary span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.explore__topic summary::after {
+  content: '+';
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--muted);
+}
+.explore__topic[open] summary::after {
+  content: '−';
+}
+.explore__topic .explore__rows {
+  padding-bottom: 14px;
+}
+.explore__learn li:not(:first-child) .explore__k,
+.explore__proj .explore__k {
+  display: none;
+}
+.explore__learn li:not(:first-child) a,
+.explore__proj a {
+  grid-template-columns: 1fr;
+}
+.explore__learn .explore__t {
+  font-size: 15px;
+  font-weight: 400;
+}
+.explore__proj {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+}
+.explore__proj a {
+  padding: 4px 0;
+  border-top: 0;
+}
+/* three columns need room: below 900 px each module is a block of its own */
+@media (max-width: 900px) {
+  .explore__mods {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+@media (max-width: 760px) {
+  .explore__form {
+    padding-left: 18px;
+  }
+  .explore__form input {
+    font-size: 17px;
+  }
+  .explore__go {
+    padding: 0 16px;
+  }
+  .explore__learn {
+    grid-template-columns: 1fr;
+  }
+  /* touch targets of 44 px */
+  .explore__proj a {
+    padding: 12px 0;
+  }
 }
 /* a run of a module's own tags on one line */
 .dm-tags {

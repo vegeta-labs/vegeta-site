@@ -6,6 +6,11 @@
       "permanent": true
     },
     {
+      "source": "/explore",
+      "destination": "/explore/",
+      "permanent": true
+    },
+    {
       "source": "/goten",
       "destination": "/goten/",
       "permanent": true
@@ -589,6 +594,61 @@
       "source": "/docs/bulma/release-notes",
       "destination": "/docs/bulma/release-notes/",
       "permanent": true
+    },
+    {
+      "source": "/blog/second-close",
+      "destination": "/blog/second-close/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/investor-onboarding-records",
+      "destination": "/blog/investor-onboarding-records/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bank-detail-change-requests",
+      "destination": "/blog/bank-detail-change-requests/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/winding-up-an-spv",
+      "destination": "/blog/winding-up-an-spv/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keeping-your-own-records",
+      "destination": "/blog/keeping-your-own-records/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/companies-house-identity-verification",
+      "destination": "/blog/companies-house-identity-verification/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/side-letters",
+      "destination": "/blog/side-letters/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/spv-costs",
+      "destination": "/blog/spv-costs/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/investor-updates",
+      "destination": "/blog/investor-updates/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/capital-call-notice",
+      "destination": "/blog/capital-call-notice/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/who-may-be-shown-a-deal",
+      "destination": "/blog/who-may-be-shown-a-deal/",
+      "permanent": true
     }
   ],
   "headers": [
@@ -597,7 +657,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"
+          "value": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'"
         },
         {
           "key": "X-Content-Type-Options",

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Companies House identity checks and the syndicate SPV | Vegeta</title>
+    <meta
+      name="description"
+      content="Who has to verify their identity when a syndicate's SPV or nominee is a UK company, what applies now that the transition year has ended, and what the check leaves untouched."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Companies House identity checks and the syndicate SPV | Vegeta" />
+    <meta
+      property="og:description"
+      content="Who has to verify their identity when a syndicate's SPV or nominee is a UK company, what applies now that the transition year has ended, and what the check leaves untouched."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/companies-house-identity-verification/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/companies-house-identity-verification-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Companies House identity checks and the syndicate SPV" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Companies House identity checks and the syndicate SPV | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Who has to verify their identity when a syndicate's SPV or nominee is a UK company, what applies now that the transition year has ended, and what the check leaves untouched."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/blog/edu/companies-house-identity-verification-share.jpg" />
+    <meta name="twitter:image:alt" content="Companies House identity checks and the syndicate SPV" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/companies-house-identity-verification/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+        <a href="/demos/">Demos</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/">Blog</a><span aria-hidden="true"> / </span><a href="/blog/uk-rules/">UK rules</a></p>
+            <h1 class="article__title">Companies House identity checks and the syndicate SPV</h1>
+            <p class="article__lede">
+              Who has to verify their identity when a syndicate's SPV or nominee is a UK company, what applies now that the transition year has ended, and what
+              the check leaves untouched.
+            </p>
+            <p class="article__date">Updated 27 November 2026</p>
+            <p class="article__way"><a href="/explore/" data-back>Explore</a></p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-ambient
+              muted
+              loop
+              playsinline
+              preload="none"
+              width="904"
+              height="946"
+              tabindex="-1"
+              poster="/media/blog/edu/companies-house-identity-verification.webp"
+              aria-label="In a hall by the lake the blue lead holds a token up to an empty counter hatch, with a folder, a cup and a badge in the other hands, while the boulder waits with both hands on a striped barrier. Directors and PSCs verify. Not every investor does."
+            >
+              <source src="/media/blog/edu/companies-house-identity-verification.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </header>
+        <p>
+          Since <a href="https://www.gov.uk/guidance/verifying-your-identity-for-companies-house">18 November 2025</a>, directors and people with significant
+          control of UK companies have had to prove to Companies House that they are who they say they are. The duty comes from the
+          <a href="https://www.legislation.gov.uk/ukpga/2023/56/part/1/crossheading/identity-verification">Economic Crime and Corporate Transparency Act 2023</a
+          >. A syndicate lead who sets up <a href="/blog/what-an-spv-is/">a company for each deal</a> meets this rule every time.
+        </p>
+        <h2 id="who-has-to-verify">Who has to verify</h2>
+        <p>
+          The <a href="https://www.gov.uk/guidance/verifying-your-identity-for-companies-house">current list</a> covers directors and their equivalents in other
+          entity types, people with significant control (PSCs), and the agents authorised to carry out checks for others. For a company, a PSC is broadly
+          someone who <a href="https://www.gov.uk/guidance/people-with-significant-control-pscs">holds more than 25% of the shares or voting rights</a>, can
+          appoint or remove a majority of the directors, or otherwise has significant influence or control.
+        </p>
+        <p>
+          Shareholders as such are not on the list. Nor, yet, are several groups that Companies House says will follow later: people who file documents, limited
+          partnerships, corporate directors and the officers of a company that is itself a PSC.
+        </p>
+        <h2 id="where-the-dates-stand-in-late-november-2026">Where the dates stand in late November 2026</h2>
+        <p>
+          The rule started with a 12-month transition year for people already on the register, which ended on 17 November 2026. Existing directors were due
+          <a href="https://www.gov.uk/government/news/identity-verification-is-making-the-uks-company-register-more-trustworthy"
+            >with the confirmation statement falling between 18 November 2025 and 17 November 2026</a
+          >. Existing PSCs who were also directors had 14 days tied to that statement, and other existing PSCs had the first 14 days of their birth month.
+          Companies House now says that <a href="https://www.gov.uk/guidance/verify-your-identity-for-companies-house">transition period has passed</a>.
+          Individual deadlines can still fall after the year ended, because the
+          <a href="https://www.legislation.gov.uk/uksi/2025/1118/made">transitional rules</a> count from each company&#39;s own dates. A company whose
+          confirmation statement review period ended on 17 November 2026 ordinarily has until 1 December to deliver the statement, and the 14 days for a
+          director who is also its PSC run from 18 November to 1 December. An older SPV whose director has still not verified is overdue or about to be: take
+          the date from the service.
+        </p>
+        <p>
+          For anything new,
+          <a href="https://www.gov.uk/government/news/identity-verification-is-making-the-uks-company-register-more-trustworthy">three rules</a> have applied
+          since the first day:
+        </p>
+        <ul>
+          <li>a new company cannot be incorporated until its directors have verified;</li>
+          <li>a new director cannot be appointed to an existing company without verifying;</li>
+          <li>a new PSC must verify within 14 days.</li>
+        </ul>
+        <p>
+          Two things are still to come. Companies House says it will place notes on the public register where verification was missed. And the
+          <a
+            href="https://www.gov.uk/government/publications/economic-crime-and-corporate-transparency-act-outline-transition-plan-for-companies-house/economic-crime-and-corporate-transparency-act-outline-transition-plan-for-companies-house"
+            >transition plan</a
+          >
+          puts identity checks on everyone who files a document, and a requirement that third-party filing agents be authorised, at no earlier than November
+          2027, with at least six months&#39; notice.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/companies-house-identity-verification-1.webp"
+            aria-label="Three dates in the roll-out of identity verification. Where the dates stand. Rule starts, 18 November 2025. Transition year ends, 17 November 2026. Checks on filers, no earlier than November 2027."
+          >
+            <source src="/media/blog/edu/companies-house-identity-verification-1.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2 id="two-routes-one-personal-code">Two routes, one personal code</h2>
+        <p>
+          A person can verify <a href="https://www.gov.uk/guidance/verify-your-identity-for-companies-house">directly through GOV.UK One Login</a>, which
+          Companies House describes as free, with a Post Office option for those who need it. Or they can go through an
+          <a href="https://www.gov.uk/guidance/using-an-authorised-corporate-service-provider-acsp-to-verify-your-identity"
+            >Authorised Corporate Service Provider</a
+          >: an accountant, solicitor or similar agent registered with Companies House and supervised for anti-money laundering. An agent may charge.
+        </p>
+        <p>
+          Either way the result is a
+          <a href="https://www.gov.uk/guidance/companies-house-personal-codes-for-identity-verification">personal code of 11 characters</a>. It belongs to the
+          individual, not to any company, and one code serves every appointment that person holds. A director gives it at incorporation or with the appointment
+          filing. A PSC gives it when first added to the register or within 14 days, through a
+          <a href="https://www.gov.uk/guidance/provide-psc-verification">separate PSC service</a> that shows the exact dates and allows a 14-day extension if it
+          is requested before the deadline.
+        </p>
+        <p>
+          Most people <a href="https://www.gov.uk/guidance/verifying-your-identity-for-companies-house">verify once</a> and should not repeat it unless
+          Companies House asks. The code is needed for each role a person holds, so someone who is both director and PSC of one company supplies it twice.
+        </p>
+        <h2 id="a-worked-example">A worked example</h2>
+        <p>Bulma&#39;s syndicate raises £400,000 for a 20% stake in Senzu Labs: Goku £160,000, Piccolo £120,000, Krillin £80,000 and Tien £40,000.</p>
+        <p>
+          Suppose the SPV is a new company with Bulma as sole director and ordinary shares issued in proportion to the money. Goku holds 40% and Piccolo 30%, so
+          on the share test both are PSCs of the SPV. Krillin at 20% and Tien at 10% are not. Three people need a personal code: Bulma before the company can be
+          formed, Goku and Piccolo within their 14 days. Collecting all three codes before incorporation avoids finding out afterwards that one of them is
+          missing.
+        </p>
+        <p>
+          Now suppose a <a href="/blog/bare-trust-nominee/">nominee company</a> owned and run by Bulma holds the 20% for the four investors. Bulma is director
+          and PSC of the nominee, and gives her code in both roles. A company that acts as nominee shareholder by way of business is within the Money Laundering
+          Regulations&#39; definition of a <a href="https://www.legislation.gov.uk/uksi/2017/692/regulation/12">trust or company service provider</a>, which is
+          one more reason to take advice before running your own nominee. For the PSC test at Senzu Labs, the Companies Act treats
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/schedule/1A">a share held by a nominee as held by the person behind it</a>. Goku&#39;s share is
+          40% of 20%, which is 8% of Senzu Labs; Piccolo&#39;s is 6%, Krillin&#39;s 4% and Tien&#39;s 2%. On these facts no investor meets the share test, so
+          none has to verify with Companies House. Voting arrangements or other rights can change that answer, which is a question for the lawyer who drafts the
+          documents.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/companies-house-identity-verification-2.webp"
+            aria-label="Which of four investors hold more than 25% of the shares of the SPV. More than 25% of the shares. PSCs of the SPV: Goku 40%: Piccolo 30%. Not PSCs: Krillin 20%: Tien 10%."
+          >
+            <source src="/media/blog/edu/companies-house-identity-verification-2.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2 id="if-someone-does-not-verify">If someone does not verify</h2>
+        <p>
+          An individual <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/167M">must not act as a director</a> unless verified, and the company must
+          make sure nobody does. Breach is an offence for the individual, and for the company and every officer in default, though the section leaves the
+          director&#39;s acts valid. Companies House&#39;s
+          <a
+            href="https://www.gov.uk/government/publications/companies-house-approach-to-non-compliance-with-mandatory-identity-verification/companies-house-approach-to-non-compliance-with-mandatory-identity-verification"
+            >stated approach</a
+          >
+          includes financial penalties, prosecution and referral to the Insolvency Service, and it says PSCs who do not verify may also commit an offence.
+        </p>
+        <p>
+          In
+          <a
+            href="https://www.gov.uk/government/news/directors-warned-to-verify-identities-with-companies-house-following-first-insolvency-service-prosecutions"
+            >September 2026</a
+          >
+          the Insolvency Service secured its first convictions for these offences. Three directors were fined, one of them a verified director who had not taken
+          reasonable steps to stop an unverified colleague acting.
+        </p>
+        <h2 id="what-the-check-does-not-do">What the check does not do</h2>
+        <p>It confirms that a named person exists and is that person. That is all.</p>
+        <p>
+          It is not due diligence on investors. Firms covered by the Money Laundering Regulations must, among other things,
+          <a href="https://www.legislation.gov.uk/uksi/2017/692/regulation/28"
+            >identify beneficial owners, understand the purpose of the relationship and keep monitoring it</a
+          >. A personal code answers none of those questions. Whether those regulations apply to a lead, or to the provider acting for the syndicate, is a
+          matter for professional advice, like the separate question of <a href="/blog/syndicate-lead-fca-permission/">FCA permission</a>.
+        </p>
+        <p>
+          Nor does it reach every investor behind a nominee. The PSC rules do look through nominee holdings, but only a person who meets a PSC condition has to
+          verify, and in the example nobody does.
+        </p>
+        <h2 id="what-to-record-for-each-deal">What to record for each deal</h2>
+        <p>Keep one table per company, with a row for each role:</p>
+        <ol>
+          <li>the company and the role (director, PSC, or both as two rows);</li>
+          <li>the person;</li>
+          <li>the route used, and the agent&#39;s name if there was one;</li>
+          <li>the date verified;</li>
+          <li>the date the code was given to Companies House, and the due date shown in the service;</li>
+          <li>any extension requested and its new date.</li>
+        </ol>
+        <p>
+          Add a row for whoever files, ready for the rule on filers. Review the table at each confirmation statement and whenever the share split changes,
+          because an investor who crosses 25% in a follow-on round becomes a PSC with a 14-day clock.
+        </p>
+
+        <p class="article__ask">
+          Not answered here?
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform"
+            >Tell us what you need&nbsp;<span class="arrow" aria-hidden="true">→</span></a
+          >
+        </p>
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/bare-trust-nominee/"
+            ><img src="/media/blog/edu/bare-trust-nominee-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Bare trusts: one name on the register, many owners behind it</span
+            ></a
+          >
+          <a href="/blog/syndicate-lead-fca-permission/"
+            ><img src="/media/blog/edu/syndicate-lead-fca-permission-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >Does a UK syndicate lead need FCA permission? Three separate questions</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/explore/">Explore</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

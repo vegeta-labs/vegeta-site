@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>After the exit: paying out and closing a UK SPV | Vegeta</title>
+    <meta
+      name="description"
+      content="Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to close."
+    />
+    <meta property="og:site_name" content="Vegeta" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="After the exit: paying out and closing a UK SPV | Vegeta" />
+    <meta
+      property="og:description"
+      content="Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to close."
+    />
+    <meta property="og:url" content="https://vegeta-ops.vercel.app/blog/winding-up-an-spv/" />
+    <meta property="og:image" content="https://vegeta-ops.vercel.app/media/blog/edu/winding-up-an-spv-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="After the exit: paying out and closing a UK SPV" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="After the exit: paying out and closing a UK SPV | Vegeta" />
+    <meta
+      name="twitter:description"
+      content="Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to close."
+    />
+    <meta name="twitter:image" content="https://vegeta-ops.vercel.app/media/blog/edu/winding-up-an-spv-share.jpg" />
+    <meta name="twitter:image:alt" content="After the exit: paying out and closing a UK SPV" />
+    <link rel="canonical" href="https://vegeta-ops.vercel.app/blog/winding-up-an-spv/" />
+    <link rel="icon" href="/favicon-v.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/site.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand glass" href="/"
+        ><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 5h7l5 16 5-16h7L18 28h-4z" /></svg
+        >Vegeta</a
+      >
+      <nav class="nav__links glass" aria-label="Vegeta" data-nav-links>
+        <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+        <details class="nav__mods" data-menu>
+          <summary>Investors</summary>
+          <div class="nav__panel">
+            <div role="group" aria-labelledby="nav-spvs">
+              <p class="nav__label" id="nav-spvs">SPVs</p>
+              <a href="/bulma/">Bulma <span>SPV Workspace</span></a>
+            </div>
+          </div>
+        </details>
+        <details class="nav__mods" data-menu>
+          <summary>Operations</summary>
+          <div class="nav__panel">
+            <a href="/goten/">Goten <span>Deal Calculations</span></a>
+            <a href="/trunks/">Trunks <span>Operations Inbox</span></a>
+          </div>
+        </details>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+        <a href="/demos/">Demos</a>
+        <a href="/docs/">Docs</a>
+      </nav>
+      <details class="nav__menu" data-menu>
+        <summary>Menu</summary>
+        <ul>
+          <li><a href="/">Overview</a></li>
+          <li class="nav__menu-h">Investors</li>
+          <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+          <li class="nav__menu-h">Operations</li>
+          <li><a href="/goten/">Goten — Deal Calculations</a></li>
+          <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          <li><a href="/#build">Why trust it</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li><a href="/demos/">Demos</a></li>
+          <li><a href="/docs/">Docs</a></li>
+        </ul>
+      </details>
+      <span class="nav__end">
+        <a class="nav__cta glass" href="https://github.com/vegeta-labs">GitHub</a>
+      </span>
+    </header>
+
+    <main id="main">
+      <article class="article">
+        <header class="article__head">
+          <div class="article__intro">
+            <p class="article__kicker"><a href="/blog/">Blog</a><span aria-hidden="true"> / </span><a href="/blog/operations/">Operations</a></p>
+            <h1 class="article__title">After the exit: paying out and closing a UK SPV</h1>
+            <p class="article__lede">
+              Paying the last pound and ending the vehicle can take a year longer than the sale, and the steps depend on whether there is a company to close.
+            </p>
+            <p class="article__date">Updated 27 November 2026</p>
+            <p class="article__way"><a href="/explore/" data-back>Explore</a></p>
+          </div>
+          <figure class="article__media">
+            <video
+              data-ambient
+              muted
+              loop
+              playsinline
+              preload="none"
+              width="904"
+              height="946"
+              tabindex="-1"
+              poster="/media/blog/edu/winding-up-an-spv.webp"
+              aria-label="In an emptied room at dusk the paper-stack clerk carries the last box through the open door while the blue lead stands by the bare shelves with a key, a broom and a dustpan, one hand on the light switch. Empty the vehicle before you end it."
+            >
+              <source src="/media/blog/edu/winding-up-an-spv.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </header>
+        <p>
+          When Senzu Labs is sold, Bulma&#39;s investors expect one payment. Her deal produces two, a year apart, and then a closing task that differs between
+          the two common UK shapes: a nominee holding shares on bare trust, and an SPV that is itself a limited company.
+        </p>
+        <h2 id="the-last-distribution-is-rarely-the-first-one">The last distribution is rarely the first one</h2>
+        <p>Goku, Piccolo, Krillin and Tien paid in £120,000, £90,000, £60,000 and £30,000: £300,000 in all. Bulma&#39;s carry is 20% of profit.</p>
+        <p>
+          The buyer pays £1,000,000 for the syndicate&#39;s shares, but £100,000 of it sits in escrow for twelve months in case the buyer makes a claim under
+          the sale agreement. So £900,000 arrives. Bulma pays £10,000 of exit costs and holds back £6,000 for closing costs.
+        </p>
+        <div class="article__table">
+          <table class="article__num">
+            <thead>
+              <tr>
+                <th></th>
+                <th>First payment</th>
+                <th>Second payment</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Received</td>
+                <td>£900,000</td>
+                <td>£80,000</td>
+                <td>£980,000</td>
+              </tr>
+              <tr>
+                <td>Exit costs</td>
+                <td>(£10,000)</td>
+                <td></td>
+                <td>(£10,000)</td>
+              </tr>
+              <tr>
+                <td>Closing reserve held or released</td>
+                <td>(£6,000)</td>
+                <td>£1,500</td>
+                <td>(£4,500)</td>
+              </tr>
+              <tr>
+                <td>Distributed</td>
+                <td>£884,000</td>
+                <td>£81,500</td>
+                <td>£965,500</td>
+              </tr>
+              <tr>
+                <td>Carry to Bulma</td>
+                <td>£116,800</td>
+                <td>£16,300</td>
+                <td>£133,100</td>
+              </tr>
+              <tr>
+                <td>To investors</td>
+                <td>£767,200</td>
+                <td>£65,200</td>
+                <td>£832,400</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The table leaves out any tax the vehicle itself owes. A year later a £20,000 claim is settled out of escrow and £80,000 is released. Closing cost
+          £4,500, so £1,500 of the reserve is paid out.
+        </p>
+        <p>
+          The <a href="/blog/carry-on-an-spv-exit/">carry calculation</a> should be run on the running total, not on each payment alone. Capital went back in
+          the first payment, so all £81,500 of the second is profit. Goku&#39;s 40% share is £306,880 and then £26,080, or £332,960 in total. Tell investors at
+          the first payment how much is held back, why, and when it is due. The walk from sale price down to the SPV&#39;s receipt is in
+          <a href="/blog/following-one-cheque/">Following one cheque</a>.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/winding-up-an-spv-1.webp"
+            aria-label="The two payments that make up the whole distribution. £965,500 distributed in two payments. First payment: £884,000. Second, a year later: £81,500."
+          >
+            <source src="/media/blog/edu/winding-up-an-spv-1.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2 id="shape-one-a-nominee-and-a-bare-trust">Shape one: a nominee and a bare trust</h2>
+        <p>
+          Here there is no deal-specific company. A nominee holds the shares, and the investors <a href="/blog/bare-trust-nominee/">own the value behind it</a>.
+          Nothing has to be dissolved. The trust has done its work when the nominee holds nothing more for the investors.
+        </p>
+        <p>
+          That is not the day of the first payment. Until the escrow is released, the nominee still holds a right to money for them. Take the end date from the
+          documents.
+        </p>
+        <p>
+          If the trust was registered with HMRC, the trustee
+          <a href="https://www.gov.uk/guidance/manage-your-trusts-registration-service">closes it through the online service</a>, giving the date the trust
+          ended. That is a must where the trust was registered under the money laundering rules. The same page says changes to a trust that is not liable to tax
+          must be reported within 90 days.
+        </p>
+        <p>
+          For capital gains tax, what passes between a nominee and the person it holds for is
+          <a href="https://www.legislation.gov.uk/ukpga/1992/12/section/60">disregarded</a>, so the disposal that counts is the sale itself. How escrowed money
+          is taxed, and in which year, is a question for each investor&#39;s adviser.
+        </p>
+        <h2 id="shape-two-the-spv-is-a-company">Shape two: the SPV is a company</h2>
+        <p>Now there is a legal person to end, and there are two routes.</p>
+        <p>
+          <strong>Voluntary strike-off.</strong> The directors, or a majority of them,
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/1003">apply to the registrar</a> on form DS01. The application
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/1004">cannot be made</a> if in the previous three months the company changed its name,
+          traded, sold property it held for resale, or did anything else beyond what is needed to conclude its affairs, make the application or meet a legal
+          requirement. Nor, GOV.UK adds, if it is
+          <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">threatened with liquidation</a> or has an agreement with creditors. A
+          copy of the application goes to every member, creditor, employee and non-signing director
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/1006">within seven days</a>. The registrar publishes a notice in the Gazette, and after
+          two months may strike the company off; it is dissolved when the second notice appears.
+        </p>
+        <p>
+          <strong>Members&#39; voluntary liquidation.</strong> A majority of directors make a
+          <a href="https://www.legislation.gov.uk/ukpga/1986/45/section/89">declaration of solvency</a>: after full inquiry, they believe the company can pay
+          its debts in full, with interest at the official rate, within a stated period of no more than 12 months from the start of the winding up. Shareholders
+          then pass the winding-up resolution <a href="https://www.gov.uk/liquidate-your-company/members-voluntary-liquidation">within five weeks</a> and
+          appoint an authorised insolvency practitioner as liquidator. The company is dissolved
+          <a href="https://www.legislation.gov.uk/ukpga/1986/45/section/201">three months after the liquidator&#39;s final account is registered</a>. A director
+          who makes the declaration <a href="https://www.legislation.gov.uk/ukpga/1986/45/section/89">without reasonable grounds</a> commits an offence.
+        </p>
+        <h2 id="empty-the-company-first">Empty the company first</h2>
+        <p>
+          Whatever a company still owns at dissolution
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/1012">belongs to the Crown as bona vacantia</a>, or in some areas to the Duchy of
+          Lancaster or the Duke of Cornwall. GOV.UK says this includes
+          <a href="https://www.gov.uk/strike-off-your-company-from-companies-register/apply-to-strike-off">bank balances and future payments</a> such as tax
+          refunds, and the government&#39;s guidance lists
+          <a href="https://www.gov.uk/government/publications/bona-vacantia-dissolved-companies-bvc1/bona-vacantia-dissolved-companies-bvc1"
+            >the benefit of contracts</a
+          >
+          too.
+        </p>
+        <p>
+          If Bulma&#39;s SPV were a company struck off before the escrow ended, the right to the £80,000 would be the Crown&#39;s, and getting it back would
+          start with restoring the company. An application to court for restoration generally has to be made
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/1030">within six years of dissolution</a>. So the order is: escrow settled, tax paid,
+          last distribution made, bank account at nil, then the application.
+        </p>
+        <p>
+          One exception matters to nominees. Property a company holds
+          <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/1012">on trust for another person</a> does not pass to the Crown. That still leaves
+          investors&#39; assets in the name of a company that no longer exists, so a nominee company should not be dissolved while it holds anything.
+        </p>
+        <figure class="article__media article__media--wide">
+          <video
+            data-ambient
+            muted
+            loop
+            playsinline
+            preload="none"
+            width="904"
+            height="702"
+            tabindex="-1"
+            poster="/media/blog/edu/winding-up-an-spv-2.webp"
+            aria-label="The escrow money a company would lose if it were struck off too early. Struck off before the escrow ended. The right to it would be the Crown's £80,000."
+          >
+            <source src="/media/blog/edu/winding-up-an-spv-2.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <h2 id="tax-depends-on-the-route">Tax depends on the route</h2>
+        <p>
+          The company must send
+          <a href="https://www.gov.uk/strike-off-your-company-from-companies-register/close-down-your-company">final accounts and a Company Tax Return</a> to
+          HMRC and pay what it owes before strike-off.
+        </p>
+        <p>
+          For shareholders, the route changes the character of the money. A distribution made
+          <a href="https://www.legislation.gov.uk/ukpga/2010/4/section/1030">in a winding up</a> is generally not treated as an income distribution, and a
+          <a href="https://www.legislation.gov.uk/ukpga/1992/12/section/122">capital distribution</a> is treated as a disposal of an interest in the shares. An
+          <a href="https://www.legislation.gov.uk/ukpga/2005/5/section/396B">anti-avoidance rule</a> can treat it as income where all of its conditions are met.
+          In outline: the individual has at least 5% of the ordinary shares and the votes that go with them; the company is a close company or was one in the
+          previous two years; within two years the same or a similar activity is carried on by the individual, or through a partnership, company or connected
+          person the section names; and avoiding income tax is a main purpose. The section has further detail and exclusions. Going from one SPV to the next
+          does not meet that test on its own, but it is the pattern to raise with an adviser. Before a strike-off, the same treatment is available only where
+          the company&#39;s debts are dealt with and the total distributed is
+          <a href="https://www.legislation.gov.uk/ukpga/2010/4/section/1030A">no more than £25,000</a>. Above that, GOV.UK says the amount
+          <a href="https://www.gov.uk/strike-off-your-company-from-companies-register/close-down-your-company">will be treated as income</a>. HMRC&#39;s manual
+          adds that the company must actually be dissolved
+          <a href="https://www.gov.uk/hmrc-internal-manuals/company-taxation-manual/ctm36220">within two years</a> of the distribution.
+        </p>
+        <p>
+          Whatever an SPV company has left after its own tax, a payout of this size is far above that limit. Settle the route, and how the first payment is
+          made, with a tax adviser before any money leaves the company.
+        </p>
+        <h2 id="what-to-keep-and-for-how-long">What to keep, and for how long</h2>
+        <ul>
+          <li>
+            Company accounting records: company law has a private company preserve them for
+            <a href="https://www.legislation.gov.uk/ukpga/2006/46/section/388">three years from the date they are made</a>, and tax law requires
+            <a href="https://www.legislation.gov.uk/ukpga/1998/36/schedule/18/paragraph/21">six years</a>, which GOV.UK counts
+            <a href="https://www.gov.uk/running-a-limited-company/company-and-accounting-records">from the end of the financial year</a> they relate to.
+          </li>
+          <li>
+            After strike-off: GOV.UK says to keep business documents for
+            <a href="https://www.gov.uk/strike-off-your-company-from-companies-register/close-down-your-company">seven years</a>.
+          </li>
+          <li>
+            A paid trustee that is itself subject to the money laundering rules must keep its beneficial ownership records for
+            <a href="https://www.legislation.gov.uk/uksi/2017/692/regulation/44">five years after the final distribution</a>.
+          </li>
+        </ul>
+        <p>
+          The closing folder should hold the completion statement, the escrow release, both distribution schedules tied to the
+          <a href="/blog/tracing-spv-cash/">bank statements</a>, and the filing that ended the vehicle. Goten, Vegeta&#39;s deal calculations module, exports
+          the distribution as a CSV with one row per investor, and because a deal is stored only in the browser, that file is the copy to keep.
+        </p>
+
+        <p class="article__ask">
+          Not answered here?
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform"
+            >Tell us what you need&nbsp;<span class="arrow" aria-hidden="true">→</span></a
+          >
+        </p>
+        <nav class="article__next" aria-labelledby="next-h">
+          <h2 class="eyebrow section-label" id="next-h">Keep reading</h2>
+          <a href="/blog/carry-on-an-spv-exit/"
+            ><img src="/media/blog/edu/carry-on-an-spv-exit-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >How carry is worked out when an SPV exits</span
+            ></a
+          >
+          <a href="/blog/keeping-your-own-records/"
+            ><img src="/media/blog/edu/keeping-your-own-records-card.webp" alt="" width="800" height="500" loading="lazy" /><span
+              >The five records a syndicate lead should hold their own copy of</span
+            ></a
+          >
+        </nav>
+      </article>
+    </main>
+
+    <footer class="footer" data-tone="dark">
+      <div class="footer__cols">
+        <div>
+          <h2 class="footer__h">Modules</h2>
+          <ul>
+            <li><a href="/bulma/">Bulma — SPV Workspace</a></li>
+            <li><a href="/goten/">Goten — Deal Calculations</a></li>
+            <li><a href="/trunks/">Trunks — Operations Inbox</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Docs</h2>
+          <ul>
+            <li><a href="/docs/bulma/">Bulma docs</a></li>
+            <li><a href="/docs/goten/">Goten docs</a></li>
+            <li><a href="/docs/trunks/">Trunks docs</a></li>
+            <li><a href="/changelog/">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Code</h2>
+          <ul>
+            <li><a href="https://github.com/vegeta-labs/bulma">Bulma on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/goten">Goten on GitHub</a></li>
+            <li><a href="https://github.com/vegeta-labs/trunks">Trunks on GitHub</a></li>
+            <li><a href="/changelog/">Licence: Apache-2.0</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer__h">Project</h2>
+          <ul>
+            <li><a href="/#build">Why trust it</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/explore/">Explore</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
+            <li><a href="/policy/">Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__mark" aria-hidden="true">Vegeta</p>
+    </footer>
+  </body>
+</html>

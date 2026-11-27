@@ -92,13 +92,18 @@
       <article class="article">
         <header class="article__head">
           <div class="article__intro">
-            <p class="article__kicker"><a href="/blog/">Bulma</a></p>
+            <p class="article__kicker">
+              <a href="/blog/">Blog</a>
+            </p>
             <h1 class="article__title">Start a deal and bring your investors in</h1>
             <p class="article__lede">
               Set up and submit your deal for review. Once approved, go live, invite investors and follow their progress from commitment to payment
               instructions.
             </p>
             <p class="article__date">Updated 23 November 2026</p>
+            <p class="article__way">
+              <a href="/explore/" data-back>Explore</a>
+            </p>
           </div>
           <figure class="article__media">
             <video
@@ -116,13 +121,13 @@
             </video>
           </figure>
         </header>
-        <h2>Before the money</h2>
+        <h2 id="before-the-money">Before the money</h2>
         <p>
           Bulma is a syndicate lead setting up a deal for a company raising money, with investors she wants to invite. Before an investor can see payment
           instructions, they must complete the eligibility steps, choose an amount, pass an identity check and sign.
         </p>
         <p>A costly mistake can come at the payment stage: an investor sending money to an account from an email they should not have trusted.</p>
-        <h2>What Bulma — SPV Workspace does</h2>
+        <h2 id="what-bulma-spv-workspace-does">What Bulma — SPV Workspace does</h2>
         <p>
           Bulma takes a deal from set-up to each investor&rsquo;s payment instructions. Bulma runs at an operator, whoever runs the SPVs: the operator sets the
           rules, reviews each deal and each identity check, and names the account investors pay into.
@@ -177,7 +182,7 @@
           </table>
         </div>
         <p>An investor cannot sign until the identity check passes, and Bulma sees where each investor is.</p>
-        <h2>Setting up the deal</h2>
+        <h2 id="setting-up-the-deal">Setting up the deal</h2>
         <p>
           She is taking an SPV into Senzu Labs. She fills in the deal in six parts: the basics, the company, the terms, the files, the economics and a review.
           She can move between them in any order; the review lists what is still missing.
@@ -196,7 +201,7 @@
             loading="lazy"
           />
         </figure>
-        <h2>Inviting investors</h2>
+        <h2 id="inviting-investors">Inviting investors</h2>
         <p>
           Where the operator allows links, each link carries its own terms: carry, and an optional fee. A link&rsquo;s terms cannot be edited after it is
           created; to change them, she makes a new link. Terms that differ from the default need a reason, and where the operator&rsquo;s rules require it, a
@@ -215,7 +220,7 @@
             loading="lazy"
           />
         </figure>
-        <h2>What Goku sees before he pays</h2>
+        <h2 id="what-goku-sees-before-he-pays">What Goku sees before he pays</h2>
         <p>
           Goku is one of the investors Bulma invites. He opens his invitation, confirms he is eligible and reads the deal. He commits &pound;10,000; in this
           example Bulma&rsquo;s fee as lead is added on top. Before he confirms, Bulma shows him how the amount is made up: the commitment, her fee on his link,
@@ -244,7 +249,7 @@
             loading="lazy"
           />
         </figure>
-        <h2>Following every investor</h2>
+        <h2 id="following-every-investor">Following every investor</h2>
         <p>
           For investors who have accepted an invitation, Bulma&rsquo;s investor list shows their status, who they are waiting on and how many days they have
           been at that step: To sign, waiting on the investor, four days. Verifying, waiting on a reviewer. To pay, waiting on the investor.
@@ -264,7 +269,7 @@
           messages sent through Bulma are kept on the site for the investor to read.
         </p>
         <p>Only the operator records what has arrived: by hand, or by importing its bank lines. A lead cannot mark a payment as received.</p>
-        <h2>What a person still does</h2>
+        <h2 id="what-a-person-still-does">What a person still does</h2>
         <p>
           The money goes to an account the operator names, and the operator checks what arrives. A reviewer decides every identity check; a result from the
           identity provider never decides anything by itself. The operator and its lawyers write the eligibility questions, the deal sheet and the text
@@ -279,21 +284,21 @@
           This first version does not handle the closing itself: she can ask to close, but nothing takes the deal on to completion. It is built for one operator
           running primary deals through a UK bare trust, and cannot be used by appointed representatives.
         </p>
-        <h2>Where it runs</h2>
+        <h2 id="where-it-runs">Where it runs</h2>
         <p>
           Bulma runs on the operator&rsquo;s own server, with Docker. It starts as a sandbox, and no email leaves it. The real mode needs the operator&rsquo;s
           own email server settings, its legal wording, payment instructions from a file, and at least three different people: two admins and a reviewer, with
           someone named to approve promotions. Identity checks use the operator&rsquo;s own Sumsub contract or manual checks. A second admin approves the
           switch, and there is no way back.
         </p>
-        <h2>How it was tested</h2>
+        <h2 id="how-it-was-tested">How it was tested</h2>
         <p>
           Checked on the release branch, run locally: 1,246 of 1,246 unit and real-database tests and 41 of 41 browser tests passed, and all 201 test-plan cases
           due in this release have a passing test. A full mutation run broke the code on purpose 1,878 times, and the tests caught every one. A Python oracle,
           written separately from the code, matched on 35,084 of 35,084 random and boundary cases.
           <a href="/docs/bulma/release-notes/">The release notes</a> have the details.
         </p>
-        <h2>Try it</h2>
+        <h2 id="try-it">Try it</h2>
         <p>Bulma v0.2.0 runs on the operator&rsquo;s own server with Docker. <a href="/docs/bulma/">Read the docs</a>.</p>
         <p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform?usp=pp_url&amp;entry.12889902=Bulma"
@@ -348,6 +353,7 @@
             <li><a href="/#build">Why trust it</a></li>
             <li><a href="/#faq">FAQ</a></li>
             <li><a href="/blog/">Blog</a></li>
+            <li><a href="/explore/">Explore</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd7sInr8uvQMiUPaVoDEmFGGu79NCoCVDUbqTYnYjxEr1VrDQ/viewform">Feedback</a></li>
             <li><a href="/policy/">Policy</a></li>
           </ul>
